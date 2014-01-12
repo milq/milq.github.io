@@ -7,9 +7,9 @@ a:link {
 }
 
 body header{
-font-size: 45px;
-text-align: center;
-color: #333;
+  font-size: 45px;
+  text-align: center;
+  color: #333;
   margin-top: 15px;
   margin-bottom: 30px;
 }
@@ -50,7 +50,7 @@ p {
 }
 
 footer p {
-text-align: center;
+  text-align: center;
 }
 
 nav {
