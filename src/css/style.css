@@ -6,6 +6,10 @@ a:link {
   color: #0066cc;
 }
 
+a:visited {
+  color: #0066cc;
+}
+
 body header{
   font-size: 45px;
   text-align: center;
@@ -72,6 +76,7 @@ nav li {
   background-color:#eee;
 }
 
-nav li a:link{
+nav a:link{
   color: #444;
 }
+
