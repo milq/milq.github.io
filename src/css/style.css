@@ -58,7 +58,7 @@ footer p {
 }
 
 nav {
-  max-width: 300px;
+  max-width: 240px;
   margin: 0 auto;
   border: 1px solid #ccc;
 }
@@ -76,7 +76,7 @@ nav ul li {
 
 nav ul li a:link, nav ul li a:visited {
   display:block;
-  width:90px;
+  width:70px;
   font-size: 22px;
   color:#555;
   background-color:#eee;
