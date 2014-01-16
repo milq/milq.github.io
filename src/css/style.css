@@ -66,7 +66,7 @@ nav ul {
   padding: 0;
 }
 
-nav li {
+nav ul li {
   font-size: 22px;
   display: inline-block;
   padding: 10px;
@@ -76,11 +76,11 @@ nav li {
   background-color:#eee;
 }
 
-nav a{
+nav ul li a{
   color: #444;
 }
 
-nav a:link{
+nav ul li a:link{
   color: #444;
 }
 
