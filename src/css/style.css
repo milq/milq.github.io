@@ -62,7 +62,9 @@ article ul {
 } 
 
 article ul li {
+  color: #444;
   font-size: 18px;
+  text-align: justify;
   line-height: 30px;
 }
 
