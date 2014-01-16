@@ -57,6 +57,14 @@ footer p {
   text-align: center;
 }
 
+article ul {
+  margin-bottom: 30px;
+} 
+
+ul li {
+  font-size: 18px;
+}
+
 nav {
   max-width: 240px;
   margin: 0 auto;
