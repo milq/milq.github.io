@@ -34,6 +34,13 @@ body {
   font-family: sans-serif;
 }
 
+img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+
 pre {
   background-color:#eee;
   border: 1px solid #aaa;
