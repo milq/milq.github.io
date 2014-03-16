@@ -35,14 +35,15 @@ body {
 }
 
 pre {
+  background-color:#eee;
+  border: 1px solid #aaa;
   color: #333;
+  font-family: liberation mono, monospace; 
   font-size: 16px;
   line-height: 30px;
-  padding: 10px;
-  font-family: monospace;
-  background-color:#eee;
   margin-bottom: 30px;
-  border: 1px solid #aaa;
+  padding: 10px;
+  white-space: pre-wrap;
 }
 
 p {
