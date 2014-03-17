@@ -34,6 +34,15 @@ body {
   font-family: sans-serif;
 }
 
+code {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  color: #333;
+  font-size: 16px;
+  padding: 5px;
+  white-space: pre-wrap;
+}
+
 img {
   display: block;
   margin: 0 auto;
