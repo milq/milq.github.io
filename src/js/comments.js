@@ -1,5 +1,4 @@
-var comments_div = document.createElement('div');
-comments_div.id = 'disqus_thread';
+document.write("<div id='disqus_thread'>Hello World!</div>");
 
 var disqus_shortname = 'milqweb';
 (function() {
