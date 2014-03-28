@@ -1,4 +1,4 @@
-document.write("<div id='disqus_thread'>Hello World!</div>");
+document.write("<div id='disqus_threadxx'>Hello World!</div>");
 
 var disqus_shortname = 'milqweb';
 (function() {
