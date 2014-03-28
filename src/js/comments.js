@@ -1,3 +1,6 @@
+var comments_div = document.createElement('div');
+comments_div.id = 'disqus_thread';
+
 var disqus_shortname = 'milqweb';
 (function() {
   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
