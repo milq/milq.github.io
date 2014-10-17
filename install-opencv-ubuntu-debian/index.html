@@ -56,7 +56,7 @@
       
       <p><b>Video libraries:</b></p>
       
-      <pre>sudo apt-get install libtheora-dev libx264-dev libxvidcore-dev</pre>
+      <pre>sudo apt-get install libtheora-dev libx264-dev libxvidcore-dev libv4l-dev</pre>
       
       <p><b>GUI:</b></p>
       
@@ -65,6 +65,14 @@
       <p><b>Java:</b></p>
       
       <pre>sudo apt-get install ant default-jdk</pre>
+      
+      <p><b>Parallelism libraries:</b></p>
+      
+      <pre>sudo apt-get install libtbb-dev</pre>
+      
+      <p><b>Linear algebra libraries:</b></p>
+      
+      <pre>sudo apt-get install libeigen3-dev</pre>
       
       <p><b>Python:</b></p>
       
@@ -80,7 +88,7 @@
       
       <pre>mkdir build</pre>
       <pre>cd build</pre>
-      <pre>cmake -DWITH_OPENGL=ON -DWITH_QT=ON -DBUILD_NEW_PYTHON_SUPPORT=ON -DWITH_TBB=ON -DWITH_V4L=ON -DBUILD_EXAMPLES=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_PYTHON_EXAMPLES=ON..</pre>
+      <pre>cmake -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..</pre>
       <pre>make</pre>
       <pre>sudo make install</pre>
       
