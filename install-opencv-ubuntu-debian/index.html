@@ -54,13 +54,9 @@
       
       <pre>sudo apt-get install zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev</pre>
       
-      <p><b>Audio libraries:</b></p>
+      <p><b>Video I/O:</b></p>
       
-      <pre>sudo apt-get install libfaac-dev libvorbis-dev</pre>
-      
-      <p><b>Video libraries:</b></p>
-      
-      <pre>sudo apt-get install libtheora-dev libx264-dev libxvidcore-dev libv4l-dev</pre>
+      <pre>sudo apt-get install libfaac-dev libvorbis-dev libtheora-dev libx264-dev libxvidcore-dev libv4l-dev</pre>
       
       <p><b>Parallelism and linear algebra libraries:</b></p>
       
@@ -101,6 +97,19 @@
       <pre>sudo ldconfig</pre>
       
       <p>Finally, <b>reboot your system</b>. If you don't want to reboot, restarting the terminal or logging out and then logging in is enough.</p>
+
+      <pre>#include <opencv2/core/core.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+int main()
+{
+    cv::Mat white(300, 300, CV_8UC1, cv::Scalar(255));
+
+    cv::imshow("Window", white);
+    cv::waitKey();
+
+    return 0;
+}</pre>
 
       <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/install-opencv-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
       
