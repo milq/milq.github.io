@@ -56,6 +56,8 @@
       
       <p><b>Video I/O:</b></p>
       
+      <pre>sudo apt-get install libdc1394-22-dev libxine-dev</pre>
+      
       <pre>sudo apt-get install libfaac-dev libvorbis-dev libtheora-dev libx264-dev libxvidcore-dev libv4l-dev</pre>
       
       <p><b>Parallelism and linear algebra libraries:</b></p>
@@ -84,7 +86,7 @@
       
       <pre>mkdir build</pre>
       <pre>cd build</pre>
-      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DWITH_VTK=ON -DBUILD_NEW_PYTHON_SUPPORT=ON -DWITH_TBB=ON -DWITH_OPENMP=ON -DWITH_GDAL=ON -DWITH_V4L=ON -DBUILD_EXAMPLES=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_PYTHON_EXAMPLES=ON ..</pre>
+      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DWITH_VTK=ON -DBUILD_NEW_PYTHON_SUPPORT=ON -DWITH_TBB=ON -DWITH_OPENMP=ON -DWITH_GDAL=ON -DWITH_V4L=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_PYTHON_EXAMPLES=ON ..</pre>
       <pre>make</pre>
       <pre>sudo make install</pre>
       
