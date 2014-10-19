@@ -48,7 +48,7 @@
       
       <p><b>GUI:</b></p>
       
-      <pre>sudo apt-get install qt5-default libgtkglext1-dev libvtk6-dev</pre>
+      <pre>sudo apt-get install qt5-default libvtk6-dev</pre> <!-- If you want to use GTK instead of Qt, replace qt5-default with libgtkglext1-dev-->
       
       <p><b>Media I/O:</b></p>
       
@@ -80,12 +80,16 @@
 
       <p><b>4. COMPILE AND INSTALL OPENCV</b></p>
 
-      <p>In your terminal, <b>make sure you are within the OpenCV directory</b> and run the following commands:</p>
+      <p>In your terminal, make sure you are <b>within the OpenCV directory</b> and run the following commands:</p>
       
       <pre>mkdir build</pre>
+      
       <pre>cd build</pre>
+      
       <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_OPENMP=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..</pre>
+      
       <pre>make -j4</pre>
+      
       <pre>sudo make install</pre>
       
       <p>Now, configure OpenCV:</p>
@@ -118,7 +122,7 @@
 
       <p><b>6. COMPILE A DEMONSTRATION</b></p>
 
-      <p>Create a text file named <i>demo.cpp</i> with the following code:</p>
+      <p>Create a source file named <i>demo.cpp</i> with the following code:</p>
 
       <pre>#include &lt;opencv2/core/core.hpp&gt;
 #include &lt;opencv2/viz/vizcore.hpp&gt;
@@ -143,13 +147,37 @@ int main()
     return 0;
 }</pre>
 
-      <p>Compile the code and execute:</p>
+      <p>Create a text file named <i>CMakeLists.txt</i> with the following code:</p>
+      
+      <pre>cmake_minimum_required(VERSION 2.8.12)
 
+project(demo)
+
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+add_executable(demo demo.cpp)
+target_link_libraries(demo ${OpenCV_LIBS})</pre>
+
+      <p>Build and execute:</p>
+
+      <pre>mkdir build</pre>
+      
+      <pre>cd build</pre>
+      
+      <pre>cmake ..</pre>
+      
+      <pre>make</pre>
+      
+      <pre>./example</pre>
+      
+      <p>Instead of using CMake, you can compile directly and execute:</p>
+      
       <pre>g++ example.cpp -o example -lopencv_core -lopencv_viz</pre>
 
       <pre>./example</pre>
 
-      <p>And that's it! You have installed OpenCV, tested some examples, and compile OpenCV code!</p>
+      <p>And that's it! You have installed OpenCV, run some examples, and compile OpenCV code!</p>
 
       <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/install-opencv-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
       
