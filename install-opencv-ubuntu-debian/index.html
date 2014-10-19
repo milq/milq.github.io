@@ -29,6 +29,20 @@
 
       <p>Install OpenCV on Ubuntu or Debian is a bit long but very easy. Simply, follow these steps:</p>
 
+      <p><b>INSTALL OPENCV FROM THE REPOSITORY</b></p>
+      
+      <p>You can install OpenCV from the repository:</p>
+
+      <pre>sudo apt-get install libopencv-dev</pre>
+      
+      <p>However, you will not have the latest version of OpenCV and you may miss some features.</p>
+      
+      <p>Reme</p>
+      
+      <pre>sudo apt-get autoremove libopencv-dev</pre>
+      
+      To install the latest version of OpenCV follow the following steps:
+
       <p><b>1. KEEP UBUNTU OR DEBIAN UP TO DATE</b></p>
 
       <p>Open your terminal and execute in the following order:</p>
@@ -86,7 +100,7 @@
       
       <pre>cd build</pre>
       
-      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_OPENMP=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..</pre>
+      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..</pre>
       
       <pre>make -j4</pre>
       
