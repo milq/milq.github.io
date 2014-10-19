@@ -48,7 +48,7 @@
       
       <p><b>GUI:</b></p>
       
-      <pre>sudo apt-get install qt5-default libgtkglext1-dev libvtk5-qt4-dev</pre>
+      <pre>sudo apt-get install qt5-default libgtkglext1-dev libvtk6-dev</pre>
       
       <p><b>Media I/O:</b></p>
       
@@ -84,8 +84,8 @@
       
       <pre>mkdir build</pre>
       <pre>cd build</pre>
-      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DWITH_VTK=ON -DBUILD_NEW_PYTHON_SUPPORT=ON -DWITH_TBB=ON -DWITH_OPENMP=ON -DWITH_GDAL=ON -DWITH_V4L=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON -DINSTALL_C_EXAMPLES=ON -DINSTALL_PYTHON_EXAMPLES=ON ..</pre>
-      <pre>make</pre>
+      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_OPENMP=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..</pre>
+      <pre>make -j4</pre>
       <pre>sudo make install</pre>
       
       <p>Now, you have installed OpenCV with the following extensions: 3D visualization, Python, Java, TBB, OpenGL, video, and Qt interface.</p>
@@ -96,11 +96,10 @@
       
       <pre>sudo ldconfig</pre>
       
-      <p>Finally, <b>reboot your system</b>. If you don't want to reboot, restarting the terminal or logging out and then logging in is enough.</p>
+      <p><b>Reboot your system</b>. If you don't want to reboot, restarting the terminal or logging out and then logging in is enough. Finally, you have installed OpenCV.</p>
+      <p><b>6. TEST OPENCV</b></p>
 
-      <p><b>6. TRY OPENCV COMPILING TWO EXAMPLES</b></p>
-
-      <p><b>6. TRY OPENCV COMPILING TWO EXAMPLES</b></p>
+      <p><b>7. COMPILE TWO EXAMPLES</b></p>
 
       <p>Create a text file named <i>example1.cpp</i> with the following code:</p>
 
