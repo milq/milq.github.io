@@ -1,28 +1,29 @@
 a, a:link, a:visited {
+  color: #06c;
   text-decoration: none;
 }
 
 body {
+  font-family: sans-serif;
+  margin: 0 auto;
   max-width: 720px;
   padding: 0 10px;
-  margin: 0 auto;
-  font-family: sans-serif;
 }
 
 body header{
-  font-size: 45px;
-  text-align: center;
   color: #333;
-  margin-top: 15px;
+  font-size: 45px;
   margin-bottom: 30px;
+  margin-top: 15px;
+  text-align: center;
 }
 
 article header {
   color: #444;
-  margin-top: 45px;
-  margin-bottom: 30px;
-  line-height: 40px;
   font-size: 30px;
+  line-height: 40px;
+  margin-bottom: 30px;
+  margin-top: 45px;
   text-align: left;
 }
 
@@ -48,16 +49,16 @@ pre {
 img {
   display: block;
   margin: 0 auto;
-  max-width: 100%;
   margin-bottom: 30px;
+  max-width: 100%;
 }
 
 p {
   color: #444;
   font-size: 18px;
   line-height: 30px;
-  text-align: justify;
   margin-bottom: 30px;
+  text-align: justify;
 }
 
 footer p {
@@ -72,20 +73,20 @@ article ol, article ul {
 article ol li, article ul li {
   color: #444;
   font-size: 18px;
-  text-align: justify;
   line-height: 30px;
+  text-align: justify;
 }
 
 nav {
-  max-width: 180px;
   margin: 0 auto;
+  max-width: 180px;
 }
 
 nav ul {
   list-style-type:none;
   margin:0;
-  padding:0;
   overflow:hidden;
+  padding:0;
 }
 
 nav ul li {
@@ -94,12 +95,12 @@ nav ul li {
 
 nav ul li a:link, nav ul li a:visited {
   display:block;
-  width:80px;
-  font-size: 20px;
-  color:#444;
   background-color:#eee;
-  text-align:center;
+  color:#444;
+  font-size: 20px;
   padding:10px 5px;
+  text-align:center;
+  width:80px;
 }
 
 nav ul li a.current:link, nav ul li a.current:visited {
