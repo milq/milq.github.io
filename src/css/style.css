@@ -1,13 +1,12 @@
-a {
+a, a:link, a:visited {
   text-decoration: none;
 }
 
-a:link {
-  color: #06c;
-}
-
-a:visited {
-  color: #06c;
+body {
+  max-width: 720px;
+  padding: 0 10px;
+  margin: 0 auto;
+  font-family: sans-serif;
 }
 
 body header{
@@ -27,20 +26,23 @@ article header {
   text-align: left;
 }
 
-body {
-  max-width: 720px;
-  padding: 0 10px;
-  margin: 0 auto;
-  font-family: sans-serif;
-}
-
-code {
+code, pre {
   background-color: #eee;
   border: 1px solid #aaa;
   color: #333;
+  font-family: monospace;
   font-size: 16px;
-  padding: 5px;
   white-space: pre-wrap;
+}
+
+code {
+  padding: 5px;
+}
+
+pre {
+  line-height: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
 }
 
 img {
@@ -48,18 +50,6 @@ img {
   margin: 0 auto;
   max-width: 100%;
   margin-bottom: 30px;
-}
-
-pre {
-  background-color:#eee;
-  border: 1px solid #aaa;
-  color: #333;
-  font-family: monospace; 
-  font-size: 16px;
-  line-height: 30px;
-  margin-bottom: 30px;
-  padding: 10px;
-  white-space: pre-wrap;
 }
 
 p {
@@ -75,11 +65,11 @@ footer p {
   text-align: center;
 }
 
-article ul {
+article ol, article ul {
   margin-bottom: 30px;
 } 
 
-article ul li {
+article ol li, article ul li {
   color: #444;
   font-size: 18px;
   text-align: justify;
@@ -116,6 +106,6 @@ nav ul li a.current:link, nav ul li a.current:visited {
   background-color:#ddd;
 }
 
-nav ul li a:hover,a:active {
+nav ul li a:hover, a:active {
   background-color:#ddd;
 }
