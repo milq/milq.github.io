@@ -110,3 +110,7 @@ nav ul li a.current:link, nav ul li a.current:visited {
 nav ul li a:hover, a:active {
   background-color:#ddd;
 }
+
+svg {
+  margin-bottom: 30px;
+}
