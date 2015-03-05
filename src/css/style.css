@@ -111,6 +111,6 @@ nav ul li a:hover, a:active {
   background-color:#ddd;
 }
 
-svg {
+div, svg {
   margin-bottom: 30px;
 }
