@@ -57,7 +57,7 @@
       
       <p>Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (do not append a partition number, so do not use something like /dev/sdb1)</p>
       
-      <pre>dd bs=1M if=/path/to/image.iso of=/dev/sdb && sync</pre>
+      <pre>sudo dd bs=1M if=/path/to/image.iso of=/dev/sdb && sync</pre>
       
       <pre>sudo mkfs.vfat -I /dev/sdb -n LABEL_NAME</pre>
       
