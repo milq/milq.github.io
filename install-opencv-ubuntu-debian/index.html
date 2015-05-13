@@ -25,7 +25,7 @@
     <article>
       <header><a href="http://milq.github.io/install-opencv-ubuntu-debian">Install OpenCV on Ubuntu or Debian</a></header>
       
-      <p><b>Note:</b> This tutorial has been tested on Ubuntu 14.04 LTS with OpenCV 3.0.0 alpha. If you have successfully installed OpenCV following this tutorial with other OS or OpenCV version, please share your configuration. Thanks!</p>
+      <p><b>Note:</b> This tutorial has been tested on Ubuntu 14.04 LTS with OpenCV 3.0.0 alpha and Debian 8.0 "Jessie" with OpenCV 3.0 RC1. If you have successfully installed OpenCV following this tutorial with other OS or OpenCV version, please share your configuration. Thanks!</p>
 
       <p>Install OpenCV on Ubuntu or Debian is a bit long but very easy. You can install OpenCV from the repository or manually.</p>
 
@@ -65,7 +65,9 @@
       
       <p><b>Video I/O:</b></p>
       
-      <pre>sudo apt-get install libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine-dev</pre>
+      <pre>sudo apt-get install libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev</pre>
+      
+      <!-- Optional video I/O library (but is non-free): sudo apt-get install libfaac-dev -->
       
       <p><b>Parallelism and linear algebra libraries:</b></p>
       
@@ -95,7 +97,7 @@
       
       <pre>cd build</pre>
       
-      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..</pre>
+      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DWITH_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..</pre>
       
       <pre>make -j4</pre>
       
@@ -115,7 +117,7 @@
       
       <pre>cd build/bin</pre>
       
-      <pre>./cpp-example-edge ../../samples/cpp/fruits.jpg</pre>
+      <pre>./cpp-example-edge ../../samples/data/fruits.jpg</pre>
       
       <p>Now, go to your OpenCV directory and execute a <b>Python</b> example:</p>
       
