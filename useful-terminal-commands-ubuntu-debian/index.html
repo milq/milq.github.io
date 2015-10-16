@@ -53,6 +53,15 @@
         <li><b>Secure copy (remote file copy program):</b> <code>scp</code>.</li>
       </ul>
       
+      <p><b>3. SCREEN COMMANDS</b></p>
+      
+      <ul>
+      	<li><b>Create a screen session:</b> <code>screen</code>.</li>
+      	<li><b>Detach from the current screen session:</b> <code>Ctrl</code> + <code>A</code> and then <code>D</code>.</li>
+        <li><b>List the screen session identification strings:</b> <code>screen -ls</code>.</li>
+        <li><b>Reattach to a screen session:</b> <code>screen -r <i>session_id_string</i></code>.</li>
+      </ul>
+      
       <pre>lsblk</pre>
       
       <p>Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (do not append a partition number, so do not use something like /dev/sdb1)</p>
@@ -70,15 +79,6 @@
       <p>Other:</p>
       
       <pre>find . -iname ".svn" -exec "rm -r" {} \;</pre>
-      
-      <p>Screen:</p>
-      
-      <ul>
-      	<li><b>Create a screen session:</b> <code>screen</code>.</li>
-      	<li><b>Detach from the current screen session:</b> <code>Ctrl</code> + <code>A</code> and then <code>D</code>.</li>
-        <li><b>List the screen session identification strings:</b> <code>screen -ls</code>.</li>
-        <li><b>Reattach to a screen session:</b> <code>screen -r <i>session_id_string</i></code>.</li>
-      </ul>
       
       <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/useful-terminal-commands-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
       
