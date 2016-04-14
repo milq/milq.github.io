@@ -91,7 +91,7 @@
       
       <ul>
       	<li><b>Convert image to 5 sec. video:</b> <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
-      	<li><b>15 images to 5 sec. video at 30Hz:</b> <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
+      	<li><b>15 images to 30 Hz 5 sec. video:</b> <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
       	<li><b>Resize video to 720p:</b> <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
       	<li><b>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video:</b> <code>ffmpeg -i in.mp4 -vf "fade=in:0:25, fade=out:975:25" out.mp4</code>.</li>
       </ul>
