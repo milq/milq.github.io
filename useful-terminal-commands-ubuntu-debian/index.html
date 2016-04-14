@@ -74,14 +74,11 @@
       </ul>
       
       <ul>
-      	<li><b>Format USB stick as VFAT:</b> <code>sudo mkfs.vfat -I /dev/sdb -n LABEL_NAME</code>.</li>
+      	<li><b>Format USB stick as VFAT:</b> <code>sudo mkfs.vfat -I /dev/sd<b><i>b</i></b> -n <i>LABEL_NAME</i></code>.</li>
+      	<li><b>sdfasdfom eifwer werfweirw wen wu weipuw piwut bwpit bw:</b> <code>sudo dd bs=1M if=/path/to/image.iso of=/dev/sdb && sync</code>.</li>
       </ul>
       
-      <pre>lsblk</pre>
-      
       <p>Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (do not append a partition number, so do not use something like /dev/sdb1)</p>
-      
-      <pre>sudo dd bs=1M if=/path/to/image.iso of=/dev/sdb && sync</pre>
       
       <p><b>5. FFMPEG COMMANDS</b></p> 
       
