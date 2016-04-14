@@ -73,15 +73,15 @@
       	<li><b>Make symbolic links:</b> <code>ln -s <i>input_filename</i> <i>output_link_name</i></code>.</li>
       </ul>
       
+      <ul>
+      	<li><b>Format USB stick as VFAT:</b> <code>sudo mkfs.vfat -I /dev/sdb -n LABEL_NAME</code>.</li>
+      </ul>
+      
       <pre>lsblk</pre>
       
       <p>Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (do not append a partition number, so do not use something like /dev/sdb1)</p>
       
       <pre>sudo dd bs=1M if=/path/to/image.iso of=/dev/sdb && sync</pre>
-      
-      <pre>sudo mkfs.vfat -I /dev/sdb -n LABEL_NAME</pre>
-      
-      <p>Other:</p>
       
       <p><b>5. FFMPEG COMMANDS</b></p> 
       
