@@ -43,7 +43,6 @@
       
       <ul>
         <li><b>Compare files line by line:</b> <code>colordiff</code>, <code>diff</code>, <code>vimdiff</code>, <code>wdiff</code>.</li>
-        <li><b>List block devices:</b> <code>lsblk</code>.</li>
         <li><b>List files in databases that match a pattern:</b> <code>locate</code>, <code>sudo updatedb</code>.</li>
         <li><b>Network interface:</b> <code>ifconfig</code>.</li>
         <li><b>Report disk space usage:</b> <code>df -H</code>, <code>du -hs <i>folder</i></code>.</li>
@@ -71,14 +70,10 @@
       	<li><b>Retrieves files from the web:</b> <code>wget</code>.</li>
       	<li><b>Print shared library dependencies:</b> <code>ldd <i>executable_filename</i></code>.</li>
       	<li><b>Make symbolic links:</b> <code>ln -s <i>input_filename</i> <i>output_link_name</i></code>.</li>
+      	<li><b>List block devices:</b> <code>lsblk</code>.</li>
+      	<li><b>Format USB stick as VFAT:</b> <code>sudo mkfs.vfat -I /dev/sd<i>x</i> -n <i>LABEL_NAME</i></code>.</li>
+      	<li><b>Restores a SD card from image:</b> <code>sudo dd bs=1M if=<i>/path/to/image.iso</i> of=/dev/sd<i>x</i> && sync</code>.</li>
       </ul>
-      
-      <ul>
-      	<li><b>Format USB stick as VFAT:</b> <code>sudo mkfs.vfat -I /dev/sd<b><i>b</i></b> -n <i>LABEL_NAME</i></code>.</li>
-      	<li><b>sdfasdfom eifwer werfweirw wen wu weipuw piwut bwpit bw:</b> <code>sudo dd bs=1M if=/path/to/image.iso of=/dev/sdb && sync</code>.</li>
-      </ul>
-      
-      <p>Run the following command, replacing /dev/sdx with your drive, e.g. /dev/sdb. (do not append a partition number, so do not use something like /dev/sdb1)</p>
       
       <p><b>5. FFMPEG COMMANDS</b></p> 
       
