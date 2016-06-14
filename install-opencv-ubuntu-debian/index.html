@@ -137,54 +137,13 @@
 
       <p>Download the source files <a href="https://github.com/milq/computer-vision-resources/blob/master/code/demos/opencv/viz/demo.cpp"><i><b>demo.cpp</b></i></a> and <a href="https://github.com/milq/computer-vision-resources/blob/master/code/demos/opencv/viz/CMakeLists.txt"><i><b>CMakeLists.txt</b></i></a> and put them into the same folder.</p>
 
-      <p>Create a source file named <i>demo.cpp</i> with the following code:</p>
-
-      <pre>#include &lt;opencv2/core/core.hpp&gt;
-#include &lt;opencv2/viz/vizcore.hpp&gt;
-
-int main()
-{
-    cv::viz::Viz3d window = cv::viz::Viz3d("Viz demonstration");
-
-    cv::Point3d min(0.25, 0.0, 0.25);
-    cv::Point3d max(0.75, 0.5, 0.75);
-
-    cv::viz::WCube cube(min, max, true, cv::viz::Color::blue());
-    cube.setRenderingProperty(cv::viz::LINE_WIDTH, 4.0);
-
-    window.showWidget("Axis widget", cv::viz::WCoordinateSystem());
-    window.showWidget("Cube widget", cube);
-
-    while(!window.wasStopped()) {
-        window.spinOnce(1, true);
-    }
-
-    return 0;
-}</pre>
-
-      <p>Create a text file named <i>CMakeLists.txt</i> with the following code:</p>
-      
-      <pre>cmake_minimum_required(VERSION 2.8.12)
-
-project(demo)
-
-find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
-
-add_executable(demo demo.cpp)
-target_link_libraries(demo ${OpenCV_LIBS})</pre>
-
-      <p>Finally, build and execute:</p>
+      <p>Open your terminal, go to the folder and execute:</p>
 
       <pre>mkdir build && cd build && cmake .. && make</pre>
+      	
+      <p>Finally, run the demo:</p>
 
       <pre>./demo</pre>
-      
-      <!--<p>Instead of using CMake, you can compile directly and execute:</p>
-      
-      <pre>g++ example.cpp -o example -lopencv_core -lopencv_viz</pre>
-
-      <pre>./example</pre>-->
 
       <p>And that's it! You have installed OpenCV, run some examples, and compiled OpenCV code!</p>
 
