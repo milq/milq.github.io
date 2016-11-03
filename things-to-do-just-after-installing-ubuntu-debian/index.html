@@ -27,13 +27,29 @@
       
       <p>Just after installing Debian, it is recommended to set up the operating system .</p>
 
-      <p><strong>1. ENABLE SUDO ON YOUR USER ACCOUNT AND UPDATE DEBIAN</strong></p>
+      <p><strong>1. ENABLE SUDO ON YOUR USER ACCOUNT</strong></p>
+  
+      <p>Open a terminal and start becoming superuser:</p>
+
+      <pre>su root</pre>
+
+      <p>Enter the <i>root</i> password. Now, install <i>sudo</i>:
+
+      <pre>apt-get install sudo</pre>
+
+      <p>Add the user account to the group <i>sudo</i>:</p>
+
+      <pre>adduser <i>username</i> sudo</pre>
+
+      <p>Where <i>username</i> is the user account. Now, <b>log out</b> and then <b>log in</b> with the same user.</p>
+
+      <p>Finally, open a terminal and execute:</p>
+
+      <pre>sudo echo "Hello, world!"</pre>
       
-      <p>If you are using Debian, there are many benefits of using <code>sudo</code> instead of <code>su root</code> so it's important <b><a href="http://milq.github.io/enable-sudo-user-account-debian">enable 'sudo' on your user account</a></b>. In Ubuntu, <code>sudo</code> is enabled by default.</p>
-      
-      <p>Now, before continuing, <a href="http://milq.github.io/keep-ubuntu-debian-up-to-date"><b>keep Ubuntu or Debian up to date</b></a>.</p>
-      
-      <p>2. KEEP UBUNTU OR DEBIAN UP TO DATE</p>	    
+      <p>Enter the user password. If all goes well you'll see on screen <i>Hello, world!</i>.</p>    
+	    
+      <p><b>2. KEEP UBUNTU OR DEBIAN UP TO DATE</b></p>	    
       
       <p>Open your terminal and execute:</p>    
 	    
