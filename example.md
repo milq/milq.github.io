@@ -1,14 +1,8 @@
+# Lenguajes de programación
 
-# Recomendaciones
+## Contenidos de la prueba
 
-* Ejecuta cada código de los apuntes.
-* Comprueba dicha ejecución línea por línea y de arriba a abajo.
-* Prueba, en el código de los apuntes, a añadir y eliminar variables, cambiar valores, etc.
-
-
-# Recomendaciones
-
-Este es el co
+Estos son los contenidos básicos para aprender a programar.
 
 | ID | Apuntes       | Concepto                                           | Posición apuntes                                  |
 |----|---------------|----------------------------------------------------|---------------------------------------------------|
@@ -19,6 +13,12 @@ Este es el co
 | 03 | Condicionales | Combinación de operadores lógicos y de comparación | *Combination of comparison and logical operators* |
 | 03 | Condicionales | Decisiones con *if*                                | *Decisions with if*                               |
 | 03 | Condicionales | Identificación de tipos de variable                | *Data type identification*                        |
+
+## Recomendaciones
+
+* Ejecuta cada código de los apuntes.
+* Comprueba dicha ejecución línea por línea y de arriba a abajo.
+* Prueba, en el código de los apuntes, a añadir y eliminar variables, cambiar valores, etc.
 
 <!--
 ID,Apuntes,Concepto,Posición apuntes
