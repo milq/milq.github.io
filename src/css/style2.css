@@ -65,6 +65,7 @@ article h1 {
   margin-bottom: 30px;
   margin-top: 45px;
   text-align: left;
+  font-weight: normal;
 }
 
 article ol, article ul {
