@@ -1,0 +1,117 @@
+a, a:link, a:visited {
+  color: #06c;
+  text-decoration: none;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0 auto;
+  max-width: 720px;
+  padding: 0 10px;
+}
+
+body header{
+  color: #333;
+  font-size: 45px;
+  margin-bottom: 30px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+code, pre {
+  background-color: #eee;
+  border: 1px solid #aaa;
+  color: #333;
+  font-family: monospace;
+  font-size: 16px;
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+code {
+  padding: 5px;
+}
+
+pre {
+  line-height: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  max-width: 100%;
+}
+
+p {
+  color: #444;
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+footer p {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+article h1 {
+  color: #444;
+  font-size: 30px;
+  line-height: 40px;
+  margin-bottom: 30px;
+  margin-top: 45px;
+  text-align: left;
+}
+
+article ol, article ul {
+  margin-bottom: 30px;
+} 
+
+article ol li, article ul li {
+  color: #444;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: justify;
+}
+
+nav {
+  margin: 0 auto;
+  max-width: 180px;
+}
+
+nav ul {
+  list-style-type:none;
+  margin:0;
+  overflow:hidden;
+  padding:0;
+}
+
+nav ul li {
+  float: left;
+}
+
+nav ul li a:link, nav ul li a:visited {
+  display:block;
+  background-color:#eee;
+  color:#444;
+  font-size: 20px;
+  padding:10px 5px;
+  text-align:center;
+  width:80px;
+}
+
+nav ul li a.current:link, nav ul li a.current:visited {
+  background-color:#ddd;
+}
+
+nav ul li a:hover, a:active {
+  background-color:#ddd;
+}
+
+div, svg {
+  margin-bottom: 30px;
+}
