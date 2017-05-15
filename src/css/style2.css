@@ -58,14 +58,14 @@ footer p {
   text-align: center;
 }
 
-article h1 {
+article h1 {           /* New */
   color: #444;
   font-size: 30px;
   line-height: 40px;
   margin-bottom: 30px;
   margin-top: 45px;
   text-align: left;
-  font-weight: normal;
+  font-weight: normal;  /* New */
 }
 
 article ol, article ul {
@@ -81,7 +81,7 @@ article ol li, article ul li {
 
 nav {
   margin: 0 auto;
-  max-width: 180px;
+  max-width: 90px;      /* New */
 }
 
 nav ul {
