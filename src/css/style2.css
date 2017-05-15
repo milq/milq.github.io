@@ -17,7 +17,7 @@ body header{
   margin-top: 15px;
   text-align: center;
 }
-
+/*
 code, pre {
   background-color: #eee;
   border: 1px solid #aaa;
@@ -31,7 +31,7 @@ code, pre {
 code {
   padding: 5px;
 }
-
+*/
 pre {
   line-height: 30px;
   margin-bottom: 30px;
