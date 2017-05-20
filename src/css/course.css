@@ -1,24 +1,51 @@
-a, a:link, a:visited {
-  color: #06c;
-  text-decoration: none;
-}
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 body {
-  font-family: sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0 auto;
   max-width: 720px;
   padding: 0 10px;
 }
 
-body header{
-  color: #333;
-  font-size: 45px;
-  margin-bottom: 30px;
-  margin-top: 15px;
+header{
+  color: #444;
+  font-size: 2.8em;
+  margin-bottom: 0.3em;
   text-align: center;
 }
-/*
-code, pre {
+
+article h1 {         
+  color: #444;
+  font-size: 2em;
+  margin-bottom: 0.9em;
+  margin-top: 0.9em;
+  text-align: left;
+  font-weight: normal;
+}
+
+article h2 {
+  color: #444;
+  text-align: center;
+  font-weight: normal;
+}
+
+p, article ol li, article ul li {
+  color: #333;
+  font-size: 1.1em;
+  line-height: 1.6em;
+  text-align: justify;
+}
+
+p, img, article ol, article ul, div, svg {
+  margin-bottom: 1.6em;
+}
+
+a, a:link, a:visited {
+  color: #06c;
+  text-decoration: none;
+}
+
+/*code, pre {
   background-color: #eee;
   border: 1px solid #aaa;
   color: #333;
@@ -36,47 +63,18 @@ pre {
   line-height: 30px;
   margin-bottom: 30px;
   padding: 10px;
-}
-*/
+}*/
+
 img {
   display: block;
   margin: 0 auto;
-  margin-bottom: 30px;
+  margin-bottom: 1.6em;
   max-width: 100%;
 }
 
-p {
-  color: #333;
-  font-size: 18px;
-  line-height: 30px;
-  margin-bottom: 30px;
-  text-align: justify;
-}
-
 footer p {
-  margin-bottom: 15px;
+  margin-bottom: 0.8em;
   text-align: center;
-}
-
-article h1 {           /* New */
-  color: #444;
-  font-size: 30px;
-  line-height: 40px;
-  margin-bottom: 30px;
-  margin-top: 45px;
-  text-align: left;
-  font-weight: normal;  /* New */
-}
-
-article ol, article ul {
-  margin-bottom: 30px;
-} 
-
-article ol li, article ul li {
-  color: #444;
-  font-size: 18px;
-  line-height: 30px;
-  text-align: justify;
 }
 
 nav {
@@ -111,8 +109,4 @@ nav ul li a.current:link, nav ul li a.current:visited {
 
 nav ul li a:hover, a:active {
   background-color:#ddd;
-}
-
-div, svg {
-  margin-bottom: 30px;
 }
