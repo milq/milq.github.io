@@ -14,3 +14,7 @@ th {
   background-color: #4caf50;
   color: white;
 }
+
+a, a:link, a:visited {
+  text-decoration: none;
+}
