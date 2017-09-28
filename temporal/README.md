@@ -4,11 +4,11 @@
 
 ![chart](chart.jpg)
 
-### Decimal to binary
+## Decimal to binary
 
 ![decimal_to_binary](pasar_decimal_binario.gif)
 
-### Binary to decimal
+## Binary to decimal
 
 ![decimal_to_binary](cambio_decimal.gif)
 
