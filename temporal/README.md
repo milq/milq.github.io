@@ -12,6 +12,14 @@
 
 ![decimal_to_binary](cambio_decimal.gif)
 
-### Conversion between binary, octal, and hexadecimal numbers
+## Conversion between binary, octal, and hexadecimal numbers
 
 ![shortcut](shortcut.jpg)
+
+## Exercises
+
+
+
+## Solution to exercises
+
+
