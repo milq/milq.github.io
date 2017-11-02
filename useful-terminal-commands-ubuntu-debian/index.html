@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     
     <title>Useful terminal commands in Ubuntu or Debian - Manuel Ignacio López Quintero</title>
-    <meta name="author" content="Manuel Ignacio López Quintero" />
-    <meta name="description" content="Useful terminal commands in Ubuntu or Debian." />
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Useful terminal commands in Ubuntu or Debian.' />
     
-    <link rel="icon" href="../src/png/icon.png" />
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/style.css' />
   </head>
 
   <body>
@@ -17,13 +17,13 @@
 	
     <nav>
       <ul>
-        <li><a href="http://milq.github.io">Home</a></li>
-        <li><a href="http://milq.github.io/archive">Archive</a></li>
+        <li><a href='http://milq.github.io'>Home</a></li>
+        <li><a href='http://milq.github.io/archive'>Archive</a></li>
       </ul>
     </nav>
 
     <article>
-      <header><a href="http://milq.github.io/useful-terminal-commands-ubuntu-debian">Useful terminal commands in Ubuntu or Debian</a></header>
+      <header><a href='http://milq.github.io/useful-terminal-commands-ubuntu-debian'>Useful terminal commands in Ubuntu or Debian</a></header>
       
       <p>This is a compilation of my terminal commands in Ubuntu or Debian I consider useful. These commands are compatible with other GNU/Linux distributions.</p>
       
@@ -31,22 +31,31 @@
       
       <p>Some of the commands listed below are not available in Ubuntu or Debian by default.</p>
 
-      <p>To install the remaining CLI software, download the installation script <a href="https://github.com/milq/milq/blob/master/scripts/bash/install-additional-cli-software.sh"><i><b>install-additional-cli-software.sh</b></i></a>, open your terminal, and execute it: <code>bash install-cli-software.sh</code>.</p>
+      <p>To install the remaining CLI software, download the installation script <a href='https://github.com/milq/milq/blob/master/scripts/bash/install-additional-cli-software.sh'><i><b>install-additional-cli-software.sh</b></i></a>, open your terminal, and execute it: <code>bash install-cli-software.sh</code>.</p>
 	    
       <p><b>1. ESSENTIAL COMMANDS</b></p>
 	
       <ul>
         <li><b>Navigation:</b> <code>pwd</code>, <code>ls</code>, <code>cd <i>folder</i></code> (folders are case sensitive!).</li>
-	    <li><b>Help:</b> <code>man <i>terminal_command</i></code> .</li>
+	    <li><b>Help:</b> <code>man <i>command</i></code>, <code><i>command</i> --help</code>, <code><i>command</i> -h</code>, <a href='http://explainshell.com'><b>Explainshell</b></a>.</li>
 	<li><b>File manipulation:</b> <code>cat</code>, <code>cp</code>, <code>ln</code>, <code>mkdir</code>, <code>mv</code>, <code>rm</code>, <code>rmdir</code>, <code>touch</code>.</li>
 
-      	<li><b>Permissions:</b> <code>chgrp</code>, <code>chmod</code>, <code>chown</code>, <code>su</code>, <code>sudo</code>.</li>
+      	<li><b>Permissions:</b> <code>chgrp</code>, <code>chmod</code>, <code>chown</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'><b>enable sudo on Debian</b></a>).</li>
       	<li><b>Search:</b> <code>find</code>.</li>
-      	<li><b>Text editors:</b> <code>ed</code>, <code>nano</code>, <code>vi</code>, <code>vim</code>.</li>
+      	<li><b>Text editor:</b> <code>nano</code>.</li>
       	<li><b>Text file visualization:</b> <code>head</code>, <code>less</code>, <code>more</code>, <code>tail</code>.</li>
-	<li><b>Install a package:</b> <code>sudo apt-get install <i>package</i></code>.</li>
-	<li><b>Uninstall a package:</b> <code>sudo apt-get purge <i>package</i></code>.</li>
+        <li><b>Execute multiple commands (AND):</b> <code><i>command_1</i> && <i>command_2</i> && <i>command_n</i></code>.</li>
+		<li><b>Execute a command in the background:</b> <code><i>command</i> &amp;</code>.</li>
+	    <li><b>Install a package:</b> <code>sudo apt-get install <i>package</i></code>.</li>
+	    <li><b>Uninstall a package:</b> <code>sudo apt-get purge <i>package</i></code>.</li>
         <li><b>Remove packages that are no longer needed:</b> <code>sudo apt-get autoremove</code>.</li>
+        <li><b>Resynchronize the package index files from their sources:</b> <code>sudo apt-get update</code>.</li>
+        
+        
+        
+
+
+        
       </ul>
 
       <p><b>2. BASH SHORTCUTS</b></p>
@@ -57,7 +66,8 @@
         <li><b>Go to previous command:</b> <code>&#8593;</code>, or <code>Ctrl</code> + <code>P</code>.</li>
 	<li><b>Go to next command:</b> <code>&#8595;</code>, or <code>Ctrl</code> + <code>N</code>.</li>
 	<li><b>Search through previously used commands:</b> <code>Ctrl</code> + <code>R</code>.</li>
-        <li><b>Interrupt whatever you are running:</b> <code>Ctrl</code> + <code>C</code>.</li>
+        <li><b>Terminate the current process:</b> <code>Ctrl</code> + <code>C</code>.</li>
+        <li><b>Suspend the current process:</b> <code>Ctrl</code> + <code>Z</code>.</li>
       </ul>
  
 
@@ -106,7 +116,7 @@
       	<li><b>Convert image to 5 sec. video:</b> <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
       	<li><b>15 images to 30 Hz 5 sec. video:</b> <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
       	<li><b>Resize video to 720p:</b> <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
-      	<li><b>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video:</b> <code>ffmpeg -i in.mp4 -vf "fade=in:0:25, fade=out:975:25" out.mp4</code>.</li>
+      	<li><b>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video:</b> <code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code>.</li>
       	<li><b>Concatenate videos:</b> <code>ffmpeg -f concat -i <i>mylist.txt</i> -c copy out.mp4</code>.</li>
       </ul>
       
@@ -139,14 +149,14 @@
       	<li><b>Extract pages from a PDF:</b> <code>pdftk in.pdf cat 1 25-35 end output out.pdf</code>.</li>
       </ul>
       
-      <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/useful-terminal-commands-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
+      <p><b>Do you like this article?</b> Share it with this <a href='http://milq.github.io/useful-terminal-commands-ubuntu-debian'><b>link</b></a>. Thanks for reading!</p>
     </article>
 
-    <script type="text/javascript" src="../src/js/comments.js"></script>
-    <script type="text/javascript" src="../src/js/analytics.js"></script>
+    <script type='text/javascript' src='../src/js/comments.js'></script>
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
     
     <footer>
-      <p>All content created by <a href="http://milq.github.io"><b>Manuel Ignacio López Quintero</b></a> under this <a href="http://creativecommons.org/licenses/by/4.0"><b>license</b></a>.</p>
+      <p>All content created by <a href='http://milq.github.io'><b>Manuel Ignacio López Quintero</b></a> under this <a href='http://creativecommons.org/licenses/by/4.0'><b>license</b></a>.</p>
     </footer>
   </body>
 </html>
