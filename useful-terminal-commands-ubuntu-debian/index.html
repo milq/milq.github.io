@@ -40,8 +40,8 @@
 	    <li><b>Help:</b> <code>man <i>command</i></code>, <code><i>command</i> --help</code>, <code><i>command</i> -h</code>, <a href='http://explainshell.com'><b>Explainshell</b></a>.</li>
 	<li><b>File manipulation:</b> <code>cat</code>, <code>cp</code>, <code>ln</code>, <code>mkdir</code>, <code>mv</code>, <code>rm</code>, <code>rmdir</code>, <code>touch</code>.</li>
 
-      	<li><b>Permissions:</b> <code>chgrp</code>, <code>chmod</code>, <code>chown</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'><b>enable sudo on Debian</b></a>).</li>
-      	<li><b>Search:</b> <code>find</code>.</li>
+      	<li><b>Permissions:</b> <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'><b>enable sudo on Debian</b></a>).</li>
+
       	<li><b>Text editor:</b> <code>nano</code>.</li>
       	<li><b>Text file visualization:</b> <code>head</code>, <code>less</code>, <code>more</code>, <code>tail</code>.</li>
         <li><b>Execute multiple commands (AND):</b> <code><i>command_1</i> && <i>command_2</i> && <i>command_n</i></code>.</li>
@@ -133,9 +133,10 @@
       	<li><b>Commit with log message:</b> <code>svn commit -m '<i>message</i>'</code>.</li>
       </ul>
       
-      <p><b>7. FIND EXAMPLES</b></p>
+      <p><b>7. FIND COMMAND</b></p>
       
       <ul>
+      	<li><b>Find files and folders recursively in current directory:</b> <code>find</code>.</li>
       	<li><b>Run files recursively in current <i>dir.</i>:</b> <code>find . -type f -exec file '{}' \;</code>.</li>
       	<li><b>Delete all <i>.svn</i> folders:</b> <code>find . -iname .svn -prune -exec rm -r '{}' \;</code>.</li>
       	<li><b>Copy all <i>png</i> files to <i>png</i>:</b> <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
