@@ -38,24 +38,19 @@
       <ul>
         <li><b>Navigation:</b> <code>pwd</code>, <code>ls</code>, <code>cd <i>folder</i></code> (folders are case sensitive!).</li>
 	    <li><b>Help:</b> <code>man <i>command</i></code>, <code><i>command</i> --help</code>, <code><i>command</i> -h</code>, <a href='http://explainshell.com'><b>Explainshell</b></a>.</li>
-	<li><b>File manipulation:</b> <code>cat</code>, <code>cp</code>, <code>ln</code>, <code>mkdir</code>, <code>mv</code>, <code>rm</code>, <code>rmdir</code>, <code>touch</code>.</li>
+	<li><b>File manipulation:</b> <code>cp</code>, <code>ln</code>, <code>mkdir</code>, <code>mv</code>, <code>rm</code>, <code>rmdir</code>, <code>touch</code>.</li>
 
       	<li><b>Permissions:</b> <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'><b>enable sudo on Debian</b></a>).</li>
-
       	<li><b>Text editor:</b> <code>nano</code>.</li>
-      	<li><b>Text file visualization:</b> <code>head</code>, <code>less</code>, <code>more</code>, <code>tail</code>.</li>
+      	<li><b>Text file visualization:</b> <code>cat</code>, <code>more</code>, <code>head</code>, <code>tail</code>, <code>less</code>.</li>
+        <li><b>Redirect standard output to a file:</b> <code><i>command</i> > <i>file</i></code>.</li>
         <li><b>Execute multiple commands (AND):</b> <code><i>command_1</i> && <i>command_2</i> && <i>command_n</i></code>.</li>
 		<li><b>Execute a command in the background:</b> <code><i>command</i> &amp;</code>.</li>
 	    <li><b>Install a package:</b> <code>sudo apt-get install <i>package</i></code>.</li>
 	    <li><b>Uninstall a package:</b> <code>sudo apt-get purge <i>package</i></code>.</li>
         <li><b>Remove packages that are no longer needed:</b> <code>sudo apt-get autoremove</code>.</li>
-        <li><b>Resynchronize the package index files from their sources:</b> <code>sudo apt-get update</code>.</li>
-        
-        
-        
-
-
-        
+        <li><b>Resynchronize the package index files from <i>/etc/apt/sources.list</i>:</b> <code>sudo apt-get update</code>.</li>
+        <li><b>Install the newest versions of all packages from <i>/etc/apt/sources.list</i>:</b> <code>sudo apt-get upgrade</code>.</li>
       </ul>
 
       <p><b>2. BASH SHORTCUTS</b></p>
@@ -75,7 +70,9 @@
       <p><b>2. BASIC COMMANDS</b></p>
       
       <ul>
-        <li><b>Compare files line by line:</b> <code>colordiff</code>, <code>diff</code>, <code>vimdiff</code>, <code>wdiff</code>.</li>
+        <li><b>Show current processes:</b> <code>jobs</code>, <code>ps</code>, <code>top</code>.</li>
+		<li><b>Send a signal to a process:</b> <code>kill</code>.</li>
+        <li><b>Compare files line by line:</b> <code>diff</code>.</li>
         <li><b>List files in databases that match a pattern:</b> <code>locate</code>, <code>sudo updatedb</code>.</li>
         <li><b>Network interface:</b> <code>ifconfig</code>.</li>
         <li><b>Report disk space usage:</b> <code>df -H</code>, <code>du -hs <i>folder</i></code>.</li>
@@ -83,7 +80,7 @@
         <li><b>Print lines matching a pattern from a text file:</b> <code>grep</code>.</li>
         <li><b>Print newline, word, and byte counts for each file:</b> <code>wc</code>.</li>
         <li><b>Secure copy (remote file copy program):</b> <code>scp</code>.</li>
-        <li><b>Show current processes:</b> <code>htop</code>, <code>ps</code>, <code>top</code>.</li>
+
       </ul>
       
       <p><b>3. SCREEN COMMANDS</b></p>
