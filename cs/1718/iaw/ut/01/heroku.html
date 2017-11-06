@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Heroku</title>
+    <style>code,pre{background-color:#ddd;padding: 0.2em;}</style>
+  </head>
+
+  <body>
+    <h1>Tutorial de Heroku</h1>
+    
+    <p>Este es un tutorial para Heroku en español para desarrollar aplicaciones PHP con bases de datos.</p>
+    
+    <p>Crea una cuenta gratuita en <a href='http://signup.heroku.com'>Heroku</a> si no dispones de ella.</p>
+    
+    <p>Si usas Debian/Ubuntu, quizás necesites ejecutar los comandos con permisos de administrador (entrando con <code>su</code> o ejecutando <code>sudo</code>).</p>
+    
+    <h2>1. Instala XAMPP, Composer, Git y Heroku CLI</h2>
+    
+    <ol>
+	  <li>Instala <a href='http://apachefriends.org'>XAMPP</a> en la ruta que viene por defecto (<code>C:\xampp</code> en Windows u <code>/opt/lampp/</code> en Debian/Ubuntu).</li>
+	  <li>Instala <a href='http://getcomposer.org'>Composer</a> en Windows (mediante el <a href='http://getcomposer.org/doc/00-intro.md#installation-windows' title='Instalador Composer'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install composer</code>).</li>
+	  <li>Instala Git en Windows (mediante el <a href='http://git-scm.com/download/win' title='Instalador Git'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install git</code>).</li>
+	  <li>Instala Heroku CLI: <a href='http://devcenter.heroku.com/articles/heroku-cli#windows'>Windows</a>, <a href='http://devcenter.heroku.com/articles/heroku-cli#debian-ubuntu'>Debian/Ubuntu</a>.</li>
+    </ol>
+    
+    <p>Verifica que todo funciona correctamente, para ello:</p>
+
+	<ol>
+	  <li>Inicia el servidor XAMPP.</li>
+	  <li>Comprueba PHP en la terminal ejecutando <code>php --version</code> en Windows u <code>/opt/lampp/bin/php --version</code> en Debian/Ubuntu.</li>
+	  <li>Comprueba Composer en la terminal ejecutando <code>composer --version</code> en Windows o en Debian/Ubuntu.</li>
+	  <li>Comprueba Git en la terminal ejecutando <code>git --version</code> en Windows o en Debian/Ubuntu.</li>	
+	  <li>Comprueba Heroku CLI en la terminal ejecutando <code>heroku --version</code> en Windows o en Debian/Ubuntu.</li>		    
+	</ol>
+
+    <h2>2. Crea y configura una aplicación web Heroku</h2>
+
+	<p>Los pasos para crear una aplicación web en blanco en Heroku son los siguientes:</p>
+    
+    <h3>2.1. Crea una aplicación Heroku</h3>    
+
+    <ol>
+	  <li>Entra en el panel principal: <a href='http://dashboard.heroku.com'>http://dashboard.heroku.com</a>.</li>
+	  <li>Pulsa en <b>New</b>, <b>Create new app</b>. Ponle un nombre, selecciona una región y pulsa en <b>Create app</b>.</li>
+      <!--<li>Dentro del panel de tu aplicación Heroku, ve a la pestaña <b>Settings</b> y copia o guarda la dirección de tu <b>Heroku Git URL</b>.
+</li>-->
+    </ol>
+    
+	<h3>2.2. Clona tu aplicación Heroku </h3>
+	
+	<p>En tu terminal, haz lo siguiente:</p>
+	
+	<ol>
+	  <li>Ve a <code>C:\xampp\htdocs\</code> en Windows u <code>/opt/lampp/htdocs/</code> en Debian/Ubuntu.</li>
+	  <li>Ejecuta <code>heroku git:clone -a <i>myapp</i></code> donde <i>myapp</i> es el nombre de tu aplicación Heroku.</li>
+	</ol>
+
+	<h3>2.3. Instala y configura Composer y configura Procfile</h3>
+
+	<p>En tu terminal, haz lo siguiente:</p>
+	
+	<ol>
+	  <li>Ve a <code>C:\xampp\htdocs\<i>myapp</i></code> en Windows u <code>/opt/lampp/htdocs/<i>myapp</i></code> en Debian/Ubuntu donde <i>myapp</i> es el nombre de tu aplicación Heroku.</li>		
+      <li>Desde esa misma carpeta, crea un fichero de texto denominado <code>composer.json</code> y escribe lo siguiente:      
+      <pre>{
+  "require": {
+    "php": "^7.1.10"
+  }
+}</pre></li>
+      <li>Desde esa misma carpeta, ejecuta <code>composer update</code> en Windows o Debian/Ubuntu.</li>
+      <li>Desde esa misma carpeta, borra la carpeta <code>vendor</code>.</li>
+      <li>Desde esa misma carpeta, crea un fichero de texto denominado <code>Procfile</code> (nótese que no tiene extensión) y con el siguiente contenido: <code>web: heroku-php-apache2</code>.</li>
+	</ol>
+
+	<h3>2.4. Deja preparada tu aplicación web Heroku para desarrollar</h3>
+
+	<p>Desde la carpeta de tu aplicación Heroku y en la terminal, ejecuta los comandos en el siguiente orden:</p>
+
+	<ol>
+	  <li><code>git status</code></li>
+	  <li><code>git add .</code></li>
+	  <li><code>git commit -m "Mi primer commit"</code> (si es tu primer <i>commit</i> te avisará que tienes que configurar tu nombre y tu correo).</li>
+	  <li><code>git push heroku master</code></li>
+	</ol>
+	
+	<p>Si todo ha ido correctamente ya tienes configurada y preparada tu aplicación web Heroku lista para empezar a desarrollar.</p>
+
+    <p><b>Importante, </b> si has perdido los datos en tu disco duro local o cambias de PC  <b>no te preocupes</b>. Como tienes configurada y preparada tu aplicación web solo tienes que recuperarla con <code>heroku git:clone -a <i>myapp</i></code> donde <i>myapp</i> es el nombre de tu aplicación Heroku.</p>
+    
+    <h2>3. Desarrolla tu aplicación web en Heroku</h2>    
+
+
+   <p>Desde la carpeta de tu aplicación Heroku, crea un fichero de ejemplo <b>index.php</b> con el siguiente contenido:</p>
+
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html xmlns='http://www.w3.org/1999/xhtml' lang='en'&gt;
+  &lt;head&gt;
+    &lt;meta charset='utf-8' /&gt;
+    &lt;title&gt;PHP blank page&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;h1&gt;A blank PHP page&lt;/h1&gt;
+
+    &lt;?php
+      echo '&lt;p&gt;Text generated with PHP.&lt;/p&gt;';
+    ?&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+
+	<p>Desde la terminal y desde esa misma carpeta, ejecuta los comandos en el siguiente orden:</p>
+
+	<ol>
+	  <li><code>git status</code></li>
+	  <li><code>git add .</code></li>
+	  <li><code>git commit -m "Mi primer commit"</code></li>
+	  <li><code>git push heroku master</code></li>
+	</ol>
+    
+    	<p>Por último, comprueba tu aplicación en <code>http://<i>myapp</i>.herokuapp.com/</code> donde <i>myapp</i> es el nombre de tu aplicación Heroku.</p>
+    	
+    <p>https://github.com/jonmountjoy/php-getting-started</p>
+    
+    <p><a href='../../index.html'>Back to index</a>.</p>
+  </body>
+</html>
