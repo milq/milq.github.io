@@ -121,8 +121,25 @@
     
     	<p>Por último, comprueba tu aplicación en <code>http://<i>myapp</i>.herokuapp.com/</code> donde <i>myapp</i> es el nombre de tu aplicación Heroku.</p>
     	
-    <p>https://github.com/jonmountjoy/php-getting-started</p>
-    
+    <h2>4. Base de datos en Heroku con PostgreSQL</h2>    
+
+	<p>Primer paso:</p>
+
+    <ol>
+	  <li>Entra en el panel principal: <a href='http://dashboard.heroku.com'>http://dashboard.heroku.com</a>.</li>
+	  <li>Pulsa en tu aplicación y después pulsa en la pestaña <b>Resources</b>.</li>
+	  <li>Añade el siguiente <b><i>add-on</i></b> a tu aplicación: <b>Heroku Postgres</b>.</li>
+    </ol>
+
+	<p>Segundo paso:</p>
+
+    <ol>
+	  <li>Entra en el panel de datos: <a href='http://data.heroku.com'>http://data.heroku.com</a>.</li>
+	  <li>Pulsa en la base de datos asociada tu aplicación y después pulsa en la pestaña <b>Overview</b>.</li>
+	  <li>Anota la <b>version</b> de tu base de datos porque será la versión (solo necesitas cumplir los dos primeros números) que necesitarás instalar de PostgreSQL.</li>
+	  <li>Pulsa en la pestaña <b>Settings</b> y después en <b>Database Credentials</b> guarda los credenciales de tu base de datos para poder conectarte.</li>
+    </ol>
+        
     <p><a href='../../index.html'>Back to index</a>.</p>
   </body>
 </html>
