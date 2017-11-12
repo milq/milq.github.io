@@ -2,20 +2,22 @@
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>ISO - UT2 - Content</title>
+    <title>Command-line commands</title>
     <style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
-    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}</style>
+    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1{text-align:center;}</style>
   </head>
 
   <body>
-    <h1>GNU/Linux and PowerShell</h1>
+    <h1>Command-line commands</h1>
 
-    <table title='assignments_powershell'>
+    <h2>GNU/Linux (Bash) and Windows (PowerShell)</h2>
+
+    <table title='bash_powershell'>
       <thead>
         <tr>
           <th>Topic</th>
           <th>GNU/Linux (Bash)</th>
-          <th>PowerShell</th>
+          <th>Windows (PowerShell)</th>
         </tr>
       </thead>
       <tbody>
@@ -35,6 +37,11 @@
           <td><code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>New-Item</code>.</td>
         </tr>
         <tr>
+          <td>Administration</td>
+          <td><code>su</code> (equal to <code>su root</code>), <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</td>
+          <td>Right-click and run PowerShell as Administrator.</td>
+        </tr>
+        <tr>
           <td>Visualization</td>
           <td><code>cat</code>, <code>more</code> (<code>head</code>, <code>tail</code>), <code>grep</code>.</td>
           <td><code>cat</code>, <code>more</code>, <code>Select-String</code>.</td></td>
@@ -46,34 +53,39 @@
           <td><code>echo</code>, <code>echo $env:Path</code> (show the content of <a href='http://en.wikipedia.org/wiki/path_(variable)'>variable PATH</a>).</td>
         </tr>
         <tr>
+          <td>Execution</td>
+          <td><code><i>./executable</i></code> (not in PATH), <code><i>comm_1</i> &amp;&amp; <i>comm_2</i> &amp;&amp; <i>comm_N</i></code>.</td>
+          <td><code><i>./executable</i></code> (not in PATH), <code>(<i>comm_1</i>), (<i>comm_2</i>), (<i>comm_N</i>)</code>.</td>
+        </tr>  
+        <tr>
+          <td>Scripting</td>
+          <td><code>bash <i>script.sh</i></code>, <code>./<i>script.sh</i></code> (executable with <code>#!/bin/bash</code>).</td>
+          <td><code>./<i>script.ps1</i></code> (<a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies'>about Execution Policies</a>).</td>
+        </tr>  
+        <tr>
           <td>Redirection</td>
-          <td><code><i>command</i> > <i>text_file</i></code>, <code><i>command</i> >> <i>text_file</i></code>.</td>
-          <td><code><i>command</i> > <i>text_file</i></code>, <code><i>command</i> >> <i>text_file</i></code>.</td>
+          <td><code><i>command</i> > <i>text_file</i></code> (new), <code><i>command</i> >> <i>text_file</i></code> (append).</td>
+          <td><code><i>command</i> > <i>text_file</i></code> (new), <code><i>command</i> >> <i>text_file</i></code> (append).</td>
         </tr>        
         <tr>
           <td>Pipelines</td>
           <td><code><i>command_1</i> | <i>command_2</i> | <i>command_N</i></code>.</td>
           <td><code><i>command_1</i> | <i>command_2</i> | <i>command_N</i></code>.</td>
-        </tr>   
-        <tr>
-          <td>Logical</td>
-          <td><code>(<i>command_1</i> &amp;&amp; <i>command_N</i>)</code>, <code>(<i>command_1</i> || <i>command_N</i>)</code>.</td>
-          <td></td>
         </tr>
         <tr>
           <td>Background</td>
           <td><code><i>command</i> &amp;</code>.</td>
-          <td></td>
+          <td><code>Start-Job -ScriptBlock {<i>comm</i>}</code>, <code>Start-Job -FilePath <i>script</i></code>.</td>
         </tr>   
         <tr>
           <td>Permissions</td>
-          <td><code>chmod</code> (<code>ls -l</code>), <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>sudo on Debian</a>).</td>
+          <td><code>chmod</code> (<code>ls -l</code>), <code>chown</code>, <code>chgrp</code>.</td>
           <td></td>
         </tr>
         <tr>
           <td>Processes</td>
-          <td><code>ps</code>, <code>top</code>, <code>jobs</code> (<code>fg</code>, <code>bg</code>), <code>kill</code>, <code>killall</code>.</td>
-          <td></td>
+          <td><code>ps</code>, <code>jobs</code> (<code>fg</code>, <code>bg</code>), <code>kill</code>, <code>killall</code>, <code>top</code>.</td>
+          <td><code>ps</code>, <code>Get-Job</code>, <code>kill</code>.</td>
         </tr>
         <tr>
           <td>Information</td>
@@ -87,7 +99,15 @@
         </tr>  
       </tbody>
     </table>
-<!--<h2>Git</h2>
+
+	<ul>
+	  <li><b>GNU/Linux:</b> <a href='http://milq.github.io/useful-terminal-commands-ubuntu-debian'>Useful terminal commands in Ubuntu or Debian</a>, <a href='http://gutl.jovenclub.cu/wiki/comandos/inicio'>GNU/Linux commands (Spanish)</a>, <a href='http://explainshell.com'>Explainshell</a>.</li>
+	  <li><b>Bash:</b> <a href='http://gnu.org/software/bash'>official website</a> (<a href='http://gnu.org/software/bash/manual'>reference</a>).</li>
+      <li><b>PowerShell:</b> <a href='http://microsoft.com/powershell'>official website</a> (<a href='http://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting'>reference</a>).</li>
+
+	</ul>
+	
+    <!--<h2>Git</h2>
     <table title='git'>
       <thead>
         <tr>
@@ -102,10 +122,8 @@
         </tr>    
       </tbody>
     </table>-->
-		  		
-	<p><a href='http://explainshell.com'>Explainshell</a>.</p>	
 	
-    <p><a href='../../index.html'>Back to index</a>.</p>
+    <p><a href='c.html'>Back to index</a>.</p>
 
   </body>
 </html>
