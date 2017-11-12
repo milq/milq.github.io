@@ -26,7 +26,7 @@
         </tr>    
         <tr>
           <td>Help</td>
-          <td><code>man <i>command</i></code>, <code><i>command</i> --help</code>, <code><i>command</i> -h</code>, <code>info <i>command</i></code>, <a href='http://explainshell.com'>Explainshell</a>.</td>
+          <td><code>man <i>command</i></code>, <code><i>command</i> --help</code>, <code><i>command</i> -h</code>, <code>info <i>command</i></code>.</td>
           <td><code>man <i>command</i></code>, <code>man <i>command</i> -Online</code>.</td>
         </tr>   
         <tr>
@@ -36,30 +36,38 @@
         </tr>
         <tr>
           <td>Visualization</td>
-          <td><code>cat</code>, <code>more</code>, <code>grep</code>, <code>head</code>, <code>tail</code>.</td>
+          <td><code>cat</code>, <code>more</code> (<code>head</code>, <code>tail</code>), <code>grep</code>.</td>
           <td><code>cat</code>, <code>more</code>, <code>Select-String</code>.</td></td>
         </tr>
 
         <tr>
           <td>Printing</td>
-          <td><code>echo</code>, <code>echo $PATH</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'><b>$PATH</b></a>).</td>
-          <td><code>echo</code>, <code>echo $env:Path</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'><b>$env:Path</b></a>).</td>
+          <td><code>echo</code>, <code>echo $PATH</code> (show the content of <a href='http://en.wikipedia.org/wiki/path_(variable)'>variable PATH</a>).</td>
+          <td><code>echo</code>, <code>echo $env:Path</code> (show the content of <a href='http://en.wikipedia.org/wiki/path_(variable)'>variable PATH</a>).</td>
         </tr>
-        
         <tr>
           <td>Redirection</td>
           <td><code><i>command</i> > <i>text_file</i></code>, <code><i>command</i> >> <i>text_file</i></code>.</td>
           <td><code><i>command</i> > <i>text_file</i></code>, <code><i>command</i> >> <i>text_file</i></code>.</td>
         </tr>        
-
         <tr>
           <td>Pipelines</td>
           <td><code><i>command_1</i> | <i>command_2</i> | <i>command_N</i></code>.</td>
           <td><code><i>command_1</i> | <i>command_2</i> | <i>command_N</i></code>.</td>
         </tr>   
         <tr>
+          <td>Logical</td>
+          <td><code>(<i>command_1</i> &amp;&amp; <i>command_N</i>)</code>, <code>(<i>command_1</i> || <i>command_N</i>)</code>.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Background</td>
+          <td><code><i>command</i> &amp;</code>.</td>
+          <td></td>
+        </tr>   
+        <tr>
           <td>Permissions</td>
-          <td><code>chmod</code> (<code>ls -l</code>), <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</td>
+          <td><code>chmod</code> (<code>ls -l</code>), <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>sudo on Debian</a>).</td>
           <td></td>
         </tr>
         <tr>
@@ -77,11 +85,26 @@
           <td><code>ping</code>, <code>traceroute</code>, <code>ip</code>, <code>netstat</code>, <code>ftp</code>, <code>wget</code>, <code>ssh</code>.</td>
           <td></td>
         </tr>  
-
-
       </tbody>
     </table>
-		
+<!--<h2>Git</h2>
+    <table title='git'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>git clone <i>repository.git</i></code></td>
+          <td>Clone a repository into a new directory.</td>
+        </tr>    
+      </tbody>
+    </table>-->
+		  		
+	<p><a href='http://explainshell.com'>Explainshell</a>.</p>	
+	
     <p><a href='../../index.html'>Back to index</a>.</p>
 
   </body>
