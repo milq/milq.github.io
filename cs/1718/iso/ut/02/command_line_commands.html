@@ -38,7 +38,7 @@
         </tr>
         <tr>
           <td>Administration</td>
-          <td><code>su</code> (equal to <code>su root</code>), <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</td>
+          <td><code>su root</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</td>
           <td>Right-click and run PowerShell as Administrator.</td>
         </tr>
         <tr>
@@ -75,13 +75,25 @@
         <tr>
           <td>Background</td>
           <td><code><i>command</i> &amp;</code>.</td>
-          <td><code>Start-Job -ScriptBlock {<i>comm</i>}</code>, <code>Start-Job -FilePath <i>script</i></code>.</td>
+          <td><code>Start-Job -ScriptBlock {<i>command</i>}</code>.</td>
         </tr>   
         <tr>
           <td>Permissions</td>
-          <td><code>chmod</code> (<code>ls -l</code>), <code>chown</code>, <code>chgrp</code>.</td>
+          <td><code>chmod</code> (tip: use <code>ls -l</code> before), <code>chown</code>, <code>chgrp</code>.</td>
           <td></td>
         </tr>
+        <tr>
+          <td>Users</td>
+          <td><code>id</code>, <code>who</code>, <code>whoami</code>, <code>su</code>, <code>sudo</code>, <code>adduser</code>, <code>usermod</code>, <code>deluser</code>, <code>passwd</code>.</td>
+          <td><code>Get-LocalUser</code>, <code>New-LocalUser</code>, <code>Remove-LocalUser</code>, <a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts'>more</a>.</td>
+        </tr>  
+        <tr>
+          <td>Groups</td>
+          <td><code>groups</code>, <code>addgroup</code>, <code>delgroup</code>, <code>groupmod</code>.</td>
+          <td><code>Get-LocalGroup</code>, <code>New-LocalGroup</code>, <code>Remove-LocalGroup</code>, <a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts'>more</a>.</td>
+        </tr>  
+
+
         <tr>
           <td>Processes</td>
           <td><code>ps</code>, <code>jobs</code> (<code>fg</code>, <code>bg</code>), <code>kill</code>, <code>killall</code>, <code>top</code>.</td>
@@ -97,6 +109,7 @@
           <td><code>ping</code>, <code>traceroute</code>, <code>ip</code>, <code>netstat</code>, <code>ftp</code>, <code>wget</code>, <code>ssh</code>.</td>
           <td></td>
         </tr>  
+
       </tbody>
     </table>
 
