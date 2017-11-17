@@ -37,7 +37,8 @@ Esto es un ejemplo de dos tablas CE-PM en la Programación Didáctica:
 | ------ | --------- | --------- | --------- | --------- | --------- | --------- |
 |   PM   |    50     |    50     |    10     |     10    |     20    |     10    |
 
-#### Opción 1(Ideal para pruebas de desarrolo)
+#### Opción 1 (ideal para pruebas de desarrollo)
+
 | Pregunta | CE | PM | PS10 |
 |----------|----|----|------|
 |1|RA5:a|50|3.3|
