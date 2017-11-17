@@ -59,6 +59,6 @@ Esto es un ejemplo de dos tablas CE-PM en la Programación Didáctica:
 
 Debian es un sistema operativo basado en GNU/Linux:
 
-![Logo de Debian](https://blog.deimos.fr/wp-content/uploads/2012/11/debian_logo.jpeg 'Logo de Debian')
+![Logo de Debian](https://www.debian.org/logos/openlogo-100.png 'Logo de Debian')
 
-Puedes descargarlo en el siguiente enlace: http://debian.org.
+Puedes descargarlo en el siguiente enlace: [Debian](http://debian.org).
