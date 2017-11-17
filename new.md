@@ -6,14 +6,14 @@ En **Markdown** puedes poner _códigos de cualquier lenguaje_ en una `misma lín
 
 ```html
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <title>XHTML 5.1 blank page</title>
+    <meta charset='utf-8' />
+    <title>XHTML 5.2 blank page</title>
   </head>
 
   <body>
-    <h1>Blank page</h1>
+    <h1>A blank XHTML 5.2 page</h1>
     <p>Text here.</p>
   </body>
 </html>
