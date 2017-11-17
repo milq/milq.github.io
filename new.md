@@ -2,7 +2,7 @@
 
 ## Código HTML
 
-En **Markdown** puedes poner _códigos de cualquier lenguaje_ en una `misma línea` y en bloque:
+En **Markdown** puedes poner _códigos de **cualquier lenguaje**_ en una `misma línea` y en bloque:
 
 ```html
 <!DOCTYPE html>
