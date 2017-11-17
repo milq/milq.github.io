@@ -22,11 +22,8 @@ En **Markdown** puedes poner _códigos de **cualquier lenguaje**_ en una `misma 
 ## Pruebas: Calificaciones y CE
 
 * **CE:** Criterio de Evaluación.
-
 * **PM:** Puntuacion Máxima.
-
 * **PS10:** Puntuación Sobre 10.
-
 *  **RA:** Resultado de Aprendizaje.
 
 Esto es un ejemplo de dos tablas CE-PM en la Programación Didáctica:
