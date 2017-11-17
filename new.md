@@ -57,8 +57,10 @@ Esto es un ejemplo de dos tablas CE-PM en la Programación Didáctica:
 
 ## Imágenes
 
-Debian es un sistema operativo basado en GNU/Linux:
+Debian es un sistema operativo GNU/Linux:
 
 ![Logo de Debian](https://www.debian.org/logos/openlogo-100.png 'Logo de Debian')
+
+> El Proyecto Debian es una asociación de personas conformada por desarrolladores y usuarios que mantiene un sistema operativo basado en software libre. El sistema se encuentra precompilado, empaquetado y en formato _deb_ para múltiples arquitecturas de computador y para varios núcleos.
 
 Puedes descargarlo en el siguiente enlace: [Debian](http://debian.org).
