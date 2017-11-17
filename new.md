@@ -49,7 +49,7 @@ Esto es un ejemplo de dos tablas CE-PM en la Programación Didáctica:
 |6|Ra5:f|10|1|
 |**Total**|Ra5:c|150|1|
 
-#### **Opción 2 (ideal para pruebas de prácticas y/o combinar CE):**
+#### Opción 2 (ideal para pruebas de prácticas y/o combinar CE)
 
 | Pregunta | CE | PM | PS10 |
 |----------|----|----|------|
