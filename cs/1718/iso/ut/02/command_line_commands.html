@@ -4,7 +4,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>Command-line commands</title>
     <style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
-    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1{text-align:center;}</style>
+    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1{text-align:center;}a{text-decoration:none}</style>
   </head>
 
   <body>
@@ -53,12 +53,12 @@
           <td><code>echo</code>, <code>echo $env:Path</code> (show the content of <a href='http://en.wikipedia.org/wiki/path_(variable)'>variable PATH</a>).</td>
         </tr>
         <tr>
-          <td>Execution</td>
+          <td>Execution I</td>
           <td><code><i>./executable</i></code> (not in PATH).</td>
           <td><code><i>./executable</i></code> (not in PATH).</td>
         </tr>  
         <tr>
-          <td>Execution 2</td>
+          <td>Execution II</td>
           <td><code><i>comm_1</i> &amp;&amp; <i>comm_2</i> &amp;&amp; <i>comm_N</i></code>.</td>
           <td><code>(<i>comm_1</i>), (<i>comm_2</i>), (<i>comm_N</i>)</code>.</td>
         </tr>  
@@ -113,6 +113,21 @@
           <td>Networking</td>
           <td><code>ping</code>, <code>traceroute</code>, <code>ip</code>, <code>netstat</code>, <code>ftp</code>, <code>wget</code>, <code>ssh</code>.</td>
           <td></td>
+        </tr>  
+
+        <tr>
+          <td>Devices</td>
+          <td><code>lsblk</code>, <code>mount</code>, <code>umount</code>.</td>
+          <td><code>Get-PSDrive</code>, <code>Mount-DiskImage</code>, <code>Dismount-DiskImage</code>.</td>
+        </tr>
+        
+        
+        
+        
+        <tr>
+          <td>Format</td>
+          <td><code>sudo mkfs.vfat -I /dev/sd<b><i>x</i></b> -n <i>NAME</i> && sync</code></td>
+          <td><code><a href='http://docs.microsoft.com/en-us/powershell/module/storage/format-volume'>Format-Volume</a></code>.</td>
         </tr>  
 
       </tbody>
