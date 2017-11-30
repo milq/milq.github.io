@@ -4,7 +4,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>Command-line commands</title>
     <style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
-    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1{text-align:center;}a{text-decoration:none}</style>
+    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1,h2{text-align:center;}a{text-decoration:none}</style>
   </head>
 
   <body>
@@ -114,22 +114,29 @@
           <td><code>ping</code>, <code>traceroute</code>, <code>ip</code>, <code>netstat</code>, <code>ftp</code>, <code>wget</code>, <code>ssh</code>.</td>
           <td></td>
         </tr>  
-
+        <tr>
+          <td colspan='3' style='text-align:center'><strong>Devices</strong></td>
+        </tr>
         <tr>
           <td>Devices</td>
-          <td><code>lsblk</code>, <code>mount</code>, <code>umount</code>.</td>
-          <td><code>Get-PSDrive</code>, <code>Mount-DiskImage</code>, <code>Dismount-DiskImage</code>.</td>
+          <td><code>lsblk</code>.</td>
+          <td><code>Get-Partition</code>, <code>Get-Volume</code>.</td>
         </tr>
-        
-        
-        
-        
         <tr>
-          <td>Format</td>
-          <td><code>sudo mkfs.<i>filesystem</i> -I /dev/sd<b><i>x</i></b> -n <i>NAME</i> && sync</code></td>
+          <td>Mounting</td>
+          <td><code>mount</code>, <code>umount</code>.</td>
+          <td><code>Mount-DiskImage</code>, <code>Dismount-DiskImage</code>.</td>
+        </tr>
+        <tr>
+          <td>Format I</td>
+          <td><code>sudo mkfs.<i>fstype</i> -I /dev/sd<b><i>x</i></b> -n <i>NAME</i> && sync</code></td>
           <td><code><a href='http://docs.microsoft.com/en-us/powershell/module/storage/format-volume'>Format-Volume</a></code>.</td>
-        </tr>  
-
+        </tr>
+        <tr>
+          <td>Format II</td>
+          <td><code>sudo mkfs.<i>fstype</i> -I /dev/sd<b><i>x</i></b><b><i>Y</i></b> -n <i>NAME</i> && sync</code></td>
+          <td><code><a href='http://docs.microsoft.com/en-us/powershell/module/storage/format-volume'>Format-Volume</a></code>.</td>
+        </tr>
       </tbody>
     </table>
 
