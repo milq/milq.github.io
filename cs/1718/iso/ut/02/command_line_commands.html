@@ -138,13 +138,21 @@
           <td><code><a href='http://docs.microsoft.com/en-us/powershell/module/storage/format-volume'>Format-Volume</a></code>.</td>
         </tr>
         <tr>
+          <td>ISO</td>
+          <td><code>sudo dd bs=512K if=<i>input.iso</i> of=/dev/sd<b><i>x</i></b> && sync</code>.</td>
+          <td>.</td>
+        </tr>
+
+
+
+        <tr>
           <td>Partition I</td>
           <td><code>sudo gdisk /dev/sd<b><i>x</i></b></code>.</td>
-          <td><code><a href='http://rodsbooks.com/gdisk'>gdisk</a></code>.</td>
+          <td><code>gdisk <b><i>x</i></b>:</code> (<a href='http://rodsbooks.com/gdisk'>download</a>).</td>
         </tr>
         <tr>
           <td>Partition II</td>
-          <td><code>sudo gparted</code> (GUI) (<code>sudo apt-get install gparted</code>).</td>
+          <td><code>sudo gparted</code> (<code>sudo apt-get install gparted</code>) (GUI) .</td>
           <td><code>diskmgmt</code> (GUI).</td>
         </tr>
       </tbody>
