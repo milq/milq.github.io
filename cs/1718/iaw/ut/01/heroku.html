@@ -123,30 +123,36 @@
     	
     <h2>4. Base de datos en Heroku con PostgreSQL</h2>    
 
-	<p>Primer paso:</p>
+    <h3>Configuración de la base de datos en Heroku</h3>
 
     <ol>
 	  <li>Entra en el panel principal: <a href='http://dashboard.heroku.com'>http://dashboard.heroku.com</a>.</li>
 	  <li>Pulsa en tu aplicación y después pulsa en la pestaña <b>Resources</b>.</li>
 	  <li>Añade el siguiente <b><i>add-on</i></b> a tu aplicación: <b>Heroku Postgres</b>.</li>
-    </ol>
-
-	<p>Segundo paso:</p>
-
-    <ol>
 	  <li>Entra en el panel de datos: <a href='http://data.heroku.com'>http://data.heroku.com</a>.</li>
 	  <li>Pulsa en la base de datos asociada tu aplicación y después pulsa en la pestaña <b>Overview</b>.</li>
-	  <li>Anota la <b>version</b> de tu base de datos porque será la versión (solo necesitas cumplir los dos primeros números) que necesitarás instalar de PostgreSQL.</li>
-	  <li>Entra en la página oficial de <a href='http://postgresql.org'>PostgreSQL</a> e instala la versión <b><i>X.X</i></b> correspondiente.</li>
-	  <li>Pulsa en la pestaña <b>Settings</b> y después en <b>Database Credentials</b> guarda los credenciales de tu base de datos para poder conectarte.</li>
+	  <li><b>Anota la versión</b> de tu base de datos porque será la versión (solo necesitas cumplir los dos primeros números) que necesitarás instalar de PostgreSQL.</li>
+	  <li>Pulsa en la pestaña <b>Settings</b> y después en <b>Database Credentials</b> guarda los credenciales de tu base de datos para poder conectarte desde Heroku.</li>
     </ol>
  
-	<p>Trabajar en local:</p>
+	<h3>Trabajar en local usando una base de datos local:</h3>
 
     <ol>
-	  <li>Crea un usuario con .</li>
+	  <li>Entra en la página oficial de <a href='http://postgresql.org'>PostgreSQL</a> e instala la versión <b><i>X.X</i></b> correspondiente a la versión usada en Heroku (ver punto 6 del apartado anterior).</li>
+	  <li><b>Anota la contraseña</b> que has puesto durante la instalación para el superusuario <b><i>postgres</i></b> (superusuario por defecto) porque lo usuarás más adelante.</li>
+	  <li>Descomenta la línea <code>;extension=php_pgsql.dll</code> en <code>C:\xampp\php\php.ini</code>.</li>
+	  <li>Entra en <i>pgAdmin</i>, inicia el servidor local (<i>PostgreSQL X.X</i>), crea una base de datos e iníciala también. Mantén <i>pgAdmin</i> ejecutándose al igual que XAMPP.</li>
+	  <li>Ya puedes trabajar en PHP y PostgreSQL en local con los siguientes credenciales de la base de datos: <code>$host = 'localhost'; $dbname = '<i>tu_base_de_datos</i>'; $user = 'postgres'; $password = '<i>contraseña que pusiste para el superusuario postgres</i>';</code></li>
     </ol>
+
+	<h3>Trabajar en local usando una base de datos Heroku:</h3>
     
+    <ol>
+	  <li>Comprueba que has realizado los tres primeros puntos del apartado anterior.</li>
+	  <li>Crea un servidor usando los credenciales proporcionados por Heroku. <i>Consejo:</i> si no quieres ver todas las bases de datos del servidor añade en <i>Advanced</i> &rarr; <i>DB restriction</i> tu base de datos.
+	  <li>Ya puedes trabajar en PHP y PostgreSQL con los credenciales de la base de datos proporcionada por Heroku.</li>
+	</ol>	  
+	
     <p>En desarrollo...</p>
         
     <p><a href='../../index.html'>Back to index</a>.</p>
