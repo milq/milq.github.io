@@ -9,16 +9,18 @@
   <body>
     <h1>Servicios de gestión de archivos web</h1>
 
-    <p>Crea un manual sobre cómo instalar, configurar y hacer funcionar un servicio de alojamiento de archivos multiplataforma en la nube como <strong>Nextcloud</strong>.
+    <p>Crea un manual sobre cómo instalar, configurar y hacer funcionar un servicio de alojamiento de archivos multiplataforma en la nube como <strong>OwnCloud</strong>.
     
-    <p>El manual será un documento XHTML (<strong>nextcloud.html</strong>) que tendrá que estar validado en XHTML 5.2 y WCAG 2.0 AAA y con estilo validado en CSS3.</p>
+    <p>Para ello, descargamos XAMPP para Linux (la versión de PHP 7.1.), luego descargamos y descomprimimos como usuario (nunca como <i>root</i>) <i>owncloud</i>. Luego ejecutamos <code>sudo mv owncloud /opt/lampp/htdocs</code>. Luego en <code>/opt/lampp/htdocs/owncloud</code> ejecutamos <code>mkdir data</code> y después <code>chmod 777 data/</code>. Instalamos OwnCloud, ejecutamos y nos dirá que hay que cambiar a 0770. Para resolvermo, ejecutamos los siguientes comandos: <code>sudo chown daemon:daemon -R data/</code> y luego <code>sudo chmod 770 -R data/</code>. Por último, ejecutamos OwnCloud y debería funcionar. Para más ayuda pulsa <strong><a href='https://buddhimawijeweera.wordpress.com/2016/09/03/configuring-owncloud-with-xampp-in-ubuntu/'>aquí</a></strong>.</p>
+    
+    <p>El manual será un documento XHTML (<strong>owncloud.html</strong>) que tendrá que estar validado en XHTML 5.2 y WCAG 2.0 AAA y con estilo validado en CSS3.</p>
 
     <p>El manual contendrá los siguientes apartados:</p>
 
     <ol type='a'>
       <li>Establece la utilidad de un servicio de gestión de archivos web.</li>
-      <li>Describe diferentes aplicaciones de gestión de archivos web además de Nextcloud.</li>
-      <li>Instala y adapta una herramienta de gestión de archivos web como Nextcloud.</li>
+      <li>Describe diferentes aplicaciones de gestión de archivos web además de OwnCloud.</li>
+      <li>Instala y adapta una herramienta de gestión de archivos web como OwnCloud.</li>
       <li>Crea y clasifica cuentas de usuario en función de sus permisos.</li>
       <li>Gestiona archivos y directorios.</li>
       <li>Utiliza archivos de información adicional.</li>
@@ -30,7 +32,7 @@
 
     <ul>
       <li>Desde la carpeta de usuario en Dropbox, y dentro de la carpeta UT, crea una carpeta <strong>03</strong>.
-      <li>Dentro de la carpeta <strong>03</strong> sube el manual <strong>nextcloud.html</strong> (respetando las minúsculas y la extensión) antes de las <strong>23.59 del xx de xx de 2018</strong>.</li>
+      <li>Dentro de la carpeta <strong>03</strong> sube el manual <strong>owncloud.html</strong> (respetando las minúsculas y la extensión) antes de las <strong>23.59 del xx de xx de 2018</strong>.</li>
     </ul>
 
     <h2>Calificación</h2>
