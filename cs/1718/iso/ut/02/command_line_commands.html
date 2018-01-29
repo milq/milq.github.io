@@ -3,8 +3,9 @@
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>Command-line commands</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
+<style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
     border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1,h2{text-align:center;}a{text-decoration:none}</style>
+
   </head>
 
   <body>
@@ -204,6 +205,51 @@
 		</tbody>
     </table>
 	
+    <h2 id='lxc'>Linux Containers (LXC)</h2>
+    
+    <table title='lxc'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sudo apt-get install lxc</code></td>
+          <td>Install LXC in Debian based distributions.</td>
+        </tr>    
+        <tr>
+          <td><code>sudo lxc-create -n <i>container_id</i> -t download</code></td>
+          <td>Create a container using templates.</td>
+        </tr> 
+        <tr>
+          <td><code>sudo lxc-ls --fancy</code></td>
+          <td>List the containers existing on the system.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-start -n <i>container_id</i></code></td>
+          <td>Run a system container</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-info -n <i>container_id</i></code></td>
+          <td>Query information about a container.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-attach -n <i>container_id</i></code></td>
+          <td>Attach to a container and run a shell.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-stop -n <i>container_id</i></code></td>
+          <td>Shut down a container.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-destroy -n <i>container_id</i></code></td>
+          <td>Destroy a container.</td>
+        </tr>
+	  </tbody>
+    </table>
+
     <p><a href='c.html'>Back to index</a>.</p>
 
   </body>
