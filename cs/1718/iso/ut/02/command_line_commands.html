@@ -3,8 +3,9 @@
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>Command-line commands</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
+<style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
     border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1,h2{text-align:center;}a{text-decoration:none}</style>
+
   </head>
 
   <body>
@@ -25,12 +26,12 @@
           <td>Navigation</td>
           <td><code>pwd</code>, <code>ls</code>, <code>cd</code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> in computing.</td>
           <td><code>pwd</code>, <code>ls</code>, <code>cd</code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> in computing.</td>
-        </tr>    
+        </tr>
         <tr>
           <td>Help</td>
           <td><code>man <i>command</i></code>, <code><i>command</i> --help</code>, <code><i>command</i> -h</code>, <code>info <i>command</i></code>.</td>
           <td><code>man <i>command</i></code>, <code>man <i>command</i> -Online</code>.</td>
-        </tr>   
+        </tr>
         <tr>
           <td>Manipulation</td>
           <td><code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>ln</code>.</td>
@@ -56,22 +57,22 @@
           <td>Execution I</td>
           <td><code><i>./executable</i></code> (not in PATH).</td>
           <td><code><i>./executable</i></code> (not in PATH).</td>
-        </tr>  
+        </tr>
         <tr>
           <td>Execution II</td>
           <td><code><i>comm_1</i> &amp;&amp; <i>comm_2</i> &amp;&amp; <i>comm_N</i></code>.</td>
           <td><code>(<i>comm_1</i>), (<i>comm_2</i>), (<i>comm_N</i>)</code>.</td>
-        </tr>  
+        </tr>
         <tr>
           <td>Scripting</td>
           <td><code>bash <i>script.sh</i></code>, <code>./<i>script.sh</i></code> (executable with <code>#!/bin/bash</code>).</td>
           <td><code>./<i>script.ps1</i></code> (<a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies'>about Execution Policies</a>).</td>
-        </tr>  
+        </tr>
         <tr>
           <td>Redirection</td>
           <td><code><i>command</i> > <i>text_file</i></code> (new), <code><i>command</i> >> <i>text_file</i></code> (append).</td>
           <td><code><i>command</i> > <i>text_file</i></code> (new), <code><i>command</i> >> <i>text_file</i></code> (append).</td>
-        </tr>        
+        </tr>
         <tr>
           <td>Pipelines</td>
           <td><code><i>command_1</i> | <i>command_2</i> | <i>command_N</i></code>.</td>
@@ -81,7 +82,7 @@
           <td>Background</td>
           <td><code><i>command</i> &amp;</code>.</td>
           <td><code>Start-Job -ScriptBlock {<i>command</i>}</code>.</td>
-        </tr>   
+        </tr>
         <tr>
           <td>Permissions</td>
           <td><code>chmod</code> (tip: use <code>ls -l</code> before), <code>chown</code>, <code>chgrp</code>.</td>
@@ -91,12 +92,12 @@
           <td>Users</td>
           <td><code>id</code>, <code>who</code>, <code>whoami</code>, <code>su</code>, <code>sudo</code>, <code>adduser</code>, <code>usermod</code>, <code>deluser</code>, <code>passwd</code>.</td>
           <td><code>Get-LocalUser</code>, <code>New-LocalUser</code>, <code>Remove-LocalUser</code>, <a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts'>more</a>.</td>
-        </tr>  
+        </tr>
         <tr>
           <td>Groups</td>
           <td><code>groups</code>, <code>addgroup</code>, <code>delgroup</code>, <code>groupmod</code>.</td>
           <td><code>Get-LocalGroup</code>, <code>New-LocalGroup</code>, <code>Remove-LocalGroup</code>, <a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.localaccounts'>more</a>.</td>
-        </tr>  
+        </tr>
 
 
         <tr>
@@ -108,12 +109,12 @@
           <td>Information</td>
           <td><code>file <i>path</i></code>, <code>stat <i>path</i></code>, <code>wc <i>path</i></code>.</td>
           <td></td>
-        </tr>  
+        </tr>
         <tr>
           <td>Networking</td>
           <td><code>ping</code>, <code>traceroute</code>, <code>ip</code>, <code>netstat</code>, <code>ftp</code>, <code>wget</code>, <code>ssh</code>.</td>
           <td></td>
-        </tr>  
+        </tr>
         <tr>
           <td colspan='3' style='text-align:center'><strong>Devices</strong></td>
         </tr>
@@ -160,15 +161,56 @@
 
 
 
-	<ul>
-	  <li><b>GNU/Linux:</b> <a href='http://milq.github.io/useful-terminal-commands-ubuntu-debian'>Useful terminal commands in Ubuntu or Debian</a>, <a href='http://gutl.jovenclub.cu/wiki/comandos/inicio'>GNU/Linux commands (Spanish)</a>, <a href='http://explainshell.com'>Explainshell</a>.</li>
-	  <li><b>Bash:</b> <a href='http://gnu.org/software/bash'>official website</a> (<a href='http://gnu.org/software/bash/manual'>reference</a>).</li>
+    <ul>
+      <li><b>GNU/Linux:</b> <a href='http://milq.github.io/useful-terminal-commands-ubuntu-debian'>Useful terminal commands in Ubuntu or Debian</a>, <a href='http://gutl.jovenclub.cu/wiki/comandos/inicio'>GNU/Linux commands (Spanish)</a>, <a href='http://explainshell.com'>Explainshell</a>.</li>
+      <li><b>Bash:</b> <a href='http://gnu.org/software/bash'>official website</a> (<a href='http://gnu.org/software/bash/manual'>reference</a>).</li>
       <li><b>PowerShell:</b> <a href='http://microsoft.com/powershell'>official website</a> (<a href='http://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting'>reference</a>).</li>
       <li><b>Quick reference:</b> <a href='http://cecs.wright.edu/~pmateti/Courses/233/Labs/Scripting/bashVsPowerShellTable.html'>Bash and PowerShell</a>.</li>
-	</ul>
-	
+    </ul>
+
+    <h2 id='apt'>APT</h2>
+
+    <table title='apt'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sudo apt-get install <i>./package.deb</i></code></td>
+          <td>Install a local <i>.deb</i> package.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get install <i>package</i></code></td>
+          <td>Install a package from the repository.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get purge <i>package</i></code></td>
+          <td>Uninstall a package from the repository.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get autoremove <i>package</i></code></td>
+          <td>Remove packages that are no longer needed.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get update</code></td>
+          <td>Resynchronize the package index files from their sources.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get upgrade</code></td>
+          <td>Install the newest versions of all packages currently installed.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get dist-upgrade</code></td>
+          <td>Handle changing dependencies with new versions of packages.</td>
+        </tr>
+      </tbody>
+    </table>
+
     <h2 id='git'>Git</h2>
-    
+
     <table title='git'>
       <thead>
         <tr>
@@ -180,30 +222,75 @@
         <tr>
           <td><code>git clone <i>uri_repository.git</i></code></td>
           <td>Clone a repository into a new directory.</td>
-        </tr>    
+        </tr>
         <tr>
           <td><code>git pull</code></td>
           <td>Incorporates changes from a remote repository into the current branch.</td>
-        </tr> 
+        </tr>
         <tr>
           <td><code>git status</code></td>
           <td>Show the working tree status.</td>
-        </tr> 
+        </tr>
         <tr>
           <td><code>git add .</code></td>
           <td>Update the index using the current content found in the working tree.</td>
-        </tr> 
+        </tr>
         <tr>
           <td><code>git commit -m '<i>message</i>'</code></td>
           <td>Record changes to the repository.</td>
-        </tr> 
+        </tr>
         <tr>
           <td><code>git push</code></td>
           <td>Update remote references (<i>refs</i>) along with associated objects.</td>
-        </tr> 
-		</tbody>
+        </tr>
+        </tbody>
     </table>
-	
+
+    <h2 id='lxc'>Linux Containers (LXC)</h2>
+
+    <table title='lxc'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sudo apt-get install lxc</code></td>
+          <td>Install LXC in Debian based distributions.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-create -n <i>container_id</i> -t download</code></td>
+          <td>Create a container using templates.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-ls --fancy</code></td>
+          <td>List the containers existing on the system.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-start -n <i>container_id</i></code></td>
+          <td>Run a system container</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-info -n <i>container_id</i></code></td>
+          <td>Query information about a container.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-attach -n <i>container_id</i></code></td>
+          <td>Attach to a container and run a shell.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-stop -n <i>container_id</i></code></td>
+          <td>Shut down a container.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-destroy -n <i>container_id</i></code></td>
+          <td>Destroy a container.</td>
+        </tr>
+      </tbody>
+    </table>
+
     <p><a href='c.html'>Back to index</a>.</p>
 
   </body>
