@@ -2,20 +2,33 @@
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>ISO - Sistemas de gestión de aprendizaje a distancia</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse}td,th{text-align:left;padding:0 .45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:teal;color:#fff}.bg1{background-color:#f2f2f2}.bg2{background-color:white}.c{text-align:center}a,a:link,a:visited{text-decoration:none}</style>
+    <title>ISO - Administración y aseguramiento de la información</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse}td,th{text-align:left;padding:0 .45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:teal;color:#fff}.bg1{background-color:#f2f2f2}.bg2{background-color:#fff}.c{text-align:center}a,a:link,a:visited{text-decoration:none}</style>
   </head>
 
   <body>
-    <h1>Servicios de gestión de archivos web</h1>
+    <h1>ISO - Administración y aseguramiento de la información</h1>
 
-    <p>Crea un manual sobre cómo instalar, configurar y hacer funcionar un servicio de alojamiento de archivos multiplataforma en la nube como <strong>OwnCloud</strong>.
-    
-    <p>El manual será un documento XHTML (<strong>owncloud.html</strong>) que tendrá que estar validado en XHTML 5.2 y WCAG 2.0 AAA y con estilo validado en CSS3.</p>
+    <p>Crea un documento sobre cómo administrar y asegurar la información tanto en Windows 10 como en Debian GNU/Linux. La página principal será <strong>seguridad.html</strong>, estará validado en XHTML 5.2, CSS 3 y WCAG 2.0 AAA.</p>
 
-    <p>El manual contendrá los siguientes apartados (A):</p>
+    <table title='Rubric of the document2.'>
+     <thead>
+        <tr>
+          <th>A</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>A</td>
+          <td>Descripción</td>
+        </tr>
+      </tbody>
+    </table>
 
-    <table title='Rubric of the manual.'>
+    <p>El documento contendrá, al menos, los siguientes apartados (A):</p>
+
+    <table title='Rubric of the document.'>
      <thead>
         <tr>
           <th>A</th>
@@ -29,7 +42,7 @@
         </tr>
         <tr>
           <td>b</td>
-          <td>Describe la estructura de directorios de Windows 10.</td>
+          <td>Describe la estructura de directorios de Windows 10 y GNU/Linux.</td>
         </tr>
         <tr>
           <td>c</td>
@@ -43,15 +56,25 @@
           <td>e</td>
           <td>Utiliza comandos y herramientas de administración de discos para crear particiones, unidades lógicas, volúmenes simples y volúmenes distribuidos.</td>
         </tr>
-
+        <tr>
+          <td>f</td>
+          <td>Crea un <a href='http://en.wikipedia.org/wiki/concept_map'>mapa conceptual</a> con <a href='http://mindmup.com'>MindMup</a> sobre <a href='http://en.wikipedia.org/wiki/RAID'>RAID</a>.</td>
+        </tr>
         <tr>
           <td>g</td>
-          <td>Crea un <em>script</em> para Bash (<em>tar</em>) y otro para PowerShell (<a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive'>Compress-Archive</a>), con nombre de usuario y destino como parámetros de entrada, que permita realizar una copia de seguridad de la carpeta personal.</td>
+          <td>Crea un <em>script</em> para Bash (<em>tar</em>) y otro para PowerShell (<a href='http://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/compress-archive'>Compress-Archive</a>), con nombre de usuario y ruta de destino como parámetros de entrada, que permita realizar una copia de seguridad de la carpeta personal.</td>
         </tr>
-
+        <tr>
+          <td>h</td>
+          <td>Se han crea y recupera imágenes (ISO) de un servidor o de un disco duro con <code>dd</code>.</td>
+        </tr>
         <tr>
           <td>i</td>
           <td>Administra cuotas de disco en Bash y PowerShell (<a href='http://docs.microsoft.com/en-us/powershell/module/fileserverresourcemanager/get-fsrmquota'>Get-FsrmQuota</a>, <a href='http://docs.microsoft.com/en-us/powershell/module/fileserverresourcemanager/set-fsrmquota'>Set-FsrmQuota</a>).</td>
+        </tr>
+        <tr>
+          <td>j</td>
+          <td>Indica qué operaciones, métodos y prevenciones hay que seguir para la recuperación ante desastres (<em>Disaster Recovery Plan</em>).</td>
         </tr>
       </tbody>
     </table>
@@ -59,15 +82,15 @@
     <h2>Entrega</h2>
 
     <ul>
-      <li>Desde la carpeta de usuario en Dropbox, y dentro de la carpeta UT, crea una carpeta <strong>03</strong>.
-      <li>Dentro de la carpeta <strong>03</strong> sube el manual <strong>owncloud.html</strong> (respetando las minúsculas y la extensión) antes de las <strong>23.59 del jueves 8 de febrero de 2018</strong>.</li>
+      <li>Comprime los archivos (máximo <strong>5 MB</strong>) con el formato <strong>xxx_yyy_z.zip</strong>, donde <em>xxx</em> son las tres primeras letras de tu primer apellido, <em>yyy</em> las tres primeras letras de tu segundo apellido y <em>z</em> la primera letra de tu nombre.</li>
+      <li>Realiza la entrega en <em>classroom.google.com</em> en la tarea R3A1 antes de las <strong>23:59 del lunes xx de yy de 2018</strong>.</li>
     </ul>
 
     <h2>Calificación</h2>
 
-    <p>La calificación del manual tendrá un valor numérico entre 0 y 10 y se evaluará mediante los siguientes indicadores de logro:</p>
+    <p>La calificación del documento tendrá un valor numérico entre 1 y 10 y se evaluará mediante los siguientes indicadores de logro:</p>
 
-    <table title='Rubric of the manual.'>
+    <table title='Rubric of the document.'>
      <thead>
         <tr>
           <th>Estándar</th>
@@ -79,63 +102,63 @@
         <tr>
           <td rowspan='4' class='bg1'><strong>Información</strong></td>
           <td class='c'>1</td>
-          <td>El manual no es correcto en la mayoría de los apartados del manual.</td>
+          <td>El documento no es correcto en la mayoría de los apartados.</td>
         </tr>
         <tr>
           <td class='c'>2</td>
-          <td>El manual es correcto en la mayoría de los apartados del manual.</td>
+          <td>El documento es correcto en la mayoría de los apartados.</td>
         </tr>
         <tr>
           <td class='c'>3</td>
-          <td>El manual es correcto en casi todos los apartados del manual.</td>
+          <td>El documento es correcto en casi todos los apartados.</td>
         </tr>
         <tr>
           <td class='c'>4</td>
-          <td>El manual es riguroso en todos los apartados del manual.</td>
+          <td>El documento es riguroso en todos los apartados.</td>
         </tr>
         <tr>
           <td rowspan='3' class='bg2'><strong>Texto</strong></td>
           <td class='c'>0</td>
-          <td>El texto no es preciso y no facilita la comprensión del manual.</td>
+          <td>El texto no es preciso y no facilita la comprensión del documento.</td>
         </tr>
         <tr>
           <td class='c'>1</td>
-          <td>El texto es parcialmente preciso u ocasionalmente facilita la comprensión del manual.</td>
+          <td>El texto es parcialmente preciso u ocasionalmente facilita la comprensión del documento.</td>
         </tr>
         <tr>
           <td class='c'>2</td>
-          <td>El texto es preciso y facilita la comprensión del manual.</td>
+          <td>El texto es preciso y facilita la comprensión del documento.</td>
         </tr>
         <tr>
           <td rowspan='3' class='bg1'><strong>Imágenes</strong></td>
           <td class='c'>0</td>
-          <td>Las imágenes no son precisas y no facilitan la comprensión del manual.</td>
+          <td>Las imágenes no son precisas y no facilitan la comprensión del documento.</td>
         </tr>
         <tr>
           <td class='c'>1</td>
-          <td>Las imágenes son parcialmente precisas u ocasionalmente facilitan la comprensión del manual.</td>
+          <td>Las imágenes son parcialmente precisas u ocasionalmente facilitan la comprensión del documento.</td>
         </tr>
         <tr>
           <td class='c'>2</td>
-          <td>Las imágenes son precisas y facilitan la comprensión del manual.</td>
+          <td>Las imágenes son precisas y facilitan la comprensión del documento.</td>
         </tr>
         <tr>
           <td rowspan='3' class='bg2'><strong>Organización</strong></td>
           <td class='c'>0</td>
-          <td>Los apartados no están diferenciados ni estructurados y sin una presentación clara y lógica.</td>
+          <td>Los apartados no están diferenciados ni estructurados y sin una disposición clara y lógica.</td>
         </tr>
         <tr>
           <td class='c'>1</td>
-          <td>Los apartados están parcialmente diferenciados y estructurados con una presentación algo clara y lógica.</td>
+          <td>Los apartados están parcialmente diferenciados y estructurados con una disposición algo clara y lógica.</td>
         </tr>
         <tr>
           <td class='c'>2</td>
-          <td>Los apartados están diferenciados y estructurados con una presentación clara y lógica.</td>
+          <td>Los apartados están diferenciados y estructurados con una disposición clara y lógica.</td>
         </tr>
       </tbody>
     </table>
 
-    <p>Los criterios de evaluación implicados en esta actividad son los siguientes: RA3:a, RA3:b, RA3:c, RA3:d, RA3:e, RA3:f, RA3:g, RA3:h.</p>
+    <p>Los criterios de evaluación implicados en esta actividad son los siguientes: RA3:a, RA3:b, RA3:c, RA3:d, RA3:e, RA3:f, RA3:g, RA3:h, RA3:i, RA3:j.</p>
 
     <p><a href='../../index.html'>Back to index</a>.</p>
 
