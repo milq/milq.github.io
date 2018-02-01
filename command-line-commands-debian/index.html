@@ -1,0 +1,245 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>Command-line commands</title>
+<style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
+    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1,h2{text-align:center;}a{text-decoration:none}</style>
+
+  </head>
+
+  <body>
+    <h1>Command-line commands</h1>
+
+https://www.tldp.org
+
+    <h2 id='navigation'>Navigation</h2>
+
+    <table title='navigation'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+          <th>Comment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>pwd</code></td>
+          <td>Print name of current/working directory.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>ls <em>path</em></code></td>
+          <td>List directory contents.</td>
+          <td>Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> in computing.</td>
+        </tr>
+        <tr>
+          <td><code>cd <em>path</em></code></td>
+          <td>Change directory.</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='navigation'>Help</h2>
+
+    <table title='navigation'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>man <em>command</em></code></td>
+          <td>Display summary information of a command.</td>
+        </tr>
+        <tr>
+          <td><code><em>command</em> --help</code> and/or <code><em>command</em> -h</code></td>
+          <td>Display short summary information of a command.</td>
+        </tr>
+        <tr>
+          <td><code>info <em>command</em></code></td>
+          <td>Display detailed hyper-text manual of a command. This only works for some commands.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='navigation'>Manipulation</h2>
+
+    <table title='navigation'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>cp</code></td>
+          <td>Copy files and directories.</td>
+        </tr>
+        <tr>
+          <td><code>mv</code></td>
+          <td>Move and rename files and directories.</td>
+        </tr>
+      </tbody>
+        <tr>
+          <td><code>rm</code></td>
+          <td>Make directories</td>
+        </tr>
+      </tbody>
+
+
+    </table>
+
+    <h2 id='navigation'>Information</h2>
+
+    <table title='navigation'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>file <em>path</em></code></td>
+          <td>Determine file type.</td>
+        </tr>
+        <tr>
+          <td><code>stat <em>path</em></code></td>
+          <td>Display detailed information about a file or directory. Also has many advanced options and uses.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='apt'>APT</h2>
+
+    <table title='apt'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sudo apt-get install <i>./package.deb</i></code></td>
+          <td>Install a local <i>.deb</i> package.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get install <i>package</i></code></td>
+          <td>Install a package from the repository.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get purge <i>package</i></code></td>
+          <td>Uninstall a package from the repository.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get update</code></td>
+          <td>Resynchronize the package index files from their sources.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get upgrade</code></td>
+          <td>Install the newest versions of all packages currently installed.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get dist-upgrade</code></td>
+          <td>Handle changing dependencies with new versions of packages.</td>
+        </tr>
+        <tr>
+          <td><code>sudo apt-get autoremove</code></td>
+          <td>Remove packages that are no longer needed.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='git'>Git</h2>
+
+    <p>Execute <code>sudo apt-get install git</code> to install Git in Debian based distributions.</p>
+
+    <table title='git'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>git clone <i>uri_repository.git</i></code></td>
+          <td>Clone a repository into a new directory.</td>
+        </tr>
+        <tr>
+          <td><code>git pull</code></td>
+          <td>Incorporates changes from a remote repository into the current branch.</td>
+        </tr>
+        <tr>
+          <td><code>git status</code></td>
+          <td>Show the working tree status.</td>
+        </tr>
+        <tr>
+          <td><code>git add .</code></td>
+          <td>Update the index using the current content found in the working tree.</td>
+        </tr>
+        <tr>
+          <td><code>git commit -m '<i>message</i>'</code></td>
+          <td>Record changes to the repository.</td>
+        </tr>
+        <tr>
+          <td><code>git push</code></td>
+          <td>Update remote references (<i>refs</i>) along with associated objects.</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 id='lxc'>Linux Containers (LXC)</h2>
+
+    <p>Execute <code>sudo apt-get install lxc</code> to install LXC in Debian based distributions.</p>
+
+    <table title='lxc'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sudo lxc-create -n <i>container_id</i> -t download</code></td>
+          <td>Create a container using templates.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-ls --fancy</code></td>
+          <td>List the containers existing on the system.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-start -n <i>container_id</i></code></td>
+          <td>Run a system container</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-info -n <i>container_id</i></code></td>
+          <td>Query information about a container.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-attach -n <i>container_id</i></code></td>
+          <td>Attach to a container and run a shell.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-stop -n <i>container_id</i></code></td>
+          <td>Shut down a container.</td>
+        </tr>
+        <tr>
+          <td><code>sudo lxc-destroy -n <i>container_id</i></code></td>
+          <td>Destroy a container.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><a href='c.html'>Back to index</a>.</p>
+
+  </body>
+</html>
