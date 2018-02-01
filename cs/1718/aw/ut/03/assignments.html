@@ -11,7 +11,11 @@
 
     <p>Crea un manual sobre cómo instalar, configurar y hacer funcionar un servicio de alojamiento de archivos multiplataforma en la nube como <strong>OwnCloud</strong>.
     
-    <p>Para ello, descargamos XAMPP para Linux (la versión de PHP 7.1.), luego descargamos y descomprimimos como usuario (nunca como <i>root</i>) <i>owncloud</i>. Luego ejecutamos <code>sudo mv owncloud /opt/lampp/htdocs</code>. Luego en <code>/opt/lampp/htdocs/owncloud</code> ejecutamos <code>mkdir data</code> y después <code>chmod 777 data/</code>. Instalamos OwnCloud, ejecutamos y nos dirá que hay que cambiar a 0770. Para resolvermo, ejecutamos los siguientes comandos: <code>sudo chown daemon:daemon -R data/</code> y luego <code>sudo chmod 770 -R data/</code>. Por último, ejecutamos OwnCloud y debería funcionar. Para más ayuda pulsa <strong><a href='https://buddhimawijeweera.wordpress.com/2016/09/03/configuring-owncloud-with-xampp-in-ubuntu/'>aquí</a></strong>.</p>
+    <p><strong>Nota:</strong> antes de proceder a la instalación hay que activar <em>sudo</em> para nuestro usuario: <a href='http://milq.github.io/enable-sudo-user-account-debian'>enable <em>sudo</em> on an user account on Debian</a>.</p>    
+    
+    <p>Para ello, descargamos XAMPP para Linux (la versión de PHP 7.1.), luego descargamos y descomprimimos como usuario (nunca como <i>root</i>) <i>owncloud</i>. Luego ejecutamos <code>sudo mv owncloud /opt/lampp/htdocs</code>. Luego en <code>/opt/lampp/htdocs/owncloud</code> ejecutamos <code>mkdir data</code> y después <code>chmod 777 data/</code>.</p>
+    
+    <p>Iniciamos XAMPP (<em>sudo /opt/lampp/xampp start</em>), entramos en <em>phpMyAdmin</em> desde el navegador (<code>localhost/phpmyadmin</code>) y creamos una base de datos y, si hiciera falta, un usuario con todos los privilegios. Instalamos OwnCloud (<code>localhost/owncloud</code>), ejecutamos y nos dirá que hay que cambiar a 0770. Para resolverlo, ejecutamos los siguientes comandos: <code>sudo chown daemon:daemon -R data/</code> y luego <code>sudo chmod 770 -R data/</code>. Por último, ejecutamos OwnCloud y debería funcionar. Para más ayuda pulsa <strong><a href='https://buddhimawijeweera.wordpress.com/2016/09/03/configuring-owncloud-with-xampp-in-ubuntu/'>aquí</a></strong>.</p>
     
     <p>El manual será un documento XHTML (<strong>owncloud.html</strong>) que tendrá que estar validado en XHTML 5.2 y WCAG 2.0 AAA y con estilo validado en CSS3.</p>
 
