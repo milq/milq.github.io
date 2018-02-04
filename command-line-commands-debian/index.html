@@ -4,7 +4,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>Command-line commands</title>
 <style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
-    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1,h2{text-align:center;}a{text-decoration:none}</style>
+    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1,h2{text-align:center;}a{text-decoration:none}
+    
+    table tr td:first-child { width: 30%; }
+    </style>
 
   </head>
 
@@ -20,24 +23,20 @@ https://www.tldp.org
         <tr>
           <th>Command</th>
           <th>Explanation</th>
-          <th>Comment</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td><code>pwd</code></td>
           <td>Print name of current/working directory.</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>ls <em>path</em></code></td>
-          <td>List directory contents.</td>
-          <td>Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> in computing.</td>
+          <td>List directory contents (definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> in computing).</td>
         </tr>
         <tr>
           <td><code>cd <em>path</em></code></td>
           <td>Change directory.</td>
-          <td></td>
         </tr>
       </tbody>
     </table>
@@ -78,17 +77,17 @@ https://www.tldp.org
       </thead>
       <tbody>
         <tr>
-          <td><code>cp</code></td>
+          <td><code>cp <em>[option] source_path destination_path</em></code></td>
           <td>Copy files and directories.</td>
         </tr>
         <tr>
-          <td><code>mv</code></td>
+          <td><code>mv <em>[option] source_path destination_path</em></code></td>
           <td>Move and rename files and directories.</td>
         </tr>
       </tbody>
         <tr>
-          <td><code>rm</code></td>
-          <td>Make directories</td>
+          <td><code>rm <em>[option] path</em></code></td>
+          <td>Remove files and directories</td>
         </tr>
       </tbody>
 
@@ -112,6 +111,56 @@ https://www.tldp.org
         <tr>
           <td><code>stat <em>path</em></code></td>
           <td>Display detailed information about a file or directory. Also has many advanced options and uses.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='users'>Users</h2>
+
+    <table title='users'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>id <em>[options] [username]</em></code></td>
+          <td>Print real and effective user and group IDs.</td>
+        </tr>
+        <tr>
+          <td><code>who</code></td>
+          <td>Print information about users who are currently logged in.</td>
+        </tr>
+        <tr>
+          <td><code>whoami</code></td>
+          <td>Print the username associated with the current effective user ID.</td>
+        </tr>
+        <tr>
+          <td><code>su <em>[options] [username]</em></code></td>
+          <td>Change user ID or become superuser.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='find'>Find</h2>
+
+    <table title='find'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>find .</code></td>
+          <td>Find files and directories recursively in current directory.</td>
+        </tr>
+        <tr>
+          <td><code>find . -name *.png -exec cp '{}' ~/images \;</code></td>
+          <td>Copy all PNG files recursively in current directory to <em>~/images</em> folder.</td>
         </tr>
       </tbody>
     </table>
