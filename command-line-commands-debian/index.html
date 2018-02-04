@@ -14,8 +14,6 @@
   <body>
     <h1>Command-line commands</h1>
 
-https://www.tldp.org
-
     <h2 id='navigation'>Navigation</h2>
 
     <table title='navigation'>
@@ -32,7 +30,7 @@ https://www.tldp.org
         </tr>
         <tr>
           <td><code>ls <em>path</em></code></td>
-          <td>List directory contents (definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> in computing).</td>
+          <td>List directory contents (definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> (<a href='http://hablemoslinux.org/2012/03/04/486'>es</a>) in computing).</td>
         </tr>
         <tr>
           <td><code>cd <em>path</em></code></td>
@@ -56,8 +54,12 @@ https://www.tldp.org
           <td>Display summary information of a command.</td>
         </tr>
         <tr>
-          <td><code><em>command</em> --help</code> and/or <code><em>command</em> -h</code></td>
+          <td><code><em>command</em> --help</code></td>
           <td>Display short summary information of a command.</td>
+        </tr>
+        <tr>
+          <td><code><em>command</em> -h</code></td>
+          <td>Another way to display short summary information of a command.</td>
         </tr>
         <tr>
           <td><code>info <em>command</em></code></td>
@@ -84,14 +86,65 @@ https://www.tldp.org
           <td><code>mv <em>[option] source_path destination_path</em></code></td>
           <td>Move and rename files and directories.</td>
         </tr>
-      </tbody>
+        <tr>
+          <td><code>mkdir <em>path</em></code></td>
+          <td>Make empty directories.</td>
+        </tr>
         <tr>
           <td><code>rm <em>[option] path</em></code></td>
-          <td>Remove files and directories</td>
+          <td>Remove files and directories.</td>
+        </tr>
+        <tr>
+          <td><code>ln <em>source_path destination_path</em></code></td>
+          <td>Create a hard link of a file.</td>
+        </tr>
+        <tr>
+          <td><code>ln -s <em>source_path destination_path</em></code></td>
+          <td>Create a symbolic link of a file.</td>
         </tr>
       </tbody>
+    </table>
 
+    <h2 id='administration'>Administration</h2>
 
+    <table title='administration'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>sudo <em>command</em></code></td>
+          <td>Execute a <em>command</em> as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</td>
+        </tr>
+        <tr>
+          <td><code>su</code></td>
+          <td>Become superuser.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='visualization'>Visualization</h2>
+
+    <table title='visualization'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>echo</code></td>
+          <td>Display a line of text.</td>
+        </tr>
+        <tr>
+          <td><code>echo $PATH</code></td>
+          <td>Show the content of the variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</td>
+        </tr>
+      </tbody>
     </table>
 
     <h2 id='navigation'>Information</h2>
@@ -140,6 +193,51 @@ https://www.tldp.org
         <tr>
           <td><code>su <em>[options] [username]</em></code></td>
           <td>Change user ID or become superuser.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id='devices'>Devices</h2>
+
+    <table title='devices'>
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>lsblk</code></td>
+          <td>List block devices.</td>
+        </tr>
+        <tr>
+          <td><code>sudo mount <em>device_path destination_path</em></code></td>
+          <td>Mount a filesystem.</td>
+        </tr>
+        <tr>
+          <td><code>sudo umount <em>mounted_device_path</em></code></td>
+          <td>Unmount a filesystem.</td>
+        </tr>
+        <tr>
+          <td><code>sudo mkfs.<i>fstype</i> -I /dev/sd<b><i>x</i></b> -n <i>NAME</i> && sync</code></td>
+          <td>te.</td>
+        </tr>
+        <tr>
+          <td><code>sudo mkfs.<i>fstype</i> -I /dev/sd<b><i>x</i></b><b><i>Y</i></b> -n <i>NAME</i> && sync</code></td>
+          <td>te.</td>
+        </tr>
+        <tr>
+          <td><code>sudo dd bs=512K if=<i>input.iso</i> of=/dev/sd<b><i>x</i></b> && sync</code>.</td>
+          <td>.</td>
+        </tr>
+        <tr>
+          <td><code>sudo gdisk /dev/sd<b><i>x</i></b></code>.</td>
+          <td>.</td>
+        </tr>
+        <tr>
+          <td><code>sudo gparted</code> (<code>sudo apt-get install gparted</code>) (GUI) .</td>
+          <td><code>diskmgmt</code> (GUI).</td>
         </tr>
       </tbody>
     </table>
