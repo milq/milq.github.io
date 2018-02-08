@@ -4,13 +4,25 @@
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>ISO</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:#4caf50;color:#fff}a,a:link,a:visited{text-decoration:none}</style>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:#4caf50;color:#fff}a,a:link,a:visited{text-decoration:none}
+    
+    ol.lpic {
+    counter-reset: section 100 subsection 1;
+    list-style-type: none;
+}
+
+ol.lpic li:before {
+    counter-increment: section;
+    content: counters(section, ".") ". ";
+}
+    
+    </style>
   </head>
 
   <body>
     <h1>ISO</h1>
 
-	<p>&bull; <a href='ut/information.pdf'>Information</a>.</p>
+    <p>&bull; <a href='ut/information.pdf'>Information</a>.</p>
 
     <table title='iso'>
       <thead>
@@ -82,10 +94,30 @@
 
   <h2>Programming</h2>
 
-    <p>Theory: </p>
+  <p><strong>Practice:</strong> <a href='../../assignments/code/01.html'>variables</a>, <a href='../../assignments/code/02.html'>arrays/lists</a>, <a href='../../assignments/code/03.html'>conditionals</a>, <a href='../../assignments/code/04.html'>loops</a>.</p>
 
-    <p><strong>Practice:</strong> <a href='../../assignments/code/01.html'>variables</a>, <a href='../../assignments/code/02.html'>arrays/lists</a>, <a href='../../assignments/code/03.html'>conditionals</a>, <a href='../../assignments/code/04.html'>loops</a>.</p>
+  <h2>LPIC-1: System Administrator</h2>
 
+  <ol class='lpic'>
+    <li>System Architecture</li>
+      <ol>
+        <li>Determine and configure hardware settings</li>
+        <li>Boot the system</li>
+        <li>Change runlevels/boot targets and shutdown or reboot system</li>
+      </ol>
+    </li>
+    <li>
+      <ol>
+        <li>    
+          <ol>
+          <li></li>
+          <li></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li></li>
+  </ol> 
 
   </body>
 </html>
