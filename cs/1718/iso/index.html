@@ -4,18 +4,7 @@
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>ISO</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:#4caf50;color:#fff}a,a:link,a:visited{text-decoration:none}
-    
-    ol.lpic {
-    counter-reset: section 100 subsection 1;
-    list-style-type: none;
-}
-
-ol.lpic li:before {
-    counter-increment: section;
-    content: counters(section, ".") ". ";
-}
-    
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:#4caf50;color:#fff}a,a:link,a:visited{text-decoration:none}ol.lpic{counter-reset:section 100;list-style-type:none}ol.sublpic{counter-reset:section;list-style-type:none}ol.lpic li:before,ol.sublpic li:before{counter-increment:section;content:counters(section, '.') '. '}
     </style>
   </head>
 
@@ -85,39 +74,102 @@ ol.lpic li:before {
       </tbody>
     </table>
 
-    <h2>Resources</h2>  
+    <h2>Resources</h2>
 
     <ul>
       <li><strong>References:</strong> <a href='http://gnu.org/software/bash/manual' title='Bash reference'>Bash</a>, <a href='http://docs.microsoft.com/en-us/powershell/scripting/powershell-scripting' title='PowerShell reference'>PowerShell</a>.</li>
-      <li><strong>PacketTracer7</strong>: Dependencies &rArr; <code>sudo apt-get install qt5-default libqt5multimedia5 libqt5script5 libqt5scripttools5 libqt5webkit5</code>. Execution &rArr; <code>/opt/pt/bin/PacketTracer7</code>. SSL Error &rArr; <a href='http://blog.alexolivan.com/cisco-packettracer-7-on-debian-stretch/'>Install in Debian Stretch</a>. </li>
+      <!--<li><strong>PacketTracer7</strong>: Dependencies &rArr; <code>sudo apt-get install qt5-default libqt5multimedia5 libqt5script5 libqt5scripttools5 libqt5webkit5</code>. Execution &rArr; <code>/opt/pt/bin/PacketTracer7</code>. SSL Error &rArr; <a href='http://blog.alexolivan.com/cisco-packettracer-7-on-debian-stretch/'>Install in Debian Stretch</a>. </li>-->
+      <li><strong>Programming:</strong> <a href='../../assignments/code/01.html'>variables</a>, <a href='../../assignments/code/02.html'>arrays/lists</a>, <a href='../../assignments/code/03.html'>conditionals</a>, <a href='../../assignments/code/04.html'>loops</a>.</li>
     </ul>
 
-  <h2>Programming</h2>
+    <h2><a href='http://lpi.org/our-certifications/lpic-1-overview'>LPIC-1</a>: System Administrator</h2>
 
-  <p><strong>Practice:</strong> <a href='../../assignments/code/01.html'>variables</a>, <a href='../../assignments/code/02.html'>arrays/lists</a>, <a href='../../assignments/code/03.html'>conditionals</a>, <a href='../../assignments/code/04.html'>loops</a>.</p>
-
-  <h2>LPIC-1: System Administrator</h2>
-
-  <ol class='lpic'>
-    <li>System Architecture</li>
-      <ol>
+    <ol class='lpic'>
+      <li>System Architecture
+        <ol class='sublpic'>
         <li>Determine and configure hardware settings</li>
         <li>Boot the system</li>
-        <li>Change runlevels/boot targets and shutdown or reboot system</li>
-      </ol>
-    </li>
-    <li>
-      <ol>
-        <li>    
-          <ol>
-          <li></li>
-          <li></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li></li>
-  </ol> 
+        <li>Change runlevels / boot targets and shutdown or reboot system</li>
+        </ol>
+      </li><br />
+      <li>Linux Installation and Package Management
+        <ol class='sublpic'>
+          <li>Design hard disk layout</li>
+          <li>Install a boot manager</li>
+          <li>Manage shared libraries</li>
+          <li>Use Debian package management</li>
+          <li>Use RPM and YUM package management</li>
+        </ol>
+      </li><br />
+      <li>GNU and Unix Commands
+        <ol class='sublpic'>
+          <li>Work on the command line</li>
+          <li>Process text streams using filters</li>
+          <li>Perform basic file management</li>
+          <li>Use streams, pipes and redirects</li>
+          <li>Create, monitor and kill processes</li>
+          <li>Modify process execution priorities</li>
+          <li>Search text files using regular expressions</li>
+          <li>Perform basic file editing operations using <em>vi</em></li>
+        </ol>
+      </li><br />
+      <li>Devices, Linux Filesystems, Filesystem Hierarchy Standard
+        <ol class='sublpic'>
+          <li>Create partitions and filesystems</li>
+          <li>Maintain the integrity of filesystems</li>
+          <li>Control mounting and unmounting of filesystems</li>
+          <li>Manage disk quotas</li>
+          <li>Manage file permissions and ownership (<a href='http://milq.github.io/gnu-linux-commands/index.html#permissions_ownership'>link</a>)</li>
+          <li>Create and change hard and symbolic links</li>
+          <li>Find system files and place files in the correct location</li>
+        </ol>
+      </li><br /><br />
+      <li>Shells, Scripting and Data Management
+        <ol class='sublpic'>
+          <li>Customize and use the shell environment</li>
+          <li>Customize or write simple scripts</li>
+          <li>SQL data management</li>
+        </ol>
+      </li><br />
+      <li>User Interfaces and Desktops
+        <ol class='sublpic'>
+          <li>Install and configure X11</li>
+          <li>Setup a display manager</li>
+          <li>Accessibility</li>
+        </ol>
+      </li><br />
+      <li>Administrative Tasks
+        <ol class='sublpic'>
+          <li>Manage user and group accounts and related system files</li>
+          <li>Automate system administration tasks by scheduling jobs</li>
+          <li>Localisation and internationalisation</li>
+        </ol>
+      </li><br />
+      <li>Essential System Services
+        <ol class='sublpic'>
+          <li>Maintain system time</li>
+          <li>System logging</li>
+          <li>Mail Transfer Agent (MTA) basics</li>
+          <li>Manage printers and printing</li>
+        </ol>
+      </li><br />
+      <li>Networking Fundamentals
+        <ol class='sublpic'>
+          <li>Fundamentals of internet protocols</li>
+          <li>Basic network configuration</li>
+          <li>Basic network troubleshooting</li>
+          <li>Configure client side DNS</li>
+        </ol>
+      </li><br />
+      <li>Security
+        <ol class='sublpic'>
+          <li>Perform security administration tasks</li>
+          <li>Setup host security</li>
+          <li>Securing data with encryption</li>
+        </ol>
+      </li><br />
+    </ol>
+
 
   </body>
 </html>
