@@ -67,7 +67,7 @@
 
     <table>
       <tr>
-        <th colspan="2">Ejemplos</th>
+        <th colspan='2'>Ejemplos</th>
       </tr>
       <tr>
         <td><strong>Entrada</strong></td>
@@ -91,7 +91,7 @@
 
     <table>
       <tr>
-        <th colspan="2">Ejemplos</th>
+        <th colspan='2'>Ejemplos</th>
       </tr>
       <tr>
         <td><strong>Entrada</strong></td>
@@ -119,7 +119,7 @@
 
     <table>
       <tr>
-        <th colspan="2">Ejemplos</th>
+        <th colspan='2'>Ejemplos</th>
       </tr>
       <tr>
         <td><strong>Entrada</strong></td>
@@ -147,7 +147,7 @@
 
     <table>
       <tr>
-        <th colspan="2">Ejemplos</th>
+        <th colspan='2'>Ejemplos</th>
       </tr>
       <tr>
         <td><strong>Entrada</strong></td>
@@ -171,7 +171,7 @@
 
     <table>
       <tr>
-        <th colspan="2">Ejemplos</th>
+        <th colspan='2'>Ejemplos</th>
       </tr>
       <tr>
         <td><strong>Entrada</strong></td>
@@ -190,6 +190,106 @@
         <td>2 9 145 </td>
       </tr>
     </table>
+
+    <p><strong>16.</strong> Imprime la suma de enteros recibidos pero ignorando los subconjuntos que empiecen por 6 y terminen en 7. Siempre habrá un 7 después de un 6.</p>
+
+    <table>
+      <tr>
+        <th colspan='2'>Ejemplos</th>
+      </tr>
+      <tr>
+        <td><strong>Entrada</strong></td>
+        <td><strong>Salida</strong></td>
+      </tr>
+      <tr>
+        <td>1 2 2 6 99 99 7</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>2 7 6 2 6 7 2 7</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>1 1 6 7 2</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>2 7 6 2 6 2 7</td>
+        <td>9</td>
+      </tr>
+      <tr>
+        <td>6 7 1 6 7 6</td>
+        <td>7</td>
+      </tr>
+    </table>
+
+    <p><strong>17.</strong> Imprime los enteros recibidos reorganizados de tal manera que después de un 3 haya un 4. Los treses no pueden cambiar de posición.</p>
+
+    <table>
+      <tr>
+        <th colspan='2'>Ejemplos</th>
+      </tr>
+      <tr>
+        <td><strong>Entrada</strong></td>
+        <td><strong>Salida</strong></td>
+      </tr>
+      <tr>
+        <td>3 2 2 4</td>
+        <td>3 4 2 2</td>
+      </tr>
+      <tr>
+        <td>1 3 1 4 4 3 1</td>
+        <td>1 3 4 1 1 3 4</td>
+      </tr>
+      <tr>
+        <td>7 2 1 8</td>
+        <td>7 2 1 8</td>
+      </tr>
+      <tr>
+        <td>5 3 5 4 5 4 5 4 3 5 3 5</td>
+        <td>5 3 4 5 5 5 5 5 3 4 3 4</td>
+      </tr>
+      <tr>
+        <td>2 3 2 3 2 4 4</td>
+        <td>2 3 4 3 4 2 2</td>
+      </tr>
+    </table>
+
+    <p>Restricciones de entrada:</p>
+
+    <ul>
+      <li>Los enteros recibidos siempre tendrán el mismo número de treses que de cuatros.</li>
+      <li>Después de un 3 hay un entero que no es un 3.</li>
+      <li>Antes de aparecer cualquier 4 en la serie de enteros, aparecerá como mínimo un 3.</li>
+    </ul>
+
+    <h2>Actividades de ampliación</h2>
+
+    <p><strong>18.</strong> Siendo <em>x</em>, <em>y</em> y <em>n</em> enteros positivos para la ecuación <em>(1/x) + (1/y) = (1/n)</em>, encuentra el número de soluciones dado un entero <em>z</em> tal que <em>x &lt; y &lt;= z</em>.</p>
+
+    <table>
+      <tr>
+        <th colspan='2'>Ejemplos</th>
+      </tr>
+      <tr>
+        <td><strong>Entrada</strong></td>
+        <td><strong>Salida</strong></td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>1000</td>
+        <td>1069</td>
+      </tr>
+    </table>
+
+    <p><strong>Extra de dificultad:</strong> obtén el número de soluciones para <em>z = 1 000 000 000 000</em>.</p>
 
   </body>
 </html>
