@@ -1,0 +1,153 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>Command-line commands</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a{text-decoration:none}
+    
+    code{font-family: 'Fira Mono', 'Menlo', 'Consolas','DejaVu Sans Mono';color:DarkRed ; background-color: Gainsboro ; padding: 0em 0.3em; border-radius: 0.3em}
+    
+    ul.list{list-style:none;padding-left:0;}ul.list li{margin-bottom: 0.15em;}
+    
+    </style>
+  </head>
+
+  <body>
+    <h1>Command-line commands</h1>
+
+    <h2 id='navigation'>Navigation</h2>
+
+    <ul class='list'>
+      <li><code>pwd</code> Print name of current/working directory.</li>
+      <li><code>ls <em>path</em></code> List directory contents (definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> (<a href='http://hablemoslinux.org/2012/03/04/486'>es</a>) in computing).</li>
+      <li><code>cd <em>path</em></code> Change directory.</li>
+    </ul>
+    
+    <h2 id='navigation'>Help</h2>
+
+    <ul class='list'>
+      <li><code>man <em>command</em></code> Display summary information of a command.</li>
+      <li><code><em>command</em> --help</code> Display short summary information of a command.</li>
+      <li><code><em>command</em> -h</code> Another way to display short summary information of a command.</li>
+      <li><code>info <em>command</em></code> Display detailed hyper-text manual of a command. This only works for some commands.</li>
+    </ul>
+
+    <h2 id='manipulation'>Manipulation</h2>
+
+    <ul class='list'>
+      <li><code>cp <em>[option] source_path destination_path</em></code> Copy files and directories.</li>
+      <li><code>mv <em>[option] source_path destination_path</em></code> Move and rename files and directories.</li>
+      <li><code>mkdir <em>path</em></code> Make empty directories.</li>
+      <li><code>rm <em>[option] path</em></code> Remove files and directories.</li>
+      <li><code>ln <em>source_path destination_path</em></code> Create a hard link of a file.</li>
+      <li><code>ln -s <em>source_path destination_path</em></code> Create a symbolic link of a file.</li>
+    </ul>
+
+    <h2 id='administration'>Administration</h2>
+    
+    <ul class='list'>
+      <li><code>sudo <em>command</em></code> Execute a <em>command</em> as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
+      <li><code>su</code> Become superuser.</li>
+    </ul>
+
+    <h2 id='visualization'>Visualization</h2>
+
+    <ul class='list'>
+      <li><code>echo</code> Display a line of text.</li>
+      <li><code>echo $PATH</code> Show the content of the variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</li>
+      <li><code>cat</code> Concatenate files and print on the standard output.</li>
+      <li><code>head</code> Output the first part of files.</li>
+      <li><code>tail</code> Output the last part of files.</li>
+      <li><code>grep</code> Print lines matching a pattern.</li>
+    </ul>
+
+    <h2 id='navigation'>Information</h2>
+    
+    <ul class ='list'>    
+	  <li><code>file <em>path</em></code> Determine file type.</li>
+      <li><code>stat <em>path</em></code> Display detailed information about a file or directory. Also has many advanced options and uses.</li>
+    </ul>
+
+
+    <h2 id='users'>Users</h2>
+
+    <ul class ='list'>
+      <li><code>id <em>[options] [username]</em></code> Print real and effective user and group IDs.</li>
+      <li><code>who</code> Print information about users who are currently logged in.</li>
+      <li><code>whoami</code> Print the username associated with the current effective user ID.</li>
+      <li><code>su <em>[options] [username]</em></code> Change user ID or become superuser.</li>
+    </li>
+
+    <h2 id='permissions_ownership'>Manage file permissions and ownership</h2>
+
+    <ul class='list'>
+      <li><code>chmod</code> Change file mode bits.</li>
+      <li><code>umask</code> Set file mode creation mask.</li>
+      <li><code>chown</code> Change file owner and group.</li>
+    </ul>
+
+    <h2 id='devices'>Devices</h2>
+
+	<ul class='list'>
+	  <li><code>lsblk</code> List block devices.</li>
+      <li><code>sudo mount <em>device_path destination_path</em></code> Mount a filesystem.</li>
+      <li><code>sudo umount <em>mounted_device_path</em></code> Unmount a filesystem.</li>
+      <li><code>sudo mkfs.<em>fstype</em> -I /dev/sd<b><em>x</em></b> -n <em>NAME</em> && sync</code> Te.</li>
+      <li><code>sudo mkfs.<em>fstype</em> -I /dev/sd<b><em>x</em></b><b><em>Y</em></b> -n <em>NAME</em> && sync</code> te.</li>
+      <li><code>sudo dd bs=512K if=<em>input.iso</em> of=/dev/sd<b><em>x</em></b> && sync</code>.</li>
+      <li><code>sudo gdisk /dev/sd<b><em>x</em></b></code></li>
+      <li><code>sudo gparted</code> (<code>sudo apt-get install gparted</code></li>
+    </ul>
+
+    <h2 id='find'>Find</h2>
+    
+    <ul class='list'>
+      <li><code>find .</code> Find files and directories recursively in current directory.</li>
+      <li><code>find . -name *.png -exec cp '{}' ~/images \;</code> Copy all PNG files recursively in current directory to <em>~/images</em> folder.</li>
+    </ul>
+
+    <h2 id='apt'>APT</h2>
+
+    <ul class='list'>
+      <li><code>sudo apt-get install <em>./package.deb</em></code> Install a local <em>.deb</em> package.</li>
+      <li><code>sudo apt-get install <em>package</em></code> Install a package from the repository.</li>
+      <li><code>sudo apt-get purge <em>package</em></code> Uninstall a package from the repository.</li>
+      <li><code>sudo apt-get update</code> Resynchronize the package index files from their sources.</li>
+      <li><code>sudo apt-get upgrade</code> Install the newest versions of all packages currently installed.</li>
+      <li><code>sudo apt-get dist-upgrade</code> Handle changing dependencies with new versions of packages.</li>
+      <li><code>sudo apt-get autoremove</code> Remove packages that are no longer needed.</li>
+    </ul>
+
+    <h2 id='git'>Git</h2>
+
+    <p>Execute <code>sudo apt-get install git</code> to install Git in Debian based distributions.</p>
+
+    <ul class='list'>
+      <li><code>git clone <em>uri_repository.git</em></code> Clone a repository into a new directory.</li>
+      <li><code>git pull</code> Incorporates changes from a remote repository into the current branch.</li>
+      <li><code>git status</code> Show the working tree status.</li>
+      <li><code>git add .</code> Update the index using the current content found in the working tree.</li>
+      <li><code>git commit -m '<em>message</em>'</code> Record changes to the repository.</li>
+      <li><code>git push</code> Update remote references (<em>refs</em>) along with associated objects.</li>
+    </ul>
+       
+    <h2 id='lxc'>Linux Containers (LXC)</h2>
+
+    <p>Execute <code>sudo apt-get install lxc</code> to install LXC in Debian based distributions.</p>
+
+    <ul class='list'>
+	  <li><code>sudo lxc-create -n <em>container_id</em> -t download</code> Create a container using templates.</li>
+      <li><code>sudo lxc-ls --fancy</code> List the containers existing on the system.</li>
+      <li><code>sudo lxc-start -n <em>container_id</em></code> Run a system container.</li>
+      <li><code>sudo lxc-info -n <em>container_id</em></code> Query information about a container.</li>
+      <li><code>sudo lxc-attach -n <em>container_id</em></code> Attach to a container and run a shell.</li>
+      <li><code>sudo lxc-stop -n <em>container_id</em></code> Shut down a container.</li>
+      <li><code>sudo lxc-destroy -n <em>container_id</em></code> Destroy a container.</li>
+    </ul>
+    
+    <p>It is recommended to enable sshd, run: <code>apt-get install openssh-server</code>.</p>
+    
+    <p><a href='c.html'>Back to index</a>.</p>
+
+  </body>
+</html>
