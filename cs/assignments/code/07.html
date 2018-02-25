@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse}td,th{text-align:center;padding:0 .45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:teal;color:#fff}a,a:link,a:visited{text-decoration:none}code{font-family:'Fira Mono','Menlo','Consolas',monospace;color:#c7254e;background-color:#f9f2f4;padding:.025em .3em;border-radius:.3em}</style>
+    <title>Librerías</title>
+  </head>
+  <body>
+    <h1>Librerías</h1>
+
+    <h2>Actividades de iniciación</h2>
+
+    <p><strong>Librerías internas (o librería estándar) incluídas en el compilador/intérprete</strong></p>
+
+    <p><strong>01.</strong> Calcula el ángulo que forman dos vectores 2D. Comprueba cómo se resuelve el problema <strong><a href='http://stackoverflow.com/questions/21483999/using-atan2-to-find-angle-between-two-vectors'>aquí</a></strong>. Por ejemplo, el ángulo que forman un vector con coordenadas <code>x1 = 5.45</code> e <code>y1 = 1.12</code> y otro con coordenadas <code>x2 = -3.86</code> e <code>y2 = 4.32</code> es de <code>2.097</code> radianes o <code>120.168</code> grados. <strong>Pista:</strong> usa la siguiente implementación propuesta en la página: <code>var angle = Math.atan2(vector2.y, vector2.x) - Math.atan2(vector1.y, vector1.x)</code>. <strong>Opcional:</strong> puedes usar como parámetros de entrada variables de tipo numérico o instancias de la clase <code>Punto</code> (realizada en el ejercicio <strong>01</strong> del boletín de ejercicios de <strong>Clases</strong>).</p>
+    
+    <p><strong>02.</strong> En la web oficial del lenguaje de programación (si no existe, en una web no oficial), entra en su documentación y ejecuta <code>3</code> ejemplos donde se usen sus librerías internas/estándar.</p>
+    
+    <p><strong>03.</strong> Usando librerías internas, abre y lee los siguientes archivos de texto:
+    <strong><a href='http://debian.org/doc/manuals/project-history/project-history.es.txt'>1</a></strong> y <strong><a href='https://raw.githubusercontent.com/geoiq/acetate/master/places/Countries-Europe.csv'>2</a></strong>. Almacena cada texto en una variable de tipo cadena de caracteres o <em>string</em>. Luego, concatena las dos variables de tipo <em>string</em> en una nueva variable de tipo <em>string</em> denominada <code>textos_concatenados</code>. Por último, crea un nuevo fichero y escribe en él el contenido de <code>textos_concatenados</code>.</p>
+    
+    <p><strong>04.</strong> Usando librerías internas, crea una simulación de <code>10000</code> tiradas de 2D6 (2 dados de 6 caras) (por ejemplo, un dado da <code>5</code> y otro <code>2</code> y el resultado es <code>7</code>) y escribe en un fichero de texto del número de ocurrencias (número de doses, treses... hasta número de doces) de esas <code>10000</code> tiradas. ¿Cuál es el resultado que más se repite? ¿Y los dos siguientes? <strong>Pista</strong>: usar librería interna <code>random</code> y el de escribir ficheros de texto.</p>
+    
+    <p><strong>Librerías externas (o librerías <em>third party</em>)</strong></p>
+    
+    <p><strong>05.</strong> Descarga, instala y ejecuta una librería externa sobre gráficos (por ejemplo <a href='http://github.com/plotly/plotly.js'>Plotly</a>, <a href='http://jpgraph.net'>JpGraph</a>, <a href='http://matplotlib.org'>Matplotlib</a>, etc.) y ejecuta algún ejemplo sencillo incluído en su documentación.</p>
+    
+    <p><strong>06.</strong> Descarga, instala y ejecuta una librería externa sobre tratamiento de archivos XML y ejecuta algún ejemplo sencillo incluído en su documentación. <strong>Alternativa:</strong> si prefieres, busca si existe una librería interna sobre XML y <em>parsea</em> (analiza sintácticamente) si un documennto XML es válido o no.</p>
+    
+    <p><strong>07.</strong> Usando una librería externa sobre gráficos (por ejemplo <a href='http://github.com/plotly/plotly.js'>Plotly</a>, <a href='http://jpgraph.net'>JpGraph</a>, <a href='http://matplotlib.org'>Matplotlib</a>, etc.) crea una gráfica sobre el número de ocurrencias del ejercicio <strong>04</strong>. ¿Qué <a href='http://www.isobudgets.com/wp-content/uploads/2015/07/probability-distribution-chart-600px.jpg'>distribución de probabilidad</a> siguen esas tiradas?</p>
+    
+    <p><strong>Librerías propias creadas por uno mismo</strong></p>
+    
+    <p><strong>08.</strong> Crea tu propia librería llamada <code>geometria</code>, donde tenga una clase <code>Punto</code> (realizada en el ejercicio <strong>01</strong> del boletín de ejercicios de <strong>Clases</strong>) y una función que calcule la distancia euclídea entre dos instancias de la clase <code>Punto</code>. Finalmente, carga/importa la librería <code>geometria</code> y realiza <code>3</code> ejemplos (calcula <code>3</code> distancias euclídeas) usando la librería creada.</p>
+    
+    <p><strong>09.</strong> Crea tu propia librería llamada <code>calculadora</code>, donde tenga funciones de suma, resta, división y multiplicación de dos números. Además, usando librerías internas/estándar, añade funciones que calcule el logaritmo neperiano de un número, el seno de un número y el coseno de un número. Opcionalmente, puedes usar más funciones o clases para completar aún más tu librería (por ejemplo calcular potencias, raíces, etc.). Finalmente, carga/importa la librería <code>calculadora</code> y realiza <code>6</code> ejemplos usando la librería creada.</p>
+    
+    <p><strong>10.</strong> Crea tu propia librería, sobre la temática que quieras, que utilice tanto librerías internas/estándar como externas/<em>third party</em>. Realiza <code>3</code> ejemplos usando la librería creada.</p>
+
+  </body>
+</html>
+
+
