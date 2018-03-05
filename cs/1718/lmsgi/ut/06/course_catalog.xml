@@ -1,0 +1,238 @@
+<?xml version='1.0' ?>
+
+<course_catalog>
+
+  <department code='CS'>
+
+    <title>Computer Science</title>
+
+    <chair>
+      <professor>
+        <first_name>Jennifer</first_name>
+        <last_name>Widom</last_name>
+      </professor>
+    </chair>
+
+    <course number='CS106A' enrollment='1070'>
+      <title>Programming Methodology</title>
+      <description>Introduction to the engineering of computer applications emphasizing modern software engineering principles.</description>
+      <instructors>
+        <lecturer>
+          <first_name>Jerry</first_name>
+          <middle_initial>R.</middle_initial>
+          <last_name>Cain</last_name>
+        </lecturer>
+        <professor>
+          <first_name>Eric</first_name>
+          <last_name>Roberts</last_name>
+
+        </professor>
+        <professor>
+          <first_name>Mehran</first_name>
+          <last_name>Sahami</last_name>
+        </professor>
+      </instructors>
+    </course>
+
+    <course number='CS106B' enrollment='620'>
+      <title>Programming Abstractions</title>
+      <description>Abstraction and its relation to programming.</description>
+      <instructors>
+        <professor>
+          <first_name>Eric</first_name>
+          <last_name>Roberts</last_name>
+        </professor>
+        <lecturer>
+          <first_name>Jerry</first_name>
+          <middle_initial>R.</middle_initial>
+          <last_name>Cain</last_name>
+        </lecturer>
+      </instructors>
+      <prerequisites>
+        <prereq>CS106A</prereq>
+      </prerequisites>
+    </course>
+
+    <course number='CS107' enrollment='500'>
+      <title>Computer Organization and Systems</title>
+      <description>Introduction to the fundamental concepts of computer systems.</description>
+      <instructors>
+        <lecturer>
+          <first_name>Julie</first_name>
+          <last_name>Zelenski</last_name>
+        </lecturer>
+      </instructors>
+      <prerequisites>
+        <prereq>CS106B</prereq>
+      </prerequisites>
+    </course>
+
+    <course number='CS109' enrollment='280'>
+      <title>Introduction to Probability for Computer Scientists</title>
+      <instructors>
+        <professor>
+          <first_name>Mehran</first_name>
+          <last_name>Sahami</last_name>
+        </professor>
+      </instructors>
+      <prerequisites>
+        <prereq>CS106B</prereq>
+      </prerequisites>
+    </course>
+
+    <course number='CS124' enrollment='60'>
+      <title>From Languages to Information</title>
+      <description>Natural language processing. Cross-listed as LING180.</description>
+      <instructors>
+        <professor>
+          <first_name>Dan</first_name>
+          <last_name>Jurafsky</last_name>
+        </professor>
+      </instructors>
+      <prerequisites>
+        <prereq>CS107</prereq>
+        <prereq>CS109</prereq>
+      </prerequisites>
+    </course>
+
+    <course number='CS143' enrollment='90'>
+      <title>Compilers</title>
+      <description>Principles and practices for design and implementation of compilers and interpreters.</description>
+      <instructors>
+        <professor>
+          <first_name>Alex</first_name>
+          <middle_initial>S.</middle_initial>
+          <last_name>Aiken</last_name>
+        </professor>
+      </instructors>
+      <prerequisites>
+        <prereq>CS107</prereq>
+      </prerequisites>
+    </course>
+
+    <course number='CS145' enrollment='130'>
+      <title>Introduction to Databases</title>
+      <description>Database design and use of database management systems for applications.</description>
+      <instructors>
+        <professor>
+          <first_name>Jennifer</first_name>
+          <last_name>Widom</last_name>
+        </professor>
+      </instructors>
+      <prerequisites>
+        <prereq>CS107</prereq>
+      </prerequisites>
+    </course>
+
+    <course number='CS221' enrollment='180'>
+      <title>Artificial Intelligence: Principles and Techniques</title>
+      <instructors>
+        <professor>
+          <first_name>Andrew</first_name>
+          <last_name>Ng</last_name>
+        </professor>
+        <professor>
+          <first_name>Sebastian</first_name>
+          <last_name>Thrun</last_name>
+        </professor>
+      </instructors>
+    </course>
+
+    <course number='CS228' enrollment='110'>
+      <title>Structured Probabilistic Models: Principles and Techniques</title>
+      <description>Using probabilistic modeling languages to represent complex domains.</description>
+      <instructors>
+        <professor>
+          <first_name>Daphne</first_name>
+          <last_name>Koller</last_name>
+        </professor>
+      </instructors>
+    </course>
+
+    <course number='CS229' enrollment='320'>
+      <title>Machine Learning</title>
+      <description>A broad introduction to machine learning and statistical pattern recognition.</description>
+      <instructors>
+        <professor>
+          <first_name>Andrew</first_name>
+          <last_name>Ng</last_name>
+        </professor>
+      </instructors>
+    </course>
+
+  </department>
+
+
+  <department code='EE'>
+
+    <title>Electrical Engineering</title>
+
+    <chair>
+      <professor>
+        <first_name>Mark</first_name>
+        <middle_initial>A.</middle_initial>
+        <last_name>Horowitz</last_name>
+      </professor>
+    </chair>
+
+    <course number='EE108A'>
+      <title>Digital Systems I</title>
+      <description>Digital circuit, logic, and system design.</description>
+      <instructors>
+        <professor>
+          <first_name>Subhasish</first_name>
+          <last_name>Mitra</last_name>
+        </professor>
+      </instructors>
+    </course>
+
+    <course number='EE108B'>
+      <title>Digital Systems II</title>
+      <description>The design of processor-based digital systems.</description>
+      <instructors>
+        <professor>
+          <first_name>William</first_name>
+          <middle_initial>J.</middle_initial>
+          <last_name>Dally</last_name>
+        </professor>
+        <professor>
+          <first_name>Oyekunle</first_name>
+          <last_name>Olukotun</last_name>
+        </professor>
+      </instructors>
+      <prerequisites>
+        <prereq>EE108A</prereq>
+        <prereq>CS106B</prereq>
+      </prerequisites>
+    </course>
+  </department>
+
+  <department code='LING'>
+
+    <title>Linguistics</title>
+
+    <chair>
+      <professor>
+        <first_name>Beth</first_name>
+        <last_name>Levin</last_name>
+      </professor>
+    </chair>
+
+    <course number='LING180' enrollment='60'>
+      <title>From Languages to Information</title>
+      <description>Natural language processing. Cross-listed as CS124.</description>
+      <instructors>
+        <professor>
+          <first_name>Dan</first_name>
+          <last_name>Jurafsky</last_name>
+        </professor>
+      </instructors>
+      <prerequisites>
+        <prereq>CS107</prereq>
+        <prereq>CS109</prereq>
+      </prerequisites>
+    </course>
+
+  </department>
+
+</course_catalog>
