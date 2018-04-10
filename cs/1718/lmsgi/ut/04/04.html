@@ -13,10 +13,10 @@
 
     <ol>
       <li><a href='http://en.wikipedia.org/wiki/xml_schema'>Restricciones en documentos XML</a>.</li>
-      <li><a href='http://w3.org/standards/xml/schema'>Tecnologías para la definición de estructuras de documentos XML: XSD</a>.</li>
+      <li><a href='http://w3.org/standards/xml/schema'>Tecnologías para la definición de estructuras de documentos XML: XSD</a>.<br /><br /></li>
       <li>Estructura y sintaxis de XSD:
         <ul>
-          <li>Introducción: <a href='http://w3schools.com/xml/schema_intro.asp'>1</a>, <a href='http://w3schools.com/xml/schema_howto.asp'>2</a>.</li>
+          <li>Introducción: <a href='http://w3schools.com/xml/schema_intro.asp'>preámbulo</a>, <a href='http://w3schools.com/xml/schema_howto.asp'>relación XML/XSD</a>.</li>
           <li><a href='http://w3schools.com/xml/schema_schema.asp'>El elemento raíz <em>schema</em></a>.</li>
           <li><a href='http://w3schools.com/xml/schema_simple.asp'>Elementos simples</a>.</li>
           <li><a href='http://w3schools.com/xml/schema_simple_attributes.asp'>Atributos</a>.</li>
@@ -31,9 +31,18 @@
           </li>
           <li><a href='http://w3schools.com/xml/schema_complex_indicators.asp'>Indicadores</a>.</li>
           <li>Los elementos <em><a href='http://w3schools.com/xml/schema_complex_any.asp'>any</a></em> y <em><a href='http://w3schools.com/xml/schema_complex_anyattribute.asp'>anyAttribute</a></em>.</li>
-        </ul>
+          <li><a href='https://www.w3schools.com/xml/schema_complex_subst.asp'>Elementos de sustitución</a>.</li>
+
+          <li><a href='http://w3schools.com/xml/schema_example.asp'>Diseños en XSD</a>: sencillo, usando el atributo <em>ref</em> y definiendo tipos (simpleType, complexType).</li>
+          <li>Otros:
+            <ul>
+              <li>Tipos de datos: <a href='http://w3schools.com/xml/schema_dtypes_string.asp'><em>string</em></a>, <a href='http://w3schools.com/xml/schema_dtypes_date.asp'><em>date/time</em></a>, <a href='http://w3schools.com/xml/schema_dtypes_numeric.asp'><em>numeric</em></a>, <a href='http://w3schools.com/xml/schema_dtypes_misc.asp'><em>miscellaneous</em></a>.</li>
+              <li>Referencia: <a href='http://w3schools.com/xml/schema_elements_ref.asp'>XSD</a>.</li>
+            </ul>
+          </li>
+        </ul><br />
       </li>
-      <li><a href='http://w3schools.com/xml/schema_example.asp'>Creación de definición de estructuras de documentos con XSD</a>.</li>
+      <li><a href='http://abrirllave.com/xsd/guion-del-tutorial.php'>Creación de definición de estructuras de documentos con XSD</a>.</li>
       <li>Validación de documentos XSD:
         <ul>
           <li><a href='http://w3.org/2001/XMLSchema'><em>XML Schemas to validate XML Schemas</em></a>.</li>
@@ -41,46 +50,44 @@
         </ul>
       </li>
       <li><a href='http://abrirllave.com/xsd/validacion-de-un-documento-xml-con-xsd.php'>Validación de documentos XML con respecto a documentos XSD</a>.</li>
-      <li><a href='http://utilities-online.info/xsdvalidation'>Herramienta JAXP en línea</a>.</li>
-      <li><a href='http://w3schools.com/xml/el_annotation.asp'>Documentación en XSD</a>.</li>
+      <li><a href='http://utilities-online.info/xsdvalidation'>Herramienta JAXP en línea</a> y <a href='http://xmlsoft.org/xmllint.html'><em>xmllint</em></a>.</li>
+      <li>Documentación de documentos XSD: el elemento <a href='http://w3schools.com/xml/el_annotation.asp'><em>annotation</em></a>.</li>
     </ol>
 
     <p><strong>Specifications:</strong> XSD 1.1 (<a href='http://w3.org/tr/xmlschema11-1'>structures</a>, <a href='http://w3.org/tr/xmlschema11-2'>datatypes</a>).<br />
     <strong>References:</strong> <a href='http://w3schools.com/xml/schema_elements_ref.asp'>XSD</a>.<br />
     <strong>Example:</strong> <a href='https://github.com/milq/milq/tree/master/learn/xml'>XML/XSD</a>.<br />
     <strong>Other:</strong> <a href='http://javatpoint.com/dtd-vs-xsd'>DTD vs XSD</a>.</p>
-    
 
-
-    <h2>Actividades</h2>
+    <h2>Actividades 1</h2>
 
     <p>Todos los documentos XML y XSD tienen que estar bien formados (<em>Well-Formed</em>) y el XSD además tiene que ser válido (<em>Valid</em>). Una vez terminado, los documentos XML tienen que validarse correctamente con respecto al XSD creado.</p>
 
     <p>Crea un XSD (XML Schema Definition) válido que defina las siguientes estructuras. Además, realiza 3 documentos XML de ejemplo y valídalos con respecto al XSD válido creado:</p>
 
     <p><strong>1.</strong> Define la estructura de un correo electrónico.</p>
-    
+
     <p><strong>2.</strong> Define la estructura de un estudiante. La estructura debe contener elementos simples y que contemplen al menos: 5 tipos diferentes de datos, valores fijos y valores por defecto.</p>
-    
+
     <p><strong>3.</strong> Define la estructura taxonómica de un perro. La estructura debe contener elementos simples y que contemplen al menos: 5 tipos diferentes de datos, valores fijos y valores por defecto. Deben existir elementos con atributos, algunos de ellos de uso obligatorio.</p>
 
     <p><strong>4.</strong> Define la estructura de un CD. La estructura debe contener elementos simples y que contemplen al menos: 5 tipos diferentes de datos, valores fijos y valores por defecto. Deben existir elementos con atributos, algunos de ellos de uso obligatorio. Además, la estructura debe contener 5 facetas diferentes.</p>
-    
+
     <p><strong>5.</strong> Define la estructura de un videojuego. La estructura debe contener los 4 tipos de elementos complejos. Además, la estructura debe contener 5 facetas diferentes.</p>
 
     <p><strong>6.</strong> Define la estructura de un catálogo de CDs a partir de la actividad 4. El catálogo debe contener 7 indicadores.</p>
-        
-    <p><strong>07.</strong> Crea un XML Schema que describa la estructura de una persona (nombre, apellidos, etc.). El esquema debe contener los elementos <code>&lt;any&gt;</code> y <code>&lt;anyAttribute&gt;</code>. Además, algunos nombres de los elementos podrán estar tanto en inglés como en español. Realiza 3 documentos XML de ejemplo y valídalos con respecto al XSD creado. <strong>Pista:</strong> usar los ejemplos de W3Schools de <em><a href='https://www.w3schools.com/xml/schema_complex_any.asp'>any</a></em>, <em><a href='https://www.w3schools.com/xml/schema_complex_anyattribute.asp'>anyAttribute</a></em> y los de <em><a href='https://www.w3schools.com/xml/schema_complex_subst.asp'>elementos de sustitución</a></em> para los idiomas.</p>
-    
-    <p><strong>08.</strong> Crea un XML Schema que describa la estructura de un catálogo de libros. La estructura debe contener elementos <strong>complejos</strong> con atributos, que contemplen ambos, al menos, <code>5</code> tipos diferentes de datos y valores fijos, por defecto y obligatorios. Además, la estructura debe contener <code>5</code> restricciones y <code>7</code> indicadores. El esquema debe contener los elementos <code>&lt;any&gt;</code> y <code>&lt;anyAttribute&gt;</code>. Además, algunos nombres de los elementos podrán estar tanto en inglés como en español. Por último, debe contener, como mínimo, <a href='https://www.w3schools.com/xml/el_annotation.asp'>una anotación</a>. Realiza 3 documentos XML de ejemplo y valídalos con respecto al XSD creado. <strong>Pista:</strong> usar todos los ejemplos de <strong><a href='http://w3schools.com/xml/schema_intro.asp'>XML Schema Definition (XSD)</a></strong> de W3Schools.</p>
 
-    <p><strong>09.</strong> Define la estructura de un documento RSS. La estructura debe aceptar cero o más ítems.</p>
+    <p><strong>7.</strong> Define la estructura de una distribución GNU/Linux. La estructura debe aceptar elementos y atributos no especificados por el esquema. Además, la estructura debe aceptar que algunos elementos puedan estar tanto en español como en inglés.</p>
+
+    <p><strong>8.</strong> Define la estructura de un catálogo de libros. La estructura debe contener elementos simples y complejos con atributos así como valores fijos, por defecto y obligatorios. Además, la estructura debe contener 5 facetas y 7 indicadores diferentes. La estructura debe aceptar elementos y atributos no especificados por el esquema y que algunos elementos puedan estar tanto en español como en inglés. Por último, debe contener, como mínimo, tres anotaciones.</p>
+
+    <p><strong>9.</strong> Define la estructura de un documento RSS. La estructura debe aceptar cero o más ítems.</p>
 
     <p><strong>10.</strong> Define la estructura de un documento Atom. La estructura debe aceptar cero o más entradas.</p>
 
     <h2>Actividades 2</h2>
 
-	<p><a href='http://ticarte.com/contenido/ejercicios-practicos-de-xsd'>Ejercicios prácticos de XSD</a>.</p>
+    <p><a href='http://ticarte.com/contenido/ejercicios-practicos-de-xsd'>Ejercicios prácticos de XSD</a>.</p>
 
     <p><a href='../../index.html'>Back to index</a>.</p>
 
