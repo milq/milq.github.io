@@ -132,9 +132,9 @@
 	<h3>4.2. Trabajar en local usando una base de datos local</h3>
 
     <ol>
-	  <li>Entra en la página oficial de <a href='http://postgresql.org'>PostgreSQL</a> e instala la versión <strong><em>X.X</em></strong> correspondiente a la versión usada en Heroku (ver punto 6 de la sección 4.1).</li>
+	  <li>Entra en la página oficial de <a href='http://postgresql.org'>PostgreSQL</a> e instala la versión <strong><em>X.X</em></strong> (mediante el <a href='http://enterprisedb.com/downloads/postgres-postgresql-downloads'>instalador</a>) correspondiente a la versión usada en Heroku (ver punto 6 de la sección 4.1).</li>
 	  <li><strong>Anota la contraseña</strong> que has puesto durante la instalación para el superusuario <strong><em>postgres</em></strong> (superusuario por defecto) porque lo usuarás más adelante.</li>
-	  <li>Descomenta la línea <code>;extension=php_pgsql.dll</code> en <code>C:\xampp\php\php.ini</code> (Windows) o en <code>/opt/lampp/etc/php.ini</code> (Debian/Ubuntu).</li>
+	  <li>Descomenta la línea <code>;extension=php_pgsql.dll</code>, o <code>;extension=pgsql</code>, en <code>C:\xampp\php\php.ini</code> (Windows) o en <code>/opt/lampp/etc/php.ini</code> (Debian/Ubuntu).</li>
 	  <li>Entra en <em>pgAdmin</em>, inicia el servidor local (<em>PostgreSQL X.X</em>), crea una base de datos e iníciala también. Mantén <em>pgAdmin</em> ejecutándose al igual que XAMPP.</li>
 	  <li>Ya puedes trabajar en PHP y PostgreSQL en local con los siguientes credenciales de la base de datos: <code>$host = 'localhost'; $dbname = '<em>tu_base_de_datos</em>'; $user = 'postgres'; $password = '<em>contraseña que pusiste para el superusuario postgres</em>';</code></li>
     </ol>
