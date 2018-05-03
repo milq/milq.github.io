@@ -7,59 +7,59 @@
 
   <body>
     <h1>Tutorial de Heroku</h1>
-    
+
     <p>Este es un tutorial para Heroku en español para desarrollar aplicaciones PHP con la base de datos PostgreSQL.</p>
-    
+
     <p>Crea una cuenta gratuita en <a href='http://signup.heroku.com'>Heroku</a> si no dispones de ella.</p>
-    
+
     <h2>1. Instala XAMPP, Composer, Git y Heroku CLI</h2>
-    
+
     <ol>
-	  <li>Instala <a href='http://apachefriends.org/download.html'>XAMPP</a> en la ruta que viene por defecto (<code>C:\xampp</code> en Windows u <code>/opt/lampp/</code> en Debian/Ubuntu).</li>
-	  <li>Instala Composer en Windows (mediante el <a href='http://getcomposer.org/doc/00-intro.md#installation-windows' title='Instalador Composer'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install composer</code>).</li>
-	  <li>Instala Git en Windows (mediante el <a href='http://git-scm.com/download/win' title='Instalador Git'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install git</code>).</li>
-	  <li>Instala <a href='http://devcenter.heroku.com/articles/heroku-cli#download-and-install'>Heroku CLI</a>.</li>
+      <li>Instala <a href='http://apachefriends.org/download.html'>XAMPP</a> en la ruta que viene por defecto (<code>C:\xampp</code> en Windows u <code>/opt/lampp/</code> en Debian/Ubuntu).</li>
+      <li>Instala Composer en Windows (mediante el <a href='http://getcomposer.org/doc/00-intro.md#installation-windows' title='Instalador Composer'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install composer</code>).</li>
+      <li>Instala Git en Windows (mediante el <a href='http://git-scm.com/download/win' title='Instalador Git'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install git</code>).</li>
+      <li>Instala <a href='http://devcenter.heroku.com/articles/heroku-cli#download-and-install'>Heroku CLI</a>.</li>
     </ol>
-    
+
     <p>Verifica que todo funciona correctamente, para ello:</p>
 
-	<ol>
-	  <li>Inicia el servidor XAMPP.</li>
-	  <li>Comprueba PHP en la terminal ejecutando <code>php --version</code> en Windows u <code>/opt/lampp/bin/php --version</code> en Debian/Ubuntu.</li>
-	  <li>Comprueba Composer en la terminal ejecutando <code>composer --version</code> en Windows o en Debian/Ubuntu.</li>
-	  <li>Comprueba Git en la terminal ejecutando <code>git --version</code> en Windows o en Debian/Ubuntu.</li>	
-	  <li>Comprueba Heroku CLI en la terminal ejecutando <code>heroku --version</code> en Windows o en Debian/Ubuntu.</li>		    
-	</ol>
+    <ol>
+      <li>Inicia el servidor XAMPP.</li>
+      <li>Comprueba PHP en la terminal ejecutando <code>php --version</code> en Windows u <code>/opt/lampp/bin/php --version</code> en Debian/Ubuntu.</li>
+      <li>Comprueba Composer en la terminal ejecutando <code>composer --version</code> en Windows o en Debian/Ubuntu.</li>
+      <li>Comprueba Git en la terminal ejecutando <code>git --version</code> en Windows o en Debian/Ubuntu.</li>
+      <li>Comprueba Heroku CLI en la terminal ejecutando <code>heroku --version</code> en Windows o en Debian/Ubuntu.</li>
+    </ol>
 
     <h2>2. Crea y configura una aplicación web Heroku</h2>
 
-	<p>Los pasos para crear una aplicación web en blanco en Heroku son los siguientes.</p>
-    
-    <h3>2.1. Crea una aplicación Heroku</h3>    
+    <p>Los pasos para crear una aplicación web en blanco en Heroku son los siguientes.</p>
+
+    <h3>2.1. Crea una aplicación Heroku</h3>
 
     <ol>
-	  <li>Entra en el panel principal: <a href='http://dashboard.heroku.com'>http://dashboard.heroku.com</a>.</li>
-	  <li>Pulsa en <strong>New</strong>, <strong>Create new app</strong>. Ponle un nombre, selecciona una región y pulsa en <strong>Create app</strong>.</li>
+      <li>Entra en el panel principal: <a href='http://dashboard.heroku.com'>http://dashboard.heroku.com</a>.</li>
+      <li>Pulsa en <strong>New</strong>, <strong>Create new app</strong>. Ponle un nombre, selecciona una región y pulsa en <strong>Create app</strong>.</li>
       <!--<li>Dentro del panel de tu aplicación Heroku, ve a la pestaña <strong>Settings</strong> y copia o guarda la dirección de tu <strong>Heroku Git URL</strong>.
 </li>-->
     </ol>
-    
-	<h3>2.2. Clona tu aplicación Heroku </h3>
-	
-	<p>En tu terminal, haz lo siguiente:</p>
-	
-	<ol>
-	  <li>Ve a <code>C:\xampp\htdocs\</code> en Windows u <code>/opt/lampp/htdocs/</code> en Debian/Ubuntu.</li>
-	  <li>Ejecuta <code>heroku git:clone -a <em>myapp</em></code> donde <em>myapp</em> es el nombre de tu aplicación Heroku.</li>
-	</ol>
 
-	<h3>2.3. Configura Composer y configura Procfile</h3>
+    <h3>2.2. Clona tu aplicación Heroku </h3>
 
-	<p>En tu terminal, haz lo siguiente:</p>
-	
-	<ol>
-	  <li>Ve a <code>C:\xampp\htdocs\<em>myapp</em></code> en Windows u <code>/opt/lampp/htdocs/<em>myapp</em></code> en Debian/Ubuntu donde <em>myapp</em> es el nombre de tu aplicación Heroku.</li>		
-      <li>Desde esa misma carpeta, crea un fichero de texto denominado <code>composer.json</code> y escribe lo siguiente:      
+    <p>En tu terminal, haz lo siguiente:</p>
+
+    <ol>
+      <li>Ve a <code>C:\xampp\htdocs\</code> en Windows u <code>/opt/lampp/htdocs/</code> en Debian/Ubuntu.</li>
+      <li>Ejecuta <code>heroku git:clone -a <em>myapp</em></code> donde <em>myapp</em> es el nombre de tu aplicación Heroku.</li>
+    </ol>
+
+    <h3>2.3. Configura Composer y configura Procfile</h3>
+
+    <p>En tu terminal, haz lo siguiente:</p>
+
+    <ol>
+      <li>Ve a <code>C:\xampp\htdocs\<em>myapp</em></code> en Windows u <code>/opt/lampp/htdocs/<em>myapp</em></code> en Debian/Ubuntu donde <em>myapp</em> es el nombre de tu aplicación Heroku.</li>
+      <li>Desde esa misma carpeta, crea un fichero de texto denominado <code>composer.json</code> y escribe lo siguiente:
       <pre>{
   "require": {
     "php": "^7.1.10"
@@ -68,22 +68,22 @@
       <li>Desde esa misma carpeta, ejecuta <code>composer update</code> en Windows o Debian/Ubuntu.</li>
       <li>Desde esa misma carpeta, borra la carpeta <code>vendor</code>.</li>
       <li>Desde esa misma carpeta, crea un fichero de texto denominado <code>Procfile</code> (nótese que no tiene extensión) con el siguiente contenido: <code>web: heroku-php-apache2</code>.</li>
-	</ol>
+    </ol>
 
-	<h3>2.4. Deja preparada tu aplicación web Heroku para desarrollar</h3>
+    <h3>2.4. Deja preparada tu aplicación web Heroku para desarrollar</h3>
 
-	<p>Desde la carpeta de tu aplicación Heroku y en la terminal, ejecuta los comandos en el siguiente orden:</p>
+    <p>Desde la carpeta de tu aplicación Heroku y en la terminal, ejecuta los comandos en el siguiente orden:</p>
 
-	<ol>
-	  <li><code>git status</code></li>
-	  <li><code>git add .</code></li>
-	  <li><code>git commit -m "Mi primer commit"</code> (si es tu primer <em>commit</em> te avisará que tienes que configurar tu nombre y tu correo).</li>
-	  <li><code>git push heroku master</code></li>
-	</ol>
-	
-	<p>Si todo ha ido correctamente, ya tendrás configurada y preparada tu aplicación web en Heroku para empezar a desarrollar.</p>
-    
-    <h2>3. Desarrolla tu aplicación web en Heroku</h2>    
+    <ol>
+      <li><code>git status</code></li>
+      <li><code>git add .</code></li>
+      <li><code>git commit -m "Mi primer commit"</code> (si es tu primer <em>commit</em> te avisará que tienes que configurar tu nombre y tu correo).</li>
+      <li><code>git push</code></li>
+    </ol>
+
+    <p>Si todo ha ido correctamente, ya tendrás configurada y preparada tu aplicación web en Heroku para empezar a desarrollar.</p>
+
+    <h2>3. Desarrolla tu aplicación web en Heroku</h2>
 
 
    <p>Desde la carpeta de tu aplicación Heroku, crea un fichero de ejemplo <strong>index.php</strong> con el siguiente contenido:</p>
@@ -97,62 +97,61 @@
   &lt;body&gt;
     &lt;h1&gt;A blank PHP page&lt;/h1&gt;
 
-    &lt;?php
-      echo '&lt;p&gt;Text generated with PHP.&lt;/p&gt;';
-    ?&gt;
+    &lt;p&gt;&lt;?php echo 'Text generated with PHP.'; ?&gt;&lt;/p&gt;
+
 
   &lt;/body&gt;
 &lt;/html&gt;</pre>
 
-	<p>Desde la terminal y desde esa misma carpeta, ejecuta los comandos en el siguiente orden:</p>
+    <p>Desde la terminal y desde esa misma carpeta, ejecuta los comandos en el siguiente orden:</p>
 
-	<ol>
-	  <li><code>git status</code></li>
-	  <li><code>git add .</code></li>
-	  <li><code>git commit -m "Mi primer commit"</code></li>
-	  <li><code>git push heroku master</code></li>
-	</ol>
-    
-    	<p>Por último, comprueba tu aplicación en <code>http://<em>myapp</em>.herokuapp.com/</code> donde <em>myapp</em> es el nombre de tu aplicación Heroku.</p>
-    	
-    <h2>4. Trabajar con la base de datos PostgreSQL en Heroku</h2>    
+    <ol>
+      <li><code>git status</code></li>
+      <li><code>git add .</code></li>
+      <li><code>git commit -m "Mi primer commit"</code></li>
+      <li><code>git push</code></li>
+    </ol>
+
+        <p>Por último, comprueba tu aplicación en <code>http://<em>myapp</em>.herokuapp.com/</code> donde <em>myapp</em> es el nombre de tu aplicación Heroku.</p>
+
+    <h2>4. Trabajar con la base de datos PostgreSQL en Heroku</h2>
 
     <h3>4.1. Configuración de la base de datos en Heroku</h3>
 
     <ol>
-	  <li>Entra en el panel principal: <a href='http://dashboard.heroku.com'>http://dashboard.heroku.com</a>.</li>
-	  <li>Pulsa en tu aplicación y después pulsa en la pestaña <strong>Resources</strong>.</li>
-	  <li>Añade el siguiente <strong><em>add-on</em></strong> a tu aplicación: <strong>Heroku Postgres</strong>.</li>
-	  <li>Entra en el panel de datos: <a href='http://data.heroku.com'>http://data.heroku.com</a>.</li>
-	  <li>Pulsa en la base de datos asociada tu aplicación y después pulsa en la pestaña <strong>Overview</strong>.</li>
-	  <li><strong>Anota la versión</strong> de tu base de datos porque será la versión (solo necesitas cumplir los dos primeros números) que necesitarás instalar de PostgreSQL.</li>
-	  <li>Pulsa en la pestaña <strong>Settings</strong> y después en <strong>Database Credentials</strong> para guardar los credenciales de tu base de datos para poder conectarte desde Heroku.</li>
-    </ol>
- 
-	<h3>4.2. Trabajar en local usando una base de datos local</h3>
-
-    <ol>
-	  <li>Entra en la página oficial de <a href='http://postgresql.org'>PostgreSQL</a> e instala la versión <strong><em>X.X</em></strong> (mediante el <a href='http://enterprisedb.com/downloads/postgres-postgresql-downloads'>instalador</a>) correspondiente a la versión usada en Heroku (ver punto 6 de la sección 4.1).</li>
-	  <li><strong>Anota la contraseña</strong> que has puesto durante la instalación para el superusuario <strong><em>postgres</em></strong> (superusuario por defecto) porque lo usuarás más adelante.</li>
-	  <li>Descomenta la línea <code>;extension=php_pgsql.dll</code>, o <code>;extension=pgsql</code>, en <code>C:\xampp\php\php.ini</code> (Windows) o en <code>/opt/lampp/etc/php.ini</code> (Debian/Ubuntu).</li>
-	  <li>Entra en <em>pgAdmin</em>, inicia el servidor local (<em>PostgreSQL X.X</em>), crea una base de datos e iníciala también. Mantén <em>pgAdmin</em> ejecutándose al igual que XAMPP.</li>
-	  <li>Ya puedes trabajar en PHP y PostgreSQL en local con los siguientes credenciales de la base de datos: <code>$host = 'localhost'; $dbname = '<em>tu_base_de_datos</em>'; $user = 'postgres'; $password = '<em>contraseña que pusiste para el superusuario postgres</em>';</code></li>
+      <li>Entra en el panel principal: <a href='http://dashboard.heroku.com'>http://dashboard.heroku.com</a>.</li>
+      <li>Pulsa en tu aplicación y después pulsa en la pestaña <strong>Resources</strong>.</li>
+      <li>Añade el siguiente <strong><em>add-on</em></strong> a tu aplicación: <strong>Heroku Postgres</strong>.</li>
+      <li>Entra en el panel de datos: <a href='http://data.heroku.com'>http://data.heroku.com</a>.</li>
+      <li>Pulsa en la base de datos asociada tu aplicación y después pulsa en la pestaña <strong>Overview</strong>.</li>
+      <li><strong>Anota la versión</strong> de tu base de datos porque será la versión (solo necesitas cumplir los dos primeros números) que necesitarás instalar de PostgreSQL.</li>
+      <li>Pulsa en la pestaña <strong>Settings</strong> y después en <strong>Database Credentials</strong> para guardar los credenciales de tu base de datos para poder conectarte desde Heroku.</li>
     </ol>
 
-	<h3>4.3. Trabajar en local usando una base de datos Heroku</h3>
-    
+    <h3>4.2. Trabajar en local usando una base de datos local</h3>
+
     <ol>
-	  <li>Comprueba que has realizado los tres primeros puntos de la sección 4.2.</li>
-	  <li>Crea un servidor usando los credenciales proporcionados por Heroku. <em>Consejo:</em> si no quieres ver todas las bases de datos del servidor añade en <em>Advanced</em> &rarr; <em>DB restriction</em> tu base de datos.</li>
-	  <li>Ya puedes trabajar en PHP y PostgreSQL con los credenciales de la base de datos proporcionada por Heroku.</li>
-	</ol>	  
-	
+      <li>Entra en la página oficial de <a href='http://postgresql.org'>PostgreSQL</a> e instala la versión <strong><em>X.X</em></strong> (mediante el <a href='http://enterprisedb.com/downloads/postgres-postgresql-downloads'>instalador</a>) correspondiente a la versión usada en Heroku (ver punto 6 de la sección 4.1).</li>
+      <li><strong>Anota la contraseña</strong> que has puesto durante la instalación para el superusuario <strong><em>postgres</em></strong> (superusuario por defecto) porque lo usuarás más adelante.</li>
+      <li>Descomenta la línea <code>;extension=php_pgsql.dll</code>, o <code>;extension=pgsql</code>, en <code>C:\xampp\php\php.ini</code> (Windows) o en <code>/opt/lampp/etc/php.ini</code> (Debian/Ubuntu).</li>
+      <li>Entra en <em>pgAdmin</em>, inicia el servidor local (<em>PostgreSQL X.X</em>), crea una base de datos e iníciala también. Mantén <em>pgAdmin</em> ejecutándose al igual que XAMPP.</li>
+      <li>Ya puedes trabajar en PHP y PostgreSQL en local con los siguientes credenciales de la base de datos: <code>$host = 'localhost'; $dbname = '<em>tu_base_de_datos</em>'; $user = 'postgres'; $password = '<em>contraseña que pusiste para el superusuario postgres</em>';</code></li>
+    </ol>
+
+    <h3>4.3. Trabajar en local usando una base de datos Heroku</h3>
+
+    <ol>
+      <li>Comprueba que has realizado los tres primeros puntos de la sección 4.2.</li>
+      <li>Crea un servidor usando los credenciales proporcionados por Heroku. <em>Consejo:</em> si no quieres ver todas las bases de datos del servidor añade en <em>Advanced</em> &rarr; <em>DB restriction</em> tu base de datos.</li>
+      <li>Ya puedes trabajar en PHP y PostgreSQL con los credenciales de la base de datos proporcionada por Heroku.</li>
+    </ol>
+
     <h3>4.4. Ejecutar <em>scripts</em> SQL y ver/modificar datos en <em>pgAdmin</em></h3>
-    
+
     <ol>
-	  <li>Para ejecutar <em>scripts</em> SQL en <em>pgAdmin</em> pulsa con el botón derecho del ratón en tu base de datos y luego en <em>Query tool</em>.</li>
+      <li>Para ejecutar <em>scripts</em> SQL en <em>pgAdmin</em> pulsa con el botón derecho del ratón en tu base de datos y luego en <em>Query tool</em>.</li>
       <li>Para ver/modificar datos en <em>pgAdmin</em> pulsa con el botón derecho en una tabla de tu base de datos (las tablas están dentro de <em>Schemas</em>) y luego en <em>View/Edit Data</em>.</li>
-	</ol>	    
-        
+    </ol>
+
   </body>
 </html>
