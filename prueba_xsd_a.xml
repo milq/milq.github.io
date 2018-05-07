@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<oneclick_videogames>
+  <cif>F12635623</cif>
+  <sociedad>Anónima</sociedad>
+  <socio>Pedro López</socio>
+  <socio>Rodrigo Pérez</socio>
+  <videojuego consola='Nintendo 64'>
+    <titulo>The Legend of Zelda: Ocarina of Time</titulo>
+    <desarrollador>Nintendo</desarrollador>
+    <distribuidora>Nintendo</distribuidora>
+    <fecha_salida>1998-11-21</fecha_salida>
+    <precio>60</precio>
+    <cantidad>12</cantidad>
+  </videojuego>
+  <videojuego>
+    <cantidad>5</cantidad>
+    <titulo>UFO: Enemy Unknown</titulo>
+    <precio>45</precio>
+    <desarrollador>Mythos Games</desarrollador>
+    <fecha_salida>1994-03-11</fecha_salida>
+    <distribuidora>MicroProse</distribuidora>
+  </videojuego>
+  <videojuego consola='Game Gear'>
+    <precio>55</precio>
+    <titulo>Sonic the Hedgehog</titulo>
+    <desarrollador>Sonic Team</desarrollador>
+    <cantidad>23</cantidad>
+    <fecha_salida>1991-11-23</fecha_salida>
+    <distribuidora>Sega</distribuidora>
+  </videojuego>
+</oneclick_videogames>

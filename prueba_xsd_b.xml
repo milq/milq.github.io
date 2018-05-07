@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<ies_ciudadjardin>
+  <codigo>553562S</codigo>
+  <centro>Público</centro>
+  <aula>CFGS1</aula>
+  <aula>CFGS2</aula>
+  <profesor directiva='Subdirector'>
+    <nombre>Manuel</nombre>
+    <apellidos>Bejarano García</apellidos>
+    <especialidad>Matemáticas</especialidad>
+    <fecha_nac>1988-10-13</fecha_nac>
+    <asignaturas>5</asignaturas>
+    <meses_experiencia>34</meses_experiencia>
+  </profesor>
+  <profesor>
+    <especialidad>Informática</especialidad>
+    <nombre>Daniel</nombre>
+    <apellidos>Fernández Fernández</apellidos>
+    <fecha_nac>1980-01-11</fecha_nac>
+    <meses_experiencia>6</meses_experiencia>
+    <asignaturas>4</asignaturas>
+  </profesor>
+  <profesor directiva='Jefe de estudios'>
+    <apellidos>Toledano Salas</apellidos>
+    <meses_experiencia>22</meses_experiencia>
+    <fecha_nac>1988-10-13</fecha_nac>
+    <especialidad>Biología</especialidad>
+    <asignaturas>8</asignaturas>
+    <nombre>Manuel</nombre>
+  </profesor>
+</ies_ciudadjardin>
