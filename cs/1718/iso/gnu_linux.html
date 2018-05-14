@@ -17,7 +17,7 @@
 	  <li><a href='http://hablemoslinux.org/2012/07/02/los-parametros-posicionales-en-un-shell-script'>Parámetros posicionales</a> (<a href='http://github.com/milq/milq/blob/master/learn/prog/input_script/input_script.sh'>ejemplo</a>).</li>
 	  <li><a href='http://bioinf.comav.upv.es/courses/unix/procesamiento_texto.html'>Procesamiento de ficheros de texto</a>.</li>
 	  <li><a href='http://bioinf.comav.upv.es/courses/unix/expresiones_regulares.html'>Expresiones regulares</a>.</li>
-	  <li><a href='http://bioinf.comav.upv.es/courses/unix/scripts_bash.html'>Scripts en Bash</a>.</li>
+	  <li><a href='http://bioinf.comav.upv.es/courses/unix/scripts_bash.html'>Scripts en Bash</a> (<a href='http://raw.githubusercontent.com/milq/milq/master/learn/prog/01/01.sh'>variables</a>).</li>
 	  <li><a href='http://icewinddale.blogspot.com.es/2017/09/tutorial-de-uso-de-funciones-en-bash.html'>Funciones en Bash</a>.</li>
 	</ol>
 
@@ -37,45 +37,32 @@
 
     <p><strong>1.</strong> Recoge dos enteros, comprueba que el segundo es el mayor que el primero y si es así imprime el intervalo entre esos dos números.</p>
 
-    <p><strong>2.</strong> Dado un nombre de usuario, haz un informe, con nombre <em>informeA.txt</em>, que muestre su nombre de usuario, su UID, su información detallada, su carpeta personal y su <em>shell</em>.</p>
+    <p><strong>2.</strong> Dado un nombre de usuario, haz un informe, con nombre <em>informeA.txt</em>, que muestre su nombre de usuario, su UID, su información detallada, su carpeta personal y el <em>shell</em> que utiliza.</p>
     
     <p><strong>3.</strong> Dado un nombre de usuario, haz un informe, con nombre <em>informeB.txt</em>, que muestre los grupos a los que pertenece dicho usuario así como el GID de dichos grupos.</p>
 
     <p><strong>4.</strong> Dada una serie de rutas, muestra si es un fichero o un directorio. Además, si es un fichero muestra su tipo (comando <em>file</em>) y si es un directorio muestra el tamaño que ocupa (comando <em>du</em>).</p>
 
-    <p><strong>5.</strong> Dada una serie de rutas, borra los ficheros o directorios que correspondan a dichas rutas solo si el usuario que ejecuta el <em>script</em> tiene permiso de escritura. Además, si la ruta es un directorio se solicitará confirmación por parte del usuario (con el comando <em>read</em>).</p>
+    <p><strong>5.</strong> Dada una serie de rutas, borra los ficheros o directorios que correspondan a dichas rutas solo si el usuario que ejecuta el <em>script</em> tiene permiso de escritura sobre dichas rutas. Además, si la ruta es un directorio se solicitará confirmación por parte del usuario (usa el comando <em>read</em>).</p>
 
-    <p><strong>6.</strong> Crea un menú que realice las siguientes operaciones:</p>
+    <p><strong>6.</strong> Realiza las operaciones indicadas según los siguientes parámetros de entrada recibidos:</p>
     
-	<ol>
-	  <li>Muestra todos los ficheros o directorios del sistema que comiencen por una letra dada.</li>
-	  <li>Calcula el número de líneas de un fichero de texto.</li>
-	  <li>Muestra las estadísticas de un fichero o directorio (comando <em>stat</em>).</li>
-	  <li>Muestra el propietario de un fichero o directorio (comando <em>stat</em>).</li>
-	  <li>Muestra la fecha de la última modificación de un fichero o directorio (comando <em>stat</em>)</li>
-	  <li>Salir.</li>
-	</ol>
-
-    <p><strong>7.</strong> Crea un menú que realice las siguientes operaciones:</p>
-    
-	<ol>
-	  <li>Encuentra el <a href='http://www.jknc.eu/media/Iban_structure_Finland_2.png'>IBAN</a> en un fichero de texto.</li>
-	  <li>.</li>
-	  <li>.</li>
-	  <li>.</li>
-	  <li>.</li>
-	  <li>Salir.</li>
-	</ol>
-
-    <p><strong>8. </strong> 
-
 	<ul>
-	  <li>-c <em>ruta_origen ruta_destino</em>. Copia ...</li>
-	  <li>.</li>
-	  <li>.</li>
-	  <li>.</li>
-	  <li>.</li>
-	  <li>.</li>
+	  <li><strong>-n <em>ruta</em></strong>: calcula el número de líneas de un fichero de texto.</li>
+	  <li><strong>-s <em>ruta</em></strong>: muestra las estadísticas de un fichero o directorio (comando <em>stat</em>).</li>
+	  <li><strong>-ls <em>letra1</em> <em>letra2</em></strong>: muestra todos los ficheros o directorios del sistema que comiencen y terminen por una letra determinada.</li>
+	  <li><strong>-owner <em>ruta</em></strong>: muestra el propietario de un fichero o directorio (comando <em>stat</em>).</li>
+	  <li><strong>-m <em>ruta</em></strong>: muestra la fecha de la última modificación de un fichero o directorio (comando <em>stat</em>)</li>
+	</ul>
+
+    <p><strong>7.</strong> Realiza las operaciones indicadas según los siguientes parámetros de entrada recibidos:</p>
+    
+	<ul>
+	  <li><strong>-iban <em>ruta</em></strong>: encuentra todos los códigos <a href='http://domicilialo.es/wp-content/uploads/2017/03/IBAN.png'>IBAN</a> en un fichero de texto.</li>
+	  <li><strong>-iban <em>ruta</em> <em>nuevo_iban</em></strong>: transforma todos los códigos IBAN de un fichero de texto en uno nuevo dado.</li>
+	  <li><strong>-date <em>fecha</em></strong>: verifica si la fecha propocionada coincide con el patrón <a href='http://mariadb.com/kb/en/library/date'>DATE</a>.</li>
+	  <li><strong>-i <em>entero</em></strong>: verifica si el entero proporcionado coincide con el patrón de <a href='http://mariadb.com/kb/en/library/int'>INT</a>. No tengas en cuenta los límites de mínimo y máximo.</li>
+	  <li><strong>-f <em>real</em></strong>: verifica si el número real proporcionado coincide con el patrón de <a href='http://mariadb.com/kb/en/library/float'>FLOAT</a>. No tengas en cuenta los límites de mínimo y máximo.</li>
 	</ul>
 
     <p><a href='index.html'>Back to index</a>.</p>
