@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+  <xs:element name='data'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type='xs:int' name='these'/>
+        <xs:element name='supply'>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type='xs:int' name='four'/>
+              <xs:element type='xs:int' name='nails'/>
+              <xs:element name='industrial'>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type='xs:string' name='essential'/>
+                    <xs:element type='xs:int' name='managed'/>
+                    <xs:element type='xs:string' name='smile'/>
+                    <xs:element type='xs:string' name='pictured'/>
+                    <xs:element type='xs:string' name='energy'/>
+                    <xs:element type='xs:string' name='rain'/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type='xs:int' name='base'/>
+              <xs:element type='xs:int' name='bad'/>
+              <xs:element type='xs:int' name='worth'/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type='xs:int' name='under'/>
+        <xs:element type='xs:string' name='island'/>
+        <xs:element type='xs:float' name='human'/>
+        <xs:element type='xs:float' name='too'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

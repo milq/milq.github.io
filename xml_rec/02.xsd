@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+  <xs:element name='data'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type='xs:float' name='camera'/>
+        <xs:element type='xs:float' name='attack'/>
+        <xs:element type='xs:string' name='burst'/>
+        <xs:element type='xs:float' name='under'/>
+        <xs:element type='xs:int' name='view'/>
+        <xs:element name='station'>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type='xs:string' name='did'/>
+              <xs:element name='smooth'>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type='xs:float' name='did'/>
+                    <xs:element type='xs:int' name='page'/>
+                    <xs:element type='xs:int' name='route'/>
+                    <xs:element type='xs:string' name='breathing'/>
+                    <xs:element type='xs:string' name='now'/>
+                    <xs:element type='xs:string' name='leaf'/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type='xs:int' name='wish'/>
+              <xs:element type='xs:string' name='inside'/>
+              <xs:element type='xs:int' name='pig'/>
+              <xs:element type='xs:float' name='test'/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

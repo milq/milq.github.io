@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+  <xs:element name='data'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type='xs:string' name='beautiful'/>
+        <xs:element type='xs:int' name='ground'/>
+        <xs:element name='skin'>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name='contain'>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type='xs:string' name='muscle'/>
+                    <xs:element type='xs:float' name='bad'/>
+                    <xs:element type='xs:float' name='solid'/>
+                    <xs:element type='xs:string' name='limited'/>
+                    <xs:element type='xs:float' name='sink'/>
+                    <xs:element type='xs:string' name='dear'/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type='xs:string' name='tried'/>
+              <xs:element type='xs:int' name='design'/>
+              <xs:element type='xs:float' name='office'/>
+              <xs:element type='xs:string' name='bottom'/>
+              <xs:element type='xs:string' name='where'/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type='xs:float' name='amount'/>
+        <xs:element type='xs:float' name='left'/>
+        <xs:element type='xs:float' name='nose'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

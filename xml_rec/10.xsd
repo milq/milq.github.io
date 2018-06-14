@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+  <xs:element name='data'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type='xs:string' name='cotton'/>
+        <xs:element type='xs:string' name='they'/>
+        <xs:element type='xs:string' name='story'/>
+        <xs:element name='gold'>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type='xs:float' name='thrown'/>
+              <xs:element name='whatever'>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type='xs:string' name='before'/>
+                    <xs:element type='xs:string' name='weak'/>
+                    <xs:element type='xs:string' name='ship'/>
+                    <xs:element type='xs:int' name='out'/>
+                    <xs:element type='xs:float' name='sort'/>
+                    <xs:element type='xs:string' name='toy'/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type='xs:float' name='every'/>
+              <xs:element type='xs:float' name='gradually'/>
+              <xs:element type='xs:string' name='citizen'/>
+              <xs:element type='xs:string' name='bend'/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type='xs:float' name='swam'/>
+        <xs:element type='xs:int' name='using'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

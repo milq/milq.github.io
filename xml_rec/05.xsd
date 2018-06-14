@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+  <xs:element name='data'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name='teeth'>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name='quite'>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type='xs:string' name='successful'/>
+                    <xs:element type='xs:int' name='easy'/>
+                    <xs:element type='xs:int' name='bring'/>
+                    <xs:element type='xs:string' name='bean'/>
+                    <xs:element type='xs:string' name='mental'/>
+                    <xs:element type='xs:float' name='beautiful'/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type='xs:string' name='mice'/>
+              <xs:element type='xs:string' name='again'/>
+              <xs:element type='xs:int' name='music'/>
+              <xs:element type='xs:string' name='lost'/>
+              <xs:element type='xs:string' name='standard'/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type='xs:int' name='thread'/>
+        <xs:element type='xs:float' name='climb'/>
+        <xs:element type='xs:float' name='solid'/>
+        <xs:element type='xs:int' name='wrote'/>
+        <xs:element type='xs:int' name='first'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

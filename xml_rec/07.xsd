@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+  <xs:element name='data'>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type='xs:string' name='dance'/>
+        <xs:element type='xs:int' name='western'/>
+        <xs:element type='xs:string' name='national'/>
+        <xs:element name='reach'>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name='struggle'>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type='xs:float' name='village'/>
+                    <xs:element type='xs:float' name='branch'/>
+                    <xs:element type='xs:int' name='he'/>
+                    <xs:element type='xs:float' name='improve'/>
+                    <xs:element type='xs:int' name='force'/>
+                    <xs:element type='xs:int' name='herself'/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type='xs:float' name='rise'/>
+              <xs:element type='xs:string' name='properly'/>
+              <xs:element type='xs:int' name='period'/>
+              <xs:element type='xs:string' name='never'/>
+              <xs:element type='xs:string' name='thank'/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type='xs:int' name='when'/>
+        <xs:element type='xs:int' name='after'/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
