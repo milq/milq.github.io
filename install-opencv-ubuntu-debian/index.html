@@ -31,9 +31,9 @@
       
       <p>You can install OpenCV from the Ubuntu or Debian repository:</p>
       
-      <pre>sudo apt-get install libopencv-dev python-opencv</pre>
+      <pre>sudo apt-get install libopencv-dev python3-opencv</pre>
       
-      <p>However, you will probably not have installed the latest version of OpenCV and you may miss some features (for example: Python 3 bindings do not exist in the repository).</p>
+      <p>However, you will probably not have installed the latest version of OpenCV and you may miss some features.</p>
 
       <p><b>OPTION 2: INSTALL OPENCV FROM THE OFFICIAL SITE</b></p>
 
@@ -48,82 +48,6 @@
       <pre>bash install-opencv.sh</pre>
       
       <p>Type your <i>sudo</i> password and you will have installed OpenCV. This operation may take a long time due to the packages to be installed and the compilation process.</p>
-
-      <p>This script has been tested on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS and Debian 8.0 "Jessie", with OpenCV 3.0.0, OpenCV 3.1.0, and OpenCV 3.2.0. You can freely change this script as you like or adapt it to other OS or OpenCV version.</p>
-
-<!---->
-
-<!--This script has been tested on Ubuntu 14.04 LTS, Ubuntu 16.04 LTS and Debian 8.0 "Jessie" with OpenCV 3.0.0 and OpenCV 3.1.0.
-
-You can adapt the script as your -->
-
-      <!--
-      <p><b>2.1. KEEP UBUNTU OR DEBIAN UP TO DATE</b></p>
-
-      <p>Open your terminal and execute:</p>
-
-      <pre>sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove</pre>
-      
-      <p><b>2.2. INSTALL THE DEPENDENCIES</b></p>
-
-      <p>Now install the dependencies:</p>
-      
-      <p><b>Build tools:</b></p>
-      
-      <pre>sudo apt-get install build-essential cmake</pre>
-      
-      <p><b>GUI:</b></p>
-      
-      <pre>sudo apt-get install qt5-default libvtk6-dev</pre>
-      
-      <p><b>Media I/O:</b></p>
-      
-      <pre>sudo apt-get install zlib1g-dev libjpeg-dev libwebp-dev libpng-dev libtiff5-dev libjasper-dev libopenexr-dev libgdal-dev</pre>
-      
-      <p><b>Video I/O:</b></p>
-      
-      <pre>sudo apt-get install libdc1394-22-dev libavcodec-dev libavformat-dev libswscale-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev yasm libopencore-amrnb-dev libopencore-amrwb-dev libv4l-dev libxine2-dev</pre>
-      
-      <p><b>Parallelism and linear algebra libraries:</b></p>
-      
-      <pre>sudo apt-get install libtbb-dev libeigen3-dev</pre>
-      
-      <p><b>Python:</b></p>
-      
-      <pre>sudo apt-get install python-dev python-tk python-numpy python3-dev python3-tk python3-numpy</pre>
-      
-      <p><b>Java:</b></p>
-      
-      <pre>sudo apt-get install ant default-jdk</pre>
-      
-      <p><b>Documentation:</b></p>
-      
-      <pre>sudo apt-get install doxygen</pre>
-      
-      <p><b>2.3. DOWNLOAD AND DECOMPRESS OPENCV</b></p>
-
-      <p>Enter the <a href="http://opencv.org"><b>OpenCV official website</b></a> and download the latest version for Linux. Then decompress the downloaded file.</p>
-
-      <p><b>2.4. COMPILE AND INSTALL OPENCV</b></p>
-
-      <p>In your terminal, make sure you are <b>within the OpenCV directory</b> and run the following commands:</p>
-      
-      <pre>mkdir build</pre>
-      
-      <pre>cd build</pre>
-      
-      <pre>cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL=ON -DWITH_XINE=ON -DBUILD_EXAMPLES=ON ..</pre>
-      
-      <pre>make -j4</pre>
-      
-      <pre>sudo make install</pre>
-      
-      <p>Now, configure OpenCV:</p>
-      
-      <pre>sudo ldconfig</pre>
-      
-      <p>Now, you have installed OpenCV. You can execute some examples builded and/or compile one demonstration.</p>
-      -->
       
       <p><b>2.2. EXECUTE SOME OPENCV EXAMPLES</b></p>
       
