@@ -1,4 +1,0 @@
-If using a version of Windows without inbuilt support for .zip files, you will need to download a zip file extractor such as JustZIPIt or the Info-ZIP tools. Refer to the documentation provided with whichever program you choose for further instructions.
-
-If, for some reason, you wish to unpack the .zip files on a non-Windows platform, this is possible. Your operating system may already have a copy of the unzip program (or similar); otherwise it may be downloaded from the Info-ZIP website. Since the files in the .zip archives use Windows-style line terminators, you will need to pass the -a option to unzip in order to extract them with UNIX-style line terminators (also needed for Mac OS X). For instance, to extract files from the file foo.zip, use the following command:
-unzip -a foo.zip

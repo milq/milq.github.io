@@ -1,3 +1,0 @@
-Unpacking .zip files
-
-Most modern Windows environments already know how to unpack .zip files. If this is the case, the icon for the .zip file should look like a normal folder icon with a zipper on it. To extract the files within, right click on the file and select the 'Extract All' option.
