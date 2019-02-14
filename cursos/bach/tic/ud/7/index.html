@@ -11,15 +11,22 @@
   </head>
 
   <body>
-    <h1>7. Bases de datos con LibreOffice Base</h1>
+    <h1>8. Bases de datos con LibreOffice Base</h1>
 
     <h2>Contenidos</h2>
 
 	<p>Una <strong>base de datos</strong> es una colección de datos relacionados entre sí, estructurados y organizados. Un <strong>sistema gestor de bases de datos</strong> (DBMS, Data Base Management System) es un conjunto de programas que acceden y gestionan bases de datos.</p>
 
     <ol>
-      <li><a href='http://es.wikipedia.org/wiki/base_de_datos'>Base de datos</a>.</li>
 	  <li><a href='https://docs.kde.org/trunk5/es/calligra/kexi/database-and-spreadsheet.html'>Las bases de datos y las hojas de cálculo</a>.</li>
+      <li><a href='http://es.wikipedia.org/wiki/base_de_datos'>Base de datos</a>.</li>
+	  <li>Ejemplos de bases de datos relacionales:
+	    <ul>
+	      <li>Modelo relacional básico de una <a href='tablas_relacional_ejemplo_1.png'>liga</a> con ejemplos de datos.</li>
+	      <li>Modelo relacional básico de <a href='tablas_relacional_ejemplo_2.png'>videoclub</a>.</li>
+	      <li>Modelo relacional básico de un <a href='tablas_relacional_ejemplo_3.png'>mapa político</a>.</li>
+	    </ul>
+	  </li>
     </ol>
 
     <p><a href='https://help.libreoffice.org/Base/Welcome_to_the_Base_Help/es'>Manual de LibreOffice Base</a>.</p>
@@ -65,6 +72,57 @@
 	<p><strong>RELACIONES ENTRE TABLAS</strong> (<a href='https://www.um.es/docencia/barzana/PRACTICAS/OpenOffice-base-04-Relaciones-entre-tablas.php'>GUÍA</a>)</p>
 
     <p><strong>16.</strong> Crea la tabla <em>Géneros</em> con los siguientes <a href='05_campos_generos.png'>campos</a>, establece como clave primaria <em>Id_genero</em> e inserta los siguientes <a href='06_generos.png'>datos</a>.</p>
+
+    <p><strong>17.</strong> Establece una clave foránea (o ajena) en la tabla <em>Películas</em>. Para ello, añade el campo <em>Genero</em> en la tabla <em>Películas</em> con el siguiente <a href='07_clave_ajena.png'>tipo de dato y descripción</a>.</p>
+
+    <p><strong>18.</strong> Determinada la clave foránea, usa la herramienta de <a href='herramienta_relaciones.png'>diseño de relaciones</a> para establecer la <a href='08_relacion.png'>siguiente relación</a> en tu base de datos:</p>
+    
+	<ul>
+	  <li>Una o más películas pertenecen a un género (relación de tipo uno a varios o 1:N).</li>
+	</ul>
+
+    <p><strong>19.</strong> Crea la tabla <em>Protagonistas</em> con los siguientes <a href='09_campos_protagonistas.png'>campos</a>, establece como claves primarias <em>Pelicula</em> e <em>Interprete</em> e inserta los siguientes <a href='10_protagonistas.jpg'>datos</a>.</p>
+
+    <p><strong>20.</strong> Establece las <a href='11_relaciones.png'>siguientes relaciones</a> en tu base de datos:</p>
+
+	<ul>
+	  <li>Una película tiene uno o más protagonistas (relación de tipo uno a varios o 1:N).</li>
+	  <li>Un intérperete (o actor) puede ser protagonista en una o más películas (relación de tipo uno a varios o 1:N).</li>
+	</ul>
+
+	<p><strong>CONSULTAS SIMPLES</strong> (<a href='https://www.um.es/docencia/barzana/PRACTICAS/OpenOffice-base-05-Consultas-simples.php'>GUÍA</a>)</p>
+
+    <p><strong>21.</strong> Realiza la siguiente consulta: muestra los intérpretes que no sean españoles. Para ello, sigue el segundo apartado de la guía.</p>
+
+    <p><strong>22.</strong> Realiza la siguiente consulta: muestra las películas junto con el nombre del género al que pertenecen. Para ello, sigue el tercer apartado de la guía.</p>
+
+	<p><strong>CONSULTAS AVANZADAS Y VISTAS</strong> (<a href='https://www.um.es/docencia/barzana/PRACTICAS/OpenOffice-base-06-Consultas-avanzadas.php'>GUÍA</a>)</p>
+
+	<p><strong>23 (ampliación).</strong> Realiza la siguiente consulta: muestra todos los actores que protagonizan películas junto con los datos de la película, incluido el nombre del género. Para ello, sigue el segundo apartado de la guía.</p>
+
+	<p><strong>24 (ampliación).</strong> Realiza la siguiente consulta: muestra el nombre de cada género almacenado y el total de películas que existen de cada género. Para ello, sigue el tercer apartado de la guía.</p>
+
+	<p><strong>25 (ampliación).</strong> Crea como vista la consulta anterior y realiza la siguiente consulta a partir de dicha vista: muestra el valor medio de las películas asociadas a cada género. Para ello, sigue el cuarto apartado de la guía.</p>
+
+	<p><strong>FORMULARIOS BÁSICOS</strong> (<a href='https://www.um.es/docencia/barzana/PRACTICAS/OpenOffice-base-07-Formularios-basicos.php'>GUÍA</a>)</p>
+
+	<p><strong>26.</strong> Crea un formulario mediante el asistente para la tabla <em>Géneros</em>.</p>
+
+	<p><strong>27 (ampliación).</strong> Crea un formulario sencillo para la tabla <em>Intérpretes</em> siguiendo la guía.</p>
+
+	<p><strong>FORMULARIOS AVANZADOS</strong> (<a href='https://www.um.es/docencia/barzana/PRACTICAS/OpenOffice-base-08-Formularios-avanzados.php'>GUÍA</a>)</p>
+
+	<p><strong>28 (ampliación).</strong> Crea un formulario para la tabla <em>Películas</em> siguiendo el primer apartado de la guía.</p>
+	
+	<p><strong>29 (ampliación).</strong> Crea un formulario para la tabla <em>Protagonistas</em> siguiendo el segundo apartado de la guía.</p>
+
+	<p><strong>INFORMES</strong> (<a href='https://www.um.es/docencia/barzana/PRACTICAS/OpenOffice-base-09-Informes.php'>GUÍA</a>)</p>
+
+	<p><strong>30.</strong> Crea un informe que muestre un listado de las películas y los actores protagonistas. Para ello, sigue el segundo apartado de la guía.</p>
+
+	<p><strong>31 (ampliación).</strong> Crea un informe que muestre un listado de las películas agrupados por el género al que pertenecen. Para ello, sigue el tercer apartado de la guía.</p>
+
+	<p><strong>32 (ampliación).</strong> Crea un informe que muestre el nombre y los apellidos de cada intérprete seguido de las películas que ha protagonizado. Para ello, sigue el cuarto apartado de la guía.</p>
 
     <p><a href='../../index.html'>Volver</a>.</p>
 
