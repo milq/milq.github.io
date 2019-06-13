@@ -1,16 +1,11 @@
 body {
   font-family: 'San Francisco', 'Segoe UI', 'Open Sans', sans-serif;
   width: 210mm;
-  height: 297mm;
 }
 
 a {
   color: blue;
   text-decoration: none;
-}
-
-.center {
-  text-align: center;
 }
 
 code {
@@ -19,3 +14,8 @@ code {
   background-color: Gainsboro;
   border-radius: .2em;
 }
+
+/*img {
+  display: block;
+  margin: 0 auto;
+}*/
