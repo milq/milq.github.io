@@ -1,71 +1,57 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='How to create a terminal shortcut in Ubuntu or Debian.' />
+
     <title>Create a terminal shortcut in Ubuntu or Debian - Manuel Ignacio López Quintero</title>
-    <meta name="author" content="Manuel Ignacio López Quintero" />
-    <meta name="description" content="How to create a terminal shortcut in Ubuntu or Debian." />
-    
-    <link rel="icon" href="../src/png/icon.png" />
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
   </head>
 
   <body>
-    <header>Manuel Ignacio López Quintero</header>
-	
-    <nav>
-      <ul>
-        <li><a href="http://milq.github.io">Home</a></li>
-        <li><a href="http://milq.github.io/archive">Archive</a></li>
-      </ul>
-    </nav>
+    <h1>Manuel Ignacio López Quintero</h1>
 
-    <article>
-      <header><a href="http://milq.github.io/create-terminal-shortcut-ubuntu-debian">Create a terminal shortcut in Ubuntu or Debian</a></header>
-      
-      <p>The terminal is an excellent tool for developers, but sometimes you need to type large commands with multiple arguments or run an application with a long path. The best way to resolve this is using a terminal shortcut or <b>alias</b> (more appropriate).</p>
-      
-      <p>The syntax is: <b>alias <i>yc</i>='<i>tc</i>'</b>, where <i>yc</i> is your command and <i>tc</i> is the terminal command. For example, we will create an alias named <i>clc</i> with the following command that totally clear the terminal screen: <i>echo -en "\ec"</i>.</p>
+    <p><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></p>
 
-      <p><strong>1. OPEN YOUR TERMINAL</strong></p>
+    <h2>Create a terminal shortcut in Ubuntu or Debian</h2>
 
-      <p>A terminal is a Command Line Interface (CLI) where you type commands to tell the computer what to do. Make sure you've opened the terminal, if so, continues in the next step.</p>
+    <p>The terminal is an excellent tool for developers, but sometimes you need to type large commands with multiple arguments or run an application with a long path. The best way to resolve this is using a terminal shortcut or alias (more appropriate).</p>
 
-      <p><strong>2A. CREATE A SHORTCUT ONLY FOR YOUR USER</strong></p>
+    <p>The syntax is: <em>alias yc='tc'</em>, where <em>yc</em> is your command and <em>tc</em> is the terminal command. For example, we will create an alias named <em>clc</em> with the following command that totally clear the terminal screen: <em>echo -en '\ec'</em>.</p>
 
-      <p>In your terminal, execute:</p>
+    <h3>1. Open your terminal</h3>
 
-      <pre>nano ~/.bash_aliases</pre>
+    <p>A terminal is a Command Line Interface (CLI) where you type commands to tell the computer what to do. Make sure you've opened the terminal, if so, continues in the next step.</p>
 
-      <p>Add the following line at the end of the file:</p>
+    <h3>2. Create a shortcut</h3>
 
-      <pre>alias clc='echo -en "\ec"'</pre>
-      
-      <p>Exit with <b>Ctrl + X</b> and save the changes. Finally, execute <code>bash</code> in your terminal. Now you can start using your shortcut <code>clc</code>!</p>
+    <p>There are two ways to create a shortcut: only for your user or for all users.</p>
 
-      <p><strong>2B. CREATE A SHORTCUT FOR ALL USERS</strong></p>
+    <h4>2.1. Only for your user</h4>
 
-      <p>In your terminal, execute:</p>
+    <p>In your terminal, execute: <code>nano ~/.bash_aliases</code>.</p>
 
-      <pre>sudo nano /etc/bash.bashrc</pre>
+    <p>Add the following line at the end of the file: <code>alias clc='echo -en '\ec''</code>.</p>
 
-      <p>Add the following line at the end of the file:</p>
+    <p>Exit with <em>Ctrl + X</em> and save the changes. Finally, execute <code>bash</code> in your terminal. Now you can start using your shortcut <code>clc</code>!</p>
 
-      <pre>alias clc='echo -en "\ec"'</pre>
-      
-      <p>Exit with <b>Ctrl + X</b> and save the changes. Finally, execute <code>bash</code> in your terminal. Now you can start using your shortcut <code>clc</code>!</p>
+    <h4>2.2. For all users</h4>
 
-      <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/create-terminal-shortcut-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
-      
-    </article>
+    <p>In your terminal, execute: <code>sudo nano /etc/bash.bashrc</code>.</p>
 
-    <script type="text/javascript" src="../src/js/comments.js"></script>
-    <script type="text/javascript" src="../src/js/analytics.js"></script>
-    
-    <footer>
-      <p>All content created by <a href="http://milq.github.io"><b>Manuel Ignacio López Quintero</b></a> under this <a href="http://creativecommons.org/licenses/by/4.0"><b>license</b></a>.</p>
-    </footer>
+    <p>Add the following line at the end of the file: <code>alias clc='echo -en '\ec''</code>.</p>
+
+    <p>Exit with <em>Ctrl + X</em> and save the changes. Finally, execute <code>bash</code> in your terminal. Now you can start using your shortcut <code>clc</code>!</p>
+
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/create-terminal-shortcut-ubuntu-debian'>link</a>. Thanks for reading!</p>
+
+    <script type='text/javascript' src='../src/js/comments.js'></script>
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
+
+    <p>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</p>
+
   </body>
 </html>
