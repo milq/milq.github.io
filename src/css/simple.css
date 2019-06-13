@@ -1,5 +1,7 @@
 body {
   font-family: 'San Francisco', 'Segoe UI', 'Open Sans', sans-serif;
+  width: 210mm;
+  height: 297mm;
 }
 
 a {
@@ -11,16 +13,9 @@ a {
   text-align: center;
 }
 
-img {
-  display: block;
-  margin: 0 auto;
-}
-
 code {
   font-family: 'Menlo', monospace;
   padding: .2em .4em;
   background-color: Gainsboro;
   border-radius: .2em;
 }
-
-    
