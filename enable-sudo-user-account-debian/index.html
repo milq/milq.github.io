@@ -1,67 +1,57 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content="How to enable 'sudo' on an user account on Debian." />
     
-    <title>Enable 'sudo' on an user account on Debian - Manuel Ignacio López Quintero</title>
-    <meta name="author" content="Manuel Ignacio López Quintero" />
-    <meta name="description" content="How to enable 'sudo' on an user account on Debian." />
-    
-    <link rel="icon" href="../src/png/icon.png" />
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <title>Enable 'sudo' on an user account on Debian - Manuel Ignacio López Quintero</title>    
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
   </head>
 
   <body>
-    <header>Manuel Ignacio López Quintero</header>
-	
-    <nav>
-      <ul>
-        <li><a href="http://milq.github.io">Home</a></li>
-        <li><a href="http://milq.github.io/archive">Archive</a></li>
-      </ul>
-    </nav>
+    <h1>Manuel Ignacio López Quintero</h1>
 
-    <article>
-      <header><a href="http://milq.github.io/enable-sudo-user-account-debian">Enable 'sudo' on an user account on Debian</a></header>
+    <p><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></p>
+
+    <h2>Enable 'sudo' on an user account on Debian</h2>
       
-      <p>The command <code>sudo</code> allows you running programs with the security privileges of another user (commonly <i>root</i>).</p>
+    <p>The command <code>sudo</code> allows you running programs with the security privileges of another user (commonly <i>root</i>).</p>
       
-      <p>There are many benefits of using it instead of <code>su root</code> so it's important enable <code>sudo</code> in an user account. In this tutorial you allow an user account have all the privileges with <code>sudo</code>. For more custom, visit the <a href="https://wiki.debian.org/sudo"><b>Debian Wiki of 'sudo'</b></a>.</p>
+    <p>There are many benefits of using it instead of <code>su root</code> so it's important enable <code>sudo</code> in an user account. In this tutorial you allow an user account have all the privileges with <code>sudo</code>. For more custom, visit the <a href='https://wiki.debian.org/sudo'>Debian Wiki of 'sudo'</a>.</p>
       
-      <p>At first, login to an user account and <b>open a terminal</b> to execute the following commands.</p>
+    <p>At first, login to an user account and open a terminal to execute the following commands.</p>
       
-      <p>Start becoming superuser:</p>
+    <p>Start becoming superuser:</p>
 
-      <pre>su root</pre>
+    <pre>su root</pre>
 
-      <p>Enter the <i>root</i> password. Now, install <i>sudo</i>:
+    <p>Enter the <em>root</em> password. Now, install <em>sudo</em>:
 
-      <pre>apt-get install sudo</pre>
+    <pre>apt-get install sudo</pre>
 
-      <p>Add the user account to the group <i>sudo</i>.</p>
+    <p>Add the user account to the group <em>sudo</em>.</p>
 
-      <pre>adduser <i>username</i> sudo</pre>
+    <pre>adduser <em>username</em> sudo</pre>
 
-      <p>Where <i>username</i> is the user account.
+    <p>Where <em>username</em> is the user account.
 
-      <p>Now, <b>log out</b> and then <b>log in</b> with the same user.</p>
+    <p>Now, log out and then log in with the same user.</p>
 
-      <p>Open a terminal and execute:</p>
+    <p>Open a terminal and execute:</p>
 
-      <pre>sudo echo "Hello, world!"</pre>
+    <pre>sudo echo 'Hello, world!'</pre>
       
-      <p>Enter the user password. If all goes well you'll see on screen <i>Hello, world!</i>.</p>
+    <p>Enter the user password. If all goes well you'll see on screen <em>Hello, world!</em>.</p>
 
-      <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/enable-sudo-user-account-debian"><b>link</b></a>. Thanks for reading!</p>
-      
-    </article>
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/enable-sudo-user-account-debian'>link</a>. Thanks for reading!</p>
 
-    <script type="text/javascript" src="../src/js/comments.js"></script>
-    <script type="text/javascript" src="../src/js/analytics.js"></script>
-    
-    <footer>
-      <p>All content created by <a href="http://milq.github.io"><b>Manuel Ignacio López Quintero</b></a> under this <a href="http://creativecommons.org/licenses/by/4.0"><b>license</b></a>.</p>
-    </footer>
+    <script type='text/javascript' src='../src/js/comments.js'></script>
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
+
+    <p>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</p>
+
   </body>
 </html>
