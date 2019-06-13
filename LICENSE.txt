@@ -1,5 +1,5 @@
-The license of the content is CC BY-SA 4.0.
+The license of the content is CC BY 4.0.
 The license of the code is GPLv3.
 
-URL CC BY-SA 4.0: creativecommons.org/licenses/by-sa/4.0/.
+URL CC BY 4.0: creativecommons.org/licenses/by/4.0.
 URL GPLv3: gnu.org/licenses/gpl-3.0.txt.
