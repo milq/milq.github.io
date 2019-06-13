@@ -1,6 +1,6 @@
 body {
   font-family: 'San Francisco', 'Segoe UI', 'Open Sans', sans-serif;
-  width: 210mm;
+  max-width: 210mm;
 }
 
 a {
