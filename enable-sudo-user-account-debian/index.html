@@ -20,35 +20,24 @@
       
     <p>The command <code>sudo</code> allows you running programs with the security privileges of another user (commonly <i>root</i>).</p>
       
-    <p>There are many benefits of using it instead of <code>su root</code> so it's important enable <code>sudo</code> in an user account. In this tutorial you allow an user account have all the privileges with <code>sudo</code>. For more custom, visit the <a href='https://wiki.debian.org/sudo'>Debian Wiki of 'sudo'</a>.</p>
+    <p>There are many benefits of using it instead of <code>su</code> so it's important enable <code>sudo</code> in an user account. In this tutorial you allow an user account have all the privileges with <code>sudo</code>. For more custom, visit the <a href='https://wiki.debian.org/sudo'>Debian Wiki of 'sudo'</a>.</p>
       
     <p>At first, login to an user account and open a terminal to execute the following commands.</p>
       
-    <p>Start becoming superuser:</p>
+    <p>Start becoming superuser: <code>su</code>. Enter your <em>root</em> password.</p>
 
-    <pre>su root</pre>
+    <p>Now, install <em>sudo</em>: <code>apt-get install sudo</code>.</p>
 
-    <p>Enter the <em>root</em> password. Now, install <em>sudo</em>:
-
-    <pre>apt-get install sudo</pre>
-
-    <p>Add the user account to the group <em>sudo</em>.</p>
-
-    <pre>adduser <em>username</em> sudo</pre>
-
-    <p>Where <em>username</em> is the user account.
+    <p>Add the user account to the group <em>sudo</em>: <code>adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</p>
 
     <p>Now, log out and then log in with the same user.</p>
 
-    <p>Open a terminal and execute:</p>
-
-    <pre>sudo echo 'Hello, world!'</pre>
+    <p>Open a terminal and execute: <code>sudo echo 'Hello, world!'</code>. Enter the user password.</p>
       
-    <p>Enter the user password. If all goes well you'll see on screen <em>Hello, world!</em>.</p>
+    <p>If all goes well you'll see on screen <em>Hello, world!</em>.</p>
 
     <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/enable-sudo-user-account-debian'>link</a>. Thanks for reading!</p>
 
-    <script type='text/javascript' src='../src/js/comments.js'></script>
     <script type='text/javascript' src='../src/js/analytics.js'></script>
 
     <p>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</p>

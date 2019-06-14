@@ -8,7 +8,7 @@ a {
   text-decoration: none;
 }
 
-code {
+code, pre {
   font-family: 'Menlo', monospace;
   padding: .2em .4em;
   background-color: Gainsboro;
