@@ -1,109 +1,97 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Things to do just after installing Ubuntu or Debian.' />
     
     <title>Things to do just after installing Ubuntu or Debian - Manuel Ignacio López Quintero</title>
-    <meta name="author" content="Manuel Ignacio López Quintero" />
-    <meta name="description" content="Things to do just after installing Ubuntu or Debian." />
-    
-    <link rel="icon" href="../src/png/icon.png" />
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
   </head>
 
   <body>
-    <header>Manuel Ignacio López Quintero</header>
-	
-    <nav>
-      <ul>
-        <li><a href="http://milq.github.io">Home</a></li>
-        <li><a href="http://milq.github.io/archive">Archive</a></li>
-      </ul>
-    </nav>
+    <h1>Manuel Ignacio López Quintero</h1>
 
-    <article>
-      <header><a href="http://milq.github.io/things-to-do-just-after-installing-ubuntu-debian">Things to do just after installing Ubuntu or Debian</a></header>
+    <p><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></p>
+
+    <h2>Things to do just after installing Ubuntu or Debian</h2>
       
-      <p>Just after installing Debian or Ubuntu, it is recommended to set up the operating system .</p>
+    <p>Just after installing Debian or Ubuntu, it is recommended to set up the operating system .</p>
 	    
-      <p><strong>1. ENABLE SUDO ON YOUR USER ACCOUNT (IF YOU USE DEBIAN)</strong></p>
+    <h3>1. Enable <em>sudo</em> on your user account (if you use Debian)</h3>
   
-      <ol>
-        <li>Open a terminal and become superuser: <code>su root</code>. Enter the <i>root</i> password.</li>
-        <li>Now, install <i>sudo</i>: <code>apt-get install sudo</code>.</li>
-	<li>Add the user account to the group <i>sudo</i>: <code>adduser <i>username</i> sudo</code>. Where <i>username</i> is your user account.</li>
-	<li>Now, <b>log out</b> and then <b>log in</b> with the same user.</li>
-	<li>Finally, open a terminal and execute: <code>sudo echo "Hello, world!"</code>.</li>
-        <li>Enter the user password. If all goes well, you'll see on screen <i>Hello, world!</i>.</li>    
-      </ol>
+    <ol>
+      <li>Open a terminal and become superuser: <code>su root</code>. Enter the <i>root</i> password.</li>
+      <li>Now, install <i>sudo</i>: <code>apt-get install sudo</code>.</li>
+	  <li>Add the user account to the group <i>sudo</i>: <code>adduser <i>username</i> sudo</code>. Where <i>username</i> is your user account.</li>
+	  <li>Now, log out and then log in with the same user.</li>
+	  <li>Finally, open a terminal and execute: <code>sudo echo 'Hello, world!'</code>.</li>
+      <li>Enter the user password. If all goes well, you'll see on screen <i>Hello, world!</i>.</li>    
+    </ol>
 	    
-      <p><b>2. KEEP DEBIAN OR UBUNTU UP TO DATE</b></p>	    
+    <h3>2. Keep Debian or Ubuntu up to date</h3>	    
       
-      <p>Open your terminal and execute:</p>    
+    <p>Open your terminal and execute: <code>sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove</code>.</p>
 	    
-      <pre>sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove</pre>
-	    
-      <p><strong>2. INSTALL ADDITIONAL SOFTWARE</strong></p>
+    <h3>3. Install additional software</h3>
   	    
-      <p>Execute this <a href="https://github.com/milq/milq/blob/master/scripts/bash/install-additional-gui-software.sh"><b>script to install additional GUI software</b></a> for your Ubuntu or Debian.</p>
-
-      <p>Execute this <a href="https://github.com/milq/milq/blob/master/scripts/bash/install-additional-cli-software.sh"><b>script to install additional CLI software</b></a> for your Ubuntu or Debian.</p>
+    <p>Execute this <a href='https://github.com/milq/milq/blob/master/scripts/bash/install-additional-software.sh'>script</a> to install additional GUI and CLI software for your Ubuntu or Debian.</p>
 	    
-      <p><strong>3. INSTALL NON-FREE DRIVERS</strong></p>
+    <h3>3. Install non-free drivers</h3>
       
-      <p>Run <code>sudo lshw | grep UNCLAIMED</code> to see the unclaimed drivers. Verify all the drivers have their product and vendor tags. The commands <code>lspci</code>, <code>lsusb</code> can help you.</p>
+    <p>Run <code>sudo lshw | grep UNCLAIMED</code> to see the unclaimed drivers. Verify all the drivers have their product and vendor tags. The commands <code>lspci</code>, <code>lsusb</code> can help you.</p>
       
-      <p>For example, for my Wi-Fi I download and install the non-free <a href="https://packages.debian.org/wheezy/firmware-realtek">Realtek firmware package</a> and for my ATI graphic card I download and install the <a href="http://support.amd.com/en-us/download">non-free driver</a>.</p>
+    <p>For example, for my Wi-Fi I download and install the non-free <a href='https://packages.debian.org/wheezy/firmware-realtek'>Realtek firmware package</a> and for my ATI graphic card I download and install the <a href='http://support.amd.com/en-us/download'>non-free driver</a>.</p>
 
-      <p><strong>4. INSTALL NON-FREE SOFTWARE</strong></p>
+    <h3>4. Install non-free software</h3>
       
-      <ul>
-        <li><a href="http://google.com/chrome"><b>Chrome</b></a> (the free alternative is <a href="http://chromium.org"><b>Chromium</b></a>) (<a href="chrome-chromium-fonts.png">Chrome/Chromium fonts</a>).</li>
-        <li><a href="https://dropbox.com/install"><b>Dropbox</b></a> (<a href="http://askubuntu.com/questions/148171/dropbox-error-echo-100000-sudo-tee-proc-sys-fs-inotify-max-user-watches">solve error</a> about monitoring file system).</li>
-        <li><a href="http://sublimetext.com"><b>Sublime Text</b></a>.</li>
-        <li><a href="https://www.virtualbox.org"><b>VirtualBox and its Extension Pack</b></a> (some dependencies are non-free).</li>
-      </ul>
+    <ul>
+      <li><a href='http://google.com/chrome'>Chrome</a> (the free alternative is <a href='http://chromium.org'>Chromium</a>) (<a href='chrome-chromium-fonts.png'>Chrome/Chromium fonts</a>).</li>
+      <li><a href='https://dropbox.com/install'>Dropbox</a> (<a href='http://askubuntu.com/questions/148171/dropbox-error-echo-100000-sudo-tee-proc-sys-fs-inotify-max-user-watches'>solve error</a> about monitoring file system).</li>
+      <li><a href='http://sublimetext.com'>Sublime Text</a>.</li>
+      <li><a href='https://www.virtualbox.org'>VirtualBox and its Extension Pack</a> (some dependencies are non-free).</li>
+    </ul>
       
-      <p><strong>5. CUSTOMIZE THE LOOK OF YOUR DESKTOP</strong></p>
+    <p><strong>5. CUSTOMIZE THE LOOK OF YOUR DESKTOP</strong></p>
       
       <p>Install Murrine engine and their respective themes with the command:</p>
       
       <pre>sudo apt-get install murrine-themes</pre>
       
-      <p>To install <b>icons</b> for your user account copy the icon folder to <code>~/.icons/</code>. For all users copy the icon folder to <code>/usr/local/share/icons/</code> instead.</p>
+      <p>To install icons for your user account copy the icon folder to <code>~/.icons/</code>. For all users copy the icon folder to <code>/usr/local/share/icons/</code> instead.</p>
       
-      <p>To install <b>fonts</b> for your user account copy the <i>ttf</i> fonts to <code>~/.fonts/</code>. For all users copy the <i>ttf</i> fonts to <code>/usr/local/share/fonts/</code> instead. Remember to install normal, <b>bold</b>, <i>italic</i> and <b><i>bold italic</i></b> fonts.</p>
+      <p>To install fonts for your user account copy the <i>ttf</i> fonts to <code>~/.fonts/</code>. For all users copy the <i>ttf</i> fonts to <code>/usr/local/share/fonts/</code> instead. Remember to install normal, bold, <i>italic</i> and <i>bold italic</i> fonts.</p>
       
       <p>This is my configuration in Debian:</p>
       
       <ul>
-        <li><b>Desktop Environment (DE):</b> Xfce.</li>
-        <li><b>Panel:</b> 1 horizontal bottom panel (<a href="panel-display.png"><b>display</b></a>) (<a href="panel-items.png"><b>items</b></a>).</li>
-        <li><b><a href="gtk.png">GTK Theme</a>:</b> Numix (<a href="theme-config.png"><b>GTK Theme Color</b></a>).</li>
-        <li><b><a href="wm.png">Window Manager (WM)</a>:</b> Numix.</li>
-        <li><b><a href="fonts.png">Fonts</a>:</b> <a href="https://www.google.com/fonts/specimen/Open+Sans"><b>Open Sans</b></a>, <a href="https://www.google.com/fonts/specimen/Cousine"><b>Cousine</b></a>, and <a href="https://www.google.com/fonts/specimen/Arimo"><b>Arimo</b></a>.</li>
-        <li><b><a href="icons.png">Icons</a>:</b> <a href="https://github.com/numixproject/numix-icon-theme-circle"><b>Numix Circle</b></a>.</li>
-
+        <li>Desktop Environment (DE): Xfce.</li>
+        <li>Panel: 1 horizontal bottom panel (<a href='panel-display.png'>display</a>) (<a href='panel-items.png'>items</a>).</li>
+        <li><a href='gtk.png'>GTK Theme</a>: Numix (<a href='theme-config.png'>GTK Theme Color</a>).</li>
+        <li><a href='wm.png'>Window Manager (WM)</a>: Numix.</li>
+        <li><a href='fonts.png'>Fonts</a>: <a href='https://www.google.com/fonts/specimen/Open+Sans'>Open Sans</a>, <a href='https://www.google.com/fonts/specimen/Cousine'>Cousine</a>, and <a href='https://www.google.com/fonts/specimen/Arimo'>Arimo</a>.</li>
+        <li><a href='icons.png'>Icons</a>: <a href='https://github.com/numixproject/numix-icon-theme-circle'>Numix Circle</a>.</li>
       </ul>
       
-      <p>You can see an <a href="milq-screenshot.png"><b>example screenshot</b></a> of my Debian.</p>
+      <p>You can see an <a href='milq-screenshot.png'>example screenshot</a> of my Debian.</p>
       
-      <p>If you use Xfce, <a href="https://wiki.debian.org/LightDM#Enable_autologin"><b>enable autologin</b></a>.</p>
+      <p>If you use Xfce, <a href='https://wiki.debian.org/LightDM#Enable_autologin'>enable autologin</a>.</p>
 
-      <p>Go to <b>Settings, Workspaces</b> and set 1 workspace.</p>
+      <p>Go to Settings, Workspaces and set 1 workspace.</p>
 
-      <p>Go to <b>Settings, Window Manager Tweaks, Compositor</b> and activate <b>Enable display compositing</b> to use hardware acceleration automatically in Xfce.</p>
+      <p>Go to Settings, Window Manager Tweaks, Compositor and activate Enable display compositing to use hardware acceleration automatically in Xfce.</p>
 
-      <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/things-to-do-just-after-installing-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
+      <p>Do you like this article? Share it with this <a href='http://milq.github.io/things-to-do-just-after-installing-ubuntu-debian'>link</a>. Thanks for reading!</p>
       
     </article>
 
-    <script type="text/javascript" src="../src/js/comments.js"></script>
-    <script type="text/javascript" src="../src/js/analytics.js"></script>
+    <script type='text/javascript' src='../src/js/comments.js'></script>
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
     
     <footer>
-      <p>All content created by <a href="http://milq.github.io"><b>Manuel Ignacio López Quintero</b></a> under this <a href="http://creativecommons.org/licenses/by/4.0"><b>license</b></a>.</p>
+      <p>All content created by <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='http://creativecommons.org/licenses/by/4.0'>license</a>.</p>
     </footer>
   </body>
 </html>
