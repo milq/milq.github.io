@@ -1,93 +1,83 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
-    <title>Install OpenCV on Ubuntu or Debian - Manuel Ignacio López Quintero</title>
-    <meta name="author" content="Manuel Ignacio López Quintero" />
-    <meta name="description" content="How to install OpenCV on Ubuntu or Debian." />
-    
-    <link rel="icon" href="../src/png/icon.png" />
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='How to install OpenCV on Ubuntu or Debian.' />
+
+    <title>Install OpenCV on Ubuntu or Debian - Manuel Ignacio López Quintero</title>    
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
   </head>
 
   <body>
-    <header>Manuel Ignacio López Quintero</header>
-	
-    <nav>
-      <ul>
-        <li><a href="http://milq.github.io">Home</a></li>
-        <li><a href="http://milq.github.io/archive">Archive</a></li>
-      </ul>
-    </nav>
+    <h1>Manuel Ignacio López Quintero</h1>
 
-    <article>
-      <header><a href="http://milq.github.io/install-opencv-ubuntu-debian">Install OpenCV on Ubuntu or Debian</a></header>
+    <p><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></p>
 
-      <p>Install OpenCV on Ubuntu or Debian is a bit long but very easy. You can install OpenCV from the Ubuntu or Debian repository or from the official site.</p>
+    <h2>Install OpenCV on Ubuntu or Debian</h2>
 
-      <p><b>OPTION 1: INSTALL OPENCV FROM THE UBUNTU OR DEBIAN REPOSITORY</b></p>
-      
-      <p>You can install OpenCV from the Ubuntu or Debian repository:</p>
-      
-      <pre>sudo apt-get install libopencv-dev python3-opencv</pre>
-      
-      <p>However, you will probably not have installed the latest version of OpenCV and you may miss some features.</p>
+    <p>Install OpenCV on Ubuntu or Debian is a bit long but very easy. You can install OpenCV from the Ubuntu or Debian repository or from the official site.</p>
 
-      <p><b>OPTION 2: INSTALL OPENCV FROM THE OFFICIAL SITE</b></p>
+    <h3>Option 1. Install OpenCV from the Ubuntu or Debian repository</h3>
+      
+    <p>You can install OpenCV from the Ubuntu or Debian repository:</p>
+      
+    <pre>sudo apt-get install libopencv-dev python3-opencv</pre>
+      
+    <p>However, you will probably not have installed the latest version of OpenCV and you may miss some features.</p>
 
-      <p>To install the latest version of OpenCV be sure that you have removed the library from the repository with <code>sudo apt-get autoremove libopencv-dev python-opencv</code> and follow the steps below.</p>
+    <h3>Option 2. Install OpenCV from the official site</h3>
 
-      <p><b>2.1. RUN AN INSTALLATION SCRIPT</b></p>
+    <p>To install the latest version of OpenCV be sure that you have removed the library from the repository with <code>sudo apt-get autoremove libopencv-dev python-opencv</code> and follow the steps below.</p>
 
-      <p>The most simple and elegant way to install a library is running an installation script.</p>
+    <h4>2.1. Run an installation script</h4>
 
-      <p>Download the installation script <a href="https://github.com/milq/milq/blob/master/scripts/bash/install-opencv.sh"><i><b>install-opencv.sh</b></i></a>, open your terminal and execute:</p>
+    <p>The most simple and elegant way to install a library is running an installation script.</p>
 
-      <pre>bash install-opencv.sh</pre>
-      
-      <p>Type your <i>sudo</i> password and you will have installed OpenCV. This operation may take a long time due to the packages to be installed and the compilation process.</p>
-      
-      <p><b>2.2. EXECUTE SOME OPENCV EXAMPLES</b></p>
-      
-      <p>Go to your OpenCV directory and execute a <b>C++</b> example:</p>
-      
-      <pre>cd build/bin</pre>
-      
-      <pre>./example_cpp_edge ../../samples/data/fruits.jpg</pre>
-      
-      <p>Now, go to your OpenCV directory and execute a <b>Python</b> example:</p>
-      
-      <pre>cd samples/python</pre>
-      
-      <pre>python3 video.py</pre>
-      
-      <p>Finally, go to your OpenCV directory and execute a <b>Java</b> example:</p>
+    <p>Download the installation script <a href='https://github.com/milq/milq/blob/master/scripts/bash/install-opencv.sh'><em>install-opencv.sh</em></a>, open your terminal and execute:</p>
 
-      <pre>cd samples/java/ant</pre>
+    <pre>bash install-opencv.sh</pre>
       
-      <pre>ant -DocvJarDir=../../../build/bin -DocvLibDir=../../../build/lib</pre>
+    <p>Type your <em>sudo</em> password and you will have installed OpenCV. This operation may take a long time due to the packages to be installed and the compilation process.</p>
+      
+    <h4>2.2. Execute some OpenCV examples</h4>
+      
+    <p>Go to your OpenCV directory and execute a C++ example:</p>
+      
+    <pre>cd build/bin</pre>
+      
+    <pre>./example_cpp_edge ../../samples/data/fruits.jpg</pre>
+      
+    <p>Now, go to your OpenCV directory and execute a Python example:</p>
+      
+    <pre>cd samples/python</pre>
+      
+    <pre>python3 video.py</pre>
+      
+    <p>Finally, go to your OpenCV directory and execute a Java example:</p>
 
-      <p><b>2.3. COMPILE A DEMONSTRATION</b></p>
+    <pre>cd samples/java/ant</pre>
+      
+    <pre>ant -DocvJarDir=../../../build/bin -DocvLibDir=../../../build/lib</pre>
 
-      <p>Download the files <a href="https://github.com/milq/milq/tree/master/examples/cpp/opencv/viz/demo.cpp"><i><b>demo.cpp</b></i></a> and <a href="https://github.com/milq/milq/tree/master/examples/cpp/opencv/viz/CMakeLists.txt"><i><b>CMakeLists.txt</b></i></a> and put them into a folder. Now, open your terminal, go to the folder and execute:</p>
+    <h4>2.3. Compile a demonstration</h4>
 
-      <pre>mkdir build && cd build && cmake .. && make</pre>
+    <p>Download the files <a href='https://github.com/milq/milq/tree/master/examples/cpp/opencv/viz/demo.cpp'><em>demo.cpp</em></a> and <a href='https://github.com/milq/milq/tree/master/examples/cpp/opencv/viz/CMakeLists.txt'><em>CMakeLists.txt</em></a> and put them into a folder. Now, open your terminal, go to the folder and execute:</p>
+
+    <pre>mkdir build && cd build && cmake .. && make</pre>
       	
-      <p>Finally, run the demo: <code>./demo</code>.</p>
+    <p>Finally, run the demo: <code>./demo</code>.</p>
 
-      <p>And that's it! You have installed OpenCV, run some examples, and compiled OpenCV code!</p>
+    <p>And that's it! You have installed OpenCV, run some examples, and compiled OpenCV code!</p>
 
-      <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/install-opencv-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
-      
-    </article>
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/install-opencv-ubuntu-debian'>link</a>. Thanks for reading!</p>
 
-    <script type="text/javascript" src="../src/js/comments.js"></script>
-    <script type="text/javascript" src="../src/js/analytics.js"></script>
-    
-    <footer>
-      <p>All content created by <a href="http://milq.github.io"><b>Manuel Ignacio López Quintero</b></a> under this <a href="http://creativecommons.org/licenses/by/4.0"><b>license</b></a>.</p>
-    </footer>
+    <script type='text/javascript' src='../src/js/comments.js'></script>
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
+
+    <p>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</p>
+
   </body>
 </html>

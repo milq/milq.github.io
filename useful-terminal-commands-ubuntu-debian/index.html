@@ -3,164 +3,147 @@
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-
-    <title>Useful terminal commands in Ubuntu or Debian - Manuel Ignacio López Quintero</title>
     <meta name='author' content='Manuel Ignacio López Quintero' />
     <meta name='description' content='Useful terminal commands in Ubuntu or Debian.' />
 
+    <title>Useful terminal commands in Ubuntu or Debian - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../src/png/icon.png' />
-    <link rel='stylesheet' href='../src/css/style.css' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
   </head>
 
   <body>
-    <header>Manuel Ignacio López Quintero</header>
+    <h1>Manuel Ignacio López Quintero</h1>
 
-    <nav>
-      <ul>
-        <li><a href='http://milq.github.io'>Home</a></li>
-        <li><a href='http://milq.github.io/archive'>Archive</a></li>
-      </ul>
-    </nav>
+    <p><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></p>
 
-    <article>
-      <header><a href='http://milq.github.io/useful-terminal-commands-ubuntu-debian'>Useful terminal commands in Ubuntu or Debian</a></header>
+    <h2>Useful terminal commands in Ubuntu or Debian</h2>
 
-      <p>This is a compilation of my terminal commands in Ubuntu or Debian I consider useful. Many of these commands are compatible with other GNU/Linux distributions.</p>
+    <p>This is a compilation of my terminal commands in Ubuntu or Debian I consider useful. Many of these commands are compatible with other GNU/Linux distributions.</p>
 
-      <p><b>1. ESSENTIAL COMMANDS</b></p>
+    <h3>1. Essential commands</h3>
 
-      <ul>
-        <li><b>Navigation:</b> <code>pwd</code>, <code>ls <i>path</i></code>, <code>cd <i>folder_path</i></code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'><b>path</b></a> (computing).</li>
-        <li><b>Help:</b> <code>man <i>command</i></code>, <code><i>command</i> --help</code>, <code><i>command</i> -h</code>, <a href='http://explainshell.com'><b>Explainshell</b></a>.</li>
-        <li><b>Manipulation:</b> <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>ln</code>.</li>
-        <li><b>Permissions:</b> <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'><b>enable sudo on Debian</b></a>).</li>
-        <li><b>Display a line of text:</b> <code>echo</code>, <code>echo $PATH</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'><b>$PATH</b></a>).</li>
-        <li><b>Text editor:</b> <code>nano</code>.</li>
-        <li><b>Visualization:</b> <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>.</li>
-        <li><b>Redirect standard output to a file:</b> <code><i>command</i> &gt; <i>file</i></code>.</li>
-        <li><b>Execute multiple commands (AND):</b> <code><i>command1</i> && <i>command2</i> && <i>commandN</i></code>.</li>
-        <li><b>Execute a command in the background:</b> <code><i>command</i> &amp;</code>.</li>
-        <li><b>Run an executable in the current directory that is not in your <code>$PATH</code>:</b> <code>./<i>executable</i></code>.</li>
-        <li><b>Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script:</b> <code>bash <i>script.sh</i></code>. Executable with header <code>#!/bin/bash</code>.</li>
-      </ul>
+    <ul>
+      <li>Navigation: <code>pwd</code>, <code>ls <em>path</em></code>, <code>cd <em>folder_path</em></code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> (computing).</li>
+      <li>Help: <code>man <em>command</em></code>, <code><em>command</em> --help</code>, <code><em>command</em> -h</code>, <a href='http://explainshell.com'>Explainshell</a>.</li>
+      <li>Manipulation: <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>ln</code>.</li>
+      <li>Permissions: <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
+      <li>Display a line of text: <code>echo</code>, <code>echo $PATH</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>$PATH</a>).</li>
+      <li>Text editor: <code>nano</code>.</li>
+      <li>Visualization: <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>.</li>
+      <li>Redirect standard output to a file: <code><em>command</em> &gt; <em>file</em></code>.</li>
+      <li>Execute multiple commands (AND): <code><em>command1</em> && <em>command2</em> && <em>commandN</em></code>.</li>
+      <li>Execute a command in the background: <code><em>command</em> &amp;</code>.</li>
+      <li>Run an executable in the current directory that is not in your <code>$PATH</code>: <code>./<em>executable</em></code>.</li>
+      <li>Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script: <code>bash <em>script.sh</em></code>. Executable with header <code>#!/bin/bash</code>.</li>
+    </ul>
 
-      <p><b>2. APT COMMANDS</b></p>
-      <ul>
-        <li><b>Install a package locally:</b> <code>sudo apt-get install <i>./package.deb</i></code>.</li>
-        <li><b>Install a package from the repository:</b> <code>sudo apt-get install <i>package</i></code>.</li>
-        <li><b>Uninstall a package from the repository:</b> <code>sudo apt-get purge <i>package</i></code>.</li>
-        <li><b>Remove packages that are no longer needed:</b> <code>sudo apt-get autoremove</code>.</li>
-        <li><b>Resynchronize the package index files from <i>/etc/apt/sources.list</i>:</b> <code>sudo apt-get update</code>.</li>
-        <li><b>Install the newest versions of all packages from <i>/etc/apt/sources.list</i>:</b> <code>sudo apt-get upgrade</code>.</li>
-      </ul>
-      <p><b>2. BASH SHORTCUTS</b></p>
+    <h3>2. APT commands</h3>
 
-      <ul>
-    <li><b>Autocomplete files, folders, commands, packages, etc.:</b> <code>Tab</code>.</li>
-    <li><b>List all available files, folders, commands, packages, etc.:</b> <code>Tab</code> + <code>Tab</code>.</li>
-        <li><b>Go to previous command:</b> <code>&#8593;</code>, or <code>Ctrl</code> + <code>P</code>.</li>
-    <li><b>Go to next command:</b> <code>&#8595;</code>, or <code>Ctrl</code> + <code>N</code>.</li>
-    <li><b>Search through previously used commands:</b> <code>Ctrl</code> + <code>R</code>.</li>
-        <li><b>Terminate the current process (SIGINT):</b> <code>Ctrl</code> + <code>C</code>.</li>
-        <li><b>Suspend the current process (SIGTSTP):</b> <code>Ctrl</code> + <code>Z</code>.</li>
-      </ul>
+    <ul>
+      <li>Install a package locally: <code>sudo apt-get install <em>./package.deb</em></code>.</li>
+      <li>Install a package from the repository: <code>sudo apt-get install <em>package</em></code>.</li>
+      <li>Uninstall a package from the repository: <code>sudo apt-get purge <em>package</em></code>.</li>
+      <li>Remove packages that are no longer needed: <code>sudo apt-get autoremove</code>.</li>
+      <li>Resynchronize the package index files from <em>/etc/apt/sources.list</em>: <code>sudo apt-get update</code>.</li>
+      <li>Install the newest versions of all packages from <em>/etc/apt/sources.list</em>: <code>sudo apt-get upgrade</code>.</li>
+    </ul>
 
+    <h3>3. Bash shortcuts</h3>
 
+    <ul>
+      <li>Autocomplete files, folders, commands, packages, etc.: <code>Tab</code>.</li>
+      <li>List all available files, folders, commands, packages, etc.: <code>Tab</code> + <code>Tab</code>.</li>
+      <li>Go to previous command: <code>&#8593;</code>, or <code>Ctrl</code> + <code>P</code>.</li>
+      <li>Go to next command: <code>&#8595;</code>, or <code>Ctrl</code> + <code>N</code>.</li>
+      <li>Search through previously used commands: <code>Ctrl</code> + <code>R</code>.</li>
+      <li>Terminate the current process (SIGINT): <code>Ctrl</code> + <code>C</code>.</li>
+      <li>Suspend the current process (SIGTSTP): <code>Ctrl</code> + <code>Z</code>.</li>
+    </ul>
 
-      <p><b>2. BASIC COMMANDS</b></p>
+    <h3>4. Basic commands</h3>
 
-      <ul>
-        <li><b>Show and/or admin current processes:</b> <code>jobs</code>, <code>ps</code>, <code>top</code>.</li>
-        <li><b>Send a signal to a process:</b> <code>kill</code>.</li>
-        <li><b>List files in databases that match a pattern:</b> <code>locate</code>, <code>sudo updatedb</code>.</li>
-        <li><b>Print lines matching a pattern from a text file:</b> <code>grep</code>.</li>
-        <li><b>Show/manipulate routing, devices, policy routing and tunnels:</b> <code>ip</code>.</li>
+    <ul>
+      <li>Show and/or admin current processes: <code>jobs</code>, <code>ps</code>, <code>top</code>.</li>
+      <li>Send a signal to a process: <code>kill</code>.</li>
+      <li>List files in databases that match a pattern: <code>locate</code>, <code>sudo updatedb</code>.</li>
+      <li>Print lines matching a pattern from a text file: <code>grep</code>.</li>
+      <li>Show/manipulate routing, devices, policy routing and tunnels: <code>ip</code>.</li>
+      <li>OpenSSH SSH client with X11 forwarding: <code>ssh <em>user</em>@<em>server</em> -X</code>.</li>
+      <li>Secure copy (remote file copy program): <code>scp</code>.</li>
+    </ul>
 
-        <li><b>OpenSSH SSH client with X11 forwarding:</b> <code>ssh <i>user</i>@<i>server</i> -X</code>.</li>
-        <li><b>Secure copy (remote file copy program):</b> <code>scp</code>.</li>
-      </ul>
+    <h3>3. Screen commands</h3>
 
-      <p><b>3. SCREEN COMMANDS</b></p>
+    <ul>
+      <li>Create a screen session: <code>screen</code>.</li>
+      <li>Detach from the current screen session: <code>Ctrl</code> + <code>A</code> then <code>D</code>.</li>
+      <li>List the screen session identification strings: <code>screen -ls</code>.</li>
+      <li>Reattach to a screen session: <code>screen -r <em>session_id_string</em></code>.</li>
+      <li>Terminate the current screen session: <code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code>.</li>
+      <li>Scroll up/down during session: <code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code>.</li>
+    </ul>
 
-      <ul>
-        <li><b>Create a screen session:</b> <code>screen</code>.</li>
-        <li><b>Detach from the current screen session:</b> <code>Ctrl</code> + <code>A</code> then <code>D</code>.</li>
-        <li><b>List the screen session identification strings:</b> <code>screen -ls</code>.</li>
-        <li><b>Reattach to a screen session:</b> <code>screen -r <i>session_id_string</i></code>.</li>
-        <li><b>Terminate the current screen session:</b> <code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code>.</li>
-        <li><b>Scroll up/down during session:</b> <code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code>.</li>
-      </ul>
+    <h3>4. Other commands</h3>
 
-      <p><b>4. OTHER COMMANDS</b></p>
+    <ul>
+      <li>Print newline, word, and byte counts for each file: <code>wc</code>.</li>
+      <li>Extract an ISO file: <code>7z x <em>filename.iso</em></code>.</li>
+      <li>Report faked system time to programs: <code>faketime</code>.</li>
+      <li>Retrieves files from the web: <code>wget</code>.</li>
+      <li>Print shared library dependencies: <code>ldd <em>executable_filename</em></code>.</li>
+      <li>Make symbolic links: <code>ln -s <em>input_filename</em> <em>output_link_name</em></code>.</li>
+      <li>List block devices: <code>lsblk</code>.</li>
+      <li>Format USB stick as VFAT: <code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code>.</li>
+      <li>Restore disk from image: <code>sudo dd bs=1M if=<em>im.iso</em> of=/dev/sd<em>x</em> && sync</code>.</li>
+      <li>Report disk space usage: <code>df -H</code>, <code>du -hs <em>folder</em></code>.</li>
+      <li>Compare files line by line: <code>diff</code>.</li>
+    </ul>
 
-      <ul>
-        <li><b>Print newline, word, and byte counts for each file:</b> <code>wc</code>.</li>
-        <li><b>Extract an ISO file:</b> <code>7z x <i>filename.iso</i></code>.</li>
-        <li><b>Report faked system time to programs:</b> <code>faketime</code>.</li>
-        <li><b>Retrieves files from the web:</b> <code>wget</code>.</li>
-        <li><b>Print shared library dependencies:</b> <code>ldd <i>executable_filename</i></code>.</li>
-        <li><b>Make symbolic links:</b> <code>ln -s <i>input_filename</i> <i>output_link_name</i></code>.</li>
-        <li><b>List block devices:</b> <code>lsblk</code>.</li>
-        <li><b>Format USB stick as VFAT:</b> <code>sudo mkfs.vfat -I /dev/sd<i>x</i> -n <i>NAME</i> && sync</code>.</li>
-        <li><b>Restore disk from image:</b> <code>sudo dd bs=1M if=<i>im.iso</i> of=/dev/sd<i>x</i> && sync</code>.</li>
-        <li><b>Report disk space usage:</b> <code>df -H</code>, <code>du -hs <i>folder</i></code>.</li>
-        <li><b>Compare files line by line:</b> <code>diff</code>.</li>
-      </ul>
+    <h3>5. FFmpeg commands</h3>
 
-      <p><b>5. FFMPEG COMMANDS</b></p>
+    <ul>
+      <li>Convert image to 5 sec. video: <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
+      <li>15 images to 30 Hz 5 sec. video: <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
+      <li>Resize video to 720p: <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
+      <li>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video: <code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code>.</li>
+      <li>Concatenate videos: <code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code>.</li>
+    </ul>
 
-      <ul>
-        <li><b>Convert image to 5 sec. video:</b> <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
-        <li><b>15 images to 30 Hz 5 sec. video:</b> <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
-        <li><b>Resize video to 720p:</b> <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
-        <li><b>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video:</b> <code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code>.</li>
-        <li><b>Concatenate videos:</b> <code>ffmpeg -f concat -i <i>mylist.txt</i> -c copy out.mp4</code>.</li>
-      </ul>
+    <h3>6. SVN commands</h3>
 
-      <p><b>6. SVN COMMANDS</b></p>
+    <ul>
+      <li>Create new repository: <code>svnadmin create <em>repository_name</em></code>.</li>
+      <li>Checkout: <code>svn co svn+ssh://<em>user</em>@<em>server</em>/<em>path/to/repository</em></code>.</li>
+      <li>Update working copy: <code>svn update</code>.</li>
+      <li>Get status of current copy: <code>svn status</code>.</li>
+      <li>Add all items recursively: <code>svn add *</code>.</li>
+      <li>Add an item (if folder, adds recursively): <code>svn add <em>item_name</em></code>.</li>
+      <li>Delete an item (if folder, deletes recursively): <code>svn delete <em>item_name</em></code>.</li>
+      <li>Commit with log message: <code>svn commit -m '<em>message</em>'</code>.</li>
+    </ul>
 
-      <ul>
-        <li><b>Create new repository:</b> <code>svnadmin create <i>repository_name</i></code>.</li>
-        <li><b>Checkout:</b> <code>svn co svn+ssh://<i>user</i>@<i>server</i>/<i>path/to/repository</i></code>.</li>
-        <li><b>Update working copy:</b> <code>svn update</code>.</li>
-        <li><b>Get status of current copy:</b> <code>svn status</code>.</li>
-        <li><b>Add all items recursively:</b> <code>svn add *</code>.</li>
-        <li><b>Add an item (if folder, adds recursively):</b> <code>svn add <i>item_name</i></code>.</li>
-        <li><b>Delete an item (if folder, deletes recursively):</b> <code>svn delete <i>item_name</i></code>.</li>
-        <li><b>Commit with log message:</b> <code>svn commit -m '<i>message</i>'</code>.</li>
-      </ul>
+    <h3>7. Find command</h3>
 
-      <p><b>7. FIND COMMAND</b></p>
+    <ul>
+      <li>Find files and folders recursively in current directory: <code>find .</code>.</li>
+      <li>Run files recursively in current <em>dir.</em>: <code>find . -type f -exec file '{}' \;</code>.</li>
+      <li>Delete all <em>.svn</em> folders: <code>find . -iname .svn -prune -exec rm -r '{}' \;</code>.</li>
+      <li>Copy all <em>png</em> files to <em>png</em>: <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
+    </ul>
 
-      <ul>
-        <li><b>Find files and folders recursively in current directory:</b> <code>find .</code>.</li>
-        <li><b>Run files recursively in current <i>dir.</i>:</b> <code>find . -type f -exec file '{}' \;</code>.</li>
-        <li><b>Delete all <i>.svn</i> folders:</b> <code>find . -iname .svn -prune -exec rm -r '{}' \;</code>.</li>
-        <li><b>Copy all <i>png</i> files to <i>png</i>:</b> <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
-      </ul>
+    <h3>8. PDFtk examples</h3>
 
-      <p><b>8. PDFTK EXAMPLES</b></p>
+    <ul>
+      <li>Join all PDF files into a new PDF file: <code>pdftk *.pdf cat output out.pdf</code>.</li>
+      <li>Join 3 PDF files: <code>pdftk in1.pdf in2.pdf in3.pdf cat output out.pdf</code>.</li>
+      <li>Extract pages from a PDF: <code>pdftk in.pdf cat 1 25-35 end output out.pdf</code>.</li>
+    </ul>
 
-      <ul>
-        <li><b>Join all PDF files into a new PDF file:</b> <code>pdftk *.pdf cat output out.pdf</code>.</li>
-        <li><b>Join 3 PDF files:</b> <code>pdftk in1.pdf in2.pdf in3.pdf cat output out.pdf</code>.</li>
-        <li><b>Extract pages from a PDF:</b> <code>pdftk in.pdf cat 1 25-35 end output out.pdf</code>.</li>
-      </ul>
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>
 
-      <p><b>INSTALL COMMAND-LINE INTERFACE (CLI) SOFTWARE</b></p>
-
-      <p>Some of the commands listed below are not available in Ubuntu or Debian by default.</p>
-
-      <p>To install the remaining CLI software, download the installation script <a href='https://github.com/milq/milq/blob/master/scripts/bash/install-additional-cli-software.sh'><i><b>install-additional-cli-software.sh</b></i></a>, open your terminal, and execute it: <code>bash install-cli-software.sh</code>.</p>
-
-      <p><b>Do you like this article?</b> Share it with this <a href='http://milq.github.io/useful-terminal-commands-ubuntu-debian'><b>link</b></a>. Thanks for reading!</p>
-    </article>
-
-    <script type='text/javascript' src='../src/js/comments.js'></script>
     <script type='text/javascript' src='../src/js/analytics.js'></script>
 
-    <footer>
-      <p>All content created by <a href='http://milq.github.io'><b>Manuel Ignacio López Quintero</b></a> under this <a href='http://creativecommons.org/licenses/by/4.0'><b>license</b></a>.</p>
-    </footer>
+    <p>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</p>
+
   </body>
 </html>
