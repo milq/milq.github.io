@@ -5,7 +5,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <meta name='author' content='Manuel Ignacio López Quintero' />
     <meta name='description' content='Things to do just after installing Ubuntu or Debian.' />
-    
+
     <title>Things to do just after installing Ubuntu or Debian - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../src/png/icon.png' />
     <link rel='stylesheet' href='../src/css/simple.css' />
@@ -17,81 +17,77 @@
     <p><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></p>
 
     <h2>Things to do just after installing Ubuntu or Debian</h2>
-      
+
     <p>Just after installing Debian or Ubuntu, it is recommended to set up the operating system .</p>
-	    
+
     <h3>1. Enable <em>sudo</em> on your user account (if you use Debian)</h3>
-  
+
     <ol>
       <li>Open a terminal and become superuser: <code>su root</code>. Enter the <i>root</i> password.</li>
       <li>Now, install <i>sudo</i>: <code>apt-get install sudo</code>.</li>
-	  <li>Add the user account to the group <i>sudo</i>: <code>adduser <i>username</i> sudo</code>. Where <i>username</i> is your user account.</li>
-	  <li>Now, log out and then log in with the same user.</li>
-	  <li>Finally, open a terminal and execute: <code>sudo echo 'Hello, world!'</code>.</li>
-      <li>Enter the user password. If all goes well, you'll see on screen <i>Hello, world!</i>.</li>    
+      <li>Add the user account to the group <i>sudo</i>: <code>adduser <i>username</i> sudo</code>. Where <i>username</i> is your user account.</li>
+      <li>Now, log out and then log in with the same user.</li>
+      <li>Finally, open a terminal and execute: <code>sudo echo 'Hello, world!'</code>.</li>
+      <li>Enter the user password. If all goes well, you'll see on screen <i>Hello, world!</i>.</li>
     </ol>
-	    
-    <h3>2. Keep Debian or Ubuntu up to date</h3>	    
-      
+
+    <h3>2. Keep Debian or Ubuntu up to date</h3>
+
     <p>Open your terminal and execute: <code>sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove</code>.</p>
-	    
+
     <h3>3. Install additional software</h3>
-  	    
+
     <p>Execute this <a href='https://github.com/milq/milq/blob/master/scripts/bash/install-additional-software.sh'>script</a> to install additional GUI and CLI software for your Ubuntu or Debian.</p>
-	    
+
     <h3>3. Install non-free drivers</h3>
-      
+
     <p>Run <code>sudo lshw | grep UNCLAIMED</code> to see the unclaimed drivers. Verify all the drivers have their product and vendor tags. The commands <code>lspci</code>, <code>lsusb</code> can help you.</p>
-      
+
     <p>For example, for my Wi-Fi I download and install the non-free <a href='https://packages.debian.org/wheezy/firmware-realtek'>Realtek firmware package</a> and for my ATI graphic card I download and install the <a href='http://support.amd.com/en-us/download'>non-free driver</a>.</p>
 
     <h3>4. Install non-free software</h3>
-      
+
     <ul>
       <li><a href='http://google.com/chrome'>Chrome</a> (the free alternative is <a href='http://chromium.org'>Chromium</a>) (<a href='chrome-chromium-fonts.png'>Chrome/Chromium fonts</a>).</li>
       <li><a href='https://dropbox.com/install'>Dropbox</a> (<a href='http://askubuntu.com/questions/148171/dropbox-error-echo-100000-sudo-tee-proc-sys-fs-inotify-max-user-watches'>solve error</a> about monitoring file system).</li>
       <li><a href='http://sublimetext.com'>Sublime Text</a>.</li>
       <li><a href='https://www.virtualbox.org'>VirtualBox and its Extension Pack</a> (some dependencies are non-free).</li>
     </ul>
-      
-    <p><strong>5. CUSTOMIZE THE LOOK OF YOUR DESKTOP</strong></p>
-      
-      <p>Install Murrine engine and their respective themes with the command:</p>
-      
-      <pre>sudo apt-get install murrine-themes</pre>
-      
-      <p>To install icons for your user account copy the icon folder to <code>~/.icons/</code>. For all users copy the icon folder to <code>/usr/local/share/icons/</code> instead.</p>
-      
-      <p>To install fonts for your user account copy the <i>ttf</i> fonts to <code>~/.fonts/</code>. For all users copy the <i>ttf</i> fonts to <code>/usr/local/share/fonts/</code> instead. Remember to install normal, bold, <i>italic</i> and <i>bold italic</i> fonts.</p>
-      
-      <p>This is my configuration in Debian:</p>
-      
-      <ul>
-        <li>Desktop Environment (DE): Xfce.</li>
-        <li>Panel: 1 horizontal bottom panel (<a href='panel-display.png'>display</a>) (<a href='panel-items.png'>items</a>).</li>
-        <li><a href='gtk.png'>GTK Theme</a>: Numix (<a href='theme-config.png'>GTK Theme Color</a>).</li>
-        <li><a href='wm.png'>Window Manager (WM)</a>: Numix.</li>
-        <li><a href='fonts.png'>Fonts</a>: <a href='https://www.google.com/fonts/specimen/Open+Sans'>Open Sans</a>, <a href='https://www.google.com/fonts/specimen/Cousine'>Cousine</a>, and <a href='https://www.google.com/fonts/specimen/Arimo'>Arimo</a>.</li>
-        <li><a href='icons.png'>Icons</a>: <a href='https://github.com/numixproject/numix-icon-theme-circle'>Numix Circle</a>.</li>
-      </ul>
-      
-      <p>You can see an <a href='milq-screenshot.png'>example screenshot</a> of my Debian.</p>
-      
-      <p>If you use Xfce, <a href='https://wiki.debian.org/LightDM#Enable_autologin'>enable autologin</a>.</p>
 
-      <p>Go to Settings, Workspaces and set 1 workspace.</p>
+    <h3>5. Customize the look of your desktop</h3>
 
-      <p>Go to Settings, Window Manager Tweaks, Compositor and activate Enable display compositing to use hardware acceleration automatically in Xfce.</p>
+    <p>Install Murrine engine and their respective themes with the command:</p>
 
-      <p>Do you like this article? Share it with this <a href='http://milq.github.io/things-to-do-just-after-installing-ubuntu-debian'>link</a>. Thanks for reading!</p>
-      
-    </article>
+    <code>sudo apt-get install murrine-themes</code>
 
-    <script type='text/javascript' src='../src/js/comments.js'></script>
+    <p>To install icons for your user account copy the icon folder to <code>~/.icons/</code>. For all users copy the icon folder to <code>/usr/local/share/icons/</code> instead.</p>
+
+    <p>To install fonts for your user account copy the <i>ttf</i> fonts to <code>~/.fonts/</code>. For all users copy the <i>ttf</i> fonts to <code>/usr/local/share/fonts/</code> instead. Remember to install normal, bold, <i>italic</i> and <i>bold italic</i> fonts.</p>
+
+    <p>This is my configuration in Debian:</p>
+
+    <ul>
+      <li>Desktop Environment (DE): Xfce.</li>
+      <li>Panel: 1 horizontal bottom panel (<a href='panel-display.png'>display</a>) (<a href='panel-items.png'>items</a>).</li>
+      <li><a href='gtk.png'>GTK Theme</a>: Numix (<a href='theme-config.png'>GTK Theme Color</a>).</li>
+      <li><a href='wm.png'>Window Manager (WM)</a>: Numix.</li>
+      <li><a href='fonts.png'>Fonts</a>: <a href='https://www.google.com/fonts/specimen/Open+Sans'>Open Sans</a>, <a href='https://www.google.com/fonts/specimen/Cousine'>Cousine</a>, and <a href='https://www.google.com/fonts/specimen/Arimo'>Arimo</a>.</li>
+      <li><a href='icons.png'>Icons</a>: <a href='https://github.com/numixproject/numix-icon-theme-circle'>Numix Circle</a>.</li>
+    </ul>
+
+    <p>You can see an <a href='milq-screenshot.png'>example screenshot</a> of my Debian.</p>
+
+    <p>If you use Xfce, <a href='https://wiki.debian.org/LightDM#Enable_autologin'>enable autologin</a>.</p>
+
+    <p>Go to Settings, Workspaces and set 1 workspace.</p>
+
+    <p>Go to Settings, Window Manager Tweaks, Compositor and activate Enable display compositing to use hardware acceleration automatically in Xfce.</p>
+
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/things-to-do-just-after-installing-ubuntu-debian'>link</a>. Thanks for reading!</p>
+
     <script type='text/javascript' src='../src/js/analytics.js'></script>
-    
-    <footer>
-      <p>All content created by <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='http://creativecommons.org/licenses/by/4.0'>license</a>.</p>
-    </footer>
+
+    <p>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</p>
+
   </body>
 </html>
