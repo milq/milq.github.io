@@ -8,14 +8,18 @@ a {
   text-decoration: none;
 }
 
-/*code, pre {
+code, pre {
   font-family: 'Menlo', monospace;
   padding: .2em .4em;
   background-color: Gainsboro;
   border-radius: .2em;
 }
-*/
 
+img {
+  max-width: 100%;  
+}
+
+/*
 code, pre {
   color: #c04027;
   background-color: #e6e6e6;
@@ -23,3 +27,4 @@ code, pre {
   /* border-radius: .2em; */
   font-family: 'Liberation Mono', 'Menlo', monospace;
 }
+*/
