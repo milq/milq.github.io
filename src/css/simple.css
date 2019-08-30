@@ -14,17 +14,9 @@ code, pre {
   padding: .05em .1em;
   background-color: Gainsboro;
   border-radius: .2em;
+  white-space: pre-wrap;
 }
 
 img {
   max-width: 100%;  
 }
-
-/*
-code, pre {
-  color: #c04027;
-  background-color: #e6e6e6;
-  padding: .05em .1em;
-  font-family: 'Liberation Mono', 'Menlo', monospace;
-}
-*/
