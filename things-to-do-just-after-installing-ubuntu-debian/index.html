@@ -25,7 +25,7 @@
     <ol>
       <li>Open a terminal and become superuser: <code>su root</code>. Enter the <i>root</i> password.</li>
       <li>Now, install <i>sudo</i>: <code>apt-get install sudo</code>.</li>
-      <li>Add the user account to the group <i>sudo</i>: <code>adduser <i>username</i> sudo</code>. Where <i>username</i> is your user account.</li>
+      <li>Add your user account to the group <i>sudo</i>: <code>/sbin/addgroup <i>username</i> sudo</code>. Where <i>username</i> is your user account.</li>
       <li>Now, log out and then log in with the same user.</li>
       <li>Finally, open a terminal and execute: <code>sudo echo 'Hello, world!'</code>.</li>
       <li>Enter the user password. If all goes well, you'll see on screen <i>Hello, world!</i>.</li>
@@ -37,7 +37,7 @@
 
     <h3>3. Install additional software</h3>
 
-    <p>Execute this <a href='https://github.com/milq/milq/blob/master/scripts/bash/install-additional-software.sh'>script</a> to install additional GUI and CLI software for your Ubuntu or Debian.</p>
+    <p>Execute this <a href='https://github.com/milq/milq/blob/master/scripts/bash/install-additional-software.sh'><em>script</em></a> to install additional GUI and CLI software for your Ubuntu or Debian.</p>
 
     <h3>3. Install non-free drivers</h3>
 
