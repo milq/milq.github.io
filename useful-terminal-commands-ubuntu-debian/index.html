@@ -109,7 +109,20 @@
       <li>Concatenate videos: <code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code>.</li>
     </ul>
 
-    <h3>8. SVN commands</h3>
+    <h3 id='git'>9. Git</h3>
+
+    <p>Execute <code>sudo apt-get install git</code> to install Git in Debian based distributions.</p>
+
+    <ul>
+      <li><code>git clone <em>uri_repository.git</em></code>: Clone a repository into a new directory.</li>
+      <li><code>git pull</code>: Incorporates changes from a remote repository into the current branch.</li>
+      <li><code>git status</code>: Show the working tree status.</li>
+      <li><code>git add .</code>: Update the index using the current content found in the working tree.</li>
+      <li><code>git commit -m '<i>message</i>'</code>: Record changes to the repository.</li>
+      <li><code>git push</code>: Update remote references (<i>refs</i>) along with associated objects.</li>
+    </ul>
+
+    <h3>9. SVN</h3>
 
     <ul>
       <li>Create new repository: <code>svnadmin create <em>repository_name</em></code>.</li>
@@ -122,7 +135,7 @@
       <li>Commit with log message: <code>svn commit -m '<em>message</em>'</code>.</li>
     </ul>
 
-    <h3>9. Find command</h3>
+    <h3>10. Find command</h3>
 
     <ul>
       <li>Find files and folders recursively in current directory: <code>find .</code>.</li>
@@ -131,7 +144,7 @@
       <li>Copy all <em>png</em> files to <em>png</em>: <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
     </ul>
 
-    <h3>10. PDFtk examples</h3>
+    <h3>11. PDFtk examples</h3>
 
     <ul>
       <li>Join all PDF files into a new PDF file: <code>pdftk *.pdf cat output out.pdf</code>.</li>
