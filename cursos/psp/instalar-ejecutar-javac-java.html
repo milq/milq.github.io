@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta charset='utf-8' />
+    <meta name='description' content='Curso de Tecnologías de la Información y la Comunicación I.' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>PSP - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../../src/png/icon.png' />
+    <link rel='stylesheet' href='../../src/css/simple.css' />
+  </head>
+
+  <body>
+    <h1>Programacion de Servicios y Procesos - 2º DAM</h1>
+
+	<h2>Compilar y ejecutar en Java desde línea de comandos</h2>
+
+	<p>Ejecutar códigos en Java desde línea de comandos permite: consumir menos recursos, funcionar más rápido y aprender cómo funciona el compilador y el intérprete de Java. Es ideal si no necesitamos crear un proyecto de mayor envergadura. Asimismo, hay que sumar todas las ventajas de usar línea de comandos.</p>
+
+	<p>Los pasos para compilar y ejecutar en Java son los siguientes:</p>
+	
+	<ol>
+	  <li><strong>Instala JDK</strong>: si no tienes JDK instalado, usa el <a href='https://www.oracle.com/technetwork/java/javase/downloads'>instalador</a> para Windows 10 o ejecuta <code>sudo apt-get install default-jdk</code> para distribuciones GNU/Linux basadas en Debian.</li><br />
+	  <li><strong>Descarga un ejemplo</strong>: descarga el código de ejemplo <a href='https://www.cs.utexas.edu/~scottm/cs307/javacode/codeSamples/HelloWorld.java'>HelloWorld.java</a>.</li><br />
+	  <li><strong>Compila a Java <em>bytecode</em></strong>: desde terminal, tanto en Windows como en GNU/Linux, entra en el directorio donde esté <em>HelloWorld.java</em>, compila con <code>javac HelloWorld.java</code> y comprueba que se ha generado <em>HelloWorld.class</em>.</li><br />
+	  <li><strong>Ejecuta código <em>bytecode</em></strong>: en el mismo directorio, ejecuta <code>java HelloWorld</code> y verás en pantalla <em>Hello World!</em>.</li>
+	</ol>
+
+	<p>Si no reconoce los comandos en Windows 10, establece los siguientes alias:</p>
+
+	<p><code>Set-Alias -Name javac -Value 'C:\Program Files\Java\jdk1.8.0_221\bin\javac.exe'</code></p>
+
+	<p><code>Set-Alias -Name java -Value 'C:\Program Files\Java\jdk1.8.0_221\bin\java.exe'</code></p>
+
+	<p>Cambia el directorio de JDK por el correspondiente en tu PC.</p>
+
+    <p><a href='http://milq.github.io/cursos'>Volver a cursos</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>
