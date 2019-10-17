@@ -1,0 +1,79 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>Generación de documentos web con PHP - DAWS</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}table{border-collapse:collapse;width:100%}td,th{text-align:left;padding:.45em}tr:nth-child(even){background-color:#f2f2f2}th{background-color:steelblue;color:#fff}a,a:link,a:visited{text-decoration:none}.center{text-align:center}</style>
+  </head>
+
+  <body>
+    <h1>2. Generación de documentos web con PHP y SQL</h1>
+
+    <h2>Actividades</h2>
+
+    <p>Crea tres aplicaciones web (XHTML + CSS + PHP + PosgreSQL) que mediante conexiones a una base de datos PosgreSQL proporcione un servicio tanto para el usuario como para el administrador y que genere un informe.</p>
+
+    <p>Las características de las tres aplicaciones web son las siguientes:</p>
+
+    <ul>
+      <li>Incluir una página de registro o alta como usuario nuevo.</li>
+      <li>Inicio de sesión tanto para el rol de usuario como para el rol de administrador.</li>
+      <li>Una vez iniciada la sesión como usuario, proporcionar un servicio al cliente.</li>
+      <li>Una vez iniciada la sesión como administrador, proporcionar un servicio al empresario.</li>
+      <li>Generar un informe recogiendo la información de una base de datos (PosgreSQL).</li>
+      <li>Cerrar sesión tanto como usuario como administrador.</li>
+      <li>La práctica debe estar subida en la plataforma <a href='http://heroku.com'>Heroku</a> (para evaluar el funcionamiento) y en <a href='https://github.com'>GitHub</a> (para evaluar el código).</li>
+      <li>Todos los documentos tienen que estar validados en XHTML 5.2, CSS 3 y WCAG 2.0 AAA.</li>
+    </ul>
+
+    <h3>1. Sistema de test <em>online</em></h3>
+
+    <p>El usuario iniciará sesión y realizará una prueba <em>online</em> tipo test sobre PHP (mínimo 10 preguntas). El test tendrá un máximo de 3 intentos. Tiene que haber preguntas con respuestas únicas (<code>radio</code>) o múltiples (<code>checkbox</code>). El profesor, con rol administrador, iniciará sesión y podrá comprobar las respuestas y la nota de cada alumno y podrá generar un informe. Dicho informe mostrará las notas de cada alumno y estadísticas como nota media, moda, varianza, desviación típica, pregunta con más aciertos, pregunta con más fallos, etc.</p>
+
+    <h3>2. Reservas <em>online</em> de coches</h3>
+
+    <p>El usuario (cliente) iniciará sesión y realizará una reserva <em>online</em> de un coche desde y hasta una fecha determinada a partir de un catálogo de 10 coches diferentes. El usuario no podrá reservar un coche determinado desde y hasta una fecha determinada si se encuentra reservado algún momento entre esas fechas. El administrador (empresario) iniciará sesión y podrá comprobar todas las reservas de sus clientes y podrá generar un informe. Dicho informe mostrará las reservas de cada cliente y estadísticas como número de veces que ha reservado, cuántos días ha reservado, qué coche ha reservado más veces, etc.</p>
+
+    <h3>3. Pizzería <em>online</em></h3>
+
+    <p>El usuario (cliente) iniciará sesión y realizará un pedido <em>online</em> de una o varias pizzas y podrá elegir hasta 10 ingredientes o hasta 5 especialidades diferentes. El usuario podrá añadir/eliminar ingredientes/pizzas y vaciar la cesta de la compra para empezar de nuevo. El administrador (empresario) iniciará sesión y podrá comprobar todos los pedidos de sus clientes y podrá generar un informe. Dicho informe mostrará los pedidos de cada cliente y estadísticas como precio medio del pedido, el ingrediente más y menos solicitado, la especialidad más y menos solicitada, etc.</p>
+
+    <h2>Evaluación</h2>
+
+    <h3>Criterios de calificación</h3>
+
+    <ul>
+      <li>Funciona completamente el inicio de sesión tanto como usuario como administrador (se tendrá que proporcionar al profesor credenciales de ejemplo): <strong>hasta 1 punto</strong>.</li>
+      <li>Una vez iniciada la sesión, funciona perfectamente el servicio proporcionado para cada rol: <strong>hasta 2 puntos</strong>.</li>
+      <li>Genera un informe completo y detallado en HTML (más CSS) recogiendo la información de una base de datos (PosgreSQL): <strong>hasta 1.5 puntos</strong>.</li>
+      <li>Genera un informe completo y detallado en PDF recogiendo la información de una base de datos (PosgreSQL): <strong>hasta 1.5 puntos</strong>.</li>
+      <li>Funciona completamente el cerrar la sesión como usuario: <strong>hasta 0.5 puntos</strong>.</li>
+      <li>Funciona completamente el registro o alta (teléfono, email, dirección, etc.) como usuario inactivo: <strong>hasta 0.5 puntos</strong>.</li>
+      <li>Una página escogida al azar está completamente validada en XHTML 5.2, WCAG 2.0 AAA y CSS3: <strong>hasta 1 punto</strong>.</li>
+      <li>Calidad del código PHP (funcional, eficiente y claro): <strong>hasta 1 punto</strong>.</li>
+      <li>Calidad del código PosgreSQL (funcional, eficiente y claro): <strong>hasta 1 punto</strong>.</li>
+    </ul>
+
+    <ul>
+      <li>Calidad del código PHP (funcional, eficiente y claro): <strong>hasta 4 puntos</strong>.</li>
+      <li>Calidad del código HTML y CSS (estructurado, organizado y claro): <strong>hasta 2 puntos</strong>.</li>
+      <li>Principios de <a href='https://es.wikipedia.org/wiki/Dise%C3%B1o_web'>diseño web</a>: diseño de interfaz, diseño gráfico web y experiencia de usuario (navegabilidad, interactividad, usabilidad, etc.): <strong>hasta 2 puntos</strong>.</li>
+      <li>Aplicación web validado en XHTML 5.2, WCAG 2.0 AAA y CSS 3: <strong>hasta 2 puntos</strong>.</li>
+    </ul>
+
+<!--
+Las aplicaciones web funcionan completamente (iniciar/cerrar sesión como usuario y administrador, alta y uso del servicio como usuario, generar informe como administrador, etc.). hasta 7 puntos.
+
+Principios de diseño web: diseño de interfaz, diseño gráfico web y experiencia de usuario. Asimismo, calidad del código XHTML y CSS 3 (funcional, eficiente y claro) y que las páginas estén validadas en XHTML 5.2, WCAG 2.0 AAA y CSS 3. hasta 1'5 puntos.
+
+Calidad del código PHP y PosgreSQL (funcional, eficiente y claro). hasta 1 punto.
+
+
+-->
+
+    <p><a href='../../index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>

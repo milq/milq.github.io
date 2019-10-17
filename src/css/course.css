@@ -1,112 +1,16 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
 body {
-  font-family: 'Open Sans', sans-serif;
-  margin: 0 auto;
-  max-width: 720px;
-  padding: 0 10px;
+  font-family: 'San Francisco', 'Segoe UI', 'Open Sans', sans-serif;
 }
 
-header{
-  color: #444;
-  font-size: 2.8em;
-  margin-bottom: 0.3em;
-  text-align: center;
-}
-
-article h1 {         
-  color: #444;
-  font-size: 2em;
-  margin-bottom: 0.9em;
-  margin-top: 0.9em;
-  text-align: left;
-  font-weight: normal;
-}
-
-article h2 {
-  color: #444;
-  text-align: center;
-  font-weight: normal;
-}
-
-p, article ol li, article ul li {
-  color: #333;
-  font-size: 1.1em;
-  line-height: 1.6em;
-  text-align: justify;
-}
-
-p, img, article ol, article ul, div, svg {
-  margin-bottom: 1.6em;
-}
-
-a, a:link, a:visited {
-  color: #06c;
+a {
+  color: blue;
   text-decoration: none;
 }
 
-/*code, pre {
-  background-color: #eee;
-  border: 1px solid #aaa;
-  color: #333;
-  font-family: monospace;
-  font-size: 16px;
-  text-align: left;
-  white-space: pre-wrap;
-}
-
 code {
-  padding: 5px;
-}
-
-pre {
-  line-height: 30px;
-  margin-bottom: 30px;
-  padding: 10px;
-}*/
-
-img {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 1.6em;
-  max-width: 100%;
-}
-
-footer p {
-  margin-bottom: 0.8em;
-  text-align: center;
-}
-
-nav {
-  margin: 0 auto;
-  max-width: 90px;      /* New */
-}
-
-nav ul {
-  list-style-type:none;
-  margin:0;
-  overflow:hidden;
-  padding:0;
-}
-
-nav ul li {
-  float: left;
-}
-
-nav ul li a:link, nav ul li a:visited {
-  display:block;
-  background-color:#eee;
-  color:#444;
-  font-size: 20px;
-  padding:10px 5px;
-  text-align:center;
-  width:80px;
-}
-
-nav ul li a.current:link, nav ul li a.current:visited {
-  background-color:#ddd;
-}
-
-nav ul li a:hover, a:active {
-  background-color:#ddd;
+  font-family: 'Menlo', monospace;
+  padding: .05em .1em;
+  background-color: Gainsboro;
+  border-radius: .2em;
+  white-space: pre-wrap;
 }
