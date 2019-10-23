@@ -18,7 +18,11 @@
     <h2>1. Instala XAMPP, Composer, Git y Heroku CLI</h2>
 
     <ol>
-      <li>Instala <a href='http://apachefriends.org'>XAMPP</a> en la ruta que viene por defecto (<code>C:\xampp</code> en Windows u <code>/opt/lampp/</code> en Debian/Ubuntu).</li>
+      <li>Instala <a href='http://apachefriends.org'>XAMPP</a> en la ruta que viene por defecto (<code>C:\xampp</code> en Windows u <code>/opt/lampp/</code> en Debian/Ubuntu).
+      <ul>
+        <li>En Debian/Ubuntu, justo después, ejecuta <code>sudo rm -rf /opt/lampp/htdocs/*</code> y luego <code>sudo chmod 777 /opt/lampp/htdocs</code>.</li>
+      </ul>
+      </li>
       <li>Instala <a href='http://getcomposer.org'>Composer</a> en Windows (mediante el <a href='http://getcomposer.org/doc/00-intro.md#installation-windows' title='Instalador Composer'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install composer</code>).</li>
       <li>Instala Git en Windows (mediante el <a href='http://git-scm.com/download/win' title='Instalador Git'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install git</code>).</li>
       <li>Instala Heroku CLI: <a href='https://devcenter.heroku.com/articles/heroku-cli#download-and-install'>Windows</a> o en <a href='https://devcenter.heroku.com/articles/heroku-cli#standalone-installation'>Debian/Ubuntu</a> con <code>curl https://cli-assets.heroku.com/install.sh | sh</code>.</li>
