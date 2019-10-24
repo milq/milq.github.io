@@ -34,3 +34,12 @@ img {
   margin: 0 auto;
   max-width: 100%;
 }
+
+.tip {
+  background-color: #337ab7;
+  border-color: 1px #2e6da4;
+  color: #fff;
+  padding: 0.2em;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}

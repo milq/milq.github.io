@@ -17,17 +17,19 @@
 
     <nav><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></nav>
 
-    <h2 id='gnu_linux_commands'>GNU/Linux commands</h2>
+    <h2 id='gnu_linux'>GNU/Linux commands</h2>
 
     <p>This is a compilation of my GNU/Linux commands I consider useful.</p>
 
 	<ol>
-	  <li><a href='#navigation'>Navigation</a>.</li>
-	  <li><a href='#help'>Help</a>.</li>
-	  <li><a href='#devices'>Devices</a>.</li>
+	  <li><a href='#navigation'>Navigation</a></li>
+	  <li><a href='#help'>Help</a></li>
+	  <li><a href='#file_manipulation'>File manipulation</a></li>
+	  <li><a href='#visualization'>Visualization</a></li>
+	  <li><a href='#administration'>Administration</a></li>
 	</ol>
 
-    <h3 id='navigation'>Navigation (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+    <h3 id='navigation'>1. Navigation (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>pwd</code> Print name of current/working directory.</li>
@@ -35,37 +37,29 @@
       <li><code>cd <em>path</em></code> Change directory.</li>
     </ul>
 
-    <h3 id='help'>Help (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+    <h3 id='help'>2. Help (<a href='#gnu_linux'>&uarr;</a>)</h3>
 	
     <ul>
       <li><code>man <em>command</em></code> Display summary information of a command.</li>
       <li><code><em>command</em> --help</code> Display short summary information of a command.</li>
       <li><code><em>command</em> -h</code> Another way to display short summary information of a command.</li>
-      <li><code>info <em>command</em></code> Display detailed hyper-text manual of a command. Only works for some commands.</li>
+      <li><code>info <em>command</em></code> Display detailed manual of a command. Only works for some commands.</li>
     </ul>
-    
-    <p>Explainshell</p>
 
-    <h3 id='manipulation'>Manipulation</h3>
+    <h3 id='file_manipulation'>3. File manipulation (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
-      <li><code>cp <em>[option] source_path destination_path</em></code> Copy files and directories.</li>
-      <li><code>mv <em>[option] source_path destination_path</em></code> Move and/or rename files and directories.</li>
+      <li><code>cp <em>source_path destination_path</em></code> Copy a file.</li>
+      <li><code>cp -r <em>source_path destination_path</em></code> Copy a directory.</li>
+      <li><code>mv <em>source_path destination_path</em></code> Move and/or rename files and directories.</li>
       <li><code>mkdir <em>path</em></code> Make empty directories.</li>
-      <li><code>rm <em>[option] path</em></code> Remove files and directories.</li>
-      <li><code>ln <em>source_path destination_path</em></code> Create a hard link of a file.</li>
-      <li><code>ln -s <em>source_path destination_path</em></code> Create a symbolic link of a file.</li>
+      <li><code>rm <em>path</em></code> Remove a file.</li>
+      <li><code>rm -r <em>path</em></code> Remove a directory.</li>
+      <li><code>ln <em>source_path destination_path</em></code> Create a <a href='https://en.wikipedia.org/wiki/Hard_link'>hard link</a> of a file.</li>
+      <li><code>ln -s <em>source_path destination_path</em></code> Create a <a href='https://en.wikipedia.org/wiki/Symbolic_link'>symbolic link</a> of a file.</li>
     </ul>
 
-    <h3 id='administration'>Administration</h3>
-
-    <ul>
-      <li><code>sudo <em>command</em></code> Execute a command as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
-      <li><code>su <em>username</em></code> Change user ID.</li>
-      <li><code>su</code> or <code>su root</code> Become superuser.</li>
-    </ul>
-
-    <h3 id='visualization'>Visualization</h3>
+    <h3 id='visualization'>4. Visualization (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>echo '<em>text</em>'</code> Display a line of text.</li>
@@ -73,15 +67,35 @@
       <li><code>cat</code> Concatenate files and print on the standard output.</li>
       <li><code>head <em>path_file</em></code> Print the first 10 lines of a text file.</li>
       <li><code>tail <em>path_file</em></code> Print the last 10 lines of a text file.</li>
-      <li><code>more <em>path_file</em></code> visualize the contents of a text file.</li>
-      <li><code>less <em>path_file</em></code> visualize the contents of a text file with many features.</li>
+      <li><code>more <em>path_file</em></code> Visualize the contents of a text file.</li>
+      <li><code>less <em>path_file</em></code> Visualize the contents of a text file with more features.</li>
       <li><code>grep</code> Print lines matching a pattern.</li>
     </ul>
 
-    <h3 id='redirection'>Redirection and execution</h3>
+    <h3 id='administration'>5. Administration (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
-      <li><code><em>command</em> &gt; <em>file</em></code> Redirect standard output to a file.</li>
+      <li><code>sudo <em>command</em></code> Execute a command as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
+      <li><code>su <em>username</em></code> Change user ID.</li>
+      <li><code>su</code> or <code>su root</code> Become superuser.</li>
+    </ul>
+
+
+
+    <h3 id='redirection'>Redirection</h3>
+
+    <ul>
+      <li><code><em>command</em> &gt; <em>file</em></code> Redirect standard output of a command to a new file.</li>
+      <li><code><em>command</em> 2&gt; <em>file</em></code> Redirect standard error of a command to a new file.</li>
+      <li><code><em>command</em> &amp;&gt; <em>file</em></code> Redirect standard or error output of a command to a new file.</li>
+      <li><code><em>command</em> &gt;&gt; <em>file</em></code> Append standard output of a command to a file.</li>
+      <li><code><em>command</em> 2&gt;&gt; <em>file</em></code> Append standard error of a command to a file.</li>
+      <li><code><em>command</em> &amp;&amp;&gt; <em>file</em></code> Append standard or error output of a command to a file.</li>
+    </ul>
+
+    <h3 id='execution'>Execution</h3>
+
+    <ul>
       <li><code><em>command1</em> && <em>command2</em> && <em>commandN</em></code> Execute multiple commands (AND).</li>
       <li><code><em>command</em> &amp;</code> Execute a command in the background.</li>
       <li><code>./<em>executable</em></code> Run an executable in the current directory that is not in your <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</li>
