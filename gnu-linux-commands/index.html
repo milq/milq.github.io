@@ -9,21 +9,7 @@
     <title>GNU/Linux commands - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../src/png/icon.png' />
     <link rel='stylesheet' href='../src/css/simple.css' />
-    <style>ul{list-style:none;padding-left:0;}</style>
-    <style>
-		@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
-	
-    code {
-  color: #c04027;
-  background-color: #e6e6e6;
-  padding: 0 0 0 0;
-  /*   padding-right: 0.2em; */
-  border-radius: .2em;
-
-font-family: 'Roboto Mono', Arial;
-}    
-    
-    </style>
+    <style>@import url(https://fonts.googleapis.com/css?family=Fira+Mono);ul{list-style:none;padding-left:0}code{color:#c04027;background-color:white;padding:0 .2em 0 0;font-family:'Fira Mono'}</style>
   </head>
 
   <body>
@@ -31,11 +17,17 @@ font-family: 'Roboto Mono', Arial;
 
     <nav><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></nav>
 
-    <h2>GNU/Linux commands</h2>
+    <h2 id='gnu_linux_commands'>GNU/Linux commands</h2>
 
     <p>This is a compilation of my GNU/Linux commands I consider useful.</p>
 
-    <h3>Navigation</h3>
+	<ol>
+	  <li><a href='#navigation'>Navigation</a>.</li>
+	  <li><a href='#help'>Help</a>.</li>
+	  <li><a href='#devices'>Devices</a>.</li>
+	</ol>
+
+    <h3 id='navigation'>Navigation (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>pwd</code> Print name of current/working directory.</li>
@@ -43,14 +35,16 @@ font-family: 'Roboto Mono', Arial;
       <li><code>cd <em>path</em></code> Change directory.</li>
     </ul>
 
-    <h3 id='navigation'>Help</h3>
-
+    <h3 id='help'>Help (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+	
     <ul>
       <li><code>man <em>command</em></code> Display summary information of a command.</li>
       <li><code><em>command</em> --help</code> Display short summary information of a command.</li>
       <li><code><em>command</em> -h</code> Another way to display short summary information of a command.</li>
       <li><code>info <em>command</em></code> Display detailed hyper-text manual of a command. Only works for some commands.</li>
     </ul>
+    
+    <p>Explainshell</p>
 
     <h3 id='manipulation'>Manipulation</h3>
 
@@ -64,7 +58,7 @@ font-family: 'Roboto Mono', Arial;
     </ul>
 
     <h3 id='administration'>Administration</h3>
-    
+
     <ul>
       <li><code>sudo <em>command</em></code> Execute a command as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
       <li><code>su <em>username</em></code> Change user ID.</li>
@@ -77,9 +71,33 @@ font-family: 'Roboto Mono', Arial;
       <li><code>echo '<em>text</em>'</code> Display a line of text.</li>
       <li><code>echo $PATH</code> Show the content of the variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</li>
       <li><code>cat</code> Concatenate files and print on the standard output.</li>
-      <li><code>head <em>file</em></code> Print the first 10 lines of a file.</li>
-      <li><code>tail</code> Output the last part of files.</li>
+      <li><code>head <em>path_file</em></code> Print the first 10 lines of a text file.</li>
+      <li><code>tail <em>path_file</em></code> Print the last 10 lines of a text file.</li>
+      <li><code>more <em>path_file</em></code> visualize the contents of a text file.</li>
+      <li><code>less <em>path_file</em></code> visualize the contents of a text file with many features.</li>
       <li><code>grep</code> Print lines matching a pattern.</li>
+    </ul>
+
+    <h3 id='redirection'>Redirection and execution</h3>
+
+    <ul>
+      <li><code><em>command</em> &gt; <em>file</em></code> Redirect standard output to a file.</li>
+      <li><code><em>command1</em> && <em>command2</em> && <em>commandN</em></code> Execute multiple commands (AND).</li>
+      <li><code><em>command</em> &amp;</code> Execute a command in the background.</li>
+      <li><code>./<em>executable</em></code> Run an executable in the current directory that is not in your <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</li>
+      <li><code>bash <em>script.sh</em></code> Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script (executable with the header <code>#!/bin/bash</code>).</li>
+    </ul>
+
+    <h3 id='bash_shortcuts'>Bash shortcuts</h3>
+
+    <ul>
+      <li><code>Tab</code> Autocomplete files, folders, commands, packages, etc.</li>
+      <li><code>Tab</code> + <code>Tab</code> List all available files, folders, commands, packages, etc.</li>
+      <li><code>&#8593;</code> Go to previous command.</li>
+      <li><code>&#8595;</code> Go to next command.</li>
+      <li><code>Ctrl</code> + <code>R</code> Search through previously used commands.</li>
+      <li><code>Ctrl</code> + <code>C</code> Terminate the current process (SIGINT).</li>
+      <li><code>Ctrl</code> + <code>Z</code> Suspend the current process (SIGTSTP).</li>
     </ul>
 
     <h3 id='apt'>APT</h3>
@@ -92,19 +110,6 @@ font-family: 'Roboto Mono', Arial;
       <li><code>sudo apt-get upgrade</code> Install the newest versions of all packages currently installed.</li>
       <li><code>sudo apt-get dist-upgrade</code> Handle changing dependencies with new versions of packages.</li>
       <li><code>sudo apt-get autoremove</code> Remove packages that are no longer needed.</li>
-    </ul>
-
-    <h3 id='git'>Git</h3>
-
-    <p>Execute <code>sudo apt-get install git</code> or <code>yum install git</code> to install Git.</p>
-
-    <ul>
-      <li><code>git clone <em>uri_repository.git</em></code> Clone a repository into a new directory.</li>
-      <li><code>git pull</code> Incorporates changes from a remote repository into the current branch.</li>
-      <li><code>git status</code> Show the working tree status.</li>
-      <li><code>git add .</code> Update the index using the current content found in the working tree.</li>
-      <li><code>git commit -m '<i>message</i>'</code> Record changes to the repository.</li>
-      <li><code>git push</code> Update remote references (<i>refs</i>) along with associated objects.</li>
     </ul>
 
     <h3>Screen</h3>
@@ -120,10 +125,10 @@ font-family: 'Roboto Mono', Arial;
       <li><code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code> Scroll up/down during session.</li>
     </ul>
 
-    <h3 id='devices'>Devices</h3>
+    <h3 id='devices'>Devices (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
 
-	<ul>
-	  <li><code>lsblk</code> List block devices.</li>
+    <ul>
+      <li><code>lsblk</code> List block devices.</li>
       <li><code>sudo mount <em>device_path destination_path</em></code> Mount a filesystem.</li>
       <li><code>sudo umount <em>mounted_device_path</em></code> Unmount a filesystem.</li>
       <li><code>sudo mkfs.<em>fstype</em> -I /dev/sd<b><em>x</em></b> -n <em>NAME</em> && sync</code> Te.</li>
@@ -133,37 +138,103 @@ font-family: 'Roboto Mono', Arial;
       <li><code>sudo gparted</code> (<code>sudo apt-get install gparted</code></li>
     </ul>
 
+    <h3 id='information'>Information</h2>
+    
+    <ul>    
+	  <li><code>file <em>path</em></code> Print file type.</li>
+      <li><code>stat <em>path</em></code> Print detailed information about a file or directory.</li>
+    </ul>
+
+
+    <h3 id='users'>Users</h3>
+
+    <ul>
+      <li><code>id <em>username</em></code> Print real and effective user and group IDs.</li>
+      <li><code>who</code> Print information about users who are currently logged in.</li>
+      <li><code>whoami</code> Print the username associated with the current effective user ID.</li>
+    </li>
+
+    <h3 id='permissions_ownership'>Manage file permissions and ownership</h3>
+
+    <ul>
+      <li><code>chmod</code> Change file mode bits.</li>
+      <li><code>umask</code> Set file mode creation mask.</li>
+      <li><code>chown</code> Change file owner and group.</li>
+      <li><code>chgrp</code> Change group ownership.</li>
+    </ul>
+
+    <h3>Find</h3>
+
+    <ul>
+      <li><code>find .</code> Find files and folders recursively in current directory.</li>
+	  <li><code>find . -name *.png -exec cp '{}' ~/images \;</code> Copy all PNG files to <em>~/images</em> folder.</li>
+	  <li><code>find . -name *.txt -exec mv '{}' ./txt \;</code> Move all TXT files to <em>./txt</em> folder.</li>
+	  <li><code>find . -name .svn -prune -exec rm -r '{}' \;</code> Delete all <em>.svn</em> folders.</li>
+	  <li><code>find . -type f -exec file '{}' \;</code> Run files.</li>
+    </ul>
+
+    <h3 id='git'>Git</h3>
+
+    <p>Execute <code>sudo apt-get install git</code> or <code>yum install git</code> to install Git.</p>
+
+    <ul>
+      <li><code>git clone <em>uri_repository.git</em></code> Clone a repository into a new directory.</li>
+      <li><code>git pull</code> Incorporates changes from a remote repository into the current branch.</li>
+      <li><code>git status</code> Show the working tree status.</li>
+      <li><code>git add .</code> Update the index using the current content found in the working tree.</li>
+      <li><code>git commit -m '<i>message</i>'</code> Record changes to the repository.</li>
+      <li><code>git push</code> Update remote references (<i>refs</i>) along with associated objects.</li>
+    </ul>
+
+    <h3 id='svn'>Subversion (SVN)</h3>
+
+    <p>Execute <code>sudo apt-get install subversion</code> or <code>yum install subversion</code> to install SVN.</p>
+
+    <ul>
+      <li><code>svnadmin create <em>repository_name</em></code> Create new repository.</li>
+      <li><code>svn co svn+ssh://<em>user</em>@<em>server</em>/<em>path_to_repository</em></code> Checkout.</li>
+      <li><code>svn update</code> Update working copy.</li>
+      <li><code>svn status</code> Get status of current copy.</li>
+      <li><code>svn add *</code> Add all items recursively.</li>
+      <li><code>svn add <em>item_name</em></code> Add an item (if folder, adds recursively).</li>
+      <li><code>svn delete <em>item_name</em></code> Delete an item (if folder, deletes recursively).</li>
+      <li><code>svn commit -m '<em>message</em>'</code> Commit with log message.</li>
+    </ul>
+
+    <h3>Text editors</h3>
+
+    <p>Execute <code>sudo apt-get install nano vim</code> to install Nano and Vim.</p>
+
+    <ul>
+      <li><code>nano</code> An enhanced free Pico clone. Easy to master, simple uses.</li>
+      <li><code>vim</code> Vi IMproved. Hard to master, advanced uses.</li>
+    </ul>
+
+    <h3>PDFtk</h3>
+
+    <p>Execute <code>sudo apt-get install pdftk</code> to install PDFtk.</p>
+
+    <ul>
+      <li><code>pdftk *.pdf cat output <em>out.pdf</em></code> Join all PDF files into a new PDF file.</li>
+      <li><code>pdftk <em>in1.pdf</em> <em>in2.pdf</em> <em>in3.pdf</em> cat output <em>out.pdf</em></code> Join 3 PDF files.</li>
+      <li><code>pdftk <em>in.pdf</em> cat <em>1 25-35 end</em> output <em>out.pdf</em></code> Extract pages from a PDF.</li>
+    </ul>
+
+    <h3 id='ffmpeg'>FFmpeg</h3>
+
+    <p>Execute <code>sudo apt-get install ffmpeg</code> to install FFmpeg.</p>
+
+    <ul>
+      <li><code>ffmpeg -loop 1 -i <em>01.png</em> -t 5 <em>out.mp4</em></code> Convert image to 5 sec. video.</li>
+      <li><code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code> Concatenate videos.</li>
+      <li><code>ffmpeg -r 3 -i %02d.png -r 30 out.mp4</code> 15 images to 30 Hz 5 sec. video.</li>
+      <li><code>ffmpeg -i input.webm -s 1280x720 out.webm</code> Resize video to 720p.</li>
+      <li><code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code> Fade in and out.</li>
+    </ul>
+
 <hr />
 
-    <h3>1. Essential commands</h3>
 
-    <ul>
-      <li>Navigation: <code>pwd</code>, <code>ls <em>path</em></code>, <code>cd <em>folder_path</em></code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> (computing).</li>
-      <li>Help: <code>man <em>command</em></code>, <code><em>command</em> --help</code>, <code><em>command</em> -h</code>, <a href='http://explainshell.com'>Explainshell</a>.</li>
-      <li>Manipulation: <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>ln</code>.</li>
-      <li>Permissions: <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
-      <li>Display a line of text: <code>echo</code>, <code>echo $PATH</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>$PATH</a>).</li>
-      <li>Text editor: <code>nano</code>.</li>
-      <li>Visualization: <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>.</li>
-      <li>Redirect standard output to a file: <code><em>command</em> &gt; <em>file</em></code>.</li>
-      <li>Execute multiple commands (AND): <code><em>command1</em> && <em>command2</em> && <em>commandN</em></code>.</li>
-      <li>Execute a command in the background: <code><em>command</em> &amp;</code>.</li>
-      <li>Run an executable in the current directory that is not in your <code>$PATH</code>: <code>./<em>executable</em></code>.</li>
-      <li>Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script: <code>bash <em>script.sh</em></code>. Executable with header <code>#!/bin/bash</code>.</li>
-    </ul>
-
-
-    <h3>3. Bash shortcuts</h3>
-
-    <ul>
-      <li>Autocomplete files, folders, commands, packages, etc.: <code>Tab</code>.</li>
-      <li>List all available files, folders, commands, packages, etc.: <code>Tab</code> + <code>Tab</code>.</li>
-      <li>Go to previous command: <code>&#8593;</code>, or <code>Ctrl</code> + <code>P</code>.</li>
-      <li>Go to next command: <code>&#8595;</code>, or <code>Ctrl</code> + <code>N</code>.</li>
-      <li>Search through previously used commands: <code>Ctrl</code> + <code>R</code>.</li>
-      <li>Terminate the current process (SIGINT): <code>Ctrl</code> + <code>C</code>.</li>
-      <li>Suspend the current process (SIGTSTP): <code>Ctrl</code> + <code>Z</code>.</li>
-    </ul>
 
     <h3>4. Basic commands</h3>
 
@@ -195,47 +266,14 @@ font-family: 'Roboto Mono', Arial;
       <li>Compare files line by line: <code>diff</code>.</li>
     </ul>
 
-    <h3>7. FFmpeg</h3>
-
-    <ul>
-      <li>Convert image to 5 sec. video: <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
-      <li>15 images to 30 Hz 5 sec. video: <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
-      <li>Resize video to 720p: <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
-      <li>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video: <code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code>.</li>
-      <li>Concatenate videos: <code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code>.</li>
-    </ul>
 
 
 
-    <h3>9. SVN</h3>
 
-    <ul>
-      <li>Create new repository: <code>svnadmin create <em>repository_name</em></code>.</li>
-      <li>Checkout: <code>svn co svn+ssh://<em>user</em>@<em>server</em>/<em>path/to/repository</em></code>.</li>
-      <li>Update working copy: <code>svn update</code>.</li>
-      <li>Get status of current copy: <code>svn status</code>.</li>
-      <li>Add all items recursively: <code>svn add *</code>.</li>
-      <li>Add an item (if folder, adds recursively): <code>svn add <em>item_name</em></code>.</li>
-      <li>Delete an item (if folder, deletes recursively): <code>svn delete <em>item_name</em></code>.</li>
-      <li>Commit with log message: <code>svn commit -m '<em>message</em>'</code>.</li>
-    </ul>
 
-    <h3>10. Find</h3>
 
-    <ul>
-      <li>Find files and folders recursively in current directory: <code>find .</code>.</li>
-      <li>Run files recursively in current <em>dir.</em>: <code>find . -type f -exec file '{}' \;</code>.</li>
-      <li>Delete all <em>.svn</em> folders: <code>find . -iname .svn -prune -exec rm -r '{}' \;</code>.</li>
-      <li>Copy all <em>png</em> files to <em>png</em>: <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
-    </ul>
 
-    <h3>11. PDFtk</h3>
 
-    <ul>
-      <li>Join all PDF files into a new PDF file: <code>pdftk *.pdf cat output out.pdf</code>.</li>
-      <li>Join 3 PDF files: <code>pdftk in1.pdf in2.pdf in3.pdf cat output out.pdf</code>.</li>
-      <li>Extract pages from a PDF: <code>pdftk in.pdf cat 1 25-35 end output out.pdf</code>.</li>
-    </ul>
 
     <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>
 

@@ -1,5 +1,0 @@
-https://stgraber.org/2009/11/06/lxc-containers-or-extremely-fast-virtualization/
-
-http://docs.iescdl.es/~josem/lxc.html
-
-https://github.com/amhughes/MATLAB-Cody/blob/master/31-40/fullest_row.m

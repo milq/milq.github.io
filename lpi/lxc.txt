@@ -1,1 +1,9 @@
 https://www.howtoforge.com/tutorial/how-to-setup-virtual-containers-with-lxc-and-quota/
+
+https://stgraber.org/2009/11/06/lxc-containers-or-extremely-fast-virtualization/
+
+http://docs.iescdl.es/~josem/lxc.html
+
+https://github.com/amhughes/MATLAB-Cody/blob/master/31-40/fullest_row.m
+
+https://www.itzgeek.com/how-tos/linux/ubuntu-how-tos/setup-linux-container-with-lxc-on-ubuntu-16-04-14-04.html
