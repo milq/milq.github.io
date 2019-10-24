@@ -21,13 +21,13 @@
 
     <p>This is a compilation of my GNU/Linux commands I consider useful.</p>
 
-	<ol>
-	  <li><a href='#navigation'>Navigation</a></li>
-	  <li><a href='#help'>Help</a></li>
-	  <li><a href='#file_manipulation'>File manipulation</a></li>
-	  <li><a href='#visualization'>Visualization</a></li>
-	  <li><a href='#administration'>Administration</a></li>
-	</ol>
+    <ol>
+      <li><a href='#navigation'>Navigation</a></li>
+      <li><a href='#help'>Help</a></li>
+      <li><a href='#file_manipulation'>File manipulation</a></li>
+      <li><a href='#visualization'>Visualization</a></li>
+      <li><a href='#administration'>Administration</a></li>
+    </ol>
 
     <h3 id='navigation'>1. Navigation (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
@@ -38,7 +38,7 @@
     </ul>
 
     <h3 id='help'>2. Help (<a href='#gnu_linux'>&uarr;</a>)</h3>
-	
+
     <ul>
       <li><code>man <em>command</em></code> Display summary information of a command.</li>
       <li><code><em>command</em> --help</code> Display short summary information of a command.</li>
@@ -139,6 +139,18 @@
       <li><code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code> Scroll up/down during session.</li>
     </ul>
 
+    <h3 id='devices'>Processes (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>ps</code> Display the running processes of the current terminal of the current user.</li>
+      <li><code>ps -e</code> Display all running processes.</li>
+      <li><code>pstree</code> Show running processes as a tree.</li>
+      <li><code>kill</code> Send a signal to a process.</li>
+      <li><code>kill -9 <em>PID</em></code> Kill a process given their <a href='https://en.wikipedia.org/wiki/Process_identifier'>PID</a>.</li>
+      <li><code>top</code> Dynamic real-time viewer of processes.</li>
+      <li><code>htop</code> Interactive process viewer (install it with <code>sudo apt-get install htop</code>).</li>
+    </ul>
+
     <h3 id='devices'>Devices (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
 
     <ul>
@@ -153,12 +165,23 @@
     </ul>
 
     <h3 id='information'>Information</h2>
-    
-    <ul>    
-	  <li><code>file <em>path</em></code> Print file type.</li>
+
+    <ul>
+      <li><code>file <em>path</em></code> Print file type.</li>
       <li><code>stat <em>path</em></code> Print detailed information about a file or directory.</li>
+      <li><code>wc <em>path_file</em></code> Print newline, word, and byte counts of a text file.</li>
+      <li><code>ldd <em>path_executable</em></code> Print shared library dependencies of a dynamic executable.</li>
     </ul>
 
+    <h3>Compression and decompression</h3>
+
+    <p>Execute <code>sudo apt-get install p7zip-full</code> or <code>yum install p7zip</code> to install 7-Zip.</p>
+
+    <ul>
+      <li><code>7z x <em>path_zip_file</em></code> Extract a ZIP file.</li>
+      <li><code>7z x <em>path_iso_file</em></code> Extract an ISO file.</li>
+      <li><code>7z a <em>filename.zip</em> <em>path_folder</em></code> Compress a directory in a ZIP file.</li>
+    </li>
 
     <h3 id='users'>Users</h3>
 
@@ -181,10 +204,10 @@
 
     <ul>
       <li><code>find .</code> Find files and folders recursively in current directory.</li>
-	  <li><code>find . -name *.png -exec cp '{}' ~/images \;</code> Copy all PNG files to <em>~/images</em> folder.</li>
-	  <li><code>find . -name *.txt -exec mv '{}' ./txt \;</code> Move all TXT files to <em>./txt</em> folder.</li>
-	  <li><code>find . -name .svn -prune -exec rm -r '{}' \;</code> Delete all <em>.svn</em> folders.</li>
-	  <li><code>find . -type f -exec file '{}' \;</code> Run files.</li>
+      <li><code>find . -name *.png -exec cp '{}' ~/images \;</code> Copy all PNG files to <em>~/images</em> folder.</li>
+      <li><code>find . -name *.txt -exec mv '{}' ./txt \;</code> Move all TXT files to <em>./txt</em> folder.</li>
+      <li><code>find . -name .svn -prune -exec rm -r '{}' \;</code> Delete all <em>.svn</em> folders.</li>
+      <li><code>find . -type f -exec file '{}' \;</code> Run files.</li>
     </ul>
 
     <h3 id='git'>Git</h3>
@@ -246,48 +269,28 @@
       <li><code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code> Fade in and out.</li>
     </ul>
 
-<hr />
+    <hr />
 
 
 
     <h3>4. Basic commands</h3>
 
     <ul>
-      <li>Show and/or admin current processes: <code>jobs</code>, <code>ps</code>, <code>top</code>.</li>
-      <li>Send a signal to a process: <code>kill</code>.</li>
       <li>List files in databases that match a pattern: <code>locate</code>, <code>sudo updatedb</code>.</li>
-      <li>Print lines matching a pattern from a text file: <code>grep</code>.</li>
       <li>Show/manipulate routing, devices, policy routing and tunnels: <code>ip</code>.</li>
       <li>OpenSSH SSH client with X11 forwarding: <code>ssh <em>user</em>@<em>server</em> -X</code>.</li>
       <li>Secure copy (remote file copy program): <code>scp</code>.</li>
     </ul>
 
-
-
     <h3>6. Other commands</h3>
 
     <ul>
-      <li>Print newline, word, and byte counts for each file: <code>wc</code>.</li>
-      <li>Extract an ISO file: <code>7z x <em>filename.iso</em></code>.</li>
-      <li>Report faked system time to programs: <code>faketime</code>.</li>
+
       <li>Retrieves files from the web: <code>wget</code>.</li>
-      <li>Print shared library dependencies: <code>ldd <em>executable_filename</em></code>.</li>
-      <li>Make symbolic links: <code>ln -s <em>input_filename</em> <em>output_link_name</em></code>.</li>
-      <li>List block devices: <code>lsblk</code>.</li>
-      <li>Format USB stick as VFAT: <code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code>.</li>
-      <li>Restore disk from image: <code>sudo dd bs=1M if=<em>im.iso</em> of=/dev/sd<em>x</em> && sync</code>.</li>
+
       <li>Report disk space usage: <code>df -H</code>, <code>du -hs <em>folder</em></code>.</li>
       <li>Compare files line by line: <code>diff</code>.</li>
     </ul>
-
-
-
-
-
-
-
-
-
 
     <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>
 
