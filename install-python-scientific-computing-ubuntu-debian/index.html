@@ -1,93 +1,62 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Install Python for scientific computing on Ubuntu or Debian.' />
 
     <title>Install Python for scientific computing on Ubuntu or Debian - Manuel Ignacio López Quintero</title>
-    <meta name="author" content="Manuel Ignacio López Quintero" />
-    <meta name="description" content="Install Python for scientific computing on Ubuntu or Debian." />
-
-    <link rel="icon" href="../src/png/icon.png" />
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
   </head>
 
   <body>
-    <header>Manuel Ignacio López Quintero</header>
+    <h1>Manuel Ignacio López Quintero</h1>
 
-    <nav>
-      <ul>
-        <li><a href="http://milq.github.io">Home</a></li>
-        <li><a href="http://milq.github.io/archive">Archive</a></li>
-      </ul>
-    </nav>
+    <nav><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></nav>
 
-    <article>
-      <header><a href="http://milq.github.io/install-python-scientific-computing-ubuntu-debian">Install Python for scientific computing on Ubuntu or Debian</a></header>
+    <h2>Install Python for scientific computing on Ubuntu or Debian</h2>
 
-      <p>Install Python for scientific computing from the repositories is very easy.</p>
-      
-      <p><b>1. KEEP UBUNTU OR DEBIAN UP TO DATE</b></p>
-      
-      <p>Open your terminal and execute:</p>
-      
-      <pre>sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove</pre>
-      
-      <p><b>2. INSTALL THE DEPENDENCIES</b></p>
-      
-      <p>Now install the dependencies:</p>
-      
-      <p><b>Interpreter and the package manager:</b></p>
-      
-      <pre>sudo apt-get install python3 python3-pip </pre>
+    <p>Install Python for scientific computing from the repositories is very easy.</p>
 
-      <p><b>Essential scientific libraries:</b></p>
-      
-      <pre>sudo apt-get install python3-numpy python3-matplotlib python3-scipy python3-pandas python3-simpy</pre>
-      
-      <p><b>IPython:</b></p>
-      
-      <pre>sudo apt-get install ipython3 ipython3-notebook</pre>
-      
-      <p><b>3. INSTALL MORE DEPENDENCIES (OPTIONAL)</b></p>
-      
-      <p><b>OpenGL:</b></p>
-      
-      <pre>sudo apt-get install python3-opengl</pre>
-      
-      <p><b>GUI development:</b></p>
-      
-      <pre>sudo apt-get install python3-pyqt5 python3-pyqt5.qtopengl python3-pyqt5.qtquick</pre>
-      
-      <p><b>Data storage:</b></p>
-      
-      <pre>sudo apt-get install python3-h5py</pre>
-      
-      <p><b>Computer vision:</b></p>
-      
-      <p>It is recommended to <a href="http://milq.github.io/install-opencv-ubuntu-debian">install OpenCV on Ubuntu or Debian</a> that contains Python wrappers. You can install more packages:</p>
-      
-      <pre>sudo apt-get install python3-skimage</pre>
-      
-      <pre>sudo apt-get install libatlas-dev libatlas3gf-base && sudo pip3 install scikit-learn</pre>
-      
-      <p><b>4. INSTALL AN IDE FOR PYTHON</b></p>
-      
-      <pre>sudo apt-get install spyder3</pre>
-      
-      <p>If you want to enjoy the autocomplete in the IDE execute:</p>
-      
-      <pre>sudo pip3 install rope_py3k</pre>
-      
-      <p><b>Do you like this article?</b> Share it with this <a href="http://milq.github.io/install-python-scientific-computing-ubuntu-debian"><b>link</b></a>. Thanks for reading!</p>
+    <h3>1. Keep Ubuntu or Debian up to date</h3>
 
-    </article>
+    <p>Open your terminal and execute:</p>
 
-    <script type="text/javascript" src="../src/js/comments.js"></script>
-    <script type="text/javascript" src="../src/js/analytics.js"></script>
+    <p><code>sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade && sudo apt-get autoremove</code></p>
 
-    <footer>
-      <p>All content created by <a href="http://milq.github.io"><b>Manuel Ignacio López Quintero</b></a> under this <a href="http://creativecommons.org/licenses/by/4.0"><b>license</b></a>.</p>
-    </footer>
+    <h3>2. Install the dependencies</h3>
+
+    <p>Now install the dependencies:</p>
+
+	<ul>
+	  <li>Interpreter and the package manager: <code>sudo apt-get install python3 python3-pip</code>.</li>
+	  <li>Essential scientific libraries: <code>sudo apt-get install python3-numpy python3-matplotlib python3-scipy python3-pandas python3-simpy</code>.</li>
+	  <li>IPython: <code>sudo apt-get install ipython3 ipython3-notebook</code>.</li>
+	</ul>
+
+    <h3>3. Install more dependencies (optional)</h3>
+
+	<ol>
+	  <li>OpenGL: <code>sudo apt-get install python3-opengl</code>.</li>
+	  <li>GUI development: <code>sudo apt-get install python3-pyqt5 python3-pyqt5.qtopengl python3-pyqt5.qtquick</code>.</li>
+	  <li>Data storage: <code>sudo apt-get install python3-h5py</code>.</li>
+	</ol>
+
+    <h3>4. Computer Vision</h3>
+
+    <p>It is recommended to <a href='https://milq.github.io/install-opencv-ubuntu-debian'>install OpenCV on Ubuntu or Debian</a> that contains Python wrappers. You can install more packages with <code>sudo apt-get install python3-skimage</code> and <code>sudo apt-get install libatlas-dev libatlas3gf-base && sudo pip3 install scikit-learn</code>.</p>
+
+    <h3>5. Install an IDE for Python</h3>
+
+    <p>Execute <code>sudo apt-get install spyder3</code> to install <a href='https://www.spyder-ide.org'>Spyder</a>. If you want to enjoy the autocomplete in the IDE execute: <code>sudo pip3 install rope_py3k</code>.</p>
+
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/install-python-scientific-computing-ubuntu-debian'>link</a>. Thanks for reading!</p>
+
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
+
+    <footer>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</footer>
+
   </body>
 </html>

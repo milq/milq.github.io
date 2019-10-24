@@ -1,435 +1,247 @@
-<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>Command-line commands</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}code{background-color: #eee;
-    border: 1px solid #aaa; padding: 0.1em;}table{width:100%; text-align: left;}h1,h2{text-align:center;}a{text-decoration:none}
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='GNU/Linux commands I consider useful.' />
+
+    <title>GNU/Linux commands - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
+    <style>ul{list-style:none;padding-left:0;}</style>
+    <style>
+		@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+	
+    code {
+  color: #c04027;
+  background-color: #e6e6e6;
+  padding: 0 0 0 0;
+  /*   padding-right: 0.2em; */
+  border-radius: .2em;
+
+font-family: 'Roboto Mono', Arial;
+}    
     
-    table tr td:first-child { width: 30%; }</style>
+    </style>
   </head>
 
   <body>
-    <h1>Command-line commands</h1>
+    <h1>Manuel Ignacio López Quintero</h1>
 
-    <h2 id='navigation'>Navigation</h2>
+    <nav><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></nav>
 
-    <table title='navigation'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>pwd</code></td>
-          <td>Print name of current/working directory.</td>
-        </tr>
-        <tr>
-          <td><code>ls <em>path</em></code></td>
-          <td>List directory contents (definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='http://computerhope.com/jargon/w/wildcard.htm'>wildcards</a> (<a href='http://hablemoslinux.org/2012/03/04/486'>es</a>) in computing).</td>
-        </tr>
-        <tr>
-          <td><code>cd <em>path</em></code></td>
-          <td>Change directory.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>GNU/Linux commands</h2>
 
-    <h2 id='navigation'>Help</h2>
+    <p>This is a compilation of my GNU/Linux commands I consider useful.</p>
 
-    <table title='navigation'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>man <em>command</em></code></td>
-          <td>Display summary information of a command.</td>
-        </tr>
-        <tr>
-          <td><code><em>command</em> --help</code></td>
-          <td>Display short summary information of a command.</td>
-        </tr>
-        <tr>
-          <td><code><em>command</em> -h</code></td>
-          <td>Another way to display short summary information of a command.</td>
-        </tr>
-        <tr>
-          <td><code>info <em>command</em></code></td>
-          <td>Display detailed hyper-text manual of a command. This only works for some commands.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>Navigation</h3>
 
-    <h2 id='manipulation'>Manipulation</h2>
+    <ul>
+      <li><code>pwd</code> Print name of current/working directory.</li>
+      <li><code>ls <em>path</em></code> List directory contents (definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='https://en.wikipedia.org/wiki/Wildcard_character#File_and_directory_patterns'>wildcards</a> in computing).</li>
+      <li><code>cd <em>path</em></code> Change directory.</li>
+    </ul>
 
-    <table title='manipulation'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>cp <em>[option] source_path destination_path</em></code></td>
-          <td>Copy files and directories.</td>
-        </tr>
-        <tr>
-          <td><code>mv <em>[option] source_path destination_path</em></code></td>
-          <td>Move and rename files and directories.</td>
-        </tr>
-        <tr>
-          <td><code>mkdir <em>path</em></code></td>
-          <td>Make empty directories.</td>
-        </tr>
-        <tr>
-          <td><code>rm <em>[option] path</em></code></td>
-          <td>Remove files and directories.</td>
-        </tr>
-        <tr>
-          <td><code>ln <em>source_path destination_path</em></code></td>
-          <td>Create a hard link of a file.</td>
-        </tr>
-        <tr>
-          <td><code>ln -s <em>source_path destination_path</em></code></td>
-          <td>Create a symbolic link of a file.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3 id='navigation'>Help</h3>
 
-    <h2 id='administration'>Administration</h2>
+    <ul>
+      <li><code>man <em>command</em></code> Display summary information of a command.</li>
+      <li><code><em>command</em> --help</code> Display short summary information of a command.</li>
+      <li><code><em>command</em> -h</code> Another way to display short summary information of a command.</li>
+      <li><code>info <em>command</em></code> Display detailed hyper-text manual of a command. Only works for some commands.</li>
+    </ul>
 
-    <table title='administration'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>sudo <em>command</em></code></td>
-          <td>Execute a <em>command</em> as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</td>
-        </tr>
-        <tr>
-          <td><code>su</code></td>
-          <td>Become superuser.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3 id='manipulation'>Manipulation</h3>
 
-    <h2 id='visualization'>Visualization</h2>
+    <ul>
+      <li><code>cp <em>[option] source_path destination_path</em></code> Copy files and directories.</li>
+      <li><code>mv <em>[option] source_path destination_path</em></code> Move and/or rename files and directories.</li>
+      <li><code>mkdir <em>path</em></code> Make empty directories.</li>
+      <li><code>rm <em>[option] path</em></code> Remove files and directories.</li>
+      <li><code>ln <em>source_path destination_path</em></code> Create a hard link of a file.</li>
+      <li><code>ln -s <em>source_path destination_path</em></code> Create a symbolic link of a file.</li>
+    </ul>
 
-    <table title='visualization'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>echo</code></td>
-          <td>Display a line of text.</td>
-        </tr>
-        <tr>
-          <td><code>echo $PATH</code></td>
-          <td>Show the content of the variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</td>
-        </tr>
-        <tr>
-          <td><code>cat</code></td>
-          <td>Concatenate files and print on the standard output.</td>
-        </tr>
-        <tr>
-          <td><code>head</code></td>
-          <td>Output the first part of files.</td>
-        </tr>
-        <tr>
-          <td><code>tail</code></td>
-          <td>Output the last part of files.</td>
-        </tr>
-        <tr>
-          <td><code>grep</code></td>
-          <td>Print lines matching a pattern.</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3 id='administration'>Administration</h3>
+    
+    <ul>
+      <li><code>sudo <em>command</em></code> Execute a command as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
+      <li><code>su <em>username</em></code> Change user ID.</li>
+      <li><code>su</code> or <code>su root</code> Become superuser.</li>
+    </ul>
 
-    <h2 id='navigation'>Information</h2>
+    <h3 id='visualization'>Visualization</h3>
 
-    <table title='navigation'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>file <em>path</em></code></td>
-          <td>Determine file type.</td>
-        </tr>
-        <tr>
-          <td><code>stat <em>path</em></code></td>
-          <td>Display detailed information about a file or directory. Also has many advanced options and uses.</td>
-        </tr>
-      </tbody>
-    </table>
+    <ul>
+      <li><code>echo '<em>text</em>'</code> Display a line of text.</li>
+      <li><code>echo $PATH</code> Show the content of the variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</li>
+      <li><code>cat</code> Concatenate files and print on the standard output.</li>
+      <li><code>head <em>file</em></code> Print the first 10 lines of a file.</li>
+      <li><code>tail</code> Output the last part of files.</li>
+      <li><code>grep</code> Print lines matching a pattern.</li>
+    </ul>
 
-    <h2 id='users'>Users</h2>
+    <h3 id='apt'>APT</h3>
 
-    <table title='users'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>id <em>[options] [username]</em></code></td>
-          <td>Print real and effective user and group IDs.</td>
-        </tr>
-        <tr>
-          <td><code>who</code></td>
-          <td>Print information about users who are currently logged in.</td>
-        </tr>
-        <tr>
-          <td><code>whoami</code></td>
-          <td>Print the username associated with the current effective user ID.</td>
-        </tr>
-        <tr>
-          <td><code>su <em>[options] [username]</em></code></td>
-          <td>Change user ID or become superuser.</td>
-        </tr>
-      </tbody>
-    </table>
+    <ul>
+      <li><code>sudo apt-get install <em>./package.deb</em></code> Install a local <em>.deb</em> package.</li>
+      <li><code>sudo apt-get install <em>package</em></code> Install a package from the repository.</li>
+      <li><code>sudo apt-get purge <em>package</em></code> Uninstall a package from the repository.</li>
+      <li><code>sudo apt-get update</code> Resynchronize the package index files from their sources.</li>
+      <li><code>sudo apt-get upgrade</code> Install the newest versions of all packages currently installed.</li>
+      <li><code>sudo apt-get dist-upgrade</code> Handle changing dependencies with new versions of packages.</li>
+      <li><code>sudo apt-get autoremove</code> Remove packages that are no longer needed.</li>
+    </ul>
 
-    <h2 id='permissions_ownership'>Manage file permissions and ownership</h2>
+    <h3 id='git'>Git</h3>
 
-    <table title='permissions_ownership'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>chmod</code></td>
-          <td>Change file mode bits.</td>
-        </tr>
-        <tr>
-          <td><code>umask</code></td>
-          <td>Set file mode creation mask.</td>
-        </tr>
-        <tr>
-          <td><code>chown</code></td>
-          <td>Change file owner and group.</td>
-        </tr>
-        <tr>
-          <td><code>chgrp</code></td>
-          <td>Change group ownership.</td>
-        </tr>
-      </tbody>
-    </table>
+    <p>Execute <code>sudo apt-get install git</code> or <code>yum install git</code> to install Git.</p>
 
-    <h2 id='devices'>Devices</h2>
+    <ul>
+      <li><code>git clone <em>uri_repository.git</em></code> Clone a repository into a new directory.</li>
+      <li><code>git pull</code> Incorporates changes from a remote repository into the current branch.</li>
+      <li><code>git status</code> Show the working tree status.</li>
+      <li><code>git add .</code> Update the index using the current content found in the working tree.</li>
+      <li><code>git commit -m '<i>message</i>'</code> Record changes to the repository.</li>
+      <li><code>git push</code> Update remote references (<i>refs</i>) along with associated objects.</li>
+    </ul>
 
-    <table title='devices'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>lsblk</code></td>
-          <td>List block devices.</td>
-        </tr>
-        <tr>
-          <td><code>sudo mount <em>device_path destination_path</em></code></td>
-          <td>Mount a filesystem.</td>
-        </tr>
-        <tr>
-          <td><code>sudo umount <em>mounted_device_path</em></code></td>
-          <td>Unmount a filesystem.</td>
-        </tr>
-        <tr>
-          <td><code>sudo mkfs.<i>fstype</i> -I /dev/sd<b><i>x</i></b> -n <i>NAME</i> && sync</code></td>
-          <td>te.</td>
-        </tr>
-        <tr>
-          <td><code>sudo mkfs.<i>fstype</i> -I /dev/sd<b><i>x</i></b><b><i>Y</i></b> -n <i>NAME</i> && sync</code></td>
-          <td>te.</td>
-        </tr>
-        <tr>
-          <td><code>sudo dd bs=512K if=<i>input.iso</i> of=/dev/sd<b><i>x</i></b> && sync</code>.</td>
-          <td>.</td>
-        </tr>
-        <tr>
-          <td><code>sudo gdisk /dev/sd<b><i>x</i></b></code>.</td>
-          <td>.</td>
-        </tr>
-        <tr>
-          <td><code>sudo gparted</code> (<code>sudo apt-get install gparted</code>) (GUI) .</td>
-          <td><code>diskmgmt</code> (GUI).</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>Screen</h3>
 
-    <h2 id='find'>Find</h2>
+    <p>Execute <code>sudo apt-get install screen</code> or <code>yum install screen</code> to install Screen.</p>
 
-    <table title='find'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>find .</code></td>
-          <td>Find files and directories recursively in current directory.</td>
-        </tr>
-        <tr>
-          <td><code>find . -name *.png -exec cp '{}' ~/images \;</code></td>
-          <td>Copy all PNG files recursively in current directory to <em>~/images</em> folder.</td>
-        </tr>
-      </tbody>
-    </table>
+    <ul>
+      <li><code>screen</code> Create a screen session.</li>
+      <li><code>Ctrl</code> + <code>A</code> then <code>D</code> Detach from the current screen session.</li>
+      <li><code>screen -ls</code> List the screen session identification strings.</li>
+      <li><code>screen -r <em>session_id_string</em></code> Reattach to a screen session.</li>
+      <li><code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code> Terminate the current screen session.</li>
+      <li><code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code> Scroll up/down during session.</li>
+    </ul>
 
-    <h2 id='apt'>APT</h2>
+    <h3 id='devices'>Devices</h3>
 
-    <table title='apt'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>sudo apt-get install <i>./package.deb</i></code></td>
-          <td>Install a local <i>.deb</i> package.</td>
-        </tr>
-        <tr>
-          <td><code>sudo apt-get install <i>package</i></code></td>
-          <td>Install a package from the repository.</td>
-        </tr>
-        <tr>
-          <td><code>sudo apt-get purge <i>package</i></code></td>
-          <td>Uninstall a package from the repository.</td>
-        </tr>
-        <tr>
-          <td><code>sudo apt-get update</code></td>
-          <td>Resynchronize the package index files from their sources.</td>
-        </tr>
-        <tr>
-          <td><code>sudo apt-get upgrade</code></td>
-          <td>Install the newest versions of all packages currently installed.</td>
-        </tr>
-        <tr>
-          <td><code>sudo apt-get dist-upgrade</code></td>
-          <td>Handle changing dependencies with new versions of packages.</td>
-        </tr>
-        <tr>
-          <td><code>sudo apt-get autoremove</code></td>
-          <td>Remove packages that are no longer needed.</td>
-        </tr>
-      </tbody>
-    </table>
+	<ul>
+	  <li><code>lsblk</code> List block devices.</li>
+      <li><code>sudo mount <em>device_path destination_path</em></code> Mount a filesystem.</li>
+      <li><code>sudo umount <em>mounted_device_path</em></code> Unmount a filesystem.</li>
+      <li><code>sudo mkfs.<em>fstype</em> -I /dev/sd<b><em>x</em></b> -n <em>NAME</em> && sync</code> Te.</li>
+      <li><code>sudo mkfs.<em>fstype</em> -I /dev/sd<b><em>x</em></b><b><em>Y</em></b> -n <em>NAME</em> && sync</code> te.</li>
+      <li><code>sudo dd bs=512K if=<em>input.iso</em> of=/dev/sd<b><em>x</em></b> && sync</code>.</li>
+      <li><code>sudo gdisk /dev/sd<b><em>x</em></b></code></li>
+      <li><code>sudo gparted</code> (<code>sudo apt-get install gparted</code></li>
+    </ul>
 
-    <h2 id='git'>Git</h2>
+<hr />
 
-    <p>Execute <code>sudo apt-get install git</code> to install Git in Debian based distributions.</p>
+    <h3>1. Essential commands</h3>
 
-    <table title='git'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>git clone <i>uri_repository.git</i></code></td>
-          <td>Clone a repository into a new directory.</td>
-        </tr>
-        <tr>
-          <td><code>git pull</code></td>
-          <td>Incorporates changes from a remote repository into the current branch.</td>
-        </tr>
-        <tr>
-          <td><code>git status</code></td>
-          <td>Show the working tree status.</td>
-        </tr>
-        <tr>
-          <td><code>git add .</code></td>
-          <td>Update the index using the current content found in the working tree.</td>
-        </tr>
-        <tr>
-          <td><code>git commit -m '<i>message</i>'</code></td>
-          <td>Record changes to the repository.</td>
-        </tr>
-        <tr>
-          <td><code>git push</code></td>
-          <td>Update remote references (<i>refs</i>) along with associated objects.</td>
-        </tr>
-        </tbody>
-    </table>
+    <ul>
+      <li>Navigation: <code>pwd</code>, <code>ls <em>path</em></code>, <code>cd <em>folder_path</em></code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> (computing).</li>
+      <li>Help: <code>man <em>command</em></code>, <code><em>command</em> --help</code>, <code><em>command</em> -h</code>, <a href='http://explainshell.com'>Explainshell</a>.</li>
+      <li>Manipulation: <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>ln</code>.</li>
+      <li>Permissions: <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
+      <li>Display a line of text: <code>echo</code>, <code>echo $PATH</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>$PATH</a>).</li>
+      <li>Text editor: <code>nano</code>.</li>
+      <li>Visualization: <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>.</li>
+      <li>Redirect standard output to a file: <code><em>command</em> &gt; <em>file</em></code>.</li>
+      <li>Execute multiple commands (AND): <code><em>command1</em> && <em>command2</em> && <em>commandN</em></code>.</li>
+      <li>Execute a command in the background: <code><em>command</em> &amp;</code>.</li>
+      <li>Run an executable in the current directory that is not in your <code>$PATH</code>: <code>./<em>executable</em></code>.</li>
+      <li>Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script: <code>bash <em>script.sh</em></code>. Executable with header <code>#!/bin/bash</code>.</li>
+    </ul>
 
-    <h2 id='lxc'>Linux Containers (LXC)</h2>
 
-    <p>Execute <code>sudo apt-get install lxc</code> to install LXC in Debian based distributions.</p>
+    <h3>3. Bash shortcuts</h3>
 
-    <table title='lxc'>
-      <thead>
-        <tr>
-          <th>Command</th>
-          <th>Explanation</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><code>sudo lxc-create -n <i>container_id</i> -t download</code></td>
-          <td>Create a container using templates.</td>
-        </tr>
-        <tr>
-          <td><code>sudo lxc-ls --fancy</code></td>
-          <td>List the containers existing on the system.</td>
-        </tr>
-        <tr>
-          <td><code>sudo lxc-start -n <i>container_id</i></code></td>
-          <td>Run a system container</td>
-        </tr>
-        <tr>
-          <td><code>sudo lxc-info -n <i>container_id</i></code></td>
-          <td>Query information about a container.</td>
-        </tr>
-        <tr>
-          <td><code>sudo lxc-attach -n <i>container_id</i></code></td>
-          <td>Attach to a container and run a shell.</td>
-        </tr>
-        <tr>
-          <td><code>sudo lxc-stop -n <i>container_id</i></code></td>
-          <td>Shut down a container.</td>
-        </tr>
-        <tr>
-          <td><code>sudo lxc-destroy -n <i>container_id</i></code></td>
-          <td>Destroy a container.</td>
-        </tr>
-      </tbody>
-    </table>
+    <ul>
+      <li>Autocomplete files, folders, commands, packages, etc.: <code>Tab</code>.</li>
+      <li>List all available files, folders, commands, packages, etc.: <code>Tab</code> + <code>Tab</code>.</li>
+      <li>Go to previous command: <code>&#8593;</code>, or <code>Ctrl</code> + <code>P</code>.</li>
+      <li>Go to next command: <code>&#8595;</code>, or <code>Ctrl</code> + <code>N</code>.</li>
+      <li>Search through previously used commands: <code>Ctrl</code> + <code>R</code>.</li>
+      <li>Terminate the current process (SIGINT): <code>Ctrl</code> + <code>C</code>.</li>
+      <li>Suspend the current process (SIGTSTP): <code>Ctrl</code> + <code>Z</code>.</li>
+    </ul>
 
-    <p><a href='c.html'>Back to index</a>.</p>
+    <h3>4. Basic commands</h3>
+
+    <ul>
+      <li>Show and/or admin current processes: <code>jobs</code>, <code>ps</code>, <code>top</code>.</li>
+      <li>Send a signal to a process: <code>kill</code>.</li>
+      <li>List files in databases that match a pattern: <code>locate</code>, <code>sudo updatedb</code>.</li>
+      <li>Print lines matching a pattern from a text file: <code>grep</code>.</li>
+      <li>Show/manipulate routing, devices, policy routing and tunnels: <code>ip</code>.</li>
+      <li>OpenSSH SSH client with X11 forwarding: <code>ssh <em>user</em>@<em>server</em> -X</code>.</li>
+      <li>Secure copy (remote file copy program): <code>scp</code>.</li>
+    </ul>
+
+
+
+    <h3>6. Other commands</h3>
+
+    <ul>
+      <li>Print newline, word, and byte counts for each file: <code>wc</code>.</li>
+      <li>Extract an ISO file: <code>7z x <em>filename.iso</em></code>.</li>
+      <li>Report faked system time to programs: <code>faketime</code>.</li>
+      <li>Retrieves files from the web: <code>wget</code>.</li>
+      <li>Print shared library dependencies: <code>ldd <em>executable_filename</em></code>.</li>
+      <li>Make symbolic links: <code>ln -s <em>input_filename</em> <em>output_link_name</em></code>.</li>
+      <li>List block devices: <code>lsblk</code>.</li>
+      <li>Format USB stick as VFAT: <code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code>.</li>
+      <li>Restore disk from image: <code>sudo dd bs=1M if=<em>im.iso</em> of=/dev/sd<em>x</em> && sync</code>.</li>
+      <li>Report disk space usage: <code>df -H</code>, <code>du -hs <em>folder</em></code>.</li>
+      <li>Compare files line by line: <code>diff</code>.</li>
+    </ul>
+
+    <h3>7. FFmpeg</h3>
+
+    <ul>
+      <li>Convert image to 5 sec. video: <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
+      <li>15 images to 30 Hz 5 sec. video: <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
+      <li>Resize video to 720p: <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
+      <li>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video: <code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code>.</li>
+      <li>Concatenate videos: <code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code>.</li>
+    </ul>
+
+
+
+    <h3>9. SVN</h3>
+
+    <ul>
+      <li>Create new repository: <code>svnadmin create <em>repository_name</em></code>.</li>
+      <li>Checkout: <code>svn co svn+ssh://<em>user</em>@<em>server</em>/<em>path/to/repository</em></code>.</li>
+      <li>Update working copy: <code>svn update</code>.</li>
+      <li>Get status of current copy: <code>svn status</code>.</li>
+      <li>Add all items recursively: <code>svn add *</code>.</li>
+      <li>Add an item (if folder, adds recursively): <code>svn add <em>item_name</em></code>.</li>
+      <li>Delete an item (if folder, deletes recursively): <code>svn delete <em>item_name</em></code>.</li>
+      <li>Commit with log message: <code>svn commit -m '<em>message</em>'</code>.</li>
+    </ul>
+
+    <h3>10. Find</h3>
+
+    <ul>
+      <li>Find files and folders recursively in current directory: <code>find .</code>.</li>
+      <li>Run files recursively in current <em>dir.</em>: <code>find . -type f -exec file '{}' \;</code>.</li>
+      <li>Delete all <em>.svn</em> folders: <code>find . -iname .svn -prune -exec rm -r '{}' \;</code>.</li>
+      <li>Copy all <em>png</em> files to <em>png</em>: <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
+    </ul>
+
+    <h3>11. PDFtk</h3>
+
+    <ul>
+      <li>Join all PDF files into a new PDF file: <code>pdftk *.pdf cat output out.pdf</code>.</li>
+      <li>Join 3 PDF files: <code>pdftk in1.pdf in2.pdf in3.pdf cat output out.pdf</code>.</li>
+      <li>Extract pages from a PDF: <code>pdftk in.pdf cat 1 25-35 end output out.pdf</code>.</li>
+    </ul>
+
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>
+
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
+
+    <footer>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</footer>
 
   </body>
 </html>
