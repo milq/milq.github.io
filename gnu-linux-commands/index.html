@@ -153,7 +153,7 @@
       <li><code>htop</code> Interactive process viewer (install it with <code>sudo apt-get install htop</code>).</li>
     </ul>
 
-    <h3 id='devices'>Devices (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+<!--    <h3 id='devices'>Devices (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>lsblk</code> List block devices.</li>
@@ -165,7 +165,7 @@
       <li><code>sudo gdisk /dev/sd<b><em>x</em></b></code></li>
       <li><code>sudo gparted</code> (<code>sudo apt-get install gparted</code></li>
     </ul>
-
+-->
     <h3 id='information'>Information</h2>
 
     <ul>
@@ -212,6 +212,15 @@
       <li><code>find . -type f -exec file '{}' \;</code> Run files.</li>
     </ul>
 
+    <h3>Text editors</h3>
+
+    <p>Execute <code>sudo apt-get install nano vim</code> to install Nano and Vim.</p>
+
+    <ul>
+      <li><code>nano</code> An enhanced free Pico clone. Easy to master, simple uses.</li>
+      <li><code>vim</code> Vi IMproved. Hard to master, advanced uses.</li>
+    </ul>
+
     <h3 id='git'>Git</h3>
 
     <p>Execute <code>sudo apt-get install git</code> or <code>yum install git</code> to install Git.</p>
@@ -240,24 +249,9 @@
       <li><code>svn commit -m '<em>message</em>'</code> Commit with log message.</li>
     </ul>
 
-    <h3>Text editors</h3>
 
-    <p>Execute <code>sudo apt-get install nano vim</code> to install Nano and Vim.</p>
 
-    <ul>
-      <li><code>nano</code> An enhanced free Pico clone. Easy to master, simple uses.</li>
-      <li><code>vim</code> Vi IMproved. Hard to master, advanced uses.</li>
-    </ul>
 
-    <h3>PDFtk</h3>
-
-    <p>Execute <code>sudo apt-get install pdftk</code> to install PDFtk.</p>
-
-    <ul>
-      <li><code>pdftk *.pdf cat output <em>out.pdf</em></code> Join all PDF files into a new PDF file.</li>
-      <li><code>pdftk <em>in1.pdf</em> <em>in2.pdf</em> <em>in3.pdf</em> cat output <em>out.pdf</em></code> Join 3 PDF files.</li>
-      <li><code>pdftk <em>in.pdf</em> cat <em>1 25-35 end</em> output <em>out.pdf</em></code> Extract pages from a PDF.</li>
-    </ul>
 
     <h3 id='ffmpeg'>FFmpeg</h3>
 
@@ -271,7 +265,17 @@
       <li><code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code> Fade in and out.</li>
     </ul>
 
-    <h3>4. Basic commands</h3>
+    <h3>PDFtk</h3>
+
+    <p>Execute <code>sudo apt-get install pdftk</code> to install PDFtk.</p>
+
+    <ul>
+      <li><code>pdftk *.pdf cat output <em>out.pdf</em></code> Join all PDF files into a new PDF file.</li>
+      <li><code>pdftk <em>in1.pdf</em> <em>in2.pdf</em> <em>in3.pdf</em> cat output <em>out.pdf</em></code> Join 3 PDF files.</li>
+      <li><code>pdftk <em>in.pdf</em> cat <em>1 25-35 end</em> output <em>out.pdf</em></code> Extract pages from a PDF.</li>
+    </ul>
+
+<!--    <h3>4. Basic commands</h3>
 
     <ul>
       <li>List files in databases that match a pattern: <code>locate</code>, <code>sudo updatedb</code>.</li>
@@ -283,16 +287,17 @@
     <h3>6. Other commands</h3>
 
     <ul>
-      <li>Retrieves files from the web: <code>wget</code>.</li>
-      <li>Report disk space usage: <code>df -H</code>, <code>du -hs <em>folder</em></code>.</li>
+      <li><code>wget <em>URL</em></code> Retrieves a file from the web.</li>
+      <li><code>df -H</code> Report file system disk space usage.</li>
+      <li><code>du -hs <em>path_folder</em></code> Report disk space usage of a folder.</li>      
       <li><code>diff --color <em>path_file_A</em> <em>path_file_B</em></code> Compare two text files line by line.</li>
     </ul>
-
+-->
     <!--<p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>-->
 
     <script type='text/javascript' src='../src/js/analytics.js'></script>
 
-    <footer>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</footer>
+    <footer><p>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</p></footer>
 
   </body>
 </html>
