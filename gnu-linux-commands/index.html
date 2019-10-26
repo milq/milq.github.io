@@ -9,7 +9,7 @@
     <title>GNU/Linux commands - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../src/png/icon.png' />
     <link rel='stylesheet' href='../src/css/simple.css' />
-    <style>@import url(https://fonts.googleapis.com/css?family=Fira+Mono);ul{list-style:none;padding-left:0}code{color:#c04027;background-color:white;padding:0 .2em 0 0;font-family:'Fira Mono'}</style>
+    <style>@import url(https://fonts.googleapis.com/css?family=Fira+Mono);ul{list-style:none;padding-left:0}code{color:#c04027;background-color:white;padding:0 .2em 0 0;font-family:'Fira Mono'}ol li{display: inline-block; width: 30%;}</style>
   </head>
 
   <body>
@@ -24,11 +24,28 @@
     <p>This is a compilation of my GNU/Linux commands I consider useful.</p>
 
     <ol>
-      <li><a href='#navigation'>Navigation</a></li>
-      <li><a href='#help'>Help</a></li>
-      <li><a href='#file_manipulation'>File manipulation</a></li>
-      <li><a href='#visualization'>Visualization</a></li>
-      <li><a href='#administration'>Administration</a></li>
+      <li>1. <a href='#navigation'>Navigation</a></li>
+      <li>2. <a href='#help'>Help</a></li>
+      <li>3. <a href='#file_manipulation'>File manipulation</a></li>
+      <li>4. <a href='#file_visualization'>File visualization</a></li>
+      <li>5. <a href='#file_information'>File information</a></li>
+      <li>6. <a href='#administration'>Administration</a></li>
+      <li>7. <a href='#execution'>Execution</a></li>
+      <li>8. <a href='#redirection'>Redirection</a></li>
+      <li>9. <a href='#bash_shortcuts'>Bash shortcuts</a></li>
+      <li>10. <a href='#apt'>APT</a></li>
+      <li>11. <a href='#processes'>Processes</a></li>
+      <li>12. <a href='#users'>Users</a></li>
+      <li>13. <a href='#permissions_ownership'>File permissions</a></li>
+      <li>14. <a href='#disk_devices'>Disk and devices</a></li>      
+      <li>15. <a href='#compression_decompression'>Compression</a></li>
+      <li>16. <a href='#net'>Net</a></li>
+      <li>17. <a href='#find'>Find</a></li>
+      <li>18. <a href='#git'>Git</a></li>
+      <li>19. <a href='#svn'>SVN</a></li>
+      <li>20. <a href='#ffmpeg'>FFmpeg</a></li>
+      <li>21. <a href='#screen'>Screen</a></li>
+      <li>22. <a href='#pdftk'>PDFtk</a></li>
     </ol>
 
     <h3 id='navigation'>1. Navigation (<a href='#gnu_linux'>&uarr;</a>)</h3>
@@ -59,9 +76,10 @@
       <li><code>rm -r <em>path</em></code> Remove a directory.</li>
       <li><code>ln <em>source_path destination_path</em></code> Create a <a href='https://en.wikipedia.org/wiki/Hard_link'>hard link</a> of a file.</li>
       <li><code>ln -s <em>source_path destination_path</em></code> Create a <a href='https://en.wikipedia.org/wiki/Symbolic_link'>symbolic link</a> of a file.</li>
+      <li><code>nano <em>path_text_file</em></code> Edit a text file. Nano is a simple text editor.</li>
     </ul>
 
-    <h3 id='visualization'>4. Visualization (<a href='#gnu_linux'>&uarr;</a>)</h3>
+    <h3 id='file_visualization'>4. File visualization (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>echo '<em>text</em>'</code> Display a line of text.</li>
@@ -71,10 +89,21 @@
       <li><code>tail <em>path_file</em></code> Print the last 10 lines of a text file.</li>
       <li><code>more <em>path_file</em></code> Visualize the contents of a text file.</li>
       <li><code>less <em>path_file</em></code> Visualize the contents of a text file with more features.</li>
-      <li><code>grep</code> Print lines matching a pattern.</li>
+      <li><code>grep <em>pattern</em> <em>path_file</em></code> Print lines of a text file that match a pattern.</li>
+      <li><code>locate <em>pattern</em></code> Search and print files and folders that match a pattern: , <code>sudo updatedb</code>.</li>
     </ul>
 
-    <h3 id='administration'>5. Administration (<a href='#gnu_linux'>&uarr;</a>)</h3>
+    <h3 id='file_information'>5. File information (<a href='#gnu_linux'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>file <em>path</em></code> Print file type.</li>
+      <li><code>stat <em>path</em></code> Print detailed information about a file or directory.</li>
+      <li><code>wc <em>path_file</em></code> Print newline, word, and byte counts of a text file.</li>
+      <li><code>ldd <em>path_executable</em></code> Print shared library dependencies of a dynamic executable.</li>
+      <li><code>diff --color <em>path_file_A</em> <em>path_file_B</em></code> Compare two text files line by line.</li>
+    </ul>
+
+    <h3 id='administration'>6. Administration (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>sudo <em>command</em></code> Execute a command as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
@@ -82,20 +111,7 @@
       <li><code>su</code> or <code>su root</code> Become superuser.</li>
     </ul>
 
-
-
-    <h3 id='redirection'>Redirection</h3>
-
-    <ul>
-      <li><code><em>command</em> &gt; <em>file</em></code> Redirect standard output of a command to a new file.</li>
-      <li><code><em>command</em> 2&gt; <em>file</em></code> Redirect standard error of a command to a new file.</li>
-      <li><code><em>command</em> &amp;&gt; <em>file</em></code> Redirect standard or error output of a command to a new file.</li>
-      <li><code><em>command</em> &gt;&gt; <em>file</em></code> Append standard output of a command to a file.</li>
-      <li><code><em>command</em> 2&gt;&gt; <em>file</em></code> Append standard error of a command to a file.</li>
-      <li><code><em>command</em> &amp;&amp;&gt; <em>file</em></code> Append standard or error output of a command to a file.</li>
-    </ul>
-
-    <h3 id='execution'>Execution</h3>
+    <h3 id='execution'>7. Execution (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code><em>command1</em> && <em>command2</em> && <em>commandN</em></code> Execute multiple commands (AND).</li>
@@ -104,7 +120,19 @@
       <li><code>bash <em>script.sh</em></code> Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script (executable with the header <code>#!/bin/bash</code>).</li>
     </ul>
 
-    <h3 id='bash_shortcuts'>Bash shortcuts</h3>
+    <h3 id='redirection'>8. Redirection (<a href='#gnu_linux'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code><em>command_A</em> | <em>command_B</em></code> Redirect standard output of command A to standard input of command B.</li>
+      <li><code><em>command</em> &gt; <em>file</em></code> Redirect standard output of a command to a new file.</li>
+      <li><code><em>command</em> 2&gt; <em>file</em></code> Redirect standard error of a command to a new file.</li>
+      <li><code><em>command</em> &amp;&gt; <em>file</em></code> Redirect standard or error output of a command to a new file.</li>
+      <li><code><em>command</em> &gt;&gt; <em>file</em></code> Append standard output of a command to a file.</li>
+      <li><code><em>command</em> 2&gt;&gt; <em>file</em></code> Append standard error of a command to a file.</li>
+      <li><code><em>command</em> &amp;&amp;&gt; <em>file</em></code> Append standard or error output of a command to a file.</li>
+    </ul>
+
+    <h3 id='bash_shortcuts'>9. Bash shortcuts (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>Tab</code> Autocomplete files, folders, commands, packages, etc.</li>
@@ -116,7 +144,7 @@
       <li><code>Ctrl</code> + <code>Z</code> Suspend the current process (SIGTSTP).</li>
     </ul>
 
-    <h3 id='apt'>APT</h3>
+    <h3 id='apt'>10. APT (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>sudo apt-get install <em>./package.deb</em></code> Install a local <em>.deb</em> package.</li>
@@ -128,20 +156,7 @@
       <li><code>sudo apt-get autoremove</code> Remove packages that are no longer needed.</li>
     </ul>
 
-    <h3>Screen</h3>
-
-    <p>Execute <code>sudo apt-get install screen</code> or <code>yum install screen</code> to install Screen.</p>
-
-    <ul>
-      <li><code>screen</code> Create a screen session.</li>
-      <li><code>Ctrl</code> + <code>A</code> then <code>D</code> Detach from the current screen session.</li>
-      <li><code>screen -ls</code> List the screen session identification strings.</li>
-      <li><code>screen -r <em>session_id_string</em></code> Reattach to a screen session.</li>
-      <li><code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code> Terminate the current screen session.</li>
-      <li><code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code> Scroll up/down during session.</li>
-    </ul>
-
-    <h3 id='devices'>Processes (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+    <h3 id='processes'>11. Processes (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>ps</code> Display the running processes of the current terminal of the current user.</li>
@@ -153,10 +168,29 @@
       <li><code>htop</code> Interactive process viewer (install it with <code>sudo apt-get install htop</code>).</li>
     </ul>
 
-    <h3 id='devices'>Devices (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+    <h3 id='users'>12. Users (<a href='#gnu_linux'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>id <em>username</em></code> Print real and effective user and group IDs.</li>
+      <li><code>who</code> Print information about users who are currently logged in.</li>
+      <li><code>whoami</code> Print the username associated with the current effective user ID.</li>
+    </li>
+
+    <h3 id='permissions_ownership'>13. File permissions and ownership (<a href='#gnu_linux'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>chmod</code> Change file mode bits.</li>
+      <li><code>umask</code> Set file mode creation mask.</li>
+      <li><code>chown</code> Change file owner and group.</li>
+      <li><code>chgrp</code> Change group ownership.</li>
+    </ul>
+
+    <h3 id='disk_devices'>14. Disk and devices (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>lsblk</code> List block devices.</li>
+      <li><code>df -H</code> Report file system disk space usage.</li>
+      <li><code>du -hs <em>path_folder</em></code> Report disk space usage of a folder.</li>
       <li><code>sudo mount <em>device_path destination_path</em></code> Mount a filesystem.</li>
       <li><code>sudo umount <em>mounted_device_path</em></code> Unmount a filesystem.</li>
       <li><code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code> Format disk <em>x</em> to VFAT.</li>
@@ -165,16 +199,7 @@
       <li><code>sudo gdisk /dev/sd<em>x</em></code> <a href='https://en.wikipedia.org/wiki/GUID_Partition_Table'>GPT</a> editor for disk <em>x</em> (install it with <code>sudo apt-get install gdisk</code>).</li>
     </ul>
 
-    <h3 id='information'>Information</h2>
-
-    <ul>
-      <li><code>file <em>path</em></code> Print file type.</li>
-      <li><code>stat <em>path</em></code> Print detailed information about a file or directory.</li>
-      <li><code>wc <em>path_file</em></code> Print newline, word, and byte counts of a text file.</li>
-      <li><code>ldd <em>path_executable</em></code> Print shared library dependencies of a dynamic executable.</li>
-    </ul>
-
-    <h3>Compression and decompression</h3>
+    <h3 id='compression_decompression'>15. Compression and decompression (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <p>Execute <code>sudo apt-get install p7zip-full</code> or <code>yum install p7zip</code> to install 7-Zip.</p>
 
@@ -184,24 +209,22 @@
       <li><code>7z a <em>filename.zip</em> <em>path_folder</em></code> Compress a directory in a ZIP file.</li>
     </li>
 
-    <h3 id='users'>Users</h3>
+    <h3 id='net'>16. Net (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
-      <li><code>id <em>username</em></code> Print real and effective user and group IDs.</li>
-      <li><code>who</code> Print information about users who are currently logged in.</li>
-      <li><code>whoami</code> Print the username associated with the current effective user ID.</li>
-    </li>
 
-    <h3 id='permissions_ownership'>Manage file permissions and ownership</h3>
-
-    <ul>
-      <li><code>chmod</code> Change file mode bits.</li>
-      <li><code>umask</code> Set file mode creation mask.</li>
-      <li><code>chown</code> Change file owner and group.</li>
-      <li><code>chgrp</code> Change group ownership.</li>
+      <li><code>ssh <em>user</em>@<em>server</em></code> Log in to a shell of a remote host by <a href='https://en.wikipedia.org/wiki/Secure_Shell'>SSH</a>.</li>
+      <li><code>ssh <em>user</em>@<em>server</em> -X</code> Log in to a shell of a remote host with X11 forwarding by <a href='https://en.wikipedia.org/wiki/Secure_Shell'>SSH</a>.</li>
+      <li><code>scp <em>user</em>@<em>host</em>:<em>path_remote_file</em> <em>path_local</em></code> Copy a file from a remote host to local host.</li>
+      <li><code>scp <em>path_local_file</em> <em>user</em>@<em>host</em>:<em>path_remote</em></code> Copy a file from a local host to remote host.</li>
+      <li><code>scp -r <em>user</em>@<em>host</em>:<em>path_folder</em> <em>path_local</em></code> Copy a folder from a remote host to local host.</li>
+      <li><code>scp -r <em>path_folder</em> <em>user</em>@<em>host</em>:<em>path_remote</em></code> Copy a folder from a local host to remote host.</li>
+      <li><code>wget <em>URL</em></code> Retrieves a file from the web.</li>
+      <li><code>wavemon</code> Wireless network monitor (install it with <code>sudo apt-get install wavemon</code>).</li>
+      <li><code>ip</code> Sshow and manipulate routing, network devices, interfaces and tunnels.</li>
     </ul>
 
-    <h3>Find</h3>
+    <h3 id='find'>17. Find (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>find .</code> Find files and folders recursively in current directory.</li>
@@ -211,16 +234,7 @@
       <li><code>find . -type f -exec file '{}' \;</code> Run files.</li>
     </ul>
 
-    <h3>Text editors</h3>
-
-    <p>Execute <code>sudo apt-get install nano vim</code> to install Nano and Vim.</p>
-
-    <ul>
-      <li><code>nano</code> An enhanced free Pico clone. Easy to master, simple uses.</li>
-      <li><code>vim</code> Vi IMproved. Hard to master, advanced uses.</li>
-    </ul>
-
-    <h3 id='git'>Git</h3>
+    <h3 id='git'>18. Git (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
     <p>Execute <code>sudo apt-get install git</code> or <code>yum install git</code> to install Git.</p>
 
@@ -233,9 +247,9 @@
       <li><code>git push</code> Update remote references (<i>refs</i>) along with associated objects.</li>
     </ul>
 
-    <h3 id='svn'>Subversion (SVN)</h3>
+    <h3 id='svn'>19. Subversion (SVN) (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
-    <p>Execute <code>sudo apt-get install subversion</code> or <code>yum install subversion</code> to install SVN.</p>
+    <p>Run <code>sudo apt-get install subversion</code> or <code>yum install subversion</code> to install SVN.</p>
 
     <ul>
       <li><code>svnadmin create <em>repository_name</em></code> Create new repository.</li>
@@ -248,13 +262,9 @@
       <li><code>svn commit -m '<em>message</em>'</code> Commit with log message.</li>
     </ul>
 
+    <h3 id='ffmpeg'>20. FFmpeg (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
-
-
-
-    <h3 id='ffmpeg'>FFmpeg</h3>
-
-    <p>Execute <code>sudo apt-get install ffmpeg</code> to install FFmpeg.</p>
+    <p>Run <code>sudo apt-get install ffmpeg</code> to install FFmpeg.</p>
 
     <ul>
       <li><code>ffmpeg -loop 1 -i <em>01.png</em> -t 5 <em>out.mp4</em></code> Convert image to 5 sec. video.</li>
@@ -264,9 +274,22 @@
       <li><code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code> Fade in and out.</li>
     </ul>
 
-    <h3>PDFtk</h3>
+    <h3 id='screen'>21. Screen (<a href='#gnu_linux'>&uarr;</a>)</h3>
 
-    <p>Execute <code>sudo apt-get install pdftk</code> to install PDFtk.</p>
+    <p>Run <code>sudo apt-get install screen</code> or <code>yum install screen</code> to install Screen.</p>
+
+    <ul>
+      <li><code>screen</code> Create a screen session.</li>
+      <li><code>Ctrl</code> + <code>A</code> then <code>D</code> Detach from the current screen session.</li>
+      <li><code>screen -ls</code> List the screen session identification strings.</li>
+      <li><code>screen -r <em>session_id_string</em></code> Reattach to a screen session.</li>
+      <li><code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code> Terminate the current screen session.</li>
+      <li><code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code> Scroll up/down during session.</li>
+    </ul>
+
+    <h3 id='pdftk'>22. PDFtk (<a href='#gnu_linux'>&uarr;</a>)</h3>
+
+    <p>Run <code>sudo apt-get install pdftk</code> to install PDFtk.</p>
 
     <ul>
       <li><code>pdftk *.pdf cat output <em>out.pdf</em></code> Join all PDF files into a new PDF file.</li>
@@ -274,33 +297,9 @@
       <li><code>pdftk <em>in.pdf</em> cat <em>1 25-35 end</em> output <em>out.pdf</em></code> Extract pages from a PDF.</li>
     </ul>
 
-    <h3>Net</h3>
-    
-    <ul>
-      <li><code>wavemon</code> Wireless network monitor (install it with <code>sudo apt-get install wavemon</code>).</li>
-    </ul>
-
-<!--    <h3>4. Basic commands</h3>
-
-    <ul>
-      <li>List files in databases that match a pattern: <code>locate</code>, <code>sudo updatedb</code>.</li>
-      <li>Show/manipulate routing, devices, policy routing and tunnels: <code>ip</code>.</li>
-      <li>OpenSSH SSH client with X11 forwarding: <code>ssh <em>user</em>@<em>server</em> -X</code>.</li>
-      <li>Secure copy (remote file copy program): <code>scp</code>.</li>
-    </ul>
-
-    <h3>6. Other commands</h3>
-
-    <ul>
-      <li><code>wget <em>URL</em></code> Retrieves a file from the web.</li>
-      <li><code>df -H</code> Report file system disk space usage.</li>
-      <li><code>du -hs <em>path_folder</em></code> Report disk space usage of a folder.</li>      
-      <li><code>diff --color <em>path_file_A</em> <em>path_file_B</em></code> Compare two text files line by line.</li>
-    </ul>
--->
     <!--<p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>-->
 
-	<p>Many of the descriptions of the commands are from their manual pages.</p>
+    <p>Many of the descriptions of the commands are from their manual pages.</p>
 
     <script type='text/javascript' src='../src/js/analytics.js'></script>
 
