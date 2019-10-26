@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Useful terminal commands in Ubuntu or Debian.' />
+
+    <title>Useful terminal commands in Ubuntu or Debian - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../src/png/icon.png' />
+    <link rel='stylesheet' href='../src/css/simple.css' />
+  </head>
+
+  <body>
+    <h1>Manuel Ignacio López Quintero</h1>
+
+    <nav><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></nav>
+
+	<p style='text-align: center'><strong>Checkout the new version of <a href='http://milq.github.io/gnu-linux-commands/'>GNU/Linux terminal commands</a>!</strong></p>
+
+    <h2>Useful terminal commands in Ubuntu or Debian</h2>
+
+    <p>This is a compilation of my terminal commands in Ubuntu or Debian I consider useful. Many of these commands are compatible with other GNU/Linux distributions.</p>
+
+    <h3>1. Essential commands</h3>
+
+    <ul>
+      <li>Navigation: <code>pwd</code>, <code>ls <em>path</em></code>, <code>cd <em>folder_path</em></code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> (computing).</li>
+      <li>Help: <code>man <em>command</em></code>, <code><em>command</em> --help</code>, <code><em>command</em> -h</code>, <a href='http://explainshell.com'>Explainshell</a>.</li>
+      <li>Manipulation: <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>ln</code>.</li>
+      <li>Permissions: <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
+      <li>Display a line of text: <code>echo</code>, <code>echo $PATH</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>$PATH</a>).</li>
+      <li>Text editor: <code>nano</code>.</li>
+      <li>Visualization: <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>.</li>
+      <li>Redirect standard output to a file: <code><em>command</em> &gt; <em>file</em></code>.</li>
+      <li>Execute multiple commands (AND): <code><em>command1</em> && <em>command2</em> && <em>commandN</em></code>.</li>
+      <li>Execute a command in the background: <code><em>command</em> &amp;</code>.</li>
+      <li>Run an executable in the current directory that is not in your <code>$PATH</code>: <code>./<em>executable</em></code>.</li>
+      <li>Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script: <code>bash <em>script.sh</em></code>. Executable with header <code>#!/bin/bash</code>.</li>
+    </ul>
+
+    <h3>2. APT commands</h3>
+
+    <ul>
+      <li>Install a package locally: <code>sudo apt-get install <em>./package.deb</em></code>.</li>
+      <li>Install a package from the repository: <code>sudo apt-get install <em>package</em></code>.</li>
+      <li>Uninstall a package from the repository: <code>sudo apt-get purge <em>package</em></code>.</li>
+      <li>Remove packages that are no longer needed: <code>sudo apt-get autoremove</code>.</li>
+      <li>Resynchronize the package index files from <em>/etc/apt/sources.list</em>: <code>sudo apt-get update</code>.</li>
+      <li>Install the newest versions of all packages from <em>/etc/apt/sources.list</em>: <code>sudo apt-get upgrade</code>.</li>
+    </ul>
+
+    <h3>3. Bash shortcuts</h3>
+
+    <ul>
+      <li>Autocomplete files, folders, commands, packages, etc.: <code>Tab</code>.</li>
+      <li>List all available files, folders, commands, packages, etc.: <code>Tab</code> + <code>Tab</code>.</li>
+      <li>Go to previous command: <code>&#8593;</code>, or <code>Ctrl</code> + <code>P</code>.</li>
+      <li>Go to next command: <code>&#8595;</code>, or <code>Ctrl</code> + <code>N</code>.</li>
+      <li>Search through previously used commands: <code>Ctrl</code> + <code>R</code>.</li>
+      <li>Terminate the current process (SIGINT): <code>Ctrl</code> + <code>C</code>.</li>
+      <li>Suspend the current process (SIGTSTP): <code>Ctrl</code> + <code>Z</code>.</li>
+    </ul>
+
+    <h3>4. Basic commands</h3>
+
+    <ul>
+      <li>Show and/or admin current processes: <code>jobs</code>, <code>ps</code>, <code>top</code>.</li>
+      <li>Send a signal to a process: <code>kill</code>.</li>
+      <li>List files in databases that match a pattern: <code>locate</code>, <code>sudo updatedb</code>.</li>
+      <li>Print lines matching a pattern from a text file: <code>grep</code>.</li>
+      <li>Show/manipulate routing, devices, policy routing and tunnels: <code>ip</code>.</li>
+      <li>OpenSSH SSH client with X11 forwarding: <code>ssh <em>user</em>@<em>server</em> -X</code>.</li>
+      <li>Secure copy (remote file copy program): <code>scp</code>.</li>
+    </ul>
+
+    <h3>5. Screen</h3>
+
+    <ul>
+      <li>Create a screen session: <code>screen</code>.</li>
+      <li>Detach from the current screen session: <code>Ctrl</code> + <code>A</code> then <code>D</code>.</li>
+      <li>List the screen session identification strings: <code>screen -ls</code>.</li>
+      <li>Reattach to a screen session: <code>screen -r <em>session_id_string</em></code>.</li>
+      <li>Terminate the current screen session: <code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code>.</li>
+      <li>Scroll up/down during session: <code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code>.</li>
+    </ul>
+
+    <h3>6. Other commands</h3>
+
+    <ul>
+      <li>Print newline, word, and byte counts for each file: <code>wc</code>.</li>
+      <li>Extract an ISO file: <code>7z x <em>filename.iso</em></code>.</li>
+      <li>Report faked system time to programs: <code>faketime</code>.</li>
+      <li>Retrieves files from the web: <code>wget</code>.</li>
+      <li>Print shared library dependencies: <code>ldd <em>executable_filename</em></code>.</li>
+      <li>Make symbolic links: <code>ln -s <em>input_filename</em> <em>output_link_name</em></code>.</li>
+      <li>List block devices: <code>lsblk</code>.</li>
+      <li>Format USB stick as VFAT: <code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code>.</li>
+      <li>Restore disk from image: <code>sudo dd bs=1M if=<em>im.iso</em> of=/dev/sd<em>x</em> && sync</code>.</li>
+      <li>Report disk space usage: <code>df -H</code>, <code>du -hs <em>folder</em></code>.</li>
+      <li>Compare files line by line: <code>diff</code>.</li>
+    </ul>
+
+    <h3>7. FFmpeg</h3>
+
+    <ul>
+      <li>Convert image to 5 sec. video: <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
+      <li>15 images to 30 Hz 5 sec. video: <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
+      <li>Resize video to 720p: <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
+      <li>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video: <code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code>.</li>
+      <li>Concatenate videos: <code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code>.</li>
+    </ul>
+
+    <h3 id='git'>9. Git</h3>
+
+    <p>Execute <code>sudo apt-get install git</code> to install Git in Debian based distributions.</p>
+
+    <ul>
+      <li><code>git clone <em>uri_repository.git</em></code>: Clone a repository into a new directory.</li>
+      <li><code>git pull</code>: Incorporates changes from a remote repository into the current branch.</li>
+      <li><code>git status</code>: Show the working tree status.</li>
+      <li><code>git add .</code>: Update the index using the current content found in the working tree.</li>
+      <li><code>git commit -m '<i>message</i>'</code>: Record changes to the repository.</li>
+      <li><code>git push</code>: Update remote references (<i>refs</i>) along with associated objects.</li>
+    </ul>
+
+    <h3>9. SVN</h3>
+
+    <ul>
+      <li>Create new repository: <code>svnadmin create <em>repository_name</em></code>.</li>
+      <li>Checkout: <code>svn co svn+ssh://<em>user</em>@<em>server</em>/<em>path/to/repository</em></code>.</li>
+      <li>Update working copy: <code>svn update</code>.</li>
+      <li>Get status of current copy: <code>svn status</code>.</li>
+      <li>Add all items recursively: <code>svn add *</code>.</li>
+      <li>Add an item (if folder, adds recursively): <code>svn add <em>item_name</em></code>.</li>
+      <li>Delete an item (if folder, deletes recursively): <code>svn delete <em>item_name</em></code>.</li>
+      <li>Commit with log message: <code>svn commit -m '<em>message</em>'</code>.</li>
+    </ul>
+
+    <h3>10. Find</h3>
+
+    <ul>
+      <li>Find files and folders recursively in current directory: <code>find .</code>.</li>
+      <li>Run files recursively in current <em>dir.</em>: <code>find . -type f -exec file '{}' \;</code>.</li>
+      <li>Delete all <em>.svn</em> folders: <code>find . -iname .svn -prune -exec rm -r '{}' \;</code>.</li>
+      <li>Copy all <em>png</em> files to <em>png</em>: <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
+    </ul>
+
+    <h3>11. PDFtk</h3>
+
+    <ul>
+      <li>Join all PDF files into a new PDF file: <code>pdftk *.pdf cat output out.pdf</code>.</li>
+      <li>Join 3 PDF files: <code>pdftk in1.pdf in2.pdf in3.pdf cat output out.pdf</code>.</li>
+      <li>Extract pages from a PDF: <code>pdftk in.pdf cat 1 25-35 end output out.pdf</code>.</li>
+    </ul>
+
+    <!--<p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>-->
+
+    <script type='text/javascript' src='../src/js/analytics.js'></script>
+
+    <footer>All content created by <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> under this <a href='https://creativecommons.org/licenses/by/4.0'>license</a>.</footer>
+
+  </body>
+</html>
