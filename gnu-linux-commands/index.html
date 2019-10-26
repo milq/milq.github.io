@@ -153,19 +153,18 @@
       <li><code>htop</code> Interactive process viewer (install it with <code>sudo apt-get install htop</code>).</li>
     </ul>
 
-<!--    <h3 id='devices'>Devices (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
+    <h3 id='devices'>Devices (<a href='#gnu_linux_commands'>&uarr;</a>)</h3>
 
     <ul>
       <li><code>lsblk</code> List block devices.</li>
       <li><code>sudo mount <em>device_path destination_path</em></code> Mount a filesystem.</li>
       <li><code>sudo umount <em>mounted_device_path</em></code> Unmount a filesystem.</li>
-      <li><code>sudo mkfs.<em>fstype</em> -I /dev/sd<b><em>x</em></b> -n <em>NAME</em> && sync</code> Te.</li>
-      <li><code>sudo mkfs.<em>fstype</em> -I /dev/sd<b><em>x</em></b><b><em>Y</em></b> -n <em>NAME</em> && sync</code> te.</li>
-      <li><code>sudo dd bs=512K if=<em>input.iso</em> of=/dev/sd<b><em>x</em></b> && sync</code>.</li>
-      <li><code>sudo gdisk /dev/sd<b><em>x</em></b></code></li>
-      <li><code>sudo gparted</code> (<code>sudo apt-get install gparted</code></li>
+      <li><code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code> Format disk <em>x</em> to VFAT.</li>
+      <li><code>sudo mkfs.vfat -I /dev/sd<em>x</em><em>Y</em> -n <em>NAME</em> && sync</code> Format partition <em>Y</em> from disk <em>x</em> to VFAT.</li>
+      <li><code>sudo dd bs=512K if=<em>input.iso</em> of=/dev/sd<em>x</em> && sync</code> Burn an ISO file to a disk.</li>
+      <li><code>sudo gdisk /dev/sd<em>x</em></code> <a href='https://en.wikipedia.org/wiki/GUID_Partition_Table'>GPT</a> editor for disk <em>x</em> (install it with <code>sudo apt-get install gdisk</code>).</li>
     </ul>
--->
+
     <h3 id='information'>Information</h2>
 
     <ul>
@@ -275,6 +274,12 @@
       <li><code>pdftk <em>in.pdf</em> cat <em>1 25-35 end</em> output <em>out.pdf</em></code> Extract pages from a PDF.</li>
     </ul>
 
+    <h3>Net</h3>
+    
+    <ul>
+      <li><code>wavemon</code> Wireless network monitor (install it with <code>sudo apt-get install wavemon</code>).</li>
+    </ul>
+
 <!--    <h3>4. Basic commands</h3>
 
     <ul>
@@ -294,6 +299,8 @@
     </ul>
 -->
     <!--<p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks for reading!</p>-->
+
+	<p>Many of the descriptions of the commands are from their manual pages.</p>
 
     <script type='text/javascript' src='../src/js/analytics.js'></script>
 
