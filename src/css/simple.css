@@ -8,7 +8,7 @@ h1 {
   margin-top: 0;
 }
 
-h1, nav, footer {
+h1, nav, footer, nav + p {
   text-align: center;
 }
 
@@ -33,13 +33,4 @@ img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
-}
-
-.tip {
-  background-color: #337ab7;
-  border-color: 1px #2e6da4;
-  color: #fff;
-  padding: 0.1em;
-  border: 1px solid transparent;
-  border-radius: 4px;
 }

@@ -115,3 +115,13 @@ nav ul li a:hover, a:active {
 div, svg {
   margin-bottom: 30px;
 }
+
+.tip {
+  background-color: #337ab7;
+  border-color: 1px #2e6da4;
+  color: #fff;
+  padding: 0.1em;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
