@@ -29,20 +29,39 @@
 
     <p><strong>7.</strong> Lanza dos hilos simultáneamente: un hilo que incremente un entero en uno 1 000 000 de veces y un segundo hilo que espere (método <em>wait()</em>) la notificación (método <em>notify()</em>) del primero que ha finalizado para imprimir finalmente dicho entero.</p>
 
-    <p><strong>8.</strong> Simula una carrera de relevos con cuatro corredores. Cada corredor es un hilo que empezará a correr cuando el otro termine (excepto el primero). Usa los métodos <em>start()</em> y <em>join()</em> alternativamente.</p>
+    <p><strong>8.</strong> Simula una carrera de relevos con cuatro corredores. Cada corredor es un hilo que empezará a correr cuando el otro termine (excepto el primero). Usa los métodos <em>start()</em> y <em>join()</em> alternativamente para cada hilo.</p>
 
-    <p><strong>9.</strong> Simula una carrera de relevos con cuatro corredores. Cada corredor es un hilo que empezará a correr cuando el otro termine (excepto el primero). Usa los métodos <em>start()</em>, <em>wait()</em> y <em>notify()</em>.</p>
+    <p><strong>9.</strong> Repite la actividad anterior pero esta vez usando los métodos <em>wait()</em> y <em>notify()</em>.</p>
 
     <p><strong>10.</strong> Simula una carrera de 100 metros de cinco animales, donde cada animal es un hilo que avanza 1 metro en cada iteración de un bucle. Muestra los progresos de cada animal y el <em>ranking</em> final. Puedes usar el método <em>yield()</em> al final de cada iteración para hacer la carrera más igualada.</p>
 	
     <h2>Actividades</h2>
 
-    <p><strong>11.</strong> Dado un String, calcula el número de vocales <em>a</em>, <em>e</em>, <em>i</em>, <em>o</em> y <em>u</em> que existen. Para ello, lanza cinco hilos: uno para cada vocal.</p>
+    <p><strong>11.</strong> Dado un entero <em>n</em> divisible por 5, calcula la suma de todos los enteros desde 1 hasta <em>n</em>, ambos incluidos. Divide el trabajo en, al menos, 5 hilos.</p>
 
-    <p><strong>12.</strong> Dado un fichero de texto, calcula el número de vocales <em>a</em>, <em>e</em>, <em>i</em>, <em>o</em> y <em>u</em> que existen. Para ello, lanza cinco hilos: uno para cada vocal.</p>
+    <p><strong>12.</strong> Dado un String, calcula el número de vocales que existen. Para ello, lanza cinco hilos: uno para cada vocal. Muestra el total para cada vocal y el total de vocales.</p>
 
-    <p><strong>13.</strong> Dadas dos matrices de enteros 3 &times; 3, calcula su multiplicación. Para ello, lanza nueve hilos: uno para calcular cada elemento.</p>
+    <p><strong>13.</strong> Repite la actividad anterior pero dado un fichero de texto.</p>
 
+    <p><strong>14.</strong> Dadas dos matrices de enteros 3 &times; 3, calcula su multiplicación. Para ello, lanza nueve hilos: uno para calcular cada elemento.</p>
+
+    <p><strong>15.</strong> Simula un conversor de escala de grises a binario. Para ello, dada una matriz 100 &times; 100 de enteros aleatorios entre 0 y 255 (ambos incluidos), conviértela en una nueva matriz 100 &times; 100 donde los valores de 0 a 127 pasen a 0 y los valores de 128 a 255 a 1. Divide el trabajo en 4 hilos, uno por cada region de 50 &times; 50.</p>
+
+    <p><strong>16.</strong> Repite la actividad anterior pero dada una imagen. Pistas: <a href='https://stackoverflow.com/a/15972640'>1</a>, <a href='https://stackoverflow.com/a/10392050'>2</a>.</p>
+    
+    <p><strong>17.</strong> Simula una carrera de relevos con cuatro corredores y con paso de testigo. Cada corredor es un hilo que empezará a correr cuando el otro termine (excepto el primero). Utiliza <em>synchronized()</em>, <em>wait()</em> y <em>notify()</em> para el paso del testigo.</p>
+
+    <p><strong>18.</strong> Repite la actividad anterior pero utilizando la clase Semaphore.</p>
+
+    <p><strong>19 (lector-escritor).</strong> Simula el acceso y escritura a una base de datos. Para ello, lanza 20 hilos simultáneamente, 10 de lectura y 10 de escritura de un entero. Los hilos de escritura incrementarán en uno el entero mientras no haya otro hilo de escritura escribiendo o un hilo de lectura leyendo. Los de lectura pueden leer e imprimir el entero aunque haya otros hilos de lectura pero no mientras haya uno de escritura escribiendo. Usa la clase <em>Semaphore</em> de Java.</p>       
+
+    <p><strong>20 (productor-consumidor).</strong> Simula la Lotería de Navidad. Para ello, lanza dos hilos simultáneamente, uno que produce los números y otro que los consume y los muestra.</p>
+    
+    <!-- 
+    https://www.geeksforgeeks.org/producer-consumer-solution-using-semaphores-java
+    https://www.geeksforgeeks.org/producer-consumer-solution-using-threads-java/
+    -->
+ 
     <h2>Actividades de ampliación</h2>
 
     <p><strong>21.</strong> Dadas dos matrices de enteros aleatorios 100 &times; 100, calcula su multiplicación sin usar hilos. A continuación, hazlo de nuevo pero con 10 000 hilos: uno para calcular cada elemento. Por último, cálcula el tiempo de ejecución con y sin hilos.</p>
