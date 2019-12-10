@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta charset='utf-8' />
+    <meta name='description' content='Programación de Servicios y Procesos.' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>PSP - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
+    <link rel='stylesheet' href='../../../../src/css/course.css' />
+  </head>
+
+  <body>
+    <h1>3. Programación en red</h1>
+
+    <h2>Actividades de iniciación</h2>
+
+    <p>
+	  <strong>JS01.java</strong> Crea un servidor que escuche y atienda a un solo cliente por el puerto 10001. Una vez aceptada la conexión, le enviará la cadena <em>¡Hola, mundo!</em> y el servidor finalizará.<br />
+      <strong>JC01.java</strong> Crea un cliente que se conecte a un servidor por el puerto 10001. Una vez conectado, recibirá la cadena <em>¡Hola, mundo!</em> desde el servidor y el cliente finalizará.<br />
+    </p>
+
+    <p>
+	  <strong>JS02.java</strong> Crea un servidor que escuche y atienda a un solo cliente por el puerto 10002. Una vez aceptada la conexión, le enviará cincuenta enteros aleatorios del 0 al 10 (ambos incluidos) y el servidor finalizará.<br />
+      <strong>JC02.java</strong> Crea un cliente que se conecte a un servidor por el puerto 10002. Una vez conectado, recibirá cincuenta enteros aleatorios del 0 al 10 (ambos incluidos) desde el servidor y el cliente finalizará.<br />
+    </p>
+
+    <p>
+	  <strong>JS03.java</strong> Crea un servidor que escuche y atienda a un solo cliente por el puerto 10003. Una vez aceptada la conexión, esperará un mensaje (cadena de caracteres) del cliente y le enviará el mismo mensaje. Si recibe el mensaje <code>Adiós.</code>, el servidor finalizará.<br />
+      <strong>JC03.java</strong> Crea un cliente que se conecte a un servidor por el puerto 10003. Una vez conectado, esperará un mensaje (cadena de caracteres) del usuario y enviará dicho mensaje al servidor. El cliente recibirá del servidor el mismo mensaje. Si el usuario introduce <code>Adiós.</code>, el cliente finalizará.<br />
+    </p>
+
+    <p>
+	  <strong>JS04.java</strong> Crea un servidor que escuche y atienda a varios clientes por el puerto 10004. Una vez aceptada la conexión de un cliente, esperará un mensaje (cadena de caracteres) del cliente y le enviará el mismo mensaje.<br />
+      <strong>JC04.java</strong> Crea un cliente que se conecte a un servidor por el puerto 10004. Una vez conectado, esperará un mensaje (cadena de caracteres) del usuario y enviará dicho mensaje al servidor. El cliente recibirá del servidor el mismo mensaje. Si el usuario introduce <code>Adiós.</code>, el cliente finalizará.<br />
+    </p>
+	
+    <h2>Actividades</h2>
+
+	<p>Crea las siguientes aplicaciones cliente-servidor (un servidor podrá atender a varios clientes a la vez):</p>
+
+    <p><strong>JC11.java - JS11.java (puerto 10011)</strong> El servidor generará para cada cliente un entero aleatorio entre 0 y 100 (ambos incluidos). El cliente solicitará al usuario un entero y lo enviará al servidor hasta que adivine el entero generado. El servidor indicará, para cada entero recibido por el cliente, si es mayor, menor o ha acertado. Si acierta, terminará la conexión del cliente y se le indicará en cuantos intentos lo ha conseguido.</p>
+
+    <p><strong>JC12.java - JS12.java (puerto 10012)</strong> Crea un servidor de eco (como el ejercicio <em>JC04.java - JS04.java</em>) controlando el acceso de los clientes al servidor mediante un sistema de usuario y clave. El servidor almacenará, mediante <em>arrays</em> de Strings, los usuarios <em>grego</em>, </em>alba</em> y </em>pedro</em> y las contraseñas <em>grego1234</em>, <em>alba1234</em> y <em>pedro1234</em> respectivamente. Una vez el usuario se ha conectado exitosamente, podrá salir con <code>Adiós.</code>.</p>
+
+
+
+
+Realiza dos proyectos Java cliente/servidor usando el puerto 2244 para 
+
+- En cada cliente muestra "Introduzca usuario:", lee un usuario del teclado, muestra "Introduzca clave:", lee una clave del teclado, conéctate al servidor y envía el usuario y la clave. Si recibes el mensaje "0 Conexión rechazada" acabas. Si recibes el mensaje "1 Conexión aceptada" métete en un bucle que muestre "Introduzca mensaje o 'fin' para terminar:", lee un mensaje del teclado y envíalo al servidor (cuando teclee "fin" termina el bucle).
+
+- El servidor debe tener dos arrays: String[] usuarios={"abcde","juan","pablo"}; String[] claves={"pepeclave","clavejuan","unaclave"};
+
+Cuando el servidor detecta una conexión de un cliente, crea un hilo para ese cliente, recibe un usuario y una clave. Si el usuario o la clave no son correctas envíale un mensaje "0 Conexión rechazada" y acaba el hilo. Si el usuario y la clave son correctas envíale un mensaje "1 Conexión aceptada" y métete en un bucle recibiendo mensajes del cliente y mostrándolos hasta recibir el mensaje "fin".
+
+
+=============
+ EJERCICIO 2
+=============
+El objetivo del ejercicio es crear una aplicación cliente/servidor que permita el envío de ficheros al cliente. Para ello, el cliente se conectará al servidor por el puerto 1500 y le solicitará el nombre de un fichero del servidor. Si el fichero existe, el servidor, le enviará el fichero al cliente y éste lo mostrará por pantalla. Si el fichero no existe, el servidor le enviará al cliente un mensaje de error. Una vez que el cliente ha mostrado el fichero se finalizará la conexión.
+    
+ 
+    <h2>Actividades de ampliación</h2>
+
+    <p><strong>JC21.java - JS21.java</strong> Repite el ejercicio <em>JC11.java - JS11.java</em> pero que el servidor almacene una clasificación con los mejores resultados.</p>
+
+    <p><strong>JC22.java - JS22.java</strong> Repite el ejercicio anterior pero teniendo con usuarios.</p>
+
+    <h2>Entrega</h2>
+
+	<p>Todo el código estará en una misma carpeta que se podrá compilar con <code>javac *.java</code>.</p>
+	
+
+    <p><a href='http://milq.github.io/cursos'>Volver a cursos</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>
+
+
