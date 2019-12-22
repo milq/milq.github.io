@@ -21,16 +21,28 @@
 
     <h2>Actividades de iniciación</h2>
 
+	<p>Crea las siguientes aplicaciones cliente-servidor (ayúdate de los siguientes <a href='https://www.cs.uic.edu/~troy/spring05/cs450/sockets/socket.html'>apuntes</a>):</p>
+
     <p><strong>JC01.java - JS01.java (puerto 10001)</strong> Crea un servidor que escuche y atienda a un solo cliente por el puerto 10001. Una vez el cliente se conecte al servidor correctamente, éste le enviará al cliente la cadena <em>¡Hola, mundo!</em> y tanto el servidor como el cliente finalizarán.</p>   
 
     <p><strong>JC02.java - JS02.java (puerto 10002)</strong> Crea un servidor que escuche y atienda a un solo cliente. Una vez el cliente se conecte al servidor correctamente, éste le enviará al cliente cincuenta enteros aleatorios del 0 al 10 (ambos incluidos) y tanto el servidor como el cliente finalizarán.</p>   
 
     <p><strong>JC03.java - JS03.java (puerto 10003)</strong> Crea un servidor de eco que escuche y atienda a un solo cliente. El cliente solicitará al usuario un mensaje (cadena de caracteres) y se lo enviará al servidor, éste lo recibirá y le enviará al cliente el mismo mensaje.</p>
 
-    <p><strong>JC04.java - JS04.java (puerto 10004)</strong> Crea un servidor de eco que escuche y atienda a varios clientes. El cliente solicitará al usuario un mensaje (cadena de caracteres) y se lo enviará al servidor, éste lo recibirá y le enviará al cliente el mismo mensaje.</p>
+    <p><strong>JC04.java - JS04.java (puerto 10004)</strong> Repite la actividad anterior pero esta vez el servidor de eco escuchará y atenderá a varios clientes (el servidor lanzará un hilo por cliente).</p>
 
-    <p><strong>JC05.java - JS05.java (puerto 10005)</strong> Crea un servidor de eco que escuche y atienda a varios clientes. El cliente solicitará al usuario un mensaje (cadena de caracteres) y se lo enviará al servidor, éste lo recibirá y le enviará al cliente el mismo mensaje. Si el usuario introduce <code>Adiós.</code>, el cliente finalizará.</p>
+    <p><strong>JC05.java - JS05.java (puerto 10005)</strong> Repite la actividad anterior pero esta vez si el usuario introduce <code>Adiós.</code>, el cliente finalizará.</p>
 
+    <p><strong>JC06.java - JS06.java (puerto 10006)</strong> Repite la actividad anterior pero esta vez el servidor si no recibe conexiones en 10 segundos expirará (<a href='https://docs.oracle.com/javase/10/docs/api/java/net/ServerSocket.html#setSoTimeout(int)'><em>setSoTimeout()</em></a>).</p>
+
+    <p><strong>JC07.java - JS07.java (puerto 10007)</strong> Crea un servidor de eco pero, esta vez, usando el <a href='https://en.wikipedia.org/wiki/User_Datagram_Protocol'>protocolo UDP</a>.</p>
+
+    <p><strong>JC08.java - JS08.java (puerto 10008)</strong> Crea un servidor que escuche y atienda a varios clientes. El cliente solicitará al usuario dos enteros y se lo enviará al servidor, éste lo recibirá y le enviará al cliente la suma de los dos enteros.</p>
+
+    <p><strong>JC09.java - JS09.java (puerto 10009)</strong> Repite la actividad anterior, pero esta vez el servidor guardará en un fichero de texto las diferentes sumas.</p>
+    
+    <p><strong>JC10.java - JS10.java (puerto 10010)</strong> Crea una calculadora simple. El cliente solicitará al usuario dos números reales (<em>double</em>), una operación (carácter <code>+</code>, <code>-</code>, <code>*</code> o <code>/</code>) y se los enviará al servidor. El servidor realizará el cálculo y le enviará el resultado al cliente.</p> 
+    
     <h2>Actividades de desarrollo</h2>
 
 	<p>Crea las siguientes aplicaciones cliente-servidor (un servidor podrá atender a varios clientes a la vez):</p>
@@ -43,31 +55,37 @@
 
     <p><strong>JC14.java - JS14.java (puerto 10014)</strong> Crea un juego simple de adivinar el número. El servidor generará para cada cliente un entero aleatorio entre 0 y 100 (ambos incluidos). El cliente solicitará al usuario un entero y lo enviará al servidor hasta que adivine el entero generado. El servidor indicará, para cada entero recibido por el cliente, si es mayor, menor o ha acertado. Si acierta, terminará la conexión del cliente y le indicará en cuantos intentos lo ha conseguido.</p>
 
-    <p><strong>JC15.java - JS15.java (puerto 10015)</strong> Crea un servidor de eco (como el ejercicio <em>JC04.java - JS04.java</em>) controlando el acceso de los clientes al servidor mediante un sistema de usuario y clave. El servidor almacenará, mediante <em>arrays</em> de Strings, los usuarios <em>grego</em>, <em>alba</em> y <em>pedro</em> y las contraseñas <em>grego1234</em>, <em>alba1234</em> y <em>pedro1234</em> respectivamente. Una vez que el usuario se ha conectado exitosamente, todo lo que escriba se le replicará con el mismo mensaje; podrá salir con <code>Adiós.</code>.</p>
+    <p><strong>JC15.java - JS15.java (puerto 10015)</strong> Crea un servidor de eco (como la actividad <em>JC04.java - JS04.java</em>) controlando el acceso de los clientes al servidor mediante un sistema de usuario y clave. El servidor almacenará, mediante <em>arrays</em> de Strings, los usuarios <em>grego</em>, <em>alba</em> y <em>pedro</em> y las contraseñas <em>grego1234</em>, <em>alba1234</em> y <em>pedro1234</em> respectivamente. Una vez que el usuario ha iniciado sesión correctamente, todo lo que escriba se le replicará con el mismo mensaje; podrá salir con <code>Adiós.</code>.</p>
 
     <p><strong>JC16.java - JS16.java (puerto 10016)</strong> Crea un servidor simple de archivos. El cliente solicitará al usuario dos rutas: la ruta del archivo a descargar y la ruta donde quiere que se guarde el archivo. El cliente enviará al servidor la ruta del archivo a descargar y éste le enviará el archivo.</p>
 
-    <p><strong>JC17.java - JS17.java (puerto 10017)</strong> Crea un chat simple. El cliente solicitará al usuario un alias. A continuación, el usuario podrá enviar mensajes y recibirá los mensajes de otros usuarios. Cuando el servidor reciba un mensaje, lo reenvíará a todos los clientes activos junto con el nombre de usuario.</p>
+    <p><strong>JC17.java - JS17.java (puerto 10017)</strong> Crea un chat simple. El cliente solicitará al usuario un alias. A continuación, el usuario podrá enviar mensajes y recibirá los mensajes de otros usuarios. Cuando el servidor reciba un mensaje, lo reenvíará a todos los clientes activos junto con el alias correspondiente.</p>
 
-    <p><strong>JC18.java - JS18.java (puerto 10018)</strong> Crea una calculadora simple. El cliente solicitará al usuario dos números reales (<em>double</em>), una operación (carácter <code>+</code>, <code>-</code>, <code>*</code> o <code>/</code>) y se los enviará al servidor. El servidor realizará el cálculo y le enviará el resultado al cliente.</p> 
+    <p><strong>JC18.java - JS18.java (puerto 10018)</strong> Crea una base de datos sencilla con un fichero de texto <em>datos.txt</em>. Dicho fichero contendrá, en cada línea, una tupla de índice-palabra; ejemplos: <em>12 gato</em>, <em>34 león</em>, <em>2 hormiga</em>, etc. El cliente solicitará al usuario un comando, <code>leer</code> o <code>escribir</code>, y un entero y se lo enviará al servidor. El servidor, si la operación es de lectura, buscará y le enviará la palabra según el índide dado. Si es de escritura, creará, o machacará, una nueva tupla índice-palabra.</p>
     
     <p><strong>JC19.java - JS19.java (puerto 10019)</strong> Calcula la <a href='https://es.wikipedia.org/wiki/Distancia_euclidiana'>distancia euclídea</a> de dos puntos 2D. El cliente solicitará al usuario dos puntos 2D (<em>x1</em>, <em>y1</em>, <em>x2</em> e <em>y2</em>) y le enviará al servidor dos objetos de una clase <code>Punto2D</code>. A continuación, el servidor recibirá esos dos objetos, calculará la distancia euclídea y le enviará el resultado cliente.</p>
 
-    <p><strong>JC20.java - JS20.java (puerto 10020)</strong> Calcula el <a href='https://www.superprof.es/apuntes/escolar/matematicas/analitica/recta/punto-medio.html'>punto medio</a> de dos puntos 3D. El cliente solicitará al usuario dos puntos 3D (<em>x1</em>, <em>y1</em>, <em>z1</em>, <em>x2</em>, <em>y2</em> y <em>z2</em>) y le enviará al servidor dos objetos de una clase <code>Punto3D</code>. A continuación, el servidor recibirá esos dos objetos, calculará el punto medio y le enviará el resultado cliente. Opcionalmente, haz que el servidor envíe el punto medio como un objeto de la clase <code>Punto3D</code>.</p>
+    <p><strong>JC20.java - JS20.java (puerto 10020)</strong> Calcula el <a href='https://www.superprof.es/apuntes/escolar/matematicas/analitica/recta/punto-medio.html'>punto medio</a> de dos puntos 3D. El cliente solicitará al usuario dos puntos 3D (<em>x1</em>, <em>y1</em>, <em>z1</em>, <em>x2</em>, <em>y2</em> y <em>z2</em>) y le enviará al servidor dos objetos de una clase <code>Punto3D</code>. A continuación, el servidor recibirá esos dos objetos, calculará el punto medio y le enviará el resultado al cliente. Opcionalmente, haz que el servidor envíe el punto medio como un objeto de la clase <code>Punto3D</code>.</p>
 
     <h2>Actividades de ampliación</h2>
 
-    <p><strong>JC21.java - JS21.java</strong> Repite el juego simple de adivinar el número (<em>JC14.java - JS14.java</em>) pero, esta vez, el servidor almacenará una clasificación con los mejores resultados, es decir, sol. Esta clasificación se lo mostrará al cliente si así lo solicita.</p>
+	<p>Crea las siguientes aplicaciones cliente-servidor (un servidor podrá atender a varios clientes a la vez):</p>
 
-    <p><strong>JC22.java - JS22.java</strong> Repite el ejercicio anterior pero con un sistema de usuarios y claves, es decir, la clasificación vendrá indicada en ella el alias y el número de intentos.</p>
+    <p><strong>JC21.java - JS21.java</strong> Repite el juego de adivinar el número (<em>JC14.java - JS14.java</em>) pero, esta vez, el servidor almacenará una clasificación con los mejores resultados. Esta clasificación se lo mostrará al cliente si así lo solicita.</p>
 
-    <p><strong>JC23.java - JS23.java</strong> Repite el chat pero con histórico.</p>
+    <p><strong>JC22.java - JS22.java</strong> Repite la actividad anterior pero con un sistema de usuarios y claves, es decir, la clasificación vendrá indicada en ella el alias y el número de intentos.</p>
 
-    <p><strong>JC24.java - JS24.java</strong> Repite el chat con histórico y un sistema de usuarios y claves.</p>
+    <p><strong>JC23.java - JS23.java</strong> Repite el chat (<em>JC17.java - JS17.java</em>) pero almacenando en un fichero el historial de mensajes.</p>
+
+    <p><strong>JC24.java - JS24.java</strong> Repite la actividad anterior pero con un sistema de usuarios y claves.</p>
+
+    <p><strong>JC25.java - JS25.java</strong> Crea el juego pares y nones entre jugadores con un sistema de usuarios y claves. Para ello, el servidor actuará de intermediario entre los jugadores (clientes).</p>
 
     <h2>Entrega</h2>
 
-	<p>Todo el código estará en una misma carpeta que se podrá compilar con <code>javac *.java</code>.</p>
+	<p>Todo el código estará en una misma carpeta. Se podrá compilar todo de una vez con <code>javac *.java</code>.</p>
+	
+	<p>Si algún código no compila correctamente, crear una nueva carpeta denominada <em>otros</em> y mover dicho código allí.</p>
 
     <p><a href='http://milq.github.io/cursos'>Volver a cursos</a>.</p>
 

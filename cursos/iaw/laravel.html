@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Laravel</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-family:Menlo,'Fira Mono',monospace;background-color:#dcdcdc;border-radius:.2em;white-space:pre-wrap}</style>
+  </head>
+
+  <body>
+    <h1>Tutorial de Laravel</h1>
+
+    <p>Este es un tutorial para Laravel en español para desarrollar aplicaciones web. Este tutorial se ha testado en Debian 10 y en Windows 10.</p>
+
+    <p>Si usas Debian/Ubuntu, quizás necesites ejecutar los comandos con permisos de administrador, es decir, entrando con <code>su</code> o ejecutando con <code>sudo</code> (ejecutando con <code>sudo</code> es más recomendable).</p>
+
+    <h2>1. Instala XAMPP y Composer</h2>
+
+    <ol>
+      <li>Instala <a href='http://apachefriends.org'>XAMPP</a> en la ruta que viene por defecto (<code>C:\xampp</code> en Windows u <code>/opt/lampp/</code> en Debian/Ubuntu).
+      <ul>
+        <li>En Debian/Ubuntu, justo después, ejecuta <code>sudo rm -rf /opt/lampp/htdocs/*</code> y luego <code>sudo chown -R <em>usuario</em>:<em>usuario</em> /opt/lampp/htdocs</code> donde <em>usuario</em> es tu nombre de usuario. Así podrás trabajar en <em>htdocs</em> con tu usuario y no siendo administrador.</li>
+<!--https://www.computernetworkingnotes.com/linux-tutorials/xampp-htdocs-permission-issue-and-fix-in-ubuntu.html-->
+      </ul>
+      </li>
+      <li>Instala <a href='http://getcomposer.org'>Composer</a> en Windows (mediante el <a href='http://getcomposer.org/doc/00-intro.md#installation-windows' title='Instalador Composer'>instalador</a>) o en Debian/Ubuntu (con <code>sudo apt-get install composer</code>).</li>
+      <ul>
+        <li>En Debian/Ubuntu, justo después, ejecuta <code>sudo apt-get install php php-xml</code> para instalar el módulo de XML para PHP necesario.</li>
+      </ul>
+    </ol>
+
+    <p>Verifica que todo funciona correctamente, para ello:</p>
+
+    <ol>
+      <li>Inicia el servidor XAMPP.</li>
+      <li>Comprueba PHP en la terminal ejecutando <code>php --version</code> en Windows u <code>/opt/lampp/bin/php --version</code> en Debian/Ubuntu.</li>
+      <li>Comprueba Composer en la terminal ejecutando <code>composer --version</code> en Windows o en Debian/Ubuntu.</li>
+    </ol>
+
+    <h2>2. Instala Laravel</h2>
+
+	<p>Existen varias maneras de <a href='https://laravel.com/docs/6.x/installation#installing-laravel'>instalar Laravel</a>, mi preferida es creando un proyecto de Laravel directamente desde Composer (<em>Via Composer Create-Project</em>); por tanto, en este punto no hay que realizar nada.
+
+    <h2>3. Crea tu primer proyecto en Laravel: un blog</h2>	
+	
+	<p>Inicia XAMPP, luego en tu terminal entra en <code>C:\xampp\htdocs</code> en Windows u <code>/opt/lampp/htdocs</code> en Debian/Ubuntu y crea tu primer proyecto: <code>composer create-project --prefer-dist laravel/laravel <em>nombre_de_mi_proyecto</em></code>.</p>
+
+	<p>A continuación, entra desde tu terminal entra en <code>C:\xampp\htdocs\<em>nombre_de_mi_proyecto</em></code> en Windows u <code>/opt/lampp/htdocs/<em>nombre_de_mi_proyecto</em></code>	en Debian/Ubuntu y comprueba que te funciona Artisan, la interfaz de línea de comandos de Laravel, ejecutando <code>php artisan</code>.</p>
+
+    <h3>3.1. </h3>		
+
+
+    <!-- <h2>X. Usa Laravel con Heroku</h2> 
+
+    <p>Crea una cuenta gratuita en <a href='http://signup.heroku.com'>Heroku</a> si no dispones de ella.</p>
+-->
+
+    <p><a href='index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>
