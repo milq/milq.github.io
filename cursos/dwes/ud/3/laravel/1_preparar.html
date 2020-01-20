@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Laravel</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code,pre{background-color:lavender;border-radius:.2em;white-space:pre-wrap}</style>
+  </head>
+
+  <body>
+    <h1>Tutorial de Laravel - Crear la primera aplicación web</h1>
+
+    <p>Es es un tutorial de Laravel en español para crear la primera aplicación web que será un <a href='https://es.wikipedia.org/wiki/CRUD'>CRUD</a> sencillo.</p>
+
+    <h2>1. Crea tu primer proyecto</h2>
+
+    <p>Inicia XAMPP, luego en tu terminal entra en <code>C:\xampp\htdocs</code> en Windows u <code>/opt/lampp/htdocs</code> en Debian/Ubuntu y crea tu primer proyecto con <code>composer create-project --prefer-dist laravel/laravel <em>nombre_de_mi_proyecto</em></code>. Ejecuta <code>composer create-project --prefer-dist laravel/laravel <em>crud</em></code> para crear un proyecto en blanco llamado <em>crud</em>.</p>
+
+    <h2>2. Comprueba que funciona Artisan</h2>
+
+	<p><a href='https://documentacion-laravel.com/artisan.html'>Artisan</a> es la interfaz de línea de comandos de Laravel que proporciona comandos útiles para facilitarte el desarrollo de tu aplicación web.</p>
+
+    <p>A continuación, entra desde tu terminal entra en <code>C:\xampp\htdocs\<em>crud</em></code> en Windows u <code>/opt/lampp/htdocs/<em>crud</em></code> en Debian/Ubuntu y comprueba que te funciona Artisan, la interfaz de línea de comandos de Laravel, ejecutando <code>php artisan</code>.</p>
+
+    <h2>3. Configura la conexión a la base de datos</h2>
+
+    <p>Crea una base de datos desde PhpMyAdmin con nombre, por ejemplo, <em>crud_db</em>.</p>
+
+    <p>Desde tu terminal y en la carpeta del proyecto, ejecuta <code>notepad .env</code> en Windows u <code>nano .env</code> en Debian/Ubuntu y actualiza los siguientes datos acorde a tus circunstancias:</p>
+
+    <pre>DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=crud_db
+DB_USERNAME=nacho
+DB_PASSWORD=1234</pre>
+
+    <!-- <h2>X. Usa Laravel con Heroku</h2>
+
+    <p>Crea una cuenta gratuita en <a href='http://signup.heroku.com'>Heroku</a> si no dispones de ella.</p>
+-->
+
+    <h2>4. Crea un modelo y su fichero de migración</h2>
+
+    <p>La mayoría de <em>frameworks</em> web como Laravel facilitan el <a href='https://programarfacil.com/blog/que-es-un-orm'>mapeo objeto-relacional</a> (<a href='https://en.wikipedia.org/wiki/Object-relational_mapping'>ORM</a>). En este caso, Laravel nos proporciona <a href='https://documentacion-laravel.com/eloquent.html'>Eloquent ORM</a>.</p>
+
+    <p>Crea el modelo <em>Productos</em> y su fichero de <a href='https://documentacion-laravel.com/migrations.html'>migración</a> con el siguiente comando:</p>
+
+    <pre>php artisan make:model Productos --migration</pre>
+
+    <h2>5. Actualiza el fichero de migración y migra</h2>
+
+    <p>Abre el fichero de migración en <em>database/migrations/xxxx_xx_xx_xxxxxx_create_productos_table.php</em> y actualízalo:</p>
+
+    <pre>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateProductosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('productos', function (Blueprint $table) {
+            $table-&gt;bigIncrements('id');
+            $table-&gt;timestamps();
+            <strong>$table->integer('código');
+            $table->string('título');
+            $table->string('descripción');
+            $table->float('precio');</strong>
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('productos');
+    }
+}</pre>
+
+	<p>En negrita está el código añadido. En éste caso se han añadido los campos de <em>código</em> (entero), <em>título</em> (cadena de caracteres), <em>descripción</em> (cadena de caracteres) y <em>precio</em> (coma flotante).</p>
+
+	<p>A continuación, migra con <code>php artisan migrate</code> y así crear las tablas en la base de datos.</p>
+
+    <h2>6. Define el modelo</h2>
+
+    <p>Abre el código en <em>app/Productos.php</em> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
+
+	<pre>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Productos extends Model
+{
+    <strong>protected $fillable = [
+        'código',
+        'título',
+        'descripción',
+        'precio'
+    ];</strong>
+}</pre>
+
+	<h2>7. Crea el controlador y las rutas</h2>
+	
+	<p>Después de crear el modelo Productos, migrarlo y actualizarlo, crea el <a href='https://documentacion-laravel.com/controllers.html'>controlador</a> y las rutas para trabajar con él.</p>
+	
+	<p>Laravel facilita la creación de controladores y adición de métodos estilo CRUD.</p>
+	
+	<p>A continuación, ejecuta:</p>
+	
+	<pre>php artisan make:controller ProductosController --resource</pre>
+	
+	<p>Este comando creará el controlador ProductosController y de forma predeterminada siete métodos como el indexar, almacenar, crear, actualizar, destruir, mostrar, editar.</p>
+
+	<p>Puedes ver el resultado en <em>app/Http/Controllers/ProductosController.php</em>.</p>
+	
+    <p><a href='index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+https://codinginfinite.com/crud-operations-in-laravel-6-tutorial-with-example/
+https://www.techiediaries.com/php-laravel-crud-mysql-tutorial/
+https://www.tutsmake.com/simple-crud-laravel-6-example-tutorial-step-by-step/
+https://appdividend.com/2017/10/15/laravel-5-5-crud-example-tutorial/#Step_3_Make_models_and_controllers_for_our_application
+
+  </body>
+</html>
