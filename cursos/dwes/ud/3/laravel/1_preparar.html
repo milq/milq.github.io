@@ -111,9 +111,9 @@ class Productos extends Model
     ];</strong>
 }</pre>
 
-	<h2>7. Crea el controlador y las rutas</h2>
+	<h2>7. Crea el controlador</h2>
 	
-	<p>Después de crear el modelo Productos, migrarlo y actualizarlo, crea el <a href='https://documentacion-laravel.com/controllers.html'>controlador</a> y las rutas para trabajar con él.</p>
+	<p>Después de crear el modelo Productos, migrarlo y actualizarlo, crea el <a href='https://documentacion-laravel.com/controllers.html'>controlador</a>.</p>
 	
 	<p>Laravel facilita la creación de controladores y adición de métodos estilo CRUD.</p>
 	
@@ -123,8 +123,42 @@ class Productos extends Model
 	
 	<p>Este comando creará el controlador ProductosController y de forma predeterminada siete métodos como el indexar, almacenar, crear, actualizar, destruir, mostrar, editar.</p>
 
-	<p>Puedes ver el resultado en <em>app/Http/Controllers/ProductosController.php</em>.</p>
+	<p>Puedes ver el resultado en <em>app/Http/Controllers/ProductosController.php</em>. Automáticamente, como puedes observar, se ha creado la clase <em>ProductosController</em> que deriva de la clase <em>Controller</em> y que contiene métodos para realizar operaciones CRUD con el modelo Productos.</p>
 	
+	<p>Ahora necesitamos proporcionar implementaciones para estos métodos.</p>
+
+	<h2>8. Crea las rutas</h2>
+
+	<p>Pero antes de añadir las implementaciones de los métodos CRUD, hay que crear las rutas. Para ello, abre el archivo <em>routes/web.php</em> y actualízalo:</p>
+
+	<pre>&lt;?php
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+<strong>Route::resource('productos', 'ProductosController');</strong></pre>
+
+	<p>Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductosController</em> que debes implementar más adelante:</p>
+
+	<ul>
+	  <li><em>GET /productos</em>: mapeado al método <em>index()</em>.</li>
+	  <li><em>GET /productos/create</em>: mapeado al método <em>create()</em>.</li>
+	  <li><em>POST /productos</em>: mapeado al método <em>store()</em>.</li>
+	  <li><em>GET /productos/{producto}</em>: mapeado al método <em>show()</em>.</li>
+	  <li><em>GET /productos/{producto}/edit</em>: mapeado al método <em>edit()</em>.</li>
+	  <li><em>PUT/PATCH /productos/{producto}</em>: mapeado al método <em>update()</em>.</li>
+	  <li><em>DELETE /productos/{producto}</em>: mapeado al método <em>destroy()</em>.</li>
+	</ul>
+
+<!-- These routes are used to serve HTML templates and also as API endpoints for working with the Products model. 
+
+Note: If you want to create a controller that will only expose a RESTful API, you can use the apiResource method to exclude the routes that are used to serve the HTML templates:
+
+Route::apiResource('contacts', 'ContactController');
+
+-->
+
     <p><a href='index.html'>Volver</a>.</p>
 
     <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
