@@ -51,3 +51,8 @@ img {
 .cookies_policy + footer {
   margin-bottom: 2em;
 }
+
+p.cookies_policy span {
+  color: blue;
+  cursor: pointer;
+}
