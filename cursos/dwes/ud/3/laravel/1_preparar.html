@@ -3,7 +3,10 @@
   <head>
     <meta charset='utf-8' />
     <title>Tutorial de Laravel</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code,pre{background-color:lavender;border-radius:.2em;white-space:pre-wrap}</style>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
+	<link rel='stylesheet' href='gruvbox-light.css' />
+	<script src='highlight.pack.js'></script>
+	<script>hljs.initHighlightingOnLoad();</script>
   </head>
 
   <body>
@@ -17,22 +20,22 @@
 
     <h2>2. Comprueba que funciona Artisan</h2>
 
-	<p><a href='https://documentacion-laravel.com/artisan.html'>Artisan</a> es la interfaz de línea de comandos de Laravel que proporciona comandos útiles para facilitarte el desarrollo de tu aplicación web.</p>
+    <p><a href='https://documentacion-laravel.com/artisan.html'>Artisan</a> es la interfaz de línea de comandos de Laravel que proporciona comandos útiles para facilitarte el desarrollo de tu aplicación web.</p>
 
     <p>A continuación, entra desde tu terminal entra en <code>C:\xampp\htdocs\<em>crud</em></code> en Windows u <code>/opt/lampp/htdocs/<em>crud</em></code> en Debian/Ubuntu y comprueba que te funciona Artisan, la interfaz de línea de comandos de Laravel, ejecutando <code>php artisan</code>.</p>
 
     <h2>3. Configura la conexión a la base de datos</h2>
 
-    <p>Crea una base de datos desde PhpMyAdmin con nombre, por ejemplo, <em>crud_db</em>.</p>
+    <p>Crea una base de datos desde PhpMyAdmin con nombre, por ejemplo, <code>crud_db</code>.</p>
 
     <p>Desde tu terminal y en la carpeta del proyecto, ejecuta <code>notepad .env</code> en Windows u <code>nano .env</code> en Debian/Ubuntu y actualiza los siguientes datos acorde a tus circunstancias:</p>
 
-    <pre>DB_CONNECTION=mysql
+    <pre><code>DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=crud_db
 DB_USERNAME=nacho
-DB_PASSWORD=1234</pre>
+DB_PASSWORD=1234</code></pre>
 
     <!-- <h2>X. Usa Laravel con Heroku</h2>
 
@@ -45,13 +48,13 @@ DB_PASSWORD=1234</pre>
 
     <p>Crea el modelo <em>Productos</em> y su fichero de <a href='https://documentacion-laravel.com/migrations.html'>migración</a> con el siguiente comando:</p>
 
-    <pre>php artisan make:model Productos --migration</pre>
+    <pre><code>php artisan make:model Productos --migration</code></pre>
 
     <h2>5. Actualiza el fichero de migración y migra</h2>
 
-    <p>Abre el fichero de migración en <em>database/migrations/xxxx_xx_xx_xxxxxx_create_productos_table.php</em> y actualízalo:</p>
+    <p>Abre el fichero de migración en <code>database/migrations/xxxx_xx_xx_xxxxxx_create_productos_table.php</code> y actualízalo:</p>
 
-    <pre>&lt;?php
+    <pre><code class='php'>&lt;?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -69,8 +72,7 @@ class CreateProductosTable extends Migration
         Schema::create('productos', function (Blueprint $table) {
             $table-&gt;bigIncrements('id');
             $table-&gt;timestamps();
-            <strong>$table->integer('código');
-            $table->string('título');
+            <strong>$table->string('título');
             $table->string('descripción');
             $table->float('precio');</strong>
         });
@@ -85,17 +87,17 @@ class CreateProductosTable extends Migration
     {
         Schema::dropIfExists('productos');
     }
-}</pre>
+}</code></pre>
 
-	<p>En negrita está el código añadido. En éste caso se han añadido los campos de <em>código</em> (entero), <em>título</em> (cadena de caracteres), <em>descripción</em> (cadena de caracteres) y <em>precio</em> (coma flotante).</p>
+    <p>En <strong>negrita</strong> está el código añadido. En éste caso se han añadido los campos de <em>código</em> (entero), <em>título</em> (cadena de caracteres), <em>descripción</em> (cadena de caracteres) y <em>precio</em> (coma flotante).</p>
 
-	<p>A continuación, migra con <code>php artisan migrate</code> y así crear las tablas en la base de datos.</p>
+    <p>A continuación, migra con <code>php artisan migrate</code> y así crear las tablas en la base de datos.</p>
 
     <h2>6. Define el modelo</h2>
 
-    <p>Abre el código en <em>app/Productos.php</em> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
+    <p>Abre el código en <code>app/Productos.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
 
-	<pre>&lt;?php
+    <pre><code class='php'>&lt;?php
 
 namespace App;
 
@@ -104,69 +106,188 @@ use Illuminate\Database\Eloquent\Model;
 class Productos extends Model
 {
     <strong>protected $fillable = [
-        'código',
         'título',
         'descripción',
         'precio'
     ];</strong>
-}</pre>
+}</code></pre>
 
-	<h2>7. Crea el controlador</h2>
-	
-	<p>Después de crear el modelo Productos, migrarlo y actualizarlo, crea el <a href='https://documentacion-laravel.com/controllers.html'>controlador</a>.</p>
-	
-	<p>Laravel facilita la creación de controladores y adición de métodos estilo CRUD.</p>
-	
-	<p>A continuación, ejecuta:</p>
-	
-	<pre>php artisan make:controller ProductosController --resource</pre>
-	
-	<p>Este comando creará el controlador ProductosController y de forma predeterminada siete métodos como el indexar, almacenar, crear, actualizar, destruir, mostrar, editar.</p>
+	<p>En <strong>negrita</strong> está el código añadido.</p>
 
-	<p>Puedes ver el resultado en <em>app/Http/Controllers/ProductosController.php</em>. Automáticamente, como puedes observar, se ha creado la clase <em>ProductosController</em> que deriva de la clase <em>Controller</em> y que contiene métodos para realizar operaciones CRUD con el modelo Productos.</p>
-	
-	<p>Ahora necesitamos proporcionar implementaciones para estos métodos.</p>
+    <h2>7. Crea el controlador</h2>
 
-	<h2>8. Crea las rutas</h2>
+    <p>Después de crear el modelo Productos, migrarlo y actualizarlo, crea el <a href='https://documentacion-laravel.com/controllers.html'>controlador</a>.</p>
 
-	<p>Pero antes de añadir las implementaciones de los métodos CRUD, hay que crear las rutas. Para ello, abre el archivo <em>routes/web.php</em> y actualízalo:</p>
+    <p>Laravel facilita la creación de controladores y adición de métodos estilo CRUD.</p>
 
-	<pre>&lt;?php
+    <p>A continuación, ejecuta:</p>
+
+    <pre><code>php artisan make:controller ProductosController --resource</code></pre>
+
+    <p>Este comando creará el controlador ProductosController y de forma predeterminada siete métodos como el indexar, almacenar, crear, actualizar, destruir, mostrar, editar.</p>
+
+    <p>Puedes ver el resultado en <code>app/Http/Controllers/ProductosController.php</code>. Automáticamente, como puedes observar, se ha creado la clase <code>ProductosController</code> que deriva de la clase <code>Controller</code> y que contiene métodos para realizar operaciones CRUD con el modelo <code>Productos</code>.</p>
+
+    <p>Ahora necesitamos proporcionar implementaciones para estos métodos.</p>
+
+    <h2>8. Crea las rutas</h2>
+
+    <p>Pero antes de añadir las implementaciones de los métodos CRUD, hay que crear las rutas. Para ello, abre el archivo <code>routes/web.php</code> y actualízalo:</p>
+
+    <pre><code class='php'>&lt;?php
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-<strong>Route::resource('productos', 'ProductosController');</strong></pre>
+<strong>Route::resource('productos', 'ProductosController');</strong></code></pre>
 
-	<p>Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductosController</em> que debes implementar más adelante:</p>
+    <p>En <strong>negrita</strong> está el código añadido. Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductosController</em> que debes implementar más adelante:</p>
 
-	<ul>
-	  <li><em>GET /productos</em>: mapeado al método <em>index()</em>.</li>
-	  <li><em>GET /productos/create</em>: mapeado al método <em>create()</em>.</li>
-	  <li><em>POST /productos</em>: mapeado al método <em>store()</em>.</li>
-	  <li><em>GET /productos/{producto}</em>: mapeado al método <em>show()</em>.</li>
-	  <li><em>GET /productos/{producto}/edit</em>: mapeado al método <em>edit()</em>.</li>
-	  <li><em>PUT/PATCH /productos/{producto}</em>: mapeado al método <em>update()</em>.</li>
-	  <li><em>DELETE /productos/{producto}</em>: mapeado al método <em>destroy()</em>.</li>
-	</ul>
+    <ul>
+      <li><em>GET /productos</em>: mapeado al método <em>index()</em>.</li>
+      <li><em>GET /productos/create</em>: mapeado al método <em>create()</em>.</li>
+      <li><em>POST /productos</em>: mapeado al método <em>store()</em>.</li>
+      <li><em>GET /productos/{id}</em>: mapeado al método <em>show()</em>.</li>
+      <li><em>GET /productos/{id}/edit</em>: mapeado al método <em>edit()</em>.</li>
+      <li><em>PUT/PATCH /productos/{id}</em>: mapeado al método <em>update()</em>.</li>
+      <li><em>DELETE /productos/{id}</em>: mapeado al método <em>destroy()</em>.</li>
+    </ul>
 
-<!-- These routes are used to serve HTML templates and also as API endpoints for working with the Products model. 
+    <p>También puedes implementarlo manualmente:</p>
 
-Note: If you want to create a controller that will only expose a RESTful API, you can use the apiResource method to exclude the routes that are used to serve the HTML templates:
+    <pre><code class='php'>Route::get('/productos', 'ProductosController@index')->name('productos.index');
+Route::get('/productos/create','ProductosController@create')->name('productos.create');
+Route::post('/productos','ProductosController@store')->name('productos.store');
+Route::get('/productos/{id}','ProductosController@show')->name('productos.show');
+Route::get('/productos/{id}/edit','ProductosController@edit')->name('productos.edit');
+Route::post('/productos/{id}/update','ProductosController@update')->name('productos.update');
+Route::get('/productos/{id}/delete','ProductosController@destroy')->name('productos.destroy');</code></pre>
 
-Route::apiResource('contacts', 'ContactController');
+    <h2>9. Implementa los métodos CRUD</h2>
 
--->
+    <p><code>ProductosController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /productos</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /productos/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /productos</em>.</p>
+
+    <p>¿<a href='https://es.stackoverflow.com/questions/51758/qu%C3%A9-es-un-entry-point-y-un-end-point'>Qué es <em>entry point</em> y un <em>end point</em></a>?</p>
+
+    <p>Vamos a implementar estos dos métodos:</p>
+
+    <p>Reabre el controlador <code>app/Http/Controllers/ProductosController.php</code> e importa, al principio del código, el modelo <code>Productos</code>:</p>
+
+    <pre><code><strong>use App\Productos;</strong></code></pre>
+
+    <p>En <strong>negrita</strong> está el código añadido. Ahora localiza el método <em>store()</em> y actualízalo:</p>
+
+<pre><code class='php'>public function store(Request $request)
+{
+    <strong>$request-&gt;validate([
+        'título'=&gt;'required',
+        'descripción'=&gt;'required',
+        'precio'=&gt;'required'
+    ]);</strong>
+
+    <strong>$producto = new Productos([
+        'título' =&gt; $request-&gt;get('título'),
+        'descripción' =&gt; $request-&gt;get('descripción'),
+        'precio' =&gt; $request-&gt;get('precio')
+    ]);</strong>
+
+    <strong>$producto-&gt;save();</strong>
+
+    <strong>return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
+}</code></pre>
+
+<p>Ahora, localiza el método <em>store()</em> y actualízalo:</p>
+
+<pre><code class='php'>public function create()
+{
+    <strong>return view('productos.create');</strong>
+}</code></pre>
+
+    <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>productos.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/contacts/create.blade.php</code>.</p>
+
+    <p>Antes de crear la plantilla <em>create.blade.php</em> es recomendable crear una plantilla base que será ampliada por las siguientes plantillas facilitando así la organización del código.</p>
+
+    <p>Para ello, en la carpeta <em>resources/views</em>, creamos el fichero <em>base.blade.php</em>:</p>
+
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html xmlns='http://www.w3.org/1999/xhtml' lang='en'&gt;
+  &lt;head&gt;
+    &lt;meta charset='utf-8' /&gt;
+    &lt;meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' /&gt;
+    &lt;title&gt;CRUD en Laravel&lt;/title&gt;
+    &lt;link href="{{ asset('bootstrap.min.css') }}" rel='stylesheet' type='text/css' /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;div class='container'&gt;
+      @yield('main')
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Descarga <a href='https://getbootstrap.com'>Bootstrap</a> y mueve el fichero <code>bootstrap.min.css</code> a la carpeta <code>public</code> que es la carpeta pública de tu aplicación web.</p>
+
+<p>Creada la plantilla base, creamos la plantilla para insertar/crear un producto. Para ello, crea <code>resources/views/productos/create.blade.php</code>:</p>
+
+<pre><code>@extends('base')
+
+@section('main')
+&lt;div class='row'&gt;
+  &lt;div class='col-sm-8 offset-sm-2'&gt;
+    &lt;h1 class='display-3'&gt;Añadir un producto&lt;/h1&gt;
+    &lt;div&gt;
+      @if ($errors-&gt;any())
+      &lt;div class='alert alert-danger'&gt;
+        &lt;ul&gt;
+          @foreach ($errors-&gt;all() as $error)
+            &lt;li&gt;{{ $error }}&lt;/li&gt;
+          @endforeach
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;br /&gt;
+      @endif
+      &lt;form method='post' action="{{ route('productos.store') }}"&gt;
+        @csrf
+        &lt;div class='form-group'&gt;
+          &lt;label for='título'&gt;Título:&lt;/label&gt;
+          &lt;input type='text' class='form-control' name='título' /&gt;
+        &lt;/div&gt;
+        &lt;div class='form-group'&gt;
+          &lt;label for='descripción'&gt;Descripción:&lt;/label&gt;
+          &lt;input type='text' class='form-control' name='descripción' /&gt;
+        &lt;/div&gt;
+        &lt;div class='form-group'&gt;
+          &lt;label for='precio'&gt;Precio:&lt;/label&gt;
+          &lt;input type='number' class='form-control' name='precio' /&gt;
+        &lt;/div&gt;
+        &lt;button type='submit' class='btn btn-primary'&gt;Añadir&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+@endsection
+</code></pre>
+
+	<p>Vamos a comprobar que funciona.</p>
+	
+	<p>Iniciamos el servidor de desarrollo de Laravel:</p>
+
+	<code>php artisan serve</code>
+
+	<p>	<p>Vamos a comprobar que funciona.</p></p>
 
     <p><a href='index.html'>Volver</a>.</p>
 
     <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
 
-https://codinginfinite.com/crud-operations-in-laravel-6-tutorial-with-example/
+<!--
 https://www.techiediaries.com/php-laravel-crud-mysql-tutorial/
+https://codinginfinite.com/crud-operations-in-laravel-6-tutorial-with-example/
 https://www.tutsmake.com/simple-crud-laravel-6-example-tutorial-step-by-step/
 https://appdividend.com/2017/10/15/laravel-5-5-crud-example-tutorial/#Step_3_Make_models_and_controllers_for_our_application
+-->
 
   </body>
 </html>
