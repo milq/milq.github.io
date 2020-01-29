@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Laravel</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
+	<link rel='stylesheet' href='gruvbox-light.css' />
+	<script src='highlight.pack.js'></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Tutorial de Laravel</h1>
+
+    <h2>5. Actualiza el fichero de migración y migra</h2>
+
+    <p>Abre el fichero de migración en <code>database/migrations/xxxx_xx_xx_xxxxxx_create_productos_table.php</code> y actualízalo:</p>
+
+    <pre><code class='php'>&lt;?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateProductosTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('productos', function (Blueprint $table) {
+            $table-&gt;bigIncrements('id');
+            $table-&gt;timestamps();
+            <strong>$table-&gt;string('título');
+            $table-&gt;string('descripción');
+            $table-&gt;float('precio');</strong>
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('productos');
+    }
+}</code></pre>
+
+    <p>En <strong>negrita</strong> está el código añadido. En éste caso se han añadido los campos de <em>código</em> (entero), <em>título</em> (cadena de caracteres), <em>descripción</em> (cadena de caracteres) y <em>precio</em> (coma flotante).</p>
+
+    <p>A continuación, migra con <code>php artisan migrate</code> y así crear las tablas en la base de datos.</p>
+
+    <p><a href='index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+
+  </body>
+</html>

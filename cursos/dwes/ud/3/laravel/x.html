@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <h1>Tutorial de Laravel - Crear la primera aplicación web</h1>
+    <h1>Tutorial de Laravel</h1>
 
     <p>Es es un tutorial de Laravel en español para crear la primera aplicación web que será un <a href='https://es.wikipedia.org/wiki/CRUD'>CRUD</a> sencillo.</p>
 
@@ -199,14 +199,14 @@ Route::get('/productos/{id}/delete','ProductosController@destroy')->name('produc
     <strong>return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
 }</code></pre>
 
-<p>Ahora, localiza el método <em>store()</em> y actualízalo:</p>
+<p>Ahora, localiza el método <em>create()</em> y actualízalo:</p>
 
 <pre><code class='php'>public function create()
 {
     <strong>return view('productos.create');</strong>
 }</code></pre>
 
-    <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>productos.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/contacts/create.blade.php</code>.</p>
+    <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>productos.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/productos/create.blade.php</code>.</p>
 
     <p>Antes de crear la plantilla <em>create.blade.php</em> es recomendable crear una plantilla base que será ampliada por las siguientes plantillas facilitando así la organización del código.</p>
 
@@ -466,13 +466,6 @@ return view('productos.index', compact('productos'));</strong>
     <p><a href='index.html'>Volver</a>.</p>
 
     <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
-
-<!--
-https://www.techiediaries.com/php-laravel-crud-mysql-tutorial/
-https://codinginfinite.com/crud-operations-in-laravel-6-tutorial-with-example/
-https://www.tutsmake.com/simple-crud-laravel-6-example-tutorial-step-by-step/
-https://appdividend.com/2017/10/15/laravel-5-5-crud-example-tutorial/#Step_3_Make_models_and_controllers_for_our_application
--->
 
   </body>
 </html>

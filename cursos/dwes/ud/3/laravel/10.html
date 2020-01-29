@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Laravel</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
+	<link rel='stylesheet' href='gruvbox-light.css' />
+	<script src='highlight.pack.js'></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Tutorial de Laravel</h1>
+
+	<h2>10. Últimos retoques</h2>
+
+	<p>Como puedes observar, cuando borras un mensaje se dirige al <em>endpoint</em> de borrado (<em>DELETE /productos/{id}: mapeado al método destroy()</em>) como tiene que ser. Sin embargo, lo ideal, por cuestión de usabilidad, es que el usuario al pulsar borrar se redirija a la página principal. Para ello, abre <code>app/Http/Controllers/ProductosController.php</code> y actualiza el método <em>destroy()</em>:</p>
+
+<pre class='php'><code>public function destroy($id)
+{
+    $producto = Productos::find($id);
+    $producto->delete();
+    <strong>return redirect('/productos')->with('success', '¡Producto borrado!');</strong>
+}</code></pre>
+
+    <p>En <strong>negrita</strong> está el código añadido. Si te fijas, es lo mismo que ya has hecho para el método de <em>update()</em>.</p>
+
+	<p>Si te fijas, las redirecciones vienen acompañadas de un mensaje de texto de tipo <em>success</em> (éxito). Vamos a actualizar la vista <code>resources/views/productos/index.blade.php</code> para mostrar este tipo de mensajes:</p>
+
+&lt;div class='col-sm-12'&gt;
+  &lt;h1 class='display-3'&gt;Productos&lt;/h1&gt;
+  <strong>@if(session()-&gt;get('success'))
+    &lt;div class='alert alert-success'&gt;
+      {{ session()-&gt;get('success') }}
+    &lt;/div&gt;
+  @endif</strong>
+  &lt;table class='table table-striped'&gt;
+    &lt;thead&gt;
+
+	<p>En <strong>negrita</strong> está el código añadido. Por último, en esta misma plantilla y justo debajo del código anterior, vamos a añadir el botón de crear un nuevo producto:</p>
+	
+    <pre><code>&lt;/div&gt;
+  @endif
+  <strong>&lt;p&gt;&lt;a href="{{ route('productos.create')}}" class='btn btn-primary'&gt;Añadir&lt;/a&gt;&lt;/p&gt;</strong>
+  &lt;table class='table table-striped'&gt;
+    &lt;thead&gt;</code></pre>
+
+	<p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000</code>.</p>	
+
+    <p><a href='index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>

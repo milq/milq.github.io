@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Laravel</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
+	<link rel='stylesheet' href='gruvbox-light.css' />
+	<script src='highlight.pack.js'></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Tutorial de Laravel</h1>
+
+    <h2>6. Define el modelo</h2>
+
+    <p>Abre el código en <code>app/Productos.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
+
+    <pre><code class='php'>&lt;?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Productos extends Model
+{
+    <strong>protected $fillable = [
+        'título',
+        'descripción',
+        'precio'
+    ];</strong>
+}</code></pre>
+
+	<p>En <strong>negrita</strong> está el código añadido.</p>
+
+    <p><a href='index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>

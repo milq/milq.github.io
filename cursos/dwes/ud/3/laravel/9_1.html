@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Laravel</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
+	<link rel='stylesheet' href='gruvbox-light.css' />
+	<script src='highlight.pack.js'></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Tutorial de Laravel</h1>
+
+    <h2>9. Implementa los métodos CRUD</h2>
+
+    <h3>9.1 Implementa C (Create)</h3>
+
+    <p><code>ProductosController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /productos</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /productos/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /productos</em>.</p>
+
+    <p>¿<a href='https://es.stackoverflow.com/questions/51758/qu%C3%A9-es-un-entry-point-y-un-end-point'>Qué es <em>entry point</em> y un <em>end point</em></a>?</p>
+
+    <p>Vamos a implementar estos dos métodos:</p>
+
+    <p>Reabre el controlador <code>app/Http/Controllers/ProductosController.php</code> e importa, al principio del código, el modelo <code>Productos</code>:</p>
+
+    <pre><code><strong>use App\Productos;</strong></code></pre>
+
+    <p>En <strong>negrita</strong> está el código añadido. Ahora localiza el método <em>store()</em> y actualízalo:</p>
+
+<pre><code class='php'>public function store(Request $request)
+{
+    <strong>$request-&gt;validate([
+        'título'=&gt;'required',
+        'descripción'=&gt;'required',
+        'precio'=&gt;'required'
+    ]);</strong>
+
+    <strong>$producto = new Productos([
+        'título' =&gt; $request-&gt;get('título'),
+        'descripción' =&gt; $request-&gt;get('descripción'),
+        'precio' =&gt; $request-&gt;get('precio')
+    ]);</strong>
+
+    <strong>$producto-&gt;save();</strong>
+
+    <strong>return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
+}</code></pre>
+
+<p>Ahora, localiza el método <em>create()</em> y actualízalo:</p>
+
+<pre><code class='php'>public function create()
+{
+    <strong>return view('productos.create');</strong>
+}</code></pre>
+
+    <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>productos.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/productos/create.blade.php</code>.</p>
+
+    <p>Antes de crear la plantilla <em>create.blade.php</em> es recomendable crear una plantilla base que será ampliada por las siguientes plantillas facilitando así la organización del código.</p>
+
+    <p>Para ello, en la carpeta <em>resources/views</em>, creamos el fichero <em>base.blade.php</em>:</p>
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html xmlns='http://www.w3.org/1999/xhtml' lang='en'&gt;
+  &lt;head&gt;
+    &lt;meta charset='utf-8' /&gt;
+    &lt;meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' /&gt;
+    &lt;title&gt;CRUD en Laravel&lt;/title&gt;
+    &lt;link href="{{ asset('bootstrap.min.css') }}" rel='stylesheet' type='text/css' /&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    &lt;div class='container'&gt;
+      @yield('main')
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<p>Descarga <a href='https://getbootstrap.com'>Bootstrap</a> y mueve el fichero <code>bootstrap.min.css</code> a la carpeta <code>public</code> que es la carpeta pública de tu aplicación web.</p>
+
+<p>Creada la plantilla base, creamos la plantilla para insertar/crear un producto. Para ello, crea <code>resources/views/productos/create.blade.php</code>:</p>
+
+<pre><code>@extends('base')
+
+@section('main')
+&lt;div class='row'&gt;
+  &lt;div class='col-sm-8 offset-sm-2'&gt;
+    &lt;h1 class='display-3'&gt;Añadir un producto&lt;/h1&gt;
+    &lt;div&gt;
+      @if ($errors-&gt;any())
+      &lt;div class='alert alert-danger'&gt;
+        &lt;ul&gt;
+          @foreach ($errors-&gt;all() as $error)
+            &lt;li&gt;{{ $error }}&lt;/li&gt;
+          @endforeach
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;br /&gt;
+      @endif
+      &lt;form method='post' action="{{ route('productos.store') }}"&gt;
+        @csrf
+        &lt;div class='form-group'&gt;
+          &lt;label for='título'&gt;Título:&lt;/label&gt;
+          &lt;input type='text' class='form-control' name='título' /&gt;
+        &lt;/div&gt;
+        &lt;div class='form-group'&gt;
+          &lt;label for='descripción'&gt;Descripción:&lt;/label&gt;
+          &lt;input type='text' class='form-control' name='descripción' /&gt;
+        &lt;/div&gt;
+        &lt;div class='form-group'&gt;
+          &lt;label for='precio'&gt;Precio:&lt;/label&gt;
+          &lt;input type='number' class='form-control' name='precio' /&gt;
+        &lt;/div&gt;
+        &lt;button type='submit' class='btn btn-primary'&gt;Añadir&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+@endsection
+</code></pre>
+
+	<p>Vamos a comprobar que funciona.</p>
+	
+	<p>Iniciamos el servidor de desarrollo de Laravel:</p>
+
+	<code>php artisan serve</code>
+
+	<p>Abrimos el navegador y entramos en <code>http://localhost:8000/productos/create</code>.</p>
+
+	<p>Al completar el formulario puedes observar que se dirige a la ruta <code>http://localhost:8000/productos</code> y se inserta un nuevo producto en la base de datos. Sin embargo, no aparece nada al pulsar <strong>Añadir</strong>, eso es porque no hemos creado la vista.</p>
+
+    <p><a href='index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>

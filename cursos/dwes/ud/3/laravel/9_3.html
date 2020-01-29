@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
+  <head>
+    <meta charset='utf-8' />
+    <title>Tutorial de Laravel</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
+	<link rel='stylesheet' href='gruvbox-light.css' />
+	<script src='highlight.pack.js'></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <h1>Tutorial de Laravel</h1>
+    
+    <h2>9. Implementa los métodos CRUD</h2>
+
+    <h3>9.3 Implementa U (Update)</h3>
+
+    <p>Vamos a implementar el método de actualización para modificar los productos guardados en la base de datos.</p>
+
+	<p>Para ello, abre <code>app/Http/Controllers/ProductosController.php</code> y actualízalo:</p>
+
+	<pre class='php'><code>public function edit($id)
+{
+    <strong>$producto = Productos::find($id);
+    return view('productos.edit', compact('producto'));</strong>
+}</code></pre>
+
+    <p>En <strong>negrita</strong> está el código añadido. Ahora tenemos que implementar el método <em>update()</em>:</p>
+
+	<pre class='php'><code>public function update(Request $request, $id)
+{
+    <strong>$request-&gt;validate([
+        'título'=&gt;'required',
+        'descripción'=&gt;'required',
+        'precio'=&gt;'required'
+    ]);
+	
+    $producto = Productos::find($id);
+    $producto-&gt;título =  $request-&gt;get('título');
+    $producto-&gt;descripción = $request-&gt;get('descripción');
+    $producto-&gt;precio = $request-&gt;get('precio');
+    $producto-&gt;save();
+	
+    return redirect('/productos')-&gt;with('success', '¡Producto actualizado!');</strong>
+}</code></pre>
+
+	<p>En <strong>negrita</strong> está el código añadido. A continuación, hay que crear la plantilla para <em>edit</em>. Para ello, crea el fichero <code>resources/views/productos/edit.blade.php</code>:</p>
+
+	<pre><code>@extends('base')
+@section('main')
+&lt;div class='row'&gt;
+    &lt;div class='col-sm-8 offset-sm-2'&gt;
+        &lt;h1 class='display-3'&gt;Editar&lt;/h1&gt;
+
+        @if ($errors-&gt;any())
+        &lt;div class='alert alert-danger'&gt;
+            &lt;ul&gt;
+                @foreach ($errors-&gt;all() as $error)
+                &lt;li&gt;{{ $error }}&lt;/li&gt;
+                @endforeach
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;br /&gt;
+        @endif
+        &lt;form method='post' action="{{ route('productos.update', $producto-&gt;id) }}"&gt;
+            @method('PATCH')
+            @csrf
+            &lt;div class='form-group'&gt;
+                &lt;label for='título'&gt;Título:&lt;/label&gt;
+                &lt;input type='text' class='form-control' name='título' value='{{ $producto-&gt;título }}' /&gt;
+            &lt;/div&gt;
+
+            &lt;div class='form-group'&gt;
+                &lt;label for='descripción'&gt;Descripción:&lt;/label&gt;
+                &lt;input type='text' class='form-control' name='descripción' value='{{ $producto-&gt;descripción }}' /&gt;
+            &lt;/div&gt;
+
+            &lt;div class='form-group'&gt;
+                &lt;label for='precio'&gt;Precio:&lt;/label&gt;
+                &lt;input type='number' class='form-control' name='precio' value='{{ $producto-&gt;precio }}' /&gt;
+            &lt;/div&gt;
+
+            &lt;button type='submit' class='btn btn-primary'&gt;Actualizar&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+@endsection
+</code></pre>
+
+	<p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000</code>.</p>
+
+    <p><a href='index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>
