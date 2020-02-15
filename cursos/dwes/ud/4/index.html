@@ -2,34 +2,69 @@
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>Generación de documentos web con PHP - DAWS</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}</style>
+    <title>MVC con Laravel - DAWS</title>
+    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.2em;background-color:#142850;color:#00a8cc}</style>
   </head>
 
   <body>
-    <h1>4. XXX</h1>
+    <h1>4. MVC con Laravel</h1>
+
+    <h2>Contenido</h2>
+
+    <ol>
+      <li><a href='https://en.wikipedia.org/wiki/Business_logic'>Lógica de negocio</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>.</li>
+      <li><a href='https://laravel.com/docs'>Laravel</a>:
+        <ul>
+          <li><a href='https://laravel.com/docs/routing'>Rutas</a>
+        </ul>
+      </li>
+    </ol>
 
     <h2>Actividades</h2>
 
-	<p>Crea una página <strong>inicio.html</strong> que enlazca las siguientes actividades a resolver:</p>
+    <p>Crea una página <strong>inicio.html</strong> que enlazca a las siguientes webs a realizar:</p>
 
-    <p><strong>1.</strong> Crea un sitio web que resuelva los últimos cinco de estos <a href='https://milq.github.io/cursos/fundprog/ud/06.html'>ejercicios sobre clases</a>. Se crearán cinco pestañas, en cada una se resolverá un ejercicio. Añade una pestaña más explicando, con capturas, cómo se depura en PHP y muestra un ejemplo.</p>
+    <h3>1. Introducción</h3>
 
-	<p>XXX Mírate el siguiente <a href='https://www.youtube.com/watch?v=0sHSrqyZCnM'>vídeo</a> sobre el curso de Laravel.</p>
+    <p><strong>1.</strong> Crea una web en HTML + CSS + PHP con las siguientes pestañas:<br />
+    <strong>a)</strong> Resuelve los últimos cinco de estos <a href='https://milq.github.io/cursos/fundprog/ud/06.html'>ejercicios sobre clases</a> y mira este <a href='https://www.youtube.com/watch?v=0sHSrqyZCnM'>vídeo</a>.<br />
+    <strong>b)</strong> Responde: ¿en qué consiste el patrón de arquitectura de software <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>? ¿Qué es un <a href='https://en.wikipedia.org/wiki/Web_framework'><em>framework</em> web</a>? ¿Qué es <a href='https://en.wikipedia.org/wiki/Laravel'>Laravel</a>? ¿Qué otros <em>framework</em> web siguen, además de Laravel, el patrón MVC? Para la resolución de las preguntas puedes ayudarte de los enlaces proporcionados y de este <a href='https://www.youtube.com/watch?v=SbdbHvf5b7c'>tutorial</a>.<br />
+    <strong>c)</strong> Indica las diferentes formas de <a href='https://laravel.com/docs/installation'>instalar Laravel</a> (<a href='https://documentacion-laravel.com/installation.html'>español</a>). Puedes ayudarte de este <a href='https://milq.github.io/cursos/dwes/ud/3/laravel'>tutorial</a> o de estos vídeos: <a href='https://www.youtube.com/watch?v=l9iOi4UGtCE'>1</a>, <a href='https://www.youtube.com/watch?v=PuCdTAayogg'>2</a> y <a href='https://www.youtube.com/watch?v=Wa1cG8kITqc'>3</a>.</p>
 
-    <p><strong>2.</strong> Crea un sitio web estático que responda, con tus propias palabras, las siguientes preguntas: ¿en qué consiste el patrón de arquitectura de software <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>? ¿Qué es un <a href='https://en.wikipedia.org/wiki/Web_framework'><em>framework</em> web</a>? ¿Qué es <a href='https://en.wikipedia.org/wiki/Laravel'>Laravel</a>? ¿Qué otros <em>framework</em> web siguen, además de Laravel, el patrón MVC? Para la resolución de las preguntas puedes ayudarte de los enlaces proporcionados y de este <a href='https://www.youtube.com/watch?v=SbdbHvf5b7c'>vídeo</a>.</p>
-    
-    <p><strong>3.</strong>Instalación de Laravel.</p>
+    <h3>2. Rutas y controladores</h3>
 
-    <p><strong>4.</strong> ¿Cómo funcionan las <a href='https://laravel.com/docs/routing'>rutas</a> (<a href='https://documentacion-laravel.com/routing.html'>español</a>) en Laravel? Crea un sitio web en Laravel con las siguientes rutas: <em>/</em>, <em>/sobrenosotros</em>, <em>/contacto</em>, <em>/foro</em> y <em>/post/{id}/{nombre}</em> Para ello, completa este <a href='https://www.youtube.com/watch?v=Yn23xVjaSQw'>tutorial</a>.</p>
+    <p>&bull; ¿Cómo funcionan las <a href='https://laravel.com/docs/routing'>rutas</a> (<a href='https://documentacion-laravel.com/routing.html'>español</a>) en Laravel?<br />
+    &bull; ¿Cómo funcionan los <a href='https://laravel.com/docs/controllers'>controladores</a> (<a href='https://documentacion-laravel.com/controllers.html'>español</a>) en Laravel?</p>
 
-    <p><strong>5.</strong> ¿Cómo funcionan los <a href='https://laravel.com/docs/controllers'>controladores</a> (<a href='https://documentacion-laravel.com/controllers.html'>español</a>) en Laravel? Añade, al sitio web creado anteriormente, el controlador <em>EjemploController</em> con el método <em>inicio</em>. Luego, añade la ruta <em>/home</em> que llame al método <em>inicio</em> del controlador <em>EjemploController</em>. Para ello, completa este <a href='https://www.youtube.com/watch?v=PqFGnXCJl1E'>tutorial</a>.</p>
+    <p><strong>2.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
+    <strong>a)</strong> Completa este <a href='https://www.youtube.com/watch?v=Yn23xVjaSQw'>tutorial</a> para crear las rutas <code>/</code>, <code>/sobrenosotros</code>, <code>/contacto</code>, <code>/foro</code> y <code>/post/{id}/{nombre}</code>.<br />
+    <strong>b)</strong> Completa este <a href='https://www.youtube.com/watch?v=PqFGnXCJl1E'>tutorial</a> para crear el controlador <code>EjemploController</code> y la ruta <code>/inicio</code>.<br />
+    <strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=g6uCxmXsUZ4'>tutorial</a> para crear el controlador <code>Ejemplo2Controller</code> usando <code>artisan</code> y el controlador <code>Ejemplo3Controller</code> usando <code>artisan</code> con la opción <code>--resource</code>.<br />
+    <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=RbC_u4jOaZI'>tutorial</a> para crear el controlador <code>PaginasController</code> que muestre las páginas básicas de un sitio web.<br />
+    <strong>e)</strong> Completa este <a href='https://www.youtube.com/watch?v=E0Y09v05RAk'>tutorial</a> para crear las rutas típicas de <a href='https://en.wikipedia.org/wiki/Create,_read,_update_and_delete'>CRUD</a> y verlas con <code>php artisan route:list</code>.</p>
+
+    <h3>3. Bootstrap y Blade</h3>   
+
+	<p>&bull; ¿Qué es un <a href='https://en.wikipedia.org/wiki/CSS_framework'><em>framework</em> CSS</a>? ¿Qué es <a href='https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)'>Bootstrap</a>? ¿Cuántos más <em>framework</em> CSS existen y cuáles son?<br />
+	&bull; ¿Qué es un <a href='https://en.wikipedia.org/wiki/Web_template_system'>sistema o motor de plantillas web</a>? ¿Qué es <a href='https://laravel.com/docs/blade'>Blade</a> (<a href='https://documentacion-laravel.com/blade.html'>español</a>)? ¿Cuántos más sistemas o <a href='https://ourcodeworld.com/articles/read/847/top-7-best-open-source-php-template-engines'>motores de plantillas web PHP</a> existen y cuáles son?</p>
+
+    <p><strong>3.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
+    <strong>a)</strong> Completa este <a href='https://www.youtube.com/watch?v=Zj936-usB5w'>tutorial</a> para crear las rutas <code>/</code>, <code>/crear</code>, <code>/articulos</code> y <code>/mostrar</code> y enlazar a <a href='https://en.wikipedia.org/wiki/BootstrapCDN'>BootstrapCDN</a> en las diferentes vistas.<br />
+    <strong>b)</strong> Completa este <a href='https://www.youtube.com/watch?v=UbJ4KBEbthk'>tutorial</a> para crear un menú de navegación descargando y usando <a href='https://getbootstrap.com'>Bootstrap</a> en vez de BootstrapCDN.<br />
+	<strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=QgUVYEZM7nc'>tutorial</a> para crear una plantilla base y tres plantillas descendientes: <code>contenedor</code>, <code>infoGeneral</code> y <code>pie</code>.<br />
+	<strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=71mTVdV6E9Q'>tutorial</a> para mostrar desde una plantilla los valores del <em>array</em> <code>$alumnos</code>.<br />
+	<strong>e)</strong> Completa este <a href='https://www.youtube.com/watch?v=TwONvn1r7rA'>tutorial</a> combinar las plantillas hechas Blade con Bootstrap.</p>
+
+    <p><strong>Blade:</strong></p>
+
+https://laravel.com/docs/database   https://laravel.com/docs/migrations
 
 
 
     <h2>Evaluación</h2>
 
-	<p>El profesor descomprimirá el <em>zip</em> entregado, moverá la carpeta descomprimida a <em>htdocs</em> y abrirá <em>inicio.html</em>. Desde ahí accederá a las diferentes actividades para evaluar su funcionamiento: algunas enlazarán en local y otras a Heroku, según corresponda. Por último, el profesor analizará y evaluará el código.</p>
+    <p>El profesor descomprimirá el <em>zip</em> entregado, moverá la carpeta descomprimida a <em>htdocs</em> y abrirá <em>inicio.html</em>. Desde ahí accederá a las diferentes actividades para evaluar su funcionamiento: algunas enlazarán en local y otras a Heroku, según corresponda. Por último, el profesor analizará y evaluará el código.</p>
 
     <p><a href='../../index.html'>Volver</a>.</p>
 
