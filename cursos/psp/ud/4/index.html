@@ -13,25 +13,81 @@
   <body>
     <h1>4. Generación de servicios en red</h1>
 
+    <h2>Actividades de iniciación (2 puntos)</h2>
+
+    <p>Crea las siguientes aplicaciones en Java:</p>
+
+    <p><strong>A01.java</strong> Obtén la dirección IP del dominio <em>debian.org</em>.</p>
+
+    <p><strong>A02.java</strong> Lista, mediante FTP, el contenido del servidor <a href='ftp://speedtest.tele2.net'><em>speedtest.tele2.net</em></a>. La conexión al servidor es anónima.</p>
+
+    <p><strong>A03.java</strong> Descarga, mediante FTP, el fichero <em>1MB.zip</em> del servidor <a href='ftp://speedtest.tele2.net'><em>speedtest.tele2.net</em></a>. La conexión al servidor es anónima.</p>
+
+    <p><strong>A04.java</strong> Lista, mediante FTP, el contenido del servidor <a href='ftp://test.rebex.net'><em>test.rebex.net</em></a>. El usuario es <em>demo</em> y la contraseña <em>password</em>.</p>
+
+    <p><strong>A05.java</strong> Descarga, mediante FTP, el fichero <em>readme.txt</em> del servidor <a href='ftp://test.rebex.net'><em>speedtest.tele2.net</em></a>. El usuario es <em>demo</em> y la contraseña <em>password</em>.</p>
+
+    <p><strong>A06.java</strong> Entra, mediante <a href='https://en.wikipedia.org/wiki/Telnet'>Telnet</a>, a <a href='http://telehack.com'><em>telehack.com</em></a>.</p>
+
+    <p><strong>A07.java</strong> Crea un servidor HTTP básico salude al navegante al entrar en <em>localhost</em> por el puerto 8066.</p>
+
+    <p><strong>A08.java</strong> Crea un servidor HTTP básico que simule un sitio web de una empresa con las páginas de <em>inicio</em>, <em>productos</em> (o <em>servicios</em>), <em>sobre_nosotros</em> y <em>contacto</em> al entrar en <em>localhost</em> por el puerto 8066.</p>
+
+    <p><strong>A09.java</strong> Mide el tiempo que tarda en transmitirse un recurso URL a <em>debian.org</em></p>
+
+
+
     <h2>Actividades de desarrollo</h2>
 
-	<p>Crea las siguientes aplicaciones cliente-servidor (un servidor podrá atender a varios clientes a la vez):</p>
+    <p><strong>JC11.java - JS11.java (puerto 10011)</strong> Crea un servidor DNS básico. El cliente solicitará al usuario un dominio y se lo enviará al servidor. El servidor resolverá la dirección IP y se lo mostrará al cliente.</p>
 
-    <p><strong>JC11.java - JS11.java (puerto 10011)</strong> Crea un servidor DNS básico. El cliente solicitará al usuario un dominio y se lo enviará al servidor. El servidor obtendrá su dirección IP y se lo mostrará al cliente.</p>   
+    <p><strong>JC12.java - JS12.java (puerto 10012)</strong> Crea un servidor DNS básico. El cliente solicitará al usuario un dominio y se lo enviará al servidor. El servidor resolverá la dirección IP y se lo mostrará al cliente.</p>
 
-	
+    <p>Crea las siguientes aplicaciones cliente-servidor (un servidor podrá atender a varios clientes a la vez):</p>
 
+    <h2>Actividad de ampliación (8 puntos)</h2>
+<!--
+Diseña un cajero automático, con su correspondiente interfaz gráfica y utilizando una arquitectura en tres niveles.
+
+El cajero (cliente) se conectará al servidor, el servidor se ejecutará como servicio de sistema. El cliente introducirá su nombre de usuario y su PIN, si existe este pin podrá realizar las siguientes operaciones:
+
+<ul>
+  <li><code>saldo</code>: muestra el saldo actual de la cuenta.</li>
+  <li><code>movimientos</code>: muestra el saldo actual de la cuenta.</li>
+</ul>
+
+
+Consultar movimientos: Muestra por pantalla los últimos movimientos, indicando la fecha y hora de los mismos, si fue ingreso (+) o retirada (-) el estado de la cuenta en cada instante del total de la cuenta y el total final. Da la opción de imprimir un listado con las operaciones.
+
+retirar: Se indica retirar entre 20, 50 y 100€, u otra cantidad. Se preguntará cuál. Se debe mostrar el estado de la cuenta y la opción de imprimir el recibo de la operación
+ingresar: Se debe indicar la cantidad a ingresar. Se debe mostrar el estado de la cuenta y la opción de imprimir el recibo de la operación.
+El servidor escucha por el puerto 5555 y como sabemos funciona como servicio del sistema, y tiene su icono personalizado. Funciona de manera concurrente y es capaz de procesar distintos clientes a la vez.
+
+Pero como queremos hacer las cosas bien el servidor no almacenará la base de datos en el mismo equipo, si no que se conectará a otro equipo que tiene la base de datos en MySQL, es decir al servidor de base de datos. En ella tendremos la tabla de usuarios compuesta por un dni, nombre, pin y saldo (siendo pin único y clave primaria dni pin, pues un usuario puede tener varias tarjetas) y movimientos, donde tendremos, dni, pin, tipo de movimiento (ingreso o retirada), fecha, saldopre y saldopost. Saldopre, tiene el saldo antes de realizar la operación, y saldo post tiene el saldo resultante tras realizar la operación.
+
+En decir, por ejemplo, si queremos ingresar dinero con cl cliente seleccionamos la opción, se conecta al servidor (servicio de sistema, en otro equipo) este realiza la operación y actualiza los valores en el servidiorBD que estará en otro equipo (aunque ahora todas las ips sea localhost, debe funcionar si son tres máquinas distintas y que estas puedan estar en equipos distintos)
+
+Más o menos como vemos en la imagen
+
+
+
+Aunque no lo creáis es una técnica bastante usada, porque el propio servidor puede aplicar políticas de seguridad y de firewall anti ataques contra el servidor de la base de datos, que es crucial exponerlo lo menos posible, por eso lo de meter un nivel más.
+
+Deberás documentar todo el proceso con capturas, teniendo en cuenta que deberás instalar y configurar el servicio tanto en Windows como en Linux
 
     <h2>Entrega</h2>
 
-	<p>Todo el código estará en una misma carpeta. Se podrá compilar todo de una vez con <code>javac *.java</code>.</p>
-	
-	<p>Si algún código no compila correctamente, crear una nueva carpeta denominada <em>otros</em> y mover dicho código allí.</p>
+    <p>Todo el código estará en una misma carpeta. Se podrá compilar todo de una vez con <code>javac *.java</code>.</p>
+
+    <p>Si algún código no compila correctamente, crear una nueva carpeta denominada <em>otros</em> y mover dicho código allí.</p>
 
     <p><a href='http://milq.github.io/cursos'>Volver a cursos</a>.</p>
 
     <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
-<pre>
+-->
+
+<!--
+
  Generación de servicios en red.
  1.- Introducción.
  2.- Protocolos de comunicaciones del nivel de aplicación.
@@ -47,22 +103,21 @@
  3.3.- Programación con URL.
  3.4.- Crear y analizar objetos URL.
  3.5.- Leer y escribir a través de una URLConnection.
- 3.6.- Trabajar con el contenido de una URL.
+ 3.6.- Trabajar con el contenido de una URL.   *
  4.- Programación de aplicaciones cliente.
  4.1.- Programación de un cliente HTTP.
  4.2.- Bibliotecas para programar un cliente FTP.
- 4.3.- Programación de un cliente FTP.
- 4.4.- Programación de un cliente Telnet.
+ 4.3.- Programación de un cliente FTP.    *
+ 4.4.- Programación de un cliente Telnet.  *
  4.5.- Programación de un cliente SMTP.
  5.- Programación de servidores.
- 5.1.- Programación de un servidor HTTP.
+ 5.1.- Programación de un servidor HTTP.     *
  5.2.- Implementar comunicaciones simultáneas.
  5.3.- Monitorización de tiempos de respuesta.
  5.4.- Ejemplo de monitorización del tiempo de transmisión.
  Anexo.- Licencias de recursos.
-</pre>
+
+-->
 
   </body>
 </html>
-
-
