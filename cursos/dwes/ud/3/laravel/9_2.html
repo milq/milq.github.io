@@ -18,11 +18,11 @@
 
     <p>Vamos a implementar el método de lectura para mostrar los productos guardados en la base de datos.</p>
 
-	<p>Para ello, abre <code>app/Http/Controllers/ProductosController.php</code> y actualízalo:</p>
+	<p>Para ello, abre <code>app/Http/Controllers/ProductoController.php</code> y actualízalo:</p>
 
 	<pre class='php'><code>public function index()
 {
-<strong>$productos = Productos::all();
+<strong>$productos = Producto::all();
 
 return view('productos.index', compact('productos'));</strong>
 }</code></pre>
@@ -69,7 +69,7 @@ return view('productos.index', compact('productos'));</strong>
 &lt;/div&gt;
 @endsection</code></pre>
 
-	<p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000</code>.</p>
+	<p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000/productos</code>.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 

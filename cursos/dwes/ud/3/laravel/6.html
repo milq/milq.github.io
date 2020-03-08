@@ -14,7 +14,7 @@
 
     <h2>6. Define el modelo</h2>
 
-    <p>Abre el código en <code>app/Productos.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
+    <p>Abre el código en <code>app/Producto.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
 
     <pre><code class='php'>&lt;?php
 
@@ -22,7 +22,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Productos extends Model
+class Producto extends Model
 {
     <strong>protected $fillable = [
         'título',

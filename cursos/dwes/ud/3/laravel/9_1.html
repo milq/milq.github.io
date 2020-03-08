@@ -16,15 +16,15 @@
 
     <h3>9.1 Implementa C (Create)</h3>
 
-    <p><code>ProductosController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /productos</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /productos/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /productos</em>.</p>
+    <p><code>ProductoController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /productos</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /productos/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /productos</em>.</p>
 
     <p>¿<a href='https://es.stackoverflow.com/questions/51758/qu%C3%A9-es-un-entry-point-y-un-end-point'>Qué es <em>entry point</em> y un <em>end point</em></a>?</p>
 
     <p>Vamos a implementar estos dos métodos:</p>
 
-    <p>Reabre el controlador <code>app/Http/Controllers/ProductosController.php</code> e importa, al principio del código, el modelo <code>Productos</code>:</p>
+    <p>Reabre el controlador <code>app/Http/Controllers/ProductoController.php</code> e importa, al principio del código, el modelo <code>Producto</code>:</p>
 
-    <pre><code><strong>use App\Productos;</strong></code></pre>
+    <pre><code><strong>use App\Producto;</strong></code></pre>
 
     <p>En <strong>negrita</strong> está el código añadido. Ahora localiza el método <em>store()</em> y actualízalo:</p>
 
@@ -36,7 +36,7 @@
         'precio'=&gt;'required'
     ]);</strong>
 
-    <strong>$producto = new Productos([
+    <strong>$producto = new Producto([
         'título' =&gt; $request-&gt;get('título'),
         'descripción' =&gt; $request-&gt;get('descripción'),
         'precio' =&gt; $request-&gt;get('precio')
@@ -127,7 +127,9 @@
 
 	<p>Abrimos el navegador y entramos en <code>http://localhost:8000/productos/create</code>.</p>
 
-	<p>Al completar el formulario puedes observar que se dirige a la ruta <code>http://localhost:8000/productos</code> y se inserta un nuevo producto en la base de datos. Sin embargo, no aparece nada al pulsar <strong>Añadir</strong>, eso es porque no hemos creado la vista.</p>
+	<p>Al completar el formulario y pulsar en <em>Añadir</em> se hace un <em>POST</em> a la ruta <em>/productos</em> (<code>http://localhost:8000/productos)</code>. Se ha insertado un nuevo producto en la base de datos, compruébalo en PhpMyAdmin.
+	
+	<p>Como puedes observar, no aparece nada al pulsar <em>Añadir</em>, eso es porque hemos redirigido al usuario a la ruta <em>/productos</em> cuyo controlador y vista tenemos que crear en la siguiente sección.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 

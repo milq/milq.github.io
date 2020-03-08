@@ -18,11 +18,11 @@
 
     <p>Vamos a implementar el método de actualización para modificar los productos guardados en la base de datos.</p>
 
-	<p>Para ello, abre <code>app/Http/Controllers/ProductosController.php</code> y actualízalo:</p>
+	<p>Para ello, abre <code>app/Http/Controllers/ProductoController.php</code> y actualízalo:</p>
 
 	<pre class='php'><code>public function edit($id)
 {
-    <strong>$producto = Productos::find($id);
+    <strong>$producto = Producto::find($id);
     return view('productos.edit', compact('producto'));</strong>
 }</code></pre>
 
@@ -36,7 +36,7 @@
         'precio'=&gt;'required'
     ]);
 	
-    $producto = Productos::find($id);
+    $producto = Producto::find($id);
     $producto-&gt;título =  $request-&gt;get('título');
     $producto-&gt;descripción = $request-&gt;get('descripción');
     $producto-&gt;precio = $request-&gt;get('precio');
@@ -88,7 +88,7 @@
 @endsection
 </code></pre>
 
-	<p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000</code>.</p>
+	<p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000/productos</code>.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 

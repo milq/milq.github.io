@@ -18,15 +18,15 @@
 
     <p>Vamos a implementar el método de borrado para eliminar un producto guardado en la base de datos.</p>
 
-	<p>Para ello, abre <code>app/Http/Controllers/ProductosController.php</code> y actualízalo:</p>
+	<p>Para ello, abre <code>app/Http/Controllers/ProductoController.php</code> y actualízalo:</p>
 
 <pre class='php'><code>public function destroy($id)
 {
-    <strong>$producto = Productos::find($id);
+    <strong>$producto = Producto::find($id);
     $producto->delete();</strong>
 }</code></pre>
 
-    <p>En <strong>negrita</strong> está el código añadido. Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000</code>.</p>
+    <p>En <strong>negrita</strong> está el código añadido. Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000/productos</code>.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 

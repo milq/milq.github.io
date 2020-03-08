@@ -18,33 +18,35 @@
 
     <pre><code class='php'>&lt;?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-<strong>Route::resource('productos', 'ProductosController');</strong></code></pre>
+<strong>Route::resource('productos', 'ProductoController');</strong></code></pre>
 
-    <p>En <strong>negrita</strong> está el código añadido. Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductosController</em> que debes implementar más adelante:</p>
+    <p>En <strong>negrita</strong> está el código añadido. Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductoController</em> que debes implementar más adelante:</p>
 
     <ul>
-      <li><em>GET /productos</em>: mapeado al método <em>index()</em>.</li>
-      <li><em>GET /productos/create</em>: mapeado al método <em>create()</em>.</li>
-      <li><em>POST /productos</em>: mapeado al método <em>store()</em>.</li>
-      <li><em>GET /productos/{id}</em>: mapeado al método <em>show()</em>.</li>
-      <li><em>GET /productos/{id}/edit</em>: mapeado al método <em>edit()</em>.</li>
-      <li><em>PUT/PATCH /productos/{id}</em>: mapeado al método <em>update()</em>.</li>
-      <li><em>DELETE /productos/{id}</em>: mapeado al método <em>destroy()</em>.</li>
+      <li><em>GET /productos</em>: mapeado al método <em>index()</em> de <em>ProductoController</em>.</li>
+      <li><em>GET /productos/create</em>: mapeado al método <em>create()</em> de <em>ProductoController</em>.</li>
+      <li><em>POST /productos</em>: mapeado al método <em>store()</em>. de <em>ProductoController</em></li>
+      <li><em>GET /productos/{id}</em>: mapeado al método <em>show()</em> de <em>ProductoController</em>.</li>
+      <li><em>GET /productos/{id}/edit</em>: mapeado al método <em>edit()</em> de <em>ProductoController</em>.</li>
+      <li><em>PUT/PATCH /productos/{id}</em>: mapeado al método <em>update()</em> de <em>ProductoController</em>.</li>
+      <li><em>DELETE /productos/{id}</em>: mapeado al método <em>destroy()</em> de <em>ProductoController</em>.</li>
     </ul>
 
     <p>También puedes implementarlo manualmente si así lo deseas:</p>
 
-    <pre><code class='php'>Route::get('/productos', 'ProductosController@index')->name('productos.index');
-Route::get('/productos/create','ProductosController@create')->name('productos.create');
-Route::post('/productos','ProductosController@store')->name('productos.store');
-Route::get('/productos/{id}','ProductosController@show')->name('productos.show');
-Route::get('/productos/{id}/edit','ProductosController@edit')->name('productos.edit');
-Route::post('/productos/{id}/update','ProductosController@update')->name('productos.update');
-Route::get('/productos/{id}/delete','ProductosController@destroy')->name('productos.destroy');</code></pre>
+    <pre><code class='php'>Route::get('/productos', 'ProductoController@index')->name('productos.index');
+Route::get('/productos/create','ProductoController@create')->name('productos.create');
+Route::post('/productos','ProductoController@store')->name('productos.store');
+Route::get('/productos/{id}','ProductoController@show')->name('productos.show');
+Route::get('/productos/{id}/edit','ProductoController@edit')->name('productos.edit');
+Route::post('/productos/{id}/update','ProductoController@update')->name('productos.update');
+Route::get('/productos/{id}/delete','ProductoController@destroy')->name('productos.destroy');</code></pre>
 
     <p><a href='index.html'>Volver</a>.</p>
 
