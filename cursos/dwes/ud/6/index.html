@@ -10,21 +10,68 @@
 
   <body>
 
-    <h1>6. Aplicaciones web dinámicas: PHP y JavaScript</h1>
+    <h1>6. Aplicaciones web dinámicas con Laravel, Bootstrap y Vue</h1>
 
-    <p>Realiza las siguientes actividades en <strong>Laravel</strong> y <strong>Bootstrap</strong>.</p>
+	<p>Actualmente, un desarrollador web <a href='https://www.w3schools.com/whatis/whatis_fullstack.asp'><em>full stack</em></a> usa <em>frameworks</em> web tanto para <em>front end</em> (Bootstrap, Angular, Vue, etc.) como <em>back end</em> (Laravel, etc.). La opción más popular actualmente son las aplicaciones web <a href='https://es.wikipedia.org/wiki/AJAX'>AJAX</a>, es decir, aplicaciones web cuya interacción con el servidor es asíncrona. En este <a href='https://www.w3schools.com/xml/tryit.asp?filename=tryajax_database'>ejemplo</a> se puede observar cómo se consultan datos a una base de datos de manera asíncrona.</p>
+	
+	<p>Vue es un <em>framework</em> JavaScript que permite desarrollar aplicaciones <em>front end</em> e interactuar con el <em>back end</em> de manera asíncrona.</p>
+	
+	<!-- Esto es gracias a <a href='https://es.wikipedia.org/wiki/XMLHttpRequest'>XMLHttpRequest</a>, base del desarrollo web en .</p>-->
 
-    <h2 id='iniciación'>Actividades de iniciación (2 puntos)</h2>
+	<h2>1. Instala Npm</h2>
 
-    <h2 id='desarrollo'>Actividades de desarrollo (2 puntos)</h2>
+	<p>Para esta actividad, es necesario usar <a href='https://en.wikipedia.org/wiki/Npm_(software)'>Npm</a>, un sistema de gestión de paquetes de JavaScript. Npm es el equivalente de Composer para PHP. Npm se distribuye con Node.js, por tanto:</p>
 
-    <p><strong>6.</strong> Crea un balance sencillo de ingresos y gastos. Para obtener el balance, habrá que registrarse como usuario y después iniciar sesión. Una vez iniciada la sesión correctamente, el usuario introducirá, mediante formularios, una serie de ingresos y gastos, pulsará en Generar y, a continuación, verá un informe similar a <a href='https://milq.github.io/cursos/dwes/ud/3/balance.png'>éste</a>.</p>
+	<ol>
+      <li>Instala <a href='https://nodejs.org'>Node.js</a>:
+        <ul>
+		  <li>Windows: mediante el <a href='https://nodejs.org/en/download' title='Instalador Node.js'>instalador</a> (versión LTS).</li>
+          <li>Debian/Ubuntu:
+            <ul>
+              <li>Instala las dependencias con <code>sudo apt-get install gcc g++ make</code> y después entra como <em>root</em> (<code>su root</code>).</li>
+              <li>Ejecuta <code>curl -sL https://deb.nodesource.com/setup_12.x | bash -</code> y después <code>apt-get install -y nodejs</code>.</li>
+              <li>Sal de <em>root </em>con <code>exit</code>.</li>
+            </ul>
+        </ul>
+      <li>Comprueba que funciona Node.js y Npm en la terminal ejecutando <code>node -v</code> y <code>npm -v</code> respectivamente en Windows o en Debian/Ubuntu.</li>
+    </ol>
 
-    <h2 id='desarrollo'>Actividades de ampliación (2 puntos)</h2>
+	<h2>2. Crea un proyecto en Laravel e instala en él Bootstrap y Vue.js con Laravel UI</h2>
 
+	<p>Laravel te facilita instalar y configurar automáticamente <a href='https://en.wikipedia.org/wiki/Front-end_web_development'><em>frontends</em></a> como Bootstrap y Vue. Para ello, consulta su <a href='https://laravel.com/docs/frontend'>documentación</a> que indica los siguientes pasos:</p>
+	
+	<ol>
+      <li>Crea un proyecto en Laravel: <code>composer create-project --prefer-dist laravel/laravel ejemplo_vue</code>.</li>
+      <li>Entra en el proyecto e instala la dependencia Laravel UI: <code>composer require laravel/ui</code>.</li>
+      <li>Prepara la dependencia de Bootstrap y crea una estructura de autenticación con <code>php artisan ui bootstrap --auth</code>.</li>
+      <li>Prepara la dependencia de Vue.js y crea una estructura de autenticación con <code>php artisan ui vue --auth</code>. Di sí a todo.</li>
+      <li>Instala las dependencias preparadas con <code>npm install && npm run dev</code>.</li>
+      <li>Ejecuta <code>php artisan serve</code> y prueba con <code>http://localhost:8000</code>. Para probar la autenticación configura la base de datos antes.</li>
+    </ol>
+	
+	<h2>3. Elige una opción</h2>	
+
+	<h3>3.1. Sigue el curso gratuito de Vue.js</h3>
+	
+	<p>Aprende Vue.js completando este curso básico.</p>
+	
+	<h3>3.2. Completa el tutorial</h3>	
+
+    <p>Crea la siguiente aplicación web CRUD con Laravel, Bootstrap y el <em>framework</em> JavaScript <a href='https://vuejs.org'>Vue.js</a>:</p>
+    <img src='https://vuejsdevelopers.com/images/posts/vue-laravel-crud.gif' alt='CRUD con Laravel y Vue' />
+<!--
+	<p>Como puedes observar, la interacción con el servidor es asíncrona mostrando una aplicación dinámica. Esto es gracias a <a href='https://es.wikipedia.org/wiki/XMLHttpRequest'>XMLHttpRequest</a>, base del desarrollo web en <a href='https://es.wikipedia.org/wiki/AJAX'>AJAX</a>.</p>
+ -->
+	
+	<h2>4. Actividad de ampliación</h2>	
+	
+	<p>Realiza la opción que no has escogido.</p>
+	
     <p><a href='../../index.html'>Volver</a>.</p>
 
     <footer>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</footer>
 
   </body>
 </html>
+
+
