@@ -1,30 +1,44 @@
-<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
   <head>
+    <meta name='author' content='Manuel Ignacio López Quintero' />
     <meta charset='utf-8' />
+    <meta name='description' content='Programación de Servicios y Procesos.' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>Servicios web con Spring</title>
-    <style>body{max-width:210mm;margin:0 auto;padding:0 1em;font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}.center{text-align:center}</style>
+    <title>PSP - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
+    <link rel='stylesheet' href='../../../../src/css/course.css' />
   </head>
 
   <body>
-    <h1 class='center'>Spring Boot</h1>
+    <h1>4. Generación de servicios en red</h1>
+    
+    <h2>Actividades de iniciación</h2>
 
-    <h2 class='center'>Servicios web con Spring Boot</h2>
+	<p><strong>Seguridad.pdf</strong> ¿Cuáles son los cuantro principios de la <a href='https://es.wikipedia.org/wiki/Seguridad_de_la_informaci%C3%B3n'> seguridad de la información</a>? ¿Qué es la <a href='https://es.wikipedia.org/wiki/Seguridad_inform%C3%A1tica'>seguridad informática</a>? ¿Qué cuatro tipos principales de amenazas a la seguridad existen? ¿Y qué dos tipos de ataques? ¿Qué es un fichero <em>log</em> o de registro? ¿Cómo son las excepciones en Java? ¿Cómo validas datos en Java? ¿Cómo es el modelo de seguridad en Java? ¿Cómo se aplican políticas de seguridad en Java? ¿Cómo firmas y usas ficheros <em>.jar</em> firmados? Por último, menciona algunas herramientas de seguridad de JDK.</p>
 
-    <h3 id='1'>1. Maven y Gradle</h3>
+	<h2>Actividades de refuerzo</h2>
+
+	
+
+	<p><strong>1.</strong> Realiza esta actividad de <a href=''>Maven y Gradle</a>.</p>	
+
+	<p>Crea los siguientes aplicaciones en Spring Boot con Maven y JDK 11:</p>
+
+<!--    <h3>1. Maven y Gradle</h3> -->
 
     <p><strong>1.</strong> Aprende lo que es <a href='https://en.wikipedia.org/wiki/Build_automation'><em>build automation</em></a>, <a href='https://en.wikipedia.org/wiki/Apache_Maven'>Maven</a> (<a href='https://upload.wikimedia.org/wikipedia/commons/c/cf/Maven_CoC.svg'>estructura</a>), <a href='https://en.wikipedia.org/wiki/Gradle'>Gradle</a> y realiza estos ejercicios:<br />
     <strong>a)</strong> <a href='https://maven.apache.org/download.cgi'>Descarga</a>, <a href='https://maven.apache.org/install.html'>instala</a> y aprende a <a href='https://maven.apache.org/run.html'>usar</a> <a href='https://maven.apache.org/'>Maven</a> y completa este <a href='https://spring.io/guides/gs/maven'>tutorial</a>.<br />
     <strong>b)</strong> <a href='https://gradle.org/releases'>Descarga</a>, <a href='https://gradle.org/install'>instala</a> y aprende a <a href='https://guides.gradle.org/creating-new-gradle-builds'>usar</a> <a href='https://gradle.org'>Gradle</a> y completa este <a href='https://spring.io/guides/gs/gradle'>tutorial</a>.</p>
 
-    <h3 id='2'>2. Servicios web</h3>
+ <!--   <h3>2. Servicios web</h3> -->
 
     <p><strong>2.</strong> Realiza los siguientes ejercicios:<br />
     <strong>a)</strong> Aprende lo que es <a href='https://en.wikipedia.org/wiki/Service-oriented_architecture'>SOA</a>, <a href='https://en.wikipedia.org/wiki/Web_service'>servicio web</a> (<a href='https://en.wikipedia.org/wiki/List_of_web_service_specifications'>especificaciones</a>) (<a href='https://en.wikipedia.org/wiki/List_of_web_service_protocols'>protocolos</a>), <a href='https://en.wikipedia.org/wiki/Web_Services_Description_Language'>WSDL</a>, <a href='https://en.wikipedia.org/wiki/SOAP'>SOAP</a> y <a href='https://en.wikipedia.org/wiki/Representational_state_transfer'>RESTful</a>.<br />
     <strong>b)</strong> Aprende lo que es <a href='https://en.wikipedia.org/wiki/Software_framework'><em>framework</em></a>, <a href='https://en.wikipedia.org/wiki/Spring_Framework'>Spring</a>, <a href='https://en.wikipedia.org/wiki/Rapid_application_development'>RAD</a>, <a href='https://en.wikipedia.org/wiki/Convention_over_configuration'>CoC</a> y <a href='https://en.wikipedia.org/wiki/Spring_Framework#Spring_Boot'>Spring Boot</a>.<br />
     <strong>c)</strong> Completa este <a href='https://spring.io/quickstart'>tutorial</a> de presentación de Spring Boot que usa <a href='https://start.spring.io'>start.spring.io</a>.</p>
 
-    <h3 id='3'>3. RESTful</h3>
+ <!--   <h3>3. RESTful</h3> -->
 
     <p><strong>3.</strong> Conoce las <a href='https://restfulapi.net/rest-architectural-constraints'>restricciones</a> de REST y realiza los siguientes ejercicios:<br />
     <strong>a)</strong> Aprende la <a href='https://restfulapi.net'>API</a> de RESTful basada en <a href='https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol'>HTTP</a>: <a href='https://en.wikipedia.org/wiki/Uniform_Resource_Identifier'>URI</a>, <a href='https://restfulapi.net/http-methods'>métodos HTTP</a> (<a href='https://en.wikipedia.org/wiki/Create,_read,_update_and_delete'>CRUD</a>) y <a href='https://en.wikipedia.org/wiki/Media_type'><em>media type</em></a>.<br />
@@ -33,7 +47,7 @@
     <strong>d)</strong> Crea un servicio web RESTful completando este <a href='https://spring.io/guides/gs/rest-service'>tutorial</a> de Spring Boot.<br />
     <strong>e)</strong> Consume un servicio web RESTful completando este <a href='https://spring.io/guides/gs/consuming-rest'>tutorial</a> de Spring Boot.</p>
 
-    <h3 id='4'>4. ORM: Spring Data JPA</h3>
+    <h3>4. ORM: Spring Data JPA</h3>
 
     <p><strong>4.</strong> Aprende lo que es <a href='https://en.wikipedia.org/wiki/Object-relational_mapping'>ORM</a>, <a href='https://en.wikipedia.org/wiki/Java_Persistence_API'>JPA</a>, <a href='https://en.wikipedia.org/wiki/Hibernate_(framework)'>Hibernate</a> (<a href='hibernate.png'>diagrama</a>), <a href='https://spring.io/projects/spring-data-jpa'>Spring Data JPA</a> y realiza estos ejercicios:<br />
     <strong>a)</strong> Conoce las <a href='https://www.geeksforgeeks.org/pojo-vs-java-beans'>diferencias</a> entre <a href='https://en.wikipedia.org/wiki/Plain_old_Java_object'>POJO</a> y <a href='https://en.wikipedia.org/wiki/JavaBeans'>JavaBeans</a>.<br />
@@ -41,7 +55,7 @@
     <strong>c)</strong> Completa este <a href='https://spring.io/guides/gs/accessing-data-rest'>tutorial</a> de almacenamiento y acceso a datos en H2 con JPA mediante REST.<br />
     <strong>d)</strong> Completa este <a href='https://spring.io/guides/gs/accessing-data-mysql'>tutorial</a> de almacenamiento y acceso a datos en <a href='https://en.wikipedia.org/wiki/MySQL'>MySQL</a> con JPA.</p>
 
-    <h3 id='5'>5. MVC</h3>
+    <h3>5. MVC</h3>
 
     <p><strong>5.</strong> Aprende lo que es <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>, <a href='https://en.wikipedia.org/wiki/Web_framework'>WF</a>, <a href='https://en.wikipedia.org/wiki/Spring_Framework#Model%E2%80%93view%E2%80%93controller_framework'>Spring MVC</a>, <a href='https://en.wikipedia.org/wiki/Web_template_system'>sistema de plantillas web</a>, <a href='https://en.wikipedia.org/wiki/Thymeleaf'>Thymeleaf</a> y haz estos ejercicios:<br />
     <strong>a)</strong> Completa este <a href='https://spring.io/guides/gs/serving-web-content'>tutorial</a> que crea un sitio web básico.<br />
@@ -84,9 +98,20 @@
     <strong>b)</strong> Completa este <a href='https://www.youtube.com/playlist?list=PLK7sa90aSLe7RW_7qotGlmBxMtm-jajCG'>curso</a> o este <a href='https://www.youtube.com/watch?v=kqYuyACFVkE'>tutorial</a> (<a href='https://www.youtube.com/watch?v=x4ZTpNPL_dc'>novedades</a>) de <a href='https://en.wikipedia.org/wiki/Angular_(web_framework)'>Angular</a> (<a href='https://angular.io/docs'>documentación</a>).<br />
     <strong>c)</strong> Completa este <a href='https://www.youtube.com/playlist?list=PLPl81lqbj-4J-gfAERGDCdOQtVgRhSvIT'>curso</a> o la <a href='https://vuejs.org/v2/guide'>guía</a> oficial de <a href='https://en.wikipedia.org/wiki/Vue.js'>Vue.js</a> (<a href='https://vuejs.org/v2/api'>referencia</a>) (<a href='https://vuejs.org/v2/style-guide'>estilo</a>).</p>
 
+	<p>Text.</p>
+
+    <h2>Actividades de iniciación (2 puntos)</h2>
+
+    <p><strong>1</strong> Texto.</p>
+
+    <h2>Actividades de desarrollo (4 puntos)</h2>
+
+    <p><strong>1</strong> Texto.</p>
+
     <p><a href='http://milq.github.io/cursos'>Volver a cursos</a>.</p>
 
     <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
 
   </body>
 </html>
