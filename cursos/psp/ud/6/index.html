@@ -11,9 +11,20 @@
   </head>
 
   <body>
-    <h1>6. Aplicaciones web con Spring Boot y comunicaciones seguras</h1>
+    <h1>6. Comunicaciones seguras y aplicaciones web con Spring Boot</h1>
 
-	<h2>Opción A: Aplicaciones web con Spring Boot</h2>
+    <h2>Comunicaciones seguras</h2>
+
+    <p><strong>Seguridad.pdf</strong> ¿Qué es la criptografía? ¿Y el criptoanálisis? ¿Y la criptología? ¿Qué aplicaciones tiene la criptografía? ¿Qué es la encriptación o cifrado de la información? ¿Y la desencriptación o descifrado? ¿Cuáles son los principios criptográficos? ¿Qué es la criptografía simétrica, cuál es su funcionamiento y qué inconvenientes tiene? ¿Qué alternativas existen para solucionar los problemas de la criptografía simétrica? ¿Qué es la criptografía asimétrica, cuál es su funcionamiento y qué ventajas tiene? ¿Por qué es mejor usar criptografía asimétrica que simétrica? ¿Qué es una función hash y para qué se usa principalmente? ¿Qué es una firma digital? ¿Qué es un certificado digital? ¿Qué es una entidad certificadora? ¿Qué protocolos seguros de comunicaciones o protocolos criptográficos existen? ¿Qué es SSL? ¿Y TLS? ¿A qué capa del modelo TCP/IP pertenecen dichos protocolos y cuál capa del modelo OSI? ¿Cuántos y qué protocolos de la capa de aplicación que se puedan beneficiar de SSL y/o TSL? ¿Cómo funciona el protocolo SSL/TLS? ¿Cuál es la idea principal de HTTPS? ¿Qué es el protocolo SSH y cómo funciona?</p>
+
+	<p><strong>JCA.</strong> Encripta y desencripta un texto en DES (simétrico) y encripta y desencripta un texto en RSA (asimétrico) usando <a href='https://docs.oracle.com/en/java/javase/11/security/java-cryptography-architecture-jca-reference-guide.html'>JCA</a> (pista: usa los ejemplos de código de la unidad).</p>
+
+    <p><strong>JSSE.</strong> Realiza tres ejercicios de esta <a href='http://milq.github.io/cursos/psp/ud/3'>relación</a> usando <a href='https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html'>JSSE</a> (pista: <a href='https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/net/ServerSocketFactory.html'>SSLServerSocketFactory</a>, <a href='https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/ServerSocket.html'>SSLServerSocket</a>, <a href='https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/net/ssl/SSLSocketFactory.html'>SSLSocketFactory</a> y <a href='https://docs.oracle.com/en/java/javase/11/docs/api/java.base/javax/net/ssl/SSLSocket.html'>SSLSocket</a>). Material de apoyo: <a href='http://chuwiki.chuidiang.org/index.php?title=Socket_SSL_con_Java'>1</a>, <a href='https://www.baeldung.com/java-ssl'>2</a>, <a href='EchoSSLServer.java'>3</a>.</p>
+
+
+
+
+	<h2>Aplicaciones web con Spring Boot</h2>
 
 	<p>Crea las siguientes aplicaciones web con Spring Boot, Maven, JDK 11, HTML 5, Thymeleaf y CSS 3:</p>
 
@@ -22,33 +33,35 @@
 	<p><strong>2.</strong> Crea un sitio personal con cuatro pestañas: <em>Inicio</em>, <em>Portfolio</em>, <em>CV</em> y <em>Sobre mí</em>.</p>
 
 	<p><strong>3.</strong> Crea el siguiente <a href='formulario.png'>formulario</a> y que los datos de dicho formulario se recojan, se validen y se muestren en otra página.</p>
-	
+
 	<p><strong>4.</strong> Crea una web que calcule el área y la longitud de una circunferencia dado su <a href='circunferencia.png'>radio</a>.</p>
-		
+
 	<p><strong>5.</strong> Crea un informe de salud personal. El usuario introducirá su sexo, edad, altura y peso. Se validarán los datos y se generará un informe de salud con el <a href='https://es.wikipedia.org/wiki/%C3%8Dndice_de_masa_corporal'>IMC</a> y el metabolismo basal según la <a href='https://es.wikipedia.org/wiki/Metabolismo_basal#C%C3%A1lculo_de_calor%C3%ADas_necesarias'>fórmula</a> de la OMS.</p>
 
-	<p><strong>6.</strong> Consume el siguiente <a href='https://jsonplaceholder.typicode.com'>servicio red</a> que tiene estos <a href='recursos.png'>recursos</a>, estos ejemplos de <a href='rutas.png'>rutas</a>, y que muestre en una página web:<br />
+	<p><strong>6.</strong> Consume el siguiente <a href='https://jsonplaceholder.typicode.com'>servicio red</a> (que tiene estos <a href='recursos.png'>recursos</a> y estos ejemplos de <a href='rutas.png'>rutas</a>) y muestra en una página web:<br />
 	<strong>a)</strong> La publicación 10 (<em>/posts/10</em>).<br />
-	<strong>b)</strong> Todas las publicaciones (<em>/posts</em>).<br />
-	<strong>c)</strong> Todos los comentarios de la publicación 8 (<em>/posts/10/comments</em>).<br />
-	<strong>e)</strong> Las fotos del álbum 7.<br />
-	<strong>f)</strong> Las fotos del álbum 7 del usuario 2.</p>
+	<strong>b)</strong> Todos los comentarios de la publicación 8 (<em>/posts/8/comments</em>).<br />
+	<strong>c)</strong> Todas las publicaciones del usuario 1 (<em>/users/1/posts</em>).</p>
 
 	<p><strong>7.</strong> Crea un servicio red con API RESTful que proporcione estos recursos: <a href='https://jsonplaceholder.typicode.com/photos'>fotos</a> y <a href='https://jsonplaceholder.typicode.com/albums'>álbumes</a> (un álbum tiene varias fotos). Los datos se mostrarán en una página web.</p>
 
-	<p><strong>X.</strong> Crea una página web que muestre varias instancias del modelo <code>Producto</code> (<em>id</em>, <em>título</em>, <em>descripción</em>, <em>precio</em>). Los datos estarán almacenado en una base de datos H2.</p>
+	<p><strong>8.</strong> Crea una página web que muestre varios ejemplos (instancias) del modelo <code>Producto</code> (<em>id</em>, <em>título</em>, <em>descripción</em>, <em>precio</em>). Los datos estarán almacenado en una base de datos H2.</p>
 
-	<p><strong>X.</strong> Crea una aplicación web co un formulario.</p>
+	<p><strong>9.</strong> Crea un inventario básico de libros (<em>id</em>, <em>ISBN</em>, <em>título</em>, <em>autor</em>, <em>editorial</em>, <em>edición</em>, <em>año</em>) con las pestañas <strong>Inicio</strong> (presentación del inventario), <strong>Libros</strong> (visualización de los libros almacenados) y <strong>Añadir</strong> (inserción de un libro nuevo). Los datos estarán almacenado en una base de datos H2 o MySQL (elige uno).</p>
 
-    <p><strong>X.</strong> Crea una tienda <a href='http://en.wikipedia.org/wiki/create,_read,_update_and_delete'>CRUD</a> de videojuegos (<em>id</em>, <em>título</em>, <em>desarrolladora</em>, <em>distribuidora</em>, <em>género</em>, <em>año</em>) con las pestañas <strong>Inicio</strong> (presentación de la tienda), <strong>Juegos</strong> (juegos almacenados en la tienda), <strong>Añadir</strong> (inserción de un videojuego), <strong>Editar</strong> (modificación de los campos de un videojuego), <strong>Borrar</strong> (eliminación de un videojuego), <strong>Sobre nosotros</strong> (descripción de la tienda) y <strong>Contacto</strong> (datos de contacto y localización).</p>
+    <p><strong>10.</strong> Crea una tienda <a href='http://en.wikipedia.org/wiki/create,_read,_update_and_delete'>CRUD</a> de videojuegos (<em>id</em>, <em>título</em>, <em>desarrolladora</em>, <em>distribuidora</em>, <em>género</em>, <em>año</em>) con las pestañas <strong>Inicio</strong> (presentación de la tienda), <strong>Juegos</strong> (juegos almacenados en la tienda), <strong>Añadir</strong> (inserción de un videojuego), <strong>Editar</strong> (modificación de los campos de un videojuego determinado), <strong>Borrar</strong> (eliminación de un videojuego), <strong>Sobre nosotros</strong> (descripción de la tienda) y <strong>Contacto</strong> (datos de contacto y localización). Los datos estarán almacenado en una base de datos H2 o MySQL (elige uno).</p>
 
-    <h2>Actividades de iniciación (2 puntos)</h2>
+    <h3>Actividades de ampliación</h3>
 
-    <p><strong>1</strong> Texto.</p>
+    <p><strong>11.</strong> Crea el juego de piedra, papel y tijera. El usuario elegirá una de esas tres opciones, recibirá una respuesta al azar y comprobará si ha ganado, perdido o empatado. Para jugar, habrá que registrarse como usuario y después iniciar sesión.</p>
 
-    <h2>Actividades de desarrollo (4 puntos)</h2>
+    <p><strong>12.</strong> Crea un inventario sencillo de productos con este <a href='modelo_inventario.png'>modelo</a> (relación <a href='https://attacomsian.com/blog/spring-data-jpa-one-to-many-mapping'>uno a varios</a>). Puedes registrarte como usuario cliente pero no como usuario administrador. El administrador, una vez iniciado sesión correctamente, introducirá, mediante formularios, una serie de fabricantes y una serie de productos asociados a dichos fabricantes. El cliente, una vez iniciado sesión correctamente, podrá visualizar los fabricantes y los productos de cada fabricante.</p>
 
-    <p><strong>1</strong> Texto.</p>
+    <p><strong>X</strong> https://howtodoinjava.com/spring-boot-tutorials.</p>
+
+    <p><strong>X</strong> https://mkyong.com/spring-boot/spring-boot-ssl-https-examples/.</p>
+
+	<p><strong>X</strong> https://www.baeldung.com/spring-boot-https-self-signed-certificate.</p>
 
     <p><a href='http://milq.github.io/cursos'>Volver a cursos</a>.</p>
 
