@@ -33,17 +33,19 @@
     <ol>
       <li>Start becoming superuser with <code>su</code>. Enter your <em>root</em> password.</li>
       <li>Now, install <em>sudo</em> with <code>apt-get install sudo</code>.</li>
-      <li><strong>Debian 9 or older</strong>: add the user account to the group <em>sudo</em> with <code>adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</li>
-      <li><strong>Debian 10</strong>: add the user account to the group <em>sudo</em> with <code>/sbin/adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</li>
+      <li>Choose one:
+		<ul>
+		  <li><strong>Debian 9 or older</strong>: add the user account to the group <em>sudo</em> with <code>adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</li>
+		  <li><strong>Debian 10</strong>: add the user account to the group <em>sudo</em> with <code>/sbin/adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</li>
+		</ul>
+      </li>
+      <li>Now, log out and then log in with the same user.</li>
+      <li>Open a terminal and run <code>sudo echo 'Hello, world!'</code>, enter your user password and that's it!</li>
     </ol>
 
     <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
     <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-    <p>Now, log out and then log in with the same user.</p>
-
-    <p>Open a terminal and execute: <code>sudo echo 'Hello, world!'</code>. Enter your user password.</p>
 
     <p>If all goes well you'll see on screen <em>Hello, world!</em>.</p>
 

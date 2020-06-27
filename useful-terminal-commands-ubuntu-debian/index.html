@@ -9,6 +9,7 @@
     <title>Useful terminal commands in Ubuntu or Debian - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../src/png/icon.png' />
     <link rel='stylesheet' href='../src/css/simple.css' />
+    <style>@import url(https://fonts.googleapis.com/css?family=Fira+Mono);ul{list-style:none;padding-left:0}code{color:#c04027;background-color:white;padding:0 .2em 0 0;font-family:'Fira Mono'}ol {column-count: 4}</style>
   </head>
 
   <body>
@@ -16,167 +17,309 @@
 
     <nav><a href='https://milq.github.io'>Home</a> | <a href='https://milq.github.io/archive'>Archive</a></nav>
 
-    <p><strong>CHECKOUT THE NEW VERSION OF THIS WEBPAGE</strong>: <strong><a href='https://milq.github.io/gnu-linux-commands'>GNU/LINUX TERMINAL COMMANDS</a>!</strong></p>
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks!</p>
 
-    <p style='text-align:center'><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks</p>
+    <h2 id='ubuntu_debian_commands'>Useful terminal commands in Ubuntu or Debian</h2>
 
-    <h2>Useful terminal commands in Ubuntu or Debian</h2>
+    <p>This is a compilation of my Ubuntu and Debian commands I consider useful.</p>
 
-    <p>This is a compilation of my terminal commands in Ubuntu or Debian I consider useful. Many of these commands are compatible with other GNU/Linux distributions.</p>
+    <ol>
+      <li><a href='#navigation'>Navigation</a></li>
+      <li><a href='#help'>Help</a></li>
+      <li><a href='#file_manipulation'>File manipulation</a></li>
+      <li><a href='#file_visualization'>File visualization</a></li>
+      <li><a href='#file_information'>File information</a></li>
+      <li><a href='#administration'>Administration</a></li>
+      <li><a href='#execution'>Execution</a></li>
+      <li><a href='#redirection'>Redirection</a></li>
+      <li><a href='#bash_shortcuts'>Bash shortcuts</a></li>
+      <li><a href='#apt'>APT</a></li>
+      <li><a href='#processes'>Processes</a></li>
+      <li><a href='#users'>Users</a></li>
+      <li><a href='#permissions_ownership'>File permissions</a></li>
+      <li><a href='#disk_devices'>Disk and devices</a></li>
+      <li><a href='#compression_decompression'>Compression</a></li>
+      <li><a href='#net'>Net</a></li>
+      <li><a href='#find'>Find</a></li>
+      <li><a href='#git'>Git</a></li>
+      <li><a href='#svn'>SVN</a></li>
+      <li><a href='#ffmpeg'>FFmpeg</a></li>
+      <li><a href='#screen'>Screen</a></li>
+      <li><a href='#pdftk'>PDFtk</a></li>
+    </ol>
 
-    <h3>1. Essential commands</h3>
+    <h3 id='navigation'>1. Navigation (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Navigation: <code>pwd</code>, <code>ls <em>path</em></code>, <code>cd <em>folder_path</em></code>. Definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> (computing).</li>
-      <li>Help: <code>man <em>command</em></code>, <code><em>command</em> --help</code>, <code><em>command</em> -h</code>, <a href='http://explainshell.com'>Explainshell</a>.</li>
-      <li>Manipulation: <code>cp</code>, <code>mv</code>, <code>rm</code>, <code>mkdir</code>, <code>ln</code>.</li>
-      <li>Permissions: <code>chmod</code>, <code>chown</code>, <code>chgrp</code>, <code>su</code>, <code>sudo</code> (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
-      <li>Display a line of text: <code>echo</code>, <code>echo $PATH</code> (show the content of variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>$PATH</a>).</li>
-      <li>Text editor: <code>nano</code>.</li>
-      <li>Visualization: <code>cat</code>, <code>more</code>, <code>less</code>, <code>head</code>, <code>tail</code>.</li>
-      <li>Redirect standard output to a file: <code><em>command</em> &gt; <em>file</em></code>.</li>
-      <li>Execute multiple commands (AND): <code><em>command1</em> && <em>command2</em> && <em>commandN</em></code>.</li>
-      <li>Execute a command in the background: <code><em>command</em> &amp;</code>.</li>
-      <li>Run an executable in the current directory that is not in your <code>$PATH</code>: <code>./<em>executable</em></code>.</li>
-      <li>Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script: <code>bash <em>script.sh</em></code>. Executable with header <code>#!/bin/bash</code>.</li>
+      <li><code>pwd</code> Print name of current/working directory.</li>
+      <li><code>ls <em>path</em></code> List directory contents (definition of <a href='http://en.wikipedia.org/wiki/path_(computing)'>path</a> and <a href='https://en.wikipedia.org/wiki/Wildcard_character#File_and_directory_patterns'>wildcards</a> in computing).</li>
+      <li><code>cd <em>path</em></code> Change directory.</li>
+    </ul>
+
+    <h3 id='help'>2. Help (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>man <em>command</em></code> Display summary information of a command.</li>
+      <li><code><em>command</em> --help</code> Display short summary information of a command.</li>
+      <li><code><em>command</em> -h</code> Another way to display short summary information of a command.</li>
+      <li><code>info <em>command</em></code> Display detailed manual of a command. Only works for some commands.</li>
+    </ul>
+
+    <h3 id='file_manipulation'>3. File manipulation (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>cp <em>source_path destination_path</em></code> Copy a file.</li>
+      <li><code>cp -r <em>source_path destination_path</em></code> Copy a directory.</li>
+      <li><code>mv <em>source_path destination_path</em></code> Move and/or rename files and directories.</li>
+      <li><code>mkdir <em>path</em></code> Make empty directories.</li>
+      <li><code>rm <em>path</em></code> Remove a file.</li>
+      <li><code>rm -r <em>path</em></code> Remove a directory.</li>
+      <li><code>ln <em>source_path destination_path</em></code> Create a <a href='https://en.wikipedia.org/wiki/Hard_link'>hard link</a> of a file.</li>
+      <li><code>ln -s <em>source_path destination_path</em></code> Create a <a href='https://en.wikipedia.org/wiki/Symbolic_link'>symbolic link</a> of a file.</li>
+      <li><code>nano <em>path_text_file</em></code> Edit a text file. Nano is a simple text editor.</li>
+    </ul>
+
+    <h3 id='file_visualization'>4. File visualization (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>echo '<em>text</em>'</code> Display a line of text.</li>
+      <li><code>echo $PATH</code> Show the content of the variable <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</li>
+      <li><code>cat</code> Concatenate files and print on the standard output.</li>
+      <li><code>head <em>path_file</em></code> Print the first 10 lines of a text file.</li>
+      <li><code>tail <em>path_file</em></code> Print the last 10 lines of a text file.</li>
+      <li><code>more <em>path_file</em></code> Visualize the contents of a text file.</li>
+      <li><code>less <em>path_file</em></code> Visualize the contents of a text file with more features.</li>
+      <li><code>grep <em>pattern</em> <em>path_file</em></code> Print lines of a text file that match a pattern.</li>
+      <li><code>locate <em>pattern</em></code> Search and print files and folders that match a pattern: , <code>sudo updatedb</code>.</li>
     </ul>
 
     <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
     <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-    <h3>2. APT commands</h3>
+    <h3 id='file_information'>5. File information (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Install a package locally: <code>sudo apt-get install <em>./package.deb</em></code>.</li>
-      <li>Install a package from the repository: <code>sudo apt-get install <em>package</em></code>.</li>
-      <li>Uninstall a package from the repository: <code>sudo apt-get purge <em>package</em></code>.</li>
-      <li>Remove packages that are no longer needed: <code>sudo apt-get autoremove</code>.</li>
-      <li>Resynchronize the package index files from <em>/etc/apt/sources.list</em>: <code>sudo apt-get update</code>.</li>
-      <li>Install the newest versions of all packages from <em>/etc/apt/sources.list</em>: <code>sudo apt-get upgrade</code>.</li>
+      <li><code>file <em>path</em></code> Print file type.</li>
+      <li><code>stat <em>path</em></code> Print detailed information about a file or directory.</li>
+      <li><code>wc <em>path_file</em></code> Print newline, word, and byte counts of a text file.</li>
+      <li><code>ldd <em>path_executable</em></code> Print shared library dependencies of a dynamic executable.</li>
+      <li><code>diff --color <em>path_file_A</em> <em>path_file_B</em></code> Compare two text files line by line.</li>
     </ul>
 
-    <h3>3. Bash shortcuts</h3>
+    <h3 id='administration'>6. Administration (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Autocomplete files, folders, commands, packages, etc.: <code>Tab</code>.</li>
-      <li>List all available files, folders, commands, packages, etc.: <code>Tab</code> + <code>Tab</code>.</li>
-      <li>Go to previous command: <code>&#8593;</code>, or <code>Ctrl</code> + <code>P</code>.</li>
-      <li>Go to next command: <code>&#8595;</code>, or <code>Ctrl</code> + <code>N</code>.</li>
-      <li>Search through previously used commands: <code>Ctrl</code> + <code>R</code>.</li>
-      <li>Terminate the current process (SIGINT): <code>Ctrl</code> + <code>C</code>.</li>
-      <li>Suspend the current process (SIGTSTP): <code>Ctrl</code> + <code>Z</code>.</li>
+      <li><code>sudo <em>command</em></code> Execute a command as the superuser (<a href='http://milq.github.io/enable-sudo-user-account-debian'>enable sudo on Debian</a>).</li>
+      <li><code>su <em>username</em></code> Change user ID.</li>
+      <li><code>su</code> or <code>su root</code> Become superuser.</li>
     </ul>
 
-    <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
-    <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-    <h3>4. Basic commands</h3>
+    <h3 id='execution'>7. Execution (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Show and/or admin current processes: <code>jobs</code>, <code>ps</code>, <code>top</code>.</li>
-      <li>Send a signal to a process: <code>kill</code>.</li>
-      <li>List files in databases that match a pattern: <code>locate</code>, <code>sudo updatedb</code>.</li>
-      <li>Print lines matching a pattern from a text file: <code>grep</code>.</li>
-      <li>Show/manipulate routing, devices, policy routing and tunnels: <code>ip</code>.</li>
-      <li>OpenSSH SSH client with X11 forwarding: <code>ssh <em>user</em>@<em>server</em> -X</code>.</li>
-      <li>Secure copy (remote file copy program): <code>scp</code>.</li>
+      <li><code><em>command1</em> && <em>command2</em> && <em>commandN</em></code> Execute multiple commands (AND).</li>
+      <li><code><em>command</em> &amp;</code> Execute a command in the background.</li>
+      <li><code>./<em>executable</em></code> Run an executable in the current directory that is not in your <a href='http://en.wikipedia.org/wiki/path_(variable)'>PATH</a>.</li>
+      <li><code>bash <em>script.sh</em></code> Run a <a href='http://en.wikipedia.org/wiki/Bash_(Unix_shell)'>Bash</a> script (executable with the header <code>#!/bin/bash</code>).</li>
     </ul>
 
-    <h3>5. Screen</h3>
+    <h3 id='redirection'>8. Redirection (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Create a screen session: <code>screen</code>.</li>
-      <li>Detach from the current screen session: <code>Ctrl</code> + <code>A</code> then <code>D</code>.</li>
-      <li>List the screen session identification strings: <code>screen -ls</code>.</li>
-      <li>Reattach to a screen session: <code>screen -r <em>session_id_string</em></code>.</li>
-      <li>Terminate the current screen session: <code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code>.</li>
-      <li>Scroll up/down during session: <code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code>.</li>
+      <li><code><em>command_A</em> | <em>command_B</em></code> Redirect standard output of command A to standard input of command B.</li>
+      <li><code><em>command</em> &gt; <em>file</em></code> Redirect standard output of a command to a new file.</li>
+      <li><code><em>command</em> 2&gt; <em>file</em></code> Redirect standard error of a command to a new file.</li>
+      <li><code><em>command</em> &amp;&gt; <em>file</em></code> Redirect standard or error output of a command to a new file.</li>
+      <li><code><em>command</em> &gt;&gt; <em>file</em></code> Append standard output of a command to a file.</li>
+      <li><code><em>command</em> 2&gt;&gt; <em>file</em></code> Append standard error of a command to a file.</li>
+      <li><code><em>command</em> &amp;&amp;&gt; <em>file</em></code> Append standard or error output of a command to a file.</li>
     </ul>
 
     <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
     <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-    <h3>6. Other commands</h3>
+    <h3 id='bash_shortcuts'>9. Bash shortcuts (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Print newline, word, and byte counts for each file: <code>wc</code>.</li>
-      <li>Extract an ISO file: <code>7z x <em>filename.iso</em></code>.</li>
-      <li>Report faked system time to programs: <code>faketime</code>.</li>
-      <li>Retrieves files from the web: <code>wget</code>.</li>
-      <li>Print shared library dependencies: <code>ldd <em>executable_filename</em></code>.</li>
-      <li>Make symbolic links: <code>ln -s <em>input_filename</em> <em>output_link_name</em></code>.</li>
-      <li>List block devices: <code>lsblk</code>.</li>
-      <li>Format USB stick as VFAT: <code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code>.</li>
-      <li>Restore disk from image: <code>sudo dd bs=1M if=<em>im.iso</em> of=/dev/sd<em>x</em> && sync</code>.</li>
-      <li>Report disk space usage: <code>df -H</code>, <code>du -hs <em>folder</em></code>.</li>
-      <li>Compare files line by line: <code>diff</code>.</li>
+      <li><code>Tab</code> Autocomplete files, folders, commands, packages, etc.</li>
+      <li><code>Tab</code> + <code>Tab</code> List all available files, folders, commands, packages, etc.</li>
+      <li><code>&#8593;</code> Go to previous command.</li>
+      <li><code>&#8595;</code> Go to next command.</li>
+      <li><code>Ctrl</code> + <code>R</code> Search through previously used commands.</li>
+      <li><code>Ctrl</code> + <code>C</code> Terminate the current process (SIGINT).</li>
+      <li><code>Ctrl</code> + <code>Z</code> Suspend the current process (SIGTSTP).</li>
     </ul>
 
-    <h3>7. FFmpeg</h3>
+    <h3 id='apt'>10. APT (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Convert image to 5 sec. video: <code>ffmpeg -loop 1 -i 01.png -t 5 out.mp4</code>.</li>
-      <li>15 images to 30 Hz 5 sec. video: <code>ffmpeg -r 3 -i %03d.png -r 30 out.mp4</code>.</li>
-      <li>Resize video to 720p: <code>ffmpeg -i input.webm -s 1280x720 output.webm</code>.</li>
-      <li>Fade in the first 25 frames and fade out the last 25 frames of a 1000-frame video: <code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code>.</li>
-      <li>Concatenate videos: <code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code>.</li>
+      <li><code>sudo apt-get install <em>./package.deb</em></code> Install a local <em>.deb</em> package.</li>
+      <li><code>sudo apt-get install <em>package</em></code> Install a package from the repository.</li>
+      <li><code>sudo apt-get purge <em>package</em></code> Uninstall a package from the repository.</li>
+      <li><code>sudo apt-get update</code> Resynchronize the package index files from their sources.</li>
+      <li><code>sudo apt-get upgrade</code> Install the newest versions of all packages currently installed.</li>
+      <li><code>sudo apt-get dist-upgrade</code> Handle changing dependencies with new versions of packages.</li>
+      <li><code>sudo apt-get autoremove</code> Remove packages that are no longer needed.</li>
     </ul>
 
-    <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
-    <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-
-    <h3 id='git'>9. Git</h3>
-
-    <p>Execute <code>sudo apt-get install git</code> to install Git in Debian based distributions.</p>
+    <h3 id='processes'>11. Processes (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li><code>git clone <em>uri_repository.git</em></code>: Clone a repository into a new directory.</li>
-      <li><code>git pull</code>: Incorporates changes from a remote repository into the current branch.</li>
-      <li><code>git status</code>: Show the working tree status.</li>
-      <li><code>git add .</code>: Update the index using the current content found in the working tree.</li>
-      <li><code>git commit -m '<i>message</i>'</code>: Record changes to the repository.</li>
-      <li><code>git push</code>: Update remote references (<i>refs</i>) along with associated objects.</li>
+      <li><code>ps</code> Display the running processes of the current terminal of the current user.</li>
+      <li><code>ps -e</code> Display all running processes.</li>
+      <li><code>pstree</code> Show running processes as a tree.</li>
+      <li><code>kill</code> Send a signal to a process.</li>
+      <li><code>kill -9 <em>PID</em></code> Kill a process given their <a href='https://en.wikipedia.org/wiki/Process_identifier'>PID</a>.</li>
+      <li><code>top</code> Dynamic real-time viewer of processes.</li>
+      <li><code>htop</code> Interactive process viewer (install it with <code>sudo apt-get install htop</code>).</li>
     </ul>
 
-    <h3>9. SVN</h3>
+    <h3 id='users'>12. Users (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Create new repository: <code>svnadmin create <em>repository_name</em></code>.</li>
-      <li>Checkout: <code>svn co svn+ssh://<em>user</em>@<em>server</em>/<em>path/to/repository</em></code>.</li>
-      <li>Update working copy: <code>svn update</code>.</li>
-      <li>Get status of current copy: <code>svn status</code>.</li>
-      <li>Add all items recursively: <code>svn add *</code>.</li>
-      <li>Add an item (if folder, adds recursively): <code>svn add <em>item_name</em></code>.</li>
-      <li>Delete an item (if folder, deletes recursively): <code>svn delete <em>item_name</em></code>.</li>
-      <li>Commit with log message: <code>svn commit -m '<em>message</em>'</code>.</li>
+      <li><code>id <em>username</em></code> Print real and effective user and group IDs.</li>
+      <li><code>who</code> Print information about users who are currently logged in.</li>
+      <li><code>whoami</code> Print the username associated with the current effective user ID.</li>
     </ul>
 
     <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
     <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 
-    <h3>10. Find</h3>
+    <h3 id='permissions_ownership'>13. File permissions and ownership (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Find files and folders recursively in current directory: <code>find .</code>.</li>
-      <li>Run files recursively in current <em>dir.</em>: <code>find . -type f -exec file '{}' \;</code>.</li>
-      <li>Delete all <em>.svn</em> folders: <code>find . -iname .svn -prune -exec rm -r '{}' \;</code>.</li>
-      <li>Copy all <em>png</em> files to <em>png</em>: <code>find ./ -name *.png -exec cp '{}' ./png \;</code>.</li>
+      <li><code>chmod</code> Change file mode bits.</li>
+      <li><code>umask</code> Set file mode creation mask.</li>
+      <li><code>chown</code> Change file owner and group.</li>
+      <li><code>chgrp</code> Change group ownership.</li>
     </ul>
 
-    <h3>11. PDFtk</h3>
+    <h3 id='disk_devices'>14. Disk and devices (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
 
     <ul>
-      <li>Join all PDF files into a new PDF file: <code>pdftk *.pdf cat output out.pdf</code>.</li>
-      <li>Join 3 PDF files: <code>pdftk in1.pdf in2.pdf in3.pdf cat output out.pdf</code>.</li>
-      <li>Extract pages from a PDF: <code>pdftk in.pdf cat 1 25-35 end output out.pdf</code>.</li>
+      <li><code>lsblk</code> List block devices.</li>
+      <li><code>df -H</code> Report file system disk space usage.</li>
+      <li><code>du -hs <em>path_folder</em></code> Report disk space usage of a folder.</li>
+      <li><code>sudo mount <em>device_path destination_path</em></code> Mount a filesystem.</li>
+      <li><code>sudo umount <em>mounted_device_path</em></code> Unmount a filesystem.</li>
+      <li><code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code> Format disk <em>x</em> to VFAT.</li>
+      <li><code>sudo mkfs.vfat -I /dev/sd<em>x</em><em>Y</em> -n <em>NAME</em> && sync</code> Format partition <em>Y</em> from disk <em>x</em> to VFAT.</li>
+      <li><code>sudo dd bs=512K if=<em>input.iso</em> of=/dev/sd<em>x</em> && sync</code> Burn an ISO file to a disk.</li>
+      <li><code>sudo gdisk /dev/sd<em>x</em></code> <a href='https://en.wikipedia.org/wiki/GUID_Partition_Table'>GPT</a> editor for disk <em>x</em> (install it with <code>sudo apt-get install gdisk</code>).</li>
     </ul>
 
-    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks</p>
+    <h3 id='compression_decompression'>15. Compression and decompression (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <p>Execute <code>sudo apt-get install p7zip-full</code> or <code>yum install p7zip</code> to install 7-Zip.</p>
+
+    <ul>
+      <li><code>7z x <em>path_zip_file</em></code> Extract a ZIP file.</li>
+      <li><code>7z x <em>path_iso_file</em></code> Extract an ISO file.</li>
+      <li><code>7z a <em>filename.zip</em> <em>path_folder</em></code> Compress a directory in a ZIP file.</li>
+    </ul>
+
+    <h3 id='net'>16. Net (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <ul>
+
+      <li><code>ssh <em>user</em>@<em>server</em></code> Log in to a shell of a remote host by <a href='https://en.wikipedia.org/wiki/Secure_Shell'>SSH</a>.</li>
+      <li><code>ssh <em>user</em>@<em>server</em> -X</code> Log in to a shell of a remote host with X11 forwarding by <a href='https://en.wikipedia.org/wiki/Secure_Shell'>SSH</a>.</li>
+      <li><code>scp <em>user</em>@<em>host</em>:<em>path_remote_file</em> <em>path_local</em></code> Copy a file from a remote host to local host.</li>
+      <li><code>scp <em>path_local_file</em> <em>user</em>@<em>host</em>:<em>path_remote</em></code> Copy a file from a local host to remote host.</li>
+      <li><code>scp -r <em>user</em>@<em>host</em>:<em>path_folder</em> <em>path_local</em></code> Copy a folder from a remote host to local host.</li>
+      <li><code>scp -r <em>path_folder</em> <em>user</em>@<em>host</em>:<em>path_remote</em></code> Copy a folder from a local host to remote host.</li>
+      <li><code>wget <em>URL</em></code> Retrieves a file from the web.</li>
+      <li><code>wavemon</code> Wireless network monitor (install it with <code>sudo apt-get install wavemon</code>).</li>
+      <li><code>ip</code> Sshow and manipulate routing, network devices, interfaces and tunnels.</li>
+    </ul>
+
+    <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
+    <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <h3 id='find'>17. Find (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <ul>
+      <li><code>find .</code> Find files and folders recursively in current directory.</li>
+      <li><code>find . -name *.png -exec cp '{}' ~/images \;</code> Copy all PNG files to <em>~/images</em> folder.</li>
+      <li><code>find . -name *.txt -exec mv '{}' ./txt \;</code> Move all TXT files to <em>./txt</em> folder.</li>
+      <li><code>find . -name .svn -prune -exec rm -r '{}' \;</code> Delete all <em>.svn</em> folders.</li>
+      <li><code>find . -type f -exec file '{}' \;</code> Run files.</li>
+    </ul>
+
+    <h3 id='git'>18. Git (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <p>Execute <code>sudo apt-get install git</code> or <code>yum install git</code> to install Git.</p>
+
+    <ul>
+      <li><code>git clone <em>uri_repository.git</em></code> Clone a repository into a new directory.</li>
+      <li><code>git pull</code> Incorporates changes from a remote repository into the current branch.</li>
+      <li><code>git status</code> Show the working tree status.</li>
+      <li><code>git add .</code> Update the index using the current content found in the working tree.</li>
+      <li><code>git commit -m '<i>message</i>'</code> Record changes to the repository.</li>
+      <li><code>git push</code> Update remote references (<i>refs</i>) along with associated objects.</li>
+    </ul>
+
+    <h3 id='svn'>19. Subversion (SVN) (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <p>Run <code>sudo apt-get install subversion</code> or <code>yum install subversion</code> to install SVN.</p>
+
+    <ul>
+      <li><code>svnadmin create <em>repository_name</em></code> Create new repository.</li>
+      <li><code>svn co svn+ssh://<em>user</em>@<em>server</em>/<em>path_to_repository</em></code> Checkout.</li>
+      <li><code>svn update</code> Update working copy.</li>
+      <li><code>svn status</code> Get status of current copy.</li>
+      <li><code>svn add *</code> Add all items recursively.</li>
+      <li><code>svn add <em>item_name</em></code> Add an item (if folder, adds recursively).</li>
+      <li><code>svn delete <em>item_name</em></code> Delete an item (if folder, deletes recursively).</li>
+      <li><code>svn commit -m '<em>message</em>'</code> Commit with log message.</li>
+    </ul>
+
+    <h3 id='ffmpeg'>20. FFmpeg (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <p>Run <code>sudo apt-get install ffmpeg</code> to install FFmpeg.</p>
+
+    <ul>
+      <li><code>ffmpeg -loop 1 -i <em>01.png</em> -t 5 <em>out.mp4</em></code> Convert image to 5 sec. video.</li>
+      <li><code>ffmpeg -f concat -i <em>mylist.txt</em> -c copy out.mp4</code> Concatenate videos.</li>
+      <li><code>ffmpeg -r 3 -i %02d.png -r 30 out.mp4</code> 15 images to 30 Hz 5 sec. video.</li>
+      <li><code>ffmpeg -i input.webm -s 1280x720 out.webm</code> Resize video to 720p.</li>
+      <li><code>ffmpeg -i in.mp4 -vf 'fade=in:0:25, fade=out:975:25' out.mp4</code> Fade in and out.</li>
+    </ul>
+
+    <script async='async' src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'></script>
+    <ins class='adsbygoogle' style='display:block; text-align:center;' data-ad-layout='in-article' data-ad-format='fluid' data-ad-client='ca-pub-5799969946943985' data-ad-slot='3153513859'></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+    <h3 id='screen'>21. Screen (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <p>Run <code>sudo apt-get install screen</code> or <code>yum install screen</code> to install Screen.</p>
+
+    <ul>
+      <li><code>screen</code> Create a screen session.</li>
+      <li><code>Ctrl</code> + <code>A</code> then <code>D</code> Detach from the current screen session.</li>
+      <li><code>screen -ls</code> List the screen session identification strings.</li>
+      <li><code>screen -r <em>session_id_string</em></code> Reattach to a screen session.</li>
+      <li><code>exit</code>, or <code>Ctrl</code> + <code>A</code> then <code>:quit</code> Terminate the current screen session.</li>
+      <li><code>Ctrl</code> + <code>A</code> then <code>Esc</code> then <code>↑</code>/<code>↓</code>/<code>PgUp</code>/<code>PgDn</code> Scroll up/down during session.</li>
+    </ul>
+
+    <h3 id='pdftk'>22. PDFtk (<a href='#ubuntu_debian_commands'>&uarr;</a>)</h3>
+
+    <p>Run <code>sudo apt-get install pdftk</code> to install PDFtk.</p>
+
+    <ul>
+      <li><code>pdftk *.pdf cat output <em>out.pdf</em></code> Join all PDF files into a new PDF file.</li>
+      <li><code>pdftk <em>in1.pdf</em> <em>in2.pdf</em> <em>in3.pdf</em> cat output <em>out.pdf</em></code> Join 3 PDF files.</li>
+      <li><code>pdftk <em>in.pdf</em> cat <em>1 25-35 end</em> output <em>out.pdf</em></code> Extract pages from a PDF.</li>
+    </ul>
+
+    <p>Many of the descriptions of the commands are from their manual pages.</p>
+
+    <p><strong>Do you like this article?</strong> Share it with this <a href='https://milq.github.io/useful-terminal-commands-ubuntu-debian'>link</a>. Thanks!</p>
 
     <script type='text/javascript' src='../src/js/analytics.js'></script>
 
