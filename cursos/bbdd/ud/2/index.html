@@ -27,35 +27,88 @@
             </ul>
           </li>
         </ul>
-      </li>
+      </li><br />
 
-      <li>Modelo Entidad-Relación:
+      <li>Modelo Entidad-Relación (E-R):
         <ul>
           <li>Entidades:
             <ul>
               <li>Fuertes.</li>
-              <li>Débiles.</li>
-            </ul>
-          </li>
-          <li>Atributos.</li>
-
-(identificativos, descriptivos, derivados, discriminantes, multivaluados, compuestos)
-
-
-          <li>Relaciones:
-            <ul>
-              <li>Grados: unaria (o reflexiva), binaria, doble, ternaria y n-aria.</li>
-              <li>Cardinalidades:
+              <li>Débiles:
                 <ul>
-                  <li>Uno a uno (1:1).</li>
-                  <li>Uno a varios (1:N).</li>
-                  <li>Varios a varios (N:M)</li>
-                </ul>
+                  <li>Dependencia en existencia.</li>
+                  <li>Dependencia en identificación.</li>
+                </ul>      
               </li>
             </ul>
           </li>
+          <li>Atributos:
+            <ul>
+              <li>Identificativos.</li>
+              <li>Descriptivos.</li>
+              <li>Otros: derivados, discriminantes, multivaluados y compuestos.</li>
+            </ul>
+          </li>
+          <li>Relaciones:
+            <ul>
+              <li>Grados: unaria (o reflexiva), binaria, doble, ternaria, n-aria.</li>
+              <li>Cardinalidades:
+                <ul>
+                  <li>Uno a uno (1:1):
+                    <ul>
+                      <li>Participación (0, 1) - (0, 1).</li>
+                      <li>Participación (0, 1) - (1, 1).</li>
+                      <li>Participación (1, 1) - (0, 1).</li>
+                      <li>Participación (1, 1) - (1, 1).</li>
+                    </ul>
+                  <li>Uno a varios (1:N)
+                    <ul>
+                      <li>Participación (0, n) - (0, n)</li>
+                      <li>Participación (0, n) - (1, n)</li>
+                      <li>Participación (1, n) - (0, n)</li>
+                      <li>Participación (1, n) - (1, n)</li>
+                    </ul>
+                  </li>
+                  <li>Varios a varios (N:M)
+                    <ul>
+                      <li>Participación (n, m) - (n, m).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Atributos en una relación.</li>
+              <li>Relaciones de dependencia: en existencia y en identificaciónn.</li>
+            </ul>
+          </li>
         </ul>
-      </li>
+      </li><br />
+
+      <li>Modelo E-R Extendido:
+        <ul>
+          <li>Restricciones en las relaciones:
+            <ul>
+              <li>De exclusividad.</li>
+              <li>De exclusión.</li>
+              <li>De inclusividad.</li>
+              <li>De inclusión.</li>
+            </ul>          
+          </li>
+          <li>Relaciones de jerarquía:
+            <ul>
+              <li>Exclusiva y total.</li>
+              <li>Exclusiva y parcial.</li>
+              <li>Solapada y total.</li>
+              <li>Solapada y parcial.</li>
+            </ul>          
+          </li>
+          <li>Agregaciones:
+            <ul>
+              <li>Compuesto/componente.</li>
+			  <li>Miembro/Colección.</li>
+            </ul>
+          </li>
+        </ul>
+      </li><br />
 
       <li>Modelo Relacional:
         <ul>
@@ -74,15 +127,26 @@
           </li>
           <li>Relaciones.</li>
         </ul>
-      </li>
+      </li><br />
 
       <li>Transformación de un Modelo E-R a un Modelo Relacional:
         <ul>
-          <li>Entidades.</li>
-          <li>Atributos.</li>
-          <li>Relaciones.</li>
+          <li>Transformación de entidades: cada entidad se transforma en una tabla.</li>
+          <li>Transformación de atributos.</li>
+          <li>Transformación de relaciones:
+            <ul>
+              <li>Relaciones 1:1:
+                <ul>
+                  <li>Caso 1: si las dos entidades participan con participación (0,1), entonces se crea una nueva tabla para la relación.</li>
+                  <li>Caso 2: si alguna entidad, pero no las dos, participa con participación mínima 0 (0,1), entonces se pone la clave ajena en dicha entidad, para evitar en lo posible, los valores nulos.</li>
+                  <li>Caso 3: si tenemos una relación 1:1 y ninguna tiene participación mínima 0, elegimos la clave principal de una de ellas y la introducimos como clave clave ajena en la otra tabla. Se elegirá una u otra forma en función de como se quiera organizar la información para facilitar las consultas. Los atributos propios de la relación pasan a la tabla donde se introduce la clave ajena.</li>
+                </ul>
+              
+              </li>
+            </ul>          
+          </li>
         </ul>
-      </li>
+      </li><br />
 
       <li>Normalización:
         <ul>
@@ -93,7 +157,7 @@
           <li>Cuarta Forma Normal (4FN).</li>
           <li>Quinta Forma Normal (5FN).</li>
         </ul>
-      </li>
+      </li><br />
 
       <li type='A' value='1'>Material de apoyo: <a href='https://gestionbasesdatos.readthedocs.io/es/stable/Tema2/'>Gestión de Bases de Datos</a> (<a href='https://gestionbasesdatos.readthedocs.io/es/stable/Tema2/Teoria.html'>teoría</a>, <a href='https://gestionbasesdatos.readthedocs.io/es/stable/Tema2/Actividades.html'>actividades</a>), <a href='https://josejuansanchez.org/bd/'>José Juan Sánchez</a>.</li>
     </ol>  
