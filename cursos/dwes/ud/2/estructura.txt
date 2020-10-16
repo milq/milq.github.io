@@ -3,6 +3,6 @@ xxx_yyy_z
 ├── 2_reservas/
 ├── 3_pizzeria/
 ├── inicio.html
-└── script.sql
+└── inicio.sql
 
 El nombre de la carpeta será 'xxx_yyy_z', donde 'xxx' serán las tres primeras letras de tu primer apellido, 'yyy' las tres primeras letras de tu segundo apellido y 'z' la primera letra de tu primer nombre. Todo en minúsculas.
