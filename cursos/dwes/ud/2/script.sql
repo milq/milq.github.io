@@ -1,7 +1,0 @@
-DROP DATABASE IF EXISTS ud2_pruebas;
-DROP DATABASE IF EXISTS ud2_reservas;
-DROP DATABASE IF EXISTS ud2_restaurante;
-
-CREATE DATABASE ud2_pruebas;
-CREATE DATABASE ud2_reservas;
-CREATE DATABASE ud2_restaurante;
