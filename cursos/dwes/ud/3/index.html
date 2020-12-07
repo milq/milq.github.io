@@ -2,16 +2,16 @@
   <head>
     <meta charset='utf-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>Generación de documentos web con PHP - DAWS</title>
-    <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}</style>
+    <title>Aplicaciones web con cookies y hash en PHP - Manuel Ignacio López Quintero</title>
+    <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
-    <h1>3. PHP orientado a objetos</a> e introducción a <em>frameworks</em> web MVC</h1>
+    <h1>3. Aplicaciones web con <em>cookies</em> y <em>hash</em> en PHP</h1>
 
     <h2>Actividades</h2>
 
-	<p>Crea una página <strong>inicio.html</strong> que enlazca las siguientes actividades a resolver:</p>
+<!--	<p>Crea una página <strong>inicio.html</strong> que enlazca las siguientes actividades a resolver:</p> -->
 
     <p><strong>1.</strong> Crea una página de ejemplo con <a href='https://www.php.net/manual/en/features.http-auth.php'>autenticación HTTP básica</a>. A continuación, en dicha página, responde: ¿por qué no es seguro esta autenticación? ¿Cómo podría mejorarse? Para responder, puedes ayudarte con este <a href='https://diego.com.es/autenticacion-http'>material</a>.</p>
 
@@ -19,11 +19,13 @@
 
 	<p><strong>3.</strong> Crea una cesta de la compra de frutas y verduras y almacénala durante una hora usando <a href='https://es.wikipedia.org/wiki/Cookie_(inform%C3%A1tica)'><em>cookies</em></a>. El usuario elegirá una serie de frutas y verduras y mantendrá dichos alimentos escogidos durante una hora aunque cierre el navegador. Mediante <a href='https://www.php.net/manual/en/function.setcookie.php'><em>setcookie()</em></a>, sin autenticación ni sesiones, almacena dicha cesta y crea también opciones para modificar, eliminar y comprobar si existe dicha <em>cookie</em>. Puedes ayudarte de los materiales de <a href='https://diego.com.es/cookies-en-php'>Diego Lázaro</a> y de <a href='https://www.w3schools.com/php/php_cookies.asp'>W3Schools</a>.</p>
 
-    <p><strong>4.</strong> Crea un sitio web que resuelva los primeros cinco de estos <a href='https://milq.github.io/cursos/fundprog/ud/06.html'>ejercicios sobre clases</a>. Se crearán cinco pestañas, en cada una se resolverá un ejercicio. Añade una pestaña más explicando, con capturas, cómo se depura en PHP y muestra un ejemplo.</p>
+<!--    <p><strong>4.</strong> Crea un sitio web que resuelva los primeros cinco de estos <a href='https://milq.github.io/cursos/fundprog/ud/06.html'>ejercicios sobre clases</a>. Se crearán cinco pestañas, en cada una se resolverá un ejercicio. Añade una pestaña más explicando, con capturas, cómo se depura en PHP y muestra un ejemplo.</p>-->
 
-    <p><strong>5.</strong> Crea un balance sencillo de ingresos y gastos. Para obtener el balance, habrá que registrarse como usuario en una base de datos y después iniciar sesión; las contraseñas estarán almacenadas en <em>hash</em> mediante el algoritmo <a href='https://en.wikipedia.org/wiki/Bcrypt'>Bcrypt</a> (usa <a href='https://www.php.net/manual/en/function.password-hash.php'><em>password_hash</em></a> y <a href='https://www.php.net/manual/en/function.password-verify.php'><em>password_verify</em></a>). Una vez iniciada la sesión correctamente, el usuario introducirá, mediante formularios, una serie de ingresos y gastos, pulsará en <em>Generar</em> y, a continuación, verá un informe similar a <a href='balance.png'>éste</a> en PDF. Usa <a href='https://github.com/mpdf/mpdf'>MPDF</a>, instalálo con <a href='https://getcomposer.org'>Composer</a> y aloja esta aplicación web en Heroku y en GitHub.</p>
+    <p><strong>4.</strong> Crea un balance sencillo de ingresos y gastos. Para obtener el balance, habrá que registrarse como usuario en una base de datos y después iniciar sesión; las contraseñas estarán almacenadas en <em>hash</em> mediante el algoritmo <a href='https://en.wikipedia.org/wiki/Bcrypt'>Bcrypt</a> (usa <a href='https://www.php.net/manual/en/function.password-hash.php'><em>password_hash</em></a> y <a href='https://www.php.net/manual/en/function.password-verify.php'><em>password_verify</em></a>). Una vez iniciada la sesión correctamente, el usuario introducirá, mediante formularios, una serie de ingresos y gastos, pulsará en <em>Generar</em> y, a continuación, verá un informe similar a <a href='balance.png'>éste</a> en PDF. Usa <a href='https://github.com/mpdf/mpdf'>MPDF</a>, instalálo con <a href='https://getcomposer.org'>Composer</a> y aloja esta aplicación web en Heroku (opcional) y en GitHub (captura del repositorio privado).</p>
 
-    <p><strong>6.</strong> Crea una aplicación web con Laravel completando el siguiente <a href='https://milq.github.io/cursos/dwes/ud/3/laravel'>tutorial</a>.</p>
+    <p><strong>5.</strong> Realiza la <a href='https://milq.github.io/cursos/dwes/ud/2'>aplicación web</a> (<em>sistema de test online</em>, <em>reservas online de coches</em> o <em>pizzería online</em>) que no realizaste en la tarea anterior pero esta vez usando (además de bases de datos y sesiones) <em>cookies</em> para guardar la solicitud o pedido y funciones <em>hash</em> para almacenar las contraseñas de los usuarios.</p>
+
+<!--    <p><strong>6.</strong> Crea una aplicación web con Laravel completando el siguiente <a href='https://milq.github.io/cursos/dwes/ud/3/laravel'>tutorial</a>.</p>
 
     <p><strong>7 (ampliación).</strong> Crea una aplicación web <a href='http://en.wikipedia.org/wiki/create,_read,_update_and_delete'>CRUD</a> usando <a href='https://laravel.com'>Laravel</a> de una organización ficticia sobre una de estas temáticas:</p>
 
@@ -53,10 +55,26 @@
       <li><strong>Sobre nosotros:</strong> descripción y fines de la organización.</li>
       <li><strong>Contacto:</strong> datos de contacto para comunicarse con la organización.</li>
     </ul>
-
+-->
     <h2>Evaluación</h2>
 
-	<p>El profesor descomprimirá el <em>zip</em> entregado, moverá la carpeta descomprimida a <em>htdocs</em> y abrirá <em>inicio.html</em>. Desde ahí accederá a las diferentes actividades para evaluar su funcionamiento: algunas enlazarán en local y otras a Heroku, según corresponda. Por último, el profesor analizará y evaluará el código.</p>
+    <h3>Entrega</h3>
+
+    <ol>
+      <li>La estructura de archivos y carpetas debe quedar <a href='estructura.txt'>así</a>.</li>
+      <li>La página <em>inicio.html</em> permitirá acceder a todas las actividades.</li>
+      <li>El <em>script</em> <a href='inicio.sql'><em>inicio.sql</em></a> creará las dos bases de datos con sus tablas, inserciones y restricciones necesarias.</li>      
+      <li>El profesor descomprimirá el ZIP en <em>htdocs</em>, iniciará XAMPP, entrará en PhpMyAdmin, ejecutará/importará el <em>script</em> <em>inicio.sql</em> y abrirá <em>inicio.html</em> desde <em>localhost</em>.</li>
+    </ol>
+
+    <h3>Criterios de calificación</h3>
+
+	<ul>
+	  <li>Correcto funcionamiento de las actividades: <strong>hasta 4 puntos</strong>.</li>
+	  <li>Modelo de datos adecuado e implementación correcta del modelo de base de datos: <strong>hasta 2 puntos</strong>.</li>
+	  <li>Correcto funcionamiento de las sesiones (inicio, cierre, variables), <em>cookies</em> y <em>hash</em>: <strong>hasta 2 puntos</strong>.</li>
+      <li>Principios de <a href='https://en.wikipedia.org/wiki/Web_design'>diseño web</a> (interfaz de usuario, experiencia de usuario, navegabilidad, interactividad, usabilidad, diseño gráfico web...) y validación de datos (filtrado, saneamiento, etc.): <strong>hasta 2 puntos</strong>.</li>
+	</ul>
 
     <p><a href='../../index.html'>Volver</a>.</p>
 
