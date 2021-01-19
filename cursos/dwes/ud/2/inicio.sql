@@ -30,7 +30,7 @@ USE ud2_reservas;
 
 -- -------------- UD2: PIZZERÍA ONLINE ---------------------------------
 
-USE ud2_pizzeria;
+USE ud2_restaurante;
 
 -- Pon aquí tus CREATE TABLE, INSERT INTO y restricciones necesarias.
 
