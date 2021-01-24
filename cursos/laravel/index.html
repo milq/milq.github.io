@@ -1,0 +1,120 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>PHP orientado a objetos e introducción al framework web MVC - Manuel Ignacio López Quintero</title>
+    <link rel='stylesheet' href='../../src/css/simple.css' />
+  </head>
+
+  <body>
+    <h1>4. PHP OOP e introducción al <em>framework</em> web MVC</h1>
+
+    <h2>Contenido</h2>
+
+    <ol>
+      <li><a href='https://en.wikipedia.org/wiki/Business_logic'>Lógica de negocio</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>.</li>
+      <li><a href='https://laravel.com/docs'>Laravel</a>.</li>
+    </ol>
+
+    <h2 id='a'>Actividades - Opción A</h2>
+
+    <p>Crea una página <strong>inicio.html</strong> que enlazca a las siguientes webs a realizar:</p>
+
+    <h3>Introducción (opcional)</h3>
+
+    <p>Crea una web en HTML + CSS + PHP con las siguientes pestañas:<br />
+    <strong>a)</strong> Resuelve los últimos cinco de estos <a href='https://milq.github.io/cursos/fundprog/ud/06.html'>ejercicios sobre clases</a> y mira este <a href='https://www.youtube.com/watch?v=0sHSrqyZCnM'>vídeo</a>.<br />
+    <strong>b)</strong> Responde: ¿en qué consiste el patrón de arquitectura de software <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>? ¿Qué es un <a href='https://en.wikipedia.org/wiki/Web_framework'><em>framework</em> web</a>? ¿Qué es <a href='https://en.wikipedia.org/wiki/Laravel'>Laravel</a>? ¿Qué otros <em>framework</em> web siguen, además de Laravel, el patrón MVC? Para la resolución de las preguntas puedes ayudarte de los enlaces proporcionados y de este <a href='https://www.youtube.com/watch?v=SbdbHvf5b7c'>tutorial</a>.<br />
+    <strong>c)</strong> Indica las diferentes formas de <a href='https://laravel.com/docs/installation'>instalar Laravel</a> (<a href='https://documentacion-laravel.com/installation.html'>español</a>). Puedes ayudarte de este <a href='https://milq.github.io/cursos/dwes/ud/3/laravel'>tutorial</a> o de estos vídeos: <a href='https://www.youtube.com/watch?v=l9iOi4UGtCE'>1</a>, <a href='https://www.youtube.com/watch?v=PuCdTAayogg'>2</a> y <a href='https://www.youtube.com/watch?v=Wa1cG8kITqc'>3</a>.</p>
+
+    <h3>1. Rutas y controladores</h3>
+
+    <p>&bull; ¿Cómo funcionan las <a href='https://laravel.com/docs/routing'>rutas</a> (<a href='https://documentacion-laravel.com/routing.html'>español</a>) en Laravel?<br />
+    &bull; ¿Cómo funcionan los <a href='https://laravel.com/docs/controllers'>controladores</a> (<a href='https://documentacion-laravel.com/controllers.html'>español</a>) en Laravel?</p>
+
+    <p><strong>2.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
+    <strong>a)</strong> Completa este <a href='https://www.youtube.com/watch?v=Yn23xVjaSQw'>tutorial</a> para crear las rutas <em>/</em>, <em>/sobrenosotros</em>, <em>/contacto</em>, <em>/foro</em> y <em>/post/{id}/{nombre}</em>.<br />
+    <strong>b)</strong> Completa este <a href='https://www.youtube.com/watch?v=PqFGnXCJl1E'>tutorial</a> para crear el controlador <em>EjemploController</em> y la ruta <em>/inicio</em>.<br />
+    <strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=g6uCxmXsUZ4'>tutorial</a> para crear el controlador <em>Ejemplo2Controller</em> usando <em>artisan</em> y el controlador <em>Ejemplo3Controller</em> usando <em>artisan</em> con la opción <em>--resource</em>.<br />
+    <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=RbC_u4jOaZI'>tutorial</a> para crear el controlador <em>PaginasController</em> que muestre las páginas básicas de un sitio web.<br />
+    <strong>e)</strong> Completa este <a href='https://www.youtube.com/watch?v=E0Y09v05RAk'>tutorial</a> para crear las rutas típicas de <a href='https://en.wikipedia.org/wiki/Create,_read,_update_and_delete'>CRUD</a> y verlas con <em>php artisan route:list</em>.</p>
+
+    <h3>2. Bootstrap y Blade</h3>
+
+    <p>&bull; ¿Qué es un <a href='https://en.wikipedia.org/wiki/CSS_framework'><em>framework</em> CSS</a>? ¿Qué es <a href='https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)'>Bootstrap</a>? ¿Cuántos más <em>framework</em> CSS existen y cuáles son?<br />
+    &bull; ¿Qué es un <a href='https://en.wikipedia.org/wiki/Web_template_system'>sistema o motor de plantillas web</a>? ¿Qué es <a href='https://laravel.com/docs/blade'>Blade</a> (<a href='https://documentacion-laravel.com/blade.html'>español</a>)? ¿Cuántos más sistemas o <a href='https://ouremworld.com/articles/read/847/top-7-best-open-source-php-template-engines'>motores de plantillas web PHP</a> existen y cuáles son?</p>
+
+    <p><strong>3.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
+    <strong>a)</strong> Completa este <a href='https://www.youtube.com/watch?v=Zj936-usB5w'>tutorial</a> para crear las rutas <em>/</em>, <em>/crear</em>, <em>/articulos</em> y <em>/mostrar</em> y enlazar a <a href='https://en.wikipedia.org/wiki/BootstrapCDN'>BootstrapCDN</a> en las diferentes vistas.<br />
+    <strong>b)</strong> Completa este <a href='https://www.youtube.com/watch?v=UbJ4KBEbthk'>tutorial</a> para crear un menú de navegación descargando y usando <a href='https://getbootstrap.com'>Bootstrap</a> en vez de BootstrapCDN.<br />
+    <strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=QgUVYEZM7nc'>tutorial</a> para crear una plantilla base y tres plantillas descendientes: <em>contenedor</em>, <em>infoGeneral</em> y <em>pie</em>.<br />
+    <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=71mTVdV6E9Q'>tutorial</a> para mostrar desde una plantilla los valores del <em>array</em>: <em>$alumnos</em>.<br />
+    <strong>e)</strong> Completa este <a href='https://www.youtube.com/watch?v=TwONvn1r7rA'>tutorial</a> combinar las plantillas hechas Blade con Bootstrap.</p>
+
+    <h3>3. Bases de datos y Eloquent</h3>
+
+    <p>&bull; ¿Cómo se configuran las <a href='https://laravel.com/docs/database'>bases de datos</a> [<a href='https://documentacion-laravel.com/database.html'><em>es</em></a>] y se realizan las <a href='https://laravel.com/docs/queries'>consultas</a> [<a href='https://documentacion-laravel.com/queries.html'><em>es</em></a>] en Laravel? ¿Cómo funcionan las <a href='https://laravel.com/docs/pagination'>paginaciones</a> [<a href='https://documentacion-laravel.com/pagination.html'><em>es</em></a>] y <a href='https://laravel.com/docs/migrations'>migraciones</a> [<a href='https://documentacion-laravel.com/migrations.html'><em>es</em></a>] en Laravel? ¿Qué es el <a href='https://laravel.com/docs/seeding'><em>seeding</em></a> [<a href='https://documentacion-laravel.com/seeding.html'><em>es</em></a>] en Laravel?<br />
+    &bull; ¿Qué es un <a href='https://en.wikipedia.org/wiki/Object-relational_mapping'>ORM</a>? ¿Qué es <a href='https://laravel.com/docs/eloquent'>Eloquent</a> [<a href='https://documentacion-laravel.com/eloquent.html'><em>es</em></a>]? ¿Cómo se establecen las <a href='https://laravel.com/docs/eloquent-relationships'>relaciones</a> [<a href='https://documentacion-laravel.com/eloquent-relationships.html'><em>es</em></a>] en Eloquent?</p>
+
+    <p><strong>4.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
+    <strong>a)</strong> Visualiza este <a href='https://www.youtube.com/watch?v=V5WaW5VaWFY'>tutorial</a> y lee este <a href='https://milq.github.io/cursos/dwes/ud/3/laravel/3.html'>tutorial</a> para aprender a configurar la base de datos en Laravel.<br />
+    <strong>b)</strong> Completa este <a href='https://www.youtube.com/watch?v=5rc3fnYGV3Y'>tutorial</a>, este <a href='https://www.youtube.com/watch?v=N5NX02arKaQ'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=XrNlp_VqtF0'>tutorial</a> para migrar en Laravel a la base de datos.<br />
+    <strong>c)</strong> Visualiza este <a href='https://www.youtube.com/watch?v=2OjJuC26YSs'>tutorial</a> para aprender a ejecutar <a href='https://laravel.com/docs/database#running-queries'>consultas SQL nativas</a> [<a href='https://documentacion-laravel.com/database.html#ejecutando-consultas-sql-nativas'><em>es</em></a>] en Laravel.<br />
+    <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=LHJjFZsd5Iw'>tutorial</a> para seleccionar registros en Eloquent.<br />
+    <strong>e)</strong> Completa este <a href='https://www.youtube.com/watch?v=5z32fnHc4X8'>tutorial</a> para seleccionar registros con filtros en Eloquent.<br />
+    <strong>f)</strong> Completa este <a href='https://www.youtube.com/watch?v=8hD_C5BMra0'>tutorial</a> para insertar y actualizar registros en Eloquent.<br />
+    <strong>g)</strong> Completa este <a href='https://www.youtube.com/watch?v=N8_FAnCQ5Cs'>tutorial</a> para actualizar en masa, borrar y crear registros en Eloquent.<br />
+    <strong>h)</strong> Completa este <a href='https://www.youtube.com/watch?v=Cn5fUt7l4mk'>tutorial</a> para realizar <a href='https://laravel.com/docs/eloquent#soft-deleting'><em>soft deleting</em></a> [<a href='https://documentacion-laravel.com/eloquent.html#eliminacion-logica-soft-deleting'><em>es</em></a>] en Eloquent.<br />
+    <strong>i)</strong> Completa este <a href='https://www.youtube.com/watch?v=DkxHCVGkpwE'>tutorial</a> para crear una relación uno a uno en Eloquent.<br />
+    <strong>j)</strong> Completa este <a href='https://www.youtube.com/watch?v=reUaUQKP0bA'>tutorial</a> para crear una relación uno a uno inverso en Eloquent.<br />
+    <strong>k)</strong> Completa este <a href='https://www.youtube.com/watch?v=w02iIRjyZ28'>tutorial</a> para crear una relación uno a varios en Eloquent.<br />
+    <strong>l)</strong> Completa este <a href='https://www.youtube.com/watch?v=GzCsNH29KtE'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=Dge5VipF4RM'>tutorial</a> para crear una relación varios a varios en Eloquent.<br />
+    <strong>k)</strong> Completa este <a href='https://www.youtube.com/watch?v=tcjY_tZg6fc'>tutorial</a> para crear relaciones polifórmicas en Eloquent.
+    </p>
+
+    <p><strong>Tinker (opcional)</strong> Visualiza este <a href='https://www.youtube.com/watch?v=XPiW_HcJEpM'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=EuErtURpJFs'>tutorial</a> para aprender a usar la herramienta <a href='https://laravel.com/docs/artisan#tinker'>Tinker</a> [<a href='https://documentacion-laravel.com/artisan.html#tinker-repl'><em>es</em></a>] de Artisan.</p>
+
+    <h3>4. CRUD con formularios</h3>
+
+    <p><strong>5.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
+    <strong>a)</strong> Usa este <a href='https://milq.github.io/cursos/dwes/ud/3/laravel'>tutorial</a> realizado o completa estos tutoriales para crear un CRUD con formularios: <a href='https://www.youtube.com/watch?v=rUaiPn8hQeA'>1</a>, <a href='https://www.youtube.com/watch?v=TzJlpzJD-lk'>2</a>, <a href='https://www.youtube.com/watch?v=yCP4-3G-ZGs'>3</a>, <a href='https://www.youtube.com/watch?v=Ya3Q1ogpF_M'>4</a>, <a href='https://www.youtube.com/watch?v=tewkuz3L-1I'>5</a>, <a href='https://www.youtube.com/watch?v=3lldzQR0ESY'>6</a>, <a href='https://www.youtube.com/watch?v=k2wLuVZ9a4g'>7</a> y <a href='https://www.youtube.com/watch?v=ZomZoaSCE9Y'>8</a>.<br />
+    <strong>b)</strong> (<strong>opcional</strong>)</strong> Completa este <a href='https://www.youtube.com/watch?v=nM_AFs-brQs'>tutorial</a>, este <a href='https://www.youtube.com/watch?v=GmeIoH1pL_8'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=VGft2SXUtyk'>tutorial</a> para aprender a usar el paquete <a href='https://laravelcollective.com/docs/6.0/html'>Forms &amp; HTML</a> de <a href='https://laravelcollective.com'>LaravelCollective</a>.<br />
+    <strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=jEqnHCgh7MY'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=hnyGzVr4Snw'>tutorial</a> para validar formularios desde Laravel.<br />
+    <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=-bCdEb3K3uE'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=5YIAZ1EuqHQ'>tutorial</a> para subir imágenes a una base de datos y mostrarlas (sin LaravelCollective: <em>&lt;form action='/productos' method='post' enctype='multipart/form-data'&gt;</em>).</p>
+
+    <h3>5. Autenticación y sesiones</h3>
+
+    <p><strong>6.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
+    <strong>a)</strong> Completa este <a href='https://www.youtube.com/watch?v=LHhrr8uNd-0'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=sPkD-CnVY6s'>tutorial</a> para crear un sistema de registro de usuarios e inicio de sesión (Laravel 6: <em>composer require laravel/ui</em> &rarr; <em>php artisan ui vue --auth</em> y enlazar a Bootstrap en las vistas).<br />
+    <strong>b)</strong> Completa este <a href='https://www.youtube.com/watch?v=uUsuPe-qtAs'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=y4KJHsljuhE'>tutorial</a> para establecer roles de usuario y zona de usuarios registrados y no registrados.<br />
+    <strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=kJLv0chFd5k'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=IeU9b5ytQEE'>tutorial</a> para manejar sesiones.<br />
+    <strong>d) (<strong>opcional</strong>)</strong> Completa este <a href='https://www.youtube.com/watch?v=v7OBpyBeaeA'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=zUvPWXwURxw'>tutorial</a> para enviar correos electrónicos.
+    </p>
+
+    <h2 id='b'>Actividades - Opción B</h2>
+
+	<p>Crea una aplicación web en Laravel. Elige <strong>uno</strong> de los siguientes temas:</p>
+
+    <h3>1. Compra <em>online</em> de entradas de cine</h3>
+
+    <p>El usuario (cliente) se registrará, iniciará sesión y realizará una compra <em>online</em> de una o varias entradas de cine de un catálogo de 5 películas diferentes. El administrador (empresario) iniciará sesión y podrá comprobar todas las entradas compradas para cada película y qué clientes lo compraron. El administrador también podrá añadir y eliminar nuevas películas.</p>
+
+    <h3>2. Biblioteca <em>online</em></h3>
+
+    <p>El usuario (cliente) se registrará, iniciará sesión y realizará un préstamo <em>online</em> de uno o varios libros desde y hasta una fecha determinada a partir de un catálogo de 10 libros diferentes. El usuario no podrá reservar un libro determinado si éste se encuentra actualmente prestado. El administrador (bibliotecario) iniciará sesión y podrá comprobar todos los libros prestados, en qué fechas y qué clientes lo solicitaron. El administrador también podrá añadir y eliminar nuevos libros.</p>
+
+    <h3>3. Foro básico</h3>
+
+    <p>El usuario (cliente) se registrará, iniciará sesión y abrirá un hilo de conversación, responderá en otro hilo de conversación ya existente y/o dara <em>me gusta</em> a un hilo o respuesta. El administrador iniciará sesión y podrá comprobar el número de mensajes de cada usuario y el número de <em>me gusta</em> en total recibidos. El administrador también podrá iniciar hilos y responder a hilos.</p>
+
+    <h2>Evaluación</h2>
+
+    <p>El profesor descomprimirá el <em>zip</em> entregado, moverá la carpeta descomprimida a <em>htdocs</em> y abrirá <em>inicio.html</em>. Desde ahí accederá a las diferentes actividades para evaluar su funcionamiento: algunas enlazarán en local y otras a Heroku, según corresponda. Por último, el profesor analizará y evaluará el código.</p>
+
+    <p><a href='../../index.html'>Volver</a>.</p>
+
+    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+
+  </body>
+</html>

@@ -23,6 +23,10 @@ a {
   text-decoration: none;
 }
 
+.center {
+  text-align: center;
+}
+
 code {
   font-family: 'Menlo', 'Fira Mono', monospace;
   padding: .05em .1em;
@@ -44,8 +48,8 @@ img {
   padding: 0 0.2em;
   margin: 0 auto;
   border: 1px solid;
-  border-radius: 5px;  
-  
+  border-radius: 5px;
+
 }
 
 .cookies_policy + footer {
