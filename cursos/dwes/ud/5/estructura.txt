@@ -1,0 +1,8 @@
+xxx_yyy_z
+├── 1.pdf
+├── 2.pdf
+├── 3.pdf
+├── 4.pdf
+└── 5.pdf
+
+El nombre de la carpeta será 'xxx_yyy_z', donde 'xxx' serán las tres primeras letras de tu primer apellido, 'yyy' las tres primeras letras de tu segundo apellido y 'z' la primera letra de tu primer nombre. Todo en minúsculas.
