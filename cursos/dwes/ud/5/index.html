@@ -11,7 +11,7 @@
 
     <h2 class='center' id='a'>Actividades</h2>
 
-    <h3 id='1'>1. Servicios web</h3>
+    <h3 id='a1'>1. Servicios web</h3>
 
     <p><strong>1.</strong> Realiza los siguientes ejercicios:<br />
     <strong>a)</strong> Lee, investiga y explica con tus propias palabras lo que es un <a href='https://es.wikipedia.org/wiki/Servicio_web'>servicio web</a> (<a href='https://www.youtube.com/watch?v=L37xAaIGiIY'>vídeo</a>) (<a href='servicio_web.png'>diagrama</a>).<br />
@@ -20,7 +20,7 @@
 	<strong>d)</strong> Describe la <a href='https://www.guru99.com/web-service-architecture.html#4'>arquitectura</a> (<a href='servicio_web_arquitectura.png'>diagrama</a>) de un servicio web y qué tres roles y tres operaciones intervienen.<br />	
 	<strong>e)</strong> Indica los dos <a href='https://www.guru99.com/web-service-architecture.html#7'>tipos</a> de servicios web más populares en la actualidad.</p>
 
-    <h3 id='2'>2. SOAP</h3>
+    <h3 id='a2'>2. SOAP</h3>
 
     <p><strong>2.</strong> Realiza los siguientes ejercicios:<br />
     <strong>a)</strong> Lee, investiga y explica con tus propias palabras qué es el protocolo de mensajes <a href='https://en.wikipedia.org/wiki/SOAP'>SOAP</a> (<a href='servicio_web_soap.png'>diagrama</a>).<br />
@@ -28,7 +28,7 @@
 	<strong>c)</strong> Muestra un <a href='https://www.w3schools.com/xml/xml_soap.asp'>ejemplo</a> de petición SOAP así como una respuesta del servidor a dicha petición.<br />
 	<strong>c)</strong> Explica qué es <a href='https://en.wikipedia.org/wiki/Web_Services_Description_Language'>WSDL</a> y <a href='https://en.wikipedia.org/wiki/Web_Services_Discovery#Universal_Description_Discovery_and_Integration'>UDDI</a> y explica detalladamente el <a href='servicio_web_soap_arquitectura.png'>funcionamiento</a> de un servicio web SOAP .</p>
 
-    <h3 id='3'>3. REST y RESTful</h3>
+    <h3 id='a3'>3. REST y RESTful</h3>
 
     <p><strong>3.</strong> Realiza los siguientes ejercicios:<br />
     <strong>a)</strong> Lee, investiga y explica con tus propias palabras esta <a href='https://en.wikipedia.org/wiki/Software_architecture'>arquitectura de software</a>: <a href='https://en.wikipedia.org/wiki/Representational_state_transfer'>REST</a>.<br />
@@ -36,7 +36,7 @@
 	<strong>c)</strong> Explica las seis <a href='https://en.wikipedia.org/wiki/Representational_state_transfer#Architectural_constraints'>restricciones</a> de arquitectura REST que tiene que <a href='https://restfulapi.net/rest-architectural-constraints/'>cumplir</a> un servicio web RESTful.<br />
 	<strong>d)</strong> Señala las <a href='https://www.guru99.com/comparison-between-web-services.html'>diferencias</a> entre REST y SOAP, cuándo es mejor uno que otro y qué retos afrontan sus API.</p>
 
-    <h3 id='4'>4. HTTP RESTful API</h3>
+    <h3 id='a4'>4. HTTP RESTful API</h3>
 
     <p><strong>4.</strong> Realiza los siguientes ejercicios:<br />
     <strong>a)</strong> Define qué es una <a href='https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services'>RESTful API</a>.<br />
@@ -47,18 +47,20 @@
 	<strong>f)</strong> Explica detalladamente los <a href='httprestfulapiexamplestable1.png'>ejemplos</a> de esta tabla para el recurso Order.<br />
 	<strong>g)</strong> Explica detalladamente todas las <a href='httprestfulapiexamplestable2.png'>combinaciones</a> de URI y métodos HTTP para el recurso User.</p>
 
-    <h3 id='5'>5. Uso de HTTP RESTful API en servicios web</h3>
+    <h3 id='a5'>5. Uso de HTTP RESTful API en servicios web</h3>
 
 	<p><strong>5.</strong> Realiza los siguientes ejercicios:<br />
-	<strong>a)</strong> Describe el servicio web <a href='https://jsonplaceholder.typicode.com'>JSONPlaceholder</a>, enumera sus recursos, relaciones y pon rutas de ejemplo.<br />
+	<strong>a)</strong> Di en qué consiste el servicio web <a href='https://jsonplaceholder.typicode.com'>JSONPlaceholder</a>, enumera sus recursos, y pon ejemplos de rutas.<br />
+	<!-- <strong>b)</strong> Indica de qué trata las dos tecnologías en que se basa JSONPlaceholder: <a href='https://github.com/typicode/json-server'>JSON Server</a> y <a href='https://github.com/typicode/lowdb'>LowDB</a>.<br /> -->
 	<strong>b)</strong> Explica qué es <a href='https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API'>Fetch API</a> y ejecuta los ejemplos que viene en la <a href='https://jsonplaceholder.typicode.com/guide/'>guía</a> del servicio web JSONPlaceholder.<br />
-
-	<strong>a)</strong> Explica el servicio web <a href='https://jsonplaceholder.typicode.com'>JSONPlaceholder</a>, enumera sus recursos y relaciones y pon ejemplos de rutas.<br />
-	
-	Consume el siguiente <a href='https://jsonplaceholder.typicode.com'>servicio web</a> (que tiene estos <a href='recursos.png'>recursos</a> y estos ejemplos de <a href='rutas.png'>rutas</a> URI) y muestra en una página web:<br />
-	<strong>a)</strong> Usando Fetch API, haz una petición con método HTTP GET con URI <em>/posts/10</em> a <a href='https://jsonplaceholder.typicode.com/'>JSONPlaceholder</a>.<br />
-	<strong>a)</strong> Usando Fetch API, obtén todos los comentarios de la publicación 8 de JSONPlaceholder.<br />
-	<strong>a)</strong> Usando Fetch API, obtén todas las publicaciones del usuario 1 de JSONPlaceholder.</p>
+	<strong>c)</strong> Usando Fetch API, haz una petición con método HTTP GET con URI <em>/posts/10</em> a JSONPlaceholder.<br />
+	<strong>d)</strong> Usando Fetch API, obtén todos los comentarios de la publicación 8 de JSONPlaceholder.<br />
+	<strong>e)</strong> Usando Fetch API, obtén todas las publicaciones del usuario 1 de JSONPlaceholder.<br />
+	<strong>f)</strong> Busca tres clientes REST <em>online</em>, lístalos y usa uno para obtener todos las <em>TODO's</em> de JSONPlaceholder.<br />
+	<strong>g)</strong> Usando Fetch API o un cliente REST <em>online</em>, obtén todas los <em>posts</em> del usuario 1 de JSONPlaceholder.<br />
+	<strong>h)</strong> Usando Fetch API o un cliente REST <em>online</em>, crea un nuevo comentario a un <em>post</em> de JSONPlaceholder.<br />
+	<strong>i)</strong> Usando Fetch API o un cliente REST <em>online</em>, actualiza o modifica un <em>post</em> de JSONPlaceholder.<br />
+	<strong>j)</strong> Usando Fetch API o un cliente REST <em>online</em>, borra el usuario 5 de JSONPlaceholder.</p>
 
     <h2 class='center'>Evaluación</h2>
 
