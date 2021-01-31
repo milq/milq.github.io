@@ -1,0 +1,3 @@
+Declarar (o definir) es identificar con un nombre y un tipo a una variable. Una variable se declara para indicarle al programa a partir de qué lugar empieza a existir, qué nombre tendrá y qué tipo de datos almacenará.
+
+Inicializar significa asignarle un valor inicial a una variable. En otras palabras, significa darle un valor de inicio a tus variables para comenzar a realizar operaciones con ellas. En otras palabras, la asignación de un valor inicial a una variable se llama inicialización.
