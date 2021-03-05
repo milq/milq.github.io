@@ -4,17 +4,17 @@
     <meta charset='utf-8' />
     <title>Tutorial de Laravel</title>
     <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
-	<link rel='stylesheet' href='gruvbox-light.css' />
-	<script src='highlight.pack.js'></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+    <link rel='stylesheet' href='gruvbox-light.css' />
+    <script src='highlight.pack.js'></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
 
   <body>
     <h1>Tutorial de Laravel</h1>
 
-	<h2>10. Últimos retoques</h2>
+    <h2>10. Últimos retoques</h2>
 
-	<p>Como puedes observar, cuando borras un mensaje se dirige al <em>endpoint</em> de borrado (<em>DELETE /productos/{id}: mapeado al método destroy() de ProductoController</em>) como tiene que ser. Sin embargo, lo ideal, por cuestión de usabilidad, es que el usuario al pulsar borrar se redirija a la página principal. Para ello, abre <code>app/Http/Controllers/ProductoController.php</code> y actualiza el método <em>destroy()</em>:</p>
+    <p>Como puedes observar, cuando borras un mensaje se dirige a <em>DELETE /productos/{id} (mapeado HTTP RESTful API al método destroy() de ProductoController</em>) como tiene que ser. Sin embargo, lo ideal, por cuestión de usabilidad, es que el usuario al pulsar borrar se redirija a la página principal. Para ello, abre <code>app/Http/Controllers/ProductoController.php</code> y actualiza el método <em>destroy()</em>:</p>
 
 <pre class='php'><code>public function destroy($id)
 {
@@ -25,7 +25,7 @@
 
     <p>En <strong>negrita</strong> está el código añadido. Si te fijas, es lo mismo que ya has hecho para el método de <em>update()</em>.</p>
 
-	<p>Si te fijas, las redirecciones vienen acompañadas de un mensaje de texto de tipo <em>success</em> (éxito). Vamos a actualizar la vista <code>resources/views/productos/index.blade.php</code> para mostrar este tipo de mensajes:</p>
+    <p>Si te fijas, las redirecciones vienen acompañadas de un mensaje de texto de tipo <em>success</em> (éxito). Vamos a actualizar la vista <code>resources/views/productos/index.blade.php</code> para mostrar este tipo de mensajes:</p>
 
 <pre class='php'><code>&lt;div class='col-sm-12'&gt;
   &lt;h1 class='display-3'&gt;Productos&lt;/h1&gt;
@@ -37,15 +37,15 @@
   &lt;table class='table table-striped'&gt;
     &lt;thead&gt;</code></pre>
 
-	<p>En <strong>negrita</strong> está el código añadido. Por último, en esta misma plantilla y justo debajo del código anterior, vamos a añadir el botón de crear un nuevo producto:</p>
-	
+    <p>En <strong>negrita</strong> está el código añadido. Por último, en esta misma plantilla y justo debajo del código anterior, vamos a añadir el botón de crear un nuevo producto:</p>
+
     <pre class='php'><code>&lt;/div&gt;
   @endif
   <strong>&lt;p&gt;&lt;a href="{{ route('productos.create')}}" class='btn btn-primary'&gt;Añadir&lt;/a&gt;&lt;/p&gt;</strong>
   &lt;table class='table table-striped'&gt;
     &lt;thead&gt;</code></pre>
 
-	<p>En <strong>negrita</strong> está el código añadido. Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000/productos</code>.</p>	
+    <p>En <strong>negrita</strong> está el código añadido. Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000/productos</code>.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 

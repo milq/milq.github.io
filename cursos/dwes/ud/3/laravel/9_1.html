@@ -48,11 +48,11 @@
         'título'=&gt;'required|max:100',
         'descripción'=&gt;'required|max:255',
         'precio'=&gt;'required|numeric'
-    ]);</strong>
+    ]);
 
     Producto::create($producto_data);
 
-    <strong>return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
+    return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
 }</code></pre>
 
     <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>productos.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/productos/create.blade.php</code>.</p>

@@ -4,9 +4,9 @@
     <meta charset='utf-8' />
     <title>Tutorial de Laravel</title>
     <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
-	<link rel='stylesheet' href='gruvbox-light.css' />
-	<script src='highlight.pack.js'></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+    <link rel='stylesheet' href='gruvbox-light.css' />
+    <script src='highlight.pack.js'></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
 
   <body>
@@ -18,9 +18,9 @@
 
     <p>Vamos a implementar el método de lectura para mostrar los productos guardados en la base de datos.</p>
 
-	<p>Para ello, abre <code>app/Http/Controllers/ProductoController.php</code> y actualízalo:</p>
+    <p>Para ello, abre <code>app/Http/Controllers/ProductoController.php</code> y actualízalo:</p>
 
-	<pre class='php'><code>public function index()
+    <pre class='php'><code>public function index()
 {
 <strong>$productos = Producto::all();
 
@@ -69,7 +69,7 @@ return view('productos.index', compact('productos'));</strong>
 &lt;/div&gt;
 @endsection</code></pre>
 
-	<p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000/productos</code>.</p>
+    <p>Vamos a comprobar que funciona. Iniciamos el servidor de desarrollo de Laravel: <code>php artisan serve</code>. Abrimos el navegador y entramos en <code>http://localhost:8000/productos</code>.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 
