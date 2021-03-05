@@ -4,9 +4,9 @@
     <meta charset='utf-8' />
     <title>Tutorial de Laravel</title>
     <style>body{font-family:'Segoe UI','Open Sans',sans-serif}a,a:link,a:visited{text-decoration:none}code{font-size:1.1em;background-color:#fbf1c7}</style>
-	<link rel='stylesheet' href='gruvbox-light.css' />
-	<script src='highlight.pack.js'></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+    <link rel='stylesheet' href='gruvbox-light.css' />
+    <script src='highlight.pack.js'></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </head>
 
   <body>
@@ -14,16 +14,18 @@
 
     <h2>6. Define el modelo</h2>
 
-    <p>Abre el código en <code>app/Producto.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
+    <p>Abre el código en <code>app/Models/Producto.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
 
     <pre><code class='php'>&lt;?php
 
-namespace App;
+namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Producto extends Model
 {
+    use HasFactory;
     <strong>protected $fillable = [
         'título',
         'descripción',
@@ -31,7 +33,7 @@ class Producto extends Model
     ];</strong>
 }</code></pre>
 
-	<p>En <strong>negrita</strong> está el código añadido.</p>
+    <p>En <strong>negrita</strong> está el código añadido.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 

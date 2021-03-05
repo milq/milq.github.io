@@ -16,42 +16,43 @@
 
     <h3>9.1 Implementa C (Create)</h3>
 
-    <p><code>ProductoController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /productos</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /productos/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /productos</em>.</p>
+<!--    <p><code>ProductoController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /productos</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /productos/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /productos</em>.</p>
 
     <p>¿<a href='https://es.stackoverflow.com/questions/51758/qu%C3%A9-es-un-entry-point-y-un-end-point'>Qué es <em>entry point</em> y un <em>end point</em></a>?</p>
-
+-->
+    
+    <p><code>ProductoController</code> incluye el método <em>create()</em> que es llamado por la RESTful HTTP API <em>GET /productos/create</em> (ver <em>routes/web.php</em>) y se usará para servir el formulario HTML usado para enviar datos y el método <em>store()</em> que es mapeado por la RESTful HTTP API <em>POST /productos</em> (ver <em>routes/web.php</em>) y se usará para guardar un producto en la base de datos desde los datos enviados desde el formulario.</p>
+       
     <p>Vamos a implementar estos dos métodos:</p>
 
+<!--
     <p>Reabre el controlador <code>app/Http/Controllers/ProductoController.php</code> e importa, al principio del código, el modelo <code>Producto</code>:</p>
 
     <pre><code><strong>use App\Producto;</strong></code></pre>
+-->
 
-    <p>En <strong>negrita</strong> está el código añadido. Ahora localiza el método <em>store()</em> y actualízalo:</p>
+	<p>Reabre el controlador <code>app/Http/Controllers/ProductoController.php</code>.</p>
 
-<pre><code class='php'>public function store(Request $request)
-{
-    <strong>$request-&gt;validate([
-        'título'=&gt;'required',
-        'descripción'=&gt;'required',
-        'precio'=&gt;'required'
-    ]);</strong>
-
-    <strong>$producto = new Producto([
-        'título' =&gt; $request-&gt;get('título'),
-        'descripción' =&gt; $request-&gt;get('descripción'),
-        'precio' =&gt; $request-&gt;get('precio')
-    ]);</strong>
-
-    <strong>$producto-&gt;save();</strong>
-
-    <strong>return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
-}</code></pre>
-
-<p>Ahora, localiza el método <em>create()</em> y actualízalo:</p>
+    <p>Localiza el método <em>create()</em> y actualízalo:</p>
 
 <pre><code class='php'>public function create()
 {
     <strong>return view('productos.create');</strong>
+}</code></pre>
+
+<p>En <strong>negrita</strong> está el código añadido. Ahora, localiza el método <em>store()</em> y actualízalo:</p>
+
+<pre><code class='php'>public function store(Request $request)
+{
+    <strong>$producto_data = $request-&gt;validate([
+        'título'=&gt;'required|max:100',
+        'descripción'=&gt;'required|max:255',
+        'precio'=&gt;'required|numeric'
+    ]);</strong>
+
+    Producto::create($producto_data);
+
+    <strong>return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
 }</code></pre>
 
     <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>productos.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/productos/create.blade.php</code>.</p>

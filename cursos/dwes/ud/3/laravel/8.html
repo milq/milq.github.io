@@ -14,19 +14,25 @@
 
     <h2>8. Crea las rutas</h2>
 
-    <p>Pero antes de añadir las implementaciones de los métodos CRUD, hay que crear las rutas. Para ello, abre el archivo <code>routes/web.php</code> y actualízalo:</p>
+    <p>Antes de añadir las implementaciones de los métodos CRUD, hay que crear las rutas para el modelo/entidad <code>Producto</code> como recurso. En la documentación oficial, exactamente <strong><a href='https://laravel.com/docs/controllers#resource-controllers'>aquí</a></strong>, tienes toda la información más detallada.</p>
+    
+    <p>Para empezar, abre el archivo <code>routes/web.php</code> y actualízalo:</p>
 
     <pre><code class='php'>&lt;?php
 
 use Illuminate\Support\Facades\Route;
 
+<strong>use App\Http\Controllers\ProductoController;</strong>
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-<strong>Route::resource('productos', 'ProductoController');</strong></code></pre>
+<strong>Route::resource('productos', ProductoController::class);</strong></code></pre>
 
-    <p>En <strong>negrita</strong> está el código añadido. Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductoController</em> que debes implementar más adelante:</p>
+
+
+    <p>En <strong>negrita</strong> está el código añadido (son dos líneas a añadir). Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductoController</em> que debes implementar más adelante:</p>
 
     <ul>
       <li><em>GET /productos</em>: mapeado al método <em>index()</em> de <em>ProductoController</em>.</li>
