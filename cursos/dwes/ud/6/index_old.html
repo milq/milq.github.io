@@ -1,0 +1,100 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>Aplicaciones web dinámicas con Laravel, Bootstrap y Vue - DWES</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
+    <link rel='stylesheet' href='../../../../src/css/simple.css' />
+  </head>
+
+  <body>
+
+    <h1>6. Aplicaciones web dinámicas con Laravel, Bootstrap y Vue</h1>
+
+    <p>Actualmente, un desarrollador web <a href='https://www.w3schools.com/whatis/whatis_fullstack.asp'><em>full stack</em></a> usa <em>frameworks</em> web tanto para <em>front end</em> (Bootstrap, Angular, Vue, etc.) como <em>back end</em> (Laravel, etc.). La opción más popular actualmente son aplicaciones web <a href='https://eN.wikipedia.org/wiki/Single-page_application'>SPA</a>, es decir, aplicaciones web que se cargan una sola vez. En SPA, la interacción con el servidor es asíncrona y para conseguirlo se utiliza la tecnología <a href='https://es.wikipedia.org/wiki/AJAX'>AJAX</a>. AJAX viene incorporado en muchos <em>frameworks</em> JavaScript como, por ejemplo, Vue. En este <a href='https://www.w3schools.com/xml/tryit.asp?filename=tryajax_database'>ejemplo</a> se puede observar cómo, mediante AJAX, se consultan datos a una base de datos de manera asíncrona.</p>
+
+    <p>Vue es un <em>framework</em> JavaScript que permite desarrollar aplicaciones <em>front end</em> e interactuar con el <em>back end</em> de manera asíncrona permitiendo crear aplicaciones web SPA.</p>
+
+    <!-- Esto es gracias a <a href='https://es.wikipedia.org/wiki/XMLHttpRequest'>XMLHttpRequest</a>, base del desarrollo web en .</p>-->
+
+    <h2>1. Instala Npm</h2>
+
+    <p>Para esta actividad, es necesario usar <a href='https://en.wikipedia.org/wiki/Npm_(software)'>Npm</a>, un sistema de gestión de paquetes de JavaScript. Npm es el equivalente de Composer para PHP. Npm se distribuye con Node.js, por tanto:</p>
+
+    <ol>
+      <li>Instala <a href='https://nodejs.org'>Node.js</a>:
+        <ul>
+          <li>Windows: mediante el <a href='https://nodejs.org/en/download' title='Instalador Node.js'>instalador</a> (versión LTS).</li>
+          <li>Debian/Ubuntu:
+            <ul>
+              <li>Instala las dependencias con <code>sudo apt-get install build-essential</code> y después entra como <em>root</em> (<code>su root</code>).</li>
+              <li>Ejecuta <code>curl -sL https://deb.nodesource.com/setup_12.x | bash -</code> y después <code>apt-get install -y nodejs</code>.</li>
+              <li>Sal de <em>root </em>con <code>exit</code>.</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Comprueba que funciona Node.js y Npm en la terminal ejecutando <code>node -v</code> y <code>npm -v</code> respectivamente en Windows o en Debian/Ubuntu.</li>
+    </ol>
+
+    <h2>2. Crea un proyecto en Laravel e instala en él Bootstrap y Vue.js con Laravel UI</h2>
+
+    <p>Laravel te facilita instalar y configurar automáticamente <a href='https://en.wikipedia.org/wiki/Front-end_web_development'><em>frontends</em></a> como Bootstrap y Vue. Para ello, consulta su <a href='https://laravel.com/docs/frontend'>documentación</a> que indica los siguientes pasos:</p>
+
+    <ol>
+      <li>Crea un proyecto en Laravel: <code>composer create-project --prefer-dist laravel/laravel ejemplo_vue</code>.</li>
+      <li>Entra en el proyecto e instala la dependencia Laravel UI: <code>composer require laravel/ui</code>.</li>
+      <li>Prepara la dependencia de Bootstrap y crea una estructura de autenticación con <code>php artisan ui bootstrap --auth</code>.</li>
+      <li>Prepara la dependencia de Vue.js y crea una estructura de autenticación con <code>php artisan ui vue --auth</code>. Di sí a todo.</li>
+      <li>Instala las dependencias preparadas con <code>npm install && npm run dev</code>.</li>
+      <li>Ejecuta <code>php artisan serve</code> y prueba con <code>http://localhost:8000</code>. Para probar la autenticación configura la base de datos antes.</li>
+    </ol>
+
+    <h2>3. Aprende Vue</h2>
+
+    <p>Entra en la página oficial de <a href='https://vuejs.org'>Vue</a> y visualiza el vídeo <strong>Why vue.js</strong>.</p>
+
+    <p>Completa este <a href='https://www.vuemastery.com/courses/intro-to-vue-js'>curso</a> introductorio:</p>
+
+    <ol>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance'>The Vue Instance</a> - La instancia Vue.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding'>Attribute Binding</a> - <em>Binding</em> de atributos.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/conditional-rendering'>Conditional Rendering</a> - Renderizado de condicionales.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/list-rendering'>List Rendering</a> - Renderizado de listas.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/event-handling'>Event Handling</a> - Manejo de eventos.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/class-&-style-binding'>Class &amp; Style Binding</a> - <em>Binding</em> de clases y estilos.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/vue-computed-properties'>Computed Properties</a> - Propiedades calculadas.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/components'>Components</a> - Componentes.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/communicating-events'>Communicating Events</a> - Eventos de comunicación.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/forms'>Forms</a> - Formularios.</li>
+    </ol>
+
+    <p>El procedimiento a realizar en cada lección es el siguiente:</p>
+
+    <ol>
+      <li>Visiona el vídeo.</li>
+      <li>Lee el contenido y completa la lección.</li>
+      <li>Resuelve el reto (<em>challenge</em>).</li>
+    </ol>
+
+    <h2>4. Crea un aplicación CRUD SPA con Laravel y Vue</h2>
+
+    <p>Crea la siguiente aplicación web CRUD SPA con Laravel, Vue y Axios:</p>
+
+    <img src='https://vuejsdevelopers.com/images/posts/vue-laravel-crud.gif' alt='CRUD con Laravel y Vue' />
+
+    <p>Para ello:</p>
+
+    <ol>
+      <li>Ejecuta localmente la aplicación web publicada en este <a href='https://github.com/anthonygore/vue-laravel-crud'>repositorio</a>.</li>
+      <li>Completa el <a href='https://vuejsdevelopers.com/2018/02/05/vue-laravel-crud'>tutorial</a> para aprender desde cero.</li>
+    </ol>
+
+    <p><a href='../../index.html'>Volver</a>.</p>
+
+    <footer>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</footer>
+
+  </body>
+</html>
+
+

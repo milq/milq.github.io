@@ -4,17 +4,16 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>Aplicaciones web híbridas con Laravel - DWES</title>
     <link rel='icon' href='../../../../src/png/icon.png' />
-    <link rel='stylesheet' href='../../../../src/css/course.css' />
-
+    <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
 
     <h1>7. Aplicaciones web híbridas con Laravel y Bootstrap</h1>
 
-    <p>Realiza las siguientes actividades en <strong>Laravel</strong> y <strong>Bootstrap</strong>.</p>
+    <p>Realiza las siguientes actividades en <strong>Laravel</strong> y <strong>Bootstrap</strong> y, si puedes, con <strong>React</strong> o <strong>Vue.js</strong>.</p>
 
-    <h2>Actividades de iniciación (2 puntos)</h2>
+    <h2>Actividades de iniciación</h2>
 
     <p><strong>1.</strong> Realiza dos sitios web:<br />
     <strong>a)</strong> Uno que salude con <em>¡Hola, mundo!</em><br />
@@ -28,7 +27,7 @@
 
 	<p><strong>4.</strong> Crea un informe de salud personal. Habrá que registrarse como usuario y después iniciar sesión. Una vez iniciado, el usuario introducirá su sexo, edad, altura y peso y al pulsar en <em>Calcular</em> se validarán los datos y se generará un informe de salud con el <a href='https://es.wikipedia.org/wiki/%C3%8Dndice_de_masa_corporal'>IMC</a> y el metabolismo basal según la <a href='https://es.wikipedia.org/wiki/Metabolismo_basal#C%C3%A1lculo_de_calor%C3%ADas_necesarias'>fórmula</a> de la OMS.</p>
 
-    <h2>Actividades de desarrollo (4 puntos)</h2>
+    <h2>Actividades de desarrollo</h2>
 
     <p><strong>5.</strong> Crea una tienda <a href='http://en.wikipedia.org/wiki/create,_read,_update_and_delete'>CRUD</a> de videojuegos (<em>ISAN</em>, <em>título</em>, <em>desarrolladora</em>, <em>distribuidora</em>, <em>género</em>, <em>año</em>) con las pestañas <strong>Inicio</strong> (presentación de la tienda), <strong>Juegos</strong> (juegos almacenados en la tienda), <strong>Sobre nosotros</strong> (descripción de la tienda), <strong>Contacto</strong> (datos de contacto y localización) y <strong>Admin</strong>. Ésta última con tres subpestañas: <strong>Añadir</strong> (inserción de un videojuego), <strong>Editar</strong> (modificación de los campos de un videojuego) y <strong>Borrar</strong> (eliminación de un videojuego).</p>
 
@@ -38,11 +37,30 @@
 
     <p><strong>8.</strong> Crea un curso sencillo con este <a href='modelo_curso.png'>modelo</a> (relaciones <a href='https://laravel.com/docs/eloquent-relationships#one-to-many'>uno a varios</a> y <a href='https://laravel.com/docs/eloquent-relationships#many-to-many'>varios a varios</a>). Puedes registrarte como alumno, como profesor (<em>1234</em> como clave para poder registrarte como profesor) pero no como administrador. El profesor, una vez iniciado sesión correctamente, introducirá, mediante formularios, las asignaturas que imparte. El alumno, una vez iniciado sesión correctamente, podrá inscribirse en las diferentes asignaturas. El administrador visualizará todo.</p>
 
-    <h2>Actividades de desarrollo final de curso (4 puntos)</h2>
+    <h2>Actividades de desarrollo final de curso</h2>
 
-	<p><strong>9.</strong> Realiza <a href='https://milq.github.io/cursos/dwes/ud/2'>uno</a>: <em>sistema de test online</em>, <em>reservas online de coches</em> o <em>pizzería online</em>.</p>
+	<p><strong>9.</strong> Elige y realiza en Laravel <a href='https://milq.github.io/cursos/dwes/ud/2/index.html#a'>uno</a> o <a href='http://milq.github.io/cursos/dwes/ud/4/index.html#b'>uno</a> del que más te guste y que no hayas hecho anteriormente.</p>
 
 	<p><strong>10.</strong> Crea el juego de piedra, papel, tijeras, lagarto o Spock entre usuarios. El usuario retará a otro usuario y elegirá una de esas cinco opciones. El usuario retado verá una petición de reto, elegirá una de esas cinco opciones y se producirá un resultado para el retador y el retado. Cada usuario puede ver su historial de partidas jugadas así como su porcentaje de victorias. También podrá ver dos clasificaciones: usuarios más ganadores y usuarios con más partidas; ambas clasificaciones acompañadas de nombre de usuario y porcentaje de victoria.</p>
+
+    <h2 class='center'>Evaluación</h2>
+
+    <h3>Entrega</h3>
+
+    <ol>
+      <li>La estructura de archivos y carpetas debe quedar <a href='estructura.txt'>así</a>.</li>
+      <li>La base de datos se identificarán como <em>to7_1</em>, <em>to7_2</em>, <em>to7_3</em>, etc.</li>
+      <li>Antes de comprimir borra las carpetas <em>vendor</em> y <em>node_modules</em>.</li>
+	  <li>El profesor ejecutará: <em>composer install && php artisan migrate:fresh && php artisan serve</em>.</li>
+    </ol>
+
+    <h3>Criterios de calificación</h3>
+
+	<ul>
+	  <li>Actividades de iniciación: <strong>hasta 2 puntos</strong>.</li>
+	  <li>Actividades de desarrollo: <strong>hasta 4 puntos</strong>.</li>
+	  <li>Actividades de desarrollo final de curso: <strong>hasta 4 puntos</strong>.</li>
+	</ul>
 
     <h2>Epílogo</h2>
 
@@ -53,7 +71,7 @@
       <li><strong>PHP 7.4</strong>: estructuras, funciones, bases de datos, sesiones, <em>cookies</em>, librerías, clases, etc.</li>
       <li><strong>Control de versiones</strong>: Git, Github y Heroku.</li>
       <li><strong>Framework CSS</strong>: Bootstrap.</li>
-      <li><strong>Framework JS</strong>: Vue.</li>
+      <li><strong>Framework JS</strong>: React y Vue.js.</li>
       <li><strong>Framework PHP</strong>: Laravel.</li>
     </ul>
 

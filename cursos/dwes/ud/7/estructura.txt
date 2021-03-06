@@ -1,0 +1,15 @@
+xxx_yyy_z
+├── 01/
+│   ├── a/
+│   └── b/
+├── 02/
+├── 03/
+├── 04/
+├── 05/
+├── 06/
+├── 07/
+├── 08/
+├── 09/
+└── 10/
+
+El nombre de la carpeta será 'xxx_yyy_z', donde 'xxx' serán las tres primeras letras de tu primer apellido, 'yyy' las tres primeras letras de tu segundo apellido y 'z' la primera letra de tu primer nombre. Todo en minúsculas.

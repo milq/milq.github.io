@@ -4,92 +4,113 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
     <title>Aplicaciones web dinámicas con Laravel, Bootstrap y Vue - DWES</title>
     <link rel='icon' href='../../../../src/png/icon.png' />
-    <link rel='stylesheet' href='../../../../src/css/course.css' />
-
+    <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
 
-    <h1>6. Aplicaciones web dinámicas con Laravel, Bootstrap y Vue</h1>
+    <h1>6. Aplicaciones web asíncronas</h1>
 
-    <p>Actualmente, un desarrollador web <a href='https://www.w3schools.com/whatis/whatis_fullstack.asp'><em>full stack</em></a> usa <em>frameworks</em> web tanto para <em>front end</em> (Bootstrap, Angular, Vue, etc.) como <em>back end</em> (Laravel, etc.). La opción más popular actualmente son aplicaciones web <a href='https://eN.wikipedia.org/wiki/Single-page_application'>SPA</a>, es decir, aplicaciones web que se cargan una sola vez. En SPA, la interacción con el servidor es asíncrona y para conseguirlo se utiliza la tecnología <a href='https://es.wikipedia.org/wiki/AJAX'>AJAX</a>. AJAX viene incorporado en muchos <em>frameworks</em> JavaScript como, por ejemplo, Vue. En este <a href='https://www.w3schools.com/xml/tryit.asp?filename=tryajax_database'>ejemplo</a> se puede observar cómo, mediante AJAX, se consultan datos a una base de datos de manera asíncrona.</p>
+    <h2 class='center' id='a'>Actividades</h2>
 
-    <p>Vue es un <em>framework</em> JavaScript que permite desarrollar aplicaciones <em>front end</em> e interactuar con el <em>back end</em> de manera asíncrona permitiendo crear aplicaciones web SPA.</p>
+    <h3 id='a1'>1. Asincronía en las aplicaciones web</h3>
 
-    <!-- Esto es gracias a <a href='https://es.wikipedia.org/wiki/XMLHttpRequest'>XMLHttpRequest</a>, base del desarrollo web en .</p>-->
+    <p><strong>1.</strong> Realiza los siguientes ejercicios:<br />
 
-    <h2>1. Instala Npm</h2>
+    <strong>a)</strong> Explica qué es la <a href='https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)'>asincronía</a>, la <a href='https://en.wikipedia.org/wiki/Asynchronous_I/O'>E/S asíncrona</a> y describe estos dos <a href='https://stackoverflow.com/a/10102768'>ejemplos</a>.<br />
+    <strong>b)</strong> Define qué es una aplicación web asíncrona y busca, al menos, tres ejemplos reales.<br />
+    <strong>c)</strong> Lee, investiga y explica con tus propias palabras lo que es <a href='https://en.wikipedia.org/wiki/Ajax_(programming)'>Ajax</a>, para qué sirve y mira este <a href='https://www.youtube.com/watch?v=z2aipCAq2n8'>vídeo</a>.<br />
+    <strong>d)</strong> Explica este <a href='https://www.w3schools.com/xml/tryit.asp?filename=tryajax_database'>ejemplo</a> Ajax que consulta y muestra datos en una base de datos de manera asíncrona.<br />
+    <strong>e)</strong> Lee, investiga y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Single-page_application'>SPA</a>.<br />
+    <strong>f)</strong> Lee, investiga y explica con tus propias palabras lo que es un <em><a href='https://www.w3schools.com/whatis/whatis_fullstack.asp'>full-stack</a> web developer</em>.</p>
 
-    <p>Para esta actividad, es necesario usar <a href='https://en.wikipedia.org/wiki/Npm_(software)'>Npm</a>, un sistema de gestión de paquetes de JavaScript. Npm es el equivalente de Composer para PHP. Npm se distribuye con Node.js, por tanto:</p>
+    <h3 id='a2'>2. Node.js, <em>Npm</em> y Laravel Breeze</h3>
+
+    <p><strong>2.</strong> Realiza los siguientes ejercicios:<br />
+    <strong>a)</strong> Lee, investiga y explica con tus propias palabras lo que es <a href='https://en.wikipedia.org/wiki/Node.js'>Node.js</a>.<br />
+    <strong>b)</strong> Lee, investiga y explica con tus propias palabras lo que es <a href='https://en.wikipedia.org/wiki/Npm_(software)'><em>npm</em></a> y mira este <a href='https://www.youtube.com/watch?v=xJzzu7MVZXw'>vídeo</a>.<br />
+    <strong>c)</strong> Descarga e instala la versión estable LTS de <a href='https://nodejs.org'>Node.js</a>.<br />
+    <strong>d)</strong> Comprueba que funciona Node.js y Npm en tu terminal ejecutando <em>node -v</em> y <em>npm -v</em>.<br />
+    <strong>e)</strong> Explica qué es <a href='https://laravel.com/docs/starter-kits#laravel-breeze'>Laravel Breeze</a> e instala y ejecuta una aplicación web Laravel Breeze de ejemplo.<br />
+    <strong>f)</strong> Haz una demo con el ejemplo anterior de Laravel Breeze registrando un usuario e iniciando sesión.</p>
+
+    <h3 id='a3'>3. Librerías y <em>frameworks</em> JavaScript</h3>
+
+    <p><strong>3.</strong> Realiza los siguientes ejercicios:<br />
+    <strong>a)</strong> Lee, investiga y explica con tus propias palabras lo que es una <a href='https://en.wikipedia.org/wiki/JavaScript_library'>librería JavaScript</a>.<br />
+    <strong>b)</strong> Lee, investiga y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/JavaScript_framework'><em>framework</em> JavaScript</a>.<br />
+    <strong>c)</strong> Di en qué se diferencia una librería JS de un <em>framework</em> JS y nombra tres ejemplos de cada uno.<br />
+    <strong>d)</strong> Lee, investiga y explica con tus propias palabras lo que es una <a href='https://en.wikipedia.org/wiki/React_(JavaScript_library)'>React</a>.<br />
+    <strong>e)</strong> Lee, investiga y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Angular_(web_framework)'>Angular</a>.<br />
+    <strong>f)</strong> Lee, investiga y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Vue.js'>Vue.js</a>.</p>
+
+    <h3 id='a4'>4. Aprende React</h3>
+
+    <p>Entra en la página oficial de <a href='https://reactjs.org'>React</a> y visualiza este <a href='https://www.youtube.com/watch?v=1-2eyS0k-IA'>vídeo</a>.</p>
+
+    <p>Practica los principales <a href='https://reactjs.org/docs/hello-world.html'>conceptos</a> de React:</p>
 
     <ol>
-      <li>Instala <a href='https://nodejs.org'>Node.js</a>:
-        <ul>
-          <li>Windows: mediante el <a href='https://nodejs.org/en/download' title='Instalador Node.js'>instalador</a> (versión LTS).</li>
-          <li>Debian/Ubuntu:
-            <ul>
-              <li>Instala las dependencias con <code>sudo apt-get install build-essential</code> y después entra como <em>root</em> (<code>su root</code>).</li>
-              <li>Ejecuta <code>curl -sL https://deb.nodesource.com/setup_12.x | bash -</code> y después <code>apt-get install -y nodejs</code>.</li>
-              <li>Sal de <em>root </em>con <code>exit</code>.</li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li>Comprueba que funciona Node.js y Npm en la terminal ejecutando <code>node -v</code> y <code>npm -v</code> respectivamente en Windows o en Debian/Ubuntu.</li>
+      <li><a href='https://reactjs.org/docs/hello-world.html'>Hello World</a> (<a href='https://es.reactjs.org/docs/hello-world.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/introducing-jsx.html'>Introducing JSX</a> (<a href='https://es.reactjs.org/docs/introducing-jsx.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/rendering-elements.html'>Rendering Elements</a> (<a href='https://es.reactjs.org/docs/rendering-elements.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/components-and-props.html'>Components and Props</a> (<a href='https://es.reactjs.org/docs/components-and-props.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/state-and-lifecycle.html'>State and Lifecycle</a> (<a href='https://es.reactjs.org/docs/state-and-lifecycle.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/handling-events.html'>Handling Events</a> (<a href='https://es.reactjs.org/docs/handling-events.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/conditional-rendering.html'>Conditional Rendering</a> (<a href='https://es.reactjs.org/docs/conditional-rendering.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/lists-and-keys.html'>Lists and Keys</a> (<a href='https://es.reactjs.org/docs/lists-and-keys.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/forms.html'>Forms</a> (<a href='https://es.reactjs.org/docs/forms.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/lifting-state-up.html'>Lifting State Up</a> (<a href='https://es.reactjs.org/docs/lifting-state-up.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/composition-vs-inheritance.html'>Composition vs Inheritance</a> (<a href='https://es.reactjs.org/docs/composition-vs-inheritance.html'>español</a>).</li>
+      <li><a href='https://reactjs.org/docs/thinking-in-react.html'>Thinking In React</a> (<a href='https://es.reactjs.org/docs/thinking-in-react.html'>español</a>).</li>
     </ol>
 
-    <h2>2. Crea un proyecto en Laravel e instala en él Bootstrap y Vue.js con Laravel UI</h2>
+    <h3 id='a5'>5. Aprende Vue.js</h3>
 
-    <p>Laravel te facilita instalar y configurar automáticamente <a href='https://en.wikipedia.org/wiki/Front-end_web_development'><em>frontends</em></a> como Bootstrap y Vue. Para ello, consulta su <a href='https://laravel.com/docs/frontend'>documentación</a> que indica los siguientes pasos:</p>
+    <p>Entra en la página oficial de <a href='https://v3.vuejs.org'>Vue</a> y visualiza el vídeo <strong>Why Vue.js</strong>.</p>
 
-    <ol>
-      <li>Crea un proyecto en Laravel: <code>composer create-project --prefer-dist laravel/laravel ejemplo_vue</code>.</li>
-      <li>Entra en el proyecto e instala la dependencia Laravel UI: <code>composer require laravel/ui</code>.</li>
-      <li>Prepara la dependencia de Bootstrap y crea una estructura de autenticación con <code>php artisan ui bootstrap --auth</code>.</li>
-      <li>Prepara la dependencia de Vue.js y crea una estructura de autenticación con <code>php artisan ui vue --auth</code>. Di sí a todo.</li>
-      <li>Instala las dependencias preparadas con <code>npm install && npm run dev</code>.</li>
-      <li>Ejecuta <code>php artisan serve</code> y prueba con <code>http://localhost:8000</code>. Para probar la autenticación configura la base de datos antes.</li>
-    </ol>
-
-    <h2>3. Aprende Vue</h2>
-
-    <p>Entra en la página oficial de <a href='https://vuejs.org'>Vue</a> y visualiza el vídeo <strong>Why vue.js</strong>.</p>
-
-    <p>Completa este <a href='https://www.vuemastery.com/courses/intro-to-vue-js'>curso</a> introductorio:</p>
+    <p>Completa este <a href='https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3'>curso</a> introductorio:</p>
 
     <ol>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/vue-instance'>The Vue Instance</a> - La instancia Vue.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/attribute-binding'>Attribute Binding</a> - <em>Binding</em> de atributos.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/conditional-rendering'>Conditional Rendering</a> - Renderizado de condicionales.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/list-rendering'>List Rendering</a> - Renderizado de listas.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/event-handling'>Event Handling</a> - Manejo de eventos.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/class-&-style-binding'>Class &amp; Style Binding</a> - <em>Binding</em> de clases y estilos.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/vue-computed-properties'>Computed Properties</a> - Propiedades calculadas.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/components'>Components</a> - Componentes.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/communicating-events'>Communicating Events</a> - Eventos de comunicación.</li>
-      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-js/forms'>Forms</a> - Formularios.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3'>Intro to Vue 3</a> - Introducción a Vue 3.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/creating-the-vue-app-vue3'>The Vue App</a> - La aplicación Vue.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/attribute-binding-vue3'>Attribute Binding</a> - <em>Binding</em> de atributos.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/conditional-rendering-vue3'>Conditional Rendering</a> - Renderizado condicional.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/list-rendering-vue3'>List Rendering</a> - Renderizado de listas.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/event-handling-vue3'>Event Handling</a> - Manejo de eventos.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/class-and-style-binding-vue3'>Class &amp; Style Binding</a> - <em>Binding</em> de clases y estilos.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/computed-properties-vue3'>Computed Properties</a> - Propiedades calculadas.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/components-and-props-vue3'>Components &amp; Props</a> - Componentes y propiedades.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/communicating-events-vue3'>Communicating Events</a> - Eventos de comunicación.</li>
+      <li><a href='https://www.vuemastery.com/courses/intro-to-vue-3/forms-and-v-model-vue3'>Forms &amp; <em>v-model</em></a> - Formularios y <em>v-model</em>.</li>
     </ol>
 
     <p>El procedimiento a realizar en cada lección es el siguiente:</p>
 
     <ol>
-      <li>Visiona el vídeo.</li>
+      <li>Visiona el vídeo y activa los subtítulos.</li>
       <li>Lee el contenido y completa la lección.</li>
       <li>Resuelve el reto (<em>challenge</em>).</li>
     </ol>
 
-    <h2>4. Crea un aplicación CRUD SPA con Laravel y Vue</h2>
+    <h2 class='center'>Evaluación</h2>
 
-    <p>Crea la siguiente aplicación web CRUD SPA con Laravel, Vue y Axios:</p>
-
-    <img src='https://vuejsdevelopers.com/images/posts/vue-laravel-crud.gif' alt='CRUD con Laravel y Vue' />
-
-    <p>Para ello:</p>
+    <h3>Entrega</h3>
 
     <ol>
-      <li>Ejecuta localmente la aplicación web publicada en este <a href='https://github.com/anthonygore/vue-laravel-crud'>repositorio</a>.</li>
-      <li>Completa el <a href='https://vuejsdevelopers.com/2018/02/05/vue-laravel-crud'>tutorial</a> para aprender desde cero.</li>
+      <li>La estructura de archivos y carpetas debe quedar <a href='estructura.txt'>así</a>.</li>
     </ol>
+
+    <h3>Criterios de calificación</h3>
+
+    <ul>
+      <li>Asincronía en las aplicaciones web: <strong>hasta 1 punto</strong>.</li>
+      <li>Node.js, <em>Npm</em> y Laravel Breeze: <strong>hasta 2 puntos</strong>.</li>
+      <li>Librerías y <em>frameworks</em> JavaScript: <strong>hasta 1 punto</strong>.</li>
+      <li>Aprende React: <strong>hasta 3 puntos</strong>.</li>
+      <li>Aprende Vue.js: <strong>hasta 3 puntos</strong>.</li>
+    </ul>
+
 
     <p><a href='../../index.html'>Volver</a>.</p>
 
