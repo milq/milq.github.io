@@ -1,0 +1,16 @@
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/bin/Debug/net5.0/sample1
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/bin/Debug/net5.0/sample1.deps.json
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/bin/Debug/net5.0/sample1.runtimeconfig.json
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/bin/Debug/net5.0/sample1.runtimeconfig.dev.json
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/bin/Debug/net5.0/sample1.dll
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/bin/Debug/net5.0/ref/sample1.dll
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/bin/Debug/net5.0/sample1.pdb
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.csproj.AssemblyReference.cache
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.GeneratedMSBuildEditorConfig.editorconfig
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.AssemblyInfoInputs.cache
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.AssemblyInfo.cs
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.csproj.CoreCompileInputs.cache
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.dll
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/ref/sample1.dll
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.pdb
+/home/nacho/Local/milq.github.io/cursos/videojuegos/sample1/obj/Debug/net5.0/sample1.genruntimeconfig.cache
