@@ -1,0 +1,113 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+    <title>UD1 - Manuel Ignacio López Quintero</title>
+    <link rel='stylesheet' href='../../../../src/css/simple.css' />
+  </head>
+
+  <body>
+    <h1>1. Técnicas de IA en videojuegos</h1>
+
+    <h2>Contenidos</h2>
+
+    <ol>
+	  <li>Movimiento.</li>
+	  
+	  <br />
+	  
+	  <li>Búsqueda de ruta (<a href='https://en.wikipedia.org/wiki/Pathfinding'><em>pathfinding</em></a>):
+	    <ul>
+		  <li>Algoritmos:
+		    <ul>
+		      <li>Dijkstra.</li>
+	          <li>A*.</li>
+	        </ul>
+		  </li>
+	      <li>Representaciones del mundo:
+		    <ul>
+			  <li>Grafos basados ​​en <em>tiles</em> (<em>tile-based graphs</em>).</li>
+		      <li>Mallas de navegación (<em>navigation meshes</em>).</li>
+	          <li>A*.</li>
+	        </ul>
+		  </li>
+	    </ul>
+
+4.4 
+	  
+	  </li>
+
+	  <br />
+	  <li>Toma de decisiones (<em>decision making</em>):
+	    <ul>
+	      <li>Árboles de decisión (<em>decision trees</em>).</li>
+	      <li>Máquinas de estado (<em>state machines</em>).</li>
+	      <li>Árboles de comportamiento (<em>behavior trees</em>).</li>
+	      <li>Lógica difusa (<em>fuzzy logic</em>).</li>
+	      <li>Sistemas de Markov (<em>Markov systems</em>).</li>
+	      <li>Comportamiento orientado a objetivos (<em>goal-oriented behavior</em>).</li>
+	      <li>Sistemas basados en reglas (<em>rule-based systems</em>).</li>
+	      <li>Arquitecturas en pizarra (<em>blackboard architectures</em>).</li>
+		  <li>Ejecución de la acción (<em>action execution</em>).</li>
+	    </ul>
+	  </li>
+	  
+	  
+<!--
+The basics of movement algorithms
+	Two-dimensional movemente
+	Statics
+	Kinematics
+Kinematic Movement algorithms
+	Seek
+	Wandering
+Steering Behaviors
+	Steering basics
+	Variable matching
+	Seek and flee
+	Arrive
+	Align
+	Velocity matching
+	Delegated behaviors
+	Pursue and evade
+	Face
+	Looking where you're going
+	Wander
+	Path following
+	Separation
+	Collision avoidance
+	Obstacle and wall avoidance
+	Summary
+-->
+      
+    </ol>
+
+    <h2>Actividades</h2>
+
+	<p>Texto.</p>
+
+    <h2>Evaluación</h2>
+
+    <h3>Entrega</h3>
+
+	<p>Texto.</p>
+
+    <h3>Criterios de evaluación asociados</h3>
+
+	<p>Se evaluará todos los criterios de evaluación del resultado de aprendizaje 6 (RA6).</p>
+
+
+    <p><a href='../../index.html'>Volver</a>.</p>
+
+    <footer>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</footer>
+
+  </body>
+</html>
+
+3.1 THE BASICS OF MOVEMENT ALGORITHMS
+Unless you’re writing an economic simulator, chances are the characters in your game need
+to move around. Each character has a current position and possibly additional physical properties that control its movement. A movement algorithm is designed to use these properties
+to work out where the character should be next.
+All movement algorithms have this same basic form. They take geometric data about their
+own state and the state of the world, and they come up with a geometric output representing
+the movement they
