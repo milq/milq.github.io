@@ -1,19 +1,28 @@
+<!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
   <head>
     <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>Introducción al desarrollo web - Manuel Ignacio López Quintero</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=2.0' />
+
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Introducción al desarrollo web en entorno servidor.' />
+    <meta name='keywords' content='introducción, desarrollo, web, entorno, servidor, curso' />
+
+    <title>Introducción al desarrollo web en entorno servidor - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
     <h1>1. Introducción al desarrollo web</h1>
 
+    <nav><a href='https://milq.github.io/cursos/dwes'>Desarrollo Web en Entorno Servidor</a> | Creado por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
+
     <h2>Contenidos</h2>
 
     <ol>
       <li><a href='https://en.wikipedia.org/wiki/Client%E2%80%93server_model'>Modelo cliente-servidor</a> (lado del <a href='https://en.wikipedia.org/wiki/Client-side'>cliente</a>, lado del <a href='https://en.wikipedia.org/wiki/Server-side'>servidor</a>).</li>
-	<li><a href='https://en.wikipedia.org/wiki/Web_development'>Desarrollo web</a>:
+    <li><a href='https://en.wikipedia.org/wiki/Web_development'>Desarrollo web</a>:
         <ul>
           <li><a href='https://en.wikipedia.org/wiki/Front-end_web_development'>Front-end</a>:
             <ul>
@@ -26,7 +35,7 @@
               <li>JavaScript: <a href='https://w3schools.com/js'>curso</a> (<a href='https://developer.mozilla.org/es/docs/Web/JavaScript'>español</a>), <a href='https://w3schools.com/jsref' title='Referencia JS'>referencia</a>, <a href='https://closure-compiler.appspot.com' title='Closure Compiler'>optimizador</a>.</li>
             </ul>
           </li>
-          <li><a href='https://en.wikipedia.org/wiki/Back-end_web_development'>Back-end</a>:
+          <li><a href='https://en.wikipedia.org/wiki/Frontend_and_backend#Web_development_as_an_example'>Back-end</a>:
             <ul>
               <li>PHP: <a href='https://w3schools.com/php' title='Curso PHP'>curso</a>, <a href='https://www.w3schools.com/php/php_ref_overview.asp' title='Referencia PHP'>referencia</a>, <a href='https://php.net/manual/en' title='Manual PHP'>manual</a> (<a href='https://php.net/manual/en/langref.php' title='PHP language reference'>lenguaje</a>).</li>
             </ul>
@@ -36,42 +45,36 @@
       <li><a href='https://en.wikipedia.org/wiki/Web_server'>Servidor web</a> (servidor HTTP <a href='https://en.wikipedia.org/wiki/Apache_HTTP_Server'>Apache</a>).</li>
       <li>Protocolo <a href='https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol'>HTTP</a> (métodos HTTP <a href='https://www.youtube.com/watch?v=gQPl695unzg'>GET y POST</a>).</li>
 
-	    <li><a href='https://en.wikipedia.org/wiki/Solution_stack'>Stack de soluciones</a>:
+        <li><a href='https://en.wikipedia.org/wiki/Solution_stack'>Stack de soluciones</a>:
         <ul>
           <li><a href='https://en.wikipedia.org/wiki/XAMPP'>XAMPP</a>: <a href='https://en.wikipedia.org/wiki/Apache_HTTP_Server'>Apache</a> (servidor HTTP), <a href='https://en.wikipedia.org/wiki/MariaDB'>MariaDB</a>, <a href='https://en.wikipedia.org/wiki/PHP'>PHP</a> y <a href='https://en.wikipedia.org/wiki/Perl'>Perl</a>.</li>
         </ul>
-      </li>  
-      <li type='A' value='1'>Formularios en PHP: <a href='https://www.youtube.com/watch?v=e2R9uvjKW5g'>tutorial</a>, <a href='https://github.com/milq/milq/tree/master/learn/php/1_form'>ejemplo</a>, <a href='https://diego.com.es/formularios-en-php'>validación</a> (punto 4).</li>
-      <li type='A'>PHP y seguridad básica:
+      </li>
+      <li style='list-style-type: upper-alpha' value='1'>Formularios en PHP: <a href='https://www.youtube.com/watch?v=e2R9uvjKW5g'>tutorial</a>, <a href='https://github.com/milq/milq/tree/master/learn/php/1_form'>ejemplo</a>, <a href='https://diego.com.es/formularios-en-php'>validación</a> (punto 4).</li>
+      <li style='list-style-type: upper-alpha'>PHP y seguridad básica:
         <ul>
-          <li>Entrada de usuario: <a href='https://developer.hyvor.com/tutorials/php/forms-intro'>formularios</a> (<a href='https://developer.hyvor.com/tutorials/php/forms-finishing'>ejemplo final</a>).</li>
           <li><a href='https://www.php.net/manual/en/book.filter.php'>Filtros</a>: <a href='https://www.php.net/manual/en/filter.filters.php'>tipos</a> (validación, saneamiento, otros, <em>flags</em>), <a href='https://www.php.net/manual/en/filter.examples.php'>ejemplos</a>.</li>
           <li>Expresiones regulares: <a href='https://www.php.net/manual/en/function.preg-match.php'><em>preg_match</em></a>, <a href='https://regexr.com' >RegExr</a>, <a href='https://regex101.com'>Regex101</a>.</li>
           <li><a href='https://www.php.net/manual/en/book.errorfunc.php'>Manejo y registro de errores</a>: <a href='https://www.php.net/manual/en/errorfunc.constants.php'>constantes</a>, <a href='https://www.php.net/manual/en/ref.errorfunc.php'>funciones</a> (<a href='https://www.php.net/manual/es/function.error-reporting.php'><em>error_reporting</em></a>, <a href='https://www.php.net/manual/en/function.set-error-handler.php'><em>set_error_handler</em></a>).</li>
           <li><a href='https://www.php.net/manual/en/language.exceptions.php'>Excepciones</a>: <a href='https://www.php.net/manual/en/language.exceptions.extending.php'>ampliar las excepciones</a>.</li>
         </ul>
       </li>
-      <li type='A'>Control de versiones<a href='https://en.wikipedia.org/wiki/Version_control'></a>:
+      <li style='list-style-type: upper-alpha'><a href='https://en.wikipedia.org/wiki/Version_control'>Control de versiones</a>:
         <ul>
           <li>Herramientas: <a href='https://git-scm.com/'>Git</a> (<a href='https://milq.github.io/cursos/dwes/assets/git_diagram.png'>diagrama</a>) (<a href='https://milq.github.io/gnu-linux-commands/index.html#git'>comandos básicos</a>) (<a href='https://github.github.com/training-kit/downloads/es_ES/github-git-cheat-sheet/'>referencia</a>).</li>
           <li>Servicios: <a href='https://github.com'>GitHub</a>, <a href='https://www.heroku.com/'>Heroku</a> (<a href='http://milq.github.io/cursos/iaw/heroku.html' title='Tutorial de Heroku'>tutorial</a>).</li>
         </ul>
       </li>
-    </ol>  
-
-<!--
-      <strong>Cursos en español:</strong> <a href=''>HTML</a>, <a href='http://mclibre.org/consultar/htmlcss'>CSS</a> (<a href=''>Bootstrap</a>), <a href='https://desarrolloweb.com/manuales/manual-php.html'>PHP</a>.
-    -->  
-
+    </ol>
 
     <h2>Actividades</h2>
 
     <p><strong>1.</strong> Realiza los siguientes ejercicios en un documento XHTML y CSS (o Bootstrap):<br />
     <strong>a)</strong> Explica las diferencias entre un desarrollador <em>front-end</em>, <em>back-end</em> y <em>full-stack</em>.<br />
     <strong>b)</strong> ¿Qué es un <a href='https://en.wikipedia.org/wiki/CSS_framework'><em>framework</em> CSS</a>? ¿Qué es <a href='https://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)'>Bootstrap</a>? ¿Cuántos más <em>framework</em> CSS existen y cuáles son?<br />
-    <strong>c)</strong> ¿Qué es <a href='https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines'>WCAG</a>? ¿Por qué es tan importante validar en <a href='https://en.wikipedia.org/wiki/HTML5#XHTML_5_(XML-serialized_HTML_5)'>XHTML</a>, CSS y WCAG 2.1 AAA?<br />  
-    <strong>d)</strong> Explica con tus propias palabras qué es un servidor web, qué es el protocolo HTTP, busca ejemplos donde se ejecuten los métodos HTTP GET y POST y explica qué es Apache y qué es XAMPP.</p>    
-	<p><strong>2.</strong> Crea un tutorial en XHTML y CSS que enseñe a instalar <a href='https://www.apachefriends.org/es/index.html'>XAMPP</a> paso a paso con texto y capturas tanto en Windows 10 como en GNU/Linux. Asimismo, debe enseñar a ejecutar código PHP puro y código PHP embebido en una página XHTML y CSS.</p>
+    <strong>c)</strong> ¿Qué es <a href='https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines'>WCAG</a>? ¿Por qué es tan importante validar en <a href='https://en.wikipedia.org/wiki/HTML5#XHTML_5_(XML-serialized_HTML_5)'>XHTML</a>, CSS y WCAG 2.1 AAA?<br />
+    <strong>d)</strong> Explica con tus propias palabras qué es un servidor web, qué es el protocolo HTTP, busca ejemplos donde se ejecuten los métodos HTTP GET y POST y explica qué es Apache y qué es XAMPP.</p>
+    <p><strong>2.</strong> Crea un tutorial en XHTML y CSS que enseñe a instalar <a href='https://www.apachefriends.org/es/index.html'>XAMPP</a> paso a paso con texto y capturas tanto en Windows 10 como en GNU/Linux. Asimismo, debe enseñar a ejecutar código PHP puro y código PHP embebido en una página XHTML y CSS.</p>
 
     <p><strong>3.</strong> Crea los siguientes formularios web con XHTML, CSS (o Bootstrap) y PHP 8:<br />
     <strong>a) Recogida y validación de usuarios</strong>: crea <a href='formulario.png'>este</a> (o <a href='form.png'>este</a>) formulario en XHTML y CSS y que los datos de dicho formulario se recojan, se validen y se muestren en <em>usuario.php</em>.<br />
@@ -86,7 +89,7 @@
     <strong>a)</strong> ¿Qué es un <a href='https://en.wikipedia.org/wiki/Version_control'>control de versiones</a>? ¿Qué diferencias hay entre uno centralizado y otro <a href='https://en.wikipedia.org/wiki/Distributed_version_control'>distribuido</a>?<br />
     <strong>b)</strong> ¿Qué es <a href='https://en.wikipedia.org/wiki/Git'>Git</a>? ¿Y <a href='https://en.wikipedia.org/wiki/GitHub'>GitHub</a>? ¿En qué se diferencian y cómo se relacionan entre sí?<br />
     <strong>c)</strong> Hazte una cuenta, si no la tienes, en <a href='https://github.com'>GitHub</a> con un nombre de usuario serio y profesional.<br />
-	<strong>d)</strong> Crea un proyecto en GitHub de una aplicación web tuya y usa Git para subir el código.</p>
+    <strong>d)</strong> Crea un proyecto en GitHub de una aplicación web tuya y usa Git para subir el código.</p>
 
     <h2>Evaluación</h2>
 
@@ -114,9 +117,7 @@
       <li>En las actividad 3 se evaluará todos los criterios de evaluación del resultado de aprendizaje 3 (<span title='RA3: Escribe bloques de sentencias embebidos en lenguajes de marcas, seleccionando y utilizando las estructuras de programación.'>RA3</span>).</li>
     </ul>
 
-    <p><a href='../../index.html'>Volver</a>.</p>
-
-    <footer>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</footer>
+    <footer><a href='https://milq.github.io/cursos/dwes'>Desarrollo Web en Entorno Servidor</a> | Creado por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</footer>
 
   </body>
 </html>
