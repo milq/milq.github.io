@@ -6,7 +6,8 @@ xxx_yyy_z
 ├── 3/
 ├── 4/
 ├── 5/
-├── inicio.html
+├── heroku.txt
+├── index.html
 └── inicio.sql
 
 El nombre de la carpeta será 'xxx_yyy_z', donde 'xxx' serán las tres primeras letras de tu primer apellido, 'yyy' las tres primeras letras de tu segundo apellido y 'z' la primera letra de tu primer nombre. Todo en minúsculas.
