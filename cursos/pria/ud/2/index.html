@@ -1,43 +1,65 @@
 <html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
   <head>
     <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>UD1 - Manuel Ignacio López Quintero</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=2.0' />
+
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Curso de programación en red e inteligencia artificial.' />
+    <meta name='keywords' content='curso, programación, red, inteligencia, artificial' />
+
+    <title>Introducción a la IA en videojuegos - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
     <h1>2. Introducción a la IA en videojuegos</h1>
 
+    <nav><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
+
     <h2>Contenidos</h2>
 
     <ol>
-      <li><a href='game_model_ai.png'>Modelo de IA en videojuegos</a>.<br /><br /></li>
-        <!-- <ul>
-          <li>IA individual:
+      <li><a href='game_model_ai.png'>Modelo de IA en videojuegos</a>
+        <ul>
+          <li>IA:
             <ul>
-              <li>Movimiento.</li>
-              <li>Toma de decisiones.</li>
+              <li>Individual:
+                <ul>
+                  <li>Movimiento.</li>
+                  <li>Toma de decisiones.</li>
+                </ul>
+              </li>
+              <li>Grupal:
+                <ul>
+                  <li>Estrategia.</li>
+                </ul>
+              </li>
             </ul>
           </li>
-          <li>IA grupal:
+
+
+          <li>Infraestructura:
             <ul>
-              <li>Estrategia.</li>
+              <li>Interfaz del mundo (donde la IA obtiene la información).</li>
+              <li>Gestión de ejecución (z).</li>
+              <li>Animación y físicas (y).</li>
+              <li>Creación de contenido y <em>scripting</em> (x).</li>
             </ul>
           </li>
         </ul>
-      </li>
-      -->
+      <br /></li>
+
       <li>Técnicas de IA en videojuegos:
         <ul>
-          <li>A:
+          <li>Básica:
             <ul>
               <li>Movimiento (<em>movement</em>).</li>
               <li>Búsqueda de ruta (<a href='https://en.wikipedia.org/wiki/Pathfinding'><em>pathfinding</em></a>).</li>
               <li>Toma de decisiones (<em>decision making</em>).</li>
             </ul>
           </li>
-          <li>B:
+          <li>Avanzada:
             <ul>
               <li>IA para táctica y estrategia (<em>tactical and strategic ai)</em>.</li>
               <li>Aprendizaje (<em>learning</em>).</li>
@@ -48,9 +70,13 @@
         </ul>
       <br /></li>
 
-      <li>Execution management</li>
+      <li>Execution management<br /></li>
+
+      <li>Lectura muy recomendada: <em>Ian Millington - AI for Games (AI for Everything)</em>.</li>
 
     </ol>
+
+
 
 <!--
 
@@ -122,17 +148,27 @@ Steering Behaviors
 
     <h2>Actividades</h2>
 
-    <p><strong>1.</strong> ¿Qué es la <a href='https://en.wikipedia.org/wiki/Artificial_intelligence_in_video_games'>IA para videojuegos</a> según Wikipedia?</p>
+    <p><strong>1.</strong> ¿Qué es la <a href='https://en.wikipedia.org/wiki/Artificial_intelligence_in_video_games'>IA para videojuegos</a> según Wikipedia? ¿Qué es un <a href='https://en.wikipedia.org/wiki/Non-player_character#Video_games'>NPC</a> y qué es un <a href='https://en.wikipedia.org/wiki/Video_game_bot'><em>bot</em></a> en videojuegos?</p>
 
-    <p><strong>2.</strong> ¿Qué es un <a href='https://en.wikipedia.org/wiki/Non-player_character#Video_games'>NPC</a> y qué es un <a href='https://en.wikipedia.org/wiki/Video_game_bot'><em>bot</em></a> en videojuegos?</p>
+    <p><strong>2.</strong> </p>
 
     <p><strong>3.</strong> Interpreta el modelo de ia de este autor y diferencia entre ia grupal e ia individual.</p>
 
-    <p><strong>4.</strong> enumerar técnicas de ia y decir principales.</p>
+    <p><strong>4.</strong> Enumera las técnicas usadas en IA para videojuegos y define en qué consiste cada una.</p>
 
     <p><strong>5.</strong> IA movimiento.</p>
 
     <p><strong>6.</strong> IA Pathfinding.</p>
+
+
+    <p><strong>4.</strong> Responde con tus propias palaras:<br />
+    <strong>a)</strong> ¿Qué es el <a href='https://en.wikipedia.org/wiki/Pathfinding'><em>pathfinding</em></a>?<br />
+
+
+    <strong>b)</strong> ¿Qué es un <a href='https://en.wikipedia.org/wiki/Statistical_classification'>clasificador</a> estadístico? ¿Qué es el <a href='https://en.wikipedia.org/wiki/Machine_learning'>aprendizaje automático</a> y qué 3 <a href='https://en.wikipedia.org/wiki/Machine_learning#Approaches'>enfoques</a> grandes hay?<br />
+    <strong>c)</strong> Conoce y explica detalladamente al menos cinco <a href='https://en.wikipedia.org/wiki/Machine_learning#Models'>modelos</a> de aprendizaje automático.<br />
+    <strong>d)</strong> ¿Qué son las <a href='https://en.wikipedia.org/wiki/Artificial_neural_network'>redes neuronales artificiales</a> y qué <a href='https://en.wikipedia.org/wiki/Artificial_neural_network#Applications'>aplicaciones</a> tiene?.</p>
+
 
     <p><strong>7.</strong> Toma de decisiones.</p>
 
@@ -147,24 +183,27 @@ Steering Behaviors
 
     <h3>Entrega</h3>
 
-    <p>Texto.</p>
+    <ol>
+      <li>Todos los ejercicios de desarrollo y programación deben ordenarse y enumerarse en un solo PDF.</li>
+      <li>Puedes usar <a href='https://www.ilovepdf.com/'>ILovePDF</a> para convertir código, rotar, organizar y reunir PDF.</li>
+      <li>La presentación, orden y claridad del documento PDF se valorará en esta entrega.</li>
+    </ol>
+
+    <h3>Criterios de calificación</h3>
+
+    <ul>
+      <li>Desarrollo de los contenidos: <strong>hasta 7 puntos</strong>.</li>
+      <li>Calidad y funcionalidad del código C#: <strong>hasta 2 puntos</strong>.</li>
+      <li>Presentación, orden y claridad del documento PDF: <strong>hasta 1 punto</strong>.</li>
+    </ul>
 
     <h3>Criterios de evaluación asociados</h3>
 
-    <p>Se evaluará todos los criterios de evaluación del resultado de aprendizaje 6 (RA6).</p>
+    <ul>
+      <li>En esta actividad se asocian todos los criterios de evaluación del resultado de aprendizaje 4 (<span title='RA4 - Aplica conceptos básicos de inteligencia artificial en el diseño de videojuegos.'>RA4</span>).</li>
+    </ul>
 
-
-    <p><a href='../../index.html'>Volver</a>.</p>
-
-    <footer>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</footer>
+    <footer><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</footer>
 
   </body>
 </html>
-
-3.1 THE BASICS OF MOVEMENT ALGORITHMS
-Unless you’re writing an economic simulator, chances are the characters in your game need
-to move around. Each character has a current position and possibly additional physical properties that control its movement. A movement algorithm is designed to use these properties
-to work out where the character should be next.
-All movement algorithms have this same basic form. They take geometric data about their
-own state and the state of the world, and they come up with a geometric output representing
-the movement they
