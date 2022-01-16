@@ -1,29 +1,72 @@
 <html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
   <head>
     <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>PHP orientado a objetos e introducción al framework web MVC - Manuel Ignacio López Quintero</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=2.0' />
+
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Curso de desarrollo web en entorno servidor.' />
+    <meta name='keywords' content='curso, desarrollo, web, entorno, servidor' />
+
+    <title>PHP OOP y el 'framework' web MVC Laravel</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
-    <h1>4. PHP OOP y el <em>framework</em> web MVC Laravel</h1>
+    <h1>3. PHP OOP y el <em>framework</em> web MVC Laravel</h1>
 
-    <h2 class='center' id='a'>Actividades</h2>
+    <nav><a href='https://milq.github.io/cursos/dwes'>Desarrollo Web en Entorno Servidor</a> | Creado por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
 
-    <h3 id='a1'>1. MVC y <em>framework</em> web</h3>
+    <h2>Contenidos</h2>
+
+    <ol>
+      <li><a href='https://en.wikipedia.org/wiki/Object-oriented_programming'>Programación Orientada a Objetos</a> (POO).</li>
+
+      <li><a href='https://en.wikipedia.org/wiki/Multitier_architecture'>Programación por capas</a> (<a href='https://en.wikipedia.org/wiki/Business_logic'>lógica de negocio</a>, <a href='https://en.wikipedia.org/wiki/Data_access_layer'>DAL</a>, etc.)</li>
+
+      <li><a href='https://en.wikipedia.org/wiki/Software_design_pattern'>Patrón de diseño sofware</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>Modelo-Vista-Controlador</a> (MVC).</li>
+      <li><a href='https://en.wikipedia.org/wiki/Web_framework'>Framework web</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Web_framework'>Laravel</a>.</li>
+    </ol>
+
+    <h2>Actividades de OOP, MVC y otros</h2>
+
+    <p><strong>1.</strong> Repasa la <a href='https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos'>POO</a> y detalla sus <a href='https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos#Conceptos_fundamentales'>conceptos</a> y <a href='https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos#Caracter%C3%ADsticas_de_la_POO'>características</a> principales.</p>
+
+    <p><strong>2.</strong> Haz este tutorial desde <a href='https://www.w3schools.com/php/php_oop_what_is.asp'>aquí</a> hasta <a href='https://www.w3schools.com/php/php_iterables.asp'>aquí</a> de POO; para ello, ejecuta todos sus ejemplos y explícalos.</p>
+
+    <p><strong>3.</strong> Resuelve estos diez <a href='https://milq.github.io/cursos/fundprog/ud/6/'>ejercicios</a> sobre clases usando <a href='https://www.w3schools.com/php/php_oop_what_is.asp'>POO</a> en PHP.</p>
+
+    <p><strong>4.</strong> Define <a href='https://en.wikipedia.org/wiki/Multitier_architecture'>programación por capas</a> y sus capas como <a href='https://en.wikipedia.org/wiki/Business_logic'>BLL</a> (lógica de negocio) o <a href='https://en.wikipedia.org/wiki/Data_access_layer'>DAL</a> y detalla la <a href='https://en.wikipedia.org/wiki/Multitier_architecture#Three-tier_architecture'><em>three-tier</em></a>.</p>
+
+    <p><strong>5.</strong> Lee exhaustivamente y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Software_design_pattern'>patrón de diseño sofware</a>.</p>
+
+    <p><strong>6.</strong> Lee exhaustivamente y explica con tus propias palabras lo que es el patrón de diseño sofware <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>.</p>
+
+    <p><strong>7.</strong> Mira este <a href='https://www.youtube.com/watch?v=UU8AKk8Slqg'>vídeo</a> de principio a fin, resúmelo y explica el <a href='mvc.jpg'>flujo</a> de MVC empezando por el usuario.</p>
+
+    <p><strong>8.</strong> Lee bien <a href='https://www.sitepoint.com/the-mvc-pattern-and-php-1/'>este</a> y <a href='https://www.sitepoint.com/the-mvc-pattern-and-php-2/'>este</a> artículo y ejecuta, modifica y explica exhaustivamente esta <a href='plantilla_mvc_simple.zip'>plantilla</a> MVC básica.</p>
+
+    <p><strong>9.</strong> Lee exhaustivamente y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Web_framework'><em>framework</em> web</a>.</p>
+
+    <p><strong>10.</strong> Lee exhaustivamente y explica con tus propias palabras lo que es <a href='https://en.wikipedia.org/wiki/Laravel'>Laravel</a>.</p>
+
+    <h2>Actividades de Laravel</h2>
+
+    <h3>1. Framework web e instalación</h3>
 
     <p><strong>1.</strong> Realiza los siguientes ejercicios:<br />
-    <strong>a)</strong> Resuelve estos diez <a href='https://milq.github.io/cursos/fundprog/ud/06.html'>ejercicios</a> sobre clases usando <a href='https://www.w3schools.com/php/php_oop_what_is.asp'>OOP</a> en PHP.<br />
-    <strong>b)</strong> Mira este <a href='https://www.youtube.com/watch?v=0sHSrqyZCnM&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=1'>vídeo</a>, di qué trata e indica los puntos del curso que más te llaman la atención.<br />
-    <strong>c)</strong> Lee y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Software_design_pattern'>patrón de diseño sofware</a>.<br />
-    <strong>d)</strong> Mira este <a href='https://www.youtube.com/watch?v=SbdbHvf5b7c&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=2'>vídeo</a> y explica con tus propias palabras el patrón de diseño <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a> (<a href='mvc.jpg'>diagrama</a>).<br />
-    <strong>e)</strong> Lee y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Web_framework'><em>framework</em> web</a> y lo que es <a href='https://en.wikipedia.org/wiki/Laravel'>Laravel</a>.<br />
-    <strong>f)</strong> Explora la <a href='https://laravel.com/docs/'>documentación</a> oficial de Laravel y describe las diferentes formas de <a href='https://laravel.com/docs/installation'>instalar</a> Laravel.<br />
-    <strong>g)</strong> Explica las <a href='https://stackoverflow.com/a/33052263'>diferencias</a> entre <em>composer update</em> y <em>composer install</em> y cuándo es mejor usar uno que otro.<br />
-    <strong>h)</strong> Crea un proyecto en blanco en Laravel usando Composer. Ayúdate de <a href='https://laravel.com/docs/installation'>esto</a>, <a href='https://milq.github.io/cursos/dwes/ud/3/laravel'>esto</a> o del curso (<a href='https://www.youtube.com/watch?v=l9iOi4UGtCE&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=3'>1</a>, <a href='https://www.youtube.com/watch?v=PuCdTAayogg&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=4'>2</a> y <a href='https://www.youtube.com/watch?v=Wa1cG8kITqc&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=5'>3</a>).</p>
+    <strong>a)</strong> Mira este <a href='https://www.youtube.com/watch?v=0sHSrqyZCnM&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=1'>vídeo</a>, di de qué trata e indica los puntos del curso que más te llaman la atención.<br />
+    <strong>b)</strong> Mira este <a href='https://www.youtube.com/watch?v=SbdbHvf5b7c&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=2'>vídeo</a> de principio a fin y explica de nuevo <em>framework</em> web y MVC.<br />
+    <strong>c)</strong> Explora la <a href='https://laravel.com/docs/'>documentación</a> oficial de Laravel y describe las diferentes formas de <a href='https://laravel.com/docs/installation'>instalar</a> Laravel.<br />
+    <strong>d)</strong> Crea un proyecto en blanco en Laravel usando Composer ayudándote de <a href='https://laravel.com/docs/installation'>aquí</a> o del curso (<a href='https://www.youtube.com/watch?v=l9iOi4UGtCE&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=3'>1</a>, <a href='https://www.youtube.com/watch?v=PuCdTAayogg&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=4'>2</a> y <a href='https://www.youtube.com/watch?v=Wa1cG8kITqc&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=5'>3</a>).</p>
 
-    <h3 id='a2'>2. Rutas y controladores</h3>
+    <h3>Recomendación</h3>
+
+    <p>Antes de seguir, comienza y completa la siguiente unidad didáctica: <a href='../5/index.html'>servicios web</a>.</p>
+
+    <h3>2. Rutas y controladores</h3>
 
     <p>Antes de empezar, explora e investiga cómo funcionan las <a href='https://laravel.com/docs/routing'>rutas</a> y <a href='https://laravel.com/docs/controllers'>controladores</a> en Laravel.</p>
 
@@ -34,7 +77,7 @@
     <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=RbC_u4jOaZI&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=9'>tutorial</a> para crear el controlador <em>PaginasController</em> que muestre páginas web.<br />
     <strong>e)</strong> Completa este <a href='https://www.youtube.com/watch?v=E0Y09v05RAk&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=10'>tutorial</a> para crear las rutas típicas de <a href='https://en.wikipedia.org/wiki/Create,_read,_update_and_delete'>CRUD</a> y verlas con <em>php artisan route:list</em>.</p>
 
-    <h3 id='a3'>3. Vistas mediante Bootstrap y Blade</h3>
+    <h3>3. Vistas mediante Bootstrap y Blade</h3>
 
     <p>Antes de empezar, aprende lo que es un <a href='https://en.wikipedia.org/wiki/Web_template_system'>sistema o motor de plantillas web</a> y cómo funciona <a href='https://laravel.com/docs/blade'>Blade</a>.</p>
 
@@ -45,9 +88,7 @@
     <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=71mTVdV6E9Q&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=14'>tutorial</a> para mostrar desde una plantilla los valores del <em>array</em>: <em>$alumnos</em>.<br />
     <strong>e)</strong> Completa este <a href='https://www.youtube.com/watch?v=TwONvn1r7rA&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=15'>tutorial</a> combinar las plantillas hechas Blade con Bootstrap.</p>
 
-    <p><strong>Recomendado</strong>: antes de seguir, comienza y completa la siguiente unidad didáctica: <a href='../5/index.html'>servicios web</a>.</p>
-
-    <h3 id='a4'>4. Bases de datos y Eloquent</h3>
+    <h3>4. Bases de datos y Eloquent</h3>
 
     <p>Antes de empezar, aprende lo que es <a href='https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping'>ORM</a>, cómo funciona <a href='https://laravel.com/docs/eloquent'>Eloquent</a> y se establecen las <a href='https://laravel.com/docs/eloquent-relationships'>relaciones</a>.</p>
 
@@ -69,7 +110,7 @@
 
     <p><strong>Tinker (opcional)</strong>: mira este <a href='https://www.youtube.com/watch?v=XPiW_HcJEpM&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=32'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=EuErtURpJFs&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=33'>tutorial</a> para aprender a usar la herramienta <a href='https://laravel.com/docs/artisan#tinker'>Tinker</a> de Artisan.</p>
 
-    <h3 id='a5'>5. CRUD con formularios</h3>
+    <h3>5. CRUD con formularios</h3>
 
     <p><strong>5.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
     <strong>a)</strong> Completa este <a href='https://milq.github.io/cursos/dwes/ud/3/laravel'>tutorial</a> o los siguientes para crear un <a href='https://en.wikipedia.org/wiki/Create,_read,_update_and_delete'>CRUD</a> con formularios: <a href='https://www.youtube.com/watch?v=rUaiPn8hQeA&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=34'>1</a>, <a href='https://www.youtube.com/watch?v=TzJlpzJD-lk&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=35'>2</a>, <a href='https://www.youtube.com/watch?v=yCP4-3G-ZGs&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=36'>3</a>, <a href='https://www.youtube.com/watch?v=Ya3Q1ogpF_M&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=37'>4</a>, <a href='https://www.youtube.com/watch?v=tewkuz3L-1I&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=38'>5</a>, <a href='https://www.youtube.com/watch?v=3lldzQR0ESY&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=39'>6</a>, <a href='https://www.youtube.com/watch?v=k2wLuVZ9a4g&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=40'>7</a> y <a href='https://www.youtube.com/watch?v=ZomZoaSCE9Y&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=41'>8</a>.<br />
@@ -77,7 +118,7 @@
     <strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=jEqnHCgh7MY&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=45'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=hnyGzVr4Snw&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=46'>tutorial</a> para validar formularios desde Laravel.<br />
     <strong>d)</strong> Completa este <a href='https://www.youtube.com/watch?v=-bCdEb3K3uE&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=47'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=5YIAZ1EuqHQ&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=48'>tutorial</a> para subir imágenes a una base de datos y mostrarlas<br />(sin LaravelCollective: <em>&lt;form action='/productos' method='post' enctype='multipart/form-data'&gt;</em>).</p>
 
-    <h3 id='a6'>6. Autenticación y sesiones</h3>
+    <h3>6. Autenticación y sesiones</h3>
 
     <p><strong>6.</strong> Crea una web en Laravel siguiendo estos tutoriales:<br />
     <strong>a)</strong> Completa este <a href='https://www.youtube.com/watch?v=LHhrr8uNd-0&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=49'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=sPkD-CnVY6s&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=50'>tutorial</a> para crear un sistema de registro de usuarios e inicio de sesión<br /> (Laravel 6: <em>composer require laravel/ui</em> &rarr; <em>php artisan ui vue --auth</em> y enlazar a Bootstrap en las vistas).<br />
@@ -85,11 +126,11 @@
     <strong>c)</strong> Completa este <a href='https://www.youtube.com/watch?v=kJLv0chFd5k&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=53'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=IeU9b5ytQEE&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=54'>tutorial</a> para manejar sesiones.<br />
     <strong>d) (<strong>opcional</strong>)</strong> Completa este <a href='https://www.youtube.com/watch?v=v7OBpyBeaeA&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=55'>tutorial</a> y este <a href='https://www.youtube.com/watch?v=zUvPWXwURxw&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=56'>tutorial</a> para enviar correos electrónicos.</p>
 
-    <h3 id='a7'>7. Aplicación web completa con Laravel (opcional)</h3>
+    <h3>7. Aplicación web completa con Laravel (opcional)</h3>
 
     <p><strong>7.</strong> Completa este <a href='https://www.youtube.com/watch?v=gr16GSD0Clo&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh&index=57'>tutorial</a> y los siguientes para crear una aplicación web completa de ejemplo.</p>
 
-    <h2 class='center' id='b'>Actividades de ampliación</h2>
+    <h2>Actividad de ampliación</h2>
 
     <p>Crea una aplicación web en Laravel. Elige <strong>uno</strong> de los siguientes temas:</p>
 
@@ -111,22 +152,31 @@
 
     <ol>
       <li>La estructura de archivos y carpetas debe quedar <a href='estructura.txt'>así</a>.</li>
-      <li>El fichero de texto <em>tarea.txt</em> indicará qué apartados de cada actividad se han completado.</li>
+      <li>El fichero de texto <em>realizado.txt</em> indicará qué apartados de cada actividad se han completado.</li>
       <li>El profesor descomprimirá el ZIP y verificará los apartados completados según <em>tarea.txt</em>.</li>
-	  <li>Es importante la franqueza en <em>tarea.txt</em>, sobreestimar conlleva a futuras dificultades en Laravel.</li>
+      <li>Es importante la franqueza en <em>realizado.txt</em>, sobreestimar conlleva a futuras dificultades en Laravel.</li>
     </ol>
 
     <h3>Criterios de calificación</h3>
 
-	<ul>
-	  <li>MVC y framework web: <strong>hasta 2 puntos</strong>.</li>
-	  <li>Rutas y controladores: <strong>hasta 2 puntos</strong>.</li>
-	  <li>Vistas mediante Bootstrap y Blade: <strong>hasta 1 punto</strong>.</li>
-	  <li>Bases de datos y Eloquent: <strong>hasta 3 puntos</strong>.</li>
-	  <li>CRUD con formularios: <strong>hasta 1 punto</strong>.</li>
-	  <li>Autenticación y sesiones: <strong>hasta 1 punto</strong>.</li>
-	</ul>
+    <ul>
+      <li>Actividades de OOP, MVC y otros: <strong>hasta 3 puntos</strong>.</li>
+      <li>Laravel: <strong>hasta 7 puntos</strong>.</li>
+    </ul>
 
+
+<!--
+
+    <ul>
+      <li>MVC y framework web: <strong>hasta 2 puntos</strong>.</li>
+      <li>Rutas y controladores: <strong>hasta 2 puntos</strong>.</li>
+      <li>Vistas mediante Bootstrap y Blade: <strong>hasta 1 punto</strong>.</li>
+      <li>Bases de datos y Eloquent: <strong>hasta 3 puntos</strong>.</li>
+      <li>CRUD con formularios: <strong>hasta 1 punto</strong>.</li>
+      <li>Autenticación y sesiones: <strong>hasta 1 punto</strong>.</li>
+    </ul>
+
+-->
     <p><a href='../../index.html'>Volver</a>.</p>
 
     <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
