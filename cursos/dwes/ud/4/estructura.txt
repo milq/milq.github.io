@@ -8,7 +8,7 @@ xxx_yyy_z
 │   └── 5/
 │   └── 6/
 │   └── 7/
-├── OOP_MVC_otros.pdf
+├── poo_mvc_otros.pdf
 └── realizado.txt
 
 IMPORTANTE 1: Respeta el máximo de MB de la entrega de esta tarea.

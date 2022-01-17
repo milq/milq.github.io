@@ -1,20 +1,43 @@
 <html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
   <head>
     <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-    <title>Servicios web - Manuel Ignacio López Quintero</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=2.0' />
+
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Unidad didáctica sobre Servicios web del curso de desarrollo web en entorno servidor.' />
+    <meta name='keywords' content='servicios, web, curso, desarrollo, web, entorno, servidor' />
+
+    <title>Servicios web</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
     <h1>5. Servicios web</h1>
+           
+    <nav><a href='https://milq.github.io/cursos/dwes'>Desarrollo Web en Entorno Servidor</a> | Creado por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
 
-    <h2 class='center' id='a'>Actividades</h2>
+    <h2>Contenidos</h2>
+
+    <ol>
+      <li><a href='https://en.wikipedia.org/wiki/Web_service'>Servicio web</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/SOAP'>SOAP</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Representational_state_transfer'>REST</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Representational_state_transfer#Applied_to_web_services'>HTTP RESTful API</a>:
+        <ul>
+          <li>Una base <a href='https://en.wikipedia.org/wiki/Uniform_Resource_Identifier'>URI</a> (por ejemplo <em>https://api.example.com/</em>).</li>
+          <li>Un <a href='https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol#Request_methods'>método HTTP</a> (por ejemplo GET, POST, PUT, DELETE...)</li>
+          <li>Un <a href='https://en.wikipedia.org/wiki/Media_type'><em>media type</em></a> (por ejemplo <a href='https://en.wikipedia.org/wiki/JSON'>JSON</a>).</li>
+        </ul>      
+      </li>
+    </ol>
+
+    <h2>Actividades</h2>
 
     <h3 id='a1'>1. Servicios web</h3>
 
     <p><strong>1.</strong> Realiza los siguientes ejercicios:<br />
-    <strong>a)</strong> Lee, investiga y explica con tus propias palabras lo que es un <a href='https://es.wikipedia.org/wiki/Servicio_web'>servicio web</a> (<a href='https://www.youtube.com/watch?v=L37xAaIGiIY'>vídeo</a>) (<a href='servicio_web.png'>diagrama</a>).<br />
+    <strong>a)</strong> ¿Qué es un <a href='https://es.wikipedia.org/wiki/Servicio_web'>servicio web</a> (<a href='servicio_web.png'>diagrama</a>)? Lee, investiga, mira todo este <a href='servicio_web.mp4'>vídeo</a> y explícalo con tus palabras.<br />
 	<strong>b)</strong> Indica qué <a href='https://es.wikipedia.org/wiki/Servicio_web#Ventajas_de_los_servicios_web'>ventajas</a> e <a href='https://es.wikipedia.org/wiki/Servicio_web#Inconvenientes_de_los_servicios_web'>inconvenientes</a> presentan los servicios web y para qué se <a href='https://es.wikipedia.org/wiki/Servicio_web#Razones_para_crear_servicios_Web'>usan</a> principalmente.<br />
 	<strong>c)</strong> Enumera algunos de todos los <a href='https://en.wikipedia.org/wiki/List_of_web_service_protocols'>protocolos</a> y <a href='https://en.wikipedia.org/wiki/List_of_web_service_specifications'>especificaciones</a> existentes en los servicios web.<br />
 	<strong>d)</strong> Describe la <a href='https://www.guru99.com/web-service-architecture.html#4'>arquitectura</a> (<a href='servicio_web_arquitectura.png'>diagrama</a>) de un servicio web y qué tres roles y tres operaciones intervienen.<br />	
@@ -31,7 +54,7 @@
     <h3 id='a3'>3. REST y RESTful</h3>
 
     <p><strong>3.</strong> Realiza los siguientes ejercicios:<br />
-    <strong>a)</strong> Lee, investiga y explica con tus propias palabras esta <a href='https://en.wikipedia.org/wiki/Software_architecture'>arquitectura de software</a>: <a href='https://en.wikipedia.org/wiki/Representational_state_transfer'>REST</a>.<br />
+    <strong>a)</strong> Lee, investiga y explica el estilo de <a href='https://en.wikipedia.org/wiki/Software_architecture'>arquitectura de software</a> para sistemas hipermedia <a href='https://en.wikipedia.org/wiki/Representational_state_transfer'>REST</a>.<br />
 	<strong>b)</strong> Esclarece la <a href='https://stackoverflow.com/a/1568858'>diferencia</a> entre REST y RESTful.<br />
 	<strong>c)</strong> Explica las seis <a href='https://en.wikipedia.org/wiki/Representational_state_transfer#Architectural_constraints'>restricciones</a> de arquitectura REST que tiene que <a href='https://restfulapi.net/rest-architectural-constraints/'>cumplir</a> un servicio web RESTful.<br />
 	<strong>d)</strong> Señala las <a href='https://www.guru99.com/comparison-between-web-services.html'>diferencias</a> entre REST y SOAP, cuándo es mejor uno que otro y qué retos afrontan sus API.</p>
@@ -69,11 +92,16 @@
 
     <ol>
       <li>La estructura de archivos y carpetas debe quedar <a href='estructura.txt'>así</a>.</li>
-      <li>El profesor descomprimirá el ZIP y valorará cada unos de los PDF entregados.</li>
+      <li>El profesor descomprimirá el ZIP y valorará el documento PDF entregado.</li>
     </ol>
 
     <h3>Criterios de calificación</h3>
 
+	<ul>
+	  <li>Actividades 1, 2 y 3 (servicios web, SOAP, y REST/RESTful): <strong>hasta 4 puntos</strong>.</li>
+	  <li>Actividades 4 y 5 (HTTP RESTful API y uso de HTTP RESTful API en servicios web): <strong>hasta 6 puntos</strong>.</li>
+	</ul>
+<!--
 	<ul>
 	  <li>Servicios web: <strong>hasta 1 punto</strong>.</li>
 	  <li>SOAP: <strong>hasta 1 punto</strong>.</li>
@@ -81,10 +109,9 @@
 	  <li>HTTP RESTful API: <strong>hasta 3 puntos</strong>.</li>
 	  <li>Uso de HTTP RESTful API en servicios web: <strong>hasta 3 puntos</strong>.</li>
 	</ul>
+-->
 
-    <p><a href='../../index.html'>Volver</a>.</p>
-
-    <p class='center'>Curso creado por <a href='http://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='http://creativecommons.org/licenses/by-sa/4.0'>licencia</a>.</p>
+    <nav><a href='https://milq.github.io/cursos/dwes'>Desarrollo Web en Entorno Servidor</a> | Creado por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
 
   </body>
 </html>
