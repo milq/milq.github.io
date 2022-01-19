@@ -1,0 +1,9 @@
+Modelo de IA en videojuegos.
+	Movimiento.
+	Toma de decisiones (decision making).
+
+
+Técnicas de IA en videojuegos:
+Movimiento.
+Búsqueda de ruta (pathfinding).
+Toma de decisiones (decision making).
