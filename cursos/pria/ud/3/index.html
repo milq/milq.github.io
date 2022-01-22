@@ -7,13 +7,13 @@
     <meta name='description' content='Curso de programación en red e inteligencia artificial.' />
     <meta name='keywords' content='curso, programación, red, inteligencia, artificial' />
 
-    <title>Movimiento - Manuel Ignacio López Quintero</title>
+    <title>Movimiento I (estático sin orientación) - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
-    <h1>3. Movimiento</h1>
+    <h1>3. Movimiento I (estático sin orientación)</h1>
 
     <nav><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
 
@@ -21,13 +21,30 @@
 
 
     <ol>
-      <li><a href=''>Estructura</a> del algoritmo de movimiento.<br /></li>
+<!--      <li><a href=''></a>.</li> -->
+      <li><a href='https://en.wikipedia.org/wiki/Cartesian_coordinate_system'>Coordenadas cartesianas</a>: <a href='https://en.wikipedia.org/wiki/Two-dimensional_space'>2D</a> (<a href='https://www.youtube.com/watch?v=kzOzYY-T-50'>vídeo</a>) y <a href='https://en.wikipedia.org/wiki/Three-dimensional_space'>3D</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Pythagorean_theorem'>Teorema de Pitágoras</a> (<a href='pythagorean_theorem.png'>fórmula</a>) (<a href='https://www.youtube.com/watch?v=w6nh99v3r4A'>vídeo</a>).</li>
+      <li><a href='https://en.wikipedia.org/wiki/Euclidean_distance'>Distancia euclídea</a>.</li>
 
-      <li>Los básicos de los algoritmos de movimiento:
+<!--
+      <li><a href='https://en.wikipedia.org/wiki/Euclidean_vector'>Vector</a>: 2D (<a href='https://www.youtube.com/watch?v=M5LZ1R3LAps'>vídeo</a>) y 3D.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Dot_product'>Producto escalar</a> y ángulo entre vectores (<a href='https://www.youtube.com/watch?v=5Yj9EVLJXBM'>vídeo</a>).</li>
+-->
+
+
+
+
+
+      <li>Fundamentos de los algoritmos de movimiento (<a href='movement_algorithm_diagram.png'>diagrama</a>):
         <ul>
-          <li>Movimiento bidimensional.</li>
-          <li>Estática.</li>
-          <li>Cinemática.</li>
+          <li>Movimiento bidimensional en <em>x</em> y <em>z</em> y 3D en eje <em>y</em> (<a href='2d_movement_and_3d_basis.png'>figura</a>).</li>
+          <li>Movimientos estáticos:
+            <ul>
+              <li>Orientación como <em>float</em> (<a href='static_data_structure_1.png'>estructura</a> de datos) (<a href='static_1_example.png'>ejemplo</a>)</li>
+              <li>Orientación como vector (<a href='static_data_structure_2.png'>estructura</a> de datos) (<a href='static_2_formula.png'>fórmula</a>) (<a href='static_2_example.png'>ejemplo</a>)</li>
+            </ul>
+          </li>
+          <li>Movimientos cinemáticos (se verá más adelante).</li>
         </ul>
       </li>
 <!--
@@ -56,31 +73,45 @@ Comportamientos de dirección
      Evitación de obstáculos y muros
      Resumen
 -->
-      <li style='list-style-type: upper-alpha' value='1'>Lectura muy recomendada: <em>Ian Millington - AI for Games (AI for Everything)</em>.</li>
+      <li style='list-style-type: upper-alpha' value='1'>Lectura muy recomendada: <em>Ian Millington - AI for Games</em>.</li>
+      <li style='list-style-type: upper-alpha'>Curso <a href='https://learn.unity.com/course/artificial-intelligence-for-beginners'><em>Artificial Intelligence for beginners</em></a>.</li>
+
+
+
 
     </ol>
 
 
     <h2>Actividades</h2>
-<!--
-	<p><strong>X.</strong> Sigue <a href='https://www.youtube.com/watch?v=Mk8e5an2mG8&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=1'>este</a>, <a href='https://www.youtube.com/watch?v=QmWus_Fb31k&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=2'>este</a>, <a href='https://www.youtube.com/watch?v=JTTb9bLheas&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=3'>este</a> y <a href='https://www.youtube.com/watch?v=lgsbEMBl0IU&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=4'>este</a> tutorial (opcional <a href='https://www.youtube.com/watch?v=GUDMZ3meRpg&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=5'>este</a> y <a href='https://www.youtube.com/watch?v=d1hou1a2_gE&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=6'>este</a>) para hacer un <a href='https://en.wikipedia.org/wiki/Pong'>Pong</a> (1972) con IA (movimiento).</p>
--->
+
     <p><strong>1.</strong> Elige uno:<br />
-    <strong>a)</strong> Sigue <a href='https://www.youtube.com/watch?v=Mk8e5an2mG8&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=1'>este</a>, <a href='https://www.youtube.com/watch?v=QmWus_Fb31k&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=2'>este</a>, <a href='https://www.youtube.com/watch?v=JTTb9bLheas&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=3'>este</a> y <a href='https://www.youtube.com/watch?v=lgsbEMBl0IU&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=4'>este</a> tutorial (opcional <a href='https://www.youtube.com/watch?v=GUDMZ3meRpg&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=5'>este</a> y <a href='https://www.youtube.com/watch?v=d1hou1a2_gE&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=6'>este</a>) para hacer un <a href='https://en.wikipedia.org/wiki/Pong'>Pong</a> (1972) con IA (movimiento).<br />
-    <strong>b)</strong> Texto.</p>
+    <strong>a)</strong> Sigue <a href='https://www.youtube.com/watch?v=Mk8e5an2mG8&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=1'>este</a>, <a href='https://www.youtube.com/watch?v=QmWus_Fb31k&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=2'>este</a>, <a href='https://www.youtube.com/watch?v=JTTb9bLheas&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=3'>este</a> y <a href='https://www.youtube.com/watch?v=lgsbEMBl0IU&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=4'>este</a> tutorial (opcional <a href='https://www.youtube.com/watch?v=GUDMZ3meRpg&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=5'>este</a> y <a href='https://www.youtube.com/watch?v=d1hou1a2_gE&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=6'>este</a>) para hacer un <a href='https://en.wikipedia.org/wiki/Pong'>Pong</a> (1972) con IA.<br />
+    <strong>b)</strong> Sigue <a href='https://www.youtube.com/watch?v=YHSanceczXY'>este</a> o <a href='https://www.youtube.com/watch?v=JZvNFrS7wTM'>este</a> tutorial para hacer un <a href='https://en.wikipedia.org/wiki/Pong'>Pong</a> (1972) y añádele IA siguiendo <a href='https://www.youtube.com/watch?v=lgsbEMBl0IU&list=PLNEAWvYbJJ9ltqR_CI5-ZV7p6Emz-v-di&index=5'>este</a>, <a href='https://www.youtube.com/watch?v=AcpaYq0ihaM&t=2240s'>este</a> o <a href='https://www.youtube.com/watch?v=oQLLfeUNsvQ&t=375s'>este</a> vídeo.</p>
 
-    <p><strong>3.</strong> Texto <a href='https://www.youtube.com/watch?v=yorTG9at90g'>vídeo</a> texto.</p>
+    <p><strong>2.</strong> Haz un <a href='https://en.wikipedia.org/wiki/Breakout_(video_game)'>Breakout</a> (1976) (<a href='https://www.youtube.com/watch?v=Xe3_YYhNRaA'>tutorial</a>) y añádele una IA y un sistema de puntuación (<a href='breakout_con_ia.jpg'>ejemplo</a>).</p>
+
+    <p><strong>3.</strong> Crea tu propio juego desde cero con IA que:<br />
+    <strong>&bull;</strong> Sea <a href='https://upload.wikimedia.org/wikipedia/commons/0/0e/Cartesian-coordinate-system.svg'>2D</a> (sistema de coordenadas cartesianas bidimensional) y use la <a href='2d_euclidean_distance.png'>distancia euclídea</a> 2D.<br />
+    <strong>&bull;</strong> Tengan el jugador y la IA movimientos estáticos sin orientación (ver <em>Contenidos</em>) (<a href='ejercicio_3_ejemplo.png'>ejemplo</a>).<br />
+    <strong>&bull;</strong> Haya colisiones, sistema de puntuación y otros elementos como obstáculos, bloques, bolas, etc.</p>
+
+    <p><strong>4 (opcional).</strong> Realiza en Unity este <a href='https://learn.unity.com/tutorial/cartesian-coordinates'>tutorial</a> de coordenadas cartesianas.</p>
+
+    <p><strong>5 (opcional).</strong> Sigue estos <a href='https://www.youtube.com/watch?v=rH9IHdp1dyU&list=PL6ynPcXXvDY_9nYW_S-nAliA1w1mARm8x'>vídeos</a> para hacer un <a href='https://en.wikipedia.org/wiki/Shoot_%27em_up'><em>shoot 'em up</em></a> al estilo <a href='https://en.wikipedia.org/wiki/Gradius_(video_game)'>Gradius</a> (1985).</p>
 
 
-    <p><strong>3.</strong> Haz un <a href='https://en.wikipedia.org/wiki/Breakout_(video_game)'>Breakout</a> (1976) (<a href='https://www.youtube.com/watch?v=Xe3_YYhNRaA'>tutorial</a>) con una IA en la zona superior y con un sistema de puntuación (<a href='breakout_con_ia.jpg'>ejemplo</a>).</p>
+<!--
 
     <a href='https://www.youtube.com/watch?v=yorTG9at90g'>Why Does Celeste Feel So Good to Play?</a>
+
+-->
 
     <h2>Evaluación</h2>
 
     <h3>Entrega</h3>
 
-	<p>La entrega será un PDF con los contenidos desarrollados y los enlaces a los juegos en HTML. Para ello:</p>
+    <!--<p>La entrega será un PDF con los contenidos desarrollados y los enlaces a los juegos en HTML. Para ello:</p>-->
+    <p>La entrega será un PDF con los enlaces a los juegos en HTML. Para ello:</p>
 
     <ol>
       <li><a href='https://docs.unity3d.com/Manual/webgl-building.html'>Exporta</a> cada juego a WebGL en Unity: <em>File&rarr;Build settings&rarr;WebGL&rarr;(Switch platform)&rarr;Build and run</em>.</li>
@@ -89,10 +120,11 @@ Comportamientos de dirección
     </ol>
 
     <h3>Criterios de calificación</h3>
-    
+
     <ul>
-      <li>X: <strong>hasta 8 puntos</strong>.</li>
-      <li>X: <strong>hasta 2 puntos</strong>.</li>
+      <li>Videojuego 1: <strong>hasta 3 puntos</strong>.</li>
+      <li>Videojuego 2: <strong>hasta 3 puntos</strong>.</li>
+      <li>Videojuego 3: <strong>hasta 4 puntos</strong>.</li>
     </ul>
 
     <h3>Criterios de evaluación asociados</h3>
