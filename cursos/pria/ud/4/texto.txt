@@ -1,0 +1,30 @@
+
+
+
+Space Race (1973 Atari)
+
+Tank (1974)
+
+Gun Fight (1975)
+
+
+Sprint 2 (1976)
+
+Sprint 2 "introduced the concept of a computer car that had the intelligence to drive itself around the track" in "a semi-intelligent" manner.[4]
+
+
+Sprint 1 (1978 Atari)
+
+Super Sprint (1986)
+
+
+
+
+
+https://www.youtube.com/watch?v=3ILrVFG93DU - Cómo crear un juego con vista elevada en Unity (Top-Down)
+
+
+https://www.youtube.com/watch?v=2cDXDUotpYI - Cómo crear inteligencia artificial muy fácil en Unity (Máquinas de estados)
+
+https://www.youtube.com/watch?v=tkCupej0j7o&list=PLREdURb87ks3rXXhx2MWERiNTVcG_y_1v&index=1 - 00 - Presentación de la serie - Tutorial Space Shooter en Unity
+
