@@ -1,0 +1,14 @@
+FLEE
+====
+
+Primero hay que hacer el tutorial de David Erosa de Steering Behaviours --> https://www.youtube.com/watch?v=TLq_wSJVYys
+
+Flee es igual que Seek con la única diferencia de restar el vector de manera contraria:
+
+Esto es, cambiar esta línea de código:
+
+Vector2 playerDistance = (targetPosition - (Vector2)transform.position);
+
+Por esta otra:
+
+Vector2 playerDistance = (Vector2)this.transform.position - targetPosition;
