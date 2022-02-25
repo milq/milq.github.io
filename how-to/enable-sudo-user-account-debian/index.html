@@ -8,7 +8,7 @@
     <meta name='description' content="How to enable 'sudo' on an user account on Debian." />
     <meta name='keywords' content='enable, sudo, debian' />
     <meta name='google-site-verification' content='LqbidjuG9-06A5ORsMBwfyYu-6nXfybNayEAWjV_NRE' />
-    
+
     <title>Enable 'sudo' on an user account on Debian - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../../src/png/icon.png' />
     <link rel='stylesheet' href='../../src/css/simple.css' />
@@ -36,12 +36,7 @@
     <ol>
       <li>Start becoming superuser with <code>su</code>. Enter your <em>root</em> password.</li>
       <li>Now, install <em>sudo</em> with <code>apt-get install sudo</code>.</li>
-      <li>Choose one:
-		<ul>
-		  <li><strong>Debian 9</strong>: add the user account to the group <em>sudo</em> with <code>adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</li>
-		  <li><strong>Debian 10 or 11</strong>: add the user account to the group <em>sudo</em> with <code>/sbin/adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</li>
-		</ul>
-      </li>
+      <li>Add the user account to the group <em>sudo</em> with <code>/sbin/adduser <em>username</em> sudo</code>. Where <em>username</em> is your user account.</li>
       <li>Now, log out and then log in with the same user.</li>
       <li>Open a terminal and run <code>sudo echo 'Hello, world!'</code>, enter your user password and that's it!</li>
     </ol>
