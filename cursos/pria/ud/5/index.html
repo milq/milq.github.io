@@ -7,13 +7,13 @@
     <meta name='description' content='Curso de programación en red e inteligencia artificial.' />
     <meta name='keywords' content='curso, programación, red, inteligencia, artificial' />
 
-    <title>Pathfinding - Manuel Ignacio López Quintero</title>
+    <title>Pathfinding con Navigation Meshes- Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
-    <h1>5. Pathfinding</h1>
+    <h1>5. Pathfinding con Navigation Meshes</h1>
 
     <nav><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
 
@@ -21,35 +21,45 @@
 
 
     <ol>
-	  <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)'>Grafo</a>:
-	    <ul>
-		  <li>Según su dirección:
-		    <ul>
-	          <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph'>No dirigido</a> (<a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#/media/File:6n-graf.svg'>ejemplo</a>).</li>
-	          <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_graph'>Dirigido</a> (<a href='https://en.wikipedia.org/wiki/Directed_graph#/media/File:Directed_acyclic_graph_2.svg'>ejemplo</a>).</li>
-		    </ul>
-		  </li>
-		  <li>Según su peso:
-		    <ul>
-		      <li>No ponderado (<a href='https://en.wikipedia.org/wiki/Tree_(graph_theory)#/media/File:Tree_graph.svg'>ejemplo</a>).</li>
-		      <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Weighted_graph'>Ponderado</a> (<a href='https://en.wikipedia.org/wiki/Weighted_network#/media/File:Weighted_network.svg'>ejemplo</a>).</li>
-		    </ul>
-		  </li>
-	    </ul>
-	  <br /></li>
+      <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)'>Grafo</a>:
+        <ul>
+          <li>Según su dirección:
+            <ul>
+              <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph'>No dirigido</a> (<a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#/media/File:6n-graf.svg'>ejemplo</a>).</li>
+              <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_graph'>Dirigido</a> (<a href='https://en.wikipedia.org/wiki/Directed_graph#/media/File:Directed_acyclic_graph_2.svg'>ejemplo</a>).</li>
+            </ul>
+          </li>
+          <li>Según su peso:
+            <ul>
+              <li>No ponderado (<a href='https://en.wikipedia.org/wiki/Tree_(graph_theory)#/media/File:Tree_graph.svg'>ejemplo</a>).</li>
+              <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Weighted_graph'>Ponderado</a> (<a href='https://en.wikipedia.org/wiki/Weighted_network#/media/File:Weighted_network.svg'>ejemplo</a>).</li>
+            </ul>
+          </li>
+        </ul>
+      <br /></li>
 
-	  <li><a href='https://en.wikipedia.org/wiki/Graph_theory'>Teoría de grafos</a>:
-	    <ul>
-	      <li>Text.</li>
-	      <li>Text.</li>
-	      <li>Text.</li>
-	    </ul>
-	  <br /></li>
+      <li><a href='https://en.wikipedia.org/wiki/Graph_theory'>Teoría de grafos</a>:
+        <ul>
+          <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Definitions'>Definiciones</a>.</li>
+          <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Applications'>Aplicaciones</a>.</li>
+          <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Representation'>Representación</a>.</li>
+          <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Problems'>Problemas</a>:
+            <ul>
+              <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Route_problems'>Problemas de ruta</a>:
+                <ul>
+                  <li><a href='https://en.wikipedia.org/wiki/Shortest_path_problem'>Problema del camino más corto</a> (<em>shortest path problem</em>).</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      <br /></li>
 
-	  <li>Búsqueda de ruta (<a href='https://en.wikipedia.org/wiki/Pathfinding'><em>pathfinding</em></a>) (<a href='https://qiao.github.io/PathFinding.js/visual/'>herramienta</a> <em>online</em>):
+      <li><a href='https://en.wikipedia.org/wiki/Pathfinding'>Pathfinding</a>:
         <ul>
           <li>Algoritmos:
             <ul>
+              <li><a href='https://en.wikipedia.org/wiki/Breadth-first_search'>Búsqueda en anchura</a> (BFS, <em>Breadth-First Search</em>).</li>
               <li><a href='https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm'>Dijkstra</a>.</li>
               <li><a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a>.</li>
             </ul>
@@ -57,15 +67,33 @@
           <li>Representaciones del mundo:
             <ul>
               <li>Grafos basados ​​en <em>tiles</em> (<em>tile-based graphs</em>).</li>
-              <li>Mallas de navegación (<em>navigation meshes</em>).</li>
+              <li><a href='https://en.wikipedia.org/wiki/Navigation_mesh'>Mallas de navegación</a> (<em>navigation meshes</em>):
+                <ul>
+                  <li><a href='https://en.wikipedia.org/wiki/Navigation_mesh#Description'>Descripción</a>.</li>
+                  <li><a href='https://en.wikipedia.org/wiki/Navigation_mesh#Creation'>Creación</a>.</li>
+                </ul>
+
+              </li>
               <li>A*.</li>
             </ul>
           </li>
+          <li><a href='https://en.wikipedia.org/wiki/Pathfinding#Hierarchical_path_finding'>Hierarchical pathfinding</a> (<a href='https://en.wikipedia.org/wiki/Pathfinding#Example'>ejemplo</a>) (<a href='hpa.jpg'>imagen</a>) (<a href='http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.112.314'>HPA*</a>) (<a href='https://doi.org/10.1016/j.cag.2016.05.023'>HNA*</a>).</li>
+        </ul>
+      <br /></li>
+
+
+      <li style='list-style-type: upper-alpha' value='1'><a href='https://docs.unity3d.com/Manual/Navigation.html'>Navigation Meshes y Pathfinding</a> en Unity:
+        <ul>
+          <li>ASASdf.</li>
+          <li>ASASdf.</li>
         </ul>
       </li>
+
     </ol>
 
-	<p><a href='https://www.redblobgames.com/pathfinding/a-star/introduction.html'>articulazo</a>.</p>
+
+
+    <p><a href='https://www.redblobgames.com/pathfinding/a-star/introduction.html'>articulazo</a>.</p>
 
     <h2>Actividades de física en la IA (opcionales)</h2>
 
@@ -81,14 +109,19 @@
 
     <p><strong>X.</strong> Repasa <a href='https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html'>rotaciones</a>, la clase <a href='https://docs.unity3d.com/ScriptReference/Quaternion.html'><em>Quaternion</em></a>, sus métodos <a href='https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html'><em>LookRotation</em></a> y <a href='https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html'><em>Slerp</em></a> y haz este <a href='https://learn.unity.com/tutorial/waypoints?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>tutorial</a> en Unity.</p>
 
-	<p>A*: a directed nonnegative weighted graph. <a href='https://www.youtube.com/watch?v=GBkOXoQoi-M'>Backtracking</a> (<a href='https://en.wikipedia.org/wiki/Depth-first_search'>DFS</a>, pero es mejor BFS)</p>
+    <p>A*: a directed nonnegative weighted graph. <a href='https://www.youtube.com/watch?v=GBkOXoQoi-M'>Backtracking</a> (<a href='https://en.wikipedia.org/wiki/Depth-first_search'>DFS</a>, pero es mejor BFS)</p>
+
+    <p><strong>X.</strong> Prueba este, este, este, este mapa para BFS, Djistra, A* e informa de las operaciones realizadas y longitud de cada uno.</p>
 
 
-	<p><a href='https://qiao.github.io/PathFinding.js/visual/'><em>PathFinding.js</em></a> (<a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>A*</a>.</p>
+    <p><a href='https://qiao.github.io/PathFinding.js/visual/'><em>PathFinding.js</em></a> (<a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>A*</a>.</p>
 
-	<p><a href='https://www.youtube.com/watch?v=dMb1wM0GfDg&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>patrulla</a></p>
+    <p><a href='https://www.youtube.com/watch?v=dMb1wM0GfDg&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>patrulla</a></p>
 
-	<p><a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>campo de visión</a></p>
+    <p><a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>campo de visión</a></p>
+
+
+    <p><a href='https://www.youtube.com/watch?v=CHV1ymlw-P8&list=RDCMUCYbK_tjZ2OrIZFBvU6CCMiA&index=1'>Navmesh</a></p>
 
     <h2>Actividades</h2>
 
@@ -98,18 +131,18 @@
     <strong>b)</strong> La IA perseguirá al jugador de manera <a href='vectores_resta.png'>directa</a> (<a href='rotate_sprite.cs'>rotación</a>); para ello, sigue este <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04'>tutorial</a> (<em>Vectors Part <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd081edbc2a0f2b3f64b4'>1</a> y <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd8f8edbc2a0f2b3f6650'>2</a></em>).<br />
     <strong>c)</strong> Opcionalmente, tendrá colisiones, balas (<a href='https://www.youtube.com/watch?v=KXUaiSRhVCI'>tutorial</a> para un <em>pool</em> de balas) y un sistema de puntuación.</p>
 
-	<pre>
-	a) Movimiento de tipo coche 3d (dar tutorial)
-	a) Crea varias IA que sean coches que sean patrullas (tutoriales de Waypoint-mejor- y el de Arosa)
-	c) Colisiones, balas, sistema de puntuación, quién gana, quién pierde, etc.
+    <pre>
+    a) Movimiento de tipo coche 3d (dar tutorial)
+    a) Crea varias IA que sean coches que sean patrullas (tutoriales de Waypoint-mejor- y el de Arosa)
+    c) Colisiones, balas, sistema de puntuación, quién gana, quién pierde, etc.
 
-	</pre>
+    </pre>
 
-	<p><a href='https://www.youtube.com/watch?v=BJzYGsMcy8Q'>movimiento 3D</a>, <a href='https://www.youtube.com/watch?v=Z2KmfduirfU'>cámara</a>, </p>
+    <p><a href='https://www.youtube.com/watch?v=BJzYGsMcy8Q'>movimiento 3D</a>, <a href='https://www.youtube.com/watch?v=Z2KmfduirfU'>cámara</a>, </p>
 
-	<p><a href='https://www.youtube.com/watch?v=e94KggaEAr4'>move characters</a></p>
+    <p><a href='https://www.youtube.com/watch?v=e94KggaEAr4'>move characters</a></p>
 
-	<p><a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=12'>personaje de vision</a></p>
+    <p><a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=12'>personaje de vision</a></p>
 
     <h2>Evaluación</h2>
 
