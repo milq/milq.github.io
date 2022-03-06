@@ -82,35 +82,23 @@
       <br /></li>
 
 
-      <li style='list-style-type: upper-alpha' value='1'><a href='https://docs.unity3d.com/Manual/Navigation.html'>Navegación</a> en Unity (<a href='https://docs.unity3d.com/uploads/Main/NavMeshOverview.png'>ejemplo</a>):
+      <li style='list-style-type: upper-alpha' value='1'><a href='https://docs.unity3d.com/Manual/Navigation.html'>Navegación</a> en Unity:
         <ul>
-          <li>ASASdf.</li>
-          <li>ASASdf.</li>
-          Navigation System
-          Funcionamiento interno del sistema de navegación
-         
-         
-       
-          <li>Tutoriales:
-            <ul>
-              <li>Decirle a un agente que se mueva a un destino.</li>
-              <li>Mover a un agente a una posición dada por un clic de ratón.</li>
-				
-				
-				
-			  <li>Crear una patrulla entre diferentes puntos.</li>
-
-              <li>Decirle a un NavMeshAgent que se mueva a un destino.</li>
-            </ul>
-          </li>    
+          <li><a href='https://docs.unity3d.com/Manual/nav-NavigationSystem.html'>Sistema</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/class-NavMeshAgent.html'>Referencia</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-HowTos.html'>Tutoriales</a>.</li>
         </ul>
-      </li>
+      <br /></li>
+
+
+	  <li style='list-style-type: upper-alpha'>Otros:
+	    <ul>
+	      <li><a href='https://www.redblobgames.com/pathfinding/a-star/introduction.html'><em>Introduction to the A* Algorithm</em></a>.</li>
+	    </ul>
+	  </li>
+
 
     </ol>
-
-
-
-    <p><a href='https://www.redblobgames.com/pathfinding/a-star/introduction.html'>articulazo</a>.</p>
 
 	<h2>Actividades</h2>
 
@@ -129,7 +117,7 @@
     <h3>Waypoints y patrulla</h3>
 
     <p><strong>X.</strong> Repasa <a href='https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html'>rotaciones</a>, la clase <a href='https://docs.unity3d.com/ScriptReference/Quaternion.html'><em>Quaternion</em></a>, sus métodos <a href='https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html'><em>LookRotation</em></a> y <a href='https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html'><em>Slerp</em></a> y haz este <a href='https://learn.unity.com/tutorial/waypoints?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>tutorial</a> en Unity.</p>
-    
+
     <h2>Otras actividades</h2>
 
 
@@ -156,7 +144,17 @@
     <p><strong>1.</strong> Haz este <a href='juego1.png'>juego</a> donde:<br />
     <strong>a)</strong> El jugador tendrá movimiento <a href='movement_8d.gif'><em>8-directional</em></a>; para ello, sigue este <a href='https://www.youtube.com/watch?v=gs7y2b0xthU'>tutorial</a> (<a href='Player8DMovement.cs'>código</a>) o este <a href='https://www.youtube.com/watch?v=m4K8Wq7J86U'>otro</a>.<br />
     <strong>b)</strong> La IA perseguirá al jugador de manera <a href='vectores_resta.png'>directa</a> (<a href='rotate_sprite.cs'>rotación</a>); para ello, sigue este <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04'>tutorial</a> (<em>Vectors Part <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd081edbc2a0f2b3f64b4'>1</a> y <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd8f8edbc2a0f2b3f6650'>2</a></em>).<br />
+    
+    <strong>x)</strong> Habrá colisiones, balas, <a href='https://en.wikipedia.org/wiki/Life_(video_games)'>vidas</a>, <a href='https://en.wikipedia.org/wiki/Score_(game)#Video_games'><em>score</em></a>, menú, <a href='https://en.wikipedia.org/wiki/Game_over'><em>game over</em></a>, música, SFX, <a href='https://en.wikipedia.org/wiki/Power-up'><em>power-ups</em></a>, <a href='https://en.wikipedia.org/wiki/Level_(video_games)'>niveles</a>, <a href='https://en.wikipedia.org/wiki/HUD_(video_gaming)'>HUD</a>, <a href='https://en.wikipedia.org/wiki/Boss_(video_games)'>jefes</a>, etc.<br />
     <strong>c)</strong> Opcionalmente, tendrá colisiones, balas (<a href='https://www.youtube.com/watch?v=KXUaiSRhVCI'>tutorial</a> para un <em>pool</em> de balas) y un sistema de puntuación.</p>
+
+El juego tendrá sistema de puntuación, conteo de vidas, obstáculos, balas, colisiones y/o rebotes.
+
+Otros (menú, <em>game over</em>, respawning, <em>power-ups</em>, música, SFX, etc.): hasta 2 puntos.
+
+El juego tendrá sistema de puntuación, conteo de vidas, obstáculos, balas, colisiones y/o rebotes.
+
+Otros (menú, game over, respawning de bots, power-ups, música, SFX, etc.): hasta 2 puntos.
 
     <pre>
     a) Movimiento de tipo coche 3d (dar tutorial)
@@ -175,27 +173,20 @@
 
     <h3>Entrega</h3>
 
-    <!--<p>La entrega será un PDF con los contenidos desarrollados y los enlaces a los juegos en HTML. Para ello:</p>-->
-    <p>La entrega será un ZIP con los juegos en Windows y en GNU/Linux y un PDF con los enlaces a los juegos en HTML.</p>
+    <p>Sube un ZIP con los juegos en Windows, en GNU/Linux y un PDF con enlaces para jugar <em>online</em> en <a href='https://itch.io/'><em>itch.io</em></a>.</p>
 
-<a href='https://itch.io/'><em>itch.io</em></a> para jugar desde el navegador.
-
-	<p>Para exportar a Windows y GNU/Linux: <em>File&rarr;Build settings&rarr;Windows,Mac,Linux&rarr;(Switch platform)&rarr;Build and run</em></p>
-
-	
+	<p>Para exportar los juegos tanto en Windows como en GNU/Linux:</p>
 
     <ol>
-      <li><a href='https://docs.unity3d.com/Manual/BuildSettingsStandalone.html'>Exporta</a> cada juego a Windows y GNU/Linux: <em>File&rarr;Build settings&rarr;Windows,Mac,Linux&rarr;(Switch platform)&rarr;Build and run</em>.</li>
-      <li>Una vez exportado, comprímelo en un solo <em>zip</em> (<em>index.html</em> así como el resto de archivos y carpetas).</li>
-      <li>Cada juego se subirá a <a href='https://itch.io/'><em>itch.io</em></a> como <a href='https://twinery.org/cookbook/starting/twine2/images/starting-itchio-project-type.jpg'>HTML</a> en <em>Draft mode</em> y su <em>Secret URL</em> se indicará en el PDF.</li>
+      <li><a href='https://docs.unity3d.com/Manual/BuildSettingsStandalone.html'>Exporta</a> cada juego con <em>File&rarr;Build settings&rarr;Windows,Mac,Linux&rarr;(Switch platform)&rarr;Build and run</em>.</li>
     </ol>
 
-	<p>Para exportar a WebGL:</p>
+	<p>Para subir los juegos a <a href='https://itch.io/'><em>itch.io</em></a> y obtener los enlaces para jugar <em>online</em>:</p>
 
     <ol>
       <li><a href='https://docs.unity3d.com/Manual/webgl-building.html'>Exporta</a> cada juego a WebGL en Unity: <em>File&rarr;Build settings&rarr;WebGL&rarr;(Switch platform)&rarr;Build and run</em>.</li>
       <li>Una vez exportado, comprímelo en un solo <em>zip</em> (<em>index.html</em> así como el resto de archivos y carpetas).</li>
-      <li>Sube cada juego a <a href='https://itch.io/'><em>itch.io</em></a> como tipo <a href='https://twinery.org/cookbook/starting/twine2/images/starting-itchio-project-type.jpg'>HTML</a> en <em>Draft mode</em>, obtén su <em>Secret URL</em> e indícalo en el PDF.</li>
+      <li>Sube cada juego a <a href='https://itch.io'><em>itch.io</em></a> como <!-- como tipo --><a href='https://milq.github.io/cursos/pria/ud/2/itch.io/html_project.png'>HTML</a> a <a href='https://milq.github.io/cursos/pria/ud/2/itch.io/720p_viewport.png'><em>720p</em></a> en <a href='https://milq.github.io/cursos/pria/ud/2/itch.io/draft_mode.png'><em>Draft mode</em></a>, obtén su <a href='https://milq.github.io/cursos/pria/ud/2/itch.io/secret_url.png'><em>Secret URL</em></a> e indícalo en el PDF.</li> <!-- e indícalo -->
     </ol>
 
     <h3>Criterios de calificación</h3>
