@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player8DMovement : MonoBehaviour
+public class Player8DMovement3D : MonoBehaviour
 {
     [SerializeField]
     private float speed;
@@ -13,15 +13,15 @@ public class Player8DMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector2 movementDirection = new Vector2(horizontalInput, verticalInput);
-        float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+
         movementDirection.Normalize();
 
-        transform.Translate(movementDirection * speed * inputMagnitude * Time.deltaTime, Space.World);
+        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
 
-        if (movementDirection != Vector2.zero)
+        if (movementDirection != Vector3.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, movementDirection);
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
         }
     }
