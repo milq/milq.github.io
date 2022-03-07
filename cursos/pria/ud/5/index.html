@@ -7,13 +7,13 @@
     <meta name='description' content='Curso de programación en red e inteligencia artificial.' />
     <meta name='keywords' content='curso, programación, red, inteligencia, artificial' />
 
-    <title>Pathfinding con Navigation Meshes- Manuel Ignacio López Quintero</title>
+    <title>Waypoints y Pathfinding - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
-    <h1>5. Pathfinding con Navigation Meshes</h1>
+    <h1>5. Waypoints y Pathfinding</h1>
 
     <nav><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
 
@@ -81,7 +81,7 @@
         </ul>
       <br /></li>
 
-
+<!--
       <li style='list-style-type: upper-alpha' value='1'><a href='https://docs.unity3d.com/Manual/Navigation.html'>Navegación</a> en Unity:
         <ul>
           <li><a href='https://docs.unity3d.com/Manual/nav-NavigationSystem.html'>Sistema</a>.</li>
@@ -89,22 +89,51 @@
           <li><a href='https://docs.unity3d.com/Manual/nav-HowTos.html'>Tutoriales</a>.</li>
         </ul>
       <br /></li>
+-->
 
-
-	  <li style='list-style-type: upper-alpha'>Otros:
-	    <ul>
-	      <li><a href='https://www.redblobgames.com/pathfinding/a-star/introduction.html'><em>Introduction to the A* Algorithm</em></a>.</li>
-	    </ul>
-	  </li>
+      <li style='list-style-type: upper-alpha' value='1'>Otros:
+        <ul>
+          <li><a href='https://www.redblobgames.com/pathfinding/a-star/introduction.html'><em>Introduction to the A* Algorithm</em></a>.</li>
+        </ul>
+      </li>
 
 
     </ol>
 
-	<h2>Actividades</h2>
+    <h2>Actividades</h2>
 
-	<p>Realiza las siguientes actividades en Unity:</p>
+    <p>Realiza las siguientes actividades en Unity:</p>
 
-    <h3>Física en Unity (opcional)</h3>
+    <h3>Waypoints y patrulla</h3>
+
+    <p><strong>X.</strong> Prueba este, este, este, este mapa para BFS, Djistra, A* e informa de las operaciones realizadas y longitud de cada uno.</p>
+
+
+
+<a href='https://www.youtube.com/watch?v=GBkOXoQoi-M'>DFS</a> (<a href='https://en.wikipedia.org/wiki/Depth-first_search'>DFS</a>, pero es mejor BFS)
+
+    <h3>Waypoints y patrulla</h3>
+
+    <p><strong>X.</strong> Repasa <a href='https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html'>rotaciones</a>, la clase <a href='https://docs.unity3d.com/ScriptReference/Quaternion.html'><em>Quaternion</em></a>, sus métodos <a href='https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html'><em>LookRotation</em></a> y <a href='https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html'><em>Slerp</em></a> y haz este <a href='https://learn.unity.com/tutorial/waypoints?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>tutorial</a> en Unity.</p>
+
+
+    <p>David Erosa: <a href='https://www.youtube.com/watch?v=dMb1wM0GfDg&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>patrulla</a>, <a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>campo de visión</a>, <a href=''></a></p>
+
+
+
+    <h3>Pathfinding</h3>
+
+    <p><a href='https://qiao.github.io/PathFinding.js/visual/'><em>PathFinding.js</em></a> (<a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>A*</a>.</p>
+
+
+    <p><strong>1.</strong> Haz este <a href='juego1.png'>juego</a> donde:<br />
+    <strong>a)</strong> El jugador tendrá movimiento <a href='movement_8d.gif'><em>8-directional</em></a>; para ello, sigue este <a href='https://www.youtube.com/watch?v=gs7y2b0xthU'>tutorial</a> (<a href='Player8DMovement.cs'>código</a>) o este <a href='https://www.youtube.com/watch?v=m4K8Wq7J86U'>otro</a>.<br />
+    <strong>b)</strong> La IA perseguirá al jugador de manera <a href='vectores_resta.png'>directa</a> (<a href='rotate_sprite.cs'>rotación</a>); para ello, sigue este <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04'>tutorial</a> (<em>Vectors Part <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd081edbc2a0f2b3f64b4'>1</a> y <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd8f8edbc2a0f2b3f6650'>2</a></em>).<br />
+    <strong>x)</strong> Habrá colisiones, balas, <a href='https://en.wikipedia.org/wiki/Life_(video_games)'>vidas</a>, <a href='https://en.wikipedia.org/wiki/Score_(game)#Video_games'><em>score</em></a>, menú, <a href='https://en.wikipedia.org/wiki/Game_over'><em>game over</em></a>, música, SFX, <a href='https://en.wikipedia.org/wiki/Power-up'><em>power-ups</em></a>, <a href='https://en.wikipedia.org/wiki/Level_(video_games)'>niveles</a>, <a href='https://en.wikipedia.org/wiki/HUD_(video_gaming)'>HUD</a>, <a href='https://en.wikipedia.org/wiki/Boss_(video_games)'>jefes</a>, <a href='https://en.wikipedia.org/wiki/Achievement_(video_games)'>logros</a>, etc.<br />
+    <strong>c)</strong> Opcionalmente, tendrá colisiones, balas (<a href='https://www.youtube.com/watch?v=KXUaiSRhVCI'>tutorial</a> para un <em>pool</em> de balas) y un sistema de puntuación.</p>
+
+
+    <h3>Actividades de ampliación (opcional)</h3>
 
     <p><strong>1.</strong> Estudia exhaustivamente la clase <a href='https://docs.unity3d.com/Manual/TimeFrameManagement.html'><em>Time</em></a>, el <a href='https://docs.unity3d.com/Manual/ExecutionOrder.html'>orden</a> de ejecución de los eventos y haz este <a href='https://learn.unity.com/tutorial/time-0fbw?courseId=5dd851beedbc2a1bf7b72bed&projectId=5df2611eedbc2a0020d90217'>tutorial</a> en Unity.</p>
 
@@ -114,60 +143,10 @@
 
     <p><strong>4.</strong> Estudia el <a href='https://en.wikipedia.org/wiki/Projectile_motion'>movimiento parabólico</a> (<a href='https://en.wikipedia.org/wiki/Projectile_motion#Kinematic_quantities_of_projectile_motion'>ecuaciones</a>) (<a href='https://en.wikipedia.org/wiki/Projectile_motion#Properties_of_the_trajectory'>propiedades</a>) (<a href='https://en.wikipedia.org/wiki/Projectile_motion#Trajectory_of_a_projectile_with_air_resistance'>aire</a>) (<a href='https://www.youtube.com/watch?v=OYa-OazhkK8'>vídeo</a>) y haz este <a href='https://learn.unity.com/tutorial/calculating-trajectories?courseId=5dd851beedbc2a1bf7b72bed&projectId=5df2611eedbc2a0020d90217'>tutorial</a> en Unity.</p>
 
-    <h3>Waypoints y patrulla</h3>
-
-    <p><strong>X.</strong> Repasa <a href='https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html'>rotaciones</a>, la clase <a href='https://docs.unity3d.com/ScriptReference/Quaternion.html'><em>Quaternion</em></a>, sus métodos <a href='https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html'><em>LookRotation</em></a> y <a href='https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html'><em>Slerp</em></a> y haz este <a href='https://learn.unity.com/tutorial/waypoints?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>tutorial</a> en Unity.</p>
-
-    <h2>Otras actividades</h2>
+    <p><strong>5.</strong> Estudia el algoritmo <a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a>, ve este <a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>vídeo</a> y haz  <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-1?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-2?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-3?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-4?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a> y <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-5?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a> tutorial en Unity.</p>
 
 
 
-    <p>A*: a directed nonnegative weighted graph. <a href='https://www.youtube.com/watch?v=GBkOXoQoi-M'>Backtracking</a> (<a href='https://en.wikipedia.org/wiki/Depth-first_search'>DFS</a>, pero es mejor BFS)</p>
-
-    <p><strong>X.</strong> Prueba este, este, este, este mapa para BFS, Djistra, A* e informa de las operaciones realizadas y longitud de cada uno.</p>
-
-	<p><a href='https://www.youtube.com/watch?v=k9W6B2kHpD4'>Navmesh</a> en español.</p>
-
-
-    <p><a href='https://qiao.github.io/PathFinding.js/visual/'><em>PathFinding.js</em></a> (<a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>A*</a>.</p>
-
-    <p><a href='https://www.youtube.com/watch?v=dMb1wM0GfDg&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>patrulla</a></p>
-
-    <p><a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>campo de visión</a></p>
-
-
-    <p><a href='https://www.youtube.com/watch?v=CHV1ymlw-P8&list=RDCMUCYbK_tjZ2OrIZFBvU6CCMiA&index=1'>Navmesh</a></p>
-
-    <h2>Actividades</h2>
-
-
-    <p><strong>1.</strong> Haz este <a href='juego1.png'>juego</a> donde:<br />
-    <strong>a)</strong> El jugador tendrá movimiento <a href='movement_8d.gif'><em>8-directional</em></a>; para ello, sigue este <a href='https://www.youtube.com/watch?v=gs7y2b0xthU'>tutorial</a> (<a href='Player8DMovement.cs'>código</a>) o este <a href='https://www.youtube.com/watch?v=m4K8Wq7J86U'>otro</a>.<br />
-    <strong>b)</strong> La IA perseguirá al jugador de manera <a href='vectores_resta.png'>directa</a> (<a href='rotate_sprite.cs'>rotación</a>); para ello, sigue este <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04'>tutorial</a> (<em>Vectors Part <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd081edbc2a0f2b3f64b4'>1</a> y <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd8f8edbc2a0f2b3f6650'>2</a></em>).<br />
-    
-    <strong>x)</strong> Habrá colisiones, balas, <a href='https://en.wikipedia.org/wiki/Life_(video_games)'>vidas</a>, <a href='https://en.wikipedia.org/wiki/Score_(game)#Video_games'><em>score</em></a>, menú, <a href='https://en.wikipedia.org/wiki/Game_over'><em>game over</em></a>, música, SFX, <a href='https://en.wikipedia.org/wiki/Power-up'><em>power-ups</em></a>, <a href='https://en.wikipedia.org/wiki/Level_(video_games)'>niveles</a>, <a href='https://en.wikipedia.org/wiki/HUD_(video_gaming)'>HUD</a>, <a href='https://en.wikipedia.org/wiki/Boss_(video_games)'>jefes</a>, etc.<br />
-    <strong>c)</strong> Opcionalmente, tendrá colisiones, balas (<a href='https://www.youtube.com/watch?v=KXUaiSRhVCI'>tutorial</a> para un <em>pool</em> de balas) y un sistema de puntuación.</p>
-
-El juego tendrá sistema de puntuación, conteo de vidas, obstáculos, balas, colisiones y/o rebotes.
-
-Otros (menú, <em>game over</em>, respawning, <em>power-ups</em>, música, SFX, etc.): hasta 2 puntos.
-
-El juego tendrá sistema de puntuación, conteo de vidas, obstáculos, balas, colisiones y/o rebotes.
-
-Otros (menú, game over, respawning de bots, power-ups, música, SFX, etc.): hasta 2 puntos.
-
-    <pre>
-    a) Movimiento de tipo coche 3d (dar tutorial)
-    a) Crea varias IA que sean coches que sean patrullas (tutoriales de Waypoint-mejor- y el de Arosa)
-    c) Colisiones, balas, sistema de puntuación, quién gana, quién pierde, etc.
-
-    </pre>
-
-    <p><a href='https://www.youtube.com/watch?v=BJzYGsMcy8Q'>movimiento 3D</a>, <a href='https://www.youtube.com/watch?v=Z2KmfduirfU'>cámara</a>, </p>
-
-    <p><a href='https://www.youtube.com/watch?v=e94KggaEAr4'>move characters</a></p>
-
-    <p><a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=12'>personaje de vision</a></p>
 
     <h2>Evaluación</h2>
 
@@ -175,13 +154,13 @@ Otros (menú, game over, respawning de bots, power-ups, música, SFX, etc.): has
 
     <p>Sube un ZIP con los juegos en Windows, en GNU/Linux y un PDF con enlaces para jugar <em>online</em> en <a href='https://itch.io/'><em>itch.io</em></a>.</p>
 
-	<p>Para exportar los juegos tanto en Windows como en GNU/Linux:</p>
+    <p>Para exportar los juegos tanto en Windows como en GNU/Linux:</p>
 
     <ol>
       <li><a href='https://docs.unity3d.com/Manual/BuildSettingsStandalone.html'>Exporta</a> cada juego con <em>File&rarr;Build settings&rarr;Windows,Mac,Linux&rarr;(Switch platform)&rarr;Build and run</em>.</li>
     </ol>
 
-	<p>Para subir los juegos a <a href='https://itch.io/'><em>itch.io</em></a> y obtener los enlaces para jugar <em>online</em>:</p>
+    <p>Para subir los juegos a <a href='https://itch.io/'><em>itch.io</em></a> y obtener los enlaces para jugar <em>online</em>:</p>
 
     <ol>
       <li><a href='https://docs.unity3d.com/Manual/webgl-building.html'>Exporta</a> cada juego a WebGL en Unity: <em>File&rarr;Build settings&rarr;WebGL&rarr;(Switch platform)&rarr;Build and run</em>.</li>

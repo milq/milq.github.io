@@ -1,0 +1,14 @@
+NAVEGACIÓN EN UNITY
+
+
+https://www.youtube.com/watch?v=k9W6B2kHpD4 - NAV MESH Unity Tutorial
+
+
+
+
+
+    <p><a href='https://www.youtube.com/watch?v=BJzYGsMcy8Q'>movimiento 3D</a>, <a href='https://www.youtube.com/watch?v=Z2KmfduirfU'>cámara</a>, </p>
+
+
+
+    <p><a href='https://www.youtube.com/watch?v=e94KggaEAr4'>move characters</a></p>
