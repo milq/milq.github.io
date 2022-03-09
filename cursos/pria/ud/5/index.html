@@ -19,37 +19,32 @@
 
     <h2>Contenidos</h2>
 
-
     <ol>
-	  <li><a href='waypoints.png'>Waypoints</a> (<em>puntos de ruta</em>).<br /><br /></li>
-		
+      <li><a href='src/waypoints.png'>Waypoints</a> (<em>puntos de ruta</em>).<br /><br /></li>
+
       <li><a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)'>Grafo</a>:
         <ul>
-		  <li>Tipos:
-		    <ul>
-              <li>Según su dirección: <a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph'>no dirigido</a>, <a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_graph'>dirigido</a>.</li>
-              <li>Según su peso: no ponderado, <a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Weighted_graph'>ponderado</a>.</li>		    
-		    </ul>
-		  </li>
-      <li><a href='https://en.wikipedia.org/wiki/Graph_theory'>Teoría de grafos</a>:
-        <ul>
-          <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Problems'>Problemas</a>:
+          <li>Tipos:
             <ul>
-              <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Route_problems'>Problemas de ruta</a>:
+              <li>Según su dirección: <a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Graph'>no dirigido</a>, <a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Directed_graph'>dirigido</a>.</li>
+              <li>Según su peso: no ponderado, <a href='https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Weighted_graph'>ponderado</a>.</li>
+            </ul>
+          </li>
+          <li><a href='https://en.wikipedia.org/wiki/Graph_theory'>Teoría de grafos</a>:
+            <ul>
+              <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Problems'>Problemas</a>:
                 <ul>
-                  <li><a href='https://en.wikipedia.org/wiki/Shortest_path_problem'>Problema del camino más corto</a>.</li>
+                  <li><a href='https://en.wikipedia.org/wiki/Graph_theory#Route_problems'>Problemas de ruta</a>:
+                    <ul>
+                      <li><a href='https://en.wikipedia.org/wiki/Shortest_path_problem'>Problema del camino más corto</a>.</li>
+                    </ul>
+                  </li>
                 </ul>
               </li>
             </ul>
           </li>
         </ul>
-      </li>			
-			
-
-        </ul>
       <br /></li>
-
-
 
       <li><a href='https://en.wikipedia.org/wiki/Pathfinding'>Pathfinding</a>:
         <ul>
@@ -58,15 +53,15 @@
               <li><a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a>.</li>
             </ul>
           </li>
-          <li><a href='world_representations.png'>Representaciones del mundo</a>:
+          <li><a href='src/world_representations.png'>Representaciones del mundo</a>:
             <ul>
               <li><a href='https://en.wikipedia.org/wiki/Navigation_mesh'>Mallas de navegación</a>.</li>
             </ul>
           </li>
           <li><em>Real-time pathfinding</em>.</li>
-          <li><a href='https://en.wikipedia.org/wiki/Pathfinding#Hierarchical_path_finding'>Hierarchical pathfinding</a> (<a href='https://en.wikipedia.org/wiki/Pathfinding#Example'>ejemplo</a>) (<a href='hpa.jpg'>imagen</a>) (<a href='http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.112.314'>HPA*</a>) (<a href='https://doi.org/10.1016/j.cag.2016.05.023'>HNA*</a>).</li>
-          
-          
+          <li><a href='https://en.wikipedia.org/wiki/Pathfinding#Hierarchical_path_finding'>Hierarchical pathfinding</a> (<a href='https://en.wikipedia.org/wiki/Pathfinding#Example'>ejemplo</a>) (<a href='src/hpa.jpg'>imagen</a>) (<a href='http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.112.314'>HPA*</a>) (<a href='https://doi.org/10.1016/j.cag.2016.05.023'>HNA*</a>).</li>
+
+
         </ul>
       <br /></li>
 
@@ -83,6 +78,7 @@
       <li style='list-style-type: upper-alpha' value='1'>Otros:
         <ul>
           <li><a href='https://www.redblobgames.com/pathfinding/a-star/introduction.html'><em>Introduction to the A* Algorithm</em></a>.</li>
+          <li><a href='https://qiao.github.io/PathFinding.js/visual/'><em>PathFinding.js</em></a>.</li>
         </ul>
       </li>
 
@@ -91,37 +87,62 @@
 
     <h2>Actividades</h2>
 
-    <p>Realiza las siguientes actividades en Unity:</p>
+    <p><strong>1.</strong> Repasa <a href='https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html'>rotaciones</a>, clase <a href='https://docs.unity3d.com/Manual/class-Quaternion.html'><em>Quaternion</em></a>, métodos <a href='https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html'><em>LookRotation</em></a> y <a href='https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html'><em>Slerp</em></a> y haz <a href='https://learn.unity.com/tutorial/waypoints?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>este</a> y/o <a href='https://learn.unity.com/tutorial/following-a-circuit?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>este</a> tutorial en Unity.</p>
 
-    <h3>Waypoints y patrulla</h3>
+    <p><strong>2.</strong> Haz este <a href='https://www.youtube.com/watch?v=dMb1wM0GfDg'>tutorial</a>; luego, cámbialo por este <a href='src/coche.png'>coche</a> y que, al patrullar, gire suavemente como <a href='https://learn.unity.com/tutorial/waypoints?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>aquí</a> o <a href='https://learn.unity.com/tutorial/following-a-circuit?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>aquí</a>.</p>
 
-    <p><strong>X.</strong> Prueba este, este, este, este mapa para BFS, Djistra, A* e informa de las operaciones realizadas y longitud de cada uno.</p>
+<!--     <p><strong>3.</strong> Haz un juego de coches 2D con estos <a href='https://www.kenney.nl/assets/racing-pack'><em>sprites</em></a> y este <a href='src/juegocoches.png'>circuito</a> donde:<br /> -->
+
+<!--    <p><strong>3.</strong> Haz un juego de coches 2D (<a href='src/juegocoches.png'>ejemplo</a>) (<a href='https://www.kenney.nl/assets/racing-pack'><em>sprites</em></a> de ejemplo) donde:<br /> -->
+
+    <p><strong>3.</strong> Haz un juego de coches 2D con estos <a href='https://www.kenney.nl/assets/racing-pack'><em>sprites</em></a> y este <a href='src/juegocoches.png'>circuito</a> (u otro más a tu gusto) donde:<br />
+    <strong>a)</strong> El jugador tendrá movimiento <em>top-down car</em>; para ello, sigue este <a href='https://www.youtube.com/watch?v=Od_f6Y_OfYI'>tutorial</a> (<a href='src/TopDownCar2D.cs'>código</a>).<br />
+    <strong>b)</strong> Habrá 3 <em>bots</em> que vayan, usando <em>waypoints</em>, a diferentes velocidades y que giren suavemente.<br />
+    <strong>c)</strong> Opcionalmente, habrá: colisiones, posición, vueltas, tiempos, menú, <a href='https://en.wikipedia.org/wiki/Game_over'><em>game over</em></a>, música, SFX, <a href='https://en.wikipedia.org/wiki/Achievement_(video_games)'>logros</a>, etc.</p>
+
+<!-- https://opengameart.org/content/racing-pack -->
+
+    <p><strong>4.</strong> <a href='https://qiao.github.io/PathFinding.js/visual/'>Experimenta</a> con los algoritmos para <em>pathfinding</em> <a href='https://en.wikipedia.org/wiki/Breadth-first_search'>BFS</a>, <a href='https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm'>Dijkstra</a> y <a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a> en <a href='src/pathfinding_maps.png'>estos</a> mapas, <a href='src/pathfinding_stats.png'>informa</a> y concluye.</p>
+<!--
+    <p><strong>4.</strong> <a href='https://qiao.github.io/PathFinding.js/visual/'>Experimenta</a> con estos <a href='src/pathfinding.png'>tres</a> algoritmos de <em>pathfinding</em> en estos <a href='src/pathfinding_maps.png'>tres</a> mapas, <a href='src/pathfinding_stats.png'>informa</a> y saca conclusiones.</p>
+
+    <p><strong>4.</strong> <a href='https://qiao.github.io/PathFinding.js/visual/'>Experimenta</a> <em>pathfinding</em> con los algoritmos <a href='https://en.wikipedia.org/wiki/Breadth-first_search'>BFS</a>, <a href='https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm'>Dijkstra</a> y <a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a> en estos <a href='src/pathfinding_maps.png'>tres</a> mapas, <a href='src/pathfinding_stats.png'>informa</a> y concluye.</p>
+-->
+
+    <p><strong>5 (opcional).</strong> Haz un juego de sigilo 2D (<a href='src/juegosigilo.jpg'>ejemplo</a>) (<a href='https://www.kenney.nl/assets/topdown-shooter'><em>sprites</em></a>) donde:<br />
+    <strong>a)</strong> El jugador tendrá movimiento <em>point &amp; click</em> simple (<a href='https://www.youtube.com/watch?v=lCfoU1WoOhI'>tutorial</a>) o avanzado con <a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a> (<a href='https://www.youtube.com/watch?v=alU04hvz6L4'>tutorial</a>) (<a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>explicación</a>).<br />
+    <strong>b)</strong> Habrá <em>bots</em> que patrullen y cámaras, todos con un <a href='https://www.youtube.com/watch?v=XrZg2rQtkDA'>cono</a> de visión que <a href='https://www.youtube.com/watch?v=lV47ED8h61k'>detecten</a> y ataquen al jugador.<br />
+    <strong>c)</strong> Habrá obstáculos, <a href='https://www.youtube.com/watch?v=1glPcYfaMLE&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-'>explosiones</a>, colisiones, balas, vidas, menú, <em>game over</em>, música, SFX, <a href='https://en.wikipedia.org/wiki/Level_(video_games)'>niveles</a>, etc.</p>
 
 
+    <p><strong>6 (opcional).</strong> Haz otro juego de coches 2D (<a href='https://www.kenney.nl/content/3-assets/95-racing-pack/sample.png'>ejemplo</a>) (<a href='https://www.kenney.nl/assets/racing-pack'><em>sprites</em></a>) más avanzado donde:<br />
+    <strong>a)</strong> El jugador tendrá movimiento <em>top-down car</em> avanzado; para ello, haz este <a href='https://www.youtube.com/watch?v=DVHcOS1E5OQ&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=1'>tutorial</a> y, luego, <a href='https://www.youtube.com/watch?v=PpYTNc7B8A8&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=2'>este</a> y <a href='https://www.youtube.com/watch?v=nFyCNqdd098&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=3'>este</a>.<br />
+    <strong>b)</strong> Habrá <em>bots</em> con <a href='https://www.youtube.com/watch?v=vsPzo7IVTHw&list=PLyDa4NP_nvPd1qrfSJB7jLwuF-YQeFr3X'>esta</a> IA de <em>waypoints</em>; puedes enriquecerla con <a href='https://www.youtube.com/watch?v=5SJ6AAI6Wcs&list=PLyDa4NP_nvPd1qrfSJB7jLwuF-YQeFr3X'>esta</a> y <a href='https://www.youtube.com/watch?v=o3su1z5wePw&list=PLyDa4NP_nvPd1qrfSJB7jLwuF-YQeFr3X'>esta</a> mejora o crear una IA con <a href='https://www.youtube.com/watch?v=58eCnaq9sls&list=PLyDa4NP_nvPd1qrfSJB7jLwuF-YQeFr3X'>A*</a>.<br />
+    <strong>c)</strong> Tendrá <a href='https://www.youtube.com/watch?v=wrMaEG14BOg&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=4'>saltos</a>, <a href='https://www.youtube.com/watch?v=JSXrXZeMkjU&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=5'>puentes</a>, <a href='https://www.youtube.com/watch?v=bA8CDIQiiP4&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=6'><em>checkpoints</em></a>, <a href='https://www.youtube.com/watch?v=NkeWU3qZmDQ&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=7'>multijugador</a>, <em>mobile <a href='https://www.youtube.com/watch?v=BQJf0gCPVmo&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=8'>input</a></em>, <a href='https://www.youtube.com/watch?v=36yMki7a9DM&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=9'><em>leaderboard</em></a>, <a href='https://www.youtube.com/watch?v=3z6OLqH4NDc&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=10'><em>ghosts</em></a> y <em>select car <a href='https://www.youtube.com/watch?v=othmxiNTkpU&list=PLyDa4NP_nvPfmvbC-eqyzdhOXeCyhToko&index=11'>UI</a></em>.</p>
 
-<a href='https://www.youtube.com/watch?v=GBkOXoQoi-M'>DFS</a> (<a href='https://en.wikipedia.org/wiki/Depth-first_search'>DFS</a>, pero es mejor BFS)
+    <p><strong>7 (opcional).</strong> Haz un juego de tanques (<a href='https://www.kenney.nl/content/3-assets/60-topdown-tanks-redux/sample.png'>ejemplo</a>) (<a href='https://www.kenney.nl/assets/topdown-tanks-redux'><em>sprites</em></a> de ejemplo) a tu gusto.</p>
 
-    <h3>Waypoints y patrulla</h3>
+<!--
 
-    <p><strong>X.</strong> Repasa <a href='https://docs.unity3d.com/Manual/QuaternionAndEulerRotationsInUnity.html'>rotaciones</a>, la clase <a href='https://docs.unity3d.com/ScriptReference/Quaternion.html'><em>Quaternion</em></a>, sus métodos <a href='https://docs.unity3d.com/ScriptReference/Quaternion.LookRotation.html'><em>LookRotation</em></a> y <a href='https://docs.unity3d.com/ScriptReference/Quaternion.Slerp.html'><em>Slerp</em></a> y haz este <a href='https://learn.unity.com/tutorial/waypoints?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>tutorial</a> en Unity.</p>
+
+    <a href='https://www.youtube.com/watch?v=GBkOXoQoi-M'>DFS</a> (<a href='https://en.wikipedia.org/wiki/Depth-first_search'>DFS</a>, pero es mejor BFS)
+
 
 
     <p>David Erosa: <a href='https://www.youtube.com/watch?v=dMb1wM0GfDg&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>patrulla</a>, <a href='https://www.youtube.com/watch?v=lV47ED8h61k&list=PLf8XMtbjh0dVeQ2i-rYSLnyaAxAEfk6L-&index=11'>campo de visión</a>, <a href=''></a></p>
 
 
 
-    <h3>Pathfinding</h3>
-
     <p><a href='https://qiao.github.io/PathFinding.js/visual/'><em>PathFinding.js</em></a> (<a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>A*</a>.</p>
 
 
-    <p><strong>1.</strong> Haz este <a href='juego1.png'>juego</a> donde:<br />
-    <strong>a)</strong> El jugador tendrá movimiento <a href='movement_8d.gif'><em>8-directional</em></a>; para ello, sigue este <a href='https://www.youtube.com/watch?v=gs7y2b0xthU'>tutorial</a> (<a href='Player8DMovement.cs'>código</a>) o este <a href='https://www.youtube.com/watch?v=m4K8Wq7J86U'>otro</a>.<br />
-    <strong>b)</strong> La IA perseguirá al jugador de manera <a href='vectores_resta.png'>directa</a> (<a href='rotate_sprite.cs'>rotación</a>); para ello, sigue este <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04'>tutorial</a> (<em>Vectors Part <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd081edbc2a0f2b3f64b4'>1</a> y <a href='https://learn.unity.com/tutorial/vectors-q?courseId=5dd851beedbc2a1bf7b72bed&projectId=5defc58cedbc2a0c765b5c04#5defd8f8edbc2a0f2b3f6650'>2</a></em>).<br />
-    <strong>x)</strong> Habrá colisiones, balas, <a href='https://en.wikipedia.org/wiki/Life_(video_games)'>vidas</a>, <a href='https://en.wikipedia.org/wiki/Score_(game)#Video_games'><em>score</em></a>, menú, <a href='https://en.wikipedia.org/wiki/Game_over'><em>game over</em></a>, música, SFX, <a href='https://en.wikipedia.org/wiki/Power-up'><em>power-ups</em></a>, <a href='https://en.wikipedia.org/wiki/Level_(video_games)'>niveles</a>, <a href='https://en.wikipedia.org/wiki/HUD_(video_gaming)'>HUD</a>, <a href='https://en.wikipedia.org/wiki/Boss_(video_games)'>jefes</a>, <a href='https://en.wikipedia.org/wiki/Achievement_(video_games)'>logros</a>, etc.<br />
-    <strong>c)</strong> Opcionalmente, tendrá colisiones, balas (<a href='https://www.youtube.com/watch?v=KXUaiSRhVCI'>tutorial</a> para un <em>pool</em> de balas) y un sistema de puntuación.</p>
 
 
+
+
+    <p>colisiones, balas, <a href='https://en.wikipedia.org/wiki/Life_(video_games)'>vidas</a>, <a href='https://en.wikipedia.org/wiki/Score_(game)#Video_games'><em>score</em></a>, menú, <a href='https://en.wikipedia.org/wiki/Game_over'><em>game over</em></a>, música, SFX, <a href='https://en.wikipedia.org/wiki/Power-up'><em>power-ups</em></a>, <a href='https://en.wikipedia.org/wiki/Level_(video_games)'>niveles</a>, <a href='https://en.wikipedia.org/wiki/HUD_(video_gaming)'>HUD</a>, <a href='https://en.wikipedia.org/wiki/Boss_(video_games)'>jefes</a>, <a href='https://en.wikipedia.org/wiki/Achievement_(video_games)'>logros</a>, etc.</p>
+
+-->
     <h3>Actividades de ampliación (opcional)</h3>
 
     <p><strong>1.</strong> Estudia exhaustivamente la clase <a href='https://docs.unity3d.com/Manual/TimeFrameManagement.html'><em>Time</em></a>, el <a href='https://docs.unity3d.com/Manual/ExecutionOrder.html'>orden</a> de ejecución de los eventos y haz este <a href='https://learn.unity.com/tutorial/time-0fbw?courseId=5dd851beedbc2a1bf7b72bed&projectId=5df2611eedbc2a0020d90217'>tutorial</a> en Unity.</p>
@@ -132,7 +153,7 @@
 
     <p><strong>4.</strong> Estudia el <a href='https://en.wikipedia.org/wiki/Projectile_motion'>movimiento parabólico</a> (<a href='https://en.wikipedia.org/wiki/Projectile_motion#Kinematic_quantities_of_projectile_motion'>ecuaciones</a>) (<a href='https://en.wikipedia.org/wiki/Projectile_motion#Properties_of_the_trajectory'>propiedades</a>) (<a href='https://en.wikipedia.org/wiki/Projectile_motion#Trajectory_of_a_projectile_with_air_resistance'>aire</a>) (<a href='https://www.youtube.com/watch?v=OYa-OazhkK8'>vídeo</a>) y haz este <a href='https://learn.unity.com/tutorial/calculating-trajectories?courseId=5dd851beedbc2a1bf7b72bed&projectId=5df2611eedbc2a0020d90217'>tutorial</a> en Unity.</p>
 
-    <p><strong>5.</strong> Estudia el algoritmo <a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a>, ve este <a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>vídeo</a> y haz  <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-1?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-2?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-3?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-4?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a> y <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-5?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a> tutorial en Unity.</p>
+    <p><strong>5.</strong> Haz <a href='https://learn.unity.com/tutorial/graph-theory?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>este</a> y <a href='https://learn.unity.com/tutorial/a-for-pathfinding?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b6dd4edbc2a00200e3641'>este</a> tutorial en Unity, estudia <a href='https://en.wikipedia.org/wiki/A*_search_algorithm'>A*</a>, ve <a href='https://www.youtube.com/watch?v=1gszEk8rUS4'>esto</a> y haz  <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-1?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-2?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-3?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a>, <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-4?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a> y <a href='https://learn.unity.com/tutorial/the-a-pathfinding-algorithm-part-5?courseId=5dd851beedbc2a1bf7b72bed&projectId=606451f0edbc2a001f558590'>este</a> tutorial en Unity.</p>
 
 
 
@@ -160,9 +181,8 @@
     <h3>Criterios de calificación</h3>
 
     <ul>
-      <li>Videojuego 1: <strong>hasta 3 puntos</strong>.</li>
-      <li>Videojuego 2: <strong>hasta 3 puntos</strong>.</li>
-      <li>Videojuego 3: <strong>hasta 4 puntos</strong>.</li>
+      <li>Actividades 1, 2 y 4: <strong>hasta 1 punto</strong>.</li>
+      <li>Videojuego: <strong>hasta 9 puntos</strong>.</li>
     </ul>
 
     <h3>Criterios de evaluación asociados</h3>
