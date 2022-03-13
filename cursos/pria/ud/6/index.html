@@ -1,0 +1,136 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=2.0' />
+
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Curso de programación en red e inteligencia artificial.' />
+    <meta name='keywords' content='curso, programación, red, inteligencia, artificial' />
+
+    <title>Navegación en Unity - Manuel Ignacio López Quintero</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
+    <link rel='stylesheet' href='../../../../src/css/simple.css' />
+  </head>
+
+  <body>
+    <h1>6. Navegación en Unity</h1>
+
+    <nav><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
+
+    <h2>Contenidos</h2>
+
+    <ol>
+      <li><a href='https://docs.unity3d.com/Manual/Navigation.html'>Navegación en Unity</a> (<a href='https://docs.unity3d.com/Manual/nav-Overview.html'><em>overview</em></a>):
+        <ul>
+          <li><a href='https://docs.unity3d.com/Manual/nav-NavigationSystem.html'>Sistema de navegación</a>:
+            <ul>
+              <li><a href='https://docs.unity3d.com/Manual/nav-InnerWorkings.html'>Funcionamiento interno</a>.</li>
+            </ul>
+          </li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html'>Crear un NavMesh</a> (o <em>NavMesh Baking</em>):
+            <ul>
+              <li><a href='https://docs.unity3d.com/Manual/NavMesh-BuildingComponents.html'>Componentes de NavMesh</a> (<a href='https://docs.unity3d.com/Manual/NavMesh-BuildingComponents-API.html'>API</a>):
+                <ul>
+                  <li><a href='https://docs.unity3d.com/Manual/class-NavMeshSurface.html'>Surface</a>.</li>
+                  <li><a href='https://docs.unity3d.com/Manual/class-NavMeshModifier.html'>Modifier</a>.</li>
+                  <li><a href='https://docs.unity3d.com/Manual/class-NavMesh-ModifierVolume.html'>Modifier Volume</a>.</li>
+                  <li><a href='https://docs.unity3d.com/Manual/class-NavMeshLink.html'>Link</a>.</li>
+                </ul>
+              </li>
+              <li><a href='https://docs.unity3d.com/Manual/nav-AdvancedSettings.html'>Configuración avanzada de Bake</a>.</li>
+            </ul>
+          </li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-CreateNavMeshAgent.html'>Crear un NavMesh Agent</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-CreateNavMeshObstacle.html'>Crear un NavMesh Obstacle</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-CreateOffMeshLink.html'>Crear un Off-Mesh Link</a>:
+            <ul>
+              <li><a href='https://docs.unity3d.com/Manual/nav-BuildingOffMeshLinksAutomatically.html'>Crear un Off-Mesh Link automáticamente</a> (<em>Drop-Down</em> y <em>Jump-Across</em>).</li>
+            </ul>
+          </li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-HeightMesh.html'>Crear un Height Mesh</a> (para una ubicación precisa de los agentes).</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-AreasAndCosts.html'>Areas y costes</a> (de navegación).</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-AdditiveLoading.html'>Additive Loading</a> (cargar múltiples NavMeshes).</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-MixingComponents.html'>NavMesh Agent con otros componentes</a>.</li>
+        </ul>
+      <br /></li>
+
+      <li>Referencia:
+        <ul>
+          <li><a href='https://docs.unity3d.com/Manual/class-NavMeshAgent.html'>NavMesh Agent</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/class-NavMeshObstacle.html'>NavMesh Obstacle</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/class-OffMeshLink.html'>Off-Mesh Link</a>.</li>
+        </ul>
+      <br /></li>
+
+      <li><a href='https://docs.unity3d.com/Manual/nav-HowTos.html'>Tutoriales</a>:
+        <ul>
+          <li><a href='https://docs.unity3d.com/Manual/nav-MoveToDestination.html'>Mover un agente a una posición</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-MoveToClickPoint.html'>Mover un agente a una posición dada por clic de ratón</a>.</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-AgentPatrol.html'>Mover un agente por una serie de posiciones</a> (patrullar).</li>
+          <li><a href='https://docs.unity3d.com/Manual/nav-CouplingAnimationAndNavigation.html'>Acoplar animación y navegación</a>.</li>
+        </ul>
+      </li>
+
+    </ol>
+
+
+    <h2>Actividades</h2>
+
+    <p><strong>1.</strong> Crea este <a href='src/nivel1.pdf'>nivel</a> y sigue este <a href='https://www.youtube.com/watch?v=G6OTzfcdyNc'>tutorial</a> para crear un <a href='https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html'>NavMesh</a> y un <a href='https://docs.unity3d.com/Manual/nav-CreateNavMeshAgent.html'>Agent</a> que se <a href='https://docs.unity3d.com/Manual/nav-MoveToDestination.html'>mueva</a> por <a href='https://docs.unity3d.com/Manual/nav-MoveToClickPoint.html'>clic</a> de ratón.</p>
+
+<!--    <p><strong>2.</strong> Añade a este <a href='https://www.youtube.com/watch?v=k9W6B2kHpD4'>tutorial</a> dos IA que <a href='https://docs.unity3d.com/Manual/nav-AgentPatrol.html'>patrullen</a> por este <a href='src/nivel2.pdf'>nivel</a> y que persigan al jugador si están cerca de él.</p>
+-->
+    <p><strong>2.</strong> Crea este <a href='src/nivel2.pdf'>nivel</a> y añade a este <a href='https://www.youtube.com/watch?v=k9W6B2kHpD4'>tutorial</a> dos IA que <a href='https://docs.unity3d.com/Manual/nav-AgentPatrol.html'>patrullen</a> y persigan al jugador si están cerca de él.</p>
+
+    <p><strong>3.</strong> <a href='https://www.youtube.com/watch?v=_CewGo59PMA'>Crea</a> este <a href='src/nivel3.pdf'>nivel</a> con <a href='https://unity.com/features/probuilder'>ProBuilder</a> y sigue este <a href='https://www.youtube.com/watch?v=atCOd4o7tG4'>tutorial</a> para profundizar con <a href='https://docs.unity3d.com/Manual/nav-CreateNavMeshObstacle.html'>Obstacles</a>, <a href='https://docs.unity3d.com/Manual/nav-BuildingOffMeshLinksAutomatically.html'>Off-Mesh Links</a>, etc.</p>
+
+
+    <!-- PARA MÁQUINAS DE ESTADO (STATE MACHINES)
+    <p><strong>4 (opcional).</strong> Sigue <a href='https://www.youtube.com/watch?v=RCKogZqlgDk'>este</a> y <a href='https://www.youtube.com/watch?v=MGGkQ3CJjBo'>este</a> tutorial y <a href='https://docs.unity3d.com/Manual/AnimationSection.html'>anima</a> y <a href='https://docs.unity3d.com/Manual/nav-CouplingAnimationAndNavigation.html'>acopla</a> los agentes de las activdades anteriores con <a href='https://www.mixamo.com'>Mixamo</a>.</p>
+    -->
+
+    <p><strong>4 (opcional).</strong> Haz tu propio juego de sigilo 3D (<a href='src/juegosigilo.jpg'>ejemplo</a>) con 1-3 <a href='https://en.wikipedia.org/wiki/Level_(video_games)'>niveles</a> propios en <a href='https://unity.com/features/probuilder'>ProBuilder</a> donde:<br />
+    <strong>a)</strong> El jugador tendrá movimiento <em>point &amp; click</em> en un <a href='https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html'>NavMesh</a>; para ello, sigue este <a href='https://docs.unity3d.com/Manual/nav-MoveToClickPoint.html'>tutorial</a>.<br />
+    <strong>b)</strong> Habrá al menos tres <a href='https://docs.unity3d.com/Manual/nav-CreateNavMeshAgent.html'>Agent</a> por nivel que <a href='https://docs.unity3d.com/Manual/nav-AgentPatrol.html'>patrullen</a> y que persigan al jugador si está cerca.<br />
+    <strong>c)</strong> Habrá <a href='https://docs.unity3d.com/Manual/nav-CreateNavMeshObstacle.html'>Obstacles</a>, vidas, <a href='https://docs.unity3d.com/Manual/nav-CreateOffMeshLink.html'>Off-Mesh Links</a>, colisiones, <a href='https://en.wikipedia.org/wiki/Achievement_(video_games)'>logros</a>, menú, <em>game over</em>, música, SFX, etc.</p>
+
+    <p><strong>5 (opcional).</strong> Estudia exhaustivamente la <a href='https://docs.unity3d.com/Manual/Navigation.html'>Navegación</a> en Unity y haz <a href='https://learn.unity.com/tutorial/navigation-mesh-introduction?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b794cedbc2a14eb8c900a'>este</a>, <a href='https://learn.unity.com/tutorial/from-waypoints-to-navmesh?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b794cedbc2a14eb8c900a'>este</a>, <a href='https://learn.unity.com/tutorial/navmesh-agents?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b794cedbc2a14eb8c900a'>este</a> y <a href='https://learn.unity.com/tutorial/following-a-player-on-a-navmesh-and-setting-up-off-mesh-links?courseId=5dd851beedbc2a1bf7b72bed&projectId=5e0b794cedbc2a14eb8c900a'>este</a> tutorial.</p>
+
+    <h2>Evaluación</h2>
+
+    <h3>Entrega</h3>
+
+    <p>Sube un ZIP con los juegos en Windows, en GNU/Linux y un PDF con enlaces para jugar <em>online</em> en <a href='https://itch.io/'><em>itch.io</em></a>.</p>
+
+    <p>Para exportar los juegos tanto en Windows como en GNU/Linux:</p>
+
+    <ol>
+      <li><a href='https://docs.unity3d.com/Manual/BuildSettingsStandalone.html'>Exporta</a> cada juego con <em>File&rarr;Build settings&rarr;Windows,Mac,Linux&rarr;(Switch platform)&rarr;Build and run</em>.</li>
+    </ol>
+
+    <p>Para subir los juegos a <a href='https://itch.io/'><em>itch.io</em></a> y obtener los enlaces para jugar <em>online</em>:</p>
+
+    <ol>
+      <li><a href='https://docs.unity3d.com/Manual/webgl-building.html'>Exporta</a> cada juego a WebGL en Unity: <em>File&rarr;Build settings&rarr;WebGL&rarr;(Switch platform)&rarr;Build and run</em>.</li>
+      <li>Una vez exportado, comprímelo en un solo <em>zip</em> (<em>index.html</em> así como el resto de archivos y carpetas).</li>
+      <li>Sube cada juego a <a href='https://itch.io'><em>itch.io</em></a> como <!-- como tipo --><a href='https://milq.github.io/cursos/pria/ud/2/itch.io/html_project.png'>HTML</a> a <a href='https://milq.github.io/cursos/pria/ud/2/itch.io/720p_viewport.png'><em>720p</em></a> en <a href='https://milq.github.io/cursos/pria/ud/2/itch.io/draft_mode.png'><em>Draft mode</em></a>, obtén su <a href='https://milq.github.io/cursos/pria/ud/2/itch.io/secret_url.png'><em>Secret URL</em></a> e indícalo en el PDF.</li> <!-- e indícalo -->
+    </ol>
+
+    <h3>Criterios de calificación</h3>
+
+    <ul>
+      <li>Videojuego 1: <strong>hasta 3 puntos</strong>.</li>
+      <li>Videojuego 2: <strong>hasta 3 puntos</strong>.</li>
+      <li>Videojuego 3: <strong>hasta 4 puntos</strong>.</li>
+    </ul>
+
+    <h3>Criterios de evaluación asociados</h3>
+
+    <ul>
+      <li>En esta actividad se asocia todos los criterios de evaluación del resultado de aprendizaje 5 (<span title='RA5 - Identifica y relaciona elementos propios de la inteligencia artificial y el aprendizaje automático en el desarrollo de videojuegos.'>RA5</span>).</li>
+    </ul>
+
+    <footer><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</footer>
+
+  </body>
+</html>
