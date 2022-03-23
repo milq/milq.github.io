@@ -15,3 +15,8 @@ NAVEGACIÓN EN UNITY
 
 
 https://www.youtube.com/watch?v=aR6wt5BlE-E - Create a simple AI with behaviour trees (Unity/C# tutorial)
+
+
+
+https://www.youtube.com/watch?v=qfB8UwmWGn0 - GAMEBITS | Modelos 3d
+https://www.youtube.com/watch?v=3zsGYF5lA5I - GAMEBITS | Animación y Rigging
