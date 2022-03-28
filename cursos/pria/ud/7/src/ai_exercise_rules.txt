@@ -1,0 +1,10 @@
+· El jugador (azul):
+    - Gana si recoge las tres manzanas (verde) y no es derrotado por la IA.
+    - Se mueve haciendo clic con el botón derecho del ratón.
+    - Dispara haciendo clic con el botón izquierdo del ratón.
+
+· IA
+· Hay tres pociones en total solo para la IA; si una IA toma una poción, recupera su vida.
+
+Opcional:
+    Añadirle animaciones al jugador y a las IA.
