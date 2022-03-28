@@ -7,46 +7,123 @@
     <meta name='description' content='Curso de programación en red e inteligencia artificial.' />
     <meta name='keywords' content='curso, programación, red, inteligencia, artificial' />
 
-    <title>Máquinas de estado finito - Manuel Ignacio López Quintero</title>
+    <title>Multijugador en línea con Netcode for GameObjects - Manuel Ignacio López Quintero</title>
     <link rel='icon' href='../../../../src/png/icon.png' />
     <link rel='stylesheet' href='../../../../src/css/simple.css' />
   </head>
 
   <body>
-    <h1>8. Multijugador <em>online</em> con Netcode for GameObjects</h1>
+    <h1>8. Multijugador en línea con Netcode for GameObjects</h1>
 
     <nav><a href='https://milq.github.io/cursos/pria'>Programación en Red e IA</a> | Unidad creada por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
 
     <h2>Contenidos</h2>
 
     <ol>
-      <li><a href='https://en.wikipedia.org/wiki/Remote_procedure_call'>Remote procedure call</a> (RPC).</li>
+
+      <li><a href='https://en.wikipedia.org/wiki/Distributed_computing'>Computación distribuida</a>:
+        <ul>
+          <li><a href='https://en.wikipedia.org/wiki/Client%E2%80%93server_model'>Cliente-servidor</a> (<a href='https://upload.wikimedia.org/wikipedia/commons/c/c9/Client-server-model.svg'>diagrama</a>):
+            <ul>
+              <li><a href='https://en.wikipedia.org/wiki/Client_(computing)'>Cliente</a>.</li>
+              <li><a href='https://en.wikipedia.org/wiki/Server_(computing)'>Servidor</a>.</li>
+            </ul>
+          </li>
+          <li><a href='https://en.wikipedia.org/wiki/Peer-to-peer'>Peer-to-peer</a> (P2P) (<a href='https://upload.wikimedia.org/wikipedia/commons/9/9e/P2P_network.svg'>diagrama</a>).</li>
+        </ul>
+      <br /></li>
+
+      <li><a href='https://en.wikipedia.org/wiki/Multiplayer_video_game#Online_multiplayer'>Multijugador <em>online</em></a>.<br /><br /></li>
+
+
+
+
+
+
+
+      <li>Tipos de <a href='https://en.wikipedia.org/wiki/Game_server'>servidores en videojuegos</a>:
+        <ul>
+          <li><a href='https://en.wikipedia.org/wiki/Game_server#Dedicated_server'>Dedicated</a>.</li>
+          <li><a href='https://en.wikipedia.org/wiki/Game_server#Listen_server'>Listen</a> (con <a href='https://en.wikipedia.org/wiki/Game_server#Host_migration'><em>host migration</em></a>) .</li>
+          </li>
+          <li><a href='https://en.wikipedia.org/wiki/Game_server#Peer-to-Peer'>Peer-to-Peer</a> (P2P).</li>
+          <li><a href='https://en.wikipedia.org/wiki/Game_server#Listen-peer'>Listen-peer</a>.</li>
+        </ul>
+      <br /></li>
+
+      <li><a href='https://en.wikipedia.org/wiki/Remote_procedure_call'>Remote procedure call</a> (RPC).<br /><br /></li>
+
+      <li><a href='https://docs-multiplayer.unity3d.com/docs/learn/listen-server-host-architecture'>Listen server</a>:
+        <ul>
+          <li></li>
+        </ul>
+      </li>
+
+
+      <li style='list-style-type: upper-alpha' value='1'>Soluciones:
+        <ul>
+          <li><em>Dedicated</em> (<a href='https://docs-multiplayer.unity3d.com/assets/files/peer2peer1-ead2681c659d6587ef6adf05b1b70d70.png'>diagrama</a>):
+            <ul>
+              <li><a href='https://www.photonengine.com/fusion'>Photon Fusion</a>.</li>
+              <li><a href='https://playfab.com'>Azure PlayFab</a> (<a href='https://docs.microsoft.com/en-us/gaming/playfab/features/multiplayer/mpintro#example-multiplayer-scenarios'>escenarios</a>).</li>
+
+            </ul>
+          .</li>
+        </ul>
+      </li>
 
       <li style='list-style-type: upper-alpha' value='1'>Otros:
         <ul>
           <li><a href='https://dev.to/ibmdeveloper/multiplayer-server-basics-ep-1-creating-a-multiplayer-game-server-5aed'><em>Multiplayer Server Basics</em></a>.</li>
+          <li><a href='https://github.com/Unity-Technologies/com.unity.webrtc'>WebRTC</a></li>
+
+          <li><a href='https://docs-multiplayer.unity3d.com/docs/learn/listen-server-host-architecture/index.html'><em>Listen server</em></a>. Unity.</li>
+          <li><a href='https://github.com/Unity-Technologies/com.unity.webrtc'>unity.webrtc</a>.</li>
+          <li><a href='https://stackoverflow.com/questions/69726769/i-want-to-make-a-p2p-networked-thinking-about-using-mirror-game-with-unity-wi'><em>I want to make a P2P networked (thinking about using mirror) game with Unity</em></a>.</li>
+          <li><a href='https://docs.unity3d.com/Packages/com.unity.webrtc@2.4/manual/index.html'>WebRTC for Unity</a></li>
+          <li><a href='https://en.wikipedia.org/wiki/Hole_punching_(networking)'>Hole punching</a>.</li>
+          <li><a href='https://en.wikipedia.org/wiki/Port_forwarding'>Port forwarding</a>.</li>
+          <li><a href='https://slyka.itch.io/screenhead-arena'>screenhead-arena</a> (<a href='https://www.reddit.com/r/godot/comments/efuazd/i_made_a_small_game_with_the_new_webrtc/'>más</a>) (<a href='https://en.wikipedia.org/wiki/Virtual_private_server'>VPS</a>).</li>
+          <li><a href='https://en.wikipedia.org/wiki/Real-time_communication'>RTC</a></li>
+          <li><a href='https://stackoverflow.com/questions/4692367/can-p2p-be-done-without-port-forwarding'>Can P2P be done without port forwarding?</a></li>
+          <li><a href='https://assetstore.unity.com/tools/network'>Tools/Network Assets</a>.</li>
+          <li><a href='https://forum.unity.com/threads/can-i-make-a-game-using-p2p-multiplayer.799221/'>otro</a></li>
+          <li><a href=''></a></li>
+          <li><a href=''></a></li>
+          <li><a href=''></a></li>
+
+          <l
         </ul>
       </li>
-
-      <li>Tipos de <a href='https://en.wikipedia.org/wiki/Game_server'>servidor</a> en videojuegos:
-        <ul>
-          <li><a href='https://en.wikipedia.org/wiki/Game_server#Dedicated_server'>Dedicado</a>.</li>
-          <li><a href='https://en.wikipedia.org/wiki/Game_server#Listen_server'>De escucha</a> con <a href='https://en.wikipedia.org/wiki/Game_server#Host_migration'><em>host migration</em></a>.</li>
-          <li><a href='https://en.wikipedia.org/wiki/Game_server#Peer-to-Peer'>Peer-to-Peer</a> (<a href='https://en.wikipedia.org/wiki/Peer-to-peer'>P2P</a>).</li>
-          <li><a href='https://en.wikipedia.org/wiki/Game_server#Listen-peer'>Listen-peer</a>.</li>
-        </ul>
-      </li>
-
     </ol>
+
+<!--
+Unity Transport for Netcode for GameObjects de Unity Technologies
+
+This package is plugging Unity Transport into Netcode for GameObjects, which is a network transport layer - the low-level interface for sending UDP data
+
+com.unity.netcode.adapter.utp
+
+Windows -> Package Manager -> + -> Adding a package by name
+-->
 
     <h2>Actividades</h2>
 
+    <p><strong>X.</strong> Explica las diferencias entre cliente-servidor y P2P.</p>
+
+    <p><strong>X.</strong> Estudia y explica muy bien <a href='https://en.wikipedia.org/wiki/Game_server'>servidores para videojuegos</a> y sus 4 tipos: <a href='https://en.wikipedia.org/wiki/Game_server#Dedicated_server'><em>dedicated</em></a>, <a href='https://en.wikipedia.org/wiki/Game_server#Listen_server'><em>listen</em></a>, <a href='https://en.wikipedia.org/wiki/Game_server#Peer-to-Peer'><em>P2P</em></a> y <a href='https://en.wikipedia.org/wiki/Game_server#Listen-peer'><em>listen-peer</em></a>.</p>
+
+    <p><strong>X.</strong> Estudia y explica muy bien <a href='https://en.wikipedia.org/wiki/Game_server'>servidores para videojuegos</a> y sus 4 tipos: <a href='https://en.wikipedia.org/wiki/Game_server#Dedicated_server'><em>dedicated</em></a>, <a href='https://en.wikipedia.org/wiki/Game_server#Listen_server'><em>listen</em></a>, <a href='https://en.wikipedia.org/wiki/Game_server#Peer-to-Peer'><em>P2P</em></a> y <a href='https://en.wikipedia.org/wiki/Game_server#Listen-peer'><em>listen-peer</em></a>.</p>
 
     <p><strong>1.</strong> Conoce la web <a href='https://docs-multiplayer.unity3d.com'>Unity Multiplayer Networking</a>; luego, examina <a href='https://docs-multiplayer.unity3d.com/docs/getting-started/about/'>Netcode for GameObjects</a> e <a href='https://docs-multiplayer.unity3d.com/docs/migration/install'>instálalo</a>.</p>
 
     <p><strong>X.</strong> Haz este <a href='https://docs-multiplayer.unity3d.com/docs/tutorials/helloworld/helloworldintro'>tutorial</a>.</p>
-    
+
     <p><strong>X.</strong> Haz este <a href='https://docs-multiplayer.unity3d.com/docs/tutorials/helloworld/helloworldtwo'>tutorial</a>.</p>
+
+
+
+    <p><a href='https://unity.com/products/relay'>Relay</a>, <a href='https://unity.com/products/lobby'>Lobby</a>.</p>
 
     <h2>Evaluación</h2>
 
