@@ -14,7 +14,7 @@
 
     <h2>6. Define el modelo</h2>
 
-    <p>Abre el código en <code>app/Models/Producto.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
+    <p>Abre el código en <code>app/Models/Libro.php</code> y añade la propiedad <em>fillable</em> para indicar que son campos rellenables:</p>
 
     <pre><code class='php'>&lt;?php
 
@@ -23,12 +23,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class Libro extends Model
 {
     use HasFactory;
     <strong>protected $fillable = [
         'título',
-        'descripción',
+        'autor',
         'precio'
     ];</strong>
 }</code></pre>

@@ -16,50 +16,69 @@
 
     <h3>9.1 Implementa C (Create)</h3>
 
-<!--    <p><code>ProductoController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /productos</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /productos/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /productos</em>.</p>
+<!--    <p><code>LibroController</code> incluye el método <em>store()</em> que mapea a la API <em>endpoint</em> <em>POST /libros</em> que se usará para guardar un producto en la base de datos y el método <em>create()</em> que mapea a la ruta <em>GET /libros/create</em> se usará para servir el formulario HTML usado para enviar datos del nuevo producto a la API <em>endpoint</em> <em>POST /libros</em>.</p>
 
     <p>¿<a href='https://es.stackoverflow.com/questions/51758/qu%C3%A9-es-un-entry-point-y-un-end-point'>Qué es <em>entry point</em> y un <em>end point</em></a>?</p>
 -->
     
-    <p><code>ProductoController</code> incluye el método <em>create()</em> que es llamado por la RESTful HTTP API <em>GET /productos/create</em> (ver <em>routes/web.php</em>) y se usará para servir el formulario HTML usado para enviar datos y el método <em>store()</em> que es mapeado por la RESTful HTTP API <em>POST /productos</em> (ver <em>routes/web.php</em>) y se usará para guardar un producto en la base de datos desde los datos enviados desde el formulario.</p>
+    <p><code>LibroController</code> incluye el método <em>create()</em> que es llamado por la RESTful HTTP API <em>GET /libros/create</em> (ver <em>routes/web.php</em>) y se usará para servir el formulario HTML usado para enviar datos y el método <em>store()</em> que es mapeado por la RESTful HTTP API <em>POST /libros</em> (ver <em>routes/web.php</em>) y se usará para guardar un producto en la base de datos desde los datos enviados desde el formulario.</p>
        
     <p>Vamos a implementar estos dos métodos:</p>
 
 <!--
-    <p>Reabre el controlador <code>app/Http/Controllers/ProductoController.php</code> e importa, al principio del código, el modelo <code>Producto</code>:</p>
+    <p>Reabre el controlador <code>app/Http/Controllers/LibroController.php</code> e importa, al principio del código, el modelo <code>Producto</code>:</p>
 
     <pre><code><strong>use App\Producto;</strong></code></pre>
 -->
 
-	<p>Reabre el controlador <code>app/Http/Controllers/ProductoController.php</code>.</p>
+	<p>Reabre el controlador <code>app/Http/Controllers/LibroController.php</code>.</p>
 
     <p>Localiza el método <em>create()</em> y actualízalo:</p>
 
 <pre><code class='php'>public function create()
 {
-    <strong>return view('productos.create');</strong>
+    <strong>return view('libros.create');</strong>
 }</code></pre>
 
 <p>En <strong>negrita</strong> está el código añadido. Ahora, localiza el método <em>store()</em> y actualízalo:</p>
 
 <pre><code class='php'>public function store(Request $request)
 {
-    <strong>$producto_data = $request-&gt;validate([
+    <strong>$libro_data = $request-&gt;validate([
         'título'=&gt;'required|max:100',
-        'descripción'=&gt;'required|max:255',
+        'autor'=&gt;'required|max:255',
         'precio'=&gt;'required|numeric'
     ]);
 
-    Producto::create($producto_data);
+    Libro::create($libro_data);
 
-    return redirect('/productos')-&gt;with('success', '¡Producto guardado!');</strong>
+    return redirect('/libros')-&gt;with('success', '¡Libro guardado!');</strong>
 }</code></pre>
 
-    <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>productos.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/productos/create.blade.php</code>.</p>
+    <p>En <strong>negrita</strong> está el código añadido. Como puedes observar, el método <em>create()</em> devuelve la vista <em>libros.create</em>. Esta vista la tenemos que crear y definir más adelante en la plantilla <code>resources/views/libros/create.blade.php</code>.</p>
 
     <p>Antes de crear la plantilla <em>create.blade.php</em> es recomendable crear una plantilla base que será ampliada por las siguientes plantillas facilitando así la organización del código.</p>
 
     <p>Para ello, en la carpeta <em>resources/views</em>, creamos el fichero <em>base.blade.php</em>:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html xmlns='http://www.w3.org/1999/xhtml' lang='en'&gt;
+  &lt;head&gt;
+    &lt;meta charset='utf-8' /&gt;
+    &lt;meta name='viewport' content='width=device-width, initial-scale=1.0' /&gt;
+    &lt;link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' /&gt;
+    &lt;title&gt;Librería&lt;/title&gt;
+  &lt;/head&gt;
+
+  &lt;body class='container'&gt;
+
+    &lt;h1 class='display-2 mt-1 mb-4'&gt;Librería&lt;/h1&gt;
+
+    @yield('main')
+
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
 
     <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html xmlns='http://www.w3.org/1999/xhtml' lang='en'&gt;
@@ -79,7 +98,7 @@
 
 <p>Descarga <a href='https://getbootstrap.com'>Bootstrap</a> y mueve el fichero <code>bootstrap.min.css</code> a la carpeta <code>public</code> que es la carpeta pública de tu aplicación web.</p>
 
-<p>Creada la plantilla base, creamos la plantilla para insertar/crear un producto. Para ello, crea <code>resources/views/productos/create.blade.php</code>:</p>
+<p>Creada la plantilla base, creamos la plantilla para insertar/crear un producto. Para ello, crea <code>resources/views/libros/create.blade.php</code>:</p>
 
 <pre><code>@extends('base')
 
@@ -98,7 +117,7 @@
       &lt;/div&gt;
       &lt;br /&gt;
       @endif
-      &lt;form method='post' action="{{ route('productos.store') }}"&gt;
+      &lt;form method='post' action="{{ route('libros.store') }}"&gt;
         @csrf
         &lt;div class='form-group'&gt;
           &lt;label for='título'&gt;Título:&lt;/label&gt;
@@ -126,11 +145,11 @@
 
 	<code>php artisan serve</code>
 
-	<p>Abrimos el navegador y entramos en <code>http://localhost:8000/productos/create</code>.</p>
+	<p>Abrimos el navegador y entramos en <code>http://localhost:8000/libros/create</code>.</p>
 
-	<p>Al completar el formulario y pulsar en <em>Añadir</em> se hace un <em>POST</em> a la ruta <em>/productos</em> (<code>http://localhost:8000/productos)</code>. Se ha insertado un nuevo producto en la base de datos, compruébalo en PhpMyAdmin.
+	<p>Al completar el formulario y pulsar en <em>Añadir</em> se hace un <em>POST</em> a la ruta <em>/libros</em> (<code>http://localhost:8000/libros)</code>. Se ha insertado un nuevo producto en la base de datos, compruébalo en PhpMyAdmin.
 	
-	<p>Como puedes observar, no aparece nada al pulsar <em>Añadir</em>, eso es porque hemos redirigido al usuario a la ruta <em>/productos</em> cuyo controlador y vista tenemos que crear en la siguiente sección.</p>
+	<p>Como puedes observar, no aparece nada al pulsar <em>Añadir</em>, eso es porque hemos redirigido al usuario a la ruta <em>/libros</em> cuyo controlador y vista tenemos que crear en la siguiente sección.</p>
 
     <p><a href='index.html'>Volver</a>.</p>
 

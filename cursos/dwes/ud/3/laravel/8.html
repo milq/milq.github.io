@@ -22,37 +22,37 @@
 
 use Illuminate\Support\Facades\Route;
 
-<strong>use App\Http\Controllers\ProductoController;</strong>
+<strong>use App\Http\Controllers\LibroController;</strong>
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-<strong>Route::resource('productos', ProductoController::class);</strong></code></pre>
+<strong>Route::resource('libros', LibroController::class);</strong></code></pre>
 
 
 
-    <p>En <strong>negrita</strong> está el código añadido (son dos líneas a añadir). Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>ProductoController</em> que debes implementar más adelante:</p>
+    <p>En <strong>negrita</strong> está el código añadido (son dos líneas a añadir). Con el método estático <em>resource()</em> de la clase <em>Route</em> creas múltiples rutas para las diferentes acciones/métodos del recurso. Estas rutas están mapeadas a varios métodos de <em>LibroController</em> que debes implementar más adelante:</p>
 
     <ul>
-      <li><em>GET /productos</em>: mapeado al método <em>index()</em> de <em>ProductoController</em>.</li>
-      <li><em>GET /productos/create</em>: mapeado al método <em>create()</em> de <em>ProductoController</em>.</li>
-      <li><em>POST /productos</em>: mapeado al método <em>store()</em>. de <em>ProductoController</em></li>
-      <li><em>GET /productos/{id}</em>: mapeado al método <em>show()</em> de <em>ProductoController</em>.</li>
-      <li><em>GET /productos/{id}/edit</em>: mapeado al método <em>edit()</em> de <em>ProductoController</em>.</li>
-      <li><em>PUT/PATCH /productos/{id}</em>: mapeado al método <em>update()</em> de <em>ProductoController</em>.</li>
-      <li><em>DELETE /productos/{id}</em>: mapeado al método <em>destroy()</em> de <em>ProductoController</em>.</li>
+      <li><em>GET /libros</em>: mapeado al método <em>index()</em> de <em>LibroController</em>.</li>
+      <li><em>GET /libros/create</em>: mapeado al método <em>create()</em> de <em>LibroController</em>.</li>
+      <li><em>POST /libros</em>: mapeado al método <em>store()</em>. de <em>LibroController</em></li>
+      <li><em>GET /libros/{id}</em>: mapeado al método <em>show()</em> de <em>LibroController</em>.</li>
+      <li><em>GET /libros/{id}/edit</em>: mapeado al método <em>edit()</em> de <em>LibroController</em>.</li>
+      <li><em>PUT/PATCH /libros/{id}</em>: mapeado al método <em>update()</em> de <em>LibroController</em>.</li>
+      <li><em>DELETE /libros/{id}</em>: mapeado al método <em>destroy()</em> de <em>LibroController</em>.</li>
     </ul>
 
     <p>También puedes implementarlo manualmente si así lo deseas:</p>
 
-    <pre><code class='php'>Route::get('/productos', 'ProductoController@index')->name('productos.index');
-Route::get('/productos/create','ProductoController@create')->name('productos.create');
-Route::post('/productos','ProductoController@store')->name('productos.store');
-Route::get('/productos/{id}','ProductoController@show')->name('productos.show');
-Route::get('/productos/{id}/edit','ProductoController@edit')->name('productos.edit');
-Route::post('/productos/{id}/update','ProductoController@update')->name('productos.update');
-Route::get('/productos/{id}/delete','ProductoController@destroy')->name('productos.destroy');</code></pre>
+    <pre><code class='php'>Route::get('/libros', 'LibroController@index')->name('libros.index');
+Route::get('/libros/create','LibroController@create')->name('libros.create');
+Route::post('/libros','LibroController@store')->name('libros.store');
+Route::get('/libros/{id}','LibroController@show')->name('libros.show');
+Route::get('/libros/{id}/edit','LibroController@edit')->name('libros.edit');
+Route::post('/libros/{id}/update','LibroController@update')->name('libros.update');
+Route::get('/libros/{id}/delete','LibroController@destroy')->name('libros.destroy');</code></pre>
 
     <p><a href='index.html'>Volver</a>.</p>
 

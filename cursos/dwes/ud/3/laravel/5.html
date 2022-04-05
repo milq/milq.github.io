@@ -22,7 +22,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductosTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -31,11 +31,11 @@ class CreateProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('productos', function (Blueprint $table) {
+        Schema::create('libros', function (Blueprint $table) {
             $table-&gt;id();
             $table-&gt;timestamps();
             <strong>$table-&gt;string('título');
-            $table-&gt;string('descripción');
+            $table-&gt;string('autor');
             $table-&gt;float('precio');</strong>
         });
     }
@@ -47,11 +47,11 @@ class CreateProductosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('productos');
+        Schema::dropIfExists('libros');
     }
-}</code></pre>
+};</code></pre>
 
-    <p>En <strong>negrita</strong> está el código añadido. En éste caso se han añadido los campos de <em>código</em> (entero), <em>título</em> (cadena de caracteres), <em>descripción</em> (cadena de caracteres) y <em>precio</em> (coma flotante).</p>
+    <p>En <strong>negrita</strong> está el código añadido. En éste caso se han añadido los campos de <em>título</em> (cadena de caracteres), <em>autor</em> (cadena de caracteres) y <em>precio</em> (coma flotante).</p>
 
     <p>A continuación, <strong>migra</strong> con <code>php artisan migrate</code> y así crear las tablas en la base de datos.</p>
 
