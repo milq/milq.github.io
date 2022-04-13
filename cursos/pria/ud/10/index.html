@@ -21,81 +21,64 @@
 
     <ol>
 
+      <li><a href='https://en.wikipedia.org/wiki/Real-time_communication'>RTC</a>.<br /><br /></li>
+
       <li><a href='https://en.wikipedia.org/wiki/WebRTC'>WebRTC</a>:
-		<ul>
-		  <li><a href='https://webrtc.org'>Página oficial</a>.</li>
-		  <li><a href='https://webrtc.org/getting-started/overview'>Documentación</a>.</li>
-		  <li><a href='https://webrtc.github.io/samples'>Ejemplos</a>.</li>
-		  <li><a href='https://webrtc.org/getting-started/turn-server'>Servidor TURN</a> (<a href='https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT'>definición</a>).</li>
-		</ul>
+        <ul>
+          <li>RTCPeerConnection.</li>
+          <li>RTCDataChannel.</li>
+          <li><em>Relaying the traffic between peers</em>:
+            <ul>
+              <li><a href='https://en.wikipedia.org/wiki/STUN'>STUN</a>.<br /></li>
+              <li><a href='https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT'>TURN</a> (recomendado).</li>
+            </ul>
+          </li>
+          <li>Etc.</li>
+        </ul>
       <br /></li>
 
+      <li style='list-style-type: upper-alpha' value='1'><a href='https://docs.unity3d.com/Packages/com.unity.webrtc@latest/'>WebRTC for Unity</a>.<br /><br /></li>
 
-<!--
-      <li >Artículos:
+      <li style='list-style-type: upper-alpha'><a href='https://webrtc.org'>WebRTC.org</a>:
         <ul>
-          <li><a href='https://dev.to/ibmdeveloper/multiplayer-server-basics-ep-1-creating-a-multiplayer-game-server-5aed'><em>Multiplayer Server Basics</em></a>.</li>
-          <li><a href='https://stackoverflow.com/questions/69726769/i-want-to-make-a-p2p-networked-thinking-about-using-mirror-game-with-unity-wi'><em>I want to make a P2P networked (thinking about using mirror) game with Unity</em></a>.</li>
-
-          <li><a href='https://en.wikipedia.org/wiki/Real-time_communication'>RTC</a></li>
-          <li><a href='https://stackoverflow.com/questions/4692367/can-p2p-be-done-without-port-forwarding'>Can P2P be done without port forwarding?</a></li>
-          <li><a href='https://assetstore.unity.com/tools/network'>Tools/Network Assets</a>.</li>
-          <li><a href='https://en.wikipedia.org/wiki/Remote_procedure_call'>Remote procedure call</a> (RPC).</li>
-          <li><a href='https://forum.unity.com/threads/can-i-make-a-game-using-p2p-multiplayer.799221/'>otro</a></li>
-          <li><a href='https://medium.com/leaningtech/porting-a-c-multiplayer-game-to-the-web-with-cheerp-webrtc-and-firebase-29fbbc62c5ca'>article</a> (<a href='https://medium.com/av-transcode/what-is-webrtc-and-how-to-setup-stun-turn-server-for-webrtc-communication-63314728b9d0'>another</a>).</li>
+          <li><a href='https://webrtc.org/getting-started/overview'>Documentación</a>.</li>
+          <li><a href='https://webrtc.github.io/samples'>Ejemplos</a>.</li>
+          <li><a href='https://webrtc.org/getting-started/turn-server'>Servidor TURN</a> (<a href='https://en.wikipedia.org/wiki/Traversal_Using_Relays_around_NAT'>definición</a>).</li>
         </ul>
-      </li>
--->
-      <li><a href='https://docs.unity3d.com/Packages/com.unity.webrtc@latest/'>WebRTC for Unity</a>.</li>
+      <br /></li>
 
-	  <li style='list-style-type: upper-alpha' value='1'><a href='https://slyka.itch.io/screenhead-arena'>Screenhead Arena</a> (juego multijugador <em>online</em> hecho en WebRTC):
-	    <ul>
-	      <li><a href='https://github.com/NuclearLighthouseStudios/Screenhead-Arena'>Código</a>.</li>
-	      <li>Servidor <a href='https://developer.mozilla.org/en-US/docs/web/api/webrtc_api/signaling_and_video_calling#the_signaling_server'><em>signaling</em></a> y <a href='https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API'>WebSocket</a>.</li>
-	      <li><a href='https://en.wikipedia.org/wiki/Virtual_private_server'>Virtual Private Server</a> (VPS).</li>
-	    </ul>
-	  <br /></li>
+      <li style='list-style-type: upper-alpha'><a href='https://slyka.itch.io/screenhead-arena'>Screenhead Arena</a> (juego multijugador <em>online</em> hecho en WebRTC):
+        <ul>
+          <li><a href='https://github.com/NuclearLighthouseStudios/Screenhead-Arena'>Código</a>.</li>
+          <li>Servidor <a href='https://developer.mozilla.org/en-US/docs/web/api/webrtc_api/signaling_and_video_calling#the_signaling_server'><em>signaling</em></a> y <a href='https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API'>WebSocket</a>.</li>
+          <li><a href='https://en.wikipedia.org/wiki/Virtual_private_server'>Virtual Private Server</a> (VPS).</li>
+        </ul>
+      <br /></li>
 
     </ol>
 
-<!--
-Unity Transport for Netcode for GameObjects de Unity Technologies
 
-This package is plugging Unity Transport into Netcode for GameObjects, which is a network transport layer - the low-level interface for sending UDP data
+    <!-- WEBRTC EXAMPLES:
 
-com.unity.netcode.adapter.utp
+    https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Simple_RTCDataChannel_sample
+    https://github.com/zcduthie/WebRTC-Example-RTCDataChannel
 
-Windows -> Package Manager -> + -> Adding a package by name
--->
+    -->
 
     <h2>Actividades</h2>
 
     <p><strong>1.</strong> Explica <a href='https://unity.com/solutions/gaming-services'>Unity Gaming Services</a> (UGS) y las soluciones que da: <a href='https://unity.com/solutions/multiplayer-services'>Multiplayer</a>, <a href='https://unity.com/solutions/game-backend'>Backend</a>, <a href='https://unity.com/solutions/games-operate/engage'>Analytics</a> y <a href='https://unity.com/products/unity-ads-monetize'>Monetize</a>.</p>
 
-    <p><strong>2.</strong> Entra en <a href='https://unity.com/solutions/multiplayer-services'>Multiplayer Services</a> y explica al detalle qué hace cada uno de los ocho <a href='src/ugs_multiplayer_services.png'>productos</a> que ofrece.</p>
 
-    <p><strong>3.</strong> Entra en <a href='https://dashboard.unity3d.com'>UGS</a>, crea un proyecto de <a href='src/ugs_project_example.png'>ejemplo</a> y explica al detalle todos los apartados del <a href='src/ugs_mainmenu.png'>Main Menu</a>.</p>
 
-    <p><strong>4.</strong> Entra en <a href='https://dashboard.unity3d.com'>UGS</a> y explica al detalle todos los apartados del <a href='src/ugs_suites.png'>Suites</a> y, en especial, el de <a href='src/ugs_dashboard_multiplayer.png'>Multiplayer</a>.</p>
 
-    <p><strong>5.</strong> Examina <a href='https://docs-multiplayer.unity3d.com'>Unity Multiplayer Networking</a> y explica al detalle <a href='https://docs-multiplayer.unity3d.com/netcode/current/about/'>Netcode for GameObjects</a> y <a href='https://docs-multiplayer.unity3d.com/transport/current/about/'>Unity Transport</a>.</p>
 
-	<p><strong>6.</strong> Examina y describe <a href='https://docs-multiplayer.unity3d.com/netcode/current/learn/bitesize-introduction'>Bitesize Samples</a>, explica qué quiere enseñar cada ejemplo y <a href='https://docs-multiplayer.unity3d.com/assets/files/bitesize-download-c52bb251066ff4a2a3cd5de0f0328934.png'>descárgalos</a>.</p>
+    <p><strong>1.</strong> Examina y explica <a href='https://docs.unity3d.com/Packages/com.unity.webrtc@latest/'>WebRTC for Unity</a>; luego instala...</p>
 
-	<p><strong>7.</strong> Describe, exporta y ejecuta <a href='https://docs-multiplayer.unity3d.com/netcode/current/learn/bitesize-spaceshooter'>2D Space Shooter</a>; luego, examina, analiza y explica su <a href='https://github.com/Unity-Technologies/com.unity.multiplayer.samples.bitesize/tree/main/Basic/2DSpaceShooter'>código</a> al detalle.</p>
 
-	<p><strong>8.</strong> Describe, exporta y ejecuta <a href='https://docs-multiplayer.unity3d.com/netcode/current/learn/bitesize-invaders'>Invaders</a>; luego, examina, analiza y explica su <a href='https://github.com/Unity-Technologies/com.unity.multiplayer.samples.bitesize/tree/main/Basic/Invaders'>código</a> al detalle.</p>
 
-	<p><strong>9.</strong> Describe, exporta y ejecuta <a href='https://docs-multiplayer.unity3d.com/netcode/current/learn/bitesize-clientdriven'>Client Driven</a>; luego, examina, analiza y explica su <a href='https://github.com/Unity-Technologies/com.unity.multiplayer.samples.bitesize/tree/main/Basic/ClientDriven'>código</a> al detalle.</p>
-
-	<p><strong>10.</strong> Describe, descarga, exporta y ejecuta <a href='https://unity.com/demos/small-scale-coop-sample'>Boss Room</a>; luego, examina, analiza y explica su código al detalle.</p>
-	
-    <p><strong>11 (opcional).</strong> <a href='https://docs-multiplayer.unity3d.com/netcode/current/migration/install'>Instala</a> Netcode for GameObjects y haz este <a href='https://docs-multiplayer.unity3d.com/netcode/current/tutorials/helloworld/helloworldintro/index.html'>tutorial</a> para crear tu primer proyecto en red.</p>
-
-    <p><strong>12 (opcional).</strong> Haz este <a href='https://docs-multiplayer.unity3d.com/netcode/current/tutorials/helloworld/helloworldtwo'>tutorial</a> para añadirle nuevas características a tu anterior proyecto en red.</p>
-    
     <h2>Evaluación</h2>
-    
+
     <h3>Entrega</h3>
 
       <ol>
