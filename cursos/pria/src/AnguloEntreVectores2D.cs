@@ -6,17 +6,17 @@
 
 using System.Numerics;
 
-double AngleBetween2DVectors(Vector2 a, Vector2 b)
+float AngleBetween2DVectors(Vector2 a, Vector2 b)
 {
-    double sin = a.X * b.Y - b.X * a.Y;
-    double cos = a.X * b.X + a.Y * b.Y;
+    float sin = a.X * b.Y - b.X * a.Y;
+    float cos = a.X * b.X + a.Y * b.Y;
 
-    return Math.Atan2(sin, cos) * (180 / Math.PI);
+    return MathF.Atan2(sin, cos) * (180 / MathF.PI);
 }
 
 Vector2 v = new Vector2(1, 0);
 Vector2 w = new Vector2(0, 1);
 
-double angle = AngleBetween2DVectors(v, w);
+float angle = AngleBetween2DVectors(v, w);
 
 Console.WriteLine(angle);
