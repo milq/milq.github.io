@@ -1,45 +1,59 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Capsule : MonoBehaviour
+public class PlayerSpaceshipMovement : MonoBehaviour
 {
-    public new Rigidbody2D rigidbody { get; private set; }
+    // Crea una propiedad para obtener el componente Rigidbody2D del objeto
+    public Rigidbody2D Rigidbody { get; private set; }
 
+    // Establece la velocidad de empuje y si está o no empujando
+    public float ThrustSpeed = 1f;
+    public bool Thrusting { get; private set; }
 
-    public float thrustSpeed = 1f;
-    public bool thrusting { get; private set; }
+    // Establece la dirección de giro y la velocidad de rotación
+    public float TurnDirection { get; private set; } = 0f;
+    public float RotationSpeed = 0.1f;
 
-    public float turnDirection { get; private set; } = 0f;
-    public float rotationSpeed = 0.1f;
-
+    // Obtiene el componente Rigidbody2D en el método Awake
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
-
+    // Actualiza el estado del empuje y la dirección de giro en el método Update
     private void Update()
     {
-        thrusting = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
+        // Establece si se está empujando según la entrada del teclado
+        Thrusting = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow);
 
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
-            turnDirection = 1f;
-        } else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
-            turnDirection = -1f;
-        } else {
-            turnDirection = 0f;
+        // Establece la dirección de giro según la entrada del teclado
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            TurnDirection = 1f;
         }
-
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            TurnDirection = -1f;
+        }
+        else
+        {
+            TurnDirection = 0f;
+        }
     }
 
+    // Aplica el empuje y el giro al objeto en el método FixedUpdate
     private void FixedUpdate()
     {
-        if (thrusting) {
-            rigidbody.AddForce(transform.up * thrustSpeed);
+        // Aplica una fuerza en la dirección actual si se está empujando
+        if (Thrusting)
+        {
+            Rigidbody.AddForce(transform.up * ThrustSpeed);
         }
 
-        if (turnDirection != 0f) {
-            rigidbody.AddTorque(rotationSpeed * turnDirection);
+        // Aplica un torque en la dirección de giro si hay una dirección especificada
+        if (TurnDirection != 0f)
+        {
+            Rigidbody.AddTorque(RotationSpeed * TurnDirection);
         }
     }
 }
