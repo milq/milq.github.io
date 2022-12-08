@@ -1,6 +1,6 @@
 // Código del enemigo
 
-void Update()
+private void Update()
 {
     // Obtenemos la posición del jugador.
     Vector2 targetPosition = player.transform.position;
