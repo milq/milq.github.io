@@ -13,6 +13,6 @@ xxx_yyy_z
 
 IMPORTANTE 1: Respeta el máximo de MB de la entrega de esta tarea.
 IMPORTANTE 1: Borra la carpeta 'vendor' de todos tus proyectos creados en Laravel.
-IMPORTANTE 3: Puedes usar 'ilovepdf.com' si tu documento PDF ocupa mucho.
+IMPORTANTE 3: Puedes usar 'ilovepdf.com' para reducir las MB de tus PDF
 
 El nombre de la carpeta será 'xxx_yyy_z', donde 'xxx' serán las tres primeras letras de tu primer apellido, 'yyy' las tres primeras letras de tu segundo apellido y 'z' la primera letra de tu primer nombre. Todo en minúsculas.

@@ -1,0 +1,178 @@
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=2.0' />
+
+    <meta name='author' content='Manuel Ignacio López Quintero' />
+    <meta name='description' content='Curso de desarrollo web en entorno servidor.' />
+    <meta name='keywords' content='curso, desarrollo, web, entorno, servidor' />
+
+    <title>PHP OOP y el 'framework' web MVC Laravel</title>
+    <link rel='icon' href='../../../../src/png/icon.png' />
+    <link rel='stylesheet' href='../../../../src/css/simple.css' />
+  </head>
+
+  <body>
+    <h1>4. POO en PHP, MVC y el <em>framework</em> web Laravel</h1>
+
+    <nav><a href='https://milq.github.io/cursos/dwes'>Desarrollo Web en Entorno Servidor</a> | Creado por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</nav>
+
+    <h2>Contenidos</h2>
+
+    <ol>
+      <li><a href='https://en.wikipedia.org/wiki/Object-oriented_programming'>Programación Orientada a Objetos</a> (POO).</li>
+
+	  <li><a href='https://en.wikipedia.org/wiki/Architectural_pattern'>Patrones de arquitectura</a>:
+	    <ol>
+	      <li>Ejemplos:
+	        <ol>
+	          <li><a href='https://en.wikipedia.org/wiki/Multitier_architecture'>Programación por capas</a> (<a href='https://en.wikipedia.org/wiki/Business_logic'>lógica de negocio</a>, <a href='https://en.wikipedia.org/wiki/Data_access_layer'>DAL</a>, etc.)</li>
+	          <li><a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>Modelo-Vista-Controlador</a> (MVC).</li>
+	        </ol>
+	      </li>
+	    </ol>
+	  </li>
+      <li><a href='https://en.wikipedia.org/wiki/Web_framework'>Framework web</a>.</li>
+      <li><a href='https://en.wikipedia.org/wiki/Web_framework'>Laravel</a>.</li>
+    </ol>
+
+	<p>Cursos de Laravel</p>
+
+	<ol>
+	  <li><a href='https://www.youtube.com/watch?v=JRUOeMkwkIo&list=PLZ2ovOgdI-kWWS9aq8mfUDkJRfYib-SvF'><em></em>Coders Free</a>.</li>
+	  <li><a href='https://www.youtube.com/watch?v=0sHSrqyZCnM&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh'>Píldoras informáticas</a>.</li>
+	  <li><a href='https://www.youtube.com/watch?v=OstmN2r1wG0&list=PLpk46uAL3qUF3lx2X10Nj9WpEbio5GbgO'><em>Programar es fácil</em></a>.</li>
+	  <li><a href='https://www.youtube.com/watch?v=75FYScxTBiY&list=PLd3a4dr8oUsDAjQa8T0eKSyOxUCoiMVxO'>CursosDesarrolloWeb</a>.</li>
+	</ol>
+
+
+
+    <h2>Actividades de OOP, MVC y otros</h2>
+
+    <p><strong>1.</strong> Repasa la <a href='https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos'>POO</a> y detalla sus <a href='https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos#Conceptos_fundamentales'>conceptos</a> y <a href='https://es.wikipedia.org/wiki/Programaci%C3%B3n_orientada_a_objetos#Caracter%C3%ADsticas_de_la_POO'>características</a> principales.</p>
+
+    <p><strong>2.</strong> Haz este tutorial desde <a href='https://www.w3schools.com/php/php_oop_what_is.asp'>aquí</a> hasta <a href='https://www.w3schools.com/php/php_iterables.asp'>aquí</a> de POO; para ello, ejecuta todos sus ejemplos y explícalos.</p>
+
+    <p><strong>3.</strong> Resuelve estos diez <a href='https://milq.github.io/cursos/fundprog/ud/6/'>ejercicios</a> sobre clases usando <a href='https://www.w3schools.com/php/php_oop_what_is.asp'>POO</a> en PHP.</p>
+
+    <p><strong>4.</strong> Lee a fondo y explica con tus palabras lo que es <a href='https://en.wikipedia.org/wiki/Architectural_pattern'>patrón de arquitectura</a> y enumera todos sus <a href='https://en.wikipedia.org/wiki/Architectural_pattern#Examples'>ejemplos</a>.</p>
+
+    <p><strong>5.</strong> Define <a href='https://en.wikipedia.org/wiki/Multitier_architecture'>programación por capas</a> y sus capas como <a href='https://en.wikipedia.org/wiki/Business_logic'>BLL</a> (lógica de negocio) o <a href='https://en.wikipedia.org/wiki/Data_access_layer'>DAL</a> y detalla la <a href='https://en.wikipedia.org/wiki/Multitier_architecture#Three-tier_architecture'><em>three-tier</em></a>.</p>
+
+    <p><strong>6.</strong> Lee a fondo y explica al detalle el patrón de arquitectura <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller'>MVC</a>, sus <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller#Components'>componentes</a> y cómo <a href='https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller#Interactions'>interactúan</a>.</p>
+
+    <p><strong>7.</strong> Ve este <a href='https://www.youtube.com/watch?v=UU8AKk8Slqg'>vídeo</a> de inicio a fin, resúmelo y explica el <a href='mvc.jpg'>flujo</a> de MVC empezando por la vista.</p>
+
+    <p><strong>8.</strong> Lee bien <a href='https://www.sitepoint.com/the-mvc-pattern-and-php-1/'>este</a> y <a href='https://www.sitepoint.com/the-mvc-pattern-and-php-2/'>este</a> artículo y ejecuta, modifica y explica exhaustivamente esta <a href='plantilla_mvc_simple.zip'>plantilla</a> MVC básica.</p>
+
+    <p><strong>9.</strong> Lee exhaustivamente y explica con tus propias palabras lo que es un <a href='https://en.wikipedia.org/wiki/Web_framework'><em>framework</em> web</a>.</p>
+
+    <p><strong>10.</strong> Lee exhaustivamente y explica con tus propias palabras lo que es <a href='https://en.wikipedia.org/wiki/Laravel'>Laravel</a>.</p>
+
+    <h2 id='a'>Actividades de Laravel</h2>
+
+	<p>Durante la realización de las actividades, completa uno o más cursos recomendados por el profesor:</p>
+	
+	<ol>
+	  <li><a href='https://www.youtube.com/watch?v=JRUOeMkwkIo&list=PLZ2ovOgdI-kWWS9aq8mfUDkJRfYib-SvF'><em></em>Coders Free</a>.</li>
+	  <li><a href='https://www.youtube.com/watch?v=0sHSrqyZCnM&list=PLU8oAlHdN5Bk-qkvjER90g2c_jVmpAHBh'>Píldoras informáticas</a>.</li>
+	  <li><a href='https://www.youtube.com/watch?v=OstmN2r1wG0&list=PLpk46uAL3qUF3lx2X10Nj9WpEbio5GbgO'><em>Programar es fácil</em></a>.</li>
+	  <li><a href='https://www.youtube.com/watch?v=75FYScxTBiY&list=PLd3a4dr8oUsDAjQa8T0eKSyOxUCoiMVxO'>CursosDesarrolloWeb</a>.</li>
+	</ol>
+
+    <h3>1. Framework web e instalación</h3>
+
+    <p><strong>1.</strong> Realiza los siguientes ejercicios:<br />
+    <strong>a)</strong> Ve <a href='https://www.youtube.com/watch?v=zhSDjntidws'>este</a> y <a href='https://www.youtube.com/watch?v=HrSan9-un_8'>este</a> vídeo de inicio a fin y explica con tus propias palabras qué es un MVC con Routing.<br />
+    <strong>b)</strong> Ve <a href='https://www.youtube.com/watch?v=xmHwYc-6W3E'>este</a> y <a href='https://www.youtube.com/watch?v=_-TKjgEsukM'>este</a> vídeo de inicio a fin y explica con tus propias palabras qué es un <em>framework web</em>.<br />
+    <strong>c)</strong> Explora la <a href='https://laravel.com/docs/'>documentación</a> oficial de Laravel y describe las diferentes formas de <a href='https://laravel.com/docs/installation'>instalar</a> Laravel.<br />
+    <strong>d)</strong> Crea un proyecto en blanco en Laravel usando Composer <a href='https://laravel.com/docs/installation'>ayudándote</a> de su documentación oficial.</p>
+
+    <h3>Recomendación</h3>
+
+    <p>Antes de seguir, comienza y completa la siguiente unidad didáctica: <a href='../5/index.html'>servicios web</a>.</p>
+
+    <h3>2. Rutas y controladores</h3>
+
+    <p>Antes de empezar, estudia a fondo las <a href='https://laravel.com/docs/routing'>rutas</a> y <a href='https://laravel.com/docs/controllers'>controladores</a> en Laravel.</p>
+
+    <p><strong>2</strong>. Crea una aplicación Laravel y añade un controlador llamado <em>LibrosController</em> y agrega una ruta para mostrar una lista de libros utilizando un <em>array</em> de ejemplo en dicho controlador. Luego, añade otros dos controladores llamados <em>AutoresController</em> y <em>EditorialesController</em> e incluye rutas para mostrar información sobre autores y editoriales con <em>arrays</em> de ejemplo en cada controlador.</p>
+
+    <h3>3. Vistas mediante Blade</h3>
+
+    <p>Antes de empezar, aprende qué es un <a href='https://en.wikipedia.org/wiki/Web_template_system'>motor de plantillas web</a> y estudia a fondo <a href='https://laravel.com/docs/views'>vistas</a> y <a href='https://laravel.com/docs/blade'>Blade</a> en Laravel.</p>
+
+	<p><strong>3.</strong> Crea una aplicación en Laravel que permita a los usuarios navegar entre cuatro páginas diferentes: una página de inicio, una página de libros, una página de contacto y una página de acerca de nosotros. Utiliza un controlador para manejar las solicitudes de cada página y cuatro vistas diferentes con Blade para mostrar el contenido en cada una de ellas. En la vista de libros se tiene que mostrar varios libros de ejemplo. Los libros estarán almacenados en un <em>array</em> dentro del controlador.</p>
+
+	<h3>4. Bases de datos</h3>
+
+	<p>Antes de empezar, estudia a fondo <a href='https://laravel.com/docs/database'>bases de datos</a> en Laravel y sus <a href='https://laravel.com/docs/migrations'>migraciones</a> y su <a href='https://laravel.com/docs/queries'><em>query builder</em></a>.</p>
+	
+	<p><strong>4.</strong> Crea una aplicación en Laravel que tenga una base de datos para almacenar información sobre películas y discos. Utiliza migraciones para crear las tablas necesarias en la base de datos. Luego, usa <em>query builder</em> de Laravel e inserta algunos ejemplos en la base de datos así como modificar, borrar y mostrar películas y discos.</p>
+	
+    <h3>5. Eloquent</h3>
+
+    <p>Antes de empezar, aprende qué es <a href='https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping'>ORM</a> y estudia a fondo <a href='https://laravel.com/docs/eloquent'>Eloquent</a> y sus <a href='https://laravel.com/docs/eloquent-relationships'>relaciones</a> y <a href='https://laravel.com/docs/eloquent-collections'>colecciones</a>.</p>
+
+    <p><strong>5.</strong> Crea una aplicación en Laravel que muestre una lista de usuarios y sus respectivos perfiles en una página. Utiliza Eloquent para establecer relaciones de uno a uno entre la tabla de usuarios y la tabla de perfiles, y recuperar los datos de ambas tablas. Añade también una página de detalle de un usuario, donde se mostrará la lista de publicaciones relacionadas con ese usuario. Utiliza Eloquent para establecer una relación de uno a muchos entre tabla de usuarios y tabla de publicaciones. Finalmente añade una página de detalle de una publicación, donde se mostrará una lista de etiquetas relacionadas con esa publicación, Utiliza Eloquent para establecer una relación muchos a muchos entre tabla de publicaciones y tabla de etiquetas.</p>
+
+    <h3>6. CRUD</h3>
+
+    <p><strong>6.</strong> Crea una aplicación de Laravel que permita a los visitantes añadir, ver, actualizar y eliminar libros. La aplicación debe tener una pestaña de inicio, una pestaña que muestre una lista de los libros existentes, otra pestaña para insertar un nuevo libro, una pestaña para actualizar y una última pestaña para eliminar un libro existente.</p>
+
+    <h3>7. Autenticación y sesiones</h3>
+
+    <p><strong>7.</strong> Repite la aplicación anterior pero esta vez que permita a los visitantes registrarse como usuarios e iniciar sesión. Una vez autenticado, el usuario con rol de cliente puede tener acceso a la pestaña de libros existentes. Solo el usuario con rol de administrador puede editar, borrar e insertar libros.</p>
+
+    <h2 id='b'>Actividad de ampliación</h2>
+
+    <p>Crea una aplicación web en Laravel. Elige <strong>uno</strong> de los siguientes temas:</p>
+
+    <h3>1. Compra <em>online</em> de entradas de cine</h3>
+
+    <p>El usuario (cliente) se registrará, iniciará sesión y realizará una compra <em>online</em> de una o varias entradas de cine de un catálogo de 5 películas diferentes. El administrador (empresario) iniciará sesión y podrá comprobar todas las entradas compradas para cada película y qué clientes lo compraron. El administrador también podrá añadir y eliminar nuevas películas.</p>
+
+    <h3>2. Biblioteca <em>online</em></h3>
+
+    <p>El usuario (cliente) se registrará, iniciará sesión y realizará un préstamo <em>online</em> de uno o varios libros desde y hasta una fecha determinada a partir de un catálogo de 10 libros diferentes. El usuario no podrá reservar un libro determinado si éste se encuentra actualmente prestado. El administrador (bibliotecario) iniciará sesión y podrá comprobar todos los libros prestados, en qué fechas y qué clientes lo solicitaron. El administrador también podrá añadir y eliminar nuevos libros.</p>
+
+    <h3>3. Foro básico</h3>
+
+    <p>El usuario (cliente) se registrará, iniciará sesión y abrirá un hilo de conversación, responderá en otro hilo de conversación ya existente y/o dara <em>me gusta</em> a un hilo o respuesta. El administrador iniciará sesión y podrá comprobar el número de mensajes de cada usuario y el número de <em>me gusta</em> en total recibidos. El administrador también podrá iniciar hilos y responder a hilos.</p>
+
+    <h2>Evaluación</h2>
+
+    <h3>Entrega</h3>
+
+    <ol>
+      <li>La estructura de archivos y carpetas debe quedar <a href='estructura.txt'>así</a>.</li>
+      <li>El fichero de texto <em>realizado.txt</em> indicará qué apartados de cada actividad se han completado.</li>
+      <li>El profesor descomprimirá el ZIP y verificará los apartados completados según <em>tarea.txt</em>.</li>
+      <li>Es importante la franqueza en <em>realizado.txt</em>, sobreestimar conlleva a futuras dificultades en Laravel.</li>
+    </ol>
+
+    <h3>Criterios de calificación</h3>
+
+    <ul>
+      <li>Actividades de OOP, MVC y otros: <strong>hasta 3 puntos</strong>.</li>
+      <li>Laravel: <strong>hasta 7 puntos</strong>.</li>
+    </ul>
+
+
+<!--
+
+    <ul>
+      <li>MVC y framework web: <strong>hasta 2 puntos</strong>.</li>
+      <li>Rutas y controladores: <strong>hasta 2 puntos</strong>.</li>
+      <li>Vistas mediante Bootstrap y Blade: <strong>hasta 1 punto</strong>.</li>
+      <li>Bases de datos y Eloquent: <strong>hasta 3 puntos</strong>.</li>
+      <li>CRUD con formularios: <strong>hasta 1 punto</strong>.</li>
+      <li>Autenticación y sesiones: <strong>hasta 1 punto</strong>.</li>
+    </ul>
+
+-->
+
+    <footer><a href='https://milq.github.io/cursos/dwes'>Desarrollo Web en Entorno Servidor</a> | Creado por <a href='https://milq.github.io'>Manuel Ignacio López Quintero</a> bajo esta <a href='https://creativecommons.org/licenses/by-sa/4.0/'>licencia</a>.</footer>
+
+  </body>
+</html>
