@@ -1,0 +1,12 @@
+· El jugador (azul):
+    - Gana si recoge las tres manzanas (verde) y no es derrotado por la IA.
+    - Se mueve haciendo clic con el botón derecho del ratón.
+    - Dispara haciendo clic con el botón izquierdo del ratón.
+
+· IA (rojo):
+    - Cada IA patrullará por su zona asignada en el nivel y podrá disparar al jugador.
+    - Cada IA tendrá una barra de vida (con 100 de vida, por ejemplo).
+    - Hay tres pociones (púrpura) en total para la IA; si una IA toma una poción, recupera toda su vida.
+
+· Opcional:
+    - Añadirle animaciones al jugador y a las IA.
