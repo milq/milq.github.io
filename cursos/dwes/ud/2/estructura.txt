@@ -1,8 +1,14 @@
-xxx_yyy_z
-├── 1_test/
-├── 2_reservas/
-├── 3_pizzeria/
-├── index.html
-└── inicio.sql
-
-El nombre de la carpeta será 'xxx_yyy_z', donde 'xxx' serán las tres primeras letras de tu primer apellido, 'yyy' las tres primeras letras de tu segundo apellido y 'z' la primera letra de tu primer nombre. Todo en minúsculas.
+Apellido1_Apellido2_Nombre_DWES_Tarea_Online_2/
+├── assets/
+├── jugador/
+│   └── crear/
+├── partida/
+│   ├── borrar/
+│   ├── crear/
+│   ├── editar/
+│   └── inscribirse/
+├── torneo/
+│   └── crear/
+├── alwaysdata.txt
+├── index.php
+└── modelo.sql
