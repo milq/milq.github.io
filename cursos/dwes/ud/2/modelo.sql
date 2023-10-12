@@ -4,8 +4,8 @@ DROP DATABASE IF EXISTS to2_torneos_online;
 CREATE DATABASE to2_torneos_online;
 USE to2_torneos_online;
 
--- Pon aquí tus CREATE TABLE y restricciones necesarias
+-- Pon aquí debajo tus CREATE TABLE y restricciones necesarias
 
 
 
--- Pon aquí tus INSERT INTO  necesarias
+-- Pon aquí debajo tus INSERT INTO  necesarias
