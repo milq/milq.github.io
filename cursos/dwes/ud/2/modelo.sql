@@ -8,4 +8,6 @@ USE to2_torneos_online;
 
 
 
--- Pon aquí debajo tus INSERT INTO  necesarias
+-- Pon aquí debajo tus INSERT INTO necesarias
+
+
