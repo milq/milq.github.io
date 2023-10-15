@@ -71,6 +71,40 @@ Console.WriteLine("Lista de animales después de invertir:");
 Console.WriteLine(string.Join(", ", animales));
 
 
+// SUBLISTAS
+
+List<int> listaEnteros = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+List<int> subLista = listaEnteros.GetRange(2, 5); // Obtiene una sublista que comienza en el índice 2 y tiene 5 elementos
+Console.WriteLine("Sublista:");
+Console.WriteLine(string.Join(", ", subLista));
+
+
+// LISTAS VACÍAS
+
+List<int> listaVacia = new List<int>();
+Console.WriteLine($"La lista vacía tiene {listaVacia.Count} elementos.");
+
+
+// LISTAS MULTIDIMENSIONALES
+
+List<List<string>> matriz = new List<List<string>>
+{
+    new List<string> { "a", "b", "c" },
+    new List<string> { "d", "e", "f" },
+    new List<string> { "g", "h", "i" }
+};
+Console.WriteLine("Elemento en la posición (1,2) de la matriz:");
+Console.WriteLine(matriz[1][2]);  // Devuelve "f"
+
+
+// LISTAS VACÍAS MULTIDIMENSIONALES
+
+List<List<string>> matrizVacia = new List<List<string>>();
+matrizVacia.Add(new List<string>());
+matrizVacia.Add(new List<string>());
+Console.WriteLine($"La matriz vacía tiene {matrizVacia.Count} filas.");
+
+
 // BUSCAR UN ELEMENTO EN LA LISTA
 
 if (nombres.Contains("Alba"))
