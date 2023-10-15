@@ -99,10 +99,10 @@ Console.WriteLine(matriz[1][2]);  // Devuelve "f"
 
 // LISTAS VACÍAS MULTIDIMENSIONALES
 
-List<List<string>> matrizVacia = new List<List<string>>();
-matrizVacia.Add(new List<string>());
-matrizVacia.Add(new List<string>());
-Console.WriteLine($"La matriz vacía tiene {matrizVacia.Count} filas.");
+List<List<string>> listaVaciaMultidimensional = new List<List<string>>();
+listaVaciaMultidimensional.Add(new List<string>());
+listaVaciaMultidimensional.Add(new List<string>());
+Console.WriteLine($"La lista vacía multidimensional tiene {listaVaciaMultidimensional.Count} elementos.");
 
 
 // BUSCAR UN ELEMENTO EN LA LISTA
