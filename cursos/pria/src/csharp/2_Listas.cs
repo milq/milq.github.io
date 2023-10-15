@@ -49,6 +49,28 @@ colores.RemoveAt(colores.Count - 1);
 Console.WriteLine(string.Join(", ", colores));
 
 
+// ORDENAR UNA LISTA
+
+List<int> enteros = new List<int> { 43, 72, 32, 22, 65 };
+Console.WriteLine("Lista de enteros antes de ordenar:");
+Console.WriteLine(string.Join(", ", enteros));
+
+enteros.Sort();  // Ordena la lista en orden ascendente
+Console.WriteLine("Lista de números después de ordenar:");
+Console.WriteLine(string.Join(", ", enteros));
+
+
+// INVERTIR UNA LISTA
+
+List<string> animales = new List<string> { "Perro", "Gato", "Pájaro", "Pez" };
+Console.WriteLine("Lista de animales antes de invertir:");
+Console.WriteLine(string.Join(", ", animales));
+
+animales.Reverse();  // Invierte el orden de los elementos en la lista
+Console.WriteLine("Lista de animales después de invertir:");
+Console.WriteLine(string.Join(", ", animales));
+
+
 // BUSCAR UN ELEMENTO EN LA LISTA
 
 if (nombres.Contains("Alba"))
