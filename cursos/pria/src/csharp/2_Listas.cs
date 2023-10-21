@@ -139,19 +139,3 @@ Console.WriteLine($"El número máximo es: {maximo}");
 List<int> listaNumeros = new List<int> { 10, 20, 30, 40, 50 };
 int sumaTotal = listaNumeros.Sum();
 Console.WriteLine($"La suma total de los números en la lista es: {sumaTotal}");
-
-
-// BUSCAR LA POSICIÓN DE UN ELEMENTO EN LA LISTA CON "FINDINDEX"
-
-List<string> vehiculos = new List<string> { "coche", "bicicleta", "moto", "camión", "autobús" };
-
-// Buscar la posición del primer vehículo que contenga la letra 'm'
-int indiceVehiculoConM = vehiculos.FindIndex(item => item.Contains("m"));
-if (indiceVehiculoConM != -1) 
-{
-    Console.WriteLine($"El índice del primer vehículo con la letra 'm' es: {indiceVehiculoConM}");
-}
-else  // FindIndex devuelve -1 si no encuentra ningún elemento que cumpla la condición
-{
-    Console.WriteLine("No hay vehículos con la letra 'm'");
-}
