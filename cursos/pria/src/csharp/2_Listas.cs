@@ -137,6 +137,13 @@ Console.WriteLine($"El número mínimo es: {minimo}");
 Console.WriteLine($"El número máximo es: {maximo}");
 
 
+// SUMAR LOS ELEMENTOS DE UNA LISTA CON "SUM"
+
+List<int> listaNumeros = new List<int> { 10, 20, 30, 40, 50 };
+int sumaTotal = listaNumeros.Sum();
+Console.WriteLine($"La suma total de los números en la lista es: {sumaTotal}");
+
+
 // BUSCAR LA POSICIÓN DE UN ELEMENTO EN LA LISTA CON "FINDINDEX"
 
 List<string> vehiculos = new List<string> { "coche", "bicicleta", "moto", "camión", "autobús" };
