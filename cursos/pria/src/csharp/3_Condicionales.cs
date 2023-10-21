@@ -72,7 +72,7 @@ else
 
 if (calificacion < 5)  // Sentencia if-else-if
 {
-    Console.WriteLine("Reprobado.");
+    Console.WriteLine("Suspenso.");
 }
 else if (calificacion >= 5 && calificacion < 7)
 {
