@@ -38,15 +38,23 @@ nombres.Add("Marta");
 Console.WriteLine(string.Join(", ", nombres));
 
 
-// ELIMINAR UN ELEMENTO DE LA LISTA
+// ELIMINAR ELEMENTOS DE UNA LISTA
 
 List<string> colores = new List<string> { "Azul", "Naranja", "Verde", "Amarillo", "Blanco" };
 
-colores.RemoveAt(0);
-colores.RemoveAt(2);
+colores.RemoveAt(0);  // Elimina el elemento con índice 0 de la lista
+colores.RemoveAt(2);  // Elimina el elemento con índice 2 de la lista
 colores.RemoveAt(colores.Count - 1);
 
 Console.WriteLine(string.Join(", ", colores));
+
+List<string> letras = new List<string> { "A", "B", "A", "B", "C", "B" };
+
+letras.Remove("B");  // Elimina el primer elemento de "B" que encuentre en la lista
+Console.WriteLine($"Después de eliminar la primera 'B': {string.Join(", ", letras)}");
+
+letras.Clear();  // Elimina todos los elementos de la lista
+Console.WriteLine($"Después de limpiar la lista de letras: {string.Join(", ", letras)}");
 
 
 // ORDENAR UNA LISTA
@@ -115,17 +123,6 @@ else
 {
     Console.WriteLine("Alba no está en la lista de nombres.");
 }
-
-
-// ELIMINAR TODOS LOS ELEMENTOS DE LA LISTA CON "REMOVE" Y "CLEAR"
-
-List<string> letras = new List<string> { "A", "B", "A", "B", "C", "B" };
-
-letras.Remove("B");  // Elimina la primera instancia de "B" que encuentre en la lista
-Console.WriteLine($"Después de eliminar la primera 'B': {string.Join(", ", letras)}");
-
-letras.Clear();  // Elimina todos los elementos de la lista
-Console.WriteLine($"Después de limpiar la lista de letras: {string.Join(", ", letras)}");
 
 
 // OBTENER EL MÍNIMO Y MÁXIMO DE UNA LISTA CON "MIN" Y "MAX"
