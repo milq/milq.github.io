@@ -105,7 +105,7 @@ listaVaciaMultidimensional.Add(new List<string>());
 Console.WriteLine($"La lista vacía multidimensional tiene {listaVaciaMultidimensional.Count} elementos.");
 
 
-// BUSCAR UN ELEMENTO EN LA LISTA
+// SABER SI LA LISTA CONTIENE UN ELEMENTO
 
 if (nombres.Contains("Alba"))
 {
@@ -114,4 +114,40 @@ if (nombres.Contains("Alba"))
 else
 {
     Console.WriteLine("Alba no está en la lista de nombres.");
+}
+
+
+// ELIMINAR TODOS LOS ELEMENTOS DE LA LISTA CON "REMOVE" Y "CLEAR"
+
+List<string> letras = new List<string> { "A", "B", "A", "B", "C", "B" };
+
+letras.Remove("B");  // Elimina la primera instancia de "B" que encuentre en la lista
+Console.WriteLine($"Después de eliminar la primera 'B': {string.Join(", ", letras)}");
+
+letras.Clear();  // Elimina todos los elementos de la lista
+Console.WriteLine($"Después de limpiar la lista de letras: {string.Join(", ", letras)}");
+
+
+// OBTENER EL MÍNIMO Y MÁXIMO DE UNA LISTA CON "MIN" Y "MAX"
+
+List<int> numeros = new List<int> { 5, 3, 8, 2, 6 };
+int minimo = numeros.Min();
+int maximo = numeros.Max();
+Console.WriteLine($"El número mínimo es: {minimo}");
+Console.WriteLine($"El número máximo es: {maximo}");
+
+
+// BUSCAR LA POSICIÓN DE UN ELEMENTO EN LA LISTA CON "FINDINDEX"
+
+List<string> vehiculos = new List<string> { "coche", "bicicleta", "moto", "camión", "autobús" };
+
+// Buscar la posición del primer vehículo que contenga la letra 'm'
+int indiceVehiculoConM = vehiculos.FindIndex(item => item.Contains("m"));
+if (indiceVehiculoConM != -1) 
+{
+    Console.WriteLine($"El índice del primer vehículo con la letra 'm' es: {indiceVehiculoConM}");
+}
+else  // FindIndex devuelve -1 si no encuentra ningún elemento que cumpla la condición
+{
+    Console.WriteLine("No hay vehículos con la letra 'm'");
 }
