@@ -108,7 +108,6 @@ switch (opcion)
         break;
 }
 
-
 string fruta = "Manzana";
 
 switch (fruta)
