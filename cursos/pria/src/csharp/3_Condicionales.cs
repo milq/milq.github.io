@@ -88,6 +88,46 @@ else
 }
 
 
+// DECISIONES CON SWITCH-CASE
+
+int opcion = 3;
+
+switch (opcion)
+{
+    case 1:
+        Console.WriteLine("El número es 1.");
+        break;
+    case 2:
+        Console.WriteLine("El número es 2.");
+        break;
+    case 3:
+        Console.WriteLine("El número es 3.");
+        break;
+    default:
+        Console.WriteLine("El número no es 1, 2 ni 3.");
+        break;
+}
+
+
+string fruta = "Manzana";
+
+switch (fruta)
+{
+    case "Manzana":
+        Console.WriteLine("La fruta es 'Manzana'.");
+        break;
+    case "Plátano":
+        Console.WriteLine("La fruta es 'Plátano'.");
+        break;
+    case "Naranja":
+        Console.WriteLine("La fruta es 'Naranja'.");
+        break;
+    default:
+        Console.WriteLine("No reconozco esa fruta.");
+        break;
+}
+
+
 // EJEMPLO 1 (IFS ANIDADOS): programa para verificar si el año introducido es bisiesto o no
 
 int year = 2000;
