@@ -98,4 +98,10 @@ Console.WriteLine(tipoCalorias2);
 Console.WriteLine(tipoPeso2);
 Console.WriteLine(tipoAltitud2);
 
+// Para hacer que las conversiones de 'string' sean internacionales (usar punto en vez de coma), añade en 
+// el '.csproj' el elemento <InvariantGlobalization>true</InvariantGlobalization> dentro de <PropertyGroup>.
+
+
+// MENSAJE FINAL PARA EVITAR VARIABLES NO USADAS
+
 Console.WriteLine("Mi nombre es " + nombre + ", tengo " + edad + " años y estoy a " + nivelDelMar + " metros sobre el nivel del mar, donde la temperatura es de " + temperatura + " grados Celsius. ¿Tengo coche? " + tieneCoche + ". Y por cierto, el resultado de una división que hice antes es de " + resultadoDivision + ".");
