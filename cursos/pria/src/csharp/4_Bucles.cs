@@ -128,7 +128,6 @@ foreach (var num in listaEnteros)
             }
         }
     }
-
     if (esPrimo)
     {
         numeroPrimo = num;
