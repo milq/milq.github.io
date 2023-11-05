@@ -124,7 +124,6 @@ class Program
     {
         // Ejemplo con la clase Punto.
         Punto punto = new Punto(2, 3);
-        Clase.Punto punto2 = new Clase.Punto(2, 3);
         int a = punto.GetX();
         int b = punto.GetY();
         Console.WriteLine($"Punto X: {a}, Punto Y: {b}");
