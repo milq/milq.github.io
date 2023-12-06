@@ -1,13 +1,16 @@
 Apellido1_Apellido2_Nombre_DWES_Tarea_Online_4/
 ├── app/
-│   ├── Controllers/
+│   ├── Http/
+│   │   └── Controllers/
 │   └── Models/
 ├── config/
-│   └── config.php
+│   └── database.php
 ├── public/
 │   └── index.php
+├── resources/
+│   └── views/
 ├── routes/
 │   └── web.php
-├── views/
 ├── alwaysdata.txt
+├── composer.json
 └── modelo.sql
