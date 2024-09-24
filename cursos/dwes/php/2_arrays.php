@@ -16,6 +16,16 @@ $c = $alimentos[2];
 
 echo "Me gustan las $a, las $b y los $c\n";
 
+// IMPRIMIR EN PANTALLA UN ARRAY
+
+// Imprimir usando print_r: imprime la estructura del array con formato legible,
+// mostrando los índices y sus valores de manera clara.
+print_r($alimentos);
+
+// Imprimir usando implode: convierte el array en una cadena de texto
+// uniendo sus elementos con una coma y un espacio ", ".
+echo implode(", ", $alimentos) . "\n";
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 // CONTAR ELEMENTOS EN UN ARRAY
