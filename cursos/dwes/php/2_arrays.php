@@ -81,7 +81,7 @@ array_splice($colores, 0, 1);
 array_splice($colores, 2, 1);
 
 // Eliminar el último elemento
-array_splice($array, -1);
+array_splice($colores, -1);
 // array_pop($colores);    // Otra opción alternativa
 
 echo implode(", ", $colores) . "\n";
