@@ -75,12 +75,14 @@ $colores = ["Azul", "Naranja", "Verde", "Amarillo", "Blanco"];
 
 // Eliminar el elemento con índice 0
 array_splice($colores, 0, 1);
+// array_shift($colores);    // Otra opción alternativa
 
 // Eliminar el elemento con índice 2
 array_splice($colores, 2, 1);
 
 // Eliminar el último elemento
-array_splice($colores, count($colores) - 1, 1);
+array_splice($array, -1);
+// array_pop($colores);    // Otra opción alternativa
 
 echo implode(", ", $colores) . "\n";
 
