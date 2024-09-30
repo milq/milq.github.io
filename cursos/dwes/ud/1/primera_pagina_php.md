@@ -1,17 +1,11 @@
-# Tutorial: Tu Primera Página en PHP usando XAMPP
+# Tutorial - Primera página web en PHP usando XAMPP
 
-## Requisitos Previos
+## Requisitos
 
-1. **XAMPP** instalado en tu computadora.
-   - Puedes descargarlo desde [aquí](https://www.apachefriends.org/index.html).
-2. Un editor de texto o un IDE. Por ejemplo: [Visual Studio Code](https://code.visualstudio.com/), Notepad++, Sublime Text, etc.
+1. XAMPP instalado en tu computadora.
+2. Un editor de texto o un IDE. Por ejemplo: [Visual Studio Code](https://code.visualstudio.com/), Notepad++, Geany, etc.
 
-## Paso 1: Instalar y Configurar XAMPP
-
-1. **Descarga e instala XAMPP** desde su página oficial.
-2. Durante la instalación, asegúrate de seleccionar las opciones de Apache y PHP.
-
-## Paso 2: Iniciar XAMPP
+## Paso 1: Inicia XAMPP
 
 ### En Windows:
 
@@ -32,7 +26,7 @@
     ```
 4. Verás que el servidor Apache se inicia junto con otros servicios, si los tienes activados.
 
-## Paso 3: Crear tu Carpeta de Proyecto
+## Paso 2: Crea tu carpeta de proyecto
 
 1. Ve a la carpeta donde está instalado XAMPP:
    - **Windows**: Generalmente está en `C:\xampp`.
@@ -43,7 +37,7 @@
    - **Windows**: Ruta: `C:\xampp\htdocs\mi_primera_pagina_php`
    - **GNU/Linux**: Ruta: `/opt/lampp/htdocs/mi_primera_pagina_php`
 
-## Paso 4: Crear el Archivo PHP
+## Paso 3: Crea la página web en PHP
 
 1. Abre tu editor de texto y crea un nuevo archivo.
 2. Copia y pega el siguiente código PHP:
@@ -71,7 +65,7 @@
    - **Windows**: Ruta: `C:\xampp\htdocs\mi_primera_pagina_php\index.php`
    - **GNU/Linux**: Ruta: `/opt/lampp/htdocs/mi_primera_pagina_php/index.php`
 
-## Paso 5: Ejecutar tu Página PHP
+## Paso 4: Ejecuta tu página web PHP
 
 1. Abre tu navegador web.
 2. En la barra de direcciones, escribe la siguiente URL para acceder a tu página PHP:
@@ -82,7 +76,7 @@
 
 3. Deberías ver la página con el texto "¡Hola, mundo!" y otro mensaje generado por PHP que dice "¡Este texto está generado por PHP!".
 
-## Paso 6: Detener Apache
+## Paso 5: Detén Apache
 
 ### En Windows:
 Vuelve al panel de XAMPP y haz clic en **Stop** junto a **Apache** para detener el servidor.
