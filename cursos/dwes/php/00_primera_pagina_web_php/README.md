@@ -60,10 +60,10 @@
 </html>
 ```
 
-3. Guarda este archivo como `index.php` dentro de la carpeta `mi_primera_pagina_php`.
+3. Guarda este archivo como `index.php` dentro de la carpeta `primera_pagina_web_php`.
 
-   - **Windows**: Ruta: `C:\xampp\htdocs\mi_primera_pagina_php\index.php`
-   - **GNU/Linux**: Ruta: `/opt/lampp/htdocs/mi_primera_pagina_php/index.php`
+   - **Windows**: Ruta: `C:\xampp\htdocs\primera_pagina_web_php\index.php`
+   - **GNU/Linux**: Ruta: `/opt/lampp/htdocs/primera_pagina_web_php/index.php`
 
 ## Paso 4: Ejecuta tu página web PHP
 
@@ -71,12 +71,12 @@
 2. En la barra de direcciones, escribe la siguiente URL para acceder a tu página PHP:
 
     ```
-    http://localhost/mi_primera_pagina_php/index.php
+    http://localhost/primera_pagina_web_php/
     ```
 
 3. Deberías ver la página con el texto "¡Hola, mundo!" y otro mensaje generado por PHP que dice "¡Este texto está generado por PHP!".
 
-## Paso 5: Detén Apache
+## Paso 5: Detén Apache (opcional)
 
 ### En Windows:
 Vuelve al panel de XAMPP y haz clic en **Stop** junto a **Apache** para detener el servidor.
