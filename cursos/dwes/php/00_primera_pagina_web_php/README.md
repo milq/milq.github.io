@@ -3,7 +3,7 @@
 ## Requisitos
 
 1. XAMPP instalado en tu computadora.
-2. Un editor de texto o un IDE. Por ejemplo: [Visual Studio Code](https://code.visualstudio.com/), Notepad++, Geany, etc.
+2. Un editor de texto o un IDE. Por ejemplo: Visual Studio Code, Notepad++, Geany, etc.
 
 ## Paso 1: Inicia XAMPP
 
