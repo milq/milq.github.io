@@ -42,8 +42,7 @@
 1. Abre tu editor de texto y crea un nuevo archivo.
 2. Copia y pega el siguiente código PHP:
 
-```php
-<!DOCTYPE html>
+```php<!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
   <head>
     <meta charset='utf-8' />
@@ -57,8 +56,7 @@
 
     <p><?php echo '¡Este texto está generado por PHP!'; ?></p>
   </body>
-</html>
-```
+</html>```
 
 3. Guarda este archivo como `index.php` dentro de la carpeta `mi_primera_pagina_php`.
 
