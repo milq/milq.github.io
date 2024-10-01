@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' lang='es'>
+  <head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Formulario básico</title>
+  </head>
+
+  <body>
+    <h1>Formulario básico</h1>
+
+    <form action='procesar.php' method='post'>
+      Nombre:
+      <input type='text' name='name' /><br />
+
+      Edad:
+      <input type='number' name='age' /><br />
+
+      Nivel de estudios:
+      <input type='radio' name='education' value='highschool' checked='checked' />Educación Secundaria
+      <input type='radio' name='education' value='bachelor' />Grado Universitario
+      <input type='radio' name='education' value='master' />Máster o superior<br />
+
+      Aficiones:
+      <input type='checkbox' name='hobbies[]' value='Sports' checked='checked' />Deportes
+      <input type='checkbox' name='hobbies[]' value='Travel' />Viajar
+      <input type='checkbox' name='hobbies[]' value='Videogames' />Videojuegos
+      <input type='checkbox' name='hobbies[]' value='Chess' />Ajedrez<br /><br />
+
+      <input type='submit' value='Enviar' />
+    </form>
+
+  </body>
+</html>
