@@ -1,6 +1,6 @@
-# ---------
-# VARIABLES
-# ---------
+# ---------------------
+# VARIABLES EN GDSCRIPT
+# ---------------------
 
 @tool
 extends EditorScript
