@@ -89,9 +89,11 @@ func _run() -> void:
 
     # Imprime en la pantalla cadenas de texto y variables usando comas
     print("He comprado ", x, " naranjas y ", y, " limones.")
+    # Imprime en la pantalla cadenas de texto y variables usando el signo %
+    print("He comprado %d naranjas y %d limones." % [x, y])
     # Imprime en la pantalla cadenas de texto y variables concatenando cadenas
     print("He comprado " + str(x) + " naranjas y " + str(y) + " limones.")
-    # O usando 'format'
+    # Imprime en la pantalla cadenas de texto y variables usando 'format'
     print("Tengo {0} naranjas y {1} limones. Sí, {0} naranjas.".format([x, y]))
 
     # CONVERSIÓN DE TIPOS DE DATOS
