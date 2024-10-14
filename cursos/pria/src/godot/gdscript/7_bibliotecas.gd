@@ -79,13 +79,13 @@ func _run() -> void:
     var max_val: int = 10
     var entero_aleatorio: int = random.randi_range(min_val, max_val)
     print("Número entero aleatorio entre %d y %d → %d"
-          % [min_val, max_val, entero_aleatorio])
+            % [min_val, max_val, entero_aleatorio])
 
     # Número flotante aleatorio entre dos valores, ambos incluidos
     var numero_aleatorio_flotante: float = random.randf_range(
-        float(min_val), float(max_val))
+            float(min_val), float(max_val))
     print("Número flotante aleatorio entre %f y %f → %f"
-          % [min_val, max_val, numero_aleatorio_flotante])
+            % [min_val, max_val, numero_aleatorio_flotante])
 
     # ESCRIBIR, LEER Y MOSTRAR ARCHIVOS DE TEXTO
     print("\nESCRIBIR, LEER Y MOSTRAR ARCHIVOS DE TEXTO:")
