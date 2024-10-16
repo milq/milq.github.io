@@ -90,7 +90,7 @@ func _run() -> void:
     # Imprime en la pantalla cadenas de texto y variables usando comas
     print("He comprado ", x, " naranjas y ", y, " limones.")
     # Imprime en la pantalla cadenas de texto y variables usando el signo %
-    print("He comprado %d naranjas y %d limones." % [x, y])
+    print("He comprado %d naranjas y %d limones." % [x, y]) # %s String y bool
     # Imprime en la pantalla cadenas de texto y variables concatenando cadenas
     print("He comprado " + str(x) + " naranjas y " + str(y) + " limones.")
     # Imprime en la pantalla cadenas de texto y variables usando 'format'
