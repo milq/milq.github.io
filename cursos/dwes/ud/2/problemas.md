@@ -8,7 +8,7 @@ Una cadena de tiendas minoristas necesita gestionar la información relacionada 
 
 ### Ejercicio
 
-Implementa el modelo de base de datos en SQL, inserta datos de ejemplo y almacena el _script_ en `modelo_1.sql`.
+Diseña el modelo de datos y represéntalo en un esquema E-R. Luego, transforma dicho modelo de datos en un modelo de base de datos relacional y normalízalo. Por último, implementa en SQL el modelo relacional normalizado y almacénalo en un _script_ denominado `modelo_1.sql`.
 
 ## Problema 2: Plataforma de cursos en línea
 
@@ -18,7 +18,7 @@ Una plataforma de cursos en línea requiere gestionar la información relacionad
 
 ### Ejercicio
 
-Implementa el modelo de base de datos en SQL, inserta datos de ejemplo y almacena el _script_ en `modelo_2.sql`.
+Diseña el modelo de datos y represéntalo en un esquema E-R. Luego, transforma dicho modelo de datos en un modelo de base de datos relacional y normalízalo. Por último, implementa en SQL el modelo relacional normalizado y almacénalo en un _script_ denominado `modelo_2.sql`.
 
 ## Problema 3: Gestión de restaurantes
 
@@ -28,4 +28,4 @@ Una cadena de restaurantes necesita gestionar la información relacionada con su
 
 ### Ejercicio
 
-Implementa el modelo de base de datos en SQL, inserta datos de ejemplo y almacena el _script_ en `modelo_3.sql`.
+Diseña el modelo de datos y represéntalo en un esquema E-R. Luego, transforma dicho modelo de datos en un modelo de base de datos relacional y normalízalo. Por último, implementa en SQL el modelo relacional normalizado y almacénalo en un _script_ denominado `modelo_3.sql`.
