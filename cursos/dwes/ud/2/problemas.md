@@ -2,7 +2,7 @@
 
 ## Problema 1: Sistema de gestión de tiendas
 
-**Descripción:**
+### Descripción
 
 Una cadena de tiendas minoristas necesita gestionar la información relacionada con sus **tiendas** y los **productos** que venden. Cada **tienda** está identificada de manera única por un **ID** numérico y posee atributos como **nombre**, **dirección** y **teléfono**. Por otro lado, cada **producto** también cuenta con un **ID** numérico único, además de atributos como **nombre**, **descripción**, **precio** y **_stock_ disponible**. Una **tienda** puede tener múltiples **productos** disponibles para la venta. Sin embargo, cada **producto** está asociado únicamente a una **tienda** específica.
 
