@@ -18,3 +18,6 @@ func _process(delta: float) -> void:
 
     # Actualizamos el vector de posición del nodo sumando el movimiento
     position = position + movimiento
+
+    # Imprime la posición actual del nodo, redondeada para facilitar la lectura
+    print("Posición actual: ", round(position))
