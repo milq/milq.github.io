@@ -6,8 +6,11 @@ extends Node2D
 const VELOCIDAD: int = 100
 
 func _process(delta: float) -> void:
-    var direccion: Vector2 = jugador.position - enemigo.position
+    # Vector desde la posición del enemigo hasta la del jugador
+    var vector_hacia_jugador: Vector2 = jugador.position - enemigo.position
 
-    var dir_normalizada: Vector2 = direccion.normalized()
+    # Normaliza el vector 'vector_hacia_jugador' para que su magnitud sea uno
+    var normalizado: Vector2 = vector_hacia_jugador.normalized()
 
-    enemigo.position = enemigo.position + dir_normalizada * VELOCIDAD * delta
+    # Actualiza la posición del enemigo hacia el jugador a la velocidad dada
+    enemigo.position = enemigo.position + normalizado * VELOCIDAD * delta
