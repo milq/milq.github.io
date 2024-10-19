@@ -1,6 +1,9 @@
 extends Node2D
 
+# Obtiene el nodo del Sprite2D llamado 'Niblo'
 @onready var niblo: Sprite2D = get_node("Niblo")
+
+# Obtiene el nodo del Sprite2D llamado 'Mubbit'
 @onready var mubbit: Sprite2D = get_node("Mubbit")
 
 func _process(delta: float) -> void:
