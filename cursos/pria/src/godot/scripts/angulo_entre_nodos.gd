@@ -4,7 +4,7 @@ extends Node2D
 @onready var mubbit: Sprite2D = get_node("Mubbit")
 
 func _process(delta: float) -> void:
-    # Vector que apunta desde la posición de Niblo hasta la posición de Mubbit
+    # Vector desde la posición de Niblo hasta la posición de Mubbit
     var niblo_a_mubbit: Vector2 = mubbit.position - niblo.position
 
     # Ángulo que forma el vector 'niblo_a_mubbit' con respecto a el eje x
