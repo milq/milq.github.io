@@ -8,7 +8,7 @@ raw.githubusercontent.com/godotengine/godot-docs/master/img/ease_cheatsheet.png
 # Tipo de función de interpolación Ease
 const TIPO_FUNCION_EASE: float = -3.5
 
-# Velocidad de la animación (cuanto más alto, más rápida)
+# Velocidad de la animación (cuanto más alta, más rápida)
 const VELOCIDAD: float = 0.5
 
 # Posición inicial del nodo en pantalla
