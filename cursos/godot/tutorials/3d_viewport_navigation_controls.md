@@ -11,6 +11,6 @@
 | Desplazar (pan) la cámara               | Shift + clic medio                                                     |
 | Zoom                                   | Rueda del ratón                                                        |
 | Volar por la escena                    | Clic derecho + tecla W, A, S, D, Q o E   |
-| Ajustar velocidad de navegación        | Clic derecho + rueda del ratón                                          |
+| Ajustar velocidad de _volar por la escena_        | Clic derecho + rueda del ratón                                          |
 
 
