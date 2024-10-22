@@ -8,7 +8,7 @@
 | Orbitar alrededor del centro de la cámara| Clic derecho                                                           |
 | Desplazar (pan) la cámara               | Shift + clic medio                                                     |
 | Zoom                                   | Rueda del ratón                                                        |
-| Volar por la escena                    | Clic derecho + teclas W (adelante), A (izquierda), S (atrás), D (derecha), Q (abajo), E (arriba) |
+| Volar por la escena                    | Clic derecho + tecla W, A, S, D, Q o E   |
 | Ajustar velocidad de navegación        | Clic derecho + rueda del ratón                                          |
 | Enfocar objeto                         | Tecla F                                                                |
 | Enfocar origen (World 0)               | Tecla O                                                                |
