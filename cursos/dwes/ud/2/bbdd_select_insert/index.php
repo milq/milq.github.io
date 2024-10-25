@@ -11,9 +11,9 @@
     <h1>Mensajes</h1>
 
     <nav>
-        Inicio |
-        <a href='ver.php'>Ver</a> |
-        <a href='insertar_1.php'>Añadir</a>
+      Inicio |
+      <a href='ver.php'>Ver</a> |
+      <a href='insertar_1.php'>Añadir</a>
     </nav>
 
     <h2>Inicio</h2>
