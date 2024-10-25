@@ -6,9 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue 
     $age = $_POST['age'] ?? '';
     $education = $_POST['education'] ?? '';
     $hobbies = $_POST['hobbies'] ?? [];  // El operador ?? devuelve un array vacío si 'hobbies' no está presente en $_POST.
+
+    // Verifica si hay aficiones seleccionadas
+    $aficiones = !empty($hobbies) ? implode(', ', $hobbies) : 'ninguna afición seleccionada';
 }
 
 // Nota: La validación y saneamiento de los datos es necesario para garantizar la seguridad, pero se explicará más adelante.
+// Por ejemplo, 'htmlspecialchars' evita problemas de seguridad como XSS.
 ?>
 
 <!DOCTYPE html>
@@ -25,18 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue 
     <p>Datos recogidos:</p>
 
     <ul>
-      <li><strong>Nombre:</strong> <?php echo $name; ?></li>
-      <li><strong>Edad:</strong> <?php echo $age; ?></li>
-      <li><strong>Nivel de estudios:</strong> <?php echo $education; ?></li>
-      <li><strong>Aficiones:</strong>
-        <?php
-          if (!empty($hobbies)) {
-              echo implode(', ', $hobbies);
-          } else {
-              echo 'No seleccionadas';
-          }
-        ?>
-      </li>
+      <li><strong>Nombre:</strong> <?php echo htmlspecialchars($name); ?></li>
+      <li><strong>Edad:</strong> <?php echo htmlspecialchars($age); ?></li>
+      <li><strong>Nivel de estudios:</strong> <?php echo htmlspecialchars($education); ?></li>
+      <li><strong>Aficiones:</strong> <?php echo htmlspecialchars($aficiones); ?></li>
     </ul>
 
   </body>
