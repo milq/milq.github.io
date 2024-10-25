@@ -1,4 +1,4 @@
-# Ejemplo de inserción y lectura en una base de datos con PHP
+# Ejemplo de sesiones con PHP
 
 1. Descarga esta [carpeta][DIR] en formato ZIP y descomprímela para obtener todo el código necesario.
 2. Inicia XAMPP, crea una carpeta en `htdocs` y copia dentro de dicha carpeta el código proporcionado.
