@@ -46,9 +46,9 @@ if (isset($_POST['asunto']) && isset($_POST['cuerpo']) && !empty($_POST['fecha']
     <h1>Mensajes</h1>
 
     <nav>
-        <a href='index.php'>Inicio</a> |
-        <a href='ver.php'>Ver</a> |
-        Añadir
+      <a href='index.php'>Inicio</a> |
+      <a href='ver.php'>Ver</a> |
+      Añadir
     </nav>
 
     <h2>Insertar</h2>
