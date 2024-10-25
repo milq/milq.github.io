@@ -29,10 +29,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue 
     <p>Datos recogidos:</p>
 
     <ul>
-      <li><strong>Nombre:</strong> <?php echo htmlspecialchars($name); ?></li>
-      <li><strong>Edad:</strong> <?php echo htmlspecialchars($age); ?></li>
-      <li><strong>Nivel de estudios:</strong> <?php echo htmlspecialchars($education); ?></li>
-      <li><strong>Aficiones:</strong> <?php echo htmlspecialchars($aficiones); ?></li>
+      <li><strong>Nombre:</strong> <?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></li>
+      <li><strong>Edad:</strong> <?php echo htmlspecialchars($age, ENT_QUOTES, 'UTF-8'); ?></li>
+      <li><strong>Nivel de estudios:</strong> <?php echo htmlspecialchars($education, ENT_QUOTES, 'UTF-8'); ?></li>
+      <li><strong>Aficiones:</strong> <?php echo htmlspecialchars($aficiones, ENT_QUOTES, 'UTF-8'); ?></li>
     </ul>
 
   </body>
