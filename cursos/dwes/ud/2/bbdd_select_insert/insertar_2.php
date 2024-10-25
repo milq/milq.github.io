@@ -16,7 +16,7 @@ if (isset($_POST['asunto']) && isset($_POST['cuerpo']) && !empty($_POST['fecha']
     } elseif (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date_message)) {
         $mensaje = 'La fecha debe estar en el formato YYYY-MM-DD.';
     } elseif ($user_id === false) {
-        $mensaje = 'El identificador de usuario no es válido.';
+        $mensaje = 'El identificador del usuario no es válido.';
     } else {
 
         $sth = $dbh->prepare('INSERT INTO mensajes(asunto, cuerpo, fecha, id_usuario) VALUES (?, ?, ?, ?)');
