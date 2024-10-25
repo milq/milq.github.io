@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue enviado usando el método POST y no simplemente accediendo a la página.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue enviado usando el método POST
     // $_POST['name'] toma el valor del campo 'name' enviado desde el formulario.
     $name = $_POST['name'] ?? '';  // El operador ?? devuelve una cadena vacía si 'name' no está presente en $_POST.
     $age = $_POST['age'] ?? '';
