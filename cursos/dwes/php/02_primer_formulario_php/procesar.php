@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue 
     $hobbies = $_POST['hobbies'] ?? [];  // El operador ?? devuelve un array vacío si 'hobbies' no está presente en $_POST.
 }
 
-// Nota: La validación y saneamiento de los datos del formulario es necesario para garantizar la seguridad, pero se explicará más adelante.
+// Nota: La validación y saneamiento de los datos es necesario para garantizar la seguridad, pero se explicará más adelante.
 ?>
 
 <!DOCTYPE html>
