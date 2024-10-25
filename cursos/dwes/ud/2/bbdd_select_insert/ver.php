@@ -51,18 +51,18 @@ try {
       <tbody>
         <?php for ($i = 0; $i < $num_filas; $i++) { ?>
           <tr>
-            <td><?= htmlspecialchars($res[$i]['id']) ?></td>
-            <td><?= htmlspecialchars($res[$i]['asunto']) ?></td>
-            <td><?= htmlspecialchars($res[$i]['cuerpo']) ?></td>
-            <td><?= htmlspecialchars($res[$i]['fecha']) ?></td>
-            <td><?= htmlspecialchars($res[$i]['id_usuario']) ?></td>
+            <td><?= htmlspecialchars($res[$i]['id'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?= htmlspecialchars($res[$i]['asunto'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?= htmlspecialchars($res[$i]['cuerpo'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?= htmlspecialchars($res[$i]['fecha'], ENT_QUOTES, 'UTF-8'); ?></td>
+            <td><?= htmlspecialchars($res[$i]['id_usuario'], ENT_QUOTES, 'UTF-8'); ?></td>
           </tr>
         <?php } ?>
       </tbody>
     </table>
 
     <?php } else { ?>
-      <p>Error: <?= htmlspecialchars($error); ?></p>
+      <p>Error: <?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></p>
     <?php } ?>
 
     <footer>
