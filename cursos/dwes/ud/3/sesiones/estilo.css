@@ -1,0 +1,20 @@
+body {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 0 1em;
+  font-family: 'Segoe UI', 'Open Sans', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+}
+
+nav, footer {
+  text-align: center;
+}
