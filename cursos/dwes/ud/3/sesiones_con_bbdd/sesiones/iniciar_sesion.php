@@ -36,9 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h2>Iniciar sesión</h2>
 
-<?php if (isset($message)) { ?>
-    <p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
-<?php }
+<?php
 
 if (!$conectado) { ?>
     <form action='iniciar_sesion.php' method='post'>
@@ -48,6 +46,10 @@ if (!$conectado) { ?>
         <input type='password' name='clave' id='clave' required /><br />
         <input type='submit' value='Enviar' />
     </form>
+<?php }
+
+if (isset($message)) { ?>
+    <p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
 <?php }
 
 require_once '../plantillas/pie.php'; ?>
