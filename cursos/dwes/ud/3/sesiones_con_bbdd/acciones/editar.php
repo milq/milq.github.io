@@ -4,6 +4,8 @@ $título_página = 'Editar';
 require_once '../plantillas/cabecera.php';
 require_once '../sesiones/comprobar_sesion.php';
 
+$error = false;
+
 if ($conectado && $es_admin) {
     require_once '../include/connect_db.php';
 
@@ -27,6 +29,7 @@ if ($conectado && $es_admin) {
                         $message = 'No se realizaron cambios.';
                     }
                 } catch (PDOException $e) {
+                    $error = true;
                     $message = 'Error al editar el mensaje: ' . $e->getMessage();
                 }
             } else {
@@ -42,7 +45,8 @@ if ($conectado && $es_admin) {
             $mensaje = $sth->fetch(PDO::FETCH_ASSOC);
 
             if (!$mensaje) {
-                $message = 'No existe un mensaje con ese identificador.';
+                $error = true;
+                $message = 'No existe un mensaje con ese identificador o el ID de mensaje no es válido.';
             }
         }
     }
@@ -53,11 +57,8 @@ if ($conectado && $es_admin) {
 <h2>Editar</h2>
 
 <?php if ($conectado && $es_admin) { ?>
-    <?php if (isset($message)) { ?>
-        <p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
-    <?php } ?>
 
-    <?php if (isset($mensaje)) { ?>
+    <?php if (isset($mensaje) && !$error) { ?>
         <!-- Mostrar formulario para editar el mensaje -->
         <form action='editar.php' method='post'>
             <input type='hidden' name='id_mensaje' value='<?= htmlspecialchars($id_mensaje, ENT_QUOTES, 'UTF-8') ?>' />
@@ -75,10 +76,15 @@ if ($conectado && $es_admin) {
         <!-- Formulario para seleccionar el mensaje a editar -->
         <form action='editar.php' method='post'>
             <label for='id_mensaje'>ID del mensaje que quieres editar:</label>
-            <input type='number' name='id_mensaje' id='id_mensaje' required /><br />
+            <input type='text' name='id_mensaje' id='id_mensaje' required /><br />
             <input type='submit' value='Enviar' />
         </form>
     <?php } ?>
+
+    <?php if (isset($message)) { ?>
+        <p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
+    <?php } ?>
+
 <?php } else { ?>
     <p>No has iniciado sesión como administrador.</p>
 <?php } ?>
