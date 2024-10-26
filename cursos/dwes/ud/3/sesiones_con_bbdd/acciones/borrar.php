@@ -30,15 +30,14 @@ if ($conectado && $es_admin && $_SERVER['REQUEST_METHOD'] === 'POST') {
 <h2>Borrar</h2>
 
 <?php if ($conectado && $es_admin) { ?>
-    <?php if (isset($message)) { ?>
-        <p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
-    <?php } ?>
-
     <form action='borrar.php' method='post'>
         <label for='id_mensaje'>ID del mensaje que quieres borrar:</label>
         <input type='number' name='id_mensaje' id='id_mensaje' required /><br />
         <input type='submit' value='Borrar' />
     </form>
+    <?php if (isset($message)) { ?>
+        <p><?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?></p>
+    <?php } ?>
 <?php } else { ?>
     <p>No has iniciado sesión como administrador.</p>
 <?php } ?>
