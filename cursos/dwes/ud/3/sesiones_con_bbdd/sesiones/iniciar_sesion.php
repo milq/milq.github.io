@@ -44,7 +44,7 @@ if (!$conectado) { ?>
         <input type='text' name='nombre' id='nombre' /><br />
         <label for='clave'>Contraseña:</label>
         <input type='password' name='clave' id='clave' /><br />
-        <input type='submit' value='Enviar' />
+        <input type='submit' value='Iniciar sesión' />
     </form>
 <?php }
 
