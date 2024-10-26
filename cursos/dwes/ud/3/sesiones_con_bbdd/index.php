@@ -4,10 +4,9 @@ $título_página = 'Inicio';
 
 require_once 'plantillas/cabecera.php';
 require_once 'sesiones/comprobar_sesion.php';
+require_once 'plantillas/navegacion.php';
 
 ?>
-
-<?php require_once 'plantillas/navegacion.php'; ?>
 
 <h2>Inicio</h2>
 
