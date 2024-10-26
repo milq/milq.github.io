@@ -32,7 +32,7 @@ if ($conectado && $es_admin && $_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php if ($conectado && $es_admin) { ?>
     <form action='borrar.php' method='post'>
         <label for='id_mensaje'>ID del mensaje que quieres borrar:</label>
-        <input type='number' name='id_mensaje' id='id_mensaje' required /><br />
+        <input type='text' name='id_mensaje' id='id_mensaje' required /><br />
         <input type='submit' value='Borrar' />
     </form>
     <?php if (isset($message)) { ?>
