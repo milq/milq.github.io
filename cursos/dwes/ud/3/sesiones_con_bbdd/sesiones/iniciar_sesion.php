@@ -41,9 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (!$conectado) { ?>
     <form action='iniciar_sesion.php' method='post'>
         <label for='nombre'>Nombre de usuario:</label>
-        <input type='text' name='nombre' id='nombre' required /><br />
+        <input type='text' name='nombre' id='nombre' /><br />
         <label for='clave'>Contraseña:</label>
-        <input type='password' name='clave' id='clave' required /><br />
+        <input type='password' name='clave' id='clave' /><br />
         <input type='submit' value='Enviar' />
     </form>
 <?php }
