@@ -1,5 +1,4 @@
 <?php
-
 $título_página = isset($título_página) ? $título_página : 'Mensajes';
 
 $subdir = basename(dirname($_SERVER['PHP_SELF']));
