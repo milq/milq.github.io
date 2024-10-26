@@ -7,7 +7,7 @@ require_once 'comprobar_sesion.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    require_once 'connect_db.php';
+    require_once '../include/connect_db.php';
 
     $user = $_POST['nombre'] ?? '';
     $pass = $_POST['clave'] ?? '';
