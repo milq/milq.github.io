@@ -24,7 +24,7 @@ Este proyecto es una aplicación web desarrollada en PHP que ilustra el uso de *
 
 Las sesiones permiten almacenar información en el servidor para ser utilizada en múltiples páginas. Esto es esencial para mantener el estado de autenticación del usuario mientras navega por el sitio.
 
-- **Iniciar una sesión**: antes de trabajar con variables de sesión, debes llamar a `session_start();` al inicio del script.
+- **Iniciar una sesión**: antes de trabajar con variables de sesión, debes llamar a `session_start();` al inicio del _script_.
   ```php
   session_start();
   ```
