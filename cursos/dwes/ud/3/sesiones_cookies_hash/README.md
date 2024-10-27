@@ -31,24 +31,6 @@ Descarga esta [carpeta][DIR] en formato ZIP y descomprímela para obtener todo e
 - Abre el archivo `include/connect_db.php`.
 - Verifica que las credenciales de conexión (host, nombre de base de datos, usuario y contraseña) coincidan con tu configuración local.
 
-```php
-<?php
-$host = 'localhost';
-$dbname = 'dwes_ejemplo_hash_y_cookies';
-$username = 'root';
-$password = '';
-
-$dsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
-
-try {
-  $dbh = new PDO($dsn, $username, $password);
-}
-catch (PDOException $e) {
-  echo 'Error: ' . $e->getMessage();
-}
-?>
-```
-
 ### 5. Prueba la aplicación
 
 - Abre tu navegador web y navega a `http://localhost/sesiones_cookies_hash` (o el nombre que hayas dado a la carpeta).
