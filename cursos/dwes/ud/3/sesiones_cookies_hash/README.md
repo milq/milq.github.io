@@ -12,57 +12,13 @@ Este proyecto es una aplicación web desarrollada en PHP que ilustra el uso de *
 
 ### 1. Descarga el proyecto
 
-Descarga esta [carpeta][DIR] en formato ZIP y descomprímela para obtener todo el código necesario.
+1. [Descarga la carpeta][DIR] del proyecto, descomprímela y cópiala en `htdocs` (o el directorio raíz de tu servidor web).
+2. Inicia Apache y MariaDB desde XAMPP o tu servidor local preferido.
+3. Usa PhpMyAdmin u otro administrador para ejecutar el archivo `modelo.sql` e inicializar la base de datos.
+4. Comprueba las credenciales en `include/connect_db.php` según tu entorno.
+5. Ve a `http://localhost/sesiones_cookies_hash` en tu navegador para comenzar.
 
 [DIR]: https://download-directory.github.io/?url=https://github.com/milq/milq.github.io/tree/master/cursos/dwes/ud/3/sesiones_cookies_hash&filename=sesiones_cookies_hash
-
-### 2. Inicia Apache y MariaDB
-
-- Inicia **Apache** y **MariaDB** desde XAMPP o tu servidor local preferido.
-- Copia la carpeta descomprimida en el directorio `htdocs` (o el directorio raíz de tu servidor web).
-
-### 3. Configura la base de datos
-
-- Accede a **phpMyAdmin** o a tu herramienta de gestión de bases de datos.
-- Pulsa en la pestaña **SQL** con el código de `modelo.sql` incluido en el proyecto para crear la base de datos.
-
-### 4. Ajusta la conexión a la base de datos
-
-- Abre el archivo `include/connect_db.php`.
-- Verifica que las credenciales de conexión (host, nombre de base de datos, usuario y contraseña) coincidan con tu configuración local.
-
-### 5. Prueba la aplicación
-
-- Abre tu navegador web y navega a `http://localhost/sesiones_cookies_hash` (o el nombre que hayas dado a la carpeta).
-- Deberías ver la página de inicio de la aplicación.
-
-## Estructura del proyecto
-
-El proyecto está organizado en varias carpetas y archivos para facilitar su comprensión y mantenimiento.
-
-### Carpetas y archivos
-
-- `acciones/`:
-    - `sesiones.php`: Demostración del uso de sesiones en PHP.
-    - `cookies.php`: Demostración del uso de cookies en PHP.
-
-* `include/`:
-    - `connect_db.php`: Establece la conexión a la base de datos utilizando PDO.
-
-- `plantillas/`:
-    - `cabecera.php`: Contiene el encabezado de la página, incluyendo la etiqueta `<head>` y la apertura del `<body>`.
-    - `navegacion.php`: Barra de navegación que incluye enlaces a las diferentes secciones de la aplicación.
-    - `pie.php`: Pie de página que cierra las etiquetas HTML abiertas.
-
-* `sesiones/`:
-    - `iniciar_sesion.php`: Formulario y lógica para el inicio de sesión de usuarios.
-    - `registrar_usuario.php`: Formulario y lógica para el registro de nuevos usuarios.
-    - `cerrar_sesion.php`: Lógica para cerrar la sesión del usuario.
-    - `comprobar_sesion.php`: Verifica si el usuario está autenticado y establece variables de sesión.
-
-- `index.php`: Página principal de bienvenida. Introduce la funcionalidad del sitio.
-- `estilo.css`: Archivo CSS que contiene los estilos de la página web.
-- `modelo.sql`: Script SQL para crear la base de datos y la tabla `usuarios`.
 
 ## Conceptos clave
 
@@ -130,6 +86,34 @@ Para almacenar contraseñas de forma segura, es importante utilizar funciones _h
       // La contraseña es correcta
   }
   ```
+
+## Estructura del proyecto
+
+El proyecto está organizado en varias carpetas y archivos para facilitar su comprensión y mantenimiento.
+
+### Carpetas y archivos
+
+- `acciones/`:
+    - `sesiones.php`: Demostración del uso de sesiones en PHP.
+    - `cookies.php`: Demostración del uso de cookies en PHP.
+
+* `include/`:
+    - `connect_db.php`: Establece la conexión a la base de datos utilizando PDO.
+
+- `plantillas/`:
+    - `cabecera.php`: Contiene el encabezado de la página, incluyendo la etiqueta `<head>` y la apertura del `<body>`.
+    - `navegacion.php`: Barra de navegación que incluye enlaces a las diferentes secciones de la aplicación.
+    - `pie.php`: Pie de página que cierra las etiquetas HTML abiertas.
+
+* `sesiones/`:
+    - `iniciar_sesion.php`: Formulario y lógica para el inicio de sesión de usuarios.
+    - `registrar_usuario.php`: Formulario y lógica para el registro de nuevos usuarios.
+    - `cerrar_sesion.php`: Lógica para cerrar la sesión del usuario.
+    - `comprobar_sesion.php`: Verifica si el usuario está autenticado y establece variables de sesión.
+
+- `index.php`: Página principal de bienvenida. Introduce la funcionalidad del sitio.
+- `estilo.css`: Archivo CSS que contiene los estilos de la página web.
+- `modelo.sql`: Script SQL para crear la base de datos y la tabla `usuarios`.
 
 ## Guía paso a paso
 
@@ -263,67 +247,3 @@ if (isset($_GET['accion'])) {
 - [Manual de PHP sobre cookies](https://www.php.net/manual/es/function.setcookie.php)
 - [Manual de PHP sobre funciones de hash](https://www.php.net/manual/es/book.password.php)
 - [PDO en PHP](https://www.php.net/manual/es/book.pdo.php)
-
-
-
-# Ejemplo de sesiones, _hash_ y _cookies_ en PHP
-
-Este proyecto es una aplicación web en PHP que permite gestionar mensajes con las funcionalidades CRUD (Crear, Leer, Actualizar y Eliminar). Incluye manejo de sesiones para verificar si el usuario está autenticado, y una conexión a una base de datos utilizando PDO. Esta guía didáctica te ayudará a comprender cómo conectar PHP con MySQL, manejar sesiones y estructurar un proyecto web.
-
-## Instalación
-
-1. Descarga esta [carpeta][DIR] en formato ZIP y descomprímela para obtener todo el código necesario.
-2. Inicia XAMPP, crea una carpeta en `htdocs` y copia dentro de dicha carpeta el código proporcionado.
-3. Accede a `http://localhost/nombre_carpeta` para probar el ejemplo y experimenta con el código.
-
-[DIR]: https://download-directory.github.io/?url=https://github.com/milq/milq.github.io/tree/master/cursos/dwes/ud/3/sesiones_cookies_hash&filename=sesiones_cookies_hash
-
-## Estructura del proyecto
-
-El proyecto está organizado en varias carpetas y archivos para facilitar su mantenimiento.
-
-### Carpetas y archivos principales
-
-- `acciones/`
-  - `ver.php`: Muestra los mensajes guardados en la base de datos.
-  - `insertar.php`: Permite añadir un nuevo mensaje.
-  - `editar.php`: Permite editar un mensaje existente.
-  - `borrar.php`: Permite eliminar un mensaje.
-- `include/`
-  - `connect_db.php`: Define las credenciales y establece una conexión a MariaDB usando PDO.
-- `plantillas/`
-  - `cabecera.php`: Encabezado de la página. Incluye el título y el CSS.
-  - `navegacion.php`: Barra de navegación principal.
-  - `pie.php`: Pie de página.
-- `sesiones/`
-  - `iniciar_sesion.php`: Formulario y lógica para el inicio de sesión.
-  - `cerrar_sesion.php`: Código para cerrar la sesión del usuario.
-  - `comprobar_sesion.php`: Verifica si el usuario está autenticado y con qué rol.
-- `estilo.css`: Archivo CSS para los estilos de la página web.
-- `index.php`: Página principal de bienvenida. Explica brevemente la funcionalidad del sitio.
-- `modelo.sql`: Contiene el _script_ para crear el modelo de base datos con inserciones de ejemplo.
-
-## Sesiones en PHP
-
-Las sesiones permiten recordar al usuario durante la navegación. Este proyecto utiliza sesiones para:
-
-- Verificar si el usuario está autenticado para poder acceder a ciertas páginas.
-- Cerrar sesión cuando el usuario lo desee.
-
-## Operaciones CRUD
-
-### 1. Ver Mensajes
-- **Archivo**: `acciones/ver.php`
-- **Función**: Recupera los mensajes almacenados en la base de datos y los muestra en pantalla.
-
-### 2. Insertar Mensaje
-- **Archivo**: `acciones/insertar.php`
-- **Función**: Proporciona un formulario para añadir un nuevo mensaje y lo guarda en la base de datos.
-
-### 3. Editar Mensaje
-- **Archivo**: `acciones/editar.php`
-- **Función**: Recupera un mensaje por su ID, lo muestra en un formulario y actualiza los cambios.
-
-### 4. Borrar Mensaje
-- **Archivo**: `acciones/borrar.php`
-- **Función**: Permite eliminar un mensaje por su ID.
