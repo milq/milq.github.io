@@ -60,9 +60,9 @@ El proyecto está organizado en varias carpetas y archivos para facilitar su com
     - `cerrar_sesion.php`: Lógica para cerrar la sesión del usuario.
     - `comprobar_sesion.php`: Verifica si el usuario está autenticado y establece variables de sesión.
 
-* `index.php`: Página principal de bienvenida. Introduce la funcionalidad del sitio.
-* `estilo.css`: Archivo CSS que contiene los estilos de la página web.
-* `modelo.sql`: Script SQL para crear la base de datos y la tabla `usuarios`.
+- `index.php`: Página principal de bienvenida. Introduce la funcionalidad del sitio.
+- `estilo.css`: Archivo CSS que contiene los estilos de la página web.
+- `modelo.sql`: Script SQL para crear la base de datos y la tabla `usuarios`.
 
 ## Conceptos clave
 
