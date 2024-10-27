@@ -10,8 +10,6 @@ Este proyecto es una aplicación web desarrollada en PHP que ilustra el uso de *
 
 ## Instalación, configuración y ejecución
 
-### 1. Descarga el proyecto
-
 1. [Descarga la carpeta][DIR] del proyecto, descomprímela y cópiala en `htdocs` (o el directorio raíz de tu servidor web).
 2. Inicia Apache y MariaDB desde XAMPP o tu servidor local preferido.
 3. Usa PhpMyAdmin u otro administrador para ejecutar el archivo `modelo.sql` e inicializar la base de datos.
