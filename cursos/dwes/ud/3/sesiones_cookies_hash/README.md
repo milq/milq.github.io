@@ -2,13 +2,7 @@
 
 Este proyecto es una aplicación web desarrollada en PHP que ilustra el uso de **sesiones**, **_cookies_** y **funciones de _hash_**. Está diseñado para ayudarte a comprender cómo gestionar la autenticación de usuarios, mantener sesiones y manipular _cookies_.
 
-## Objetivos de este ejemplo
-
-- **Entender las sesiones en PHP**: cómo iniciar, leer, modificar y destruir sesiones para manejar la autenticación de usuarios.
-- **Utilizar funciones de _hash_**: cómo proteger contraseñas utilizando funciones de _hash_ seguras.
-- **Manejar cookies**: cómo crear, leer, modificar y eliminar cookies para almacenar datos en el navegador del usuario.
-
-## Instalación, configuración y ejecución
+## Instalación, configuración y ejecución de este ejemplo
 
 1. [Descarga la carpeta][DIR] del proyecto, descomprímela y cópiala en `htdocs` (o el directorio raíz de tu servidor web).
 2. Inicia Apache y MariaDB desde XAMPP o tu servidor local preferido.
@@ -17,6 +11,12 @@ Este proyecto es una aplicación web desarrollada en PHP que ilustra el uso de *
 5. Ve a `http://localhost/sesiones_cookies_hash` en tu navegador para comenzar.
 
 [DIR]: https://download-directory.github.io/?url=https://github.com/milq/milq.github.io/tree/master/cursos/dwes/ud/3/sesiones_cookies_hash&filename=sesiones_cookies_hash
+
+## Objetivos de este ejemplo
+
+- **Entender las sesiones en PHP**: cómo iniciar, leer, modificar y destruir sesiones para manejar la autenticación de usuarios.
+- **Utilizar funciones de _hash_**: cómo proteger contraseñas utilizando funciones de _hash_ seguras.
+- **Manejar cookies**: cómo crear, leer, modificar y eliminar cookies para almacenar datos en el navegador del usuario.
 
 ## Conceptos clave
 
