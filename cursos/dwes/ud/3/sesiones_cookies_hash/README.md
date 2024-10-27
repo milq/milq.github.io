@@ -42,27 +42,27 @@ El proyecto está organizado en varias carpetas y archivos para facilitar su com
 
 ### Carpetas y archivos
 
-- `acciones/`
+- `acciones/`:
     - `sesiones.php`: Demostración del uso de sesiones en PHP.
     - `cookies.php`: Demostración del uso de cookies en PHP.
 
-- `include/`
+* `include/`:
     - `connect_db.php`: Establece la conexión a la base de datos utilizando PDO.
 
-- `plantillas/`
+- `plantillas/`:
     - `cabecera.php`: Contiene el encabezado de la página, incluyendo la etiqueta `<head>` y la apertura del `<body>`.
     - `navegacion.php`: Barra de navegación que incluye enlaces a las diferentes secciones de la aplicación.
     - `pie.php`: Pie de página que cierra las etiquetas HTML abiertas.
 
-- `sesiones/`
+* `sesiones/`:
     - `iniciar_sesion.php`: Formulario y lógica para el inicio de sesión de usuarios.
     - `registrar_usuario.php`: Formulario y lógica para el registro de nuevos usuarios.
     - `cerrar_sesion.php`: Lógica para cerrar la sesión del usuario.
     - `comprobar_sesion.php`: Verifica si el usuario está autenticado y establece variables de sesión.
 
-- `index.php`: Página principal de bienvenida. Introduce la funcionalidad del sitio.
-- `estilo.css`: Archivo CSS que contiene los estilos de la página web.
-- `modelo.sql`: Script SQL para crear la base de datos y la tabla `usuarios`.
+* `index.php`: Página principal de bienvenida. Introduce la funcionalidad del sitio.
+* `estilo.css`: Archivo CSS que contiene los estilos de la página web.
+* `modelo.sql`: Script SQL para crear la base de datos y la tabla `usuarios`.
 
 ## Conceptos clave
 
