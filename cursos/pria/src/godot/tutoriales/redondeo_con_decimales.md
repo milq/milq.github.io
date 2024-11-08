@@ -2,7 +2,7 @@
 
 En Godot, puedes redondear números de punto flotante a uno, dos o más decimales utilizando diferentes métodos.
 
-Aquí se muestran dos opciones:
+A continuación, se muestran dos opciones.
 
 ## 1. **Usando `round()` en combinación con multiplicación y división**
 
