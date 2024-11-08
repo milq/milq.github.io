@@ -9,8 +9,8 @@ Aquí se muestran dos opciones:
 Este método usa `round()` y luego divide para redondear a dos decimales.
 
 ```gdscript
-var numero = 3.14159
-var redondeado = round(numero * 100) / 100.0
+var numero: float = 8.56239
+var redondeado: float = round(numero * 100) / 100.0
 ```
 
 Este código multiplica el número por 100, lo redondea al entero más cercano y luego divide por 100. Esto mantiene solo dos decimales.
@@ -20,8 +20,8 @@ Este código multiplica el número por 100, lo redondea al entero más cercano y
 Para casos en los que quieras simplemente mostrar el número redondeado, puedes usar `String().format()`:
 
 ```gdscript
-var numero = 3.14159
-var redondeado = String("{:.2f}".format(numero))
+var numero: float = 8.56239
+var redondeado: String = "%.2f" % numero
 ```
 
 Este método convierte el número en una cadena con dos decimales.
