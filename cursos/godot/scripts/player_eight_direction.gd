@@ -1,4 +1,4 @@
-extends Sprite2D
+extends CharacterBody2D
 
 # Constante que define la velocidad de movimiento en píxeles por segundo
 const SPEED: float = 150.0
