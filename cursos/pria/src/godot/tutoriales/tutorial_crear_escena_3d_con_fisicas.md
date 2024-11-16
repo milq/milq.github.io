@@ -18,7 +18,7 @@ En este tutorial aprenderás a crear una escena 3D básica en Godot, que incluir
 1. Agrega un nodo _StaticBody3D_ como hijo de _MainScene_ y renómbralo como _Plano_.
 2. Añade un nodo hijo _MeshInstance3D_ al nodo _Plano_.
 3. Selecciona el nodo _MeshInstance3D_ y en el _Inspector_, cambia su propiedad _Mesh_ a _PlaneMesh_.
-4. Selecciona la propiedad _Mesh_ y ajusta el tamaño del _PlaneMesh_ en el _Inspector_ a 10 x 10 metros.
+4. Selecciona la propiedad _PlaneMesh_ en el _Inspector_ y ajusta el tamaño a 10 x 10 metros.
 5. Añade un nodo hijo _CollisionShape3D_ al nodo _Plano_.
 6. Selecciona el nodo _CollisionShape3D_ y asigna un _Shape_ de tipo _BoxShape3D_ en el _Inspector_.
 7. Selecciona _BoxShape3D_ y ajusta las dimensiones para que cubra completamente el plano con _x_ a 10 metros, _y_ a _0.01_ metros y _z_ a 10 metros.
