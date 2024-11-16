@@ -66,7 +66,14 @@ En este tutorial aprenderás a crear una escena 3D básica en Godot, que incluir
 1. Selecciona el nodo _Cubo_, _Esfera_ o _Cilindro_ y usa la tecla **W** para mover el objeto en los ejes X, Y o Z.
 2. Usa la tecla **E** para rotar los objetos en los ejes X, Y o Z y observa cómo afecta su orientación.
 3. Usa la tecla **R** para escalar los objetos en los ejes X, Y o Z, cambiando sus dimensiones.
-Aquí tienes el paso 7 actualizado con las indicaciones solicitadas:
+
+## Paso 6: Experimenta con las herramientas de transformación
+
+1. Usa la tecla **Q** para seleccionar el nodo _Cubo_, _Esfera_ o _Cilindro_ y aplicar transformaciones.
+2. Recuerda que también puedes seleccionar los nodos desde el panel del _Scene Tree_ para facilitar la navegación.
+3. Usa la tecla **W** para mover los nodos 3D en los ejes X, Y o Z.
+4. Usa la tecla **E** para rotar los nodos 3D en los ejes X, Y o Z y observa cómo afecta su orientación.
+5. Usa la tecla **R** para escalar los nodos 3D en los ejes X, Y o Z, cambiando sus dimensiones.
 
 ## Paso 7: Experimenta con las propiedades de _RigidBody3D_
 
