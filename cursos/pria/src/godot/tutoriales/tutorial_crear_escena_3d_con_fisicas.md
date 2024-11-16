@@ -29,10 +29,11 @@ En este tutorial aprenderás a crear una escena 3D básica en Godot, que incluir
 
 1. Agrega un nodo _RigidBody3D_ como hijo de _MainScene_ y renómbralo como _Cubo_.
 2. Añade un nodo hijo _MeshInstance3D_ al nodo _Cubo_ y asígnale un _BoxMesh_ como su _Mesh_.
-3. Agrega un nodo _CollisionShape3D_ como hijo de _Cubo_.
-6. Selecciona el nodo _CollisionShape3D_ y asigna un _Shape_ de tipo _BoxShape3D_ en el _Inspector_.
-5. Selecciona el nodo _Cubo_ y en _Transform → Position_ colócalo a una altura (_y_) de 5 metros y rótalo (_Transform → Rotation_) 45 grados en el eje _x_ y en el eje _y_.
-6. Experimenta cambiando la masa del cubo en _Physics → Mass_ para observar cómo afecta su comportamiento.
+3. Selecciona el nodo _Cubo_ y en _Transform → Position_ colócalo a una altura (_y_) de 5 metros y rótalo (_Transform → Rotation_) 30 grados en el eje _x_, eje _y_ y eje _z_.
+4. Agrega un nodo _CollisionShape3D_ como hijo de _Cubo_.
+5. Selecciona el nodo _CollisionShape3D_ y asigna un _Shape_ de tipo _BoxShape3D_ en el _Inspector_.
+6. Selecciona el nodo _CollisionShape3D_ y comprueba que su _Shape_ (líneas azules) se ajusta al _Mesh_ del _MeshInstance3D_.
+7. Experimenta cambiando la masa del cubo en _Physics → Mass_ para observar cómo afecta su comportamiento.
 
 ## Paso 4: Crea una esfera con físicas
 
