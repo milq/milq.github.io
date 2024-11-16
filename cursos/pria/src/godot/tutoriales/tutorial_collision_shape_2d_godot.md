@@ -32,7 +32,7 @@ En este tutorial aprenderás a trabajar con `CollisionShape2D` en Godot creando 
 
 1. Abre la escena `main_scene.tscn`. Instancia las escenas `niblo.tscn` y `manzana.tscn` como nodos hijos del nodo raíz:
    - Haz clic derecho sobre el nodo *MainScene* y selecciona *Instantiate Child Scene...*.
-   - Elige las escenas *niblo.tscn* y *manzana.tscn*, una por una.
+   - Elig la escena *niblo.tscn* y luego la escena *manzana.tscn*.
 2. Ajusta las posiciones de *Niblo* y *Manzana*. Coloca *Niblo* en el centro de la pantalla y posiciona *Manzana* en un lugar visible.
 3. Duplica el nodo *Manzana* una vez haciendo clic derecho sobre él y seleccionando *Duplicate*. Coloca la copia en una posición distinta.
 4. Repite el paso anterior para duplicar *Manzana* seis veces más, obteniendo un total de ocho nodos *Manzana*. Distribúyelos en diferentes lugares de la escena.
