@@ -32,35 +32,55 @@ En este tutorial aprenderás a crear una escena 3D básica en Godot, que incluir
 3. Selecciona el nodo _Cubo_ y en _Transform → Position_ colócalo a una altura (_y_) de 5 metros y rótalo (_Transform → Rotation_) 30 grados en el eje _x_, eje _y_ y eje _z_.
 4. Agrega un nodo _CollisionShape3D_ como hijo de _Cubo_.
 5. Selecciona el nodo _CollisionShape3D_ y asigna un _Shape_ de tipo _BoxShape3D_ en el _Inspector_.
-6. Selecciona el nodo _CollisionShape3D_ y comprueba que su _Shape_ (líneas azules) se ajusta al _Mesh_ del _MeshInstance3D_.
-7. Experimenta cambiando la masa del cubo en _Physics → Mass_ para observar cómo afecta su comportamiento.
+6. Asimismo, comprueba que su _Shape_ (líneas azules) se ajusta al _Mesh_ del _MeshInstance3D_.
+7. Haz clic en _Run Project_ (F5) para confirmar que el cubo cae al plano.
 
 ## Paso 4: Crea una esfera con físicas
 
 1. Agrega un nodo _RigidBody3D_ como hijo de _MainScene_ y renómbralo como _Esfera_.
-2. Añade un nodo hijo _MeshInstance3D_ al nodo _Esfera_ y asígnale un [_SphereMesh_][T07] como su _Mesh_.
-3. Agrega un nodo _CollisionShape3D_ como hijo de _Esfera_.
-4. En el _Inspector_, asigna una forma _SphereShape3D_ al nodo _CollisionShape3D_.
-5. Ajusta la posición de la esfera para que quede a una altura de 7 metros en _Transform → Position_.
-6. Cambia las propiedades de fricción (_Physics → Friction_) y observa cómo afecta el movimiento de la esfera.
+2. Añade un nodo hijo _MeshInstance3D_ al nodo _Esfera_ y asígnale un _SphereMesh_ como su _Mesh_.
+3. Selecciona el nodo _Esfera_ y en _Transform → Position_ colócalo a una altura de 5 metros en el eje _y_ y a 3 metros en el eje _x_.
+4. Agrega un nodo _CollisionShape3D_ como hijo de _Esfera_.
+5. Selecciona el nodo _CollisionShape3D_ y asigna una forma _SphereShape3D_ en el _Inspector_.
+6. Asegúrate de que las líneas de colisión del _Shape_ (color azul) coincidan correctamente con la malla de la esfera.
+7. Crea un nuevo _PhysicsMaterial_ haciendo clic en el icono de flecha junto a la propiedad _PhysicsMaterial_. Selecciona _New PhysicsMaterial_ y configúralo en el _Inspector_. Cambia la propiedad _Bounce_ de este material a 0.5.
+8. Haz clic en _Run Project_ (F5) para verificar que la esfera cae correctamente y rebota según la configuración del material.
+9. Ajusta la posición de la esfera para que esté encima del cubo. Configura _Transform → Position_ en 7 metros en el eje _y_ y 0 metros en el eje _x_.
+10. Haz clic en _Run Project_ (F5) nuevamente para confirmar que la esfera interactúa correctamente con el cubo.
 
 ## Paso 5: Crea un cilindro con físicas
 
 1. Agrega un nodo _RigidBody3D_ como hijo de _MainScene_ y renómbralo como _Cilindro_.
-2. Añade un nodo hijo _MeshInstance3D_ al nodo _Cilindro_ y asígnale un [_CylinderMesh_][T07] como su _Mesh_.
-3. Agrega un nodo _CollisionShape3D_ como hijo de _Cilindro_.
-4. En el _Inspector_, asigna una forma _CapsuleShape3D_ o _CylinderShape3D_ al nodo _CollisionShape3D_.
-5. Ajusta la posición del cilindro para que quede a una altura de 9 metros en _Transform → Position_.
-6. Cambia las propiedades de rebote (_Physics → Bounce_) y experimenta con diferentes valores.
+2. Añade un nodo hijo _MeshInstance3D_ al nodo _Cilindro_ y asígnale un _CylinderMesh_ como su _Mesh_.
+3. Selecciona el nodo _Cilindro_ y en _Transform → Position_ colócalo a una altura de 5 metros en el eje _y_ y a -3 metros en el eje _x_. Además, rota el cilindro 35 grados en los ejes _x_, _y_ y _z_ usando la propiedad _Transform → Rotation_ para comprobar su comportamiento.
+4. Agrega un nodo _CollisionShape3D_ como hijo de _Cilindro_.
+5. Selecciona el nodo _CollisionShape3D_ y asigna una forma _CylinderShape3D_ o _CapsuleShape3D_ en el _Inspector_.
+6. Asegúrate de que las líneas de colisión del _Shape_ (color azul) coincidan correctamente con la geometría del cilindro.
+7. Crea un nuevo _PhysicsMaterial_ haciendo clic en el icono de flecha junto a la propiedad _PhysicsMaterial_. Selecciona _New PhysicsMaterial_ y configúralo en el _Inspector_. Cambia la propiedad _Bounce_ de este material a 1.
+8. Haz clic en _Run Project_ (F5) para verificar que el cilindro cae correctamente y rebota según la configuración del material.
+9. Ajusta la posición del cilindro para que esté encima de la esfera. Configura _Transform → Position_ en 10 metros en el eje _y_ y 0 metros en el eje _x_.
+10. Haz clic en _Run Project_ (F5) nuevamente para confirmar que el cilindro interactúa correctamente con la esfera y el plano.
 
 ## Paso 6: Experimenta con las herramientas de transformación
 
 1. Selecciona el nodo _Cubo_, _Esfera_ o _Cilindro_ y usa la tecla **W** para mover el objeto en los ejes X, Y o Z.
 2. Usa la tecla **E** para rotar los objetos en los ejes X, Y o Z y observa cómo afecta su orientación.
 3. Usa la tecla **R** para escalar los objetos en los ejes X, Y o Z, cambiando sus dimensiones.
-4. Experimenta con las herramientas de transformación y las propiedades físicas para entender mejor cómo interactúan los objetos en Godot.
+Aquí tienes el paso 7 actualizado con las indicaciones solicitadas:
 
-## Paso 7: Prueba y ajusta
+## Paso 7: Experimenta con las propiedades de _RigidBody3D_
+
+1. Selecciona el nodo _Cubo_ y asígnale un _PhysicsMaterial_. Haz clic en el icono de flecha junto a la propiedad _PhysicsMaterial_ en el _Inspector_, selecciona _New PhysicsMaterial_ y configúralo.
+2. Modifica las propiedades _Mass_ y _Gravity Scale_ de los nodos _Cubo_, _Esfera_ y _Cilindro_ para observar cómo afectan al peso y a la interacción con la gravedad.
+3. En el _PhysicsMaterial_, experimenta con las propiedades _Friction_, _Rough_, _Bounce_ y _Absorbent_, y observa cómo influyen en la interacción de los objetos con el plano y entre ellos.
+4. Prueba modificar otras propiedades avanzadas como:
+   - _Mass Distribution_ para ajustar cómo se distribuye el peso del objeto.
+   - _Deactivation_ para controlar si los objetos pueden "dormirse" cuando están en reposo.
+   - _Solver_ para cambiar cómo se resuelven las colisiones.
+   - _Linear_, _Angular_ y _Constant Forces_ para aplicar fuerzas específicas que afectan al movimiento y rotación de los objetos.
+5. Observa los cambios en el comportamiento de los nodos al modificar cada una de estas propiedades.
+
+## Paso 8: Prueba y ajusta
 
 1. Haz clic en _Play Scene_ para ejecutar la escena.
 2. Observa cómo los objetos interactúan con el plano y entre sí.
@@ -69,6 +89,3 @@ En este tutorial aprenderás a crear una escena 3D básica en Godot, que incluir
 [T01]: https://github.com/milq/milq.github.io/blob/master/cursos/godot/tutorials/3d_viewport_navigation_controls.md
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/godot/images/add_sun_to_scene.png
 [T03]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/godot/images/add_environment_to_scene.png
-[T07]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/primera_escena_3d_3.png
-[T08]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/primera_escena_3d_4.png
-[T09]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/primera_escena_3d_5.png
