@@ -34,7 +34,7 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 
    R → Reiniciar nivel
 
-   M → Volver al menú principal
+   G → Reiniciar juego
 
    Esc → Salir
 
@@ -66,8 +66,9 @@ func _unhandled_input(event: InputEvent) -> void:
         match event.physical_keycode:
             KEY_R:
                 get_tree().reload_current_scene()
-            KEY_M:
+            KEY_G:
                 get_tree().change_scene_to_file("res://main_scene.tscn")
+                manzanas_recogidas = 0
                 nivel_actual = 0
             KEY_ESCAPE:
                 get_tree().quit()
