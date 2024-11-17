@@ -23,13 +23,13 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 8. Añade otro nodo de tipo *Label* y renómbralo como _Controles_.
 9. Establece el texto del _Controles_ como:
 
-<!-- Comentario de inicio en HTML para que no se produzcan saltos en los ítems de la lista -->
+<!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
    ```
    CONTROLES:
 
    Mover → Flechas izquierda/derecha
-   
+
    Saltar → Barra espaciadora
 
    R → Reiniciar nivel
@@ -41,7 +41,7 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
    N → Pasar al siguiente nivel
    ```
 
-<!-- Comentario de fin en HTML para que no se produzcan saltos en los ítems de la lista -->
+<!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
 10. Asigna la misma fuente a `Controles` siguiendo el paso 5 y sigue el paso 6 pero con un tamaño de 22 px.
 11. Posiciona el `Controles` en una ubicación visible en la escena.
@@ -56,28 +56,33 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 6. Selecciona el nodo `Niblo` y añade un _script_ haciendo clic en *Attach Script*.
 7. En el _script_, que extiende de `CharacterBody2D` agrega el siguiente código:
 
+<!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
+
    ```gdscript
-   extends CharacterBody2D
+extends CharacterBody2D
 
-   const SPEED: float = 300.0
-   const JUMP_VELOCITY: float = -400.0
+const SPEED: float = 300.0
+const JUMP_VELOCITY: float = -400.0
 
-   func _physics_process(delta: float) -> void:
-       if not is_on_floor():
-           velocity.y += get_gravity() * delta
+func _physics_process(delta: float) -> void:
 
-       # Manejar el salto.
-       if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-           velocity.y = JUMP_VELOCITY
+    if not is_on_floor():
+        velocity.y += get_gravity() * delta
 
-       var direction := Input.get_axis("ui_left", "ui_right")
-       if direction != 0:
-           velocity.x = direction * SPEED
-       else:
-           velocity.x = move_toward(velocity.x, 0, SPEED)
-       
-       velocity = move_and_slide()
+    if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+        velocity.y = JUMP_VELOCITY
+
+    var direction := Input.get_axis("ui_left", "ui_right")
+
+    if direction != 0:
+        velocity.x = direction * SPEED
+    else:
+        velocity.x = move_toward(velocity.x, 0, SPEED)
+
+    move_and_slide()
    ```
+
+<!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
 8. Configura las acciones de entrada en *Project → Project Settings → Input Map*. Añade las acciones `ui_left`, `ui_right` y `ui_accept` asignando las teclas correspondientes (por ejemplo, flechas izquierda y derecha para moverse y la barra espaciadora para saltar).
 
