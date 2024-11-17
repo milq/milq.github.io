@@ -46,7 +46,50 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 10. Asigna la misma fuente a `Controles` siguiendo el paso 5 y sigue el paso 6 pero con un tamaño de 22 px.
 11. Posiciona el `Controles` en una ubicación visible en la escena.
 
-## Paso 3: Creación del personaje Niblo con movimiento de plataformas
+## Paso 3: Creación del Game Manager como Autoload (Singleton)
+
+1. Crea un nuevo _script_ en la carpeta `res://` en _FileSystem_ y nómbralo `game_manager.gd`.
+2. En el _script_, agrega el siguiente código:
+
+<!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
+
+```gdscript
+extends Node
+
+var manzanas_recogidas: int = 0
+var nivel_actual: int = 0
+
+func _unhandled_input(event: InputEvent) -> void:
+
+    if event is InputEventKey and event.pressed:
+
+        match event.physical_keycode:
+            KEY_R:
+                get_tree().reload_current_scene()
+            KEY_M:
+                get_tree().change_scene_to_file("res://main_scene.tscn")
+            KEY_ESCAPE:
+                get_tree().quit()
+            KEY_N:
+                if nivel_actual == 0:
+                    get_tree().change_scene_to_file("res://nivel1.tscn")
+                    nivel_actual = 1
+                elif nivel_actual == 1:
+                    get_tree().change_scene_to_file("res://nivel2.tscn")
+                    nivel_actual = 2
+                else:
+                    get_tree().change_scene_to_file("res://main_scene.tscn")
+                    nivel_actual = 0
+```
+
+<!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
+
+3. Ve a *Project → Project Settings → Globals → AutoLoad*. Luego, a la derecha del campo _Path_ aparece un botón con un icono de una carpeta.
+4. Pulsa dicho botón, selecciona el _script_ `game_manager.gd` y comprueba que la ruta del campo _Path_ es `res://game_manager.gd`.
+5. A continuación, comprueba que en _Node Name_ aparece `GameManager` y si es así, pulsa en el botón _Add_.
+6. Esto permitirá añadir el _script_ de `GameManager` como Autoload, es decir, que el _script_ esté disponible en todas las escenas como un Singleton.
+
+## Paso 4: Creación del personaje Niblo con movimiento de plataformas
 
 1. Crea una nueva escena y con un nodo *CharacterBody2D* como nodo raíz.
 2. Renombra el nodo raíz como `Niblo` y guarda la escena como `niblo.tscn`.
@@ -86,75 +129,47 @@ func _physics_process(delta: float) -> void:
 
 8. Verifica las acciones de entrada en *Project → Project Settings → Input Map*. Activa el interruptor _Show Built-in Actions_ y verifica que las acciones `ui_left`, `ui_right` y `ui_accept` tienen asignadas las teclas correspondientes (flechas izquierda y derecha para moverse y la barra espaciadora para saltar).
 
-## Paso 4: Creación de las manzanas como RigidBody2D con rebote
+## Paso 5: Creación de las manzanas como RigidBody2D con rebote
 
 1. Crea una nueva escena y añade un nodo *RigidBody2D* como nodo raíz.
-2. Renombra el nodo raíz como `Manzana` y guarda la escena como `manzana.tscn`.
-3. Descarga el sprite de la manzana desde [este enlace](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/manzana.png) y colócalo en la carpeta de recursos.
-4. Añade un nodo hijo *Sprite2D* al nodo `Manzana` y asigna el sprite descargado como textura.
-5. Añade un nodo hijo *CollisionShape2D* al nodo `Manzana` y asigna una forma adecuada como *CircleShape2D*.
-6. Ajusta el tamaño de la *CollisionShape2D* para que coincida con el sprite de la manzana.
-7. Selecciona el nodo `Manzana` y en el Inspector, añade un *PhysicsMaterial* en la propiedad *Physics Material*. Configura el parámetro *Bounce* a `0.5` para que las manzanas reboten al caer.
-8. Añade el siguiente script al nodo `Manzana`:
+2. Renombra el nodo raíz como _Manzana_ y guarda la escena como `manzana.tscn`.
+3. Descarga el _sprite_ de la manzana desde [este enlace](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/manzana.png) y colócalo en la carpeta de recursos.
+4. Añade un nodo hijo *Sprite2D* al nodo _Manzana_ y asigna el _sprite_ descargado como textura.
+5. Añade un nodo hijo *CollisionShape2D* al nodo _Manzana_ y asigna una forma adecuada como *CircleShape2D*.
+6. Ajusta el tamaño de la *CollisionShape2D* para que coincida con el _sprite_ de la manzana.
+7. Selecciona el nodo _Manzana_ y en el Inspector, crea un *New PhysicsMaterial* en la propiedad *Physics Material*. Dentro de *Physics Material*, configura el parámetro *Bounce* a `0.5` para que las manzanas reboten al caer.
+8. Añade el siguiente _script_ al nodo `Manzana`:
+
+<!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
    ```gdscript
-   extends RigidBody2D
+extends RigidBody2D
 
-   func _on_body_entered(body):
-       if body.name == "Niblo":
-           GameManager.manzanas_recogidas += 1
-           queue_free()
+func _ready():
+    if GameManager.nivel_actual == 2:
+        apply_impulse(Vector2.ZERO, Vector2(-500, 0))
+
+func _on_body_entered(body):
+    if body.name == "Niblo":
+        GameManager.manzanas_recogidas += 1
+        queue_free()
    ```
+
+<!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
 9. Conecta la señal `body_entered` del nodo `Manzana` al método `_on_body_entered(body)`.
 
-## Paso 5: Creación del Game Manager como Autoload (Singleton)
-
-1. Crea un nuevo script en la carpeta `res://` y nómbralo `game_manager.gd`.
-2. En el script, agrega el siguiente código:
-
-   ```gdscript
-   extends Node
-
-   var manzanas_recogidas: int = 0
-   var nivel_actual: int = 0
-
-   func _unhandled_input(event: InputEvent) -> void:
-       if event is InputEventKey and event.pressed:
-           match event.physical_keycode:
-               KEY_R:
-                   get_tree().reload_current_scene()
-               KEY_M:
-                   get_tree().change_scene_to_file("res://main_scene.tscn")
-               KEY_ESCAPE:
-                   get_tree().quit()
-               KEY_N:
-                   if nivel_actual == 0:
-                       get_tree().change_scene_to_file("res://nivel1.tscn")
-                       nivel_actual = 1
-                   elif nivel_actual == 1:
-                       get_tree().change_scene_to_file("res://nivel2.tscn")
-                       nivel_actual = 2
-                   else:
-                       get_tree().change_scene_to_file("res://main_scene.tscn")
-                       nivel_actual = 0
-   ```
-
-   *Nota:* Hemos cambiado la tecla para pasar al siguiente nivel a `KEY_N`.
-
-3. Ve a *Project → Project Settings → AutoLoad*, selecciona el script `game_manager.gd` y añádelo como autoload con el nombre `GameManager`. Esto permitirá que el script esté disponible en todas las escenas como un singleton.
-
-## Paso 6: Creación del suelo como StaticBody2D
-
-1. Crea una nueva escena y guárdala como `suelo.tscn`.
-2. Añade un nodo *StaticBody2D* y renómbralo como `Suelo`.
-3. Añade un nodo hijo *CollisionShape2D* al nodo `Suelo`.
 4. En el Inspector, asigna una forma *RectangleShape2D* al `CollisionShape2D` y ajusta su tamaño para que cubra la parte inferior de la escena, representando el suelo donde Niblo puede pararse.
 
 ## Paso 7: Creación del nivel 1
 
-1. Crea una nueva escena y guárdala como `nivel1.tscn`.
-2. Añade un nodo *Node2D* como nodo raíz y renómbralo como `Nivel1`.
+1. Crea una nueva escena con un nodo *Node2D* como nodo raíz, renómbralo como `Nivel1` y guárdala como `nivel_1.tscn`.
+2. Añade un nodo de tipo *StaticBody2D* como hijo del nodo _Nivel1_ y renómbralo como `Suelo`.
+3. Añade un nodo de tipo *ColorRect* como hijo del nodo `Suelo`.
+4. Selecciona el nodo *ColorRect* y en el inspector ve a _Control → Layout → Transform_ y cambia los valores de _Size_ a 1280 px en _x_ y 40 px _en _y_ y en _Position_ 0 px en el eje _x_ y 680 px en el eje _y_.
+4. En el Inspector, cambia la propiedad de color de ColorRect a `111111` (gris muy oscuro).
+3. Añade un nodo de tipo *CollisionShape2D* como hijo del nodo `Suelo`. 
+3. Añade un nodo hijo *CollisionShape2D* al nodo `Suelo`.
 3. Instancia el suelo en la escena haciendo clic derecho en `Nivel1`, seleccionando *Instance Child Scene* y eligiendo `suelo.tscn`.
 4. Instancia a Niblo en la escena y posiciónalo en la parte inferior izquierda, justo sobre el suelo.
 5. Instancia cinco manzanas (`manzana.tscn`) y colócalas en la parte superior de la escena, de manera que caigan hacia Niblo.
@@ -175,13 +190,6 @@ func _physics_process(delta: float) -> void:
 2. Añade un nodo *Node2D* como nodo raíz y renómbralo como `Nivel2`.
 3. Instancia el suelo y a Niblo en la escena, posicionando a Niblo en la parte inferior izquierda.
 4. Instancia varias manzanas en el lado derecho de la escena.
-5. En el script de las manzanas, agrega una fuerza inicial en el método `_ready()` para lanzarlas hacia la izquierda:
-
-   ```gdscript
-   func _ready():
-       apply_impulse(Vector2.ZERO, Vector2(-500, 0))  # Ajusta la fuerza según sea necesario
-   ```
-
 6. Añade un *Label* para mostrar los puntos, siguiendo los mismos pasos que en el nivel 1.
 
 ## Paso 9: Prueba y experimentación
