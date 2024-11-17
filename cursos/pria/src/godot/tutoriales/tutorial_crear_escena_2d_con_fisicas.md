@@ -163,7 +163,7 @@ func _on_body_entered(body):
 1. Crea una nueva escena con un nodo *Node2D* como nodo raíz, renómbralo como _Nivel1_ y guárdala como `nivel_1.tscn`.
 2. Añade un nodo de tipo *StaticBody2D* como hijo del nodo _Nivel1_ y renómbralo como _Suelo_.
 3. Añade un nodo de tipo *ColorRect* como hijo del nodo _Suelo_.
-1. En el Inspector, cambia la propiedad de color de ColorRect a `111111` (gris muy oscuro).
+1. En el Inspector, cambia la propiedad de color de ColorRect a `111111` (gris muy oscuro) en el campo _Hex_.
 1. Selecciona el nodo *ColorRect* y en el inspector ve a _Control → Layout → Transform_ y cambia los valores de _Size_ a 1280 px en _x_ y 40 px _en _y_ y en _Position_ 0 px en el eje _x_ y 680 px en el eje _y_.
 3. Añade un nodo de tipo *CollisionShape2D* como hijo del nodo `Suelo`. 
 4. En el Inspector, asigna una forma *RectangleShape2D* al `CollisionShape2D` anterior y ajusta su tamaño para que cubra el nodo *ColorRect*.
