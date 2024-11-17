@@ -67,12 +67,12 @@ const JUMP_VELOCITY: float = -400.0
 func _physics_process(delta: float) -> void:
 
     if not is_on_floor():
-        velocity.y += get_gravity() * delta
+        velocity += get_gravity() * delta
 
     if Input.is_action_just_pressed("ui_accept") and is_on_floor():
         velocity.y = JUMP_VELOCITY
 
-    var direction := Input.get_axis("ui_left", "ui_right")
+    var direction: float = Input.get_axis("ui_left", "ui_right")
 
     if direction != 0:
         velocity.x = direction * SPEED
@@ -84,7 +84,7 @@ func _physics_process(delta: float) -> void:
 
 <!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
-8. Configura las acciones de entrada en *Project → Project Settings → Input Map*. Añade las acciones `ui_left`, `ui_right` y `ui_accept` asignando las teclas correspondientes (por ejemplo, flechas izquierda y derecha para moverse y la barra espaciadora para saltar).
+8. Verifica las acciones de entrada en *Project → Project Settings → Input Map*. Activa el interruptor _Show Built-in Actions_ y verifica que las acciones `ui_left`, `ui_right` y `ui_accept` tienen asignadas las teclas correspondientes (flechas izquierda y derecha para moverse y la barra espaciadora para saltar).
 
 ## Paso 4: Creación de las manzanas como RigidBody2D con rebote
 
