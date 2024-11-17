@@ -25,15 +25,16 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 
    ```
    Controles:
-   - Mover: Flechas izquierda/derecha
-   - Saltar: Barra espaciadora
-   - R: Reiniciar nivel
-   - M: Volver al menú principal
-   - ESCAPE: Salir
-   - N: Pasar al siguiente nivel
+
+   Mover → Flechas izquierda/derecha
+   Saltar → Barra espaciadora
+   R → Reiniciar nivel
+   M → Volver al menú principal
+   Esc → Salir
+   N → Pasar al siguiente nivel
    ```
 
-10. Asigna la misma fuente a `Controles` siguiendo el paso 5 y sigue el paso 6 pero con un tamaño de 15 px.
+10. Asigna la misma fuente a `Controles` siguiendo el paso 5 y sigue el paso 6 pero con un tamaño de 22 px.
 11. Posiciona el `Controles` en una ubicación visible en la escena.
 
 **Nota:** En la escena principal (`main_scene.tscn`), no añadiremos a Niblo ni a las manzanas. Esta escena servirá como menú principal.
