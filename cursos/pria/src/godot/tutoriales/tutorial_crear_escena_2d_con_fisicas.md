@@ -141,7 +141,7 @@ func _physics_process(delta: float) -> void:
 5. Añade un nodo hijo *CollisionShape2D* al nodo _Manzana_ y asigna una forma adecuada como *CircleShape2D*.
 6. Ajusta el tamaño de la *CollisionShape2D* para que coincida con el _sprite_ de la manzana.
 7. Selecciona el nodo _Manzana_ y en el Inspector, crea un *New PhysicsMaterial* en la propiedad *Physics Material*. Dentro de *Physics Material*, configura el parámetro *Bounce* a `0.5` para que las manzanas reboten al caer.
-8. Selecciona el nodo _Manzana_ y en el Inspector ve a _RigidBody2D → Solver_ y activa la propiedad _Contact Monitor_ para que el nodo detecte colisiones y emita señales como `body_entered`
+8. Selecciona el nodo _Manzana_ y en el Inspector ve a _RigidBody2D → Solver_ y activa la propiedad _Contact Monitor_ para que el nodo detecte colisiones y emita señales como `body_entered`.
 9. Cambia también en _RigidBody2D → Solver_ el valor de _Max Contacts Reported_ a `1` para limitar el número de cuerpos detectados en una colisión.
 10. Añade el siguiente _script_ al nodo `Manzana`:
 
