@@ -128,7 +128,7 @@ func _physics_process(delta: float) -> void:
 
 <!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
-8. Verifica las acciones de entrada en *Project → Project Settings → Input Map*. Activa el interruptor _Show Built-in Actions_ y verifica que las acciones `ui_left`, `ui_right` y `ui_accept` tienen asignadas las teclas correspondientes (flechas izquierda y derecha para moverse y la barra espaciadora para saltar).
+8. Verifica las acciones de entrada en *Project → Project Settings → Input Map*. Activa el interruptor _Show Built-in Actions_ y verifica que las acciones `ui_left`, `ui_right` y `ui_accept` ya tienen asignadas las teclas correspondientes (flechas izquierda y derecha para moverse y la barra espaciadora para saltar).
 
 ## Paso 5: Creación de las manzanas como RigidBody2D con rebote
 
