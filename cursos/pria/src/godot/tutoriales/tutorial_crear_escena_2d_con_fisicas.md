@@ -157,11 +157,7 @@ func _on_body_entered(body):
 
 <!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
-9. Conecta la señal `body_entered` del nodo `Manzana` al método `_on_body_entered(body)`.
-
-4. En el Inspector, asigna una forma *RectangleShape2D* al `CollisionShape2D` y ajusta su tamaño para que cubra la parte inferior de la escena, representando el suelo donde Niblo puede pararse.
-
-## Paso 7: Creación del nivel 1
+## Paso 6: Creación del nivel 1
 
 1. Crea una nueva escena con un nodo *Node2D* como nodo raíz, renómbralo como `Nivel1` y guárdala como `nivel_1.tscn`.
 2. Añade un nodo de tipo *StaticBody2D* como hijo del nodo _Nivel1_ y renómbralo como `Suelo`.
@@ -169,39 +165,37 @@ func _on_body_entered(body):
 4. Selecciona el nodo *ColorRect* y en el inspector ve a _Control → Layout → Transform_ y cambia los valores de _Size_ a 1280 px en _x_ y 40 px _en _y_ y en _Position_ 0 px en el eje _x_ y 680 px en el eje _y_.
 4. En el Inspector, cambia la propiedad de color de ColorRect a `111111` (gris muy oscuro).
 3. Añade un nodo de tipo *CollisionShape2D* como hijo del nodo `Suelo`. 
-3. Añade un nodo hijo *CollisionShape2D* al nodo `Suelo`.
-3. Instancia el suelo en la escena haciendo clic derecho en `Nivel1`, seleccionando *Instance Child Scene* y eligiendo `suelo.tscn`.
-4. Instancia a Niblo en la escena y posiciónalo en la parte inferior izquierda, justo sobre el suelo.
-5. Instancia cinco manzanas (`manzana.tscn`) y colócalas en la parte superior de la escena, de manera que caigan hacia Niblo.
-6. Añade un nodo *Label* para mostrar los puntos y colócalo en la esquina superior izquierda.
-7. Asigna la fuente y tamaño al *Label* siguiendo los pasos del **Paso 2**.
-8. En el script del *Label*, agrega el siguiente código para actualizar los puntos:
+4. En el Inspector, asigna una forma *RectangleShape2D* al `CollisionShape2D` anterior y ajusta su tamaño para que cubra el nodo *ColorRect*.
+3. Instancia a Niblo en la escena haciendo clic derecho en _Nivel1_, seleccionando *Instance Child Scene* y eligiendo `niblo.tscn`.
+4. Situa a Niblo en la parte inferior izquierda, justo encima del suelo.
+5. Instancia cinco manzanas (`manzana.tscn`) y colócalas juntas en la parte superior derecha de la escena.
+6. Añade un nodo *Label*, renómbralo como _Puntos_ para mostrar los puntos y colócalo en la esquina superior izquierda.
+7. Asigna la fuente al *Label* siguiendo los pasos del **Paso 2** y ponle un tamaño adecuado.
+8. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
 
-   ```gdscript
-   extends Label
+<!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
-   func _process(delta):
-       text = "Puntos: " + str(GameManager.manzanas_recogidas)
-   ```
+```gdscript
+extends Label
 
-## Paso 8: Creación del nivel 2
+func _process(delta):
+    text = "Puntos: " + str(GameManager.manzanas_recogidas)
+```
 
-1. Crea una nueva escena y guárdala como `nivel2.tscn`.
-2. Añade un nodo *Node2D* como nodo raíz y renómbralo como `Nivel2`.
-3. Instancia el suelo y a Niblo en la escena, posicionando a Niblo en la parte inferior izquierda.
-4. Instancia varias manzanas en el lado derecho de la escena.
+<!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
+
+## Paso 7: Creación del nivel 2
+
+1. Crea una nueva escena con un nodo *Node2D* como nodo raíz, renómbralo como `Nivel2` y guárdala como `nivel_2.tscn`.
+2. Crea un suelo como en el **Paso 6**.
+4. Instancia a Niblo en la escena, posicionando a Niblo en la parte inferior izquierda.
+5. Instancia varias manzanas esta vez en el lado derecho de la escena.
 6. Añade un *Label* para mostrar los puntos, siguiendo los mismos pasos que en el nivel 1.
 
-## Paso 9: Prueba y experimentación
+## Paso 8: Prueba y experimentación
 
 1. Ejecuta `main_scene.tscn` para comenzar desde el menú principal.
 2. Presiona la tecla *N* para avanzar al primer nivel y prueba que Niblo pueda moverse y saltar para recoger las manzanas.
 3. Verifica que las manzanas reboten al caer y que desaparezcan al colisionar con Niblo, incrementando el contador de `manzanas_recogidas` en `GameManager`.
 4. Avanza al segundo nivel presionando *N* nuevamente y observa el comportamiento de las manzanas siendo lanzadas desde la derecha.
 5. Experimenta ajustando la fuerza con la que se lanzan las manzanas, la posición inicial de Niblo y otros parámetros para familiarizarte con las físicas 2D en Godot.
-
-## Conclusión
-
-Has creado un juego sencillo en Godot que utiliza físicas 2D para simular el movimiento de un personaje y objetos en el mundo del juego. Has aprendido a usar `CharacterBody2D` para el movimiento del personaje, `RigidBody2D` para objetos físicos y a manejar escenas y el patrón Singleton con Autoload. Continúa explorando y experimentando con Godot para seguir desarrollando tus habilidades.
-
-*Nota:* Recuerda mantener tu código y estructura de nodos organizados para facilitar su mantenimiento y comprensión. Evita utilizar listas anidadas y sigue buenas prácticas de programación.
