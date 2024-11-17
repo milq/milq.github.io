@@ -193,7 +193,7 @@ func _process(delta):
 2. Crea un suelo como en el _Paso 6_ o también puedes copiar el nodo _Suelo_ del nivel 1 y pegarlo en este nivel 2.
 4. Instancia a Niblo en la escena, posicionando a Niblo en la parte inferior izquierda.
 5. Instancia una manzana, duplícala cuatro veces más y colócalas esta vez en el lado derecho de la escena.
-6. Añade un *Label* para mostrar los puntos, siguiendo los mismos pasos que en el nivel 1.
+6. Añade un *Label* para mostrar los puntos como en el _Paso 6_ o también puedes copiar el nodo _Puntos_ del nivel 1
 
 ## Paso 8: Prueba y experimentación
 
