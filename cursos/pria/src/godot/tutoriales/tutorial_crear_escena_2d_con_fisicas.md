@@ -44,7 +44,7 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 <!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
 10. Asigna la misma fuente a `Controles` repitiendo el punto 5 y ponle un tamaño de 22 px.
-11. Posiciona el `Controles` en una ubicación visible en la escena.
+11. Posiciona el `Controles` centrado en la parte inferior de la escena.
 
 ## Paso 3: Creación del Game Manager como Autoload (Singleton)
 
