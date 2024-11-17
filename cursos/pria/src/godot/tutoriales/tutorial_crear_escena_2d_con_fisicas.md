@@ -165,14 +165,14 @@ func _on_body_entered(body):
 3. Añade un nodo de tipo *ColorRect* como hijo del nodo _Suelo_.
 1. En el Inspector, cambia la propiedad de color de ColorRect a `111111` (gris muy oscuro) en el campo _Hex_.
 1. Selecciona el nodo *ColorRect* y en el inspector ve a _Control → Layout → Transform_ y cambia los valores de _Size_ a 1280 px en _x_ y 40 px _en _y_ y en _Position_ 0 px en el eje _x_ y 680 px en el eje _y_.
-3. Añade un nodo de tipo *CollisionShape2D* como hijo del nodo `Suelo`. 
+3. Añade un nodo de tipo *CollisionShape2D* como hijo del nodo _Suelo_. 
 4. En el Inspector, asigna una forma *RectangleShape2D* al `CollisionShape2D` anterior y ajusta su tamaño para que cubra el nodo *ColorRect*.
 3. Instancia a Niblo en la escena haciendo clic derecho en _Nivel1_, seleccionando *Instance Child Scene* y eligiendo `niblo.tscn`.
 4. Situa a Niblo en la parte inferior izquierda, justo encima del suelo.
 5. Instancia un nodo manzana (`manzana.tscn`) y duplica cuatro más haciendo clic derecho en el nodo _Manzana_ y pulsando _Duplicate_.
 6. Coloca las manzanas juntas en la parte superior derecha de la escena.
 7. Añade un nodo *Label*, renómbralo como _Puntos_ para mostrar los puntos y colócalo en la esquina superior izquierda.
-8. Asigna la fuente al *Label* siguiendo los pasos del **Paso 2** y ponle un tamaño adecuado.
+8. Asigna la fuente al *Label* siguiendo los puntos del _Paso 2_ y ponle un tamaño adecuado.
 9. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
