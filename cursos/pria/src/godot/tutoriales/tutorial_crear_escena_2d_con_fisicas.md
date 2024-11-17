@@ -93,11 +93,11 @@ func _unhandled_input(event: InputEvent) -> void:
 ## Paso 4: Creación del personaje Niblo con movimiento de plataformas
 
 1. Crea una nueva escena y con un nodo *CharacterBody2D* como nodo raíz.
-2. Renombra el nodo raíz como `Niblo` y guarda la escena como `niblo.tscn`.
+2. Renombra el nodo raíz como _Niblo_ y guarda la escena como `niblo.tscn`.
 3. Descarga el _sprite_ de Niblo desde [este enlace](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) y colócalo en la carpeta de recursos (`res://`).
-4. Añade un nodo hijo *Sprite2D* al nodo `Niblo` y asigna el _sprite_ descargado como textura.
-5. Añade un nodo hijo *CollisionShape2D* al nodo `Niblo`. En el Inspector, asigna una forma adecuada como *RectangleShape2D* o *CircleShape2D* y ajusta su tamaño para que coincida con el _sprite_.
-6. Selecciona el nodo `Niblo` y añade un _script_ haciendo clic en *Attach Script*.
+4. Añade un nodo hijo *Sprite2D* al nodo _Niblo_ y asigna el _sprite_ descargado como textura.
+5. Añade un nodo hijo *CollisionShape2D* al nodo _Niblo_. En el Inspector, asigna una forma adecuada como *RectangleShape2D* o *CircleShape2D* y ajusta su tamaño para que coincida con el _sprite_.
+6. Selecciona el nodo _Niblo_ y añade un _script_ haciendo clic en *Attach Script*.
 7. En el _script_, que extiende de `CharacterBody2D` agrega el siguiente código:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
