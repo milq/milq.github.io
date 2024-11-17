@@ -1,27 +1,27 @@
-# Tutorial de Físicas 2D en Godot con Niblo y Manzanas
+# Tutorial de físicas 2D en Godot con varias escenas y `Autoload`
 
 En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proyecto donde Niblo recogerá manzanas para ganar puntos. Aprenderás a utilizar `CharacterBody2D` para el movimiento del personaje, `RigidBody2D` para las manzanas y a manejar escenas y el patrón Singleton con Autoload. Sigue los pasos cuidadosamente para completar el proyecto.
 
 ## Paso 1: Configuración del proyecto
 
-1. Abre Godot y crea un *Nuevo Proyecto*. Asigna un nombre al proyecto y elige una carpeta donde guardarlo.
+1. Abre Godot y crea un _Nuevo Proyecto_. Asigna un nombre al proyecto y elige una carpeta donde guardarlo.
 2. Haz clic en *Scene* y selecciona *New Scene*.
 3. Añade un nodo *Node2D* como nodo raíz.
 4. Renombra el nodo raíz como `MainScene` y guarda la escena seleccionando *Scene → Save Scene*. Nómbrala como `main_scene.tscn`.
-5. Cambia el tamaño de la ventana del proyecto a 1280 x 720. Ve a *Project → Project Settings → General → Display → Window* y establece **Viewport Width** en `1280` y **Viewport Height** en `720`.
-6. Cambia el fondo del proyecto a un color deseado. Ve a *Project → Project Settings → General → Rendering → Environment* y ajusta el color de fondo.
+5. Cambia el tamaño de la ventana del proyecto a 1280 x 720. Ve a *Project → Project Settings → General → Display → Window* y establece _Viewport Width_ en `1280` y _Viewport Height_ en `720`.
+6. Cambia el fondo del proyecto al color negro. Ve a *Project → Project Settings → General → Rendering → Environment* y ajusta el color de fondo a negro.
 
-## Paso 2: Configuración de la fuente para los labels
+## Paso 2: Configuración de la fuente para los Label
 
 1. Descarga y descomprime la fuente [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P).
 2. Arrastra el archivo `.ttf` de la fuente descargada a la carpeta de recursos (`res://`) en *FileSystem*.
-3. En `main_scene.tscn`, añade un nodo *Label* como hijo de `MainScene` y renómbralo como `Titulo`.
-4. En el Inspector, establece el texto del `Label` como "Tutorial de Físicas 2D con Niblo y Manzanas".
-5. Selecciona el nodo `Titulo` y arrastra el archivo `.ttf` a la propiedad *Control → Theme Overrides → Fonts → Font*.
-6. Aumenta el tamaño de la fuente a 24 px en *Control → Theme Overrides → Fonts → Font Size*.
+3. En `main_scene.tscn`, añade un nodo de tipo *Label* como hijo de `MainScene` y renómbralo como _Title_.
+4. En el Inspector, establece el texto del `Label` como _Tutorial de físicas 2D, escenas y Autoload_.
+5. Selecciona el nodo _Title_ y arrastra el archivo `.ttf` a la propiedad *Control → Theme Overrides → Fonts → Font*.
+6. Aumenta el tamaño de la fuente a 26 px en *Control → Theme Overrides → Fonts → Font Size*.
 7. Posiciona el `Titulo` en el centro superior de la pantalla.
-8. Añade otro *Label* y renómbralo como `Controles`.
-9. Establece el texto del `Controles` como:
+8. Añade otro nodo de tipo *Label* y renómbralo como _Controles_.
+9. Establece el texto del _Controles_ como:
 
    ```
    Controles:
@@ -33,7 +33,7 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
    - N: Pasar al siguiente nivel
    ```
 
-10. Asigna la misma fuente y tamaño al `Controles` siguiendo los pasos 5 y 6.
+10. Asigna la misma fuente a `Controles` siguiendo el paso 5 y sigue el paso 6 pero con un tamaño de 15 px.
 11. Posiciona el `Controles` en una ubicación visible en la escena.
 
 **Nota:** En la escena principal (`main_scene.tscn`), no añadiremos a Niblo ni a las manzanas. Esta escena servirá como menú principal.
