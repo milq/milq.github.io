@@ -67,8 +67,8 @@ func _unhandled_input(event: InputEvent) -> void:
             KEY_R:
                 get_tree().reload_current_scene()
             KEY_M:
-                nivel_actual = 0
                 get_tree().change_scene_to_file("res://main_scene.tscn")
+                nivel_actual = 0
             KEY_ESCAPE:
                 get_tree().quit()
             KEY_N:
