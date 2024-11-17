@@ -9,7 +9,7 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 3. Añade un nodo *Node2D* como nodo raíz.
 4. Renombra el nodo raíz como `MainScene` y guarda la escena seleccionando *Scene → Save Scene*. Nómbrala como `main_scene.tscn`.
 5. Cambia el tamaño de la ventana del proyecto a 1280 x 720. Ve a *Project → Project Settings → General → Display → Window* y establece _Viewport Width_ en `1280` y _Viewport Height_ en `720`.
-6. Cambia el fondo del proyecto al color negro. Ve a *Project → Project Settings → General → Rendering → Environment* y ajusta el color de fondo a negro.
+6. Cambia el fondo del proyecto al color negro en *Project → Project Settings → General → Rendering → Environment*.
 
 ## Paso 2: Configuración de la fuente para los Label
 
