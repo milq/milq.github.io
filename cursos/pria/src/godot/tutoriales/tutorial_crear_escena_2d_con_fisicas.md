@@ -7,15 +7,15 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 1. Abre Godot y crea un _Nuevo Proyecto_. Asigna un nombre al proyecto y elige una carpeta donde guardarlo.
 2. Haz clic en *Scene* y selecciona *New Scene*.
 3. Añade un nodo *Node2D* como nodo raíz.
-4. Renombra el nodo raíz como `MainScene` y guarda la escena seleccionando *Scene → Save Scene*. Nómbrala como `main_scene.tscn`.
-5. Cambia el tamaño de la ventana del proyecto a 1280 x 720. Ve a *Project → Project Settings → General → Display → Window* y establece _Viewport Width_ en `1280` y _Viewport Height_ en `720`.
+4. Renombra el nodo raíz como _MainScene_ y guarda la escena seleccionando *Scene → Save Scene*. Guárdala como `main_scene.tscn`.
+5. Cambia el tamaño de la ventana del proyecto a 1280 x 720. Ve a *Project → Project Settings → General → Display → Window* y establece _Viewport Width_ en 1280 y _Viewport Height_ en 720.
 6. Cambia el fondo del proyecto al color negro en *Project → Project Settings → General → Rendering → Environment*.
 
 ## Paso 2: Configuración de la fuente para los Label
 
 1. Descarga y descomprime la fuente [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P).
 2. Arrastra el archivo `.ttf` de la fuente descargada a la carpeta de recursos (`res://`) en *FileSystem*.
-3. En `main_scene.tscn`, añade un nodo de tipo *Label* como hijo de `MainScene` y renómbralo como _Title_.
+3. En `main_scene.tscn`, añade un nodo de tipo *Label* como hijo de _ y renómbralo como _Title_.
 4. En el Inspector, establece el texto del `Label` como _TUTORIAL DE FÍSICAS 2D, ESCENAS Y AUTOLOAD_.
 5. Selecciona el nodo _Title_ y arrastra el archivo `.ttf` a la propiedad *Control → Theme Overrides → Fonts → Font*.
 6. Aumenta el tamaño de la fuente a 26 px en *Control → Theme Overrides → Fonts → Font Size*.
