@@ -171,9 +171,10 @@ func _on_body_entered(body):
 4. Situa a Niblo en la parte inferior izquierda, justo encima del suelo.
 5. Instancia un nodo manzana (`manzana.tscn`) y duplica cuatro más haciendo clic derecho en el nodo _Manzana_ y pulsando _Duplicate_.
 6. Coloca las manzanas juntas en la parte superior derecha de la escena.
-7. Añade un nodo *Label*, renómbralo como _Puntos_ para mostrar los puntos y colócalo en la esquina superior izquierda.
-8. Asigna la fuente al *Label* siguiendo el punto 5 del _Paso 2_ y ponle un tamaño adecuado.
-9. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
+7. Añade un nodo *Label*, renómbralo como _Puntos_ y en la propiedad _Text_ pon el siguiente texto: `Puntos: 0`.
+8. Selecciona el nodo _Puntos_ y colócalo en la esquina superior izquierda.
+9. Asigna la fuente al *Label* siguiendo el punto 5 del _Paso 2_ y ponle un tamaño adecuado.
+11. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
