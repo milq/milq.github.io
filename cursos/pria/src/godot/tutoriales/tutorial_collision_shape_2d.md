@@ -49,7 +49,7 @@ En este tutorial aprenderás a trabajar con `CollisionShape2D` en Godot creando 
 3. Añade un texto inicial a la propiedad _Text_ en el _Inspector_, como "Puntos: 0".
 4. Descarga y descomprime la fuente [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P).
 5. Arrastra el archivo `.ttf` de la fuente descargada a la carpeta de recursos (`res://`) en _FileSystem_.
-6. Selecciona el nodo _Puntos_ y arrastra el `.ttf` a la propiedad _Control → Theme Overrides → Fonts → Font_.
+6. Selecciona el nodo _Puntos_ y arrastra el archivo `.ttf` a _&lt;empty&gt;_ en la propiedad *Control → Theme Overrides → Fonts → Font*.
 7. Aumenta el tamaño de la fuente a 24 px en _Control → Theme Overrides → Font Sizes → Font Size_.
 
 ## Paso 6: Agrega lógica al proyecto
