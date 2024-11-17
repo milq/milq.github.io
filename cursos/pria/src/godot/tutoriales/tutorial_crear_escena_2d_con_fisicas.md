@@ -197,7 +197,7 @@ func _process(delta):
 
 ## Paso 8: Prueba y experimentación
 
-1. Ejecuta `main_scene.tscn` para comenzar desde el menú principal.
+1. Abre `main_scene.tscn` y ejecuta el proyecto con _Run Project_ o pulsando `F5`.
 2. Presiona la tecla *N* para avanzar al primer nivel y prueba que Niblo pueda moverse y saltar para recoger las manzanas.
 3. Verifica que las manzanas reboten al caer y que desaparezcan al colisionar con Niblo, incrementando el contador de `manzanas_recogidas` en `GameManager`.
 4. Avanza al segundo nivel presionando *N* nuevamente y observa el comportamiento de las manzanas siendo lanzadas desde la derecha.
