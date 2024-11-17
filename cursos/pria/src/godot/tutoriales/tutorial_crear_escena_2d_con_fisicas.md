@@ -169,10 +169,11 @@ func _on_body_entered(body):
 4. En el Inspector, asigna una forma *RectangleShape2D* al `CollisionShape2D` anterior y ajusta su tamaño para que cubra el nodo *ColorRect*.
 3. Instancia a Niblo en la escena haciendo clic derecho en _Nivel1_, seleccionando *Instance Child Scene* y eligiendo `niblo.tscn`.
 4. Situa a Niblo en la parte inferior izquierda, justo encima del suelo.
-5. Instancia cinco manzanas (`manzana.tscn`) y colócalas juntas en la parte superior derecha de la escena.
-6. Añade un nodo *Label*, renómbralo como _Puntos_ para mostrar los puntos y colócalo en la esquina superior izquierda.
-7. Asigna la fuente al *Label* siguiendo los pasos del **Paso 2** y ponle un tamaño adecuado.
-8. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
+5. Instancia un nodo manzana (`manzana.tscn`) y duplica cuatro más haciendo clic derecho en el nodo _Manzana_ y pulsando _Duplicate_.
+6. Coloca las manzanas juntas en la parte superior derecha de la escena.
+7. Añade un nodo *Label*, renómbralo como _Puntos_ para mostrar los puntos y colócalo en la esquina superior izquierda.
+8. Asigna la fuente al *Label* siguiendo los pasos del **Paso 2** y ponle un tamaño adecuado.
+9. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
