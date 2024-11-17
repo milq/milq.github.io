@@ -203,6 +203,7 @@ func _process(delta):
 
 1. Abre `main_scene.tscn` y ejecuta el proyecto con _Run Project_ o pulsando `F5`.
 2. Presiona la tecla *N* para avanzar al primer nivel y prueba que Niblo pueda moverse y saltar para recoger las manzanas.
-3. Verifica que las manzanas reboten al caer y que desaparezcan al colisionar con Niblo, incrementando el contador de `manzanas_recogidas` en `GameManager`.
+3. Verifica que las manzanas reboten al caer y que desaparezcan al colisionar con Niblo, incrementando el contador de puntos.
 4. Avanza al segundo nivel presionando *N* nuevamente y observa el comportamiento de las manzanas siendo lanzadas desde la derecha.
-5. Experimenta ajustando la fuerza con la que se lanzan las manzanas, la posición inicial de Niblo y otros parámetros para familiarizarte con las físicas 2D en Godot.
+5. Prueba a usar las teclas *R*, *G* y *Esc*, añade más manzanas y modifica y añade diferentes líneas de código.
+6. Experimenta ajustando la fuerza con la que se lanzan las manzanas, la posición inicial de Niblo y las manzanas y otros parámetros para familiarizarte con las físicas 2D en Godot.
