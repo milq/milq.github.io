@@ -190,7 +190,7 @@ func _process(delta):
 ## Paso 7: Creación del nivel 2
 
 1. Crea una nueva escena con un nodo *Node2D* como nodo raíz, renómbralo como `Nivel2` y guárdala como `nivel_2.tscn`.
-2. Crea un suelo como en el _Paso 6_.
+2. Crea un suelo como en el _Paso 6_ o también puedes copiar el nodo _Suelo_ del nivel 1 y pegarlo en este nivel 2.
 4. Instancia a Niblo en la escena, posicionando a Niblo en la parte inferior izquierda.
 5. Instancia una manzana, duplícala cuatro veces más y colócalas esta vez en el lado derecho de la escena.
 6. Añade un *Label* para mostrar los puntos, siguiendo los mismos pasos que en el nivel 1.
