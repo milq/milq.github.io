@@ -165,18 +165,18 @@ func _on_body_entered(body):
 1. Crea una nueva escena con un nodo *Node2D* como nodo raíz, renómbralo como _Nivel1_ y guárdala como `nivel_1.tscn`.
 2. Añade un nodo de tipo *StaticBody2D* como hijo del nodo _Nivel1_ y renómbralo como _Suelo_.
 3. Añade un nodo de tipo *ColorRect* como hijo del nodo _Suelo_.
-1. En el Inspector, cambia la propiedad de color de ColorRect a `114011` (verde oscuro) en el campo _Hex_.
-1. Selecciona el nodo *ColorRect* y en el inspector ve a _Control → Layout → Transform_ y cambia los valores de _Size_ a 1280 px en _x_ y 40 px _en _y_ y en _Position_ 0 px en el eje _x_ y 680 px en el eje _y_.
-3. Añade un nodo de tipo *CollisionShape2D* como hijo del nodo _Suelo_. 
-4. En el Inspector, asigna una forma *RectangleShape2D* al _CollisionShape2D_ anterior y ajusta su tamaño para que cubra el nodo *ColorRect*.
-3. Instancia a Niblo en la escena haciendo clic derecho en _Nivel1_, seleccionando *Instance Child Scene* y eligiendo `niblo.tscn`.
-4. Situa a Niblo en la parte inferior izquierda, justo encima del suelo.
-5. Instancia un nodo manzana (`manzana.tscn`) y duplica cuatro más haciendo clic derecho en el nodo _Manzana_ y pulsando _Duplicate_.
-6. Coloca las manzanas juntas en la parte superior derecha de la escena.
-7. Añade un nodo *Label*, renómbralo como _Puntos_ y en la propiedad _Text_ pon el siguiente texto: `Puntos: 0`.
-9. Selecciona el nodo _Puntos_, asígnale la fuente usada anteriormente siguiendo el punto 5 del _Paso 2_ y ponle un tamaño adecuado.
-8. Coloca el nodo _Puntos_ en la esquina superior izquierda.
-11. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
+4. En el Inspector, cambia la propiedad de color de ColorRect a `114011` (verde oscuro) en el campo _Hex_.
+5. Selecciona el nodo *ColorRect* y en el inspector ve a _Control → Layout → Transform_ y cambia los valores de _Size_ a 1280 px en _x_ y 40 px _en _y_ y en _Position_ 0 px en el eje _x_ y 680 px en el eje _y_.
+6. Añade un nodo de tipo *CollisionShape2D* como hijo del nodo _Suelo_. 
+7. En el Inspector, asigna una forma *RectangleShape2D* al _CollisionShape2D_ anterior y ajusta su tamaño para que cubra el nodo *ColorRect*.
+8. Instancia a Niblo en la escena haciendo clic derecho en _Nivel1_, seleccionando *Instance Child Scene* y eligiendo `niblo.tscn`.
+9. Situa a Niblo en la parte inferior izquierda, justo encima del suelo.
+10. Instancia un nodo manzana (`manzana.tscn`) y duplica cuatro más haciendo clic derecho en el nodo _Manzana_ y pulsando _Duplicate_.
+11. Coloca las manzanas juntas en la parte superior derecha de la escena.
+12. Añade un nodo *Label*, renómbralo como _Puntos_ y en la propiedad _Text_ pon el siguiente texto: `Puntos: 0`.
+13. Selecciona el nodo _Puntos_, asígnale la fuente usada anteriormente siguiendo el punto 5 del _Paso 2_ y ponle un tamaño adecuado.
+14. Coloca el nodo _Puntos_ en la esquina superior izquierda.
+15. Agrega un _script_ a _Puntos_ con el siguiente código para actualizar los puntos:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
@@ -193,9 +193,9 @@ func _process(delta):
 
 1. Crea una nueva escena con un nodo *Node2D* como nodo raíz, renómbralo como `Nivel2` y guárdala como `nivel_2.tscn`.
 2. Crea un suelo como en el _Paso 6_ o también puedes copiar el nodo _Suelo_ del nivel 1 y pegarlo en este nivel 2.
-4. Instancia a Niblo en la escena, posicionando a Niblo en la parte inferior izquierda.
-5. Instancia una manzana, duplícala cuatro veces más y colócalas esta vez en el lado derecho de la escena.
-6. Añade un *Label* para mostrar los puntos como en el _Paso 6_ o también puedes copiar el nodo _Puntos_ del nivel 1 y pegarlo en este nivel 2.
+3. Instancia a Niblo en la escena, posicionando a Niblo en la parte inferior izquierda.
+4. Instancia una manzana, duplícala cuatro veces más y colócalas esta vez en el lado derecho de la escena.
+5. Añade un *Label* para mostrar los puntos como en el _Paso 6_ o también puedes copiar el nodo _Puntos_ del nivel 1 y pegarlo en este nivel 2.
 
 ## Paso 8: Prueba y experimentación
 
