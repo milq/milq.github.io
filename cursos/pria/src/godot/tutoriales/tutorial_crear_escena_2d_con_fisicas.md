@@ -98,7 +98,7 @@ func _unhandled_input(event: InputEvent) -> void:
 4. Añade un nodo hijo *Sprite2D* al nodo _Niblo_ y asigna el _sprite_ descargado como textura.
 5. Añade un nodo hijo *CollisionShape2D* al nodo _Niblo_. En el Inspector, asigna una forma adecuada como *RectangleShape2D* o *CircleShape2D* y ajusta su tamaño para que coincida con el _sprite_.
 6. Selecciona el nodo _Niblo_ y añade un _script_ haciendo clic en *Attach Script*.
-7. En el _script_, que extiende de `CharacterBody2D`, agrega el siguiente código:
+7. En el _script_, que extiende de `CharacterBody2D`, cambia el código existente por este otro:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
