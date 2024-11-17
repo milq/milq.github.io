@@ -21,7 +21,7 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 6. Aumenta el tamaño de la fuente a 26 px en *Control → Theme Overrides → Fonts → Font Size*.
 7. Posiciona el `Titulo` en el centro superior de la pantalla.
 8. Añade otro nodo de tipo *Label* y renómbralo como _Controles_.
-9. Establece el texto del _Controles_ como:
+9. Establece el texto del nodo _Controles_ como:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
@@ -43,8 +43,8 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 
 <!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
-10. Asigna la misma fuente a `Controles` repitiendo el punto 5 y ponle un tamaño de 22 px.
-11. Posiciona el `Controles` centrado en la parte inferior de la escena.
+10. Asigna la misma fuente al nodo _Controles_ repitiendo el punto 5 y ponle un tamaño de 22 px.
+11. Posiciona el nodo _Controles_ en la parte inferior de la escena y centrado.
 
 ## Paso 3: Creación del Game Manager como Autoload (Singleton)
 
