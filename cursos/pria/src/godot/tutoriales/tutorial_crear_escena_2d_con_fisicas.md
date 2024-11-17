@@ -72,10 +72,10 @@ func _unhandled_input(event: InputEvent) -> void:
                 get_tree().quit()
             KEY_N:
                 if nivel_actual == 0:
-                    get_tree().change_scene_to_file("res://nivel1.tscn")
+                    get_tree().change_scene_to_file("res://nivel_1.tscn")
                     nivel_actual = 1
                 elif nivel_actual == 1:
-                    get_tree().change_scene_to_file("res://nivel2.tscn")
+                    get_tree().change_scene_to_file("res://nivel_2.tscn")
                     nivel_actual = 2
                 else:
                     get_tree().change_scene_to_file("res://main_scene.tscn")
