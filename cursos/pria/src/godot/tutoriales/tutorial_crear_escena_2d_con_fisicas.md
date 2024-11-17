@@ -15,9 +15,9 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 
 1. Descarga y descomprime la fuente [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P).
 2. Arrastra el archivo `.ttf` de la fuente descargada a la carpeta de recursos (`res://`) en *FileSystem*.
-3. En `main_scene.tscn`, añade un nodo de tipo *Label* como hijo de _ y renómbralo como _Title_.
-4. En el Inspector, establece el texto del `Label` como _TUTORIAL DE FÍSICAS 2D, ESCENAS Y AUTOLOAD_.
-5. Selecciona el nodo _Title_ y arrastra el archivo `.ttf` a la propiedad *Control → Theme Overrides → Fonts → Font*.
+3. En `main_scene.tscn`, añade un nodo de tipo *Label* como hijo de _MainScene_ y renómbralo como _Titulo_.
+4. En el Inspector, establece el texto del `Label` como `TUTORIAL DE FÍSICAS 2D, ESCENAS Y AUTOLOAD`.
+5. Selecciona el nodo _Titulo_ y arrastra el archivo `.ttf` a la propiedad *Control → Theme Overrides → Fonts → Font*.
 6. Aumenta el tamaño de la fuente a 26 px en *Control → Theme Overrides → Fonts → Font Size*.
 7. Posiciona el `Titulo` en el centro superior de la pantalla.
 8. Añade otro nodo de tipo *Label* y renómbralo como _Controles_.
