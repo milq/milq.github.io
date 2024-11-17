@@ -143,7 +143,7 @@ func _physics_process(delta: float) -> void:
 
 <!-- Comentario en HTML de inicio para que no se produzcan saltos en los ítems de la lista -->
 
-   ```gdscript
+```gdscript
 extends RigidBody2D
 
 func _ready():
@@ -154,7 +154,7 @@ func _on_body_entered(body):
     if body.name == "Niblo":
         GameManager.manzanas_recogidas += 1
         queue_free()
-   ```
+```
 
 <!-- Comentario en HTML de fin para que no se produzcan saltos en los ítems de la lista -->
 
