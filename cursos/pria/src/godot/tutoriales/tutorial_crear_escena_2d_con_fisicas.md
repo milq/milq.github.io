@@ -22,7 +22,7 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 7. Posiciona el `Titulo` en el centro superior de la pantalla.
 8. Añade otro nodo de tipo *Label* y renómbralo como _Controles_.
 9. Establece el texto del _Controles_ como:
-
+<!-- Comentario en HTML para que no se produzcan saltos en los ítems de la lista -->
    ```
    CONTROLES:
 
@@ -39,6 +39,10 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
    N → Pasar al siguiente nivel
    ```
 
+<!-- Comentario en HTML para que no se produzcan saltos en los ítems de la lista -->
+
+10. Asigna la misma fuente a `Controles` siguiendo el paso 5 y sigue el paso 6 pero con un tamaño de 22 px.
+11. Posiciona el `Controles` en una ubicación visible en la escena.
 
 ## Paso 3: Creación del personaje Niblo con movimiento de plataformas
 
