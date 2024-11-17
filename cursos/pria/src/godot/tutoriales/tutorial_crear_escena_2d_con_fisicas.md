@@ -42,8 +42,6 @@ En este tutorial aprenderás a trabajar con físicas 2D en Godot creando un proy
 10. Asigna la misma fuente a `Controles` siguiendo el paso 5 y sigue el paso 6 pero con un tamaño de 22 px.
 11. Posiciona el `Controles` en una ubicación visible en la escena.
 
-**Nota:** En la escena principal (`main_scene.tscn`), no añadiremos a Niblo ni a las manzanas. Esta escena servirá como menú principal.
-
 ## Paso 3: Creación del personaje Niblo con movimiento de plataformas
 
 1. Crea una nueva escena y añade un nodo *CharacterBody2D* como nodo raíz.
