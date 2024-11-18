@@ -86,35 +86,109 @@ Git opera en tres niveles principales:
    git commit -m "Añadir archivo inicial"
    ```
 
-### Paso 3: Modifica un archivo y confirma los cambios
+### Paso 3: Modifica archivos y confirma los cambios
 
 1. Edita el archivo agregando una nueva línea:
    ```bash
    echo "Añadiendo más texto al archivo." >> archivo.txt
    ```
 
-2. Verifica el estado del repositorio:
+2. Añade un nuevo archivo llamado `segundo_archivo.txt`:
+   ```bash
+   echo "Este es un segundo archivo en el repositorio" > segundo_archivo.txt
+   ```
+
+3. Verifica el estado del repositorio:
    ```bash
    git status
    ```
-   Verás que el archivo está marcado como modificado.
+   Verás que `archivo.txt` está modificado y `segundo_archivo.txt` no está rastreado.
 
-3. Visualiza las diferencias entre el archivo actual y el último commit:
+4. Visualiza las diferencias entre los archivos actuales y el último commit:
    ```bash
    git diff
    ```
 
-4. Añade los cambios usando un comando global para todos los archivos modificados:
+5. Añade los cambios usando un comando global para todos los archivos modificados:
    ```bash
    git add .
    ```
 
-5. Confirma los cambios:
+6. Confirma los cambios:
    ```bash
-   git commit -m "Actualizar contenido del archivo"
+   git commit -m "Actualizar contenido del archivo y añadir segundo archivo"
    ```
 
-### Paso 4: Trabaja con ramas
+### Paso 4: Experimenta con `git reset`
+
+1. Revisa el historial de commits:
+   ```bash
+   git log
+   ```
+   Observa los commits realizados hasta ahora.
+
+2. Retrocede un commit usando `git reset --soft`:
+   ```bash
+   git reset --soft HEAD~1
+   ```
+   Este comando mueve el puntero `HEAD` al commit anterior pero mantiene los cambios en el área de preparación.
+
+3. Verifica el estado del repositorio:
+   ```bash
+   git status
+   ```
+   Verás que los cambios están en el área de preparación.
+
+4. Para volver al estado anterior y descartar los cambios, usa `git reset --hard`:
+   ```bash
+   git reset --hard
+   ```
+   Este comando restablece el área de trabajo al último commit confirmado, descartando los cambios no confirmados.
+
+5. Verifica nuevamente el estado del repositorio:
+   ```bash
+   git status
+   ```
+   Deberías ver que no hay cambios pendientes y el repositorio ha vuelto al estado anterior.
+
+6. Revisa el historial de commits para confirmar que has regresado al inicio:
+   ```bash
+   git log
+   ```
+
+7. Ahora vuelve al commit inicial:
+
+   - Obtén el hash del commit inicial "Añadir archivo inicial":
+     ```bash
+     git log --oneline
+     ```
+     Anota el hash asociado al commit "Añadir archivo inicial".
+
+   - Resetea el repositorio al commit inicial:
+     ```bash
+     git reset --hard [commit_hash]
+     ```
+     Reemplaza `[commit_hash]` con el hash del commit inicial que obtuviste.
+
+8. Verifica el estado del repositorio:
+   ```bash
+   git status
+   ```
+   Deberías ver que no hay cambios pendientes.
+
+9. Revisa el historial de commits:
+   ```bash
+   git log
+   ```
+   Deberías ver que el historial muestra solo el commit inicial.
+
+10. Lista los archivos en el directorio:
+    ```bash
+    ls
+    ```
+    Verás que los archivos en el directorio corresponden al estado del commit inicial, es decir, solo `archivo.txt`.
+
+### Paso 5: Trabaja con ramas
 
 1. Crea una nueva rama llamada `feature`:
    ```bash
@@ -147,7 +221,7 @@ Git opera en tres niveles principales:
    git merge feature
    ```
 
-### Paso 5: Explora el historial de commits
+### Paso 6: Explora el historial de commits
 
 1. Revisa el historial de commits:
    ```bash
@@ -160,7 +234,7 @@ Git opera en tres niveles principales:
    git log --oneline --graph
    ```
 
-### Paso 6: Opcional - Elimina una rama
+### Paso 7: Elimina una rama
 
 1. Elimina la rama `feature` después de fusionarla:
    ```bash
@@ -169,16 +243,19 @@ Git opera en tres niveles principales:
 
 ## Tabla de comandos clave
 
-| **Comando**               | **Descripción**                                                                                                                                   | **Ejemplo**                         |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------|
-| `git init`               | Inicializa un repositorio en la carpeta actual.                                                                                                 | `git init`                         |
-| `git status`             | Muestra el estado actual del repositorio (archivos modificados o no rastreados).                                                                | `git status`                       |
-| `git add [archivo]`      | Añade un archivo específico al área de preparación.                                                                                            | `git add archivo.txt`              |
-| `git add .`              | Añade todos los archivos al área de preparación.                                                                                               | `git add .`                        |
-| `git commit -m "mensaje"`| Confirma los cambios preparados con un mensaje descriptivo.                                                                                     | `git commit -m "Cambios iniciales"`|
-| `git push`               | Sube los cambios confirmados al repositorio remoto.                                                                                            | `git push`                         |
-| `git diff`               | Muestra las diferencias entre los archivos en el área de trabajo y los cambios confirmados.                                                    | `git diff`                         |
-| `git branch [nombre]`    | Crea una nueva rama.                                                                                                                           | `git branch feature`               |
-| `git checkout [nombre]`  | Cambia a una rama específica.                                                                                                                  | `git checkout main`                |
-| `git merge [rama]`       | Combina los cambios de otra rama en la actual.                                                                                                 | `git merge feature`                |
-| `git clone [ruta]`       | Clona un repositorio remoto.                                                                                                                   | `git clone https://url-repo.git`   |
+| **Comando**                 | **Descripción**                                                                                                          | **Ejemplo**                           |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
+| `git init`                  | Inicializa un repositorio en la carpeta actual.                                                                          | `git init`                            |
+| `git status`                | Muestra el estado actual del repositorio (archivos modificados o no rastreados).                                         | `git status`                          |
+| `git add [archivo]`         | Añade un archivo específico al área de preparación.                                                                      | `git add archivo.txt`                 |
+| `git add .`                 | Añade todos los archivos al área de preparación.                                                                         | `git add .`                           |
+| `git commit -m "mensaje"`   | Confirma los cambios preparados con un mensaje descriptivo.                                                              | `git commit -m "Cambios iniciales"`   |
+| `git push`                  | Sube los cambios confirmados al repositorio remoto.                                                                      | `git push`                            |
+| `git diff`                  | Muestra las diferencias entre los archivos en el área de trabajo y los cambios confirmados.                              | `git diff`                            |
+| `git branch [nombre]`       | Crea una nueva rama.                                                                                                     | `git branch feature`                  |
+| `git checkout [nombre]`     | Cambia a una rama específica.                                                                                            | `git checkout main`                   |
+| `git merge [rama]`          | Combina los cambios de otra rama en la actual.                                                                           | `git merge feature`                   |
+| `git clone [ruta]`          | Clona un repositorio remoto.                                                                                             | `git clone https://url-repo.git`      |
+| `git reset --soft [commit]` | Retrocede al commit especificado manteniendo los cambios en el área de preparación.                                      | `git reset --soft HEAD~1`             |
+| `git reset --hard [commit]` | Restablece el área de trabajo al commit especificado, descartando cambios no confirmados.                                | `git reset --hard [commit_hash]`      |
+| `ls`                        | Lista los archivos y directorios en el directorio actual.                                                                | `ls`                                  |
