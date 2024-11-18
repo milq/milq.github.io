@@ -5,47 +5,48 @@ En este tutorial, aprenderás a exportar un juego desarrollado en Godot a format
 ## Paso 1: Instalar las plantillas de exportación en Godot
 
 1. Abre tu proyecto en Godot.
-2. Ve al menú **Project → Export...**.
+2. Ve al menú **Editor → Manage Export Templates...**.
 3. Observa a la derecha de **Current Version**; pueden aparecer dos opciones:
 
-   - **Opción 1**: Texto en rojo que dice _"Export templates are missing. Download them or install from a file"_.
-   - **Opción 2**: Texto en gris o azul que dice _"Export templates are installed and ready to be used"_.
+   - **Opción 1**: Texto en rojo que dice _Export templates are missing. Download them or install from a file_.
+   - **Opción 2**: Texto en gris o azul que dice _Export templates are installed and ready to be used_.
 
 4. Si ves la **Opción 1**, sigue estos pasos para descargar las plantillas de exportación:
 
-   - Asegúrate de que en **Download from** esté seleccionado _"Best available mirror"_.
+   - Asegúrate de que en **Download from** esté seleccionado _Best available mirror_.
    - Haz clic en **Download and Install**.
    - Espera a que se complete la descarga e instalación.
-   - Una vez instalado, debería aparecer el mensaje _"Export templates are installed and ready to be used"_.
+   - Una vez instalado, debería aparecer el mensaje _Export templates are installed and ready to be used_.
    - Haz clic en **Close** para cerrar la ventana.
 
-## Paso 2: Exportar el Juego a HTML
+## Paso 2: Exportar el juego a HTML
 
-1. En Godot, ve nuevamente a **Project → Export...**.
+1. En Godot, ve a **Project → Export...**.
 2. En la sección **Presets**, verifica si existe una opción para **Web**:
 
    - Si no está presente, haz clic en **Add...** y selecciona **Web**.
 
 3. Selecciona **Web (Runnable)** en los **Presets**.
 
-   - Opcionalmente, puedes agregar **Linux** o **Windows Desktop** si deseas comprobar el juego en tu ordenador sin problemas de políticas CORS.
+   - Puedes agregar **Linux** o **Windows Desktop** si deseas exportar el juego en tu ordenador a estas plataformas.
 
 4. Haz clic en **Export Project...**.
 
 5. Elige una ruta para el proyecto exportado:
 
-   - Crea una nueva carpeta (usa el botón con el icono de una carpeta y un "+") para alojar los archivos exportados.
+   - Crea una nueva carpeta (usa el botón con el icono de una carpeta y un "+" situado arriba a la derecha) para alojar los archivos exportados.
+   - Entra en la carpeta creada
    - Renombra el archivo HTML a **index.html**.
    - Desactiva la opción **Export With Debug** para una versión optimizada.
    - Haz clic en **Save** para exportar el proyecto.
 
-6. Una vez exportado, navega a la carpeta donde se guardó el juego.
+6. Una vez exportado, navega a la carpeta donde se ha exportado el juego.
 
 7. Comprime todos los archivos dentro de esa carpeta en un solo archivo **ZIP**:
 
-   - **Nota**: Debes seleccionar y comprimir los archivos **dentro** de la carpeta (como **index.html** y otros archivos que comienzan con **index**), no la carpeta en sí.
+   - **Nota**: debes seleccionar y comprimir los archivos **dentro** de la carpeta (como **index.html** y otros archivos que comienzan con **index**), no la carpeta en sí.
 
-## Paso 3: Subir el Juego a *itch.io* y Configurarlo
+## Paso 3: Subir el juego a *itch.io* y configurarlo
 
 1. Accede a [*itch.io*][E02] e inicia sesión con tu cuenta.
 
