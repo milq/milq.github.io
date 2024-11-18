@@ -36,7 +36,7 @@ En este tutorial, aprenderás a exportar un juego desarrollado en Godot a format
 
    - Crea una nueva carpeta (usa el botón con el icono de una carpeta y un "+" situado arriba a la derecha) para alojar los archivos exportados.
    - Entra en la carpeta creada
-   - Renombra el archivo HTML a **index.html**.
+   - Renombra el archivo HTML a **_index.html_**.
    - Desactiva la opción **Export With Debug** para una versión optimizada.
    - Haz clic en **Save** para exportar el proyecto.
 
@@ -44,13 +44,13 @@ En este tutorial, aprenderás a exportar un juego desarrollado en Godot a format
 
 7. Comprime todos los archivos dentro de esa carpeta en un solo archivo **ZIP**:
 
-   - **Nota**: debes seleccionar y comprimir los archivos **dentro** de la carpeta (como **index.html** y otros archivos que comienzan con **index**), no la carpeta en sí.
+   - **Nota**: debes seleccionar y comprimir los archivos **dentro** de la carpeta (como **_index.html_** y otros archivos que comienzan con **index**), no la carpeta en sí.
 
 ## Paso 3: Subir el juego a *itch.io* y configurarlo
 
 1. Accede a [*itch.io*][E02] e inicia sesión con tu cuenta.
 
-2. En la esquina superior derecha, haz clic en tu nombre de usuario y selecciona **Upload a New Project**.
+2. En la esquina superior derecha, haz clic en la flecha que está a la derecha de tu nombre de usuario y selecciona **Upload a New Project**.
 
 3. Completa los detalles del proyecto:
 
@@ -64,12 +64,12 @@ En este tutorial, aprenderás a exportar un juego desarrollado en Godot a format
 5. En la sección **Uploads**:
 
    - Haz clic en **Upload Files** y selecciona el archivo **ZIP** que creaste anteriormente.
-   - Una vez subido, marca la casilla **This file will be played in the browser**.
+   - Una vez subido, marca la casilla ***This file will be played in the browser***.
 
 6. Configura las **Viewport Dimensions**:
 
    - Establece las dimensiones según las de tu juego en Godot.
-   - Puedes encontrarlas en **Project → Project Settings → General → Display → Window**, en **Width** y **Height**.
+   - Puedes encontrarlas en ***Project → Project Settings → General → Display → Window***, en **Width** y **Height**.
 
 7. Activa la casilla **SharedArrayBuffer support**:
 
@@ -79,8 +79,9 @@ En este tutorial, aprenderás a exportar un juego desarrollado en Godot a format
 
 9. En **Visibility & Access**, asegúrate de que esté seleccionado **Draft**:
 
-   - Esto significa que solo tú (y quienes tengan el enlace secreto) pueden ver el juego.
-   - ![Draft Mode][E04]
+   - Esto significa que solo tú (y quienes tengan el enlace secreto) puedan ver el juego.
+   
+   ![Draft Mode][E04]
 
 10. Haz clic en **Save** para guardar los cambios.
 
