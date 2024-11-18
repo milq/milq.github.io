@@ -1,4 +1,4 @@
-# Tutorial para exportar un juego de Godot a HTML y subirlo a *itch.io*
+# Tutorial para publicar de manera privada un juego de Godot en HTML en *itch.io*
 
 En este tutorial, aprenderás a exportar un juego desarrollado en Godot a formato HTML, subirlo a [*itch.io*][E02] y obtener su *Secret URL*. Esto te permitirá compartir tu juego de forma privada y probarlo sin hacerlo público.
 
