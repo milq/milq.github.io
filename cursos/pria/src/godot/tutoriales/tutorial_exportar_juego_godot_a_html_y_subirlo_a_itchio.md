@@ -93,9 +93,9 @@ En este tutorial, aprenderás a exportar un juego desarrollado en Godot a format
 
 2. Haz clic en **Secret URL**:
 
-   - Se abrirá una nueva ventana con tu juego y una URL más larga y específica:
-
     ![Secret URL][T04]
+
+   - Se abrirá una nueva ventana con tu juego y una URL más larga y específica.
 
 3. **¿Qué es la Secret URL?**
 
