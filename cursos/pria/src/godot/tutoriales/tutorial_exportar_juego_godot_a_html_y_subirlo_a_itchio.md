@@ -1,4 +1,4 @@
-# Tutorial para publicar de manera privada un juego de Godot en HTML en *itch.io*
+# Tutorial para publicar un juego de Godot en HTML en *itch.io*
 
 En este tutorial, aprenderás a exportar un juego desarrollado en Godot a formato HTML, subirlo a [*itch.io*][E02] y obtener su *Secret URL*. Esto te permitirá compartir tu juego de forma privada y probarlo sin hacerlo público.
 
@@ -83,9 +83,11 @@ En este tutorial, aprenderás a exportar un juego desarrollado en Godot a format
    
     ![Draft Mode][T03]
 
+   - Si lo deseas publicar para que lo vean todos, selecciona ***Public - Anyone can view the page***.
+
 10. Haz clic en **Save** para guardar los cambios.
 
-## Paso 4: Obtener y Probar la *Secret URL*
+## Paso 4: Obtener y probar la *Secret URL*
 
 1. En la página de tu juego en *itch.io*, verás un botón que dice **DRAFT** y debajo un enlace que pone **Secret URL**.
 
