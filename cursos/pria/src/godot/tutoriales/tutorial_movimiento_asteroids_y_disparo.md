@@ -4,59 +4,50 @@ En este tutorial aprenderás a crear un juego en Godot donde controlarás una na
 
 ## Paso 1: Configuración del proyecto
 
-1. **Crea un nuevo proyecto**: abre Godot y crea un nuevo proyecto. Asigna un nombre al proyecto (por ejemplo, *JuegoAsteroids*) y elige una carpeta donde guardarlo.
-2. **Crea la escena principal**:
+1. **Crea un nuevo proyecto**:
+   - Abre Godot y crea un nuevo proyecto.
+   - Asigna un nombre al proyecto (por ejemplo, *JuegoAsteroids*) y elige una carpeta donde guardarlo.
+3. **Crea la escena principal**:
    - Haz clic en _Scene_ y selecciona _New Scene_.
    - Añade un nodo _Node2D_ como nodo raíz.
    - Renombra el nodo raíz como _MainScene_.
    - Guarda la escena seleccionando _Scene → Save Scene_ y guárdala como `MainScene.tscn` en la carpeta raíz del proyecto.
-3. **Configurar el tamaño de la ventana**:
+4. **Configura el tamaño de la ventana**:
    - Ve a _Project → Project Settings → General → Display → Window_.
-   - Establece **Width** en `1280` y **Height** en `720` para una resolución HD estándar.
-4. **Cambiar el color de fondo**:
-   - Ve a **Project → Project Settings → General → Rendering → Environment**.
-   - En **Default Clear Color**, selecciona el color negro para simular el espacio.
+   - Establece _Viewport Width_ en `1280` y _Viewport Height_ en `720` para una resolución HD estándar.
+5. **Cambia el color de fondo**:
+   - Ve a _Project → Project Settings → General → Rendering → Environment_.
+   - Selecciona el color negro para simular el espacio.
+6. **Configura el _renderizado_ para _pixel art_**:
+   - Ve a _Project → Project Settings → General → Rendering → Textures_.
+   - Establece _Default Texture Filter_ en _Nearest_ para que los píxeles de las texturas se vean nítidos.
 
 ## Paso 2: Creación del jugador con movimiento tipo Asteroids
 
-### 1. Crear la escena del jugador
-
-1. **Crear una nueva escena**:
-   - Haz clic en **Scene → New Scene**.
-   - Añade un nodo **CharacterBody2D** como nodo raíz.
-2. **Renombrar y guardar la escena**:
-   - Renombra el nodo raíz como **Jugador**.
-   - Guarda la escena como `Jugador.tscn` en la carpeta raíz del proyecto.
-3. **Añadir el sprite del jugador**:
-   - Descarga el sprite de la nave desde [aquí][T01] y colócalo en la carpeta `res://` de tu proyecto.
-   - Añade un nodo hijo **Sprite2D** al nodo **Jugador**.
-   - En el Inspector, asigna la textura del sprite descargado.
-4. **Añadir colisión al jugador**:
-   - Añade un nodo hijo **CollisionShape2D** al nodo **Jugador**.
-   - En el Inspector, asigna una forma adecuada, como **CircleShape2D** o **RectangleShape2D**.
-   - Ajusta su tamaño y posición para que coincida con el sprite.
-
-### 2. Configurar las entradas de usuario
-
-Antes de escribir el script del jugador, configuraremos las entradas de usuario necesarias.
-
-1. **Abrir el mapa de entradas**:
-   - Ve a **Project → Project Settings → Input Map**.
-2. **Añadir acciones**:
-   - Si no existen, añade las siguientes acciones y asigna las teclas correspondientes:
-     - **ui_left**: Tecla **Izquierda**.
-     - **ui_right**: Tecla **Derecha**.
-     - **ui_up**: Tecla **Arriba**.
-     - **ui_accept**: Tecla **Espacio** o **Ctrl Izquierdo** para disparar.
-
-### 3. Escribir el script del jugador
-
-1. **Añadir un script al jugador**:
-   - Selecciona el nodo **Jugador**.
-   - Haz clic en **Attach Script**.
-   - Asegúrate de que extiende `CharacterBody2D`.
-   - Guarda el script como `Jugador.gd`.
-2. **Escribir el código del script**:
+1. **Crea una nueva escena**:
+   - Haz clic en _Scene → New Scene_.
+   - Añade un nodo _CharacterBody2D_ como nodo raíz.
+2. **Renombra y guarda la escena**:
+   - Renombra el nodo raíz como _Jugador_.
+   - Guarda la escena como `jugador.tscn` en la carpeta raíz del proyecto.
+3. **Añade el _sprite_ del jugador**:
+   - Descarga el _sprite_ de la nave desde [aquí][T02] y colócalo en la carpeta `res://` de tu proyecto.
+   - Añade un nodo hijo _Sprite2D_ al nodo _Jugador_.
+   - En el Inspector, asigna la textura del _sprite_ descargado.
+4. **Añade colisión al jugador**:
+   - Añade un nodo hijo _CollisionShape2D_ al nodo _Jugador_.
+   - En el Inspector, asigna una forma adecuada, como _RectangleShape2D_.
+   - Ajusta su tamaño y posición para que coincida con el _sprite_.
+5. **Comprueba las entradas de usuario**:
+   - Ve a _Project → Project Settings → Input Map_ y activa _Show Built-in Actions_.
+   - Comprueba y, si no existen, añade las siguientes acciones y asigna las teclas correspondientes:
+     - `ui_left`: tecla del cursor _Izquierda_.
+     - `ui_right`: tecla del cursor _Derecha_.
+     - `ui_up`: tecla del cursor _Arriba_.
+     - `ui_accept`: tecla _Espacio_.
+6. **Añade un _script_ al jugador**:
+   - Selecciona el nodo _Jugador_ y asígnale un _script_ denominado `jugador.gd`.
+   - Escribe el código del _script_:
 
 ```gdscript
 extends CharacterBody2D
@@ -294,5 +285,5 @@ Ahora que tienes la base del juego funcionando, puedes añadir mejoras y caracte
 Has aprendido a crear un jugador con movimiento tipo Asteroids que puede disparar en Godot. Este tutorial cubrió la creación y configuración de escenas, la escritura de scripts para el movimiento y disparo, y cómo manejar la envoltura de pantalla. Continúa explorando y ampliando el juego para añadir más funcionalidades y hacerlo más completo y divertido.
 
 [T01]: https://en.wikipedia.org/wiki/Asteroids_(video_game)
-[T01]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/jugador.png
+[T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/jugador.png
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/bullet_jugador.png
