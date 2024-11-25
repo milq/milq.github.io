@@ -61,12 +61,13 @@ var acceleration: float = 200.0
 # Velocidad de rotación en grados por segundo
 var rotation_speed: float = 180.0
 
-# Cargar la escena de la bala
 var BulletScene: PackedScene
 
 func _ready() -> void:
-    # Precargar la escena de la bala
+    print(position)
+    # Precargar la escena de la bala ubicada en res://bullet.tscn
     BulletScene = load("res://bala.tscn")
+    print(position)
 
 func _physics_process(delta: float) -> void:
     # Entrada del jugador
@@ -93,32 +94,36 @@ func _physics_process(delta: float) -> void:
     # Mover al jugador según su velocidad
     position += velocity * delta
 
-    # Aplicar fricción para desacelerar gradualmente
+    # Aplicar fricción para desacelerar
     velocity *= 0.99  # Reduce la velocidad un 1% cada frame
 
     # Disparar balas al presionar "shoot"
     if shoot:
-        shoot_bullet()
+        shoot_bullets()
 
-    # Envolvimiento de pantalla
-    var screen_size: Vector2 = get_viewport_rect().size
-    if position.x < 0:
-        position.x = screen_size.x
-    elif position.x > screen_size.x:
-        position.x = 0
-    if position.y < 0:
-        position.y = screen_size.y
-    elif position.y > screen_size.y:
-        position.y = 0
+func shoot_bullets() -> void:
+    # Distancia de offset desde el centro del jugador
+    var offset_distance: float = 32.0  # Ajustar según sea necesario
 
-func shoot_bullet() -> void:
-    # Crear una instancia de la bala
-    var bullet = BulletScene.instantiate()
-    # Establecer la posición y rotación de la bala
-    bullet.position = position
-    bullet.rotation = rotation
-    # Añadir la bala a la escena actual
-    get_tree().current_scene.add_child(bullet)
+    # Calcular offsets hacia las esquinas
+    var offset1: Vector2 = Vector2(offset_distance, -offset_distance)
+    var offset2: Vector2 = Vector2(offset_distance, offset_distance)
+
+    # Rotar offsets según la rotación del jugador
+    offset1 = offset1.rotated(rotation)
+    offset2 = offset2.rotated(rotation)
+
+    # Instanciar primera bala en la esquina superior izquierda
+    var bullet1: Area2D = BulletScene.instantiate() as Area2D
+    bullet1.position = position + offset1
+    bullet1.rotation = rotation
+    get_parent().add_child(bullet1)
+
+    # Instanciar segunda bala en la esquina superior derecha
+    var bullet2: Area2D = BulletScene.instantiate() as Area2D
+    bullet2.position = position + offset2
+    bullet2.rotation = rotation
+    get_parent().add_child(bullet2)
 ```
 
 ## Paso 3: Creación de las balas
@@ -126,26 +131,20 @@ func shoot_bullet() -> void:
 1. **Crea una nueva escena**:
    - Haz clic en _Scene → New Scene_.
    - Añade un nodo _Area2D_ como nodo raíz.
-2. **Renombrar y guardar la escena**:
+2. **Renombra y guarda la escena**:
    - Renombra el nodo raíz como _Bala_.
    - Guarda la escena como `bala.tscn` en la carpeta raíz del proyecto.
 3. **Añade el _sprite_ de la bala**:
    - Descarga el _sprite_ de la bala desde [aquí][T03] y colócalo en la carpeta `res://` de tu proyecto.
-   - Añade un nodo hijo **Sprite2D** al nodo **Bala**.
+   - Añade un nodo hijo _Sprite2D_ al nodo _Bala_.
    - En el Inspector, asigna la textura del sprite descargado.
-4. **Añadir colisión a la bala**:
-   - Añade un nodo hijo **CollisionShape2D** al nodo **Bala**.
-   - En el Inspector, asigna una forma adecuada, como **CircleShape2D**.
+4. **Añade colisión a la bala**:
+   - Añade un nodo hijo _CollisionShape2D_ al nodo _Bala_.
+   - En el Inspector, asigna una forma adecuada, como _RectangleShape2D_.
    - Ajusta su tamaño y posición para que coincida con el sprite.
-
-### 2. Escribir el script de la bala
-
-1. **Añadir un script a la bala**:
-   - Selecciona el nodo **Bala**.
-   - Haz clic en **Attach Script**.
-   - Asegúrate de que extiende `Area2D`.
-   - Guarda el script como `Bala.gd`.
-2. **Escribir el código del script**:
+5. **Añade un _script_ a la bala**:
+   - Selecciona el nodo _Bala_ y asígnale un _script_ denominado `bala.gd`.
+   - Escribe el código del _script_:
 
 ```gdscript
 extends Area2D
@@ -153,48 +152,42 @@ extends Area2D
 # Velocidad de la bala
 var speed: float = 500.0
 
+# Margen para detectar salida de la pantalla
+var MARGIN: float = 50.0
+
 func _physics_process(delta: float) -> void:
     # Mover la bala hacia adelante
     position += Vector2.RIGHT.rotated(rotation) * speed * delta
 
-    # Envolvimiento de pantalla
+    # Obtener el tamaño de la pantalla
     var screen_size: Vector2 = get_viewport_rect().size
-    if position.x < 0:
-        position.x = screen_size.x
-    elif position.x > screen_size.x:
-        position.x = 0
-    if position.y < 0:
-        position.y = screen_size.y
-    elif position.y > screen_size.y:
-        position.y = 0
-```
 
-**Nota**: Si prefieres que las balas se destruyan al salir de la pantalla en lugar de envolver, reemplaza el código de envolvimiento por:
-
-```gdscript
-# Eliminar la bala si sale de la pantalla
-if position.x < 0 or position.x > screen_size.x or position.y < 0 or position.y > screen_size.y:
-    queue_free()
+    # Comprobar si la bala está fuera de la pantalla con margen
+    if position.x < -MARGIN or position.x > screen_size.x + MARGIN \
+    or position.y < -MARGIN or position.y > screen_size.y + MARGIN:
+        queue_free()  # Eliminar la bala de la escena
 ```
 
 ## Paso 4: Añadir el jugador a la escena principal
 
-1. **Abrir la escena principal**:
+1. **Abre la escena principal e instancia al jugador**:
    - Abre `MainScene.tscn`.
-2. **Instanciar el jugador**:
-   - Arrastra la escena `Jugador.tscn` desde el panel **FileSystem** hasta el nodo **MainScene** para añadir el jugador a la escena principal.
-3. **Posicionar el jugador**:
-   - Selecciona el nodo **Jugador**.
-   - En el Inspector, establece la posición en **Position** a `(640, 360)` para centrarlo en la pantalla.
+   - Haz clic derecho en el nodo _MainScene_ y pulsa en _Instantiate Child Scene_ y selecciona `jugador.tscn`.
+2. **Posiciona al jugador**:
+   - Selecciona el nodo _Jugador_.
+   - En el Inspector, establece la posición en _Position_ a `(640, 360)` para centrarlo en la pantalla.
 
 ## Paso 5: Probar el juego
 
-1. **Ejecutar el proyecto**:
-   - Presiona **F5** o ve a **Project → Run** para ejecutar el juego.
-2. **Verificar el movimiento**:
+1. **Configura la escena principal como escena de inicio**:
+   - Ve a _Project → Project Settings → General → Application → Run → Main Scene_.
+   - Asegúrate de que esté establecido a `res://main_scene.tscn`.
+2. **Ejecuta el proyecto**:
+   - Presiona la tecla `F5` o pulsa en _Run Project_ para ejecutar el juego.
+3. **Verifica el movimiento**:
    - Usa las teclas de flecha para rotar y acelerar la nave.
-   - Presiona la tecla de disparo (por defecto, **Espacio**) para disparar balas.
-3. **Observar el comportamiento**:
+   - Presiona la tecla de disparo, _Espacio_, para disparar balas.
+4. **Observa el comportamiento**:
    - La nave debería rotar suavemente y moverse en la dirección en la que apunta.
    - Las balas deberían dispararse desde la posición de la nave en la dirección correcta.
 
