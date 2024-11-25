@@ -123,16 +123,14 @@ func shoot_bullet() -> void:
 
 ## Paso 3: Creación de las balas
 
-### 1. Crear la escena de la bala
-
-1. **Crear una nueva escena**:
-   - Haz clic en **Scene → New Scene**.
-   - Añade un nodo **Area2D** como nodo raíz.
+1. **Crea una nueva escena**:
+   - Haz clic en _Scene → New Scene_.
+   - Añade un nodo _Area2D_ como nodo raíz.
 2. **Renombrar y guardar la escena**:
-   - Renombra el nodo raíz como **Bala**.
-   - Guarda la escena como `Bala.tscn` en la carpeta raíz del proyecto.
-3. **Añadir el sprite de la bala**:
-   - Descarga el sprite de la bala desde [aquí][T02] y colócalo en la carpeta `res://` de tu proyecto.
+   - Renombra el nodo raíz como _Bala_.
+   - Guarda la escena como `bala.tscn` en la carpeta raíz del proyecto.
+3. **Añade el _sprite_ de la bala**:
+   - Descarga el _sprite_ de la bala desde [aquí][T03] y colócalo en la carpeta `res://` de tu proyecto.
    - Añade un nodo hijo **Sprite2D** al nodo **Bala**.
    - En el Inspector, asigna la textura del sprite descargado.
 4. **Añadir colisión a la bala**:
@@ -286,4 +284,4 @@ Has aprendido a crear un jugador con movimiento tipo Asteroids que puede dispara
 
 [T01]: https://en.wikipedia.org/wiki/Asteroids_(video_game)
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/jugador.png
-[T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/bullet_jugador.png
+[T03]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/bala_jugador.png
