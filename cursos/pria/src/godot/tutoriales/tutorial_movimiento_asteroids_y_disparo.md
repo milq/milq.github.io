@@ -1,6 +1,4 @@
-# Tutorial para crear jugador tipo Asteroids con disparos en Godot
-
-# Tutorial para crear jugador con movimiento y disparos estilo Asteroids en Godot
+# Tutorial para crear un jugador tipo Asteroids con disparos en Godot
 
 En este tutorial aprenderás a crear un juego en Godot donde controlarás una nave espacial con movimiento al estilo del clásico juego [Asteroids][T01] (1979). La nave podrá rotar, acelerar en la dirección en la que apunta y disparar proyectiles. Aprenderás a utilizar `CharacterBody2D` para el control del jugador, `Area2D` para los proyectiles y a manejar escenas y _scripts_ para controlar el comportamiento.
 
@@ -193,77 +191,7 @@ func _physics_process(delta: float) -> void:
    - La nave debería rotar suavemente y moverse en la dirección en la que apunta.
    - Las balas deberían dispararse desde la posición de la nave en la dirección correcta.
 
-## Paso 6: Añadir envolvimiento de pantalla para el jugador y las balas
-
-Ya hemos implementado el envolvimiento de pantalla en los scripts del jugador y las balas. Esto significa que cuando el jugador o las balas salen por un lado de la pantalla, reaparecen por el lado opuesto, simulando un espacio infinito.
-
-## Paso 7: Añadir asteroides (opcional)
-
-Para hacer el juego más interesante, puedes añadir asteroides que el jugador debe evitar o destruir.
-
-### 1. Crear la escena del asteroide
-
-1. **Crear una nueva escena**:
-   - Haz clic en **Scene → New Scene**.
-   - Añade un nodo **RigidBody2D** como nodo raíz.
-2. **Renombrar y guardar la escena**:
-   - Renombra el nodo raíz como **Asteroide**.
-   - Guarda la escena como `Asteroide.tscn`.
-3. **Añadir el sprite del asteroide**:
-   - Descarga o crea un sprite para el asteroide y colócalo en la carpeta `res://`.
-   - Añade un nodo hijo **Sprite2D** al nodo **Asteroide**.
-   - En el Inspector, asigna la textura del sprite del asteroide.
-4. **Añadir colisión al asteroide**:
-   - Añade un nodo hijo **CollisionShape2D** al nodo **Asteroide**.
-   - En el Inspector, asigna una forma adecuada y ajusta su tamaño.
-
-### 2. Escribir el script del asteroide
-
-1. **Añadir un script al asteroide**:
-   - Selecciona el nodo **Asteroide**.
-   - Haz clic en **Attach Script** y guarda el script como `Asteroide.gd`.
-2. **Escribir el código del script**:
-
-```gdscript
-extends RigidBody2D
-
-func _ready() -> void:
-    # Asignar una velocidad y dirección aleatoria al asteroide
-    var direction = Vector2(randf() * 2 - 1, randf() * 2 - 1).normalized()
-    var speed = rand_range(50, 150)
-    linear_velocity = direction * speed
-
-func _physics_process(delta: float) -> void:
-    # Envolvimiento de pantalla
-    var screen_size: Vector2 = get_viewport_rect().size
-    if position.x < 0:
-        position.x = screen_size.x
-    elif position.x > screen_size.x:
-        position.x = 0
-    if position.y < 0:
-        position.y = screen_size.y
-    elif position.y > screen_size.y:
-        position.y = 0
-
-func _on_Asteroide_area_entered(area):
-    if area.is_in_group("Balas"):
-        # Destruir el asteroide y la bala al colisionar
-        queue_free()
-        area.queue_free()
-```
-
-3. **Configurar grupos y señales**:
-   - Añade al nodo **Bala** al grupo **Balas**. Selecciona el nodo **Bala**, ve a **Node → Groups** y añade el grupo **Balas**.
-   - Conecta la señal `area_entered` del **Asteroide** al método `_on_Asteroide_area_entered` en su script.
-
-### 3. Añadir asteroides a la escena principal
-
-1. **Instanciar asteroides**:
-   - Abre `MainScene.tscn`.
-   - Instancia varios asteroides en la escena principal colocando instancias de `Asteroide.tscn`.
-   - Distribúyelos en posiciones aleatorias o predefinidas.
-
-## Paso 8: Mejoras y experimentación
+## Paso 6: Mejoras y experimentación (opcional)
 
 Ahora que tienes la base del juego funcionando, puedes añadir mejoras y características adicionales:
 
@@ -272,10 +200,6 @@ Ahora que tienes la base del juego funcionando, puedes añadir mejoras y caracte
 - **Niveles de dificultad**: Aumenta la cantidad y velocidad de los asteroides con el tiempo.
 - **Efectos de sonido y música**: Añade efectos de sonido para disparos, explosiones y música de fondo.
 - **Animaciones**: Crea animaciones para la explosión de asteroides y la nave del jugador.
-
-## Conclusión
-
-Has aprendido a crear un jugador con movimiento tipo Asteroids que puede disparar en Godot. Este tutorial cubrió la creación y configuración de escenas, la escritura de scripts para el movimiento y disparo, y cómo manejar la envoltura de pantalla. Continúa explorando y ampliando el juego para añadir más funcionalidades y hacerlo más completo y divertido.
 
 [T01]: https://en.wikipedia.org/wiki/Asteroids_(video_game)
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/jugador.png
