@@ -1,4 +1,4 @@
-# Tutorial para crear un jugador tipo Asteroids con disparos en Godot
+# Tutorial para crear jugador tipo Asteroids con disparos en Godot
 
 En este tutorial aprenderás a crear un juego en Godot donde controlarás una nave espacial con movimiento al estilo del clásico juego [Asteroids][T01] (1979). La nave podrá rotar, acelerar en la dirección en la que apunta y disparar proyectiles. Aprenderás a utilizar `CharacterBody2D` para el control del jugador, `Area2D` para los proyectiles y a manejar escenas y _scripts_ para controlar el comportamiento.
 
@@ -195,11 +195,14 @@ func _physics_process(delta: float) -> void:
 
 Ahora que tienes la base del juego funcionando, puedes añadir mejoras y características adicionales:
 
-- **Sistema de puntuación**: Añade un marcador que aumente cada vez que destruyes un asteroide.
+- **Añadir asteroides**: Crea objetos asteroides que aparezcan en pantalla y se muevan en distintas direcciones. Puedes utilizar `RigidBody2D` para simular su movimiento y colisiones con la nave y las balas.
+- **Movimiento de salida y entrada por los bordes**: Implementa la funcionalidad para que tanto el jugador como los asteroides que salgan por un lado de la pantalla entren por el lado opuesto, como en el juego original Asteroids (1979). Esto se logra detectando cuando un objeto sale de los límites y reposicionándolo en el lado contrario.
+- **Aparición de naves enemigas**: Configura una nave enemiga que aparezca cada 30 segundos. Esta nave puede perseguir al jugador y disparar proyectiles, aumentando el nivel de desafío.
+- **Sistema de puntuación**: Añade un marcador que aumente cada vez que destruyes un asteroide o una nave enemiga.
 - **Vidas del jugador**: Implementa un sistema de vidas o salud para el jugador.
-- **Niveles de dificultad**: Aumenta la cantidad y velocidad de los asteroides con el tiempo.
+- **Niveles de dificultad**: Aumenta la cantidad y velocidad de los asteroides y enemigos con el tiempo.
 - **Efectos de sonido y música**: Añade efectos de sonido para disparos, explosiones y música de fondo.
-- **Animaciones**: Crea animaciones para la explosión de asteroides y la nave del jugador.
+- **Animaciones**: Crea animaciones para la explosión de asteroides, naves enemigas y la nave del jugador.
 
 [T01]: https://en.wikipedia.org/wiki/Asteroids_(video_game)
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/jugador.png
