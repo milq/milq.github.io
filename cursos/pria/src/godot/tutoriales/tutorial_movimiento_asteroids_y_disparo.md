@@ -1,4 +1,4 @@
-# Tutorial para crear un jugador tipo Asteroids con disparos en Godot
+# Tutorial para crear jugador tipo Asteroids con disparos en Godot
 
 # Tutorial para crear jugador con movimiento y disparos estilo Asteroids en Godot
 
