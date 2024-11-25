@@ -1,4 +1,4 @@
-# Tutorial de creación de un jugador con movimiento tipo Asteroids que dispara en Godot
+# Tutorial para crear un jugador con movimiento tipo Asteroids con disparos en Godot
 
 En este tutorial aprenderás a crear un juego en Godot donde controlarás una nave espacial con movimiento al estilo del clásico juego [Asteroids][T01] (1979). La nave podrá rotar, acelerar en la dirección en la que apunta y disparar proyectiles. Aprenderás a utilizar `CharacterBody2D` para el control del jugador, `Area2D` para los proyectiles y a manejar escenas y _scripts_ para controlar el comportamiento.
 
