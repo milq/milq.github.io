@@ -1,9 +1,14 @@
 extends CharacterBody2D
 
-# Clase que controla el comportamiento del jugador
-
 # Celeridad de movimiento del jugador
 const CELERIDAD: float = 300.0
+
+const ORIENTACIÓN_INICIAL: float = deg_to_rad(90)
+# Nota: Ajusta ORIENTACIÓN_INICIAL según la orientación del 'sprite':
+# - 0 grados: el 'sprite' mira, apunta o se orienta a la derecha
+# - 90 grados: el 'sprite' mira, apunta o se orienta hacia arriba
+# - 180 grados: el 'sprite' mira, apunta o se orienta a la izquierda
+# - 270 grados: el 'sprite' mira, apunta o se orienta hacia abajo
 
 # Escena de la bala que se usará para disparar
 var EscenaBala: PackedScene
@@ -42,7 +47,7 @@ func _physics_process(_delta: float) -> void:
     # Si el jugador se está moviendo, actualizamos su rotación
     if vector_entrada != Vector2.ZERO:
         # Rotamos el jugador en la dirección del movimiento
-        rotation = vector_entrada.angle()
+        rotation = vector_entrada.angle() + ORIENTACIÓN_INICIAL
 
     # Movemos al jugador
     move_and_slide()
@@ -56,11 +61,14 @@ func disparar() -> void:
     # Esta función crea una bala y la lanza desde el jugador
 
     # Distancia desde el centro del jugador hasta donde aparece la bala
-    const DISTANCIA_DESPLAZAMIENTO: float = 32.0
+    const DISTANCIA_DESPLAZAMIENTO: float = -32.0
+
+    # Calculamos la rotación considerando la orientación inicial
+    var rotacion: float = rotation + ORIENTACIÓN_INICIAL
 
     # Calculamos el desplazamiento basado en la rotación actual del jugador
     var desplazamiento_bala: Vector2 = Vector2(DISTANCIA_DESPLAZAMIENTO, 0.0)
-    desplazamiento_bala = desplazamiento_bala.rotated(rotation)
+    desplazamiento_bala = desplazamiento_bala.rotated(rotacion)
 
     # Instanciamos la bala desde la escena cargada
     var bala: Area2D = EscenaBala.instantiate() as Area2D
