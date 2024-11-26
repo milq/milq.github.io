@@ -64,10 +64,8 @@ var rotation_speed: float = 180.0
 var BulletScene: PackedScene
 
 func _ready() -> void:
-    print(position)
-    # Precargar la escena de la bala ubicada en res://bullet.tscn
+    # Cargar la escena de la bala ubicada en 'res://bala.tscn'
     BulletScene = load("res://bala.tscn")
-    print(position)
 
 func _physics_process(delta: float) -> void:
     # Entrada del jugador
