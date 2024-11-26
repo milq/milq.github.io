@@ -1,12 +1,12 @@
 <?php
 require_once('connect_db.php');
-$mensaje = '';
+$error = '';
 
 if (!empty($_POST['id_mensaje'])) {
     $id_message = filter_var($_POST['id_mensaje'], FILTER_VALIDATE_INT);
 
     if ($id_message === false) {
-        $mensaje = 'El identificador del mensaje no es válido.';
+        $error = 'El identificador del mensaje no es válido.';
     } else {
         $sql = 'SELECT * FROM mensajes WHERE id = ?';
         $sth = $dbh->prepare($sql);
@@ -19,11 +19,11 @@ if (!empty($_POST['id_mensaje'])) {
             $f = htmlspecialchars($resultado['fecha'], ENT_QUOTES, 'UTF-8');
             $i = htmlspecialchars($resultado['id_usuario'], ENT_QUOTES, 'UTF-8');
         } else {
-            $mensaje = 'No existe un mensaje con ese identificador.';
+            $error = 'No existe un mensaje con ese identificador.';
         }
     }
 } else {
-    $mensaje = 'El identificador del mensaje está vacío.';
+    $error = 'El identificador del mensaje está vacío.';
 }
 ?>
 
@@ -50,7 +50,7 @@ if (!empty($_POST['id_mensaje'])) {
 
     <h2>Editar</h2>
 
-    <?php if (empty($mensaje)) { ?>
+    <?php if (empty($error)) { ?>
 
       <form action='editar_3.php' method='post'>
         <input type='hidden' name='id_mensaje' value='<?= $id_message ?>' />
