@@ -117,13 +117,13 @@ func shoot_bullets() -> void:
     var bullet1: Area2D = BulletScene.instantiate() as Area2D
     bullet1.position = position + offset1
     bullet1.rotation = rotation
-    get_parent().add_child(bullet1)
+    get_tree().root.add_child(bullet1)
 
     # Instanciar segunda bala en la esquina superior derecha
     var bullet2: Area2D = BulletScene.instantiate() as Area2D
     bullet2.position = position + offset2
     bullet2.rotation = rotation
-    get_parent().add_child(bullet2)
+    get_tree().root.add_child(bullet2)
 ```
 
 ## Paso 3: Creación de las balas
