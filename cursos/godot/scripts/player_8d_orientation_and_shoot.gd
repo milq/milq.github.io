@@ -14,7 +14,7 @@ func _ready() -> void:
     EscenaBala = load("res://bala.tscn")
 
 # Esta función se llama en cada fotograma
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 
     # Inicializamos el vector de entrada a cero
     var vector_entrada: Vector2 = Vector2.ZERO
