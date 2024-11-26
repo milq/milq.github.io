@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 
     # Acelerar hacia adelante
     if thrust:
-        var forward: Vector2 = Vector2.RIGHT.rotated(rotation)
+        var forward: Vector2 = Vector2.UP.rotated(rotation)
         velocity += forward * acceleration * delta
         # Limitar a velocidad máxima
         if velocity.length() > max_speed:
@@ -105,7 +105,7 @@ func shoot_bullets() -> void:
 
     # Calcular offsets hacia las esquinas
     var offset1: Vector2 = Vector2(offset_distance, -offset_distance)
-    var offset2: Vector2 = Vector2(offset_distance, offset_distance)
+    var offset2: Vector2 = Vector2(-offset_distance, -offset_distance)
 
     # Rotar offsets según la rotación del jugador
     offset1 = offset1.rotated(rotation)
@@ -155,7 +155,7 @@ var MARGIN: float = 50.0
 
 func _physics_process(delta: float) -> void:
     # Mover la bala hacia adelante
-    position += Vector2.RIGHT.rotated(rotation) * speed * delta
+    position += Vector2.UP.rotated(rotation) * speed * delta
 
     # Obtener el tamaño de la pantalla
     var screen_size: Vector2 = get_viewport_rect().size
