@@ -3,8 +3,11 @@ extends Node2D
 # Definimos la celeridad a la que este nodo seguirá al objetivo (el ratón)
 const SPEED: float = 15.0
 
-# Distancia a partir de la cual el objeto comenzará a reducir su velocidad.
-const SLOWDOWN_DISTANCE: float = 5.0
+# Distancia a partir de la cual el objeto comenzará a reducir su velocidad
+const SLOWDOWN_DISTANCE: float = 50.0
+
+# Distancia para considerar que se ha llegado al objetivo y debe de parar
+const DISTANCIA_LLEGADA: float = 25.0
 
 # Inicializamos la velocidad actual como un vector cero.
 var velocity: Vector2 = Vector2.ZERO
@@ -15,6 +18,11 @@ func _process(delta: float) -> void:
 
     # Calculamos el vector hacia el objetivo ('target_position')
     var vector_to_target: Vector2 = target_position - self.global_position
+
+    # Si la distancia al objetivo es menor que DISTANCIA_LLEGADA, detenemos
+    if vector_to_target.length() < DISTANCIA_LLEGADA:
+        velocity = Vector2.ZERO
+        return
 
     # Calculamos la velocidad deseada normalizando la distancia y
     # multiplicándola por la celeridad de seguimiento.
