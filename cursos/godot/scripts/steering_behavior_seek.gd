@@ -14,11 +14,11 @@ func _process(delta: float) -> void:
     var target_position: Vector2 = get_global_mouse_position()
 
     # Calculamos la distancia entre este nodo y la posición objetivo.
-    var distance_to_target: Vector2 = target_position - self.global_position
+    var to_target_vector: Vector2 = target_position - self.global_position
 
     # Calculamos la velocidad deseada normalizando la distancia y
     # multiplicándola por la celeridad de seguimiento.
-    var desired_velocity: Vector2 = distance_to_target.normalized() * SPEED
+    var desired_velocity: Vector2 = to_target_vector.normalized() * SPEED
 
     # Calculamos el 'steering' como el ajuste necesario a la velocidad actual
     var steering: Vector2 = desired_velocity - velocity
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 
     # Calculamos el factor de reducción basado en la distancia al objetivo
     var slow_down_factor: float = clamp(
-        distance_to_target.length() / SLOWDOWN_DISTANCE, 0.0, 1.0)
+        to_target_vector.length() / SLOWDOWN_DISTANCE, 0.0, 1.0)
 
     # Aplicamos el factor de reducción a la velocidad.
     velocity *= slow_down_factor
