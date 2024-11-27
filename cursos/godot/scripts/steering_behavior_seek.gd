@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
     # Obtenemos la posición objetivo basada en la posición del ratón.
     var target_position: Vector2 = get_global_mouse_position()
 
-    # Calculamos la distancia entre este nodo y la posición objetivo.
+    # Calculamos el vector hacia el objetivo ('target_position')
     var to_target_vector: Vector2 = target_position - self.global_position
 
     # Calculamos la velocidad deseada normalizando la distancia y
