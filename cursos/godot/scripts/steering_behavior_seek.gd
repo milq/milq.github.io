@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
     var target_position: Vector2 = get_global_mouse_position()
 
     # Calculamos el vector hacia el objetivo ('target_position')
-    var vector_to_target: Vector2 = target_position - self.global_position
+    var vector_to_target: Vector2 = target_position - global_position
 
     # Si la distancia al objetivo es menor que DISTANCIA_LLEGADA, detenemos
     if vector_to_target.length() < DISTANCIA_LLEGADA:
