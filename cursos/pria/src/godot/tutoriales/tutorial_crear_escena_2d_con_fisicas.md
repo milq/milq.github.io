@@ -98,7 +98,7 @@ func _unhandled_input(event: InputEvent) -> void:
 2. Renombra el nodo raíz como _Niblo_ y guarda la escena como `niblo.tscn`.
 3. Descarga el _sprite_ de Niblo desde [este enlace](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) y colócalo en la carpeta de recursos (`res://`).
 4. Añade un nodo hijo *Sprite2D* al nodo _Niblo_ y asigna el _sprite_ descargado como textura.
-5. Añade un nodo hijo *CollisionShape2D* al nodo _Niblo_. En el Inspector, asigna una forma adecuada como *RectangleShape2D* o *CircleShape2D* y ajusta su tamaño para que coincida con el _sprite_.
+5. Añade un nodo hijo *CollisionShape2D* al nodo _Niblo_. En el Inspector, asigna la forma *CircleShape2D* y ajusta su tamaño para que coincida con el _sprite_.
 6. Selecciona el nodo _Niblo_ y añade un _script_ haciendo clic en *Attach Script*.
 7. En el _script_, que extiende de `CharacterBody2D`, cambia el código existente por este otro:
 
@@ -138,7 +138,7 @@ func _physics_process(delta: float) -> void:
 2. Renombra el nodo raíz como _Manzana_ y guarda la escena como `manzana.tscn`.
 3. Descarga el _sprite_ de la manzana desde [este enlace](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/manzana.png) y colócalo en la carpeta de recursos.
 4. Añade un nodo hijo *Sprite2D* al nodo _Manzana_ y asigna el _sprite_ descargado como textura.
-5. Añade un nodo hijo *CollisionShape2D* al nodo _Manzana_ y asigna una forma adecuada como *CircleShape2D*.
+5. Añade un nodo hijo *CollisionShape2D* al nodo _Manzana_ y asigna la forma *CircleShape2D*.
 6. Ajusta el tamaño de la *CollisionShape2D* para que coincida con el _sprite_ de la manzana.
 7. Selecciona el nodo _Manzana_ y en el Inspector, crea un *New PhysicsMaterial* en la propiedad *Physics Material*. Dentro de *Physics Material*, configura el parámetro *Bounce* a `0.5` para que las manzanas reboten al caer.
 8. Selecciona el nodo _Manzana_ y en el Inspector ve a _RigidBody2D → Solver_ y activa la propiedad _Contact Monitor_ para que el nodo detecte colisiones y emita señales como `body_entered`.
@@ -151,6 +151,8 @@ func _physics_process(delta: float) -> void:
 extends RigidBody2D
 
 func _ready():
+    connect("body_entered", _on_body_entered)
+
     if GameManager.nivel_actual == 2:
         apply_impulse(Vector2.ZERO, Vector2(-500, 0))
 
