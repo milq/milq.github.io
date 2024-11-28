@@ -21,6 +21,8 @@ En este tutorial aprenderás a trabajar con `CollisionShape2D` en Godot creando 
 7. Añade un nodo hijo _CollisionShape2D_ al nodo _Niblo_.
 8. Selecciona el nodo _CollisionShape2D_ y en el campo _Shape_ elige una forma, como _CircleShape2D_.
 9. Ajusta el tamaño de la _CollisionShape2D_ para que se adapte al _sprite_ de _Niblo_.
+10. Selecciona el nodo _Niblo_ y haz clic en _Attach Script_ para añadir un _script_.
+11. Usa este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_eight_direction.gd) para permitir que _Niblo_ se mueva.
 
 ## Paso 3: Crea la escena de la manzana
 
@@ -32,6 +34,8 @@ En este tutorial aprenderás a trabajar con `CollisionShape2D` en Godot creando 
 6. Añade un nodo hijo _CollisionShape2D_ al nodo _Manzana_.
 7. Selecciona el nodo _CollisionShape2D_ y elige una forma, como _CircleShape2D_.
 8. Ajusta el tamaño de la _CollisionShape2D_ para que se adapte al _sprite_ de la manzana.
+9. Selecciona el nodo _Manzana_ y haz clic en _Attach Script_ para añadir un _script_.
+10. Usa este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/pria/src/godot/scripts/area_2d_manzana.gd) para que se agregue al grupo _Manzanas_ y que se elimine el nodo cuando detecta una colisión con _Niblo_.
 
 ## Paso 4: Instancia las escenas en la escena principal
 
@@ -54,12 +58,8 @@ En este tutorial aprenderás a trabajar con `CollisionShape2D` en Godot creando 
 
 ## Paso 6: Agrega lógica al proyecto
 
-1. Abre `niblo.tscn`, selecciona el nodo _Niblo_ y haz clic en _Attach Script_ para añadir un _script_.
-2. Usa este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_eight_direction.gd) para permitir que _Niblo_ se mueva.
-3. Abre `manzana.tscn`, selecciona el nodo _Manzana_ y haz clic en _Attach Script_ para añadir un _script_.
-4. Usa este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/pria/src/godot/scripts/area_2d_manzana.gd) para que se agregue al grupo _Manzanas_ y que se elimine el nodo cuando detecta una colisión con _Niblo_.
-5. Abre `main_scene.tscn`, selecciona el nodo _MainScene_ y haz clic en _Attach Script_ para añadir un _script_.
-6. Usa este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/pria/src/godot/scripts/contador_manzanas.gd) para actualizar el marcador de puntos cuando _Niblo_ recoja manzanas.
+1. Selecciona el nodo _MainScene_ y haz clic en _Attach Script_ para añadir un _script_.
+2. Usa este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/pria/src/godot/scripts/contador_manzanas.gd) para actualizar el marcador de puntos cuando _Niblo_ recoja manzanas.
 
 ## Paso 7: Prueba y experimenta
 
