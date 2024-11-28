@@ -151,6 +151,7 @@ func _physics_process(delta: float) -> void:
 extends RigidBody2D
 
 func _ready():
+
     connect("body_entered", _on_body_entered)
 
     if GameManager.nivel_actual == 2:
