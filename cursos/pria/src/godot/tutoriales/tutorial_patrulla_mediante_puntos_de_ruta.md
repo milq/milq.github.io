@@ -1,12 +1,12 @@
 # Tutorial para crear un _bot_ que patrulla por _waypoints_ en Godot
 
-En este tutorial, aprenderás a crear un _bot_ en Godot que patrulla a través de una serie de _waypoints_, girando suavemente al aproximarse a cada uno de ellos. El _bot_ utilizará un `AnimatedSprite2D` con un sprite específico y se moverá por 7 _waypoints_ definidos como nodos `Marker2D`. Una vez que alcance el último waypoint, volverá al primero, creando un circuito circular. Aprenderás a utilizar scripts y a manejar escenas para controlar el comportamiento del _bot_.
+En este tutorial, aprenderás a crear un _bot_ en Godot que patrulla a través de una serie de _waypoints_ (puntos de ruta), girando suavemente al aproximarse a cada uno de ellos. El _bot_ se moverá por 7 _waypoints_ definidos como nodos `Marker2D`. Una vez que alcance el último _waypoint_, volverá al primero, creando un circuito circular.
 
 ## Paso 1: Configuración del proyecto
 
 1. **Crea un nuevo proyecto**:
    - Abre Godot y crea un nuevo proyecto.
-   - Asigna un nombre al proyecto (por ejemplo, *Patrulla_bot_*) y elige una carpeta donde guardarlo.
+   - Asigna un nombre al proyecto (por ejemplo, *Waypoints*) y elige una carpeta donde guardarlo.
 2. **Crea la escena principal**:
    - Haz clic en _Scene_ y selecciona _New Scene_.
    - Añade un nodo _Node2D_ como nodo raíz.
