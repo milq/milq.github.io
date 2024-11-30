@@ -28,23 +28,19 @@ En este tutorial, aprenderás a crear un _bot_ en Godot que patrulla a través d
    - Haz clic en _Scene → New Scene_.
    - Añade un nodo _AnimatedSprite2D_ como nodo raíz.
 2. **Renombra y guarda la escena**:
-   - Renombra el nodo raíz como __bot__.
+   - Renombra el nodo raíz como _Bot_.
    - Guarda la escena como `_bot_.tscn` en la carpeta raíz del proyecto.
-3. **Añade el sprite del _bot_**:
-   - Descarga el sprite del _bot_ desde [aquí](https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/enemigo.png) y colócalo en la carpeta `res://` de tu proyecto.
-   - Selecciona el nodo __bot__ (que es un `AnimatedSprite2D`).
+3. **Añade el _sprite_ del _bot_**:
+   - Descarga el _sprite_ del _bot_ desde [aquí][T01] y arrástralo a la carpeta `res://` de tu proyecto.
+   - Selecciona el nodo _Bot_ (que es un _AnimatedSprite2D_).
    - En el Inspector, abre la propiedad _Animation_ y luego _Sprite Frames_.
    - Haz clic en `<empty>`, selecciona _New SpriteFrames_, y pulsa en el nuevo valor creado llamado `SpriteFrames`.
    - Verifica que el texto de `SpriteFrames` se resalta en azul y que se abre debajo el panel correspondiente.
    - Arrastra `enemigo.png` a la zona de _Animation Frames_.
-   - Si el sprite tiene múltiples frames para animación, puedes organizarlos en una animación llamada "default".
-4. **Añade colisión al _bot_ (opcional)**:
-   - Si deseas que el _bot_ tenga colisión, añade un nodo hijo _CollisionShape2D_ al nodo __bot__.
-   - En el Inspector, asigna una forma adecuada, como _RectangleShape2D_ o _CircleShape2D_.
-   - Ajusta su tamaño y posición para que coincida con el sprite.
-5. **Añade un script al _bot_**:
-   - Selecciona el nodo __bot__ y asígnale un script denominado `_bot_.gd`.
-   - Escribe el código del script con tipado estático explícito:
+   - Recuerda, si quieres animar _sprites_ en 2D en Godot, puedes estudiar este [tutorial][T02].
+4. **Añade un _script_ al _bot_**:
+   - Selecciona el nodo _Bot_ y asígnale un _script_ denominado `bot.gd`.
+   - Ponle el siguiente código de GDScript:
 
 ```gdscript
 extends AnimatedSprite2D
@@ -95,94 +91,39 @@ func _physics_process(delta: float) -> void:
         current_waypoint = _waypoints_[current_waypoint_index]
 ```
 
-**Explicación del código:**
-
-- **Constantes:**
-  - `SPEED`: controla la velocidad de movimiento del _bot_.
-  - `TURN_SPEED`: determina qué tan rápido gira el _bot_ para alinearse con el siguiente waypoint.
-  - `START_TURN_DISTANCE`: define a qué distancia del waypoint el _bot_ comienza a girar.
-
-- **Variables:**
-  - `_waypoints_`: almacenará las posiciones de los _waypoints_ obtenidos de la escena principal.
-  - `current_waypoint_index`: índice del waypoint al que se dirige el _bot_.
-  - `current_waypoint`: posición del waypoint actual.
-
-- **Función `_ready()`:**
-  - Obtiene el nodo `_waypoints_` de la escena principal.
-  - Itera sobre sus hijos y agrega las posiciones de los `Marker2D` al array `_waypoints_`.
-  - Establece el primer waypoint como objetivo.
-
-- **Función `_physics_process(delta)`:**
-  - Calcula el vector dirección hacia el waypoint actual.
-  - Calcula la distancia al waypoint actual.
-  - Calcula el ángulo deseado para mirar hacia el waypoint.
-  - Interpola la rotación actual hacia el ángulo deseado usando `lerp_angle` para un giro suave.
-  - Actualiza la posición del _bot_ moviéndolo hacia adelante en la dirección actual.
-  - Si la distancia al waypoint es menor que `START_TURN_DISTANCE`, actualiza el índice al siguiente waypoint.
-
-**Nota:** El uso de `lerp_angle` permite una interpolación suave entre ángulos, manejando correctamente la transición entre 0 y 2π radianes.
-
 ## Paso 3: Configuración de los _waypoints_ en la escena principal
 
 1. **Agrupa los _waypoints_ en un nodo**:
-   - En `MainScene.tscn`, añade un nodo `Node2D` como hijo de `MainScene` y renómbralo como `_waypoints_`.
-2. **Añade los _waypoints_**:
-   - Añade 7 nodos hijos al nodo `_waypoints_`, cada uno de tipo `Marker2D`.
-   - Renombra cada `Marker2D` como `Waypoint1`, `Waypoint2`, ..., `Waypoint7`.
-3. **Posiciona los _waypoints_**:
-   - Selecciona cada `Marker2D` y posiciónalos en el escenario donde desees que el _bot_ patrulle.
+   - Abre `main_scene.tscn`, añade un nodo de tipo _Node_ como hijo de _MainScene_ y renómbralo como _Waypoints_.
+2. **Crea los _waypoints_**:
+   - Añade un nodo de tipo _Marker2D_ como hijo de _Waypoints_ y renómbralo como _Waypoint1_.
+   - Duplica _Waypoint1_ (`Ctrl` + `D`) seis veces.
+   - Asegúrate de que _Waypoint1_, _Waypoint2_, y los demás sean hijos de _Waypoints_ y del tipo _Marker2D_.
+4. **Posiciona los _waypoints_**:
+   - Selecciona cada _waypoint_ y posiciónalo en el escenario donde desees que el _bot_ patrulle.
    - Por ejemplo, distribúyelos en diferentes puntos para formar una ruta cerrada.
-4. **Verifica la estructura de la escena**:
-   - Deberías tener algo como:
-
-```
-MainScene
-├── _waypoints_
-│   ├── Waypoint1 (Marker2D)
-│   ├── Waypoint2 (Marker2D)
-│   ├── Waypoint3 (Marker2D)
-│   ├── Waypoint4 (Marker2D)
-│   ├── Waypoint5 (Marker2D)
-│   ├── Waypoint6 (Marker2D)
-│   └── Waypoint7 (Marker2D)
-```
 
 ## Paso 4: Añadir el _bot_ a la escena principal
 
 1. **Instancia el _bot_ en `MainScene`**:
-   - En `MainScene.tscn`, haz clic derecho en el nodo `MainScene` y selecciona _Instance Child Scene_.
-   - Selecciona `_bot_.tscn` para instanciar el _bot_.
+   - Haz clic derecho en el nodo `MainScene` y selecciona _Instance Child Scene_.
+   - Selecciona `bot.tscn` para instanciar el _bot_.
 2. **Posiciona el _bot_**:
-   - Selecciona el nodo `_bot_`.
-   - En el Inspector, establece la posición inicial. Puede ser en el primer waypoint:
-     - Establece la posición en la misma que `Waypoint1`.
+   - Selecciona el nodo _Bot_.
+   - En el Inspector, establece la posición inicial:
+     - Establece la posición en la misma que _Waypoint1_.
      - O en otra posición según prefieras.
-3. **Verifica la estructura final**:
-   - La escena debería verse así:
-
-```
-MainScene
-├── _bot_ (AnimatedSprite2D)
-├── _waypoints_
-│   ├── Waypoint1 (Marker2D)
-│   ├── Waypoint2 (Marker2D)
-│   ├── Waypoint3 (Marker2D)
-│   ├── Waypoint4 (Marker2D)
-│   ├── Waypoint5 (Marker2D)
-│   ├── Waypoint6 (Marker2D)
-│   └── Waypoint7 (Marker2D)
-```
 
 ## Paso 5: Probar el movimiento del _bot_
 
 1. **Configura la escena principal como escena de inicio**:
    - Ve a _Project → Project Settings → General → Application → Run → Main Scene_.
-   - Asegúrate de que esté establecido en `res://MainScene.tscn`.
+   - Asegúrate de que esté establecido en `res://main_scene.tscn`.
 2. **Ejecuta el proyecto**:
    - Presiona la tecla `F5` o haz clic en _Run Project_ para ejecutar el juego.
 3. **Observa el comportamiento del _bot_**:
-   - El _bot_ debería moverse hacia el primer waypoint.
-   - Al acercarse a él, comenzará a girar suavemente hacia el siguiente waypoint.
+   - El _bot_ debería moverse hacia el primer _waypoint_.
+   - Al acercarse a él, comenzará a girar suavemente hacia el siguiente _waypoint_.
    - Continuará este proceso para todos los _waypoints_ en orden, y después volverá al primero, creando un bucle continuo.
 
 ## Paso 6: Ajustar parámetros para el giro suave (opcional)
@@ -210,3 +151,6 @@ Ahora que tienes un _bot_ patrullando por _waypoints_, puedes añadir funcionali
 - **Interpolación de ángulos con `lerp_angle`**: consulta la documentación oficial de Godot sobre [Interpolación lineal](https://docs.godotengine.org/es/stable/tutorials/math/interpolation.html) para entender cómo funciona la interpolación de ángulos y posiciones.
 - **Uso de `Marker2D`**: los nodos `Marker2D` son útiles para definir puntos en el espacio 2D sin representar nada visualmente. Puedes usarlos para definir rutas y puntos de interés.
 - **Optimización del código**: si tienes muchos _bot_s o _waypoints_, considera optimizar tu código para mejorar el rendimiento.
+
+[T01]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/enemigo.png
+[T02]: https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html
