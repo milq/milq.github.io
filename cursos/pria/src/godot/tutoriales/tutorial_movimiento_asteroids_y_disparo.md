@@ -36,8 +36,8 @@ En este tutorial aprenderás a crear un juego en Godot donde controlarás una na
    - Selecciona el nodo _AnimatedSprite2D_ y, en el Inspector, abre _Animation_ y ve a la propiedad _Sprite Frames_.
    - Haz clic en `<empty>`, selecciona _New SpriteFrames_ y pulsa en el nuevo valor creado, llamado `SpriteFrames`.
    - Verifica que el texto de `SpriteFrames` se resalta en azul y que se abre debajo el panel correspondiente.
-   - Arrastra `jugador.png` a la zona de _Animation Frames_ como se muestra [aquí](https://milq.github.io/cursos/pria/src/godot/capturas/animation_sprite_frames.png).
-   - Si quieres animar _sprites_ en 2D en Godot, consulta este [tutorial](https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html).
+   - Arrastra `jugador.png` a la zona de _Animation Frames_ como se muestra [aquí][T03].
+   - Si quieres animar _sprites_ en 2D en Godot, estudia este [tutorial][T04].
 4. **Añade colisión al jugador**:
    - Añade un nodo hijo _CollisionShape2D_ al nodo _Jugador_.
    - En el Inspector, asigna una forma adecuada, como _RectangleShape2D_.
@@ -137,7 +137,7 @@ func shoot_bullets() -> void:
    - Renombra el nodo raíz como _Bala_.
    - Guarda la escena como `bala.tscn` en la carpeta raíz del proyecto.
 3. **Añade el _sprite_ de la bala**:
-   - Descarga el _sprite_ de la bala desde [aquí][T03] y colócalo en la carpeta `res://` de tu proyecto.
+   - Descarga el _sprite_ de la bala desde [aquí][T05] y colócalo en la carpeta `res://` de tu proyecto.
    - Añade un nodo hijo _Sprite2D_ al nodo _Bala_.
    - En el Inspector, asigna la textura del sprite descargado.
 4. **Añade colisión a la bala**:
@@ -204,8 +204,10 @@ Ahora que tienes la base del juego funcionando, puedes añadir mejoras y caracte
 - **Vidas del jugador**: Implementa un sistema de vidas o salud para el jugador.
 - **Niveles de dificultad**: Aumenta la cantidad y velocidad de los asteroides y enemigos con el tiempo.
 - **Efectos de sonido y música**: Añade efectos de sonido para disparos, explosiones y música de fondo.
-- **Animaciones**: Crea animaciones para la explosión de asteroides, naves enemigas y la nave del jugador.
+- **Animar los _sprites_ con `AnimatedSprite2D`**: Utiliza el nodo `AnimatedSprite2D` para darle vida a tus personajes y objetos. Por ejemplo, puedes usarlo para animar las explosiones o el movimiento de las naves. Consulta el [tutorial oficial][T03] para aprender a configurar y utilizar este nodo.
 
 [T01]: https://en.wikipedia.org/wiki/Asteroids_(video_game)
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/jugador.png
-[T03]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/bala_jugador.png
+[T03]: https://milq.github.io/cursos/pria/src/godot/capturas/animation_sprite_frames.png
+[T04]: https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html
+[T05]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/bala_jugador.png
