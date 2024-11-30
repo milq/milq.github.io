@@ -20,7 +20,7 @@ En este tutorial, aprenderás a crear un _bot_ en Godot que patrulla a través d
    - Selecciona el color negro para simular el espacio o un color de fondo que prefieras.
 5. **Configura el _renderizado_ para _pixel art_ (si es necesario)**:
    - Ve a _Project → Project Settings → General → Rendering → Textures_.
-   - Establece _Default Texture Filter_ en _Nearest_ para que los píxeles de las texturas se vean nítidos (opcional, dependiendo del estilo gráfico).
+   - Establece _Default Texture Filter_ en _Nearest_ para que los píxeles de las texturas se vean nítidos (opcional).
 
 ## Paso 2: Creación del _bot_ que patrulla por _waypoints_
 
