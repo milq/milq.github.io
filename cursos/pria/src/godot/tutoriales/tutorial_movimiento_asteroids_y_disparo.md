@@ -32,8 +32,12 @@ En este tutorial aprenderás a crear un juego en Godot donde controlarás una na
    - Guarda la escena como `jugador.tscn` en la carpeta raíz del proyecto.
 3. **Añade el _sprite_ del jugador**:
    - Descarga el _sprite_ de la nave desde [aquí][T02] y colócalo en la carpeta `res://` de tu proyecto.
-   - Añade un nodo hijo _Sprite2D_ al nodo _Jugador_.
-   - En el Inspector, asigna la textura del _sprite_ descargado.
+   - Añade un nodo hijo _AnimatedSprite2D_ al nodo _Jugador_.
+   - Selecciona el nodo _AnimatedSprite2D_ y, en el Inspector, abre _Animation_ y ve a la propiedad _Sprite Frames_.
+   - Haz clic en `<empty>`, selecciona _New SpriteFrames_ y pulsa en el nuevo valor creado, llamado `SpriteFrames`.
+   - Verifica que el texto de `SpriteFrames` se resalta en azul y que se abre debajo el panel correspondiente.
+   - Arrastra `jugador.png` a la zona de _Animation Frames_ como se muestra [aquí](https://milq.github.io/cursos/pria/src/godot/capturas/animation_sprite_frames.png).
+   - Para más detalles sobre cómo animar _sprites_ en 2D en Godot, consulta este [tutorial](https://docs.godotengine.org/en/stable/tutorials/2d/2d_sprite_animation.html).
 4. **Añade colisión al jugador**:
    - Añade un nodo hijo _CollisionShape2D_ al nodo _Jugador_.
    - En el Inspector, asigna una forma adecuada, como _RectangleShape2D_.
