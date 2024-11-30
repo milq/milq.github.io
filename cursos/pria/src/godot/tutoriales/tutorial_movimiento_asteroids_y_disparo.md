@@ -204,7 +204,7 @@ Ahora que tienes la base del juego funcionando, puedes añadir mejoras y caracte
 - **Vidas del jugador**: Implementa un sistema de vidas o salud para el jugador.
 - **Niveles de dificultad**: Aumenta la cantidad y velocidad de los asteroides y enemigos con el tiempo.
 - **Efectos de sonido y música**: Añade efectos de sonido para disparos, explosiones y música de fondo.
-- **Animar los _sprites_ con `AnimatedSprite2D`**: Utiliza el nodo `AnimatedSprite2D` para darle vida a tus personajes y objetos. Por ejemplo, puedes usarlo para animar las explosiones o el movimiento de las naves. Consulta el [tutorial oficial][T03] para aprender a configurar y utilizar este nodo.
+- **Animar los _sprites_ con `AnimatedSprite2D`**: Utiliza el nodo `AnimatedSprite2D` para darle vida a tus personajes y objetos. Por ejemplo, puedes usarlo para animar las explosiones o el movimiento de las naves. Consulta el [tutorial oficial][T03] para aprender a utilizar este nodo.
 
 [T01]: https://en.wikipedia.org/wiki/Asteroids_(video_game)
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/sprites/jugador.png
