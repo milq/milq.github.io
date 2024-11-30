@@ -108,7 +108,7 @@ func _process(delta: float) -> void:
 Ahora que tienes un _bot_ patrullando por _waypoints_, puedes añadir funcionalidades adicionales:
 
 - **Añadir más _bots_**: crea más _bots_ y haz que patrullen en diferentes rutas o en la misma ruta pero en diferentes celeridades.
-- **Interacción con el jugador**: crea un jugador y haz que los _bots_ reaccionen al jugador, por ejemplo, persiguiéndolo si se acerca demasiado.
+- **Interacción con el jugador**: crea un jugador y haz que los _bots_ reaccionen al jugador, por ejemplo, persiguiéndolo si se acerca.
 - **Animaciones**: usa diferentes animaciones según el estado del _bot_ o del jugador.
 - **Detección de colisiones**: añade colisiones al _bot_ para que pueda interactuar con otros objetos en la escena.
 - **Efectos visuales y de sonido**: añade partículas o efectos de sonido cuando el _bot_ cambia de dirección o llega a un _waypoint_.
