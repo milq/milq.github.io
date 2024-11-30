@@ -1,6 +1,6 @@
-# Tutorial para crear un _bot_ que patrulla por waypoints en Godot
+# Tutorial para crear un _bot_ que patrulla por _waypoints_ en Godot
 
-En este tutorial, aprenderás a crear un _bot_ en Godot que patrulla a través de una serie de waypoints, girando suavemente al aproximarse a cada uno de ellos. El _bot_ utilizará un `AnimatedSprite2D` con un sprite específico y se moverá por 7 waypoints definidos como nodos `Marker2D`. Una vez que alcance el último waypoint, volverá al primero, creando un circuito circular. Aprenderás a utilizar scripts y a manejar escenas para controlar el comportamiento del _bot_.
+En este tutorial, aprenderás a crear un _bot_ en Godot que patrulla a través de una serie de _waypoints_, girando suavemente al aproximarse a cada uno de ellos. El _bot_ utilizará un `AnimatedSprite2D` con un sprite específico y se moverá por 7 _waypoints_ definidos como nodos `Marker2D`. Una vez que alcance el último waypoint, volverá al primero, creando un circuito circular. Aprenderás a utilizar scripts y a manejar escenas para controlar el comportamiento del _bot_.
 
 ## Paso 1: Configuración del proyecto
 
@@ -22,7 +22,7 @@ En este tutorial, aprenderás a crear un _bot_ en Godot que patrulla a través d
    - Ve a _Project → Project Settings → General → Rendering → Textures_.
    - Establece _Default Texture Filter_ en _Nearest_ para que los píxeles de las texturas se vean nítidos (opcional, dependiendo del estilo gráfico).
 
-## Paso 2: Creación del _bot_ que patrulla por waypoints
+## Paso 2: Creación del _bot_ que patrulla por _waypoints_
 
 1. **Crea una nueva escena**:
    - Haz clic en _Scene → New Scene_.
@@ -54,8 +54,8 @@ const SPEED: float = 100.0  # Velocidad de movimiento en píxeles por segundo
 const TURN_SPEED: float = 2.0  # Velocidad de giro en radianes por segundo
 const START_TURN_DISTANCE: float = 50.0  # Distancia al waypoint para empezar a girar
 
-# Array de waypoints (se llenará en tiempo de ejecución)
-var waypoints: Array[Vector2] = []
+# Array de _waypoints_ (se llenará en tiempo de ejecución)
+var _waypoints_: Array[Vector2] = []
 
 # Índice del waypoint actual
 var current_waypoint_index: int = 0
@@ -64,13 +64,13 @@ var current_waypoint_index: int = 0
 var current_waypoint: Vector2
 
 func _ready() -> void:
-    # Obtener la lista de waypoints desde la escena principal
-    var waypoints_node: Node = get_parent().get_node("Waypoints")
-    for marker in waypoints_node.get_children():
+    # Obtener la lista de _waypoints_ desde la escena principal
+    var _waypoints__node: Node = get_parent().get_node("_waypoints_")
+    for marker in _waypoints__node.get_children():
         if marker is Marker2D:
-            waypoints.append(marker.position)
+            _waypoints_.append(marker.position)
     # Establecer el primer waypoint
-    current_waypoint = waypoints[current_waypoint_index]
+    current_waypoint = _waypoints_[current_waypoint_index]
 
 func _physics_process(delta: float) -> void:
     # Vector hacia el waypoint actual
@@ -91,8 +91,8 @@ func _physics_process(delta: float) -> void:
 
     # Si estamos cerca del waypoint actual, pasar al siguiente
     if distance_to_waypoint < START_TURN_DISTANCE:
-        current_waypoint_index = (current_waypoint_index + 1) % waypoints.size()
-        current_waypoint = waypoints[current_waypoint_index]
+        current_waypoint_index = (current_waypoint_index + 1) % _waypoints_.size()
+        current_waypoint = _waypoints_[current_waypoint_index]
 ```
 
 **Explicación del código:**
@@ -103,13 +103,13 @@ func _physics_process(delta: float) -> void:
   - `START_TURN_DISTANCE`: define a qué distancia del waypoint el _bot_ comienza a girar.
 
 - **Variables:**
-  - `waypoints`: almacenará las posiciones de los waypoints obtenidos de la escena principal.
+  - `_waypoints_`: almacenará las posiciones de los _waypoints_ obtenidos de la escena principal.
   - `current_waypoint_index`: índice del waypoint al que se dirige el _bot_.
   - `current_waypoint`: posición del waypoint actual.
 
 - **Función `_ready()`:**
-  - Obtiene el nodo `Waypoints` de la escena principal.
-  - Itera sobre sus hijos y agrega las posiciones de los `Marker2D` al array `waypoints`.
+  - Obtiene el nodo `_waypoints_` de la escena principal.
+  - Itera sobre sus hijos y agrega las posiciones de los `Marker2D` al array `_waypoints_`.
   - Establece el primer waypoint como objetivo.
 
 - **Función `_physics_process(delta)`:**
@@ -122,14 +122,14 @@ func _physics_process(delta: float) -> void:
 
 **Nota:** El uso de `lerp_angle` permite una interpolación suave entre ángulos, manejando correctamente la transición entre 0 y 2π radianes.
 
-## Paso 3: Configuración de los waypoints en la escena principal
+## Paso 3: Configuración de los _waypoints_ en la escena principal
 
-1. **Agrupa los waypoints en un nodo**:
-   - En `MainScene.tscn`, añade un nodo `Node2D` como hijo de `MainScene` y renómbralo como `Waypoints`.
-2. **Añade los waypoints**:
-   - Añade 7 nodos hijos al nodo `Waypoints`, cada uno de tipo `Marker2D`.
+1. **Agrupa los _waypoints_ en un nodo**:
+   - En `MainScene.tscn`, añade un nodo `Node2D` como hijo de `MainScene` y renómbralo como `_waypoints_`.
+2. **Añade los _waypoints_**:
+   - Añade 7 nodos hijos al nodo `_waypoints_`, cada uno de tipo `Marker2D`.
    - Renombra cada `Marker2D` como `Waypoint1`, `Waypoint2`, ..., `Waypoint7`.
-3. **Posiciona los waypoints**:
+3. **Posiciona los _waypoints_**:
    - Selecciona cada `Marker2D` y posiciónalos en el escenario donde desees que el _bot_ patrulle.
    - Por ejemplo, distribúyelos en diferentes puntos para formar una ruta cerrada.
 4. **Verifica la estructura de la escena**:
@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void:
 
 ```
 MainScene
-├── Waypoints
+├── _waypoints_
 │   ├── Waypoint1 (Marker2D)
 │   ├── Waypoint2 (Marker2D)
 │   ├── Waypoint3 (Marker2D)
@@ -163,7 +163,7 @@ MainScene
 ```
 MainScene
 ├── _bot_ (AnimatedSprite2D)
-├── Waypoints
+├── _waypoints_
 │   ├── Waypoint1 (Marker2D)
 │   ├── Waypoint2 (Marker2D)
 │   ├── Waypoint3 (Marker2D)
@@ -183,7 +183,7 @@ MainScene
 3. **Observa el comportamiento del _bot_**:
    - El _bot_ debería moverse hacia el primer waypoint.
    - Al acercarse a él, comenzará a girar suavemente hacia el siguiente waypoint.
-   - Continuará este proceso para todos los waypoints en orden, y después volverá al primero, creando un bucle continuo.
+   - Continuará este proceso para todos los _waypoints_ en orden, y después volverá al primero, creando un bucle continuo.
 
 ## Paso 6: Ajustar parámetros para el giro suave (opcional)
 
@@ -197,7 +197,7 @@ Prueba diferentes valores para lograr el efecto deseado de suavidad en el giro y
 
 ## Paso 7: Mejoras y experimentación (opcional)
 
-Ahora que tienes un _bot_ patrullando por waypoints, puedes añadir funcionalidades adicionales:
+Ahora que tienes un _bot_ patrullando por _waypoints_, puedes añadir funcionalidades adicionales:
 
 - **Añadir más _bot_s**: instancia múltiples _bot_s y haz que patrullen diferentes rutas o la misma ruta en diferentes direcciones.
 - **Interacción con el jugador**: si tienes un jugador en la escena, puedes hacer que los _bot_s reaccionen al jugador, por ejemplo, persiguiéndolo si se acerca demasiado.
@@ -209,4 +209,4 @@ Ahora que tienes un _bot_ patrullando por waypoints, puedes añadir funcionalida
 
 - **Interpolación de ángulos con `lerp_angle`**: consulta la documentación oficial de Godot sobre [Interpolación lineal](https://docs.godotengine.org/es/stable/tutorials/math/interpolation.html) para entender cómo funciona la interpolación de ángulos y posiciones.
 - **Uso de `Marker2D`**: los nodos `Marker2D` son útiles para definir puntos en el espacio 2D sin representar nada visualmente. Puedes usarlos para definir rutas y puntos de interés.
-- **Optimización del código**: si tienes muchos _bot_s o waypoints, considera optimizar tu código para mejorar el rendimiento.
+- **Optimización del código**: si tienes muchos _bot_s o _waypoints_, considera optimizar tu código para mejorar el rendimiento.
