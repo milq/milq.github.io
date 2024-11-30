@@ -8,6 +8,11 @@ const FRICCION: float = 0.99          # Factor de fricción
 const DISTANCIA_BALA: float = 32.0    # Desplazamiento de la bala desde jugador
 const MARGEN_REAPARECER: float = 32.0 # Margen para el wrap-around
 
+# Dirección base del 'sprite'. Se usa Vector2.UP porque el 'sprite'
+# está orientado hacia el norte. Si estuviera orientado hacia la
+# derecha, izquierda o abajo, usaríamos Vector2.RIGHT, LEFT o DOWN.
+const ORIENTACION_SPRITE: Vector2 = Vector2.UP
+
 # Escena de la bala que se usará para disparar
 @export var EscenaBala: PackedScene
 
@@ -33,7 +38,7 @@ func _physics_process(delta: float) -> void:
     # Aceleración del jugador
     if Input.is_action_pressed("ui_up"):
         # Aplicamos aceleración en la dirección actual
-        var direccion: Vector2 = Vector2.UP.rotated(rotation)
+        var direccion: Vector2 = ORIENTACION_SPRITE.rotated(rotation)
         velocidad_actual += direccion * ACELERACION * delta
         # Limitamos la velocidad máxima
         if velocidad_actual.length() > VELOCIDAD_MAXIMA:
@@ -60,7 +65,7 @@ func disparar() -> void:
     var bala: Area2D = EscenaBala.instantiate() as Area2D
 
     # Calculamos el desplazamiento basado en la rotación actual
-    var direccion: Vector2 = Vector2.UP.rotated(rotation)
+    var direccion: Vector2 = ORIENTACION_SPRITE.rotated(rotation)
     var offset: Vector2 = direccion * DISTANCIA_BALA
 
     # Posicionamos la bala con un pequeño desplazamiento desde el jugador
