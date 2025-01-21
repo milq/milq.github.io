@@ -17,7 +17,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - Abre el Panel de Control de XAMPP.
    - Inicia el módulo de Apache haciendo clic en "Start".
 
-### **Paso 2: Reconocer y modificar los parámetros de administración más importantes del servidor web**
+## Paso 2: Modificar los parámetros de administración más importantes del servidor web
 
 1. **Accede al archivo de configuración:**
    - Navega a `C:\xampp\apache\conf\httpd.conf`.
