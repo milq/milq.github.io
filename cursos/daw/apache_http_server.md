@@ -119,7 +119,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 14. **Reinicia Apache para aplicar los cambios:**
     - Vuelve al Panel de Control de XAMPP y reinicia el módulo de Apache para que las nuevas configuraciones tengan efecto.
 
-## Paso 3: Ampliar la funcionalidad del servidor con la activación de módulos
+## Paso 3: Activar y configurar nuevos módulos
 
 1. **Activa módulos:**
    - En `httpd.conf`, localiza las líneas que empiezan con `LoadModule`.
