@@ -261,10 +261,10 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 ## Paso 8: Utiliza tecnologías de gestión de _logs_
 
-1. **Instala una herramienta de gestión de logs (por ejemplo, ELK Stack):**
+1. **Instala una herramienta de gestión de _logs_ (por ejemplo, ELK Stack):**
    - Instala [Elasticsearch](https://www.elastic.co/es/elasticsearch/), [Logstash](https://www.elastic.co/es/logstash/) y [Kibana](https://www.elastic.co/es/kibana/) siguiendo las instrucciones oficiales para Windows.
 
-2. **Configura Apache para enviar logs a Logstash:**
+2. **Configura Apache para enviar _logs_ a Logstash:**
    - En `httpd.conf`, añade:
      ```apache
      CustomLog "| C:/logstash/bin/logstash.bat -f C:/logstash/conf.d/apache.conf" combined
