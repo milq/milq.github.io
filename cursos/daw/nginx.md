@@ -17,7 +17,7 @@ En este tutorial aprenderás a configurar el servidor web Nginx en Windows, abar
 4. **Verifica la instalación:**
    - Abre un navegador y accede a `http://localhost`. Deberías ver la página de bienvenida de Nginx.
 
-## Paso 2: Reconocer y modificar los parámetros de administración más importantes del servidor web
+## Paso 2: Modificar los parámetros de administración más importantes del servidor web
 
 1. **Accede al archivo de configuración:**
    - Abre `C:\nginx\conf\nginx.conf` con un editor de texto como Notepad++.
