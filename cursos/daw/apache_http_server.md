@@ -259,20 +259,6 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 4. **Reinicia Apache:**
    - Reinicia Apache para aplicar las medidas de seguridad.
 
-## Paso 8: Implantación de aplicaciones en el servidor web
-
-1. **Prepara la aplicación:**
-   - Asegúrate de que la aplicación web esté compatible con Apache y cumpla con los requisitos necesarios.
-
-2. **Configura permisos:**
-   - Establece los permisos adecuados en los directorios de la aplicación para evitar accesos no autorizados.
-
-3. **Configura variables de entorno (si es necesario):**
-   - En `httpd.conf` o en el archivo de configuración del sitio virtual, define las variables de entorno requeridas por la aplicación.
-
-4. **Reinicia Apache:**
-   - Reinicia Apache y prueba la aplicación accediendo a la URL correspondiente.
-
 ## Paso 8: Utiliza tecnologías de gestión de _logs_
 
 1. **Instala una herramienta de gestión de logs (por ejemplo, ELK Stack):**
@@ -309,4 +295,4 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - Accede a Kibana en `http://localhost:5601` para visualizar y analizar los logs en tiempo real.
 
 5. **Monitoriza y haz un análisis:**
-   - Configura dashboards en Kibana para monitorizar el rendimiento y detectar posibles incidencias en el servidor Apache.
+   - Configura _dashboards_ en Kibana para monitorizar el rendimiento y detectar posibles incidencias en el servidor Apache.
