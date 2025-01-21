@@ -190,7 +190,7 @@ En este tutorial aprenderás a configurar el servidor web Nginx en Windows, abar
 6. **Reinicia Nginx:**
    - Ejecuta `nginx -s reload` para aplicar la nueva configuración.
 
-## Paso 5: Configurar Mecanismos de Autenticación y Control de Acceso
+## Paso 5: Configurar mecanismos de autenticación y control de acceso
 
 1. **Instala `htpasswd` para crear archivos de contraseñas:**
    - Descarga [htpasswd para Windows](https://httpd.apache.org/docs/2.4/programs/htpasswd.html) o utiliza herramientas compatibles para generar el archivo `.htpasswd`.
