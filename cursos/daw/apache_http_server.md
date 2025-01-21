@@ -190,7 +190,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 3. **Prueba la autenticación:**
    - Accede al sitio virtual en el navegador (`http://ejemplo.local`) y verifica que se solicita el usuario y contraseña.
 
-## Paso 6: Obtén e instala certificados digitales con Let's Encrypt
+## Paso 6: Obtén e instala certificados digitales con Let's Encrypt usando Certbot
 
 1. **Instala Certbot:**
    - Descarga [Certbot para Windows](https://certbot.eff.org/instructions) y extrae los archivos en una carpeta, por ejemplo, `C:\certbot`.
