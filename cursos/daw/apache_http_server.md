@@ -121,7 +121,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 ## Paso 3: Ampliar la funcionalidad del servidor mediante la activación y configuración de módulos
 
-1. **Activa Módulos:**
+1. **Activa módulos:**
    - En `httpd.conf`, localiza las líneas que empiezan con `LoadModule`.
    - Descomenta (elimina el `#`) los módulos que desees activar, por ejemplo:
      ```apache
@@ -129,7 +129,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      LoadModule headers_module modules/mod_headers.so
      ```
 
-2. **Configura Módulos:**
+2. **Configura módulos:**
    - Para `mod_rewrite`, asegúrate de permitir su uso en `.htaccess`:
      ```apache
      <Directory "C:/xampp/htdocs">
