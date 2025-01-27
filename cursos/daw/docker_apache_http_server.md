@@ -21,7 +21,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
 
 1. **Abre la terminal**: abre PowerShell o CMD.
 
-2. **Descarga la imagen oficial**  
+2. **Descarga la [imagen oficial](https://hub.docker.com/_/httpd)**  
    ```bash
    docker pull httpd:2.4
    ```
