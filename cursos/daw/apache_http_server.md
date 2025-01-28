@@ -12,7 +12,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 2. **Instala XAMPP:**
    - Ejecuta el instalador descargado.
    - Selecciona los componentes que deseas instalar (asegúrate de incluir Apache).
-   - Elige el directorio de instalación (por defecto suele ser `C:\xampp`).
+   - **Cambia el directorio de instalación** a `C:\Users\Usuario\xampp` para no interferir con la instalación principal de XAMPP que podría estar en `C:\xampp`.
    - Completa la instalación siguiendo las indicaciones del asistente.
 
 3. **Inicia los servicios:**
@@ -22,7 +22,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 ## Paso 2: Modificar los parámetros de administración más importantes del servidor web
 
 1. **Accede al archivo de configuración:**
-   - Navega a `C:\xampp\apache\conf\httpd.conf`.
+   - Navega a `C:\Users\Usuario\xampp\apache\conf\httpd.conf`.
    - Abre `httpd.conf` con un editor de texto como Notepad++.
 
 2. **Parámetros clave:**
@@ -32,7 +32,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - **`<Directory>`**: Configura permisos y opciones para directorios específicos.
 
 3. **Cambia el puerto de escucha (`Listen`):**
-   - Abre el archivo `httpd.conf` ubicado en `C:\xampp\apache\conf\httpd.conf`.
+   - Abre el archivo `httpd.conf` ubicado en `C:\Users\Usuario\xampp\apache\conf\httpd.conf`.
    - Localiza la línea que comienza con `Listen` y cámbiala si es necesario. Por ejemplo, para cambiar el puerto a **8080**:
      ```apache
      Listen 8080
@@ -94,7 +94,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      ```apache
      LimitRequestBody 10485760
      ```
-   - **Ejemplo:** Limita a **10 MB** (10485760 bytes).
+   - **Ejemplo:** Limita a **15 MB** (15728640 bytes).
 
 11. **Configura la codificación de caracteres (`AddDefaultCharset`):**
    - Establece la codificación predeterminada para los documentos servidos.
@@ -118,6 +118,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
           Redirect permanent / https://ejemplo.local/
       </VirtualHost>
       ```
+
 14. **Reinicia Apache para aplicar los cambios:**
     - Vuelve al Panel de Control de XAMPP y reinicia el módulo de Apache para que las nuevas configuraciones tengan efecto.
 
@@ -134,7 +135,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 2. **Configura módulos:**
    - Para `mod_rewrite`, asegúrate de permitir su uso en `.htaccess`:
      ```apache
-     <Directory "C:/xampp/htdocs">
+     <Directory "C:/Users/Usuario/xampp/htdocs">
          AllowOverride All
      </Directory>
      ```
@@ -145,14 +146,14 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 ## Paso 4: Crear y configurar sitios virtuales
 
 1. **Configura _hosts_ virtuales:**
-   - Abre el archivo `httpd-vhosts.conf` ubicado en `C:\xampp\apache\conf\extra\httpd-vhosts.conf`.
+   - Abre el archivo `httpd-vhosts.conf` ubicado en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-vhosts.conf`.
    
 2. **Agrega definiciones de Virtual Hosts:**
    - Añade una entrada para cada sitio virtual, por ejemplo:
      ```apache
      <VirtualHost *:80>
          ServerAdmin admin@ejemplo.com
-         DocumentRoot "C:/xampp/htdocs/ejemplo"
+         DocumentRoot "C:/Users/Usuario/xampp/htdocs/ejemplo"
          ServerName ejemplo.local
          ErrorLog "logs/ejemplo-error.log"
          CustomLog "logs/ejemplo-access.log" common
@@ -172,20 +173,20 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 ## Paso 5: Configurar mecanismos de autenticación y control de acceso
 
 1. **Crea un archivo `.htaccess`:**
-   - En el directorio del sitio virtual (`C:/xampp/htdocs/ejemplo`), crea un archivo `.htaccess` con el siguiente contenido:
+   - En el directorio del sitio virtual (`C:/Users/Usuario/xampp/htdocs/ejemplo`), crea un archivo `.htaccess` con el siguiente contenido:
      ```apache
      AuthType Basic
      AuthName "Área Restringida"
-     AuthUserFile "C:/xampp/apache/passwords/.htpasswd"
+     AuthUserFile "C:/Users/Usuario/xampp/apache/passwords/.htpasswd"
      Require valid-user
      ```
 
 2. **Crear el archivo de contraseñas `.htpasswd`:**
    - Utiliza la herramienta `htpasswd` incluida en XAMPP:
-     - Abre la línea de comandos y navega a `C:\xampp\apache\bin`.
+     - Abre la línea de comandos y navega a `C:\Users\Usuario\xampp\apache\bin`.
      - Ejecuta:
        ```
-       htpasswd -c "C:/xampp/apache/passwords/.htpasswd" usuario1
+       htpasswd -c "C:/Users/Usuario/xampp/apache/passwords/.htpasswd" usuario1
        ```
      - Introduce y confirma la contraseña cuando se te solicite.
 
@@ -206,7 +207,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - Sigue las instrucciones para completar la obtención del certificado.
 
 3. **Configura Apache para usar SSL:**
-   - Abre `httpd-ssl.conf` ubicado en `C:\xampp\apache\conf\extra\httpd-ssl.conf`.
+   - Abre `httpd-ssl.conf` ubicado en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-ssl.conf`.
    - Actualiza las rutas de los certificados:
      ```apache
      SSLCertificateFile "C:/certbot/live/ejemplo.local/fullchain.pem"
@@ -218,11 +219,11 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      ```
 
 4. **Habilita el sitio SSL:**
-   - Agrega una directiva para el sitio SSL en `httpd-vhosts.conf`:
+   - Agrega una directiva para el sitio SSL en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-vhosts.conf`:
      ```apache
      <VirtualHost *:443>
          ServerAdmin admin@ejemplo.com
-         DocumentRoot "C:/xampp/htdocs/ejemplo"
+         DocumentRoot "C:/Users/Usuario/xampp/htdocs/ejemplo"
          ServerName ejemplo.local
          SSLEngine on
          SSLCertificateFile "C:/certbot/live/ejemplo.local/fullchain.pem"
@@ -236,7 +237,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 ## Paso 7: Establecer mecanismos para asegurar las comunicaciones
 
 1. **Fuerza el uso de HTTPS:**
-   - En el archivo `.htaccess`, añade:
+   - En el archivo `C:\Users\Usuario\xampp\htdocs\ejemplo\.htaccess`, añade:
      ```apache
      RewriteEngine On
      RewriteCond %{HTTPS} off
