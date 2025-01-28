@@ -1,6 +1,6 @@
 # Tutorial: Apache HTTP Server con Docker en Windows
 
-En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server con Docker, ejecutar una página web de ejemplo en el puerto 8080, montar la carpeta completa de configuración de Apache (`/usr/local/apache2/`) en tu Explorador de Windows para editar archivos fácilmente, crear tu propia imagen de Docker y subirla a un repositorio como Docker Hub.
+En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server con Docker, ejecutar una página web de ejemplo en el puerto 8080, montar la carpeta de Apache (`/usr/local/apache2/`) en tu Explorador de Windows para editar archivos fácilmente, crear tu propia imagen de Docker y subirla a un repositorio como Docker Hub.
 
 ## Paso 1: Prepara el entorno
 
