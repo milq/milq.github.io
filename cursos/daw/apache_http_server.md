@@ -2,6 +2,8 @@
 
 En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMPP en Windows, abarcando desde la administración de parámetros básicos hasta la implementación de medidas de seguridad avanzadas y la gestión de logs.
 
+> **Nota:** Este tutorial utiliza una instalación separada de XAMPP en `C:\Users\Usuario\xampp` para evitar interferir con una instalación principal de XAMPP que podría estar ubicada en `C:\xampp`. Esto permite practicar y experimentar con Apache HTTP Server sin riesgo para tu entorno principal.
+
 ## Paso 1: Instalación y configuración inicial de XAMPP
 
 1. **Descarga XAMPP:**
