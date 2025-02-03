@@ -52,7 +52,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      Timeout 300
      ```
    - **Recomendación:** Ajusta este valor según las necesidades de tu entorno para optimizar el rendimiento.
-   - **Nota:** Algunas directivas como `Timeout`, `KeepAlive` u otras pueden no aparecer en `httpd.conf` por defecto, ya que Apache utiliza valores predeterminados. Si no las encuentras, puedes agregarlas manualmente en la **sección de configuraciones globales** del archivo `httpd.conf` o en archivos incluidos como `httpd-default.conf`.
+   - **Nota:** Algunas directivas como `Timeout`, `KeepAlive` u otras pueden no aparecer en `httpd.conf` por defecto, ya que Apache utiliza valores predeterminados. Si no las encuentras, puedes agregarlas manualmente en la sección de configuraciones globales del archivo `httpd.conf` o en archivos incluidos como `httpd-default.conf`.
 
 6. **Ajusta parámetros de KeepAlive:**
    - **KeepAlive:** Permite mantener las conexiones persistentes entre el cliente y el servidor.
