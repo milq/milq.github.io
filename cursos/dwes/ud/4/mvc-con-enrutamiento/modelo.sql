@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS dwes_to4_balance;
-CREATE DATABASE dwes_to4_balance;
-USE dwes_to4_balance;
+DROP DATABASE IF EXISTS dwes_proyecto_4_gestion_transacciones;
+CREATE DATABASE dwes_proyecto_4_gestion_transacciones;
+USE dwes_proyecto_4_gestion_transacciones;
 
 CREATE TABLE transactions (
     id INT AUTO_INCREMENT PRIMARY KEY,
