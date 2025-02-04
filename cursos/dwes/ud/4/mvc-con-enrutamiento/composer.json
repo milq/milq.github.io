@@ -1,0 +1,14 @@
+{
+    "name": "milq/mvc-con-routing",
+    "description": "MVC con Routing",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\": "database/"
+        }
+    },
+    "require": {
+        "symfony/routing": "^7.0.0",
+        "symfony/http-foundation": "^7.0.0"
+    }
+}
