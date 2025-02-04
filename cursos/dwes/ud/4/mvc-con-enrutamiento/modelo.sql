@@ -1,3 +1,5 @@
+-- Script de creación de bases de datos para MySQL/MariaDB con ejemplos
+
 DROP DATABASE IF EXISTS dwes_proyecto_4_gestion_transacciones;
 CREATE DATABASE dwes_proyecto_4_gestion_transacciones;
 USE dwes_proyecto_4_gestion_transacciones;
@@ -8,3 +10,7 @@ CREATE TABLE transactions (
     amount DECIMAL(10, 2) NOT NULL,
     date DATE NOT NULL
 );
+
+-- Pon aquí debajo tus CREATE TABLE y restricciones adicionales necesarias
+
+-- Pon aquí debajo tus INSERT INTO necesarias
