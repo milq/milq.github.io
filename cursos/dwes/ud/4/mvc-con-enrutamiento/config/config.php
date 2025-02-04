@@ -9,4 +9,4 @@ define('BASE_PATH', ltrim(str_replace('/public', '', dirname($_SERVER['SCRIPT_NA
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'dwes_to4_balance');
+define('DB_NAME', 'dwes_proyecto_4_gestion_transacciones');
