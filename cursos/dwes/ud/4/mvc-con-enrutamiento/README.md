@@ -17,4 +17,4 @@ Este proyecto es una plantilla básica que usa el patrón Modelo-Vista-Controlad
     * Ejecuta el proyecto en XAMPP accediendo a `localhost` y entrando en la carpeta del proyecto.
     * Experimenta a fondo con el código para aprender más sobre MVC con enrutamiento.
 
-Creado por Manuel Ignacio López Quintero.
+_Plantilla creada por Manuel Ignacio López Quintero._
