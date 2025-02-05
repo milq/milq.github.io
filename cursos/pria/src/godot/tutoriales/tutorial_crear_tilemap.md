@@ -1,4 +1,4 @@
-# Tutorial: Crear un Tilemap en Godot 4.2 con el _tileset_ de Tiny Dungeon
+# Tutorial: Crear un _tilemap_ en Godot dado un _tileset_
 
 En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ ya proporcionado.
 
