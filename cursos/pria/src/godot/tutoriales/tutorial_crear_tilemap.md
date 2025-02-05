@@ -9,25 +9,27 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_.
    - Extrae el archivo ZIP y busca la imagen `tilemap_packed.png` dentro de la carpeta `Tilemap`.
 
 2. **Crea un proyecto nuevo en Godot**:
-   - Abre Godot y crea un proyecto **2D**.
-   - Dentro del proyecto, crea una carpeta llamada `assets` y copia allí el archivo `tilemap_packed.png`.
+   - Abre Godot y crea un proyecto con una escena 2D (`Node2D`).
+   - Dentro del proyecto, crea en `res://` una carpeta llamada `assets` y copia allí el archivo `tilemap_packed.png`.
 
-3. **Añade un nodo TileMap**:
-   - En la escena principal, presiona el botón "+" para añadir un nodo.
-   - Busca y selecciona **TileMap**.
-   - En el *Inspector*, ajusta el **Cell Size** a `16x16` (tamaño original de los tiles de Tiny Dungeon).
+3. **Añade un nodo TileMapLayer**:
+   - En la escena principal, presiona el botón `+` para añadir un nodo.
+   - Busca y selecciona **TileMapLayer**.
+   - Se habilitará la pestaña`TileMap` en la parte inferior de la pantalla.
 
 ## Paso 2: Crear el recurso _tileset_
-1. **Asigna el _tileset_ al nodo TileMap**:
-   - Selecciona el nodo TileMap y, en el *Inspector*, haz clic en **_tileset_ > New _tileset_**.
-   - Se abrirá el editor de _tileset_ en la parte inferior de la pantalla.
+
+1. **Crea un nuevo _tileset_ al nodo TileMapLayer**:
+   - Selecciona el nodo _TileMapLayer_ y, en el *Inspector*, haz clic en **Tile Set > New TileSet**.
+   - Se habilitará la pestaña `TileSet` en la parte inferior de la pantalla.
 
 2. **Importa la imagen del _tileset_**:
-   - En el panel **_tileset_**, haz clic en el botón "+" y selecciona **Add Atlas**.
+   - Selecciona la pestaña de `Tileset` en la parte inferior de la pantalla.
+   - A continuación, haz clic en el botón "+" y selecciona **Add Atlas**.
    - En la nueva sección que aparece, haz clic en **Texture > Load** y selecciona `tilemap_packed.png`.
    - Ajusta el **Atlas Grid Size** a `16x16` para que Godot detecte automáticamente cada tile.
 
-3. **Configura los tiles necesarios**:
+4. **Configura los tiles necesarios**:
    - Selecciona un tile en la vista previa del atlas.
    - Si el tile debe tener colisión (ej: paredes), ve a la pestaña **Physics** y crea un *Physics Polygon* para definir su forma.
 
