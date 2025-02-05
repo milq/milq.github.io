@@ -25,7 +25,9 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
 
 2. **Importa la imagen del _tileset_**:
    - Selecciona la pestaña de `Tileset` en la parte inferior de la pantalla.
-   - A continuación, haz clic en el botón "+" y selecciona **Add Atlas**.
+   - A continuación, haz clic en el botón `+` y selecciona **Atlas**.
+   - Selecciona el archivo `tilemap_packed.png` que está dentro de la carpeta `assets/`.
+   - **POR AQUÍ** Pulsa `Yes` cu"The atlas's texture was modified. Would you like to automatically create tiles in the atlas?" -> 
    - En la nueva sección que aparece, haz clic en **Texture > Load** y selecciona `tilemap_packed.png`.
    - Ajusta el **Atlas Grid Size** a `16x16` para que Godot detecte automáticamente cada tile.
 
