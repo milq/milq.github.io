@@ -27,9 +27,12 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - Selecciona la pestaña de `Tileset` en la parte inferior de la pantalla.
    - A continuación, haz clic en el botón `+` y selecciona **Atlas**.
    - Selecciona el archivo `tilemap_packed.png` que está dentro de la carpeta `assets/`.
-   - **POR AQUÍ** Pulsa `Yes` cu"The atlas's texture was modified. Would you like to automatically create tiles in the atlas?" -> 
-   - En la nueva sección que aparece, haz clic en **Texture > Load** y selecciona `tilemap_packed.png`.
-   - Ajusta el **Atlas Grid Size** a `16x16` para que Godot detecte automáticamente cada tile.
+   - Cuando aparezca el mensaje _The atlas's texture was modified. Would you like to automatically create tiles in the atlas?_, haz clic en `Yes`. Esto permitirá que Godot detecte y cree automáticamente los _tiles_ en el _atlas_ basándose en la textura cargada (`tilemap_packed.png`).
+   - Verifica que `Texture Region Size` esté a `16x16`, comprueba que `Margins` y `Separation` estén a `0x0` y mira que `Use Texture Padding` esté en `On`.  
+       * **Texture Region Size**: Define el tamaño de cada tile en píxeles. Por ejemplo, si cada tile mide 16x16 píxeles, debes ajustar este valor a `16x16`.  
+       * **Margins**: Especifica el espacio vacío (en píxeles) alrededor del borde de la imagen del _tileset_. Si no hay margen, déjalo en `0x0`.  
+       * **Separation**: Indica el espacio (en píxeles) entre los tiles dentro del _tileset_. Si los tiles están pegados entre sí, déjalo en `0x0`.  
+       * **Use Texture Padding**: Actívalo para evitar artefactos visuales en los bordes de los tiles al renderizarse. Esto añade un pequeño relleno alrededor de cada tile.
 
 4. **Configura los tiles necesarios**:
    - Selecciona un tile en la vista previa del atlas.
