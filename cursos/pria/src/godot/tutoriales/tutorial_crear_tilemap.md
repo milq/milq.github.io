@@ -34,7 +34,7 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
 
 1. **Selecciona el modo de pintura**:
    - Asegúrate de tener seleccionado el nodo _TileMapLayer_.
-   - En el panel inferior (_TileMap_), elige el _tileset_ cargado y selecciona un _tile_.
+   - En la parte inferior de la pantalla, pulsa en la pestaña _TileMap_, elige el _tileset_ cargado y selecciona un _tile_.
 
 2. **Dibuja el escenario**:
    - Usa la herramienta **Paint** (icono de pincel) para colocar tiles en el _viewport_.
