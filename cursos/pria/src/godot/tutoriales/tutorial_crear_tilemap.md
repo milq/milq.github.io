@@ -62,9 +62,26 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - Renombra el nodo raíz como _Player_ y guarda la escena como `player.tscn`.  
    - Añade un nodo hijo _AnimatedSprite2D_ al nodo _Player_ y asígnale un _sprite_ de un personaje de tu _atlas_.  
    - Añade un nodo hijo _CollisionShape2D_ al nodo _Player_ para asignarle una colisión.
+   - Selecciona el nodo _Player_ y asígnale un _script_ denominado `player.gd`.
+   - Ponle el siguiente código de GDScript:
+
+```gdscript
+extends CharacterBody2D
+
+const SPEED: float = 150.0
+
+func _physics_process(delta: float) -> void:
+    var horizontal: float = Input.get_axis("ui_left", "ui_right")
+    var vertical: float = Input.get_axis("ui_up", "ui_down")
+    var direction: Vector2 = Vector2(horizontal, vertical).normalized()
+
+    velocity = direction * SPEED
+
+    move_and_slide()
+```
 
 2. **Asígnale movimiento al personaje y comprueba**:
-   - Selecciona el nodo _Player_, haz clic en _Attach Script_ y añádele este [_script_][T03] de movimiento en ocho direcciones.
+
    - Guarda los cambios y, a continuación, instancia la escena _Player_ en la escena principal donde está tu mapa de _tiles_.
    - Ejecuta el proyecto y comprueba que el jugador se mueve por el mapa, pero no colisiona con las paredes.  
 
@@ -74,23 +91,22 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - Selecciona el nodo _TileMapLayer_ de tu escena.
    - En el *Inspector*, pulsa en el campo `TileSet` de la propieda `Tile Set` para abrir la configuración del _tileset_.
    - Dentro de la ventana del _tileset_, dirígete al apartado _Physics Layers_.
-   - Pulsa en `Add Element` para añadir una [capa física][T04].
+   - Pulsa en `Add Element` para añadir una [capa física][T03].
 
 2. **Selecciona la herramienta de pintura y la capa física**  
-   - En la parte inferior de la ventana, haz clic en la pestaña **TileMap** *(1 en la [imagen][T05])*.  
-   - Asegúrate de tener elegida la opción **Paint** *(2 en la [imagen][T05])*.  
-   - En el panel de la derecha, en la sección **Paint Properties**, selecciona **Physics Layer 0** *(3 en la [imagen][T05])*. Esto indica que los _tiles_ que pintes o edites se asignarán a esa capa de colisión.  
+   - En la parte inferior de la ventana, haz clic en la pestaña **TileMap** *(1 en la [imagen][T04])*.  
+   - Asegúrate de tener elegida la opción **Paint** *(2 en la [imagen][T04])*.  
+   - En el panel de la derecha, en la sección **Paint Properties**, selecciona **Physics Layer 0** *(3 en la [imagen][T04])*. Esto indica que los _tiles_ que pintes o edites se asignarán a esa capa de colisión.  
 
 3. **Marca los _tiles_ que tendrán colisión**  
-   - Localiza en el _atlas_ (el recuadro con todos los _tiles_) aquellos que deseas que tengan colisión *(4 en la [imagen][T05])*.  
+   - Localiza en el _atlas_ (el recuadro con todos los _tiles_) aquellos que deseas que tengan colisión *(4 en la [imagen][T04])*.  
    - Al pasar el cursor sobre cada _tile_, haz **clic izquierdo** para seleccionarlo. Si Godot ya detectó una forma de colisión por defecto, verás que ese _tile_ se resalta en un tono azulado al activarle la colisión.  
 
 4. **Ajusta la forma de colisión para cada _tile_ (opcional)**  
-   - Si necesitas modificar la forma de colisión de un _tile_, haz clic derecho sobre el recuadro del _tile_ y elige **Reset to default tile shape** *(5 en la imagen)* para restaurar la forma automática que Godot generó, o bien **Clear** si quieres eliminarla por completo.  
-   - También tienes opciones para **rotar** o **voltear** el _tile_, lo que puede ayudar cuando tu _tile_ tiene una forma irregular que requiera colisión en un ángulo o disposición distinta.  
+   - Si necesitas modificar la forma de colisión de un _tile_, haz clic en **︙** elige **Reset to default tile shape** *(5 en la [imagen][T04])* para restaurar la forma automática que Godot generó, o bien **Clear** si quieres eliminarla por completo.  
 
 5. **Comprueba las colisiones en el juego**  
-   - Cierra la ventana de configuración del _TileSet_ y regresa a la escena principal.  
+   - Gaurda la escena, cierra la ventana de configuración del _TileSet_ y regresa a la escena principal.  
    - Ejecuta la escena. Ahora, cuando tu nodo _Player_ (que tiene un _CollisionShape2D_) intente atravesar los _tiles_ a los que has asignado colisión, deberá toparse con ellos y no podrá pasar a través de las paredes, confirmando que la colisión funciona correctamente.  
 
 Con esto, habrás asignado colisiones únicamente a los _tiles_ que lo requieran (como muros, pilares o cofres) y tu personaje ya no podrá atravesarlos. Continúa afinando la distribución de _tiles_ y las formas de colisión hasta que tu mapa refleje la jugabilidad deseada.
@@ -105,6 +121,5 @@ Con esto, habrás asignado colisiones únicamente a los _tiles_ que lo requieran
 
 [T01]: https://kenney.nl/assets/tiny-dungeon
 [T02]: https://kenney.nl/media/pages/assets/tiny-dungeon/331078e148-1674742412/sample.png
-[T03]: https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_eight_direction.gd
-[T04]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/tutorial_crear_tilemap_1.png
-[T05]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/tutorial_crear_tilemap_2.png
+[T03]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/tutorial_crear_tilemap_1.png
+[T04]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/tutorial_crear_tilemap_2.png
