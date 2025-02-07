@@ -112,10 +112,10 @@ func _physics_process(delta: float) -> void:
 ## Paso 5: Guardar para reutilizar el _tileset_
 
 1. **Guarda el _tileset_**:
-   - En el Inspector, en el campo _TileSet_ *(1 en la [imagen][T03])*, haz clic en el cursor, luego pulsa **Save**  y guarda el recurso como `dungeon__tileset_.tres`.
+   - En el Inspector, en el campo _TileSet_ *(1 en la [imagen][T03])*, haz clic en el cursor, luego pulsa **Save As...**  y guarda el recurso como `dungeon_tileset.tres`.
 
 2. **Reutiliza el _tileset_**:
-   - Si creas otra escena, arrastra el archivo `dungeon__tileset_.tres` a la propiedad _Tile Set_ de un nuevo nodo _TileMapLayer_.
+   - Si creas otra escena, arrastra el archivo `dungeon_tileset.tres` a la propiedad _Tile Set_ de un nuevo nodo _TileMapLayer_.
 
 [T01]: https://kenney.nl/assets/tiny-dungeon
 [T02]: https://kenney.nl/media/pages/assets/tiny-dungeon/331078e148-1674742412/sample.png
