@@ -56,13 +56,15 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
 
 ## Paso 4: Crea un personaje para que se mueva en tu _tilemap_
 
-1. Crea una nueva escena haciendo clic en _Scene_ y seleccionando _New Scene_.  
-2. Añade un nodo _CharacterBody2D_ como nodo raíz desde _Other Node → CharacterBody2D_.  
-3. Renombra el nodo raíz como _Player_ y guarda la escena como `player.tscn`.  
-4. Añade un nodo hijo _AnimatedSprite2D_ al nodo _Player_ y asígnale un _sprite_ de un personaje de tu _atlas_.  
-5. Añade un nodo hijo _CollisionShape2D_ al nodo _Player_ para asignarle una colisión.  
-6. Selecciona el nodo _Player_, haz clic en _Attach Script_ y añádele este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_eight_direction.gd) de movimiento en ocho direcciones.  
-7. Ejecuta el proyecto y comprueba que el jugador se mueve por el mapa, pero no colisiona con las paredes.  
+1. **Crea una escena de tipo _CharacterBody2D_**:
+   - Crea una nueva escena haciendo clic en _Scene_ y seleccionando _New Scene_.  
+   - Añade un nodo _CharacterBody2D_ como nodo raíz desde _Other Node → CharacterBody2D_.  
+   - Renombra el nodo raíz como _Player_ y guarda la escena como `player.tscn`.  
+   - Añade un nodo hijo _AnimatedSprite2D_ al nodo _Player_ y asígnale un _sprite_ de un personaje de tu _atlas_.  
+   - Añade un nodo hijo _CollisionShape2D_ al nodo _Player_ para asignarle una colisión.  
+2. **Asígnale movimiento al personaje y comprueba**:
+   - Selecciona el nodo _Player_, haz clic en _Attach Script_ y añádele este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_eight_direction.gd) de movimiento en ocho direcciones.  
+   - Ejecuta el proyecto y comprueba que el jugador se mueve por el mapa, pero no colisiona con las paredes.  
 
 ## Paso 5: Añade colisiones a _tiles_ específicos
 
