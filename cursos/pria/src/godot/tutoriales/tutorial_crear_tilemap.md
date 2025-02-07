@@ -96,11 +96,11 @@ func _physics_process(delta: float) -> void:
 2. **Selecciona la herramienta de pintura y la capa física**  
    - En la parte inferior de la ventana, haz clic en la pestaña **TileSet** *(1 en la [imagen][T04])*.  
    - Asegúrate de tener elegida la opción **Paint** *(2 en la [imagen][T04])*.  
-   - En el panel de la derecha, en la sección **Paint Properties**, selecciona **Physics Layer 0** *(3 en la [imagen][T04])*. Esto indica que los _tiles_ que pintes o edites se asignarán a esa capa de colisión.  
+   - En la sección **Paint Properties**, selecciona **Physics Layer 0** *(3 en la [imagen][T04])*. Esto indica que los _tiles_ que pintes o edites se asignarán a esa capa de colisión.  
 
 3. **Marca los _tiles_ que tendrán colisión**  
    - Localiza en el _atlas_ (el recuadro con todos los _tiles_) aquellos que deseas que tengan colisión *(4 en la [imagen][T04])*.  
-   - Al pasar el cursor sobre cada _tile_, haz **clic izquierdo** para seleccionarlo. Si Godot ya detectó una forma de colisión por defecto, verás que ese _tile_ se resalta en un tono azulado al activarle la colisión.  
+   - Al pasar el cursor sobre cada _tile_, haz **clic izquierdo** para seleccionarlo. Si Godot ya detectó una forma de colisión por defecto, verás que ese _tile_ se resalta en un tono azulado para activarle la colisión.  
 
 4. **Ajusta la forma de colisión para cada _tile_ (opcional)**  
    - Si necesitas modificar la forma de colisión de un _tile_, haz clic en **︙** y elige **Reset to default tile shape** *(5 en la [imagen][T04])* para restaurar la forma automática que Godot generó, o bien **Clear** si quieres eliminarla por completo.  
@@ -112,10 +112,10 @@ func _physics_process(delta: float) -> void:
 ## Paso 5: Guardar para reutilizar el _tileset_
 
 1. **Guarda el _tileset_**:
-   - En el editor de _tileset_, haz clic en **Save** y guarda el recurso como `dungeon__tileset_.tres`.
+   - En el Inspector, haz clic en **Save** *(1 en la [imagen][T03])* y guarda el recurso como `dungeon__tileset_.tres`.
 
 2. **Reutiliza el _tileset_**:
-   - Si creas otra escena, arrastra el archivo `dungeon__tileset_.tres` a la propiedad **_tileset_** de un nuevo nodo TileMap.
+   - Si creas otra escena, arrastra el archivo `dungeon__tileset_.tres` a la propiedad _Tile Set_ de un nuevo nodo _TileMapLayer_.
 
 [T01]: https://kenney.nl/assets/tiny-dungeon
 [T02]: https://kenney.nl/media/pages/assets/tiny-dungeon/331078e148-1674742412/sample.png
