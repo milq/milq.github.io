@@ -109,9 +109,7 @@ func _physics_process(delta: float) -> void:
    - Gaurda la escena, cierra la ventana de configuración del _TileSet_ y regresa a la escena principal.  
    - Ejecuta la escena. Ahora, cuando tu nodo _Player_ (que tiene un _CollisionShape2D_) intente atravesar los _tiles_ a los que has asignado colisión, deberá toparse con ellos y no podrá pasar a través de las paredes, confirmando que la colisión funciona correctamente.  
 
-Con esto, habrás asignado colisiones únicamente a los _tiles_ que lo requieran (como muros, pilares o cofres) y tu personaje ya no podrá atravesarlos. Continúa afinando la distribución de _tiles_ y las formas de colisión hasta que tu mapa refleje la jugabilidad deseada.
-
-## Paso 5: Optimizar y guardar
+## Paso 5: Guardar para reutilizar el _tileset_
 
 1. **Guarda el _tileset_**:
    - En el editor de _tileset_, haz clic en **Save** y guarda el recurso como `dungeon__tileset_.tres`.
