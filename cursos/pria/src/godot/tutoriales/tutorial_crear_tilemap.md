@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
    - Pulsa en `Add Element` para añadir una [capa física][T03].
 
 2. **Selecciona la herramienta de pintura y la capa física**  
-   - En la parte inferior de la ventana, haz clic en la pestaña **TileMap** *(1 en la [imagen][T04])*.  
+   - En la parte inferior de la ventana, haz clic en la pestaña **TileSet** *(1 en la [imagen][T04])*.  
    - Asegúrate de tener elegida la opción **Paint** *(2 en la [imagen][T04])*.  
    - En el panel de la derecha, en la sección **Paint Properties**, selecciona **Physics Layer 0** *(3 en la [imagen][T04])*. Esto indica que los _tiles_ que pintes o edites se asignarán a esa capa de colisión.  
 
