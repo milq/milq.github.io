@@ -56,6 +56,12 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
 ## Paso 4: Añadir colisiones y detalles
 
 1. **Activa las colisiones para _tiles_ que consideres sólidos**:
+   - Selecciona el nodo _TileMapLayer_ de tu escena.
+   - En el *Inspector*, pulsa en el campo `TileSet` de la propieda `Tile Set` para abrir la configuración del _tileset_.
+   - Dentro de la ventana del _tileset_, dirígete al apartado _Physics Layers_.
+   - Pulsa en `Add Element` para añadir una nueva [capa física](https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/tutorial_crear_tilemap.png)*.
+
+1. **Activa las colisiones para _tiles_ que consideres sólidos**:
    - En el editor de _tileset_, selecciona tiles como paredes o rocas.
    - Ve a la pestaña **Physics Layers** y dibuja un polígono de colisión sobre el tile.
 
