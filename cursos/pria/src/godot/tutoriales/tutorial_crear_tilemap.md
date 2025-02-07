@@ -61,7 +61,8 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - Añade un nodo _CharacterBody2D_ como nodo raíz desde _Other Node → CharacterBody2D_.  
    - Renombra el nodo raíz como _Player_ y guarda la escena como `player.tscn`.  
    - Añade un nodo hijo _AnimatedSprite2D_ al nodo _Player_ y asígnale un _sprite_ de un personaje de tu _atlas_.  
-   - Añade un nodo hijo _CollisionShape2D_ al nodo _Player_ para asignarle una colisión.  
+   - Añade un nodo hijo _CollisionShape2D_ al nodo _Player_ para asignarle una colisión.
+
 2. **Asígnale movimiento al personaje y comprueba**:
    - Selecciona el nodo _Player_, haz clic en _Attach Script_ y añádele este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_eight_direction.gd) de movimiento en ocho direcciones.  
    - Ejecuta el proyecto y comprueba que el jugador se mueve por el mapa, pero no colisiona con las paredes.  
