@@ -13,8 +13,8 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - Dentro del proyecto, crea en `res://` una carpeta llamada `assets/` y copia allí el archivo `tilemap_packed.png`.
 
 3. **Añade un nodo TileMapLayer**:
-   - En la escena principal, presiona el botón `+` para añadir un nodo.
-   - Busca y selecciona **TileMapLayer**.
+   - En el nodo raíz de la escena principal, presiona el botón `+` para añadir un nodo.
+   - Busca y selecciona `TileMapLayer`.
    - Se habilitará la pestaña`TileMap` en la parte inferior de la pantalla.
 
 ## Paso 2: Crear el recurso _tileset_
