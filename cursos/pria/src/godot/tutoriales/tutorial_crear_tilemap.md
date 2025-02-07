@@ -37,15 +37,25 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - En la parte inferior de la pantalla, pulsa en la pestaña _TileMap_, elige el _tileset_ cargado y selecciona un _tile_.
 
 2. **Dibuja el escenario**:
-   - Usa la herramienta **Paint** (icono de pincel) para colocar tiles en el _viewport_.
-   - Mantén `clic izquierdo` para pintar y `clic derecho` para borrar.
-   - Usa la herramienta **Bucket** (icono de balde) para rellenar áreas grandes rápidamente.
+   - Usa la herramienta **Paint** (icono de lápiz) para colocar _tiles_ a tu gusto en el _viewport_.
+   - Pulsa `clic izquierdo` para pintar y `clic derecho` para borrar.
+   - Usa la herramienta **Rectangle** (icono de rectángulo) para definir un área rectangular que se rellenará automáticamente con el _tile_ seleccionado.
+   - Usa la herramienta **Bucket** (icono de bote de pintura) para rellenar áreas grandes rápidamente.
+   - Activa la opción de **azar** (icono de dado) y comprueba que sucede con la herramienta _Rectangle_. El _scattering_ agrega variación, ideal para decoración orgánica (hierba, rocas).
 
-3. **Prueba la capa base**:
+2. **Dibuja el escenario**:
+   - Utiliza la herramienta **Paint** (icono de lápiz) para colocar _tiles_ en el _viewport_: `clic izquierdo` para pintar y `clic derecho` para borrar.
+   - Con la herramienta **Rectangle** (icono de rectángulo) delimita un área que se rellenará automáticamente con el _tile_ seleccionado.
+   - Emplea la herramienta **Bucket** (icono de bote de pintura) para rellenar rápidamente áreas extensas.
+   - Activa la opción **azar** (icono de dado) y observa cómo el _scattering_ introduce variación, ideal para decoraciones orgánicas como hierba o rocas.
+   - Además, puedes seleccionar múltiples _tiles_; al usar el **Rectangle**, se aplican simultáneamente y, con la opción **azar** activada, se elige al azar entre ellos.
+
+3. **Prueba la escena con el _tilemap_**:
    - Ejecuta la escena (`F5`) para verificar que los tiles se muestran correctamente.
 
 ## Paso 4: Añadir colisiones y detalles
-1. **Activa colisiones para tiles sólidos**:
+
+1. **Activa las colisiones para _tiles_ que consideres sólidos**:
    - En el editor de _tileset_, selecciona tiles como paredes o rocas.
    - Ve a la pestaña **Physics Layers** y dibuja un polígono de colisión sobre el tile.
 
@@ -57,10 +67,9 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - Ajusta el **Z Index** en el *Inspector* para que las capas superiores (ej: techos) se dibujen encima del personaje.
 
 ## Paso 5: Optimizar y guardar
+
 1. **Guarda el _tileset_**:
    - En el editor de _tileset_, haz clic en **Save** y guarda el recurso como `dungeon__tileset_.tres`.
 
 2. **Reutiliza el _tileset_**:
    - Si creas otra escena, arrastra el archivo `dungeon__tileset_.tres` a la propiedad **_tileset_** de un nuevo nodo TileMap.
-
-¡Listo! Ahora tienes un tilemap funcional con el estilo retro de Tiny Dungeon. Experimenta combinando tiles y capas para diseñar niveles más elaborados.
