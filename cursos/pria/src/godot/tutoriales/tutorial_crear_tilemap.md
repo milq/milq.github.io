@@ -103,7 +103,7 @@ func _physics_process(delta: float) -> void:
    - Al pasar el cursor sobre cada _tile_, haz **clic izquierdo** para seleccionarlo. Si Godot ya detectó una forma de colisión por defecto, verás que ese _tile_ se resalta en un tono azulado al activarle la colisión.  
 
 4. **Ajusta la forma de colisión para cada _tile_ (opcional)**  
-   - Si necesitas modificar la forma de colisión de un _tile_, haz clic en **︙** elige **Reset to default tile shape** *(5 en la [imagen][T04])* para restaurar la forma automática que Godot generó, o bien **Clear** si quieres eliminarla por completo.  
+   - Si necesitas modificar la forma de colisión de un _tile_, haz clic en **︙** y elige **Reset to default tile shape** *(5 en la [imagen][T04])* para restaurar la forma automática que Godot generó, o bien **Clear** si quieres eliminarla por completo.  
 
 5. **Comprueba las colisiones en el juego**  
    - Gaurda la escena, cierra la ventana de configuración del _TileSet_ y regresa a la escena principal.  
