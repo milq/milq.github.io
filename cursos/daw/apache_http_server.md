@@ -153,7 +153,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 2. **Agrega definiciones de Virtual Hosts:**
    - Añade una entrada para cada sitio virtual, por ejemplo:
      ```apache
-     <VirtualHost *:80>
+     <VirtualHost *:8080>
          ServerAdmin admin@ejemplo.com
          DocumentRoot "C:/Users/Usuario/xampp/htdocs/ejemplo"
          ServerName ejemplo.local
