@@ -14,6 +14,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - Selecciona los componentes que deseas instalar (asegúrate de incluir Apache).
    - **Cambia el directorio de instalación** a `C:\Users\Usuario\xampp` para no interferir con la instalación principal de XAMPP que podría estar en `C:\xampp`.
    - Completa la instalación siguiendo las indicaciones del asistente.
+   - Tras finalizar la instalación, borra todo el contenido de la carpeta `C:\Users\Usuario\xampp\htdocs`.
 
 3. **Inicia los servicios:**
    - Abre el Panel de Control de XAMPP.
@@ -173,7 +174,10 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 ## Paso 5: Configurar mecanismos de autenticación y control de acceso
 
-1. **Crea un archivo `.htaccess`:**
+1. **Crea una página de ejemplo:**
+   - Antes de configurar la autenticación, crea la carpeta `C:\Users\Usuario\xampp\htdocs\ejemplo`, y dentro de ella crea un archivo `index.html` o `index.php` con contenido básico.
+
+2. **Crea un archivo `.htaccess`:**
    - En el directorio del sitio virtual (`C:/Users/Usuario/xampp/htdocs/ejemplo`), crea un archivo `.htaccess` con el siguiente contenido:
      ```apache
      AuthType Basic
@@ -182,7 +186,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      Require valid-user
      ```
 
-2. **Crear el archivo de contraseñas `.htpasswd`:**
+3. **Crear el archivo de contraseñas `.htpasswd`:**
    - Utiliza la herramienta `htpasswd` incluida en XAMPP:
      - Abre la línea de comandos y navega a `C:\Users\Usuario\xampp\apache\bin`.
      - Ejecuta:
@@ -191,7 +195,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
        ```
      - Introduce y confirma la contraseña cuando se te solicite.
 
-3. **Prueba la autenticación:**
+4. **Prueba la autenticación:**
    - Accede al sitio virtual en el navegador (`http://ejemplo.local`) y verifica que se solicita el usuario y contraseña.
 
 ## Paso 6: Obtén e instala certificados digitales con Let's Encrypt usando Certbot
