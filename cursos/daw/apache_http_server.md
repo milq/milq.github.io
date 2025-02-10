@@ -185,6 +185,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      AuthUserFile "C:/Users/Usuario/xampp/apache/passwords/.htpasswd"
      Require valid-user
      ```
+   - El archivo de configuración de Apache `.htaccess` se ubica en un directorio específico y te permite definir reglas de seguridad, reescrituras, redirecciones y otras directivas centrales sin tener que editar `httpd.conf`.
 
 3. **Crear el archivo de contraseñas `.htpasswd`:**
    - Utiliza la herramienta `htpasswd` incluida en XAMPP:
