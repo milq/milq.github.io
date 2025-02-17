@@ -188,6 +188,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - El archivo de configuración de Apache `.htaccess` se ubica en un directorio específico y te permite definir reglas de seguridad, reescrituras, redirecciones y otras directivas centrales sin tener que editar `httpd.conf`.
 
 3. **Crear el archivo de contraseñas `.htpasswd`:**
+   - Si no existe, crea la carpeta `passwords\` en `C:\Users\Usuario\xampp\apache\`
    - Utiliza la herramienta `htpasswd` incluida en XAMPP:
      - Abre la línea de comandos y navega a `C:\Users\Usuario\xampp\apache\bin`.
      - Ejecuta:
@@ -196,7 +197,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
        ```
      - Introduce y confirma la contraseña cuando se te solicite.
 
-4. **Prueba la autenticación:**
+5. **Prueba la autenticación:**
    - Accede al sitio virtual en el navegador (`http://ejemplo.local`) y verifica que se solicita el usuario y contraseña.
 
 ## Paso 6: Obtén e instala certificados digitales con Let's Encrypt usando Certbot
