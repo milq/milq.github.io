@@ -192,7 +192,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      - Abre la línea de comandos y navega a `C:\Users\Usuario\xampp\apache\bin`.
      - Ejecuta:
        ```
-       htpasswd -c "C:/Users/Usuario/xampp/apache/passwords/.htpasswd" usuario1
+       .\htpasswd.exe -c "C:/Users/Usuario/xampp/apache/passwords/.htpasswd" usuario1
        ```
      - Introduce y confirma la contraseña cuando se te solicite.
 
