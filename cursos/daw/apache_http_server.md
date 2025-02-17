@@ -115,7 +115,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 13. **Configura redirecciones básicas:**
     - Puedes añadir redirecciones sencillas para manejar el tráfico HTTP a HTTPS, si es necesario.
       ```apache
-      <VirtualHost *:80>
+      <VirtualHost *:8080>
           ServerName ejemplo.local
           Redirect permanent / https://ejemplo.local/
       </VirtualHost>
@@ -202,10 +202,15 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 ## Paso 6: Obtén e instala certificados digitales con Let's Encrypt usando Certbot
 
-1. **Instala Certbot:**
+1. 
+Let's Encrypt
+
+[https://en.wikipedia.org/wiki/Let%27s_Encrypt]
+
+2. **Instala Certbot:**
    - Descarga [Certbot para Windows](https://certbot.eff.org/instructions) y extrae los archivos en una carpeta, por ejemplo, `C:\certbot`.
 
-2. **Obtén el certificado SSL:**
+3. **Obtén el certificado SSL:**
    - Abre la línea de comandos y navega a `C:\certbot`.
    - Ejecuta:
      ```
@@ -213,7 +218,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      ```
    - Sigue las instrucciones para completar la obtención del certificado.
 
-3. **Configura Apache para usar SSL:**
+4. **Configura Apache para usar SSL:**
    - Abre `httpd-ssl.conf` ubicado en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-ssl.conf`.
    - Actualiza las rutas de los certificados:
      ```apache
@@ -225,7 +230,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      LoadModule ssl_module modules/mod_ssl.so
      ```
 
-4. **Habilita el sitio SSL:**
+5. **Habilita el sitio SSL:**
    - Agrega una directiva para el sitio SSL en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-vhosts.conf`:
      ```apache
      <VirtualHost *:443>
@@ -238,7 +243,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
      </VirtualHost>
      ```
 
-5. **Reinicia Apache:**
+6. **Reinicia Apache:**
    - Reinicia Apache para aplicar la configuración SSL.
 
 ## Paso 7: Establecer mecanismos para asegurar las comunicaciones
