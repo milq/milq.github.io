@@ -40,4 +40,24 @@ class TransactionController
 
         require_once APP_ROOT . '/resources/views/transactions/show.php';
     }
+
+    /*
+    public function destroySelect(RouteCollection $routes)
+    {
+        $transactions = Transaction::readAll();
+
+        require_once APP_ROOT . '/resources/views/transactions/select_destroy.php';
+    }
+
+    public function destroy(RouteCollection $routes)
+    {
+        $id = $_POST['transaction_id'];
+
+        $transaction = new Transaction();
+        $transaction->read($id);
+        $transaction->delete();
+
+        require_once APP_ROOT . '/resources/views/transactions/destroy.php';
+    }
+    */
 }
