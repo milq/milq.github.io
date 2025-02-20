@@ -8,9 +8,10 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 2. Agrega un nodo `NavigationRegion2D` a la escena principal.
    - Selecciona el nodo `NavigationRegion2D`.
    - En el Inspector, crea un nuevo recurso `NavigationPolygon` para este nodo.
-   - Esto te permitirá definir el área donde se podrá mover el personaje.
 
    ![Paso 1](https://docs.godotengine.org/en/stable/_images/nav_2d_min_setup_step1.png)
+
+   - Esto te permitirá definir el área donde se podrá mover el personaje.
 
 3. Define el área de navegación con la herramienta de dibujo de `NavigationPolygon`:
    - Usa la barra de herramientas para dibujar el polígono que represente la zona navegable.
