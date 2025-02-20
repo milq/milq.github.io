@@ -75,5 +75,5 @@ func _physics_process(delta):
     velocity = current_agent_position.direction_to(next_path_position) * movement_speed
     move_and_slide()
 ```
-   - Asegúrate de ajustar los comentarios y valores según tus necesidades.
-   - Ten en cuenta que se hace un `call_deferred()` para esperar a un fotograma de física de *_physics_process* antes de configurar la ruta, ya que el `NavigationServer` necesita sincronizarse.
+   > Nota:
+   > Asegúrate de ajustar los valores según tus necesidades. También, ten en cuenta que se hace un `call_deferred()` para esperar a un fotograma de física de *_physics_process* antes de configurar la ruta, ya que el `NavigationServer` necesita sincronizarse.
