@@ -200,81 +200,35 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 5. **Prueba la autenticación:**
    - Accede al sitio virtual en el navegador (`http://ejemplo.local`) y verifica que se solicita el usuario y contraseña.
 
-## Paso 6: Obtén e instala certificados digitales con Let's Encrypt usando Certbot
-
-1. 
-Let's Encrypt
-
-[https://en.wikipedia.org/wiki/Let%27s_Encrypt]
-
-2. **Instala Certbot:**
-   - Descarga [Certbot para Windows](https://certbot.eff.org/instructions) y extrae los archivos en una carpeta, por ejemplo, `C:\certbot`.
-
-3. **Obtén el certificado SSL:**
-   - Abre la línea de comandos y navega a `C:\certbot`.
-   - Ejecuta:
-     ```
-     certbot certonly --standalone -d ejemplo.local
-     ```
-   - Sigue las instrucciones para completar la obtención del certificado.
-
-4. **Configura Apache para usar SSL:**
-   - Abre `httpd-ssl.conf` ubicado en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-ssl.conf`.
-   - Actualiza las rutas de los certificados:
-     ```apache
-     SSLCertificateFile "C:/certbot/live/ejemplo.local/fullchain.pem"
-     SSLCertificateKeyFile "C:/certbot/live/ejemplo.local/privkey.pem"
-     ```
-   - Asegúrate de que el módulo SSL esté cargado en `httpd.conf`:
-     ```apache
-     LoadModule ssl_module modules/mod_ssl.so
-     ```
-
-5. **Habilita el sitio SSL:**
-   - Agrega una directiva para el sitio SSL en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-vhosts.conf`:
-     ```apache
-     <VirtualHost *:443>
-         ServerAdmin admin@ejemplo.com
-         DocumentRoot "C:/Users/Usuario/xampp/htdocs/ejemplo"
-         ServerName ejemplo.local
-         SSLEngine on
-         SSLCertificateFile "C:/certbot/live/ejemplo.local/fullchain.pem"
-         SSLCertificateKeyFile "C:/certbot/live/ejemplo.local/privkey.pem"
-     </VirtualHost>
-     ```
-
-6. **Reinicia Apache:**
-   - Reinicia Apache para aplicar la configuración SSL.
-
-## Paso 6 (opcional): Obtén e instala certificados digitales con Let's Encrypt en Windows (sin usar Certbot)
+## Paso 6: Obtén e instala certificados digitales con Let's Encrypt en Windows
 
 1. **Estudia a fondo la iniciativa de [Let's Encrypt](https://en.wikipedia.org/wiki/Let%27s_Encrypt)**  
-   - Antes de proceder con la configuración, es importante conocer qué es Let's Encrypt:
-   > *Let's Encrypt es una autoridad certificadora sin fines de lucro operada por el Internet Security Research Group (ISRG), que proporciona certificados X.509 para cifrado TLS sin costo. Es la autoridad certificadora más grande del mundo, utilizada por más de 400 millones de sitios web, y su objetivo es que todos los sitios web sean seguros y utilicen HTTPS.*
+   - Antes de proceder con la configuración, es importante conocer qué es Let's Encrypt: *Let's Encrypt es una autoridad certificadora sin fines de lucro operada por el Internet Security Research Group (ISRG), que proporciona certificados X.509 para cifrado TLS sin costo. Es la autoridad certificadora más grande del mundo, utilizada por más de 400 millones de sitios web, y su objetivo es que todos los sitios web sean seguros y utilicen HTTPS.*
 
 2. **Conoce el protocolo ACME**  
    - El proceso de emisión y renovación automática de certificados se basa en el [protocolo ACME (Automatic Certificate Management Environment)](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment). ACME simplifica la validación de la propiedad del dominio y la instalación de certificados, reduciendo la complejidad de la gestión SSL/TLS.
 
 3. **Descarga e instala una herramienta alternativa a Certbot**  
-   - Dado que [Certbot ha discontinuado el soporte para Windows a partir de febrero de 2024](https://community.letsencrypt.org/t/windows-support-deprecation-faq/186138), se recomienda usar **[win-acme](https://www.win-acme.com/)** (antes conocido como WACS) para obtener certificados de Let's Encrypt en Windows.  
-   - Visita la página oficial de [win-acme](https://www.win-acme.com/) y descarga la versión más reciente para tu sistema operativo.  
+   - Dado que Certbot ha [discontinuado el soporte para Windows](https://community.letsencrypt.org/t/certbot-discontinuing-windows-beta-support-in-2024/208101) a partir de febrero de 2024, se recomienda usar [*win-acme*](https://www.win-acme.com/) para obtener certificados de Let's Encrypt en Windows.  
+   - Visita la página oficial de [*win-acme*](https://www.win-acme.com/) y descarga la versión más reciente para tu sistema operativo.  
    - Descomprime el archivo descargado en una carpeta, por ejemplo: `C:\win-acme`.
+   - Si tienes problemas usando *win-acme*, puedes hacerlo con [Certify The Web](https://certifytheweb.com)
 
-4. **Ejecuta win-acme para obtener tu certificado**  
+4. **Ejecuta *win-acme* para obtener tu certificado**  
    - Abre una ventana de **Símbolo del sistema** o **PowerShell** con permisos de administrador.  
    - Navega hasta la carpeta de win-acme:  
      ```powershell
      cd C:\win-acme
      ```
-   - Ejecuta **wacs.exe** para iniciar el asistente interactivo. Si solo deseas un certificado para tu sitio web (por ejemplo, `ejemplo.local`), el asistente te guiará para:
+   - Ejecuta *wacs.exe* para iniciar el asistente interactivo. Si solo deseas un certificado para tu sitio web (por ejemplo, `ejemplo.local`), el asistente te guiará para:
      1. Especificar el dominio (o dominios).  
      2. Validar la propiedad del dominio mediante un desafío HTTP o DNS.  
      3. Guardar el certificado y la clave privada en la ubicación de tu elección.  
    
-   > **Nota**: Para que la validación HTTP funcione correctamente, tu servidor Apache debe poder responder a las solicitudes en el dominio configurado. Asegúrate de que los puertos apropiados estén abiertos en el firewall (por defecto, el puerto 80 para HTTP y 443 para HTTPS).
+   > **Nota**: Para que la validación HTTP funcione correctamente, tu servidor Apache debe poder responder a las solicitudes en el dominio configurado. Asegúrate de que los puertos apropiados estén abiertos en el _firewall_ (por defecto, el puerto 80 para HTTP y 443 para HTTPS).
 
 5. **Configura Apache para usar el certificado**  
-   Una vez que win-acme haya generado el certificado y la clave privada, edita tu archivo de configuración SSL de Apache. Generalmente, se encuentra en:  
+   Una vez que *win-acme* haya generado el certificado y la clave privada, edita tu archivo de configuración SSL de Apache. Generalmente, se encuentra en:  
    ```
    C:\Users\Usuario\xampp\apache\conf\extra\httpd-ssl.conf
    ```  
@@ -307,8 +261,7 @@ Let's Encrypt
 7. **Verifica la instalación**  
    - Abre tu navegador y visita `https://ejemplo.local`.  
    - Comprueba que el certificado sea válido y que la conexión sea segura.  
-
-> **Consejo de seguridad**: Asegura la **renovación automática** de tu certificado. Win-acme permite configurar **tareas programadas** en Windows para renovaciones automáticas (generalmente cada 60 días). Así, tu sitio siempre estará protegido por un certificado vigente de Let's Encrypt.
+   - **Consejo de seguridad**: asegura la renovación automática de tu certificado. Win-acme permite configurar tareas programadas en Windows para renovaciones automáticas (generalmente cada 60 días). Así, tu sitio siempre estará protegido por un certificado vigente de Let's Encrypt.
 
 ## Paso 7: Establecer mecanismos para asegurar las comunicaciones
 
