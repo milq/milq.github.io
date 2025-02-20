@@ -249,14 +249,14 @@ Let's Encrypt
 ## Paso 6 (opcional): Obtén e instala certificados digitales con Let's Encrypt en Windows (sin usar Certbot)
 
 1. **Estudia a fondo la iniciativa de [Let's Encrypt](https://en.wikipedia.org/wiki/Let%27s_Encrypt)**  
-   Antes de proceder con la configuración, es importante conocer qué es Let's Encrypt.  
+   - Antes de proceder con la configuración, es importante conocer qué es Let's Encrypt:
    > *Let's Encrypt es una autoridad certificadora sin fines de lucro operada por el Internet Security Research Group (ISRG), que proporciona certificados X.509 para cifrado TLS sin costo. Es la autoridad certificadora más grande del mundo, utilizada por más de 400 millones de sitios web, y su objetivo es que todos los sitios web sean seguros y utilicen HTTPS.*
 
 2. **Conoce el protocolo ACME**  
-   El proceso de emisión y renovación automática de certificados se basa en el [protocolo ACME (Automatic Certificate Management Environment)](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment). ACME simplifica la validación de la propiedad del dominio y la instalación de certificados, reduciendo la complejidad de la gestión SSL/TLS.
+   - El proceso de emisión y renovación automática de certificados se basa en el [protocolo ACME (Automatic Certificate Management Environment)](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment). ACME simplifica la validación de la propiedad del dominio y la instalación de certificados, reduciendo la complejidad de la gestión SSL/TLS.
 
 3. **Descarga e instala una herramienta alternativa a Certbot**  
-   Dado que [Certbot ha discontinuado el soporte para Windows a partir de febrero de 2024](https://community.letsencrypt.org/t/windows-support-deprecation-faq/186138), se recomienda usar **[win-acme](https://www.win-acme.com/)** (antes conocido como WACS) para obtener certificados de Let's Encrypt en Windows.  
+   - Dado que [Certbot ha discontinuado el soporte para Windows a partir de febrero de 2024](https://community.letsencrypt.org/t/windows-support-deprecation-faq/186138), se recomienda usar **[win-acme](https://www.win-acme.com/)** (antes conocido como WACS) para obtener certificados de Let's Encrypt en Windows.  
    - Visita la página oficial de [win-acme](https://www.win-acme.com/) y descarga la versión más reciente para tu sistema operativo.  
    - Descomprime el archivo descargado en una carpeta, por ejemplo: `C:\win-acme`.
 
