@@ -78,9 +78,9 @@ func _physics_process(delta):
    > Nota:
    > Asegúrate de ajustar los valores según tus necesidades. También, ten en cuenta que se hace un `call_deferred()` para esperar a un fotograma de física de *_physics_process* antes de configurar la ruta, ya que el `NavigationServer` necesita sincronizarse.
 
-   > **Nota**
+   > Nota:
    > Asegúrate de ajustar los valores según tus necesidades. También, ten en cuenta que se hace un `call_deferred()` para esperar a un fotograma de física de `_physics_process` antes de configurar la ruta, ya que el `NavigationServer` necesita sincronizarse.
 
-4. **Ejecuta el proyecto** y comprueba cómo el `CharacterBody2D` se mueve hasta la posición `movement_target_position`.
+4. Ejecuta el proyecto y comprueba cómo el `CharacterBody2D` se mueve hasta la posición `movement_target_position`.
    - Prueba a mover manualmente el nodo de `CharacterBody2D` en el editor.
    - Cambia los valores de `movement_target_position` en el _script_ para ver cómo el personaje actualiza su ruta en tiempo de ejecución.
