@@ -26,7 +26,7 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 ## Paso 2: Configurar y mover el personaje
 
 1. Agrega un nodo `CharacterBody2D` a la escena principal.
-   - Agrega un `Sprite2D` como hijo para tener una representación visual del personaje.
+   - Agrega un `Sprite2D`, opcional pero recomendable, como hijo para tener una representación visual del personaje.
    - Añade una `CollisionShape2D` como hijo para definir su forma de colisión.
 
 2. Agrega un nodo `NavigationAgent2D` como hijo del `CharacterBody2D`.
