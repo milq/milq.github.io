@@ -200,7 +200,97 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 5. **Prueba la autenticación:**
    - Accede al sitio virtual en el navegador (`http://ejemplo.local`) y verifica que se solicita el usuario y contraseña.
 
-## Paso 6: Obtén e instala certificados digitales con Let's Encrypt en Windows (pendiente de resolver)
+## Paso 6: Crear certificados locales para `localhost` o `ejemplo.local`
+
+Cuando necesitas cifrar tu tráfico con HTTPS en un entorno de desarrollo o pruebas (por ejemplo, para `localhost` o un dominio interno como `ejemplo.local`), **Let's Encrypt no te emitirá un certificado** si el dominio no es público. Aquí tienes **dos opciones** para usar certificados en local:
+
+### Opción A: Certificado autofirmado
+
+1. **Verifica que OpenSSL esté disponible**  
+   - Normalmente XAMPP incluye OpenSSL en:
+     ```
+     C:\Users\Usuario\xampp\apache\bin\openssl.exe
+     ```
+   - Si no lo tienes, instálalo desde [slproweb.com/products/Win32OpenSSL.html](https://slproweb.com/products/Win32OpenSSL.html).
+
+2. **Genera una clave privada y un certificado autofirmado**  
+   - Abre una consola (CMD/PowerShell) y ve a la carpeta donde quieras guardar los archivos, por ejemplo:
+     ```powershell
+     cd C:\Users\Usuario\xampp\apache\conf\ssl
+     ```
+     (Crea la carpeta `ssl` si no existe).
+
+   - Ejecuta:
+     ```powershell
+     openssl req -x509 -nodes -days 365 -newkey rsa:2048 `
+       -keyout localhost.key `
+       -out localhost.crt
+     ```
+   - Rellena los datos que te pida OpenSSL; en el campo **Common Name** pon `localhost` o `ejemplo.local` según necesites.
+
+3. **Configura Apache**  
+   - Asegúrate de tener habilitado SSL en `httpd.conf`:
+     ```apache
+     LoadModule ssl_module modules/mod_ssl.so
+     Include conf/extra/httpd-ssl.conf
+     ```
+   - Edita `httpd-ssl.conf` (o el `<VirtualHost *:443>` que uses) para apuntar a tus archivos:
+     ```apache
+     <VirtualHost _default_:443>
+       DocumentRoot "C:/Users/Usuario/xampp/htdocs"
+       ServerName localhost:443
+
+       SSLEngine on
+       SSLCertificateFile "C:/Users/Usuario/xampp/apache/conf/ssl/localhost.crt"
+       SSLCertificateKeyFile "C:/Users/Usuario/xampp/apache/conf/ssl/localhost.key"
+     </VirtualHost>
+     ```
+   - Reinicia Apache y visita `https://localhost/` o `https://ejemplo.local/`.
+
+   > **Aviso de seguridad en el navegador:**  
+   > Al ser un certificado autofirmado, tu navegador mostrará una advertencia. Para eliminarla en tu equipo, instala manualmente el `.crt` en el almacén de certificados de confianza.
+
+### Opción B: Crear una CA local y firmar tus certificados
+
+Si en tu red local necesitas varios certificados (por ejemplo, `sub1.local`, `sub2.local`, etc.) y no quieres aviso de seguridad en cada uno, puedes convertirte en tu propia **Autoridad Certificadora** (CA) interna:
+
+1. **Genera la CA**  
+   ```powershell
+   openssl genrsa -out myCA.key 2048
+   openssl req -x509 -new -nodes -key myCA.key -sha256 -days 3650 -out myCA.crt
+   ```
+   - `myCA.key`: clave privada de la CA  
+   - `myCA.crt`: certificado raíz de la CA
+
+2. **Instala la CA en tu sistema**  
+   - En Windows, haz doble clic en `myCA.crt` y selecciona **Instalar certificado** → **Autoridades de certificación raíz de confianza**.  
+   - Así, tus navegadores locales confiarán en todos los certificados firmados por esta CA.
+
+3. **Crea el CSR (Certificate Signing Request) para tu dominio**  
+   ```powershell
+   openssl genrsa -out ejemplo_local.key 2048
+   openssl req -new -key ejemplo_local.key -out ejemplo_local.csr
+   ```
+   - El **Common Name** aquí debe ser `ejemplo.local`.
+
+4. **Firma el CSR con tu CA**  
+   ```powershell
+   openssl x509 -req -in ejemplo_local.csr -CA myCA.crt -CAkey myCA.key -CAcreateserial -out ejemplo_local.crt -days 365 -sha256
+   ```
+   - Obtendrás `ejemplo_local.crt` firmado por tu CA local.
+
+5. **Configura Apache** (similar al caso autofirmado):
+   ```apache
+   SSLEngine on
+   SSLCertificateFile "C:/Users/Usuario/xampp/apache/conf/ssl/ejemplo_local.crt"
+   SSLCertificateKeyFile "C:/Users/Usuario/xampp/apache/conf/ssl/ejemplo_local.key"
+   SSLCertificateChainFile "C:/Users/Usuario/xampp/apache/conf/ssl/myCA.crt"
+   ```
+   Reinicia Apache y, puesto que tu sistema confía en `myCA.crt`, no tendrás advertencias de seguridad.
+
+## Paso 6 (a extinguir): Obtén e instala certificados digitales con Let's Encrypt en Windows (pendiente de resolver)
+
+> **Nota:** Sólo es válido si tu dominio **es público** (por ejemplo, `midominio.com`).
 
 1. **Estudia a fondo la iniciativa de [Let's Encrypt](https://en.wikipedia.org/wiki/Let%27s_Encrypt)**  
    - Antes de proceder con la configuración, es importante conocer qué es Let's Encrypt: *Let's Encrypt es una autoridad certificadora sin fines de lucro operada por el Internet Security Research Group (ISRG), que proporciona certificados X.509 para cifrado TLS sin costo. Es la autoridad certificadora más grande del mundo, utilizada por más de 400 millones de sitios web, y su objetivo es que todos los sitios web sean seguros y utilicen HTTPS.*
