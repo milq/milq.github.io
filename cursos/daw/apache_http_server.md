@@ -8,16 +8,10 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 1. **Descarga XAMPP (versión ZIP)**
    - Visita el sitio oficial de [Apache Friends](https://www.apachefriends.org).
-   - Descarga la última versión de XAMPP para Windows en formato **ZIP** (no el instalador). El archivo tendrá un nombre similar a:
-     ```
-     xampp-windows-x64-x.x.x-x-VSxx.zip
-     ```
+   - Descarga la última versión de XAMPP para Windows en formato **ZIP** (no el instalador). El archivo tendrá un nombre similar a: `xampp-windows-x64-x.x.x-x-VSxx.zip`.
 
 2. **Extrae los archivos**
-   - Extrae el contenido del archivo ZIP en una carpeta de tu elección, por ejemplo:
-     ```
-     C:\Users\Usuario\xampp
-     ```
+   - Extrae el contenido del archivo ZIP en una carpeta de tu elección, por ejemplo: `C:\Users\Usuario\xampp`
    - Asegúrate de que no haya espacios en la ruta de instalación para evitar posibles problemas de configuración.
 
 3. **Configura la estructura de archivos**
@@ -28,14 +22,8 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - Desde el Explorador de archivos, abre `C:\Users\Usuario\xampp\xampp-control.exe` para iniciar y administrar Apache u otros servicios.
 
 5. **Inicia Apache manualmente (opcional)**
-   - Abre tu terminal y navega hasta la carpeta `xampp`:
-     ```cmd
-     cd C:\Users\Usuario\xampp
-     ```
-   - Ejecuta Apache con el siguiente comando:
-     ```cmd
-     apache\bin\httpd.exe
-     ```
+   - Abre tu terminal y navega hasta la carpeta `xampp`: `cd C:\Users\Usuario\xampp`
+   - Ejecuta Apache con el siguiente comando: `apache\bin\httpd.exe`
    - Si Apache se inicia correctamente, significa que la instalación ha sido exitosa.
 
 ## Paso 2: Modificar los parámetros de administración más importantes del servidor web
