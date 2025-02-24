@@ -2,23 +2,41 @@
 
 En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMPP en Windows, abarcando desde la administración de parámetros básicos hasta la implementación de medidas de seguridad avanzadas y la gestión de logs.
 
-> **Nota:** Este tutorial utiliza una instalación separada de XAMPP en `C:\Users\Usuario\xampp` para evitar interferir con una instalación principal de XAMPP que podría estar ubicada en `C:\xampp`. Esto permite practicar y experimentar con Apache HTTP Server sin riesgo para tu entorno principal.
+> **Nota:** Este tutorial instalarás un nuevo XAMPP en una ruta alternativa, por ejemplo, `C:\Users\Usuario\xampp`, para evitar interferencias con una instalación principal que podría estar ubicada en `C:\xampp`. Esto permite practicar y experimentar con Apache HTTP Server sin afectar tu entorno principal.
 
-## Paso 1: Instalación y configuración inicial de XAMPP
+## **Paso 1: Instalación y configuración inicial de XAMPP**
 
-1. **Descarga XAMPP:**
-   - Visita el sitio oficial de [Apache Friends](https://www.apachefriends.org/es/index.html) y descarga la última versión de XAMPP para Windows.
+1. **Descarga XAMPP (versión ZIP)**
+   - Visita el sitio oficial de [Apache Friends](https://www.apachefriends.org).
+   - Descarga la última versión de XAMPP para Windows en formato **ZIP** (no el instalador). El archivo tendrá un nombre similar a:
+     ```
+     xampp-windows-x64-x.x.x-x-VSxx.zip
+     ```
 
-2. **Instala XAMPP:**
-   - Ejecuta el instalador descargado.
-   - Selecciona los componentes que deseas instalar (asegúrate de incluir Apache).
-   - **Cambia el directorio de instalación** a `C:\Users\Usuario\xampp` para no interferir con la instalación principal de XAMPP que podría estar en `C:\xampp`.
-   - Completa la instalación siguiendo las indicaciones del asistente.
-   - Tras finalizar la instalación, borra todo el contenido de la carpeta `C:\Users\Usuario\xampp\htdocs`.
+2. **Extrae los archivos**
+   - Extrae el contenido del archivo ZIP en una carpeta de tu elección, por ejemplo:
+     ```
+     C:\Users\Usuario\xampp
+     ```
+   - Asegúrate de que no haya espacios en la ruta de instalación para evitar posibles problemas de configuración.
 
-3. **Inicia los servicios:**
-   - Abre el Panel de Control de XAMPP.
-   - Inicia el módulo de Apache haciendo clic en "Start".
+3. **Configura la estructura de archivos**
+     - **Borra la carpeta `htdocs`** si deseas comenzar desde cero (`C:\Users\Usuario\xampp\htdocs`)
+     - **Opcional:** Si deseas un entorno más limpio, puedes eliminar otros servicios que no vayas a utilizar (por ejemplo, `mariadb`, `filezilla`, `tomcat`).
+
+4. **Inicia Apache desde XAMPP Control**
+   - Desde el Explorador de archivos, abre `C:\Users\Usuario\xampp\xampp-control.exe` para iniciar y administrar Apache u otros servicios.
+
+5. **Inicia Apache manualmente (opcional)**
+   - Abre tu terminal y navega hasta la carpeta `xampp`:
+     ```cmd
+     cd C:\Users\Usuario\xampp
+     ```
+   - Ejecuta Apache con el siguiente comando:
+     ```cmd
+     apache\bin\httpd.exe
+     ```
+   - Si Apache se inicia correctamente, significa que la instalación ha sido exitosa.
 
 ## Paso 2: Modificar los parámetros de administración más importantes del servidor web
 
@@ -149,7 +167,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 1. **Configura _hosts_ virtuales:**
    - Abre el archivo `httpd-vhosts.conf` ubicado en `C:\Users\Usuario\xampp\apache\conf\extra\httpd-vhosts.conf`.
-   
+
 2. **Agrega definiciones de Virtual Hosts:**
    - Añade una entrada para cada sitio virtual, por ejemplo:
      ```apache
@@ -206,14 +224,14 @@ Cuando necesitas cifrar tu tráfico con HTTPS en un entorno de desarrollo o prue
 
 ### Opción A: Certificado autofirmado
 
-1. **Verifica que OpenSSL esté disponible**  
+1. **Verifica que OpenSSL esté disponible**
    - Normalmente XAMPP incluye OpenSSL en:
      ```
      C:\Users\Usuario\xampp\apache\bin\openssl.exe
      ```
    - Si no lo tienes, instálalo desde [slproweb.com/products/Win32OpenSSL.html](https://slproweb.com/products/Win32OpenSSL.html).
 
-2. **Genera una clave privada y un certificado autofirmado**  
+2. **Genera una clave privada y un certificado autofirmado**
    - Abre una consola (CMD/PowerShell) y ve a la carpeta donde quieras guardar los archivos, por ejemplo:
      ```powershell
      cd C:\Users\Usuario\xampp\apache\conf\ssl
@@ -228,7 +246,7 @@ Cuando necesitas cifrar tu tráfico con HTTPS en un entorno de desarrollo o prue
      ```
    - Rellena los datos que te pida OpenSSL; en el campo **Common Name** pon `localhost` o `ejemplo.local` según necesites.
 
-3. **Configura Apache**  
+3. **Configura Apache**
    - Asegúrate de tener habilitado SSL en `httpd.conf`:
      ```apache
      LoadModule ssl_module modules/mod_ssl.so
@@ -247,33 +265,33 @@ Cuando necesitas cifrar tu tráfico con HTTPS en un entorno de desarrollo o prue
      ```
    - Reinicia Apache y visita `https://localhost/` o `https://ejemplo.local/`.
 
-   > **Aviso de seguridad en el navegador:**  
+   > **Aviso de seguridad en el navegador:**
    > Al ser un certificado autofirmado, tu navegador mostrará una advertencia. Para eliminarla en tu equipo, instala manualmente el `.crt` en el almacén de certificados de confianza.
 
 ### Opción B: Crear una CA local y firmar tus certificados
 
 Si en tu red local necesitas varios certificados (por ejemplo, `sub1.local`, `sub2.local`, etc.) y no quieres aviso de seguridad en cada uno, puedes convertirte en tu propia **Autoridad Certificadora** (CA) interna:
 
-1. **Genera la CA**  
+1. **Genera la CA**
    ```powershell
    openssl genrsa -out myCA.key 2048
    openssl req -x509 -new -nodes -key myCA.key -sha256 -days 3650 -out myCA.crt
    ```
-   - `myCA.key`: clave privada de la CA  
+   - `myCA.key`: clave privada de la CA
    - `myCA.crt`: certificado raíz de la CA
 
-2. **Instala la CA en tu sistema**  
-   - En Windows, haz doble clic en `myCA.crt` y selecciona **Instalar certificado** → **Autoridades de certificación raíz de confianza**.  
+2. **Instala la CA en tu sistema**
+   - En Windows, haz doble clic en `myCA.crt` y selecciona **Instalar certificado** → **Autoridades de certificación raíz de confianza**.
    - Así, tus navegadores locales confiarán en todos los certificados firmados por esta CA.
 
-3. **Crea el CSR (Certificate Signing Request) para tu dominio**  
+3. **Crea el CSR (Certificate Signing Request) para tu dominio**
    ```powershell
    openssl genrsa -out ejemplo_local.key 2048
    openssl req -new -key ejemplo_local.key -out ejemplo_local.csr
    ```
    - El **Common Name** aquí debe ser `ejemplo.local`.
 
-4. **Firma el CSR con tu CA**  
+4. **Firma el CSR con tu CA**
    ```powershell
    openssl x509 -req -in ejemplo_local.csr -CA myCA.crt -CAkey myCA.key -CAcreateserial -out ejemplo_local.crt -days 365 -sha256
    ```
@@ -292,43 +310,43 @@ Si en tu red local necesitas varios certificados (por ejemplo, `sub1.local`, `su
 
 > **Nota:** Sólo es válido si tu dominio **es público** (por ejemplo, `midominio.com`).
 
-1. **Estudia a fondo la iniciativa de [Let's Encrypt](https://en.wikipedia.org/wiki/Let%27s_Encrypt)**  
+1. **Estudia a fondo la iniciativa de [Let's Encrypt](https://en.wikipedia.org/wiki/Let%27s_Encrypt)**
    - Antes de proceder con la configuración, es importante conocer qué es Let's Encrypt: *Let's Encrypt es una autoridad certificadora sin fines de lucro operada por el Internet Security Research Group (ISRG), que proporciona certificados X.509 para cifrado TLS sin costo. Es la autoridad certificadora más grande del mundo, utilizada por más de 400 millones de sitios web, y su objetivo es que todos los sitios web sean seguros y utilicen HTTPS.*
 
-2. **Conoce el protocolo ACME**  
+2. **Conoce el protocolo ACME**
    - El proceso de emisión y renovación automática de certificados se basa en el [protocolo ACME (Automatic Certificate Management Environment)](https://en.wikipedia.org/wiki/Automatic_Certificate_Management_Environment). ACME simplifica la validación de la propiedad del dominio y la instalación de certificados, reduciendo la complejidad de la gestión SSL/TLS.
 
-3. **Descarga e instala una herramienta alternativa a Certbot**  
-   - Dado que Certbot ha [discontinuado el soporte para Windows](https://community.letsencrypt.org/t/certbot-discontinuing-windows-beta-support-in-2024/208101) a partir de febrero de 2024, se recomienda usar [*win-acme*](https://www.win-acme.com/) para obtener certificados de Let's Encrypt en Windows.  
-   - Visita la página oficial de [*win-acme*](https://www.win-acme.com/) y descarga la versión más reciente para tu sistema operativo.  
+3. **Descarga e instala una herramienta alternativa a Certbot**
+   - Dado que Certbot ha [discontinuado el soporte para Windows](https://community.letsencrypt.org/t/certbot-discontinuing-windows-beta-support-in-2024/208101) a partir de febrero de 2024, se recomienda usar [*win-acme*](https://www.win-acme.com/) para obtener certificados de Let's Encrypt en Windows.
+   - Visita la página oficial de [*win-acme*](https://www.win-acme.com/) y descarga la versión más reciente para tu sistema operativo.
    - Descomprime el archivo descargado en una carpeta, por ejemplo: `C:\win-acme`.
    - Si tienes problemas usando *win-acme*, puedes hacerlo con [Certify The Web](https://certifytheweb.com)
 
-4. **Ejecuta *win-acme* para obtener tu certificado**  
-   - Abre una ventana de **Símbolo del sistema** o **PowerShell** con permisos de administrador.  
-   - Navega hasta la carpeta de win-acme:  
+4. **Ejecuta *win-acme* para obtener tu certificado**
+   - Abre una ventana de **Símbolo del sistema** o **PowerShell** con permisos de administrador.
+   - Navega hasta la carpeta de win-acme:
      ```powershell
      cd C:\win-acme
      ```
    - Ejecuta *wacs.exe* para iniciar el asistente interactivo. Si solo deseas un certificado para tu sitio web (por ejemplo, `ejemplo.local`), el asistente te guiará para:
-     1. Especificar el dominio (o dominios).  
-     2. Validar la propiedad del dominio mediante un desafío HTTP o DNS.  
-     3. Guardar el certificado y la clave privada en la ubicación de tu elección.  
-   
+     1. Especificar el dominio (o dominios).
+     2. Validar la propiedad del dominio mediante un desafío HTTP o DNS.
+     3. Guardar el certificado y la clave privada en la ubicación de tu elección.
+
    > **Nota**: Para que la validación HTTP funcione correctamente, tu servidor Apache debe poder responder a las solicitudes en el dominio configurado. Asegúrate de que los puertos apropiados estén abiertos en el _firewall_ (por defecto, el puerto 80 para HTTP y 443 para HTTPS).
 
-5. **Configura Apache para usar el certificado**  
-   Una vez que *win-acme* haya generado el certificado y la clave privada, edita tu archivo de configuración SSL de Apache. Generalmente, se encuentra en:  
+5. **Configura Apache para usar el certificado**
+   Una vez que *win-acme* haya generado el certificado y la clave privada, edita tu archivo de configuración SSL de Apache. Generalmente, se encuentra en:
    ```
    C:\Users\Usuario\xampp\apache\conf\extra\httpd-ssl.conf
-   ```  
+   ```
    Asegúrate de incluir y apuntar a los archivos generados por win-acme. Por ejemplo:
    ```apache
    SSLCertificateFile "C:/win-acme/keys/ejemplo.local/cert.pem"
    SSLCertificateKeyFile "C:/win-acme/keys/ejemplo.local/privkey.pem"
    SSLCertificateChainFile "C:/win-acme/keys/ejemplo.local/chain.pem"
    ```
-   - Verifica también que tengas habilitado el módulo SSL en `httpd.conf`:  
+   - Verifica también que tengas habilitado el módulo SSL en `httpd.conf`:
      ```apache
      LoadModule ssl_module modules/mod_ssl.so
      ```
@@ -345,12 +363,12 @@ Si en tu red local necesitas varios certificados (por ejemplo, `sub1.local`, `su
      </VirtualHost>
      ```
 
-6. **Reinicia Apache**  
+6. **Reinicia Apache**
    Para que los cambios surtan efecto, ve al **Panel de Control de XAMPP** y reinicia el servicio de **Apache**.
 
-7. **Verifica la instalación**  
-   - Abre tu navegador y visita `https://ejemplo.local`.  
-   - Comprueba que el certificado sea válido y que la conexión sea segura.  
+7. **Verifica la instalación**
+   - Abre tu navegador y visita `https://ejemplo.local`.
+   - Comprueba que el certificado sea válido y que la conexión sea segura.
    - **Consejo de seguridad**: asegura la renovación automática de tu certificado. Win-acme permite configurar tareas programadas en Windows para renovaciones automáticas (generalmente cada 60 días). Así, tu sitio siempre estará protegido por un certificado vigente de Let's Encrypt.
 
 ## Paso 7: Establecer mecanismos para asegurar las comunicaciones
