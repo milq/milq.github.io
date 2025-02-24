@@ -200,7 +200,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 5. **Prueba la autenticación:**
    - Accede al sitio virtual en el navegador (`http://ejemplo.local`) y verifica que se solicita el usuario y contraseña.
 
-## Paso 6: Obtén e instala certificados digitales con Let's Encrypt en Windows
+## Paso 6: Obtén e instala certificados digitales con Let's Encrypt en Windows (pendiente de resolver)
 
 1. **Estudia a fondo la iniciativa de [Let's Encrypt](https://en.wikipedia.org/wiki/Let%27s_Encrypt)**  
    - Antes de proceder con la configuración, es importante conocer qué es Let's Encrypt: *Let's Encrypt es una autoridad certificadora sin fines de lucro operada por el Internet Security Research Group (ISRG), que proporciona certificados X.509 para cifrado TLS sin costo. Es la autoridad certificadora más grande del mundo, utilizada por más de 400 millones de sitios web, y su objetivo es que todos los sitios web sean seguros y utilicen HTTPS.*
