@@ -8,7 +8,8 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 1. **Descarga XAMPP (versión ZIP)**
    - Visita el sitio oficial de [Apache Friends](https://www.apachefriends.org).
-   - Descarga la última versión de XAMPP para Windows en formato **ZIP** (no el instalador). El archivo tendrá un nombre similar a: `xampp-windows-x64-x.x.x-x-VSxx.zip`.
+   - Descarga la última versión de XAMPP para Windows en formato **ZIP** (no el instalador).
+   - El archivo tendrá un nombre similar a: `xampp-windows-x64-x.x.x-x-VSxx.zip`.
 
 2. **Extrae los archivos**
    - Extrae el contenido del archivo ZIP en una carpeta de tu elección, por ejemplo: `C:\Users\Usuario\xampp`
