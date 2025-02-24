@@ -16,7 +16,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
    - Asegúrate de que no haya espacios en la ruta de instalación para evitar posibles problemas de configuración.
 
 3. **Configura la estructura de archivos**
-     - **Borra la carpeta `htdocs`** si deseas comenzar desde cero (`C:\Users\Usuario\xampp\htdocs`)
+     - Borra la carpeta `htdocs` para comenzar desde cero (`C:\Users\Usuario\xampp\htdocs`)
      - **Opcional:** Si deseas un entorno más limpio, puedes eliminar otros servicios que no vayas a utilizar (por ejemplo, `mariadb`, `filezilla`, `tomcat`).
 
 4. **Inicia Apache desde XAMPP Control**
