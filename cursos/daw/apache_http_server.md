@@ -24,8 +24,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 5. **Inicia Apache manualmente (opcional)**
    - Abre tu terminal y navega hasta la carpeta `xampp`: `cd C:\Users\Usuario\xampp`
-   - Ejecuta Apache con el siguiente comando: `apache\bin\httpd.exe`
-   - Si Apache se inicia correctamente, significa que la instalación ha sido exitosa.
+   - Inicia Apache con el siguiente comando: `apache\bin\httpd.exe`
 
 ## Paso 2: Modificar los parámetros de administración más importantes del servidor web
 
