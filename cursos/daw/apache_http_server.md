@@ -202,7 +202,7 @@ En este tutorial aprenderás a configurar el servidor web Apache utilizando XAMP
 
 ## Paso 6: Crear certificados locales para `localhost` o `ejemplo.local`
 
-Cuando necesitas cifrar tu tráfico con HTTPS en un entorno de desarrollo o pruebas (por ejemplo, para `localhost` o un dominio interno como `ejemplo.local`), **Let's Encrypt no te emitirá un certificado** si el dominio no es público. Aquí tienes **dos opciones** para usar certificados en local:
+Cuando necesitas cifrar tu tráfico con HTTPS en un entorno de desarrollo o pruebas (por ejemplo, para `localhost` o un dominio interno como `ejemplo.local`), [Let's Encrypt](https://es.wikipedia.org/wiki/Let%27s_Encrypt) no te emitirá un certificado si el dominio no es público. Aquí tienes **dos opciones** para usar certificados en local:
 
 ### Opción A: Certificado autofirmado
 
