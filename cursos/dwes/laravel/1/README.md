@@ -10,7 +10,7 @@ Asimismo, Laravel es un *framework* web que se basa en la **comunidad**, combina
 
 ### Secciones
 
-1.1. Definición y características<br />
+1.1. [Definición y características](1.1.md)<br />
 1.2. Funcionamiento y arquitectura<br />
 1.3. Estructura de directorios
 
