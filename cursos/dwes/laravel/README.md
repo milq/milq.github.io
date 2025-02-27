@@ -9,9 +9,10 @@ En la **presente unidad** se introducirá Laravel y se explorarán sus caracter�
 ## Índice
 
 ### 1. Introducción a Laravel
-   - 1.1. Definición y características
-   - 1.2. Funcionamiento y arquitectura
-   - 1.3. Estructura de directorios
+
+1.1. Definición y características
+1.2. Funcionamiento y arquitectura
+1.3. Estructura de directorios
 
 ### 2. Elementos fundamentales de Laravel
    - 2.1. Rutas
