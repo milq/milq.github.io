@@ -8,5 +8,7 @@ Además, Laravel es altamente **escalable** debido a la flexibilidad de PHP y al
 
 Asimismo, Laravel es un *framework* web que se basa en la **comunidad**, combinando los mejores paquetes para ofrecer un marco de trabajo sólido y fácil de usar. Ha sido desarrollado por miles de programadores de todo el mundo, lo que demuestra de esta red colaborativa una gran fuerza y vitalidad.
 
-## Subíndice
+1.1. Definición y características<br />
+1.2. Funcionamiento y arquitectura<br />
+1.3. Estructura de directorios
 
