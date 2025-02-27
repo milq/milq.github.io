@@ -4,8 +4,6 @@ _Contenido creado por Manuel Ignacio López Quintero_
 
 **Laravel** es un popular [*framework* web](https://en.wikipedia.org/wiki/Web_framework) basado en [PHP](https://en.wikipedia.org/wiki/PHP) que se utiliza para crear aplicaciones web robustas, dinámicas y escalables. Proporciona una estructura y conjunto de herramientas que permiten a los desarrolladores construir aplicaciones web de manera eficiente y rápida.
 
-Una de las cualidades más destacadas de Laravel es su [documentación oficial](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda consultarla constantemente. 
-
 ## Índice
 
 ### 1. [Introducción a Laravel](1)
@@ -34,4 +32,4 @@ Una de las cualidades más destacadas de Laravel es su [documentación oficial](
 
 ## Recursos
 
-
+Una de las cualidades más destacadas de Laravel es su [documentación oficial](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda consultarla constantemente. 
