@@ -2,7 +2,7 @@
 
 _Contenido creado por Manuel Ignacio López Quintero_
 
-**Laravel** es un popular [*framework* web](https://en.wikipedia.org/wiki/Web_framework) basado en [PHP](https://en.wikipedia.org/wiki/PHP) que se utiliza para crear aplicaciones web robustas, dinámicas y escalables. Proporciona una estructura y conjunto de herramientas que permiten a los desarrolladores construir aplicaciones web de manera eficiente y rápida.
+**Laravel** es un popular [*framework* web](https://en.wikipedia.org/wiki/Web_framework) basado en [PHP](https://en.wikipedia.org/wiki/PHP) que se utiliza para crear aplicaciones web robustas, dinámicas y escalables. Ofrece una estructura y conjunto de herramientas que permiten a los desarrolladores construir aplicaciones web de manera eficiente y rápida.
 
 ## Índice
 
