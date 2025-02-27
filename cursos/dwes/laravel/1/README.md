@@ -16,3 +16,4 @@ Asimismo, Laravel es un *framework* web que se basa en la **comunidad**, combina
 1.2. [Funcionamiento y arquitectura](1.2.md)<br />
 1.3. [Estructura de directorios](1.3.md)
 
+_Contenido creado por Manuel Ignacio López Quintero_
