@@ -1,6 +1,6 @@
 # Desarrollo de aplicaciones web en Laravel
 
-_Contenido creado por Manuel Ignacio López Quintero_
+_Contenido creado por [Manuel Ignacio López Quintero](https://milq.github.io)_
 
 **Laravel** es un popular [*framework* web](https://en.wikipedia.org/wiki/Web_framework) basado en [PHP](https://en.wikipedia.org/wiki/PHP) que se utiliza para crear aplicaciones web robustas, dinámicas y escalables. Ofrece una estructura y conjunto de herramientas que permiten a los desarrolladores construir aplicaciones web de manera eficiente y rápida.
 
@@ -34,4 +34,4 @@ _Contenido creado por Manuel Ignacio López Quintero_
 
 Una de las cualidades más destacadas de Laravel es su [documentación oficial](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda consultarla constantemente. 
 
-_Contenido creado por Manuel Ignacio López Quintero_
+_Contenido creado por [Manuel Ignacio López Quintero](https://milq.github.io)_
