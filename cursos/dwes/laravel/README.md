@@ -21,7 +21,7 @@ _Contenido creado por Manuel Ignacio López Quintero_
 2.5. Eloquent<br />
 2.6. Autenticación y validación
 
-### 3. Creación de proyectos en Laravel(3/README.md)
+### 3. [Creación de proyectos en Laravel](3/README.md)
 
 3.1. Instalación, configuración y ejecución<br />
 3.2. Definición de rutas y controladores<br />
