@@ -15,17 +15,19 @@ En la **presente unidad** se introducirá Laravel y se explorarán sus caracter�
 1.3. Estructura de directorios
 
 ### 2. Elementos fundamentales de Laravel
-   - 2.1. Rutas
-   - 2.2. Controladores
-   - 2.3. Vistas y el sistema de plantillas Blade
-   - 2.4. Bases de datos, migraciones y sembrado
-   - 2.5. Eloquent
-   - 2.6. Autenticación y validación
+
+2.1. Rutas
+2.2. Controladores
+2.3. Vistas y el sistema de plantillas Blade
+2.4. Bases de datos, migraciones y sembrado
+2.5. Eloquent
+2.6. Autenticación y validación
 
 ### 3. Creación de proyectos en Laravel
-   - 3.1. Instalación, configuración y ejecución
-   - 3.2. Definición de rutas y controladores
-   - 3.3. Generación de vistas con Blade
-   - 3.4. Gestión de bases de datos, migraciones y sembrado
-   - 3.5. Uso de Eloquent en relaciones uno a varios y varios a varios
-   - 3.6. Integración de autenticación y validación
+
+3.1. Instalación, configuración y ejecución
+3.2. Definición de rutas y controladores
+3.3. Generación de vistas con Blade
+3.4. Gestión de bases de datos, migraciones y sembrado
+3.5. Uso de Eloquent en relaciones uno a varios y varios a varios
+3.6. Integración de autenticación y validación
