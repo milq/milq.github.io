@@ -29,3 +29,7 @@ _Contenido creado por Manuel Ignacio López Quintero_
 3.4. Gestión de bases de datos, migraciones y sembrado<br />
 3.5. Uso de Eloquent en relaciones uno a varios y varios a varios<br />
 3.6. Integración de autenticación y validación
+
+> Una de las cualidades más destacadas de Laravel es su [**documentación oficial**](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda referirse a ella constantemente. 
+>
+> La documentación oficial de Laravel brinda instrucciones claras, ejemplos prácticos y una guía completa para aprovechar al máximo el potencial de este popular *framework* web. No dudes en consultarla para resolver dudas y familiarizarte con las mejores prácticas de desarrollo con Laravel.
