@@ -1,4 +1,4 @@
-## 1. Introducción a Laravel
+# 1. Introducción a Laravel ([↑](../README.md))
 
 **Laravel** es un [*framework* web](https://en.wikipedia.org/wiki/Web_framework) robusto y versátil para el desarrollo de aplicaciones web en [PHP](https://en.wikipedia.org/wiki/PHP). Está diseñado con una filosofía de ser amigable para el desarrollador, poniendo especial énfasis en la elegancia y simplicidad de la sintaxis. Su naturaleza de código abierto permite a los desarrolladores de todo el mundo colaborar y contribuir, lo que ha resultado en un ecosistema sólido y en constante crecimiento.
 
@@ -8,7 +8,7 @@ Además, Laravel es altamente **escalable** debido a la flexibilidad de PHP y al
 
 Asimismo, Laravel es un *framework* web que se basa en la **comunidad**, combinando los mejores paquetes para ofrecer un marco de trabajo sólido y fácil de usar. Ha sido desarrollado por miles de programadores de todo el mundo, lo que demuestra de esta red colaborativa una gran fuerza y vitalidad.
 
-### Secciones
+## Secciones
 
 1.1. [Definición y características](1.1.md)<br />
 1.2. Funcionamiento y arquitectura<br />
