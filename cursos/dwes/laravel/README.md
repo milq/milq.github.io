@@ -6,7 +6,7 @@ _Contenido creado por Manuel Ignacio López Quintero_
 
 ## Índice
 
-### 1. [Introducción a Laravel](1)
+### 1. [Introducción a Laravel](1/README.md)
 
 1.1. Definición y características<br />
 1.2. Funcionamiento y arquitectura<br />
@@ -21,7 +21,7 @@ _Contenido creado por Manuel Ignacio López Quintero_
 2.5. Eloquent<br />
 2.6. Autenticación y validación
 
-### 3. Creación de proyectos en Laravel
+### 3. Creación de proyectos en Laravel(3/README.md)
 
 3.1. Instalación, configuración y ejecución<br />
 3.2. Definición de rutas y controladores<br />
@@ -33,3 +33,5 @@ _Contenido creado por Manuel Ignacio López Quintero_
 ## Recursos
 
 Una de las cualidades más destacadas de Laravel es su [documentación oficial](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda consultarla constantemente. 
+
+_Contenido creado por Manuel Ignacio López Quintero_
