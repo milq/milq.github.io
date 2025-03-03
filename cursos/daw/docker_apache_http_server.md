@@ -37,7 +37,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
 ## Paso 3: Ejecuta un contenedor con Apache y monta `/usr/local/apache2/`
 
 1. **Prepara una carpeta local en Windows**  
-   - Crea en tu disco local una carpeta llamada, por ejemplo, `C:\tu\ruta\local\apache`.
+   - Crea en tu disco local una carpeta llamada, por ejemplo, `C:\tu\ruta\local`.
    - Aquí se copiarán todos los archivos necesarios para que Apache funcione (binarios, configuraciones, `htdocs`, etc.).
 
 2. **Copia los archivos iniciales de Apache a tu carpeta local**  
@@ -47,18 +47,18 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
      ```
    - **Copia la carpeta `/usr/local/apache2` del contenedor a tu carpeta local**:
      ```bash
-     docker cp temp-apache:/usr/local/apache2 C:\tu\ruta\local\apache
+     docker cp temp-apache:/usr/local/apache2 C:\tu\ruta\local
      ```
    - **Elimina el contenedor cuando acabe la copia**:
      ```bash
      docker rm -f temp-apache
      ```
-   Después de esto, tu carpeta `C:\tu\ruta\local\apache` contendrá todos los archivos de Apache.
+   Después de esto, tu carpeta `C:\tu\ruta\local` contendrá todos los archivos de Apache.
 
 3. **Ejecuta el contenedor montando tu carpeta local**  
    Ahora sí, ya puedes montar (vincular) tu carpeta con todo el contenido de Apache:
    ```bash
-   docker run -d --name my-apache -p 8080:80 -v C:\tu\ruta\local\apache:/usr/local/apache2 httpd:2.4
+   docker run -d --name my-apache -p 8080:80 -v C:\tu\ruta\local:/usr/local/apache2 httpd:2.4
    ```
    - `-d`: Inicia el contenedor en segundo plano.
    - `--name my-apache`: Nombra el contenedor como _my-apache_.
