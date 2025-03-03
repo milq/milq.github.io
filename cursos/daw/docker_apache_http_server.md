@@ -125,8 +125,8 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
      ```bash
      docker exec -it my-apache apachectl -t
      ```
-     - Si aparece `Syntax OK`, todo está en orden.
-     - Si no aparece `Syntax OK`, empieza este *Paso 5* desde el principio comprobando que no haya errores de sintaxis en los cambios realizados en `httpd.conf`.
+   - Si aparece `Syntax OK`, todo está en orden.
+   - Si no aparece `Syntax OK`, empieza este *Paso 5* desde el principio comprobando que no haya errores de sintaxis en los cambios realizados en `httpd.conf`.
 
 ## Paso 6: Crea tu propia imagen personalizada (_build_)
 
