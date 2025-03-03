@@ -34,7 +34,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
    ```
    - Deberías ver `httpd` en la lista de imágenes.
 
-## Paso 3: Ejecuta un contenedor con Apache y monta `/usr/local/apache2/`
+## Paso 3 (opción 1): Ejecuta un contenedor con Apache y monta `/usr/local/apache2/`
 
 1. **Elige una carpeta local tuya en Windows**  
    - Crea una carpeta nueva en tu disco local, por ejemplo:  
@@ -59,6 +59,53 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
    docker ps
    ```
    - Verás el contenedor `my-apache` ejecutándose en el puerto 8080.
+
+## Paso 3 (opción 2): Ejecuta un contenedor con Apache y monta `/usr/local/apache2/` en tu carpeta local
+
+1. **Prepara una carpeta local en Windows**  
+   - Crea en tu disco local una carpeta llamada, por ejemplo, `C:\tu\ruta\local\apache`.
+   - Aquí se copiarán todos los archivos necesarios para que Apache funcione (binarios, configuraciones, `htdocs`, etc.).
+
+2. **Copia los archivos iniciales de Apache a tu carpeta local**  
+   - **Crea y ejecuta el contenedor temporal**:
+     ```bash
+     docker run -d --name temp-apache httpd:2.4
+     ```
+   - **Copia la carpeta `/usr/local/apache2` del contenedor a tu carpeta local**:
+     ```bash
+     docker cp temp-apache:/usr/local/apache2 C:\tu\ruta\local\apache
+     ```
+   - **Elimina el contenedor cuando acabe la copia**:
+     ```bash
+     docker rm -f temp-apache
+     ```
+   Después de esto, tu carpeta `C:\tu\ruta\local\apache` contendrá todos los archivos de Apache.
+
+3. **Ejecuta el contenedor montando tu carpeta local**  
+   Ahora sí, ya puedes montar (vincular) tu carpeta con todo el contenido de Apache:
+   ```bash
+   docker run -d --name my-apache -p 8080:80 -v C:\tu\ruta\local\apache:/usr/local/apache2 httpd:2.4
+   ```
+   - `-d`: Inicia el contenedor en segundo plano.
+   - `--name my-apache`: Nombra el contenedor como _my-apache_.
+   - `-p 8080:80`: Podrás acceder a tu sitio en `http://localhost:8080`.
+   - `-v`: Monta la carpeta con la instalación completa de Apache.
+
+4. **Comprueba que el contenedor esté en ejecución**  
+   ```bash
+   docker ps
+   ```
+   - Debes ver el contenedor `my-apache` en el puerto 8080 y con “Up” (ejecutándose).
+
+> **Nota:** Si solo necesitas editar los archivos HTML (y no los binarios ni configuraciones de Apache), puedes optar por montar únicamente la carpeta `htdocs`. Por ejemplo:
+> ```bash
+> docker run -d --name my-apache \
+>   -p 8080:80 \
+>   -v C:\tu\ruta\local\apache\htdocs:/usr/local/apache2/htdocs \
+>   httpd:2.4
+> ```
+
+> Nota: puedes abrir en todo momento Docker Desktop para ver cómo evoluciona
 
 ## Paso 4: Accede y modifica archivos de Apache
 
