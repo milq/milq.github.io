@@ -110,21 +110,22 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
 
 1. **Edita `httpd.conf`**  
    - Abre `C:\tu\ruta\local\apache\conf\httpd.conf` con tu editor de texto preferido (Notepad++, VS Code, etc.).
-   - Aquí puedes modificar puertos, activar módulos, cambiar la carpeta raíz, etc.
-
-2. **Verifica la configuración**  
-   - Antes de reiniciar, comprueba si la configuración de Apache es válida:
-     ```bash
-     docker exec -it my-apache apachectl -t
-     ```
-     - Si aparece `Syntax OK`, todo está en orden.
-     - **Nota:** Si ves una advertencia como `Could not reliably determine the server's fully qualified domain name...`, no te preocupes, no es un error. Significa que Apache no tiene definida la directiva `ServerName` y usará la IP interna del contenedor. Para eliminar esta advertencia, agrega o descomenta en tu `httpd.conf` algo como `ServerName localhost` y reinicia el contenedor con `docker restart my-apache`.
+   - Justo debajo de la línea comentada como `#ServerName www.example.com:80`, añade: `ServerName localhost`. De este modo, Apache usará `localhost` como nombre de servidor.
+   - Activa el módulo de reescritura añadiendo o descomentando la línea `LoadModule rewrite_module modules/mod_rewrite.so`. Esto habilita la funcionalidad de reescritura de URL, es decir, permite reescribir (o *transformar*) las URL que llegan al servidor antes de que sean procesadas.
+   - Reinicia el contenedor con `docker restart my-apache` para aplicar los cambios.
 
 3. **Reinicia el contenedor**  
    - Aplica los cambios reiniciando el contenedor:
      ```bash
      docker restart my-apache
      ```
+
+4. **Verifica la configuración**  
+   - Comprueba si la configuración de Apache es válida:
+     ```bash
+     docker exec -it my-apache apachectl -t
+     ```
+     - Si aparece `Syntax OK`, todo está en orden.
 
 ## Paso 6: Crea tu propia imagen personalizada (_build_)
 
