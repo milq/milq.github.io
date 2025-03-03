@@ -34,7 +34,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
    ```
    - Deberías ver `httpd` en la lista de imágenes.
 
-## Paso 3 (opción 1): Ejecuta un contenedor con Apache y monta `/usr/local/apache2/`
+## Paso 3 (antiguo): Ejecuta un contenedor con Apache y monta `/usr/local/apache2/`
 
 1. **Elige una carpeta local tuya en Windows**  
    - Crea una carpeta nueva en tu disco local, por ejemplo:  
@@ -60,7 +60,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
    ```
    - Verás el contenedor `my-apache` ejecutándose en el puerto 8080.
 
-## Paso 3 (opción 2): Ejecuta un contenedor con Apache y monta `/usr/local/apache2/` en tu carpeta local
+## Paso 3: Ejecuta un contenedor con Apache y monta `/usr/local/apache2/` en tu carpeta local
 
 1. **Prepara una carpeta local en Windows**  
    - Crea en tu disco local una carpeta llamada, por ejemplo, `C:\tu\ruta\local\apache`.
