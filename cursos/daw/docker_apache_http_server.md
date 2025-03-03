@@ -118,6 +118,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
      docker exec -it my-apache apachectl -t
      ```
      - Si aparece `Syntax OK`, todo está en orden.
+     - **Nota:** Si ves una advertencia como `Could not reliably determine the server's fully qualified domain name...`, no te preocupes, no es un error. Significa que Apache no tiene definida la directiva `ServerName` y usará la IP interna del contenedor. Para eliminar esta advertencia, agrega o descomenta en tu `httpd.conf` algo como `ServerName localhost` y reinicia el contenedor con `docker restart my-apache`.
 
 3. **Reinicia el contenedor**  
    - Aplica los cambios reiniciando el contenedor:
