@@ -34,32 +34,6 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
    ```
    - Deberías ver `httpd` en la lista de imágenes.
 
-## Paso 3 (antiguo): Ejecuta un contenedor con Apache y monta `/usr/local/apache2/`
-
-1. **Elige una carpeta local tuya en Windows**  
-   - Crea una carpeta nueva en tu disco local, por ejemplo:  
-     `C:\tu\ruta\local\apache`
-   - En esa carpeta será para ver todos los archivos de configuración de Apache.
-
-2. **Ejecuta el contenedor mapeando puertos y carpeta**  
-   Desde la terminal, ejecuta:
-   ```bash
-   docker run -d --name my-apache \
-     -p 8080:80 \
-     -v C:\tu\ruta\local\apache:/usr/local/apache2 \
-     httpd:2.4
-   ```
-   - `-d`: Inicia el contenedor en segundo plano (_detached_).
-   - `--name my-apache`: Nombra el contenedor como _my-apache_.
-   - `-p 8080:80`: Abre el servidor en `http://localhost:8080`.
-   - `-v C:\tu\ruta\local\apache:/usr/local/apache2`: sincroniza la carpeta local con todo el directorio de Apache dentro del contenedor.
-
-3. **Comprueba que el contenedor esté ejecutándose**  
-   ```bash
-   docker ps
-   ```
-   - Verás el contenedor `my-apache` ejecutándose en el puerto 8080.
-
 ## Paso 3: Ejecuta un contenedor con Apache y monta `/usr/local/apache2/`
 
 1. **Prepara una carpeta local en Windows**  
