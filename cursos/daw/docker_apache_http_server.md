@@ -79,7 +79,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Apache HTTP Server
 >   httpd:2.4
 > ```
 
-> Nota: puedes abrir en todo momento Docker Desktop para ver cómo evoluciona
+> **Nota:** puedes abrir en todo momento Docker Desktop para ver cómo evoluciona
 
 ## Paso 4: Accede y modifica archivos de Apache
 
