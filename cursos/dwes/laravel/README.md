@@ -12,7 +12,7 @@ _Contenido creado por Manuel Ignacio López Quintero_
 1.2. Funcionamiento y arquitectura<br />
 1.3. Estructura de directorios
 
-### 2. Elementos fundamentales de Laravel
+### 2. [Elementos fundamentales de Laravel](2/README.md)
 
 2.1. Rutas<br />
 2.2. Controladores<br />
