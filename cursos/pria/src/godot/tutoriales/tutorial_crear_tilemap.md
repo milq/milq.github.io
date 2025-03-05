@@ -37,13 +37,6 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
    - En la parte inferior de la pantalla, pulsa en la pestaña _TileMap_, elige el _tileset_ cargado y selecciona un _tile_.
 
 2. **Dibuja el escenario**:
-   - Usa la herramienta **Paint** (icono de lápiz) para colocar _tiles_ a tu gusto en el _viewport_.
-   - Pulsa `clic izquierdo` para pintar y `clic derecho` para borrar.
-   - Usa la herramienta **Rectangle** (icono de rectángulo) para definir un área rectangular que se rellenará automáticamente con el _tile_ seleccionado.
-   - Usa la herramienta **Bucket** (icono de bote de pintura) para rellenar áreas grandes rápidamente.
-   - Activa la opción de **azar** (icono de dado) y comprueba que sucede con la herramienta _Rectangle_. El _scattering_ agrega variación, ideal para decoración orgánica (hierba, rocas).
-
-2. **Dibuja el escenario**:
    - Utiliza la herramienta **Paint** (icono de lápiz) para colocar _tiles_ en el _viewport_: `clic izquierdo` para pintar y `clic derecho` para borrar.
    - Con la herramienta **Rectangle** (icono de rectángulo) delimita un área que se rellenará automáticamente con el _tile_ seleccionado.
    - Emplea la herramienta **Bucket** (icono de bote de pintura) para rellenar rápidamente áreas extensas.
