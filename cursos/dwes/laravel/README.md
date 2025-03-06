@@ -32,6 +32,6 @@ _Contenido creado por Manuel Ignacio López Quintero_
 
 ## Recursos
 
-Una de las cualidades más destacadas de Laravel es su [documentación oficial](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda consultarla constantemente. 
+Una de las cualidades más destacadas de Laravel es su [**documentación oficial**](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda consultarla constantemente. 
 
 _Contenido creado por Manuel Ignacio López Quintero_
