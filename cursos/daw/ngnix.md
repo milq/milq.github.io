@@ -7,10 +7,7 @@ Este tutorial es una **continuación** del [Tutorial de Nginx con Docker en Wind
 ## Paso 1: Crear un nuevo contenedor y entorno de trabajo
 
 1. **Descarga (o verifica) la imagen oficial de Nginx**  
-   * Si no la tienes ya:
-      ```bash
-      docker pull nginx
-      ```
+   * Si no la tienes ya, ejecuta `docker pull nginx`
    * Comprueba con:
    ```bash
    docker images
