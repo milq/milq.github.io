@@ -1,4 +1,4 @@
-# Tutorial: Configuración avanzada de Nginx en Windows (usando Docker)
+# Tutorial: Configuración de Nginx en Windows usando Docker
 
 Este tutorial es una **continuación** del [Tutorial de Nginx con Docker en Windows](docker-nginx.md) que ya has realizado. Ahora profundizaremos en aspectos de configuración avanzada: desde parámetros esenciales de Nginx, pasando por configuración de hosts virtuales, seguridad (HTTPS, autenticación básica) y gestión de logs. A diferencia de la configuración típica en XAMPP/Apache (como en el ejemplo del tutorial anterior de Apache), aquí usaremos **contenedores Docker** para aislar y desplegar nuestro servidor Nginx.
 
