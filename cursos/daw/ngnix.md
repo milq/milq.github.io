@@ -8,9 +8,9 @@ Este tutorial es una **continuación** del [Tutorial de Nginx con Docker en Wind
 
 1. **Descarga (o verifica) la imagen oficial de Nginx**  
    * Si no la tienes ya:
-   ```bash
-   docker pull nginx
-   ```
+      ```bash
+      docker pull nginx
+      ```
    * Comprueba con:
    ```bash
    docker images
