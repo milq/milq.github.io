@@ -11,7 +11,7 @@ La **creación de proyectos en Laravel** es, sin lugar a dudas, una manera perfe
 3.3. [Generación de vistas con Blade](3.3.md)<br />
 3.4. [Gestión de bases de datos, migraciones y sembrado](3.4.md)<br />
 3.5. [Uso de Eloquent en relaciones uno a varios](3.5.md)<br />
-3.5. [Uso de Eloquent en relaciones varios a varios](3.6.md)<br />
-3.6. [Integración de autenticación y validación](3.7.md)
+3.6. [Uso de Eloquent en relaciones varios a varios](3.6.md)<br />
+3.7. [Integración de autenticación y validación](3.7.md)
 
 _Contenido creado por Manuel Ignacio López Quintero_
