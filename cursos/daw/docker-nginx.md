@@ -82,9 +82,11 @@ Si necesitas, además de la parte web, cambiar la configuración (por ejemplo `n
    ```bash
    docker cp temp-nginx:/etc/nginx C:\tu\ruta\local\nginx
    docker cp temp-nginx:/usr/share/nginx/html C:\tu\ruta\local\nginx
+   docker cp temp-nginx:/etc/nginx/nginx.conf C:\tu\ruta\local\nginx\nginx.conf
    ```
-   - El primer comando copia la configuración de Nginx.
+   - El primer comando copia la carpeta de configuración de Nginx.
    - El segundo copia la carpeta donde se encuentra la página de ejemplo.
+   - El tercero copia el archivo de configuración `nginx.conf` 
    - **Importante:** si no te aparecen archivos como `nginx.conf` puedes traerlos directamente con `docker cp temp-nginx:/etc/nginx/nginx.conf C:\tu\ruta\local\nginx\nginx.conf`
 
 4. **Elimina el contenedor temporal**
@@ -96,6 +98,7 @@ Si necesitas, además de la parte web, cambiar la configuración (por ejemplo `n
    ```bash
    docker run -d --name my-nginx \
      -p 8080:80 \
+     -v C:\tu\ruta\local\nginx\nginx.conf:/etc/nginx/nginx.conf \
      -v C:\tu\ruta\local\nginx\nginx:/etc/nginx \
      -v C:\tu\ruta\local\nginx\html:/usr/share/nginx/html \
      nginx
