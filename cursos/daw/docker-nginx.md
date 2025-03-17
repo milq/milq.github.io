@@ -39,7 +39,7 @@ En este tutorial aprenderás a descargar la imagen oficial de Nginx con Docker, 
    ```
    - Deberías ver `nginx` en la lista de imágenes.
 
-## Paso 3: Ejecuta un contenedor con Nginx y prepara tus carpetas
+## Paso 3: Ejecuta un contenedor con Nginx y prepara tus carpetas (realiza la opción B)
 
 ### Opción A: Solo quieres editar los archivos HTML
 
@@ -86,8 +86,7 @@ Si necesitas, además de la parte web, cambiar la configuración (por ejemplo `n
    ```
    - El primer comando copia la carpeta de configuración de Nginx.
    - El segundo copia la carpeta donde se encuentra la página de ejemplo.
-   - El tercero copia el archivo de configuración `nginx.conf` 
-   - **Importante:** si no te aparecen archivos como `nginx.conf` puedes traerlos directamente con `docker cp temp-nginx:/etc/nginx/nginx.conf C:\tu\ruta\local\nginx\nginx.conf`
+   - El tercero copia el archivo de configuración `nginx.conf` (a veces el primer comando no copia este archivo de configuración y es necesario forzarlo)
 
 4. **Elimina el contenedor temporal**
    ```bash
@@ -98,9 +97,9 @@ Si necesitas, además de la parte web, cambiar la configuración (por ejemplo `n
    ```bash
    docker run -d --name my-nginx \
      -p 8080:80 \
-     -v C:\tu\ruta\local\nginx\nginx.conf:/etc/nginx/nginx.conf \
      -v C:\tu\ruta\local\nginx\nginx:/etc/nginx \
      -v C:\tu\ruta\local\nginx\html:/usr/share/nginx/html \
+     -v C:\tu\ruta\local\nginx\nginx.conf:/etc/nginx/nginx.conf \
      nginx
    ```
    - Con este comando, cualquier cambio que hagas en `C:\tu\ruta\local\nginx\nginx` o en `C:\tu\ruta\local\nginx\html` se reflejará directamente en el contenedor.
