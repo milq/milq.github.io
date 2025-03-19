@@ -25,9 +25,9 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 
 ## Paso 2: Configurar y mover el personaje
 
-1. Agrega un nodo `CharacterBody2D` a la escena principal.
-   - Agrega un `Sprite2D`, opcional pero recomendable, como hijo para tener una representación visual del personaje.
-   - Añade una `CollisionShape2D` como hijo para definir su forma de colisión.
+1. Agrega a _Niblo_ como nodo `CharacterBody2D` a la escena principal.
+   - Añádele un `Sprite2D`, como nodo hijo, para representar al personaje. El _sprite_ lo puedes descargar desde [aquí](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png).
+   - Añádele un `CollisionShape2D`, como nodo hijo, para definir su forma de colisión.
 
 2. Agrega un nodo `NavigationAgent2D` como hijo del `CharacterBody2D`.
    - Este agente se encargará de calcular y seguir las rutas dentro de la región de navegación.
