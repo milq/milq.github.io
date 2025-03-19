@@ -12,4 +12,8 @@ En la era actual de la **transformación digital**, las organizaciones requieren
 1.2. [Propósito y beneficios](1.2.md)<br />
 1.3. [Tipos de servicios web](1.3.md)
 
+## Recursos
+
+Si estás interesado en profundizar tu conocimiento sobre los servicios web, es recomendable explorar una amplia variedad de recursos disponibles en línea que pueden ser de gran ayuda. Para empezar, puedes visitar la página de Wikipedia en inglés sobre [**Servicios Web**](https://en.wikipedia.org/wiki/Web_service). Esta página ofrece una introducción sólida al tema, definiendo lo que son los servicios web y explicando cómo funcionan.
+
 _Contenido creado por Manuel Ignacio López Quintero_
