@@ -25,17 +25,17 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 
 ## Paso 2: Configurar y mover el personaje
 
-1. Agrega a _Niblo_ como nodo hijo de tipo `CharacterBody2D` en la escena principal:
+1. Agrega a [Niblo](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) como nodo hijo de tipo `CharacterBody2D` en la escena principal:
    - Añade un `Sprite2D` como nodo hijo para representar al personaje. Puedes descargar el _sprite_ [aquí](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png).
    - Añade un `CollisionShape2D` como nodo hijo para definir su forma de colisión.
 
-2. Agrega un nodo `NavigationAgent2D` como hijo del `CharacterBody2D`.
+2. Agrega un nodo `NavigationAgent2D` como hijo de Niblo que es un `CharacterBody2D`.
    - Este agente se encargará de calcular y seguir las rutas dentro de la región de navegación.
    - Asegúrate de colocarlo como hijo directo del `CharacterBody2D`.
 
    ![Paso 3](https://docs.godotengine.org/en/stable/_images/nav_2d_min_setup_step3.webp)
 
-3. Adjunta el siguiente _script_ a tu `CharacterBody2D`:
+3. Adjunta el siguiente _script_ a Niblo:
 
 ```gdscript
 extends CharacterBody2D
