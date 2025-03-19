@@ -18,8 +18,8 @@ Si estás interesado en profundizar tu conocimiento sobre los servicios web, es 
 
 Además, en Wikipedia existen otras tres entradas que podrían interesarte si buscas una comprensión más profunda de los servicios web: 
 
-- [**List of web service protocols**](https://en.wikipedia.org/wiki/List_of_web_service_protocols) (proporciona una lista de los protocolos utilizados en los servicios web).
-- [**List of web service specifications**](https://en.wikipedia.org/wiki/List_of_web_service_specifications) (proporciona una lista de las especificaciones utilizadas en los servicios web).
-- [**List of web service frameworks**](https://en.wikipedia.org/wiki/List_of_web_service_frameworks) (proporciona una lista de los marcos de trabajo o *frameworks* que se pueden utilizar para construir servicios web).
+- [_List of web service protocols_](https://en.wikipedia.org/wiki/List_of_web_service_protocols) (proporciona una lista de los protocolos utilizados en los servicios web).
+- [_List of web service specifications_](https://en.wikipedia.org/wiki/List_of_web_service_specifications) (proporciona una lista de las especificaciones utilizadas en los servicios web).
+- [_List of web service frameworks_](https://en.wikipedia.org/wiki/List_of_web_service_frameworks) (proporciona una lista de los marcos de trabajo o *frameworks* que se pueden utilizar para construir servicios web).
 
 _Contenido creado por Manuel Ignacio López Quintero_
