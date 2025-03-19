@@ -16,10 +16,6 @@ En la era actual de la **transformación digital**, las organizaciones requieren
 
 Si estás interesado en profundizar tu conocimiento sobre los servicios web, es recomendable explorar una amplia variedad de recursos disponibles en línea que pueden ser de gran ayuda. Para empezar, puedes visitar la página de Wikipedia en inglés sobre [Servicios Web](https://en.wikipedia.org/wiki/Web_service). Esta página ofrece una introducción sólida al tema, definiendo lo que son los servicios web y explicando cómo funcionan.
 
-Además, en Wikipedia existen otras tres entradas que podrían interesarte si buscas una comprensión más profunda de los servicios web: 
-
-- [_List of web service protocols_](https://en.wikipedia.org/wiki/List_of_web_service_protocols) (proporciona una lista de los protocolos utilizados en los servicios web).
-- [_List of web service specifications_](https://en.wikipedia.org/wiki/List_of_web_service_specifications) (proporciona una lista de las especificaciones utilizadas en los servicios web).
-- [_List of web service frameworks_](https://en.wikipedia.org/wiki/List_of_web_service_frameworks) (proporciona una lista de los marcos de trabajo o *frameworks* que se pueden utilizar para construir servicios web).
+Además, en Wikipedia existen otras tres entradas que podrían interesarte si buscas una comprensión más profunda de los servicios web: [_List of web service protocols_](https://en.wikipedia.org/wiki/List_of_web_service_protocols) (proporciona una lista de los protocolos utilizados en los servicios web), [_List of web service specifications_](https://en.wikipedia.org/wiki/List_of_web_service_specifications) (proporciona una lista de las especificaciones utilizadas en los servicios web) y [_List of web service frameworks_](https://en.wikipedia.org/wiki/List_of_web_service_frameworks) (proporciona una lista de los marcos de trabajo o *frameworks* que se pueden utilizar para construir servicios web).
 
 _Contenido creado por Manuel Ignacio López Quintero_
