@@ -12,11 +12,11 @@ El consumo de servicios web en HTTP se realiza generalmente utilizando **cliente
 
 ## Secciones
 
-3.1. [HTTPie](4.1.md)<br />
-3.2. [Guzzle](4.2.md)<br />
-3.3. [Consumo de servicios web SOAP en PHP](4.3.md)<br />
-3.4. [Consumo de servicios web REST en PHP](4.4.md)<br />
-3.5. [Consumo de servicios web REST en Laravel](4.5.md)
+4.1. [HTTPie](4.1.md)<br />
+4.2. [Guzzle](4.2.md)<br />
+4.3. [Consumo de servicios web SOAP en PHP](4.3.md)<br />
+4.4. [Consumo de servicios web REST en PHP](4.4.md)<br />
+4.5. [Consumo de servicios web REST en Laravel](4.5.md)
 
 ## Recursos
 
