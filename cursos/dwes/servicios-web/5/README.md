@@ -6,9 +6,9 @@ En el mundo de los servicios web, **REST** (Representational State Transfer) es 
 
 ## Secciones
 
-5.1. [HTTPie](5.1.md)<br />
-5.2. [Guzzle](5.2.md)<br />
-5.3. [Consumo de servicios web SOAP en PHP](5.3.md)
+5.1. [Implementación de un servicio web con SOAP en PHP](5.1.md)<br />
+5.2. [Implementación de un servicio web con REST en PHP](5.2.md)<br />
+5.3. [Implementación de un servicio web con Laravel](5.3.md)
 
 ## Recursos
 
