@@ -13,8 +13,6 @@ En el mundo de los servicios web, **REST** (Representational State Transfer) es 
 
 ## Recursos
 
-## Recursos
-
 Si deseas profundizar tus conocimientos sobre REST (Representational State Transfer), existen diversos recursos en línea altamente recomendables para ampliar tu comprensión y experiencia práctica. Un excelente punto de partida es la página oficial de Wikipedia en inglés sobre [Representational State Transfer](https://en.wikipedia.org/wiki/Representational_state_transfer), que ofrece una visión general clara y detallada del concepto, sus principios fundamentales y su historia.
 
 Para una aproximación práctica, [REST API Tutorial](https://restfulapi.net/) ofrece tutoriales claros, explicaciones detalladas y ejemplos prácticos sobre cómo diseñar y consumir APIs RESTful. Además, [MDN Web Docs sobre REST APIs](https://developer.mozilla.org/en-US/docs/Glossary/REST) proporciona documentación técnica precisa y accesible, ideal para desarrolladores interesados en implementar APIs REST de forma eficiente.
