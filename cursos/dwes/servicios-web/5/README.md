@@ -2,7 +2,13 @@
 
 _Contenido creado por Manuel Ignacio López Quintero_
 
-En el mundo de los servicios web, **REST** (Representational State Transfer) es un estilo arquitectónico ampliamente utilizado para el diseño de sistemas distribuidos. Se basa en un conjunto de principios que promueven una forma específica de comunicación entre los componentes de un sistema. REST fue desarrollado por Roy Fielding en su tesis doctoral en el 2000 y se ha vuelto muy popular debido a su simplicidad, flexibilidad y escalabilidad.
+La **creación de servicios web** implica desarrollar y exponer funcionalidades o recursos mediante interfaces accesibles a través del protocolo [HTTP](https://en.wikipedia.org/wiki/HTTP). Estos servicios pueden implementarse mediante diferentes arquitecturas, siendo [REST](https://en.wikipedia.org/wiki/REST) y [SOAP](https://en.wikipedia.org/wiki/SOAP) las más comunes en la actualidad, debido a su facilidad de integración y amplio soporte en diversos lenguajes y plataformas.
+
+Al crear un servicio web, es fundamental definir claramente su **estructura** y especificaciones, incluyendo la definición de los **recursos**, **URLs** (rutas), **métodos HTTP** (GET, POST, PUT, DELETE), y los **parámetros de entrada y salida**. Una buena documentación es esencial para facilitar el consumo por parte de clientes externos, ya sea mediante documentos explícitos como archivos WSDL en SOAP o mediante estándares y convenciones en REST.
+
+La creación de servicios web permite que diferentes aplicaciones y sistemas interactúen fácilmente compartiendo funcionalidades o datos específicos, tales como información de usuarios, acceso a bases de datos, operaciones comerciales, autenticación, entre otros.
+
+La implementación práctica de servicios web con HTTP puede realizarse utilizando lenguajes como PHP, JavaScript (Node.js), Python, Java, entre otros, aprovechando _frameworks_ y bibliotecas que facilitan enormemente esta tarea.
 
 ## Secciones
 
@@ -10,12 +16,12 @@ En el mundo de los servicios web, **REST** (Representational State Transfer) es 
 5.2. [Implementación de un servicio web con REST en PHP](5.2.md)<br />
 5.3. [Implementación de un servicio web con Laravel](5.3.md)
 
-## Recursos
+## Herramientas recomendadas
 
-Si deseas profundizar tus conocimientos sobre REST (Representational State Transfer), existen diversos recursos en línea altamente recomendables para ampliar tu comprensión y experiencia práctica. Un excelente punto de partida es la página oficial de Wikipedia en inglés sobre [Representational State Transfer](https://en.wikipedia.org/wiki/Representational_state_transfer), que ofrece una visión general clara y detallada del concepto, sus principios fundamentales y su historia.
+Existen varias herramientas que facilitan el desarrollo y prueba de servicios web mediante HTTP. Destacan frameworks específicos según el lenguaje utilizado, por ejemplo:
 
-Para una aproximación práctica, [REST API Tutorial](https://restfulapi.net/) ofrece tutoriales claros, explicaciones detalladas y ejemplos prácticos sobre cómo diseñar y consumir APIs RESTful. Además, [MDN Web Docs sobre REST APIs](https://developer.mozilla.org/en-US/docs/Glossary/REST) proporciona documentación técnica precisa y accesible, ideal para desarrolladores interesados en implementar APIs REST de forma eficiente.
+- En **PHP**, herramientas como [Laravel](https://laravel.com/docs/api-authentication) permiten crear servicios RESTful de manera rápida y sencilla, aportando estructuras sólidas para manejar solicitudes HTTP y respuestas de forma eficiente.
 
-Finalmente, [REST CookBook](https://restcookbook.com/) presenta recetas prácticas y patrones comunes para el diseño y la implementación de APIs RESTful, facilitando la comprensión mediante ejemplos concretos y aplicables en diversos contextos de desarrollo.
+- Para servicios **SOAP** en PHP, la extensión nativa de PHP [SOAP](https://www.php.net/manual/es/book.soap.php) ofrece una manera directa y robusta para la creación de servicios basados en este protocolo.
 
 _Contenido creado por Manuel Ignacio López Quintero_
