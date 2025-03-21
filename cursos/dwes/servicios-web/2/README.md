@@ -21,6 +21,6 @@ Si deseas profundizar tus conocimientos sobre SOAP (Simple Object Access Protoco
 
 Para una aproximación más técnica y detallada, la [Recomendación SOAP 1.2 del W3C](https://www.w3.org/TR/soap12/) proporciona la documentación oficial sobre este protocolo, incluyendo su estructura, reglas y extensiones. Además, [TutorialsPoint sobre SOAP](https://www.tutorialspoint.com/soap/) ofrece guías prácticas, ejemplos y explicaciones paso a paso ideales para desarrolladores que deseen implementar y consumir servicios basados en SOAP.
 
-Por último, [SOAP Web Services en IBM Developer](https://developer.ibm.com/articles/ws-soa-develop-web-services/) recopila artículos y recursos que cubren tanto los fundamentos como escenarios avanzados de uso de SOAP, brindando una visión más amplia y práctica en distintos entornos de desarrollo.
+Por último, [SOAP Web Services en IBM Developer](https://www.ibm.com/docs/en/cics-ts/6.x?topic=services-developing-soap-web) recopila artículos y recursos que cubren tanto los fundamentos como escenarios avanzados de uso de SOAP, brindando una visión más amplia y práctica en distintos entornos de desarrollo.
 
 _Contenido creado por Manuel Ignacio López Quintero_
