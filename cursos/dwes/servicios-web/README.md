@@ -31,7 +31,8 @@ Los **servicios web** son aplicaciones que facilitan la comunicación entre dife
 4.1. HTTPie<br />
 4.2. Guzzle<br />
 4.3. Consumo de servicios web SOAP en PHP<br />
-4.4. Consumo de servicios web REST en PHP
+4.4. Consumo de servicios web REST en PHP<br />
+4.5. Consumo de servicios web REST en Laravel
 
 ### 5. [Creación de servicios web con PHP](5/README.md)
 
