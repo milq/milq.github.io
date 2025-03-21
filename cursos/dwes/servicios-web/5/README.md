@@ -16,12 +16,4 @@ La implementación práctica de servicios web con HTTP puede realizarse utilizan
 5.2. [Implementación de un servicio web con REST en PHP](5.2.md)<br />
 5.3. [Implementación de un servicio web con Laravel](5.3.md)
 
-## Herramientas recomendadas
-
-Existen varias herramientas que facilitan el desarrollo y prueba de servicios web mediante HTTP. Destacan frameworks específicos según el lenguaje utilizado, por ejemplo:
-
-- En **PHP**, herramientas como [Laravel](https://laravel.com/docs/api-authentication) permiten crear servicios RESTful de manera rápida y sencilla, aportando estructuras sólidas para manejar solicitudes HTTP y respuestas de forma eficiente.
-
-- Para servicios **SOAP** en PHP, la extensión nativa de PHP [SOAP](https://www.php.net/manual/es/book.soap.php) ofrece una manera directa y robusta para la creación de servicios basados en este protocolo.
-
 _Contenido creado por Manuel Ignacio López Quintero_
