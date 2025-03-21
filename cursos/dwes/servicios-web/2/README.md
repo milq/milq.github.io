@@ -14,3 +14,13 @@ Inicialmente, SOAP fue concebido como [XML-RPC](https://en.wikipedia.org/wiki/XM
 2.4. [UDDI (Universal Description, Discovery and Integration)](2.4.md)
 
 _Contenido creado por Manuel Ignacio López Quintero_
+
+## Recursos
+
+Si deseas profundizar tus conocimientos sobre SOAP (Simple Object Access Protocol), existen diversos recursos en línea altamente recomendables para ampliar tu comprensión y experiencia práctica. Un excelente punto de partida es la página oficial de Wikipedia en inglés sobre [SOAP](https://en.wikipedia.org/wiki/SOAP), que ofrece una visión general completa de su historia, especificaciones y casos de uso.
+
+Para una aproximación más técnica y detallada, la [Recomendación SOAP 1.2 del W3C](https://www.w3.org/TR/soap12/) proporciona la documentación oficial sobre este protocolo, incluyendo su estructura, reglas y extensiones. Además, [TutorialsPoint sobre SOAP](https://www.tutorialspoint.com/soap/) ofrece guías prácticas, ejemplos y explicaciones paso a paso ideales para desarrolladores que deseen implementar y consumir servicios basados en SOAP.
+
+Por último, [SOAP Web Services en IBM Developer](https://developer.ibm.com/articles/ws-soa-develop-web-services/) recopila artículos y recursos que cubren tanto los fundamentos como escenarios avanzados de uso de SOAP, brindando una visión más amplia y práctica en distintos entornos de desarrollo.
+
+_Contenido creado por Manuel Ignacio López Quintero_
