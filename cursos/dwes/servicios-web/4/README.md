@@ -22,6 +22,8 @@ El consumo de servicios web en HTTP se realiza generalmente utilizando **cliente
 
 Existen diversas herramientas recomendadas para facilitar el consumo de servicios web mediante HTTP, entre ellas destaca [HTTPie](https://httpie.io), un cliente HTTP de línea de comandos con interfaz amigable, ideal para pruebas rápidas y depuración interactiva. También está disponible [Guzzle](https://docs.guzzlephp.org), un popular cliente HTTP para PHP que simplifica significativamente el consumo de servicios web, proporcionando una interfaz potente y fácil de utilizar.
 
-Finalmente, para implementaciones concretas en PHP y Laravel, se recomienda revisar la documentación oficial sobre el consumo de servicios web, tales como el [uso de SOAP en PHP](https://www.php.net/manual/es/book.soap.php), la [integración de APIs REST con cURL en PHP](https://www.php.net/manual/es/book.curl.php), y especialmente el [cliente HTTP nativo de Laravel](https://laravel.com/docs/http-client), que facilita notablemente la interacción con APIs REST desde aplicaciones desarrolladas en dicho framework.
+También está el [cliente HTTP de Laravel](https://laravel.com/docs/http-client) que utiliza Guzzle internamente. Está diseñado para brindar una experiencia de desarrollo aún más amigable y expresiva. Este cliente HTTP simplifica notablemente la interacción con APIs REST, facilitando la creación de solicitudes y el manejo de respuestas mediante una sintaxis clara, minimalista y fácil de utilizar dentro del propio ecosistema de Laravel.
+
+Finalmente, para implementaciones específicas en PHP, se recomienda revisar la documentación oficial sobre el consumo de servicios web [con SOAP en PHP](https://www.php.net/manual/es/book.soap.php) y la [integración de APIs REST con cURL en PHP](https://www.php.net/manual/es/book.curl.php).
 
 _Contenido creado por Manuel Ignacio López Quintero_
