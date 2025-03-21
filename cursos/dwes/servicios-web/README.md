@@ -26,7 +26,7 @@ Los **servicios web** son aplicaciones que facilitan la comunicación entre dife
 3.3. RESTful<br />
 3.4. HTTP RESTful API
 
-### 4. [Consumo de servicios web mediante HTTP)](4/README.md)
+### 4. [Consumo de servicios web mediante HTTP](4/README.md)
 
 4.1. HTTPie<br />
 4.2. Guzzle<br />
