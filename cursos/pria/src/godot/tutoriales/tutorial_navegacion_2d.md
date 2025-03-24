@@ -1,6 +1,6 @@
 # Tutorial de Navegación 2D en Godot
 
-En este tutorial aprenderás a configurar lo mínimo necesario para que un personaje se mueva a través de una malla de navegación en 2D, utilizando `NavigationServer2D` y `NavigationAgent2D`.
+En este tutorial aprenderás a configurar lo mínimo necesario para que un personaje se mueva a través de una malla de navegación en 2D, utilizando `NavigationRegion2D` y `NavigationAgent2D`.
 
 ## Paso 1: Configurar la región de navegación
 
