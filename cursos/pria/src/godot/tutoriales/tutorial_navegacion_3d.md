@@ -37,64 +37,63 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 
 ![Bake Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step2.png)
 
-8. Ahora verás una malla de navegación transparente que flota a cierta distancia por encima del `PlaneMesh`:
+8. Ahora verás una malla de navegación semitransparente que flota a cierta distancia por encima del `PlaneMesh`:
 
 ![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
 
-## Paso 3: Configura el personaje
+9. Por último, selecciona el nodo `Camera3D` y muévelo y gíralo para que se vea el plano con cierta distancia.
+10. Haz clic en _Play Scene_ para verificar que la cámara muestra dicho plano con cierta distancia.
 
-1. **Crea el personaje**:
-   - Añade un `CharacterBody3D` a la escena
-   - Configura componentes hijos:
-     - `CollisionShape3D` con forma de cápsula
-     - `MeshInstance3D` con malla cilíndrica
+## Paso 3: Configurar y mover el personaje
 
-2. **Añade el agente de navegación**:
-   - Agrega un nodo `NavigationAgent3D` como hijo
-   - Configura propiedades clave:
-     - `Path Max Distance`: 5.0
-     - `Avoidance Enabled`: True
+1. Añade un nodo `CharacterBody3D` como nodo hijo de _MainScene_.
+2. Luego, añade a `CharacterBody3D` los siguientes nodos como hijos:
+    - Un nodo `MeshInstance3D` con una nueva malla de cápsula (`CapsuleMesh`)
+    - Un nodo `CollisionShape3D` con una forma (_shape_) de cápsula (`CapsuleShape3D`) que se ajuste a la malla creada anteriormente.
+3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
+4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`
 
    ![Agent Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step4.webp)
 
-## Paso 4: Implementa un movimiento inteligente
+5. Adjunta este _script_ al nodo `CharacterBody3D`:
 
-Adjunta este _script_ al `CharacterBody3D`:
-
-````markdown
 ```gdscript
 extends CharacterBody3D
 
-var velocidad_movimiento: float = 3.5
-var objetivo: Vector3 = Vector3(-3.0, 0.0, 2.0)
+var movement_speed: float = 2.0
+var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
 
-@onready var agente_navegacion: NavigationAgent3D = $NavigationAgent3D
+@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 func _ready():
-    agente_navegacion.path_desired_distance = 0.5
-    agente_navegacion.target_desired_distance = 0.5
-    configurar_agente.call_deferred()
+	# These values need to be adjusted for the actor's speed
+	# and the navigation layout.
+	navigation_agent.path_desired_distance = 0.5
+	navigation_agent.target_desired_distance = 0.5
 
-func configurar_agente():
-    await get_tree().physics_frame
-    establecer_objetivo(objetivo)
+	# Make sure to not await during _ready.
+	actor_setup.call_deferred()
 
-func establecer_objetivo(nuevo_objetivo: Vector3):
-    agente_navegacion.target_position = nuevo_objetivo
+func actor_setup():
+	# Wait for the first physics frame so the NavigationServer can sync.
+	await get_tree().physics_frame
+
+	# Now that the navigation map is no longer empty, set the movement target.
+	set_movement_target(movement_target_position)
+
+func set_movement_target(movement_target: Vector3):
+	navigation_agent.set_target_position(movement_target)
 
 func _physics_process(delta):
-    if agente_navegacion.is_navigation_finished():
-        return
-    
-    var posicion_actual = global_position
-    var siguiente_punto = agente_navegacion.get_next_path_position()
-    
-    velocity = posicion_actual.direction_to(siguiente_punto) * velocidad_movimiento
-    move_and_slide()
-```
-````
+	if navigation_agent.is_navigation_finished():
+		return
 
-> ⚠️ Importante: Usa `call_deferred()` para asegurar sincronización con el servidor de navegación
+	var current_agent_position: Vector3 = global_position
+	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
+
+	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	move_and_slide()
+```
 
 ## Paso 5: Depuración y ejecución del Proyecto
 
