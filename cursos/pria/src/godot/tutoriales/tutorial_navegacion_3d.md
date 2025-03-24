@@ -112,7 +112,9 @@ func _unhandled_input(event: InputEvent) -> void:
         var mouse_cursor_position: Vector2 = event.position
         var camera_ray_length := 1000.0
         var camera_ray_start := camera_3d.project_ray_origin(mouse_cursor_position)
-        var camera_ray_end := camera_ray_start + camera_3d.project_ray_normal(mouse_cursor_position) * camera_ray_length
+        var ray_direction := camera_3d.project_ray_normal(mouse_cursor_position)
+        var ray_scaled := ray_direction * camera_ray_length
+        var camera_ray_end := camera_ray_start + ray_scaled
 
         var closest_point_on_navmesh := NavigationServer3D.map_get_closest_point_to_segment(
                 get_world_3d().navigation_map,
