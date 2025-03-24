@@ -160,3 +160,5 @@ func _unhandled_input(event: InputEvent) -> void:
 6. **Agrega más obstáculos (opcional)**  
    - Repite los pasos anteriores para colocar varios cubos rojos en diferentes posiciones.  
    - Cada vez que añadas o borres un obstáculo, recuerda pulsar de nuevo en `Bake Navmesh` para que la navegación se actualice y el personaje evite dichos objetos.
+  
+**RESOLVER: el CharacterBody3D se _come_ un poco el cubo, como lo puedo solucionar?**
