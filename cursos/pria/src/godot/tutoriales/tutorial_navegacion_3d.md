@@ -53,7 +53,7 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
 4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`
 
-   ![Agent Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step4.webp)
+![Agent Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step4.webp)
 
 5. Adjunta este _script_ al nodo `CharacterBody3D`:
 
