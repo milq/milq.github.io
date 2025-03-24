@@ -51,8 +51,9 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
     - Un nodo `MeshInstance3D` con una nueva malla de cápsula (`CapsuleMesh`)
     - Un nodo `CollisionShape3D` con una forma (_shape_) de cápsula (`CapsuleShape3D`) que se ajuste a la malla creada anteriormente.
 3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
-4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`
-5. Por último, adjunta este _script_ al nodo `CharacterBody3D`:
+4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`.
+5. Selecciona el nodo `NavigationAgent3D` y, en el Inspector, ajusta el valor de `Path Height Offset` en la sección `Pathfinding` a `-0.5` m.
+6. Por último, adjunta este _script_ al nodo `CharacterBody3D`:
 
 ```gdscript
 extends CharacterBody3D
@@ -92,33 +93,38 @@ func _physics_process(delta):
 	move_and_slide()
 ```
 
-## Paso 5: Depuración y ejecución del Proyecto
+## Paso 4: Ejecución del proyecto
 
-1. **Visualización en tiempo real**:
-   - Activa **Debug > Visible Navigation**
-   - Verás rutas calculadas (líneas amarillas)
-   - Usa `Debug > Navigation > Debug Agent Paths` para seguimiento
+1. Ejecuta el proyecto y comprueba cómo el `CharacterBody3D` se mueve hasta la posición `movement_target_position`.
+   - Prueba a mover manualmente el nodo de `CharacterBody3D` en el editor.
+   - Cambia los valores de `movement_target_position` en el _script_ para ver cómo el personaje actualiza su ruta en tiempo de ejecución.
 
-2. **Ajustes avanzados**:
-   - Modifica `NavigationMesh` properties:
-     - `Agent Height`: Altura mínima de pasajes
-     - `Max Slope`: Ángulo máximo de pendientes transitables
-   - Experimenta con `Avoidance Layers` para múltiples agentes
+## Paso 5: Añadir movimiento mediante clic del ratón
 
-3. **Movimiento dinámico**:
-   ```gdscript
-   func _input(event):
-       if event is InputEventMouseButton:
-           var posicion_mundo = get_global_mouse_position()
-           establecer_objetivo(posicion_mundo)
-   ```
+1. Añade la siguiente función en el _script_ del nodo `CharacterBody3D`:
 
-## Paso 6: Consideraciones finales
+```gdscript
+func _unhandled_input(event: InputEvent) -> void:
+    var camera_3d: Camera3D = $"../Camera3D"
+    var _cam_rotation := 0.0
+    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+        # Get closest point on navmesh for the current mouse cursor position.
+        var mouse_cursor_position: Vector2 = event.position
+        var camera_ray_length := 1000.0
+        var camera_ray_start := camera_3d.project_ray_origin(mouse_cursor_position)
+        var camera_ray_end := camera_ray_start + camera_3d.project_ray_normal(mouse_cursor_position) * camera_ray_length
 
-- **Obstáculos dinámicos**: Usa `NavigationObstacle3D` para objetos móviles
-- **Actualizaciones en tiempo real**: Llama `bake()` programáticamente para mallas cambiantes
-- **Optimización**: Usa múltiples `NavigationRegion3D` para escenas grandes
+        var closest_point_on_navmesh := NavigationServer3D.map_get_closest_point_to_segment(
+                get_world_3d().navigation_map,
+                camera_ray_start,
+                camera_ray_end
+        )
+        set_movement_target(closest_point_on_navmesh)
 
-![Resultado Final](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
+    elif event is InputEventMouseMotion:
+        if event.button_mask & (MOUSE_BUTTON_MASK_MIDDLE + MOUSE_BUTTON_MASK_RIGHT):
+            _cam_rotation += event.relative.x * 0.005
+            $CameraBase.set_rotation(Vector3.UP * _cam_rotation)
+```
+2. Ejecuta el proyecto, haz clic en una posición del plano y verifica cómo el `CharacterBody3D` se desplaza hacia el punto seleccionado.
 
-Ahora tu personaje puede navegar complejos entornos 3D. ¡Experimenta con diferentes configuraciones y añade obstáculos para crear comportamientos más realistas!
