@@ -24,27 +24,22 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 
 ## Paso 2: Configura la malla de navegación
 
-1. **Añade un recurso NavigationMesh**:
-   - Selecciona tu nodo `NavigationRegion3D`
-   - En el Inspector, crea un nuevo `NavigationMesh`
-   - Configura propiedades básicas:
-     - `Cell Size`: 0.3 (precisión del mapa)
-     - `Agent Radius`: 0.5 (tamaño del personaje)
+1. Añade un nodo `NavigationRegion3D` como nodo hijo de _MainScene_.
+2. Selecciona tu nodo `NavigationRegion3D`
+3. En el Inspector, crea un nuevo `NavigationMesh` para este nodo:
+   
+![Navmesh Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step1.png)
 
-   ![Navmesh Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step1.png)
+4. Añade un nodo `MeshInstance3D` como hijo del nodo `NavigationRegion3D`.
+5. Selecciona el nodo `MeshInstance3D` y, en el Inspector, crea un nuevo `PlaneMesh` en el campo _Mesh_ como tipo de malla.
+6. Selecciona dicha malla de tipo `PlaneMesh` y establece un tamaño de 10 m en el eje `x` y 10 m en el eje `y`.
+7. Selecciona el nodo `NavigationRegion3D` y pulsa en el botón `Bake Navmesh` que está en la barra superior:
 
-2. **Crea el terreno navegable**:
-   - Añade un `MeshInstance3D` como hijo del `NavigationRegion3D`
-   - Selecciona `PlaneMesh` como tipo de malla
-   - Establece tamaño a 10x10 unidades
-   - Rotación: X: -90° para plano horizontal
+![Bake Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step2.png)
 
-3. **Hornea la malla**:
-   - Con el `NavigationRegion3D` seleccionado
-   - Haz clic en **Bake Navmesh** en la barra superior
-   - Verás una malla transparente sobre el plano
+8. Ahora verás una malla de navegación transparente que flota a cierta distancia por encima del `PlaneMesh`:
 
-   ![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
+![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
 
 ## Paso 3: Configura el personaje
 
