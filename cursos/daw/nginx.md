@@ -82,6 +82,7 @@ La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/n
       ...
   }
   ```
+- Cámbialo en `default.conf` o un nuevo archivo en `conf.d/` (dentro de un bloque _server_).
 - Sin embargo, recuerda que Docker ya está exponiendo `80` dentro del contenedor. Si cambias `listen 80` a `listen 8080`, deberás adaptar tu `docker run` o `docker-compose` para exponerlo también (`-p 8080:8080`), o mantener el `listen 80` dentro del contenedor y publicar `8080` en Windows (`-p 8080:80`).
 
 ### 2. `server_name`
@@ -90,6 +91,7 @@ La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/n
   ```nginx
   server_name ejemplo.local;
   ```
+- Cámbialo en `default.conf` o un nuevo archivo en `conf.d/` (dentro de un bloque _server_).
 - Esto ayuda a identificar el “host virtual”. Si solo estás usando localhost, puedes dejarlo como `server_name localhost;`.
 
 ### 3. Ajustar parámetros de `keepalive_timeout` y otras directivas de conexión
@@ -105,6 +107,7 @@ La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/n
   }
   ```
   Indica cuántas conexiones puede manejar cada _worker_.
+- Cámbialo en `nginx.conf` (parámetros globales).
 
 ### 4. Definir logs y nivel de detalle
 
@@ -126,6 +129,7 @@ La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/n
                     '"$http_referer" "$http_user_agent"';
   access_log /var/log/nginx/access.log custom;
   ```
+- Puede ser global (en `nginx.conf`) o por sitio (en `default.conf` dentro de `server` o en `conf.d/`).
 
 ### 5. Limitar el tamaño máximo de las solicitudes
 
@@ -134,6 +138,7 @@ La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/n
   client_max_body_size 15M;
   ```
   Esto limitará las subidas a 15 MB.
+  - Puede ser global (en `nginx.conf` dentro de `http`) o por sitio (en `default.conf` dentro de `server`).
 
 ### 6. Páginas de índice por defecto
 
@@ -141,6 +146,7 @@ La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/n
   ```nginx
   index index.html index.htm index.php;
   ```
+  - Cámbialo en `default.conf` o `conf.d/` (dentro de `server` o `location`).
 
 ### 7. Gzip (equivalente a `mod_deflate` en Apache)
 
@@ -150,6 +156,7 @@ La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/n
   gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
   ```
   Ajusta según los tipos MIME que quieras comprimir.
+  - Cámbialo en `nginx.conf` (dentro de `http`).
 
 ### 8. Recargar la configuración
 
