@@ -130,3 +130,33 @@ func _unhandled_input(event: InputEvent) -> void:
 ```
 2. Ejecuta el proyecto, haz clic en una posición del plano y verifica cómo el `CharacterBody3D` se desplaza hacia el punto seleccionado.
 
+## Paso 6: Añadir obstáculos y recalcular la malla de navegación
+
+1. **Añade un nodo para el obstáculo**  
+   - Selecciona el nodo `NavigationRegion3D`.  
+   - Haz clic en _Add Child Node_ y crea un nuevo `MeshInstance3D`.  
+   - Renombra este nuevo nodo como, por ejemplo, `Obstacle`.  
+
+2. **Configura la malla y el material**  
+   - Selecciona el nodo `Obstacle` recién creado.  
+   - En el _Inspector_, asigna al campo _Mesh_ una `BoxMesh`.  
+   - Ajusta el tamaño (parámetros de `BoxMesh`) según lo necesites (por ejemplo, un cubo de 1×1×1).
+   - Para darle un color rojo, en la sección _Surface Material Override_ de `MeshInstance3D` del _Inspector_, crea un nuevo material estándar (`New StandardMaterial3D`).  
+   - Dentro del material, ajusta el valor del `Albedo` a un tono de rojo.
+
+3. **Ubica el obstáculo en la escena**  
+   - Mueve (y si es necesario, rota o escala) el nodo `Obstacle` para que se encuentre sobre el plano (`PlaneMesh`).  
+   - Asegúrate de que se superpone con la malla de navegación y no quede flotando en el aire ni por debajo del plano (`PlaneMesh`).
+
+4. **Vuelve a hornear (_bake_) la malla de navegación**  
+   - Selecciona el nodo `NavigationRegion3D`.  
+   - En la barra superior del editor, haz clic en el botón `Bake Navmesh`.  
+   - Si todo está configurado correctamente, verás que la malla de navegación ahora excluye la zona donde se encuentra el cubo rojo.  
+
+5. **Prueba la navegación con el obstáculo**  
+   - Ejecuta la escena y haz clic en distintas posiciones alrededor del cubo.  
+   - Observa cómo el `CharacterBody3D` recalcula su ruta y esquiva el cubo rojo al desplazarse hacia el punto objetivo.  
+
+6. **Agrega más obstáculos (opcional)**  
+   - Repite los pasos anteriores para colocar varios cubos rojos en diferentes posiciones.  
+   - Cada vez que añadas o borres un obstáculo, recuerda pulsar de nuevo en `Bake Navmesh` para que la navegación se actualice y el personaje evite dichos objetos.
