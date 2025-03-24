@@ -24,7 +24,10 @@ Este tutorial es una **continuación** del [Tutorial de Nginx con Docker en Wind
    Crea un contenedor temporal para copiar la configuración por defecto de Nginx y usarla como base:
    ```bash
    docker run -d --name temp-nginx nginx
-   docker cp temp-nginx:/etc/nginx C:\ruta\nginx-avanzado\conf-original
+   docker cp temp-nginx:/etc/nginx C:\ruta\nginx-avanzado
+   docker cp temp-nginx:/usr/share/nginx/html C:\ruta\nginx-avanzado
+   docker cp temp-nginx:/var/log/nginx C:\ruta\nginx-avanzado
+   docker cp temp-nginx:/etc/nginx/nginx.conf C:\ruta\nginx-avanzado\nginx.conf
    docker rm -f temp-nginx
    ```
 
@@ -33,9 +36,10 @@ Este tutorial es una **continuación** del [Tutorial de Nginx con Docker en Wind
    ```bash
    docker run -d --name advanced-nginx \
      -p 8081:80 \
-     -v C:\ruta\nginx-avanzado\conf:/etc/nginx \
+     -v C:\ruta\nginx-avanzado\nginx:/etc/nginx \
      -v C:\ruta\nginx-avanzado\html:/usr/share/nginx/html \
      -v C:\ruta\nginx-avanzado\logs:/var/log/nginx \
+     -v C:\ruta\nginx-avanzado\nginx.conf:/etc/nginx/nginx.conf \
      nginx
    ```
    - `-d`: Inicia en segundo plano.
@@ -58,7 +62,7 @@ Este tutorial es una **continuación** del [Tutorial de Nginx con Docker en Wind
 
 La configuración principal de Nginx se encuentra, por defecto, en `/etc/nginx/nginx.conf`. Según cómo organices tus archivos, puedes usar `conf.d` para server blocks adicionales. Vamos a ver algunos parámetros clave (análogo a lo que harías en Apache pero adaptado a la estructura Nginx).
 
-> **Nota**: Como has copiado el contenido base de `/etc/nginx` en `C:\ruta\nginx-avanzado\conf`, tu `nginx.conf` estará en esa carpeta local.
+> **Nota**: Como has copiado el contenido base de `/etc/nginx` en tu ruta local, tu `nginx.conf` estará en esa carpeta local.
 
 ### 1. Cambiar el puerto de escucha
 
