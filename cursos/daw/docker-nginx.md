@@ -41,6 +41,8 @@ En este tutorial aprenderás a descargar la imagen oficial de Nginx con Docker, 
 
 ## Paso 3: Ejecuta un contenedor con Nginx y prepara tus carpetas (realiza la opción B)
 
+> Nota: si utilizas Docker Desktop en Windows, es recomendable montar y ejecutar los contenedores directamente desde el disco duro. Ejecutar contenedores o montar volúmenes desde una memoria USB podría ocasionar errores de funcionamiento y requerir pasos adicionales para configurar correctamente los dispositivos USB dentro de la máquina virtual de Docker.
+
 ### Opción A: Solo quieres editar los archivos HTML
 
 Si únicamente necesitas modificar la página web (HTML, CSS, JS), puedes **montar** la carpeta de contenido predeterminada de Nginx, `/usr/share/nginx/html`.
