@@ -78,7 +78,7 @@ func _physics_process(delta):
    > Nota:
    > Asegúrate de ajustar los valores según tus necesidades. También, ten en cuenta que se hace un `call_deferred()` para esperar a un fotograma de física de *_physics_process* antes de configurar la ruta, ya que el `NavigationServer` necesita sincronizarse.
 
-## Paso 3: Depuración y ejecución del Proyecto
+## Paso 3: Depuración y ejecución del proyecto
 
 1. En la barra de menú, dirígete a la sección `Debug` y activa la opción `Visible Navigation`. Esto hará que puedas ver las rutas de navegación durante la ejecución del juego. A continuación, selecciona el nodo `NavigationAgent2D` en el árbol de nodos. En el Inspector, dentro del apartado `NavigationAgent2D`, busca la sección `Debug` y activa la depuración cambiando el valor de `Enabled` a `On`. Esto te permitirá visualizar la ruta que sigue el agente en el editor mientras se mueve a través de la malla de navegación.
 
