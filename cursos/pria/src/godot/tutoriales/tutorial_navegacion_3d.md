@@ -52,7 +52,7 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
     - Un nodo `CollisionShape3D` con una forma (_shape_) de cápsula (`CapsuleShape3D`) que se ajuste a la malla creada anteriormente.
 3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
 4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`.
-5. Selecciona el nodo `NavigationAgent3D` y, en el Inspector, ajusta el valor de `Path Height Offset` en la sección `Pathfinding` a `-0.5` m.
+5. Selecciona el nodo `NavigationAgent3D` y, en el Inspector, ajusta el valor de `Path Height Offset` en `Pathfinding` a `-0.51` m.
 6. Por último, adjunta este _script_ al nodo `CharacterBody3D`:
 
 ```gdscript
