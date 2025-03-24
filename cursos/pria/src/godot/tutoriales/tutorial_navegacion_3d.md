@@ -48,8 +48,8 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 
 1. Añade un nodo `CharacterBody3D` como nodo hijo de _MainScene_.
 2. Luego, añade a `CharacterBody3D` los siguientes nodos como hijos:
-    - Un nodo `MeshInstance3D` con una nueva malla de cápsula (`CapsuleMesh`)
-    - Un nodo `CollisionShape3D` con una forma (_shape_) de cápsula (`CapsuleShape3D`) que se ajuste a la malla creada anteriormente.
+3. Un nodo `MeshInstance3D` con una nueva malla de cápsula (`CapsuleMesh`)
+4. Un nodo `CollisionShape3D` con una forma (_shape_) de cápsula (`CapsuleShape3D`) que se ajuste a la malla creada anteriormente.
 3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
 4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`
 
