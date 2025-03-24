@@ -1,5 +1,12 @@
 # Tutorial de Navegación 3D en Godot
 
+En este tutorial aprenderás a configurar un sistema básico de navegación 3D utilizando `NavigationRegion3D` y `NavigationAgent3D`. Aprenderás a crear mallas de navegación y mover personajes de forma inteligente en entornos tridimensionales.
+
+La navegación en 3D permite a los personajes moverse evitando obstáculos en entornos complejos. Godot ofrece un sistema robusto con:
+- `NavigationRegion3D`: Define áreas navegables
+- `NavigationMesh`: Genera superficies transitables
+- `NavigationAgent3D`: Calcula rutas y controla el movimiento
+
 ## Paso 1: Configura la escena principal
 
 1. Abre Godot y crea un nuevo proyecto. Asegúrate de configurar el _Renderer_ como `Forward+` en la configuración del proyecto.
@@ -14,3 +21,113 @@
 [T01]: https://github.com/milq/milq.github.io/blob/master/cursos/godot/tutorials/3d_viewport_navigation_controls.md
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/godot/images/add_sun_to_scene.png
 [T03]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/godot/images/add_environment_to_scene.png
+
+## Paso 2: Configura la malla de navegación
+
+1. **Añade un recurso NavigationMesh**:
+   - Selecciona tu nodo `NavigationRegion3D`
+   - En el Inspector, crea un nuevo `NavigationMesh`
+   - Configura propiedades básicas:
+     - `Cell Size`: 0.3 (precisión del mapa)
+     - `Agent Radius`: 0.5 (tamaño del personaje)
+
+   ![Navmesh Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step1.png)
+
+2. **Crea el terreno navegable**:
+   - Añade un `MeshInstance3D` como hijo del `NavigationRegion3D`
+   - Selecciona `PlaneMesh` como tipo de malla
+   - Establece tamaño a 10x10 unidades
+   - Rotación: X: -90° para plano horizontal
+
+3. **Hornea la malla**:
+   - Con el `NavigationRegion3D` seleccionado
+   - Haz clic en **Bake Navmesh** en la barra superior
+   - Verás una malla transparente sobre el plano
+
+   ![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
+
+## Paso 3: Configura el personaje
+
+1. **Crea el personaje**:
+   - Añade un `CharacterBody3D` a la escena
+   - Configura componentes hijos:
+     - `CollisionShape3D` con forma de cápsula
+     - `MeshInstance3D` con malla cilíndrica
+
+2. **Añade el agente de navegación**:
+   - Agrega un nodo `NavigationAgent3D` como hijo
+   - Configura propiedades clave:
+     - `Path Max Distance`: 5.0
+     - `Avoidance Enabled`: True
+
+   ![Agent Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step4.webp)
+
+## Paso 4: Implementa un movimiento inteligente
+
+Adjunta este _script_ al `CharacterBody3D`:
+
+````markdown
+```gdscript
+extends CharacterBody3D
+
+var velocidad_movimiento: float = 3.5
+var objetivo: Vector3 = Vector3(-3.0, 0.0, 2.0)
+
+@onready var agente_navegacion: NavigationAgent3D = $NavigationAgent3D
+
+func _ready():
+    agente_navegacion.path_desired_distance = 0.5
+    agente_navegacion.target_desired_distance = 0.5
+    configurar_agente.call_deferred()
+
+func configurar_agente():
+    await get_tree().physics_frame
+    establecer_objetivo(objetivo)
+
+func establecer_objetivo(nuevo_objetivo: Vector3):
+    agente_navegacion.target_position = nuevo_objetivo
+
+func _physics_process(delta):
+    if agente_navegacion.is_navigation_finished():
+        return
+    
+    var posicion_actual = global_position
+    var siguiente_punto = agente_navegacion.get_next_path_position()
+    
+    velocity = posicion_actual.direction_to(siguiente_punto) * velocidad_movimiento
+    move_and_slide()
+```
+````
+
+> ⚠️ Importante: Usa `call_deferred()` para asegurar sincronización con el servidor de navegación
+
+## Paso 5: Depuración y ejecución del Proyecto
+
+1. **Visualización en tiempo real**:
+   - Activa **Debug > Visible Navigation**
+   - Verás rutas calculadas (líneas amarillas)
+   - Usa `Debug > Navigation > Debug Agent Paths` para seguimiento
+
+2. **Ajustes avanzados**:
+   - Modifica `NavigationMesh` properties:
+     - `Agent Height`: Altura mínima de pasajes
+     - `Max Slope`: Ángulo máximo de pendientes transitables
+   - Experimenta con `Avoidance Layers` para múltiples agentes
+
+3. **Movimiento dinámico**:
+   ```gdscript
+   func _input(event):
+       if event is InputEventMouseButton:
+           var posicion_mundo = get_global_mouse_position()
+           establecer_objetivo(posicion_mundo)
+   ```
+
+## Paso 6: Consideraciones finales
+
+- **Obstáculos dinámicos**: Usa `NavigationObstacle3D` para objetos móviles
+- **Actualizaciones en tiempo real**: Llama `bake()` programáticamente para mallas cambiantes
+- **Optimización**: Usa múltiples `NavigationRegion3D` para escenas grandes
+
+![Resultado Final](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
+
+Ahora tu personaje puede navegar complejos entornos 3D. ¡Experimenta con diferentes configuraciones y añade obstáculos para crear comportamientos más realistas!
