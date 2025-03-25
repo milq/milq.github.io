@@ -95,7 +95,8 @@ func _physics_process(delta):
 
 ## Paso 4: Ejecución del proyecto
 
-1. Ejecuta el proyecto y comprueba cómo el `CharacterBody3D` se mueve hasta la posición `movement_target_position`.
+1. En la barra de menú, dirígete a la sección `Debug` y activa la opción `Visible Navigation`. Esto hará que puedas ver las mallas de navegación durante la ejecución del juego. A continuación, selecciona el nodo `NavigationAgent3D` en el árbol de nodos. En el Inspector, dentro del apartado `NavigationAgent3D`, busca la sección `Debug` y activa la depuración cambiando el valor de `Enabled` a `On`. Esto te permitirá visualizar la ruta que sigue el agente en el editor mientras se mueve a través de la malla de navegación.
+2. Ejecuta el proyecto y comprueba cómo el `CharacterBody3D` se mueve hasta la posición `movement_target_position`.
    - Prueba a mover manualmente el nodo de `CharacterBody3D` en el editor.
    - Cambia los valores de `movement_target_position` en el _script_ para ver cómo el personaje actualiza su ruta en tiempo de ejecución.
 
@@ -155,5 +156,22 @@ func _unhandled_input(event: InputEvent) -> void:
 6. **Agrega más obstáculos (opcional)**  
    - Repite los pasos anteriores para colocar varios cubos rojos en diferentes posiciones.  
    - Cada vez que añadas o borres un obstáculo, recuerda pulsar de nuevo en `Bake Navmesh` para que la navegación se actualice y el personaje evite dichos objetos.
-  
-**RESOLVER: el CharacterBody3D se _come_ un poco el cubo, como lo puedo solucionar?**
+
+## Paso 7: Evitar que el personaje atraviese parcialmente el obstáculo (opcional)
+
+Aunque el cálculo de la malla de navegación haga que el agente esquive el obstáculo, puede ocurrir que el `CharacterBody3D` se superponga parcialmente con la malla del cubo (sobre todo en esquinas o bordes). Para evitar que el personaje atraviese el cubo, existen varias opciones. Aquí se muestran dos de ellas:
+
+1. **Usar un `StaticBody3D` con colisión**  
+   - Selecciona el nodo `Obstacle`.
+   - Añade un nodo hijo de tipo `StaticBody3D`. Renómbralo, por ejemplo, como `ObstacleBody`.
+   - Dentro de `ObstacleBody`, añade un nodo `CollisionShape3D`.
+   - Asigna una forma de colisión (`BoxShape3D`) y ajusta sus dimensiones para que coincidan con el cubo (`BoxMesh`) del nodo `Obstacle`.
+   - De esta manera, tu `CharacterBody3D` detectará el `StaticBody3D` y no podrá atravesarlo.
+
+2. **Ajustar el radio del agente en la malla de navegación**  
+   - Selecciona el nodo `NavigationRegion3D`.
+   - En el Inspector, dentro de los parámetros de la `NavigationMesh`, hay propiedades que controlan el radio del agente.  
+   - Si aumentas este radio (y luego vuelves a pulsar `Bake Navmesh`), la zona de navegación generada alrededor del obstáculo será mayor y, por ende, el agente no se acercará tanto al cubo.  
+   - Esta opción es útil para simplificar la geometría de colisión si no deseas añadir cuerpos rígidos o estáticos en la escena.
+
+Después de aplicar cualquiera de estas dos soluciones (o ambas), vuelve a ejecutar la escena y haz clic alrededor del obstáculo para comprobar que ahora el `CharacterBody3D` no se superpone con el cubo rojo. Si optas por la primera alternativa (con `StaticBody3D`), verás cómo el personaje colisiona físicamente; en cambio, si optas por el ajuste del radio en la malla de navegación, el personaje simplemente evitará la zona inmediata al cubo con mayor margen.
