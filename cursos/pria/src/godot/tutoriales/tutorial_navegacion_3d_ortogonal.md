@@ -21,3 +21,25 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 [T01]: https://github.com/milq/milq.github.io/blob/master/cursos/godot/tutorials/3d_viewport_navigation_controls.md
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/godot/images/add_sun_to_scene.png
 [T03]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/godot/images/add_environment_to_scene.png
+
+## Paso 2: Configura la malla de navegación
+
+1. Añade un nodo `NavigationRegion3D` como nodo hijo de _MainScene_.
+2. Selecciona tu nodo `NavigationRegion3D`
+3. En el Inspector, crea un nuevo `NavigationMesh` para este nodo:
+
+![Navmesh Setup](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step1.png)
+
+4. Añade un nodo `MeshInstance3D` como hijo del nodo `NavigationRegion3D`.
+5. Selecciona el nodo `MeshInstance3D` y, en el Inspector, crea un nuevo `BoxMesh` en el campo _Mesh_ como tipo de malla.
+6. Selecciona dicha malla de tipo `PlaneMesh` y establece un tamaño de 20 m en el eje `x`, 0.5 m en el eje `y` y 20 m en el eje `z`.
+7. Selecciona el nodo `NavigationRegion3D` y pulsa en el botón `Bake Navmesh` que está en la barra superior:
+
+![Bake Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step2.png)
+
+8. Ahora verás una malla de navegación semitransparente que flota a cierta distancia por encima del `PlaneMesh`:
+
+![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
+
+9. Por último, selecciona el nodo `Camera3D` y muévelo y gíralo para que se vea el plano con cierta distancia.
+10. Haz clic en _Play Scene_ para verificar que la cámara muestra dicho plano con cierta distancia.
