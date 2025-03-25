@@ -122,11 +122,6 @@ func _unhandled_input(event: InputEvent) -> void:
                 camera_ray_end
         )
         set_movement_target(closest_point_on_navmesh)
-
-    elif event is InputEventMouseMotion:
-        if event.button_mask & (MOUSE_BUTTON_MASK_MIDDLE + MOUSE_BUTTON_MASK_RIGHT):
-            _cam_rotation += event.relative.x * 0.005
-            $CameraBase.set_rotation(Vector3.UP * _cam_rotation)
 ```
 2. Ejecuta el proyecto, haz clic en una posición del plano y verifica cómo el `CharacterBody3D` se desplaza hacia el punto seleccionado.
 
