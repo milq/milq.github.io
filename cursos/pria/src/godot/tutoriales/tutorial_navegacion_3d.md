@@ -153,6 +153,8 @@ func _unhandled_input(event: InputEvent) -> void:
    - Ejecuta la escena y haz clic en distintas posiciones alrededor del cubo.  
    - Observa cómo el `CharacterBody3D` recalcula su ruta y esquiva el cubo rojo al desplazarse hacia el punto objetivo.  
 
+![Navegación 3D con un obstáculo](tutorial_navegacion_3d.png "Navegación 3D con un obstáculo")
+
 6. **Agrega más obstáculos (opcional)**  
    - Repite los pasos anteriores para colocar varios cubos rojos en diferentes posiciones.  
    - Cada vez que añadas o borres un obstáculo, recuerda pulsar de nuevo en `Bake Navmesh` para que la navegación se actualice y el personaje evite dichos objetos.
