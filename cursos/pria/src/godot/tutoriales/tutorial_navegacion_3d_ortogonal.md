@@ -41,5 +41,6 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 
 ![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
 
-9. Por último, selecciona el nodo `Camera3D` y muévelo y gíralo para que se vea el plano con cierta distancia.
-10. Haz clic en _Play Scene_ para verificar que la cámara muestra dicho plano con cierta distancia.
+## Paso 3: Configura la cámara 3D para que tenga proyección ortogonal y posiciónalo
+
+
