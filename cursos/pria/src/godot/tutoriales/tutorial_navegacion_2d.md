@@ -4,7 +4,7 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 
 ## Paso 1: Configurar la región de navegación
 
-1. Crea un nodo `Node2D` como escena principal.
+1. Crea un nodo `Node2D` como escena principal, renómbrala como `MainScene` y guarda la escena como `main_scene.tscn`.
 2. En _Project → Project Settings → General → Display → Window_ establece _Viewport Width_ en `1280` y _Viewport Height_ en `720`.
 3. Agrega un nodo `NavigationRegion2D` a la escena principal.
    - Selecciona el nodo `NavigationRegion2D`.
