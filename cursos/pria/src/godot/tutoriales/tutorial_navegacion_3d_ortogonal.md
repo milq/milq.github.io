@@ -50,4 +50,4 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 5. A continuación, justo debajo, rota la cámara `x = -30°`, `y = 45°` y `z = 0°`.
 6. Ejecuta el proyecto pulsando en _Play Scene_ para comprobar que la cámara muestre el plano con una proyección ortogonal o en perspectiva isómetrica.
 
-![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
+![Cámara 3D ortogonal](tutorial_navegacion_3d_ortogonal.png "Cámara 3D ortogonal")
