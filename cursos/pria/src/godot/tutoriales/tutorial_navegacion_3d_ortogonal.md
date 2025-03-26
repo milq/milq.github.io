@@ -48,6 +48,6 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 3. Ajusta el valor de `Size` a `20` para definir el área que capturará la cámara y abarcar todo el plano.
 4. Luego, abajo, en la sección `Transform` de `Node3D`, posiciona la cámara en `x = 10`, `y = 10` y `z = 10`.
 5. A continuación, justo debajo, rota la cámara `x = -30°`, `y = 45°` y `z = 0°`.
-6. Ejecuta el proyecto pulsando en _Play Scene_ para comprobar que la cámara muestre el plano con una proyección ortogonal o en perspectiva isómetrica.
+6. Ejecuta el proyecto y comprueba que la cámara muestre el plano con una proyección ortogonal o en perspectiva isómetrica:
 
 ![Cámara 3D ortogonal](tutorial_navegacion_3d_ortogonal.png "Cámara 3D ortogonal")
