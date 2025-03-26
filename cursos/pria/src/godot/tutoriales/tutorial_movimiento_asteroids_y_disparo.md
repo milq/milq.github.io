@@ -11,7 +11,7 @@ En este tutorial aprenderás a crear un juego en Godot donde controlarás una na
    - Haz clic en _Scene_ y selecciona _New Scene_.
    - Añade un nodo _Node2D_ como nodo raíz.
    - Renombra el nodo raíz como _MainScene_.
-   - Guarda la escena seleccionando _Scene → Save Scene_ y guárdala como `MainScene.tscn` en la carpeta raíz del proyecto.
+   - Guarda la escena seleccionando _Scene → Save Scene_ y guárdala como `main_scene.tscn` en la carpeta raíz del proyecto.
 4. **Configura el tamaño de la ventana**:
    - Ve a _Project → Project Settings → General → Display → Window_.
    - Establece _Viewport Width_ en `1280` y _Viewport Height_ en `720` para una resolución HD estándar.
