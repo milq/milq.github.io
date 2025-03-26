@@ -10,7 +10,7 @@ En este tutorial aprenderás a crear un _tilemap_ en Godot usando un _tileset_ y
 
 2. **Crea un proyecto nuevo en Godot**:
    - Abre Godot y crea un proyecto con una escena 2D (`Node2D`).
-   - Renombra el nodo raíz como _MainScene_ y guarda la escena seleccionando _Scene → Save Scene_. Nómbrala como `main_scene.tscn`.
+   - Renombra el nodo raíz como _MainScene_ y guarda la escena en _Scene → Save Scene_ como `main_scene.tscn`.
    - En _Project → Project Settings → General → Display → Window_ establece _Viewport Width_ en `1280` y _Viewport Height_ en `720`.
    - Dentro del proyecto, crea en `res://` una carpeta llamada `assets/` y copia allí el archivo `tilemap_packed.png`.
 
