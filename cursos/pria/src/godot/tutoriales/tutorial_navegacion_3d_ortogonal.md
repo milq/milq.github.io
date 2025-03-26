@@ -41,6 +41,35 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 
 ![Baked Navmesh](https://docs.godotengine.org/en/stable/_images/nav_3d_min_setup_step3.png)
 
-## Paso 3: Configura la cámara 3D para que tenga proyección ortogonal y posiciónalo
+## Paso 3: Configura la cámara 3D para proyección ortogonal y posiciónala
 
+1. **Selecciona la cámara**  
+   En el _Scene Tree_, haz clic en tu nodo `Camera3D`. Asegúrate de que tenga marcada la casilla _Current_ en el _Inspector_, de modo que sea la cámara activa en la escena.
 
+2. **Cambia la proyección a Ortogonal**  
+   En el _Inspector_, en la sección **Camera**, busca el parámetro _Projection_ y cámbialo de `Perspective` a `Orthogonal`. Esto hará que los objetos se vean sin la deformación propia de la perspectiva.
+
+3. **Ajusta el tamaño de la proyección (Size)**  
+   - A continuación, configura la propiedad **Size** (abajo de _Projection_).  
+   - Un valor de `20` o `25` suele ser adecuado para abarcar un plano de 20 x 20 metros, pero puedes modificarlo según tu preferencia.  
+   - Cuanto mayor sea el _Size_, mayor área abarcará la cámara en la vista.
+
+4. **Posiciona la cámara sobre el plano**  
+   - En el _Inspector_, bajo la sección **Transform**, ajusta manualmente los valores de _Translation_ para colocar la cámara por encima del plano de navegación.  
+   - Por ejemplo, si quieres una vista completamente superior, puedes usar:  
+     - **Translation**: `x = 0`, `y = 15`, `z = 0` (subiendo la cámara lo suficiente para ver todo el plano).  
+     - **Rotation**: `x = -90°`, `y = 0°`, `z = 0°` (para apuntar directamente hacia abajo).
+
+5. **Crea una vista isométrica opcional**  
+   - Si prefieres una vista isométrica (ligeramente inclinada para ver mejor la escena 3D), ajusta la rotación en el eje `x` a aproximadamente `-45°` o `-60°`.  
+   - Ajusta la posición en `y` y en `z` para centrar tu plano y asegurarte de que se vea por completo.
+
+6. **Prueba tu configuración**  
+   - Haz clic en _Play Scene_ para comprobar la vista en tiempo de ejecución.  
+   - Verás que la malla de navegación y cualquier objeto en la escena se mostrarán sin distorsión de perspectiva.
+
+7. **Ajustes finales**  
+   - Si no ves todo el plano o deseas mostrar más o menos área, regresa al _Inspector_ y ajusta la propiedad **Size** hasta lograr el encuadre deseado.  
+   - Recuerda que, al ser ortogonal, la escala de los objetos no cambiará por la distancia a la cámara; solo el valor de _Size_ afectará cuánto espacio se ve en pantalla.
+
+Con estos pasos, tu `Camera3D` quedará configurada en proyección ortogonal. Ahora podrás desplazar y rotar la cámara según necesites para visualizar todo tu entorno sin distorsión, lo cual es especialmente útil en escenas que requieran una vista estratégica o de tipo _top-down_.
