@@ -5,7 +5,8 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 ## Paso 1: Configurar la región de navegación
 
 1. Crea un nodo `Node2D` como escena principal.
-2. Agrega un nodo `NavigationRegion2D` a la escena principal.
+2. En _Project → Project Settings → General → Display → Window_ establece _Viewport Width_ en `1280` y _Viewport Height_ en `720`.
+3. Agrega un nodo `NavigationRegion2D` a la escena principal.
    - Selecciona el nodo `NavigationRegion2D`.
    - En el Inspector, crea un nuevo recurso `NavigationPolygon` para este nodo.
 
@@ -13,7 +14,7 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 
    - Esto te permitirá definir el área donde se podrá mover el personaje.
 
-3. Define el área de navegación con la herramienta de dibujo de `NavigationPolygon`:
+4. Define el área de navegación con la herramienta de dibujo de `NavigationPolygon`:
    - Usa la barra de herramientas para dibujar el polígono que represente la zona navegable.
    - Cuando termines de dibujar, haz clic en el botón `Bake NavigationPolygon` en la barra de herramientas.
    - Deja un margen suficiente entre los bordes del polígono y los objetos de colisión para que el personaje no quede atascado.
