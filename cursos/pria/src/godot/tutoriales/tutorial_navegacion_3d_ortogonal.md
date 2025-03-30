@@ -68,4 +68,4 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 ## Paso 5: Ejecución del proyecto
 
 1. En la barra de menú, dirígete a la sección `Debug` y activa la opción `Visible Navigation`. Esto hará que puedas ver las mallas de navegación durante la ejecución del juego. A continuación, selecciona el nodo `NavigationAgent3D` en el árbol de nodos. En el Inspector, dentro del apartado `NavigationAgent3D`, busca la sección `Debug` y activa la depuración cambiando el valor de `Enabled` a `On`. Esto te permitirá visualizar la ruta que sigue el agente en el editor mientras se mueve a través de la malla de navegación.
-2. Ejecuta el proyecto, haz clic en una posición del plano y verifica cómo el `CharacterBody3D` se desplaza hacia el punto seleccionado.
+2. Ejecuta el proyecto, haz clic en una posición del plano y verifica cómo el `Jugador` se desplaza hacia el punto seleccionado.
