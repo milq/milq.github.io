@@ -44,7 +44,7 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 9. Por último, selecciona el nodo `Camera3D` y muévelo y gíralo para que se vea el plano con cierta distancia.
 10. Haz clic en _Play Scene_ para verificar que la cámara muestra dicho plano con cierta distancia.
 
-## Paso 3: Configurar y mover el personaje
+## Paso 3: Crear y configurar el personaje
 
 1. Añade un nodo `CharacterBody3D` como nodo hijo de _MainScene_.
 2. Luego, añade a `CharacterBody3D` los siguientes nodos como hijos:
