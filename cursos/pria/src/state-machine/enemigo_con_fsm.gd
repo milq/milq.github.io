@@ -25,7 +25,7 @@ func _ready() -> void:
     # Inicializa el agente de navegación con una llamada diferida
     _actor_setup.call_deferred()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     # Ejecuta el comportamiento basado en el estado actual
     match current_state:
         EnemyState.PATROL:
