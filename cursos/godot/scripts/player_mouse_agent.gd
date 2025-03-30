@@ -7,7 +7,7 @@ extends CharacterBody3D
 func _ready() -> void:
     _actor_setup.call_deferred()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     if navigation_agent.is_navigation_finished():
         return
     var direction: Vector3 = global_position.direction_to(
