@@ -53,80 +53,14 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
 4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`.
 5. Selecciona el nodo `NavigationAgent3D` y, en el Inspector, ajusta el valor de `Path Height Offset` en `Pathfinding` a `-0.51` m.
-6. Por último, adjunta este _script_ al nodo `CharacterBody3D`:
-
-```gdscript
-extends CharacterBody3D
-
-var movement_speed: float = 2.0
-var movement_target_position: Vector3 = Vector3(-3.0,0.0,2.0)
-
-@onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
-
-func _ready():
-    # These values need to be adjusted for the actor's speed
-    # and the navigation layout.
-    navigation_agent.path_desired_distance = 0.5
-    navigation_agent.target_desired_distance = 0.5
-
-    # Make sure to not await during _ready.
-    actor_setup.call_deferred()
-
-func actor_setup():
-    # Wait for the first physics frame so the NavigationServer can sync.
-    await get_tree().physics_frame
-
-    # Now that the navigation map is no longer empty, set the movement target.
-    set_movement_target(movement_target_position)
-
-func set_movement_target(movement_target: Vector3):
-    navigation_agent.set_target_position(movement_target)
-
-func _physics_process(delta):
-    if navigation_agent.is_navigation_finished():
-        return
-
-    var current_agent_position: Vector3 = global_position
-    var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-
-    velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-    move_and_slide()
-```
+6. Por último, adjunta este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_mouse_agent.gd) al nodo `CharacterBody3D`.
 
 ## Paso 4: Ejecución del proyecto
 
 1. En la barra de menú, dirígete a la sección `Debug` y activa la opción `Visible Navigation`. Esto hará que puedas ver las mallas de navegación durante la ejecución del juego. A continuación, selecciona el nodo `NavigationAgent3D` en el árbol de nodos. En el Inspector, dentro del apartado `NavigationAgent3D`, busca la sección `Debug` y activa la depuración cambiando el valor de `Enabled` a `On`. Esto te permitirá visualizar la ruta que sigue el agente en el editor mientras se mueve a través de la malla de navegación.
-2. Ejecuta el proyecto y comprueba cómo el `CharacterBody3D` se mueve hasta la posición `movement_target_position`.
-   - Prueba a mover manualmente el nodo de `CharacterBody3D` en el editor.
-   - Cambia los valores de `movement_target_position` en el _script_ para ver cómo el personaje actualiza su ruta en tiempo de ejecución.
-
-## Paso 5: Añadir movimiento mediante clic del ratón
-
-1. Añade la siguiente función en el _script_ del nodo `CharacterBody3D`:
-
-```gdscript
-func _unhandled_input(event: InputEvent) -> void:
-    var camera_3d: Camera3D = $"../Camera3D"
-    var _cam_rotation := 0.0
-    if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-        # Get closest point on navmesh for the current mouse cursor position.
-        var mouse_cursor_position: Vector2 = event.position
-        var camera_ray_length := 1000.0
-        var camera_ray_start := camera_3d.project_ray_origin(mouse_cursor_position)
-        var ray_direction := camera_3d.project_ray_normal(mouse_cursor_position)
-        var ray_scaled := ray_direction * camera_ray_length
-        var camera_ray_end := camera_ray_start + ray_scaled
-
-        var closest_point_on_navmesh := NavigationServer3D.map_get_closest_point_to_segment(
-                get_world_3d().navigation_map,
-                camera_ray_start,
-                camera_ray_end
-        )
-        set_movement_target(closest_point_on_navmesh)
-```
 2. Ejecuta el proyecto, haz clic en una posición del plano y verifica cómo el `CharacterBody3D` se desplaza hacia el punto seleccionado.
 
-## Paso 6: Añadir obstáculos y recalcular la malla de navegación
+## Paso 5: Añadir obstáculos y recalcular la malla de navegación
 
 1. **Añade un nodo para el obstáculo**  
    - Selecciona el nodo `NavigationRegion3D`.  
@@ -159,7 +93,7 @@ func _unhandled_input(event: InputEvent) -> void:
    - Repite los pasos anteriores para colocar varios cubos rojos en diferentes posiciones.  
    - Cada vez que añadas o borres un obstáculo, recuerda pulsar de nuevo en `Bake Navmesh` para que la navegación se actualice y el personaje evite dichos objetos.
 
-## Paso 7: Evitar que el personaje atraviese parcialmente el obstáculo (opcional)
+## Paso 6: Evitar que el personaje atraviese parcialmente el obstáculo (opcional)
 
 Aunque el cálculo de la malla de navegación haga que el agente esquive el obstáculo, puede ocurrir que el `CharacterBody3D` se superponga parcialmente con la malla del cubo (sobre todo en esquinas o bordes). Para evitar que el personaje atraviese el cubo, existen varias opciones. Aquí se muestran dos de ellas:
 
