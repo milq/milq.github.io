@@ -52,18 +52,18 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 
 ![Cámara 3D ortogonal](tutorial_navegacion_3d_ortogonal.png "Cámara 3D ortogonal")
 
-## Paso 4: Configurar y mover el personaje
+## Paso 4: Crear y configurar el jugador
 
-1. Añade un nodo `CharacterBody3D` como nodo hijo de _MainScene_.
-2. Luego, añade a `CharacterBody3D` los siguientes nodos como hijos:
+1. Añade un nodo `CharacterBody3D` como nodo hijo de _MainScene_ y renómbralo como `Jugador`
+2. Luego, añade a `Jugador` los siguientes nodos como hijos:
     - Un nodo `MeshInstance3D` con una nueva malla de cápsula (`CapsuleMesh`)
         * Para darle un color, en _Surface Material Override_ de `MeshInstance3D` del _Inspector_, crea un nuevo `StandardMaterial3D`.
         * Dentro del material, ajusta el valor del `Albedo` a un tono azulado.
     - Un nodo `CollisionShape3D` con una forma (_shape_) de cápsula (`CapsuleShape3D`) que se ajuste a la malla creada anteriormente.
-3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
-4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `CharacterBody3D`.
+3. Selecciona el nodo `Jugador` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
+4. A continuación, agrega un nodo `NavigationAgent3D` como hijo de `Jugador`.
 5. Selecciona el nodo `NavigationAgent3D` y, en el Inspector, ajusta el valor de `Path Height Offset` en `Pathfinding` a `-0.51` m.
-6. Por último, adjunta este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_mouse_agent.gd) al nodo `CharacterBody3D`.
+6. Por último, adjunta este [_script_](https://github.com/milq/milq.github.io/blob/master/cursos/godot/scripts/player_mouse_agent.gd) al nodo `Jugador`.
 
 ## Paso 5: Ejecución del proyecto
 
