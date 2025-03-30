@@ -58,7 +58,7 @@ La navegación en 3D permite a los personajes moverse evitando obstáculos en en
 2. Luego, añade a `CharacterBody3D` los siguientes nodos como hijos:
     - Un nodo `MeshInstance3D` con una nueva malla de cápsula (`CapsuleMesh`)
         * Para darle un color azulado, en _Surface Material Override_ de `MeshInstance3D`, crea un nuevo material estándar (`New StandardMaterial3D`).
-        * Para darle un color azulado, en _Surface Material Override_ de `MeshInstance3D` del _Inspector_, crea un nuevo `StandardMaterial3D`.
+        * Para darle un color, en _Surface Material Override_ de `MeshInstance3D` del _Inspector_, crea un nuevo `StandardMaterial3D`.
         * Dentro del material, ajusta el valor del `Albedo` a un tono azulado.
     - Un nodo `CollisionShape3D` con una forma (_shape_) de cápsula (`CapsuleShape3D`) que se ajuste a la malla creada anteriormente.
 3. Selecciona el nodo `CharacterBody3D` y muévelo verticalmente en el eje `y` para que se sitúe encima del plano.
