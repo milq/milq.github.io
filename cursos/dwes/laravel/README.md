@@ -19,7 +19,7 @@ _Contenido creado por Manuel Ignacio López Quintero_
 2.3. Vistas y el sistema de plantillas Blade<br />
 2.4. Bases de datos, migraciones y sembrado<br />
 2.5. Eloquent<br />
-2.6. Autenticación y validación
+2.6. Autenticación, _middleware_ y validación
 
 ### 3. [Creación de proyectos en Laravel](3/README.md)
 
