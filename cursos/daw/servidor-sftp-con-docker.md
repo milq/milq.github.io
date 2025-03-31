@@ -187,7 +187,7 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
 
    > Finaliza la sesión SFTP y vuelve a la línea de comandos del cliente.
 
-**¡Listo!** Has configurado correctamente un servidor SFTP usando Docker y Debian. Aprendiste cómo crear usuarios, limitar su acceso, subir archivos y carpetas de manera segura usando SFTP.
+¡Y listo! Has configurado correctamente un servidor SFTP usando Docker y Debian. Aprendiste cómo crear usuarios, limitar su acceso, subir archivos y carpetas de manera segura usando SFTP.
 
 ## Paso 5 (Opcional): Automatiza todo con `docker-compose`
 
