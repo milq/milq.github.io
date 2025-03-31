@@ -13,6 +13,6 @@ Es esencial comprender estos elementos y cómo **interactúan entre sí** en el 
 2.3. [Vistas y el sistema de plantillas Blade](2.3.md)<br />
 2.4. [Bases de datos, migraciones y sembrado](2.4.md)<br />
 2.5. [Eloquent ORM](2.5.md)<br />
-2.6. [Autenticación y validación](2.6.md)
+2.6. [Autenticación, _middleware_ y validación](2.6.md)
 
 _Contenido creado por Manuel Ignacio López Quintero_
