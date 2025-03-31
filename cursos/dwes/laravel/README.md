@@ -27,8 +27,10 @@ _Contenido creado por Manuel Ignacio López Quintero_
 3.2. Definición de rutas y controladores<br />
 3.3. Generación de vistas con Blade<br />
 3.4. Gestión de bases de datos, migraciones y sembrado<br />
-3.5. Uso de Eloquent en relaciones uno a varios y varios a varios<br />
-3.6. Integración de autenticación y validación
+3.5. Uso de Eloquent en relaciones uno a varios<br />
+3.6. Uso de Eloquent en relaciones varios a varios<br />
+3.7. Integración de autenticación y validación<br />
+3.8. Gestión de datos con rutas, controladores y autenticación
 
 ## Recursos
 
