@@ -1,4 +1,4 @@
-# Tutorial: Crea tu propio servidor SFTP y transfiere archivos desde un cliente SFTP
+# Tutorial: Crea un servidor SFTP y transfiere archivos desde un cliente SFTP
 
 En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, conectarte a él desde otro contenedor Debian actuando como cliente, y realizar la transferencia de un archivo y una carpeta. Todo se hará de forma local usando Docker.
 
