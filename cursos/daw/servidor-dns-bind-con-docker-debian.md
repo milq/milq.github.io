@@ -4,9 +4,8 @@ En este tutorial aprenderás a construir un servidor DNS local usando **BIND9** 
 
 ## Paso 1: Prepara el entorno
 
-1. **Verifica que Docker esté instalado:** `docker --version`.
-
-2. **Crea una carpeta de trabajo para el proyecto:** `mkdir ~/dns-bind-docker && cd ~/dns-bind-docker`. Esto crea un directorio donde guardarás todos los archivos necesarios para el servidor DNS. Luego entras en ese directorio para trabajar desde allí.
+1. Verifica que Docker esté instalado: `docker --version`.
+2. Crea una carpeta de trabajo para el proyecto: `mkdir ~/dns-bind-docker && cd ~/dns-bind-docker`. Esto crea un directorio donde guardarás todos los archivos necesarios para el servidor DNS. Luego entras en ese directorio para trabajar desde allí.
 
 ## Paso 2: Crea un archivo `Dockerfile` con la configuración del servidor DNS
 
