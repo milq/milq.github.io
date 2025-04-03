@@ -2,19 +2,11 @@
 
 En este tutorial aprenderás a construir un servidor DNS local usando **BIND9** dentro de un contenedor **Docker** basado en **Debian**. También aprenderás a probar que tu servidor responde correctamente desde tu máquina local.
 
-## Paso 1: Preparar el entorno
+## Paso 1: Prepara el entorno
 
-1. **Verifica que Docker esté instalado:**
-   ```bash
-   docker --version
-   ```
-   Esto comprueba que tienes Docker correctamente instalado. Si el comando devuelve la versión, puedes seguir. Si no, instala Docker desde [https://www.docker.com](https://www.docker.com).
+1. **Verifica que Docker esté instalado:** `docker --version`.
 
-2. **Crea una carpeta de trabajo para el proyecto:**
-   ```bash
-   mkdir ~/dns-bind-docker && cd ~/dns-bind-docker
-   ```
-   Esto crea un directorio donde guardarás todos los archivos necesarios para el servidor DNS. Luego entras en ese directorio para trabajar desde allí.
+2. **Crea una carpeta de trabajo para el proyecto:** `mkdir ~/dns-bind-docker && cd ~/dns-bind-docker`. Esto crea un directorio donde guardarás todos los archivos necesarios para el servidor DNS. Luego entras en ese directorio para trabajar desde allí.
 
 ## Paso 2: Crea un archivo `Dockerfile` con la configuración del servidor DNS
 
@@ -39,29 +31,20 @@ EXPOSE 53/tcp
 CMD ["named", "-g"]
 ```
 
-3. A continuación te explico qué hace cada línea:
+3. A continuación se explica qué hace cada línea:
 
 * `FROM debian:stable-slim`: usa como base una imagen oficial de Debian en su versión estable y ligera. Es ideal para contenedores porque ocupa poco espacio y tiene lo necesario para empezar.
-
 * `RUN apt-get update && \`: actualiza la lista de paquetes disponibles desde los repositorios oficiales.
-
 * `apt-get install -y bind9 dnsutils && \`: instala el servidor DNS (`bind9`) y herramientas útiles como `dig` y `nslookup` (`dnsutils`).
-
 * `mkdir -p /etc/bind/zones && \`: crea la carpeta donde se guardarán los archivos de zona. El parámetro `-p` asegura que no haya error si la carpeta ya existe.
-
 * `rm -rf /var/lib/apt/lists/*`: elimina la caché de apt para reducir el tamaño final de la imagen. Esta caché ya no es necesaria una vez terminada la instalación.
-
 * `COPY named.conf /etc/bind/named.conf`: copia tu archivo de configuración principal de BIND desde tu máquina local al contenedor, en la ubicación donde BIND lo espera.
-
 * `COPY db.example.com /etc/bind/zones/db.example.com`: copia el archivo de zona DNS para `example.com` dentro del contenedor, en la carpeta `/etc/bind/zones`.
-
 * `EXPOSE 53/udp`: informa a Docker que el contenedor usará el puerto 53 con protocolo UDP, que es el principal para resolver consultas DNS.
-
 * `EXPOSE 53/tcp`: expone también el puerto 53 con protocolo TCP, que se usa para respuestas grandes o transferencias de zona.
-
 * `CMD ["named", "-g"]`: define el comando que se ejecutará al iniciar el contenedor. `named` es el servicio de BIND, y el parámetro `-g` hace que se ejecute en primer plano, mostrando logs por consola para poder monitorear su funcionamiento.
 
-## Paso 3: Configurar BIND
+## Paso 3: Configura BIND
 
 1. **Crea el archivo `named.conf`:**
    ```bash
@@ -104,7 +87,7 @@ CMD ["named", "-g"]
    - `NS`: define el nombre del servidor de nombres.
    - `A`: define direcciones IP para los hosts `ns1` y `www`.
 
-## Paso 4: Construir y correr el contenedor
+## Paso 4: Construye y corre el contenedor
 
 1. **Construye la imagen de Docker:**
    ```bash
@@ -127,7 +110,7 @@ CMD ["named", "-g"]
    ```
    Esto muestra todos los contenedores en ejecución. Deberías ver `bind-server` en la lista.
 
-## Paso 5: Probar el servidor DNS local
+## Paso 5: Prueba el servidor DNS local
 
 1. **Haz una consulta DNS con `dig`:**
    ```bash
