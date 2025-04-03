@@ -38,7 +38,7 @@ CMD ["named", "-g"]
 * `rm -rf /var/lib/apt/lists/*`: elimina la caché de apt para reducir el tamaño final de la imagen. Esta caché ya no es necesaria una vez terminada la instalación.
 * `COPY named.conf /etc/bind/named.conf`: copia tu archivo de configuración principal de BIND desde tu máquina local al contenedor, en la ubicación donde BIND lo espera.
 * `COPY db.example.com /etc/bind/zones/db.example.com`: copia el archivo de zona DNS para `example.com` dentro del contenedor, en la carpeta `/etc/bind/zones`.
-* `EXPOSE 53/udp`: indica a Docker que el contenedor usará el puerto 53 con protocolo UDP, que es el principal para resolver consultas DNS.
+* `EXPOSE 53/udp`: informa a Docker que el contenedor usará el puerto 53 con protocolo UDP, que es el principal para resolver consultas DNS.
 * `EXPOSE 53/tcp`: expone también el puerto 53 con protocolo TCP, que se usa para respuestas grandes o transferencias de zona.
 * `CMD ["named", "-g"]`: define el comando que se ejecutará al iniciar el contenedor. `named` es el servicio de BIND, y el parámetro `-g` hace que se ejecute en primer plano, mostrando logs por consola para poder monitorear su funcionamiento.
 
