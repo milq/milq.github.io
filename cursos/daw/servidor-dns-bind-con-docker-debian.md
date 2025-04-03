@@ -44,7 +44,7 @@ CMD ["named", "-g"]
 
 ## Paso 3: Configura BIND
 
-1. **Crea el archivo `named.conf`:**
+1. Crea el archivo `named.conf`:
    ```bash
    options {
        directory "/var/cache/bind";
@@ -65,7 +65,7 @@ CMD ["named", "-g"]
    - `recursion no`: desactiva la resolución recursiva (este servidor solo responde zonas propias, no resuelve dominios externos).
    - La sección `zone` declara una zona llamada `example.com`, indicando que este servidor es el **maestro** (autoridad principal) y especifica el archivo donde se encuentran los registros DNS.
 
-2. **Crea el archivo `db.example.com`:**
+2. Crea el archivo `db.example.com`:
    ```bash
    $TTL    604800
    @       IN      SOA     ns1.example.com. admin.example.com. (
@@ -87,13 +87,13 @@ CMD ["named", "-g"]
 
 ## Paso 4: Construye y corre el contenedor
 
-1. **Construye la imagen de Docker:**
+1. Construye la imagen de Docker:
    ```bash
    docker build -t my-bind-server .
    ```
    Esto crea una imagen Docker con el nombre `my-bind-server` usando el `Dockerfile` que preparaste. Docker copiará los archivos y configurará BIND dentro de la imagen.
 
-2. **Inicia el contenedor:**
+2. Inicia el contenedor:
    ```bash
    docker run -d --name bind-server -p 53:53/udp -p 53:53/tcp my-bind-server
    ```
@@ -102,27 +102,23 @@ CMD ["named", "-g"]
    - `--name bind-server` le pone un nombre identificador al contenedor.
    - `-p 53:53/udp -p 53:53/tcp` hace que el puerto DNS del contenedor sea accesible desde tu máquina.
 
-3. **Verifica que el contenedor está en marcha:**
-   ```bash
-   docker ps
-   ```
-   Esto muestra todos los contenedores en ejecución. Deberías ver `bind-server` en la lista.
+3. Verifica que el contenedor está en marcha: `docker ps`. Esto muestra todos los contenedores en ejecución. Deberías ver `bind-server` en la lista.
 
 ## Paso 5: Prueba el servidor DNS local
 
-1. **Haz una consulta DNS con `dig`:**
+1. Haz una consulta DNS con [`dig`](https://en.wikipedia.org/wiki/Dig_(command)):
    ```bash
    dig @127.0.0.1 www.example.com
    ```
-   Aquí estás usando la herramienta `dig` para preguntarle al servidor local (127.0.0.1) cuál es la IP de `www.example.com`. Si todo funciona, deberías ver una respuesta con la IP `127.0.0.1`.
+   Aquí estás usando la herramienta [`dig`](https://en.wikipedia.org/wiki/Dig_(command)) para preguntarle al servidor local (127.0.0.1) cuál es la IP de `www.example.com`. Si todo funciona, deberías ver una respuesta con la IP `127.0.0.1`.
 
-2. **Haz otra prueba para el servidor de nombres:**
+2. Haz otra prueba para el servidor de nombres:
    ```bash
    dig @127.0.0.1 ns1.example.com
    ```
    Esto consulta el registro `ns1` que también definiste. Es otra forma de confirmar que la zona está bien configurada.
 
-3. **Consulta una zona inexistente para ver el fallo controlado:**
+3. Consulta una zona inexistente para ver el fallo controlado:
    ```bash
    dig @127.0.0.1 noexiste.example.com
    ```
