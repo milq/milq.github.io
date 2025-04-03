@@ -1,4 +1,4 @@
-# Tutorial: Crear un servidor DNS con BIND usando Docker y Debian
+# Tutorial: Crear un servidor DNS con BIND usando Docker
 
 En este tutorial aprenderás a construir un servidor DNS local usando [BIND 9](https://www.isc.org/bind/) dentro de un contenedor [Docker](https://www.docker.com) basado en [Debian](https://www.debian.org). También aprenderás a probar que tu servidor responde correctamente desde tu máquina local.
 
