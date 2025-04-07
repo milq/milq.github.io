@@ -82,7 +82,8 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
    nano /etc/ssh/sshd_config
    ```
 
-   > Este comando abre el archivo de configuración principal del servicio SSH en el editor de texto `nano`.
+   > Este comando abre el archivo en el editor de texto `nano`, utilizado comúnmente en sistemas GNU/Linux. En caso de que el editor no esté disponible y aparezca un mensaje indicando que `nano` no se encuentra instalado, puede añadirse fácilmente ejecutando `apt update && apt install -y nano`.
+   > Para utilizar `nano`, simplemente navegue con las teclas de dirección, edite el contenido que sea necesario, y al finalizar presione `Ctrl + X`, luego `Y` para confirmar los cambios y `Enter` para guardar y salir del archivo.
 
    Agrega esto al final del archivo:
 
