@@ -161,8 +161,7 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
    cd uploads
    ```
 
-   > Este comando cambia el directorio de trabajo dentro del servidor SFTP al directorio `uploads`, que es donde el usuario `sftpuser` tiene permiso de escritura.  
-   > Es importante hacerlo antes de realizar cualquier carga de archivos, ya que el usuario está restringido a su carpeta raíz (`/home/sftpuser`), y solo `uploads` tiene permisos de escritura.
+   > Este comando cambia el directorio de trabajo dentro del servidor SFTP al directorio `uploads`, que es donde el usuario `sftpuser` tiene permiso de escritura. Es importante hacerlo antes de realizar cualquier carga de archivos, ya que el usuario está restringido a su carpeta raíz (`/home/sftpuser`), y solo `uploads` tiene permisos de escritura.
 
 3. Sube el archivo al servidor:
 
