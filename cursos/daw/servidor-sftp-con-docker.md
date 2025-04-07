@@ -155,7 +155,16 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
 
    Si te pregunta si confías en el host, escribe `yes`. Luego, ingresa la contraseña.
 
-2. Sube el archivo al servidor:
+2. Navega al directorio de subida en el servidor:
+
+   ```sftp
+   cd uploads
+   ```
+
+   > Este comando cambia el directorio de trabajo dentro del servidor SFTP al directorio `uploads`, que es donde el usuario `sftpuser` tiene permiso de escritura.  
+   > Es importante hacerlo antes de realizar cualquier carga de archivos, ya que el usuario está restringido a su carpeta raíz (`/home/sftpuser`), y solo `uploads` tiene permisos de escritura.
+
+3. Sube el archivo al servidor:
 
    ```sftp
    put archivo.txt
@@ -163,7 +172,7 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
 
    > Este comando transfiere el archivo `archivo.txt` desde el contenedor cliente al servidor, colocándolo en la carpeta `uploads`.
 
-3. Sube la carpeta completa:
+4. Sube la carpeta completa:
 
    ```sftp
    put -r carpeta
@@ -171,7 +180,7 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
 
    > `-r` significa "recursivo", así que sube todo el contenido de la carpeta `carpeta`.
 
-4. Verifica que los archivos estén en el servidor:
+5. Verifica que los archivos estén en el servidor:
 
    ```sftp
    ls
@@ -181,7 +190,7 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
    > - `ls`: muestra los archivos en el directorio actual (`uploads`).
    > - `ls carpeta`: muestra el contenido de la carpeta que subiste.
 
-5. Sal de la sesión SFTP:
+6. Sal de la sesión SFTP:
 
    ```sftp
    bye
