@@ -199,62 +199,74 @@ En este tutorial aprenderás a montar un servidor SFTP en un contenedor Debian, 
 
 ¡Y listo! Has configurado correctamente un servidor SFTP usando Docker y Debian. Aprendiste cómo crear usuarios, limitar su acceso, subir archivos y carpetas de manera segura usando SFTP.
 
-## Paso 5 (Opcional): Automatiza todo con `docker-compose`
+## Paso 5: Automatiza todo con `docker-compose`
 
-Con este paso podrás levantar tanto el servidor como el cliente SFTP ya configurados con un solo comando, usando `docker-compose`.
+Automatiza el proceso anterior utilizando `docker-compose` para desplegar tanto el servidor como el cliente SFTP completamente configurados con un solo comando. Antes de continuar, detén y elimina los contenedores que creaste manualmente (`sftp-server` y `sftp-client`) para evitar conflictos de nombres o red. Abre una nueva terminal para trabajar con un entorno limpio y separado del procedimiento anterior.
 
 1. Crea un archivo llamado `docker-compose.yml` en una carpeta de tu máquina local:
 
    ```bash
    mkdir sftp-proyecto
    cd sftp-proyecto
-   nano docker-compose.yml
    ```
 
-2. Copia y pega este contenido dentro del archivo:
+2. Entra en la carpeta `sftp-proyecto` y, dentro de ella, crea un archivo de texto vacío llamado `docker-compose.yml`.
+
+3. Copia y pega este contenido dentro del archivo:
 
    ```yaml
-   version: '3.8'
+version: '3.8'
 
-   services:
-     sftp-server:
-       image: debian
-       container_name: sftp-server
-       networks:
-         - sftp-net
-       command: bash -c "
-         apt update && \
-         apt install -y openssh-server && \
-         useradd -m sftpuser && echo 'sftpuser:1234' | chpasswd && \
-         mkdir -p /home/sftpuser/uploads && \
-         chown root:root /home/sftpuser && \
-         chmod 755 /home/sftpuser && \
-         chown sftpuser:sftpuser /home/sftpuser/uploads && \
-         echo 'Match User sftpuser' >> /etc/ssh/sshd_config && \
-         echo '  ChrootDirectory /home/sftpuser' >> /etc/ssh/sshd_config && \
-         echo '  ForceCommand internal-sftp' >> /etc/ssh/sshd_config && \
-         echo '  AllowTcpForwarding no' >> /etc/ssh/sshd_config && \
-         service ssh start && \
-         tail -f /dev/null
-       "
+services:
+  sftp-server:
+    image: debian
+    container_name: sftp-server
+    networks:
+      - sftp-net
+    volumes:
+      - sftp-data:/home/sftpuser/uploads
+    command: >
+      bash -c "
+        apt update &&
+        apt install -y openssh-server &&
+        mkdir /var/run/sshd &&
+        useradd -m sftpuser &&
+        echo 'sftpuser:1234' | chpasswd &&
+        mkdir -p /home/sftpuser/uploads &&
+        chown root:root /home/sftpuser &&
+        chmod 755 /home/sftpuser &&
+        chown sftpuser:sftpuser /home/sftpuser/uploads &&
+        echo 'Match User sftpuser' >> /etc/ssh/sshd_config &&
+        echo '  ChrootDirectory /home/sftpuser' >> /etc/ssh/sshd_config &&
+        echo '  ForceCommand internal-sftp' >> /etc/ssh/sshd_config &&
+        echo '  AllowTcpForwarding no' >> /etc/ssh/sshd_config &&
+        service ssh restart &&
+        tail -f /dev/null
+      "
 
-     sftp-client:
-       image: debian
-       container_name: sftp-client
-       networks:
-         - sftp-net
-       command: bash -c "
-         apt update && \
-         apt install -y openssh-client && \
-         echo 'Hola mundo' > archivo.txt && \
-         mkdir carpeta && \
-         echo 'Contenido en carpeta' > carpeta/archivo_en_carpeta.txt && \
-         tail -f /dev/null
-       "
+  sftp-client:
+    image: debian
+    container_name: sftp-client
+    networks:
+      - sftp-net
+    depends_on:
+      - sftp-server
+    command: >
+      bash -c "
+        apt update &&
+        apt install -y openssh-client &&
+        echo 'Hola mundo' > archivo.txt &&
+        mkdir carpeta &&
+        echo 'Contenido en carpeta' > carpeta/archivo_en_carpeta.txt &&
+        tail -f /dev/null
+      "
 
-   networks:
-     sftp-net:
-       driver: bridge
+volumes:
+  sftp-data:
+
+networks:
+  sftp-net:
+    driver: bridge
    ```
 
    > Explicación:
@@ -264,7 +276,7 @@ Con este paso podrás levantar tanto el servidor como el cliente SFTP ya configu
    > - El cliente crea archivos de prueba.
    > - `tail -f /dev/null` mantiene ambos contenedores corriendo.
 
-3. Levanta los contenedores:
+4. Levanta los contenedores:
 
    ```bash
    docker-compose up -d
@@ -272,7 +284,7 @@ Con este paso podrás levantar tanto el servidor como el cliente SFTP ya configu
 
    > Esto descargará las imágenes (si no las tienes), creará la red, configurará los contenedores y los dejará en ejecución.
 
-4. Para entrar en cada uno:
+5. Para entrar en cada uno:
 
    - Servidor:
      ```bash
