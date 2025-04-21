@@ -148,6 +148,8 @@ CMD ["named", "-g"]
 
 ## Paso 6: Probar el servidor DNS local con `dig` (opcional)
 
+> Si usas Windows y no tienes `dig` instalado, puedes usarlo desde dentro del contenedor, ya que se instaló automáticamente con el paquete `dnsutils`. Para ello, abre una terminal y conéctate al contenedor en ejecución con: `docker exec -it bind-server bash`. Una vez dentro del contenedor, sigue con los pasos indicados a continuación.
+
 1. Haz una consulta DNS con `dig`:
    ```bash
    dig @127.0.0.1 www.example.com
