@@ -44,7 +44,7 @@ CMD ["named", "-g"]
 
 ## Paso 3: Configura BIND
 
-1. Crea el archivo `named.conf`:
+1. Crea el archivo `named.conf` dentro del directorio del proyecto (`~/dns-bind-docker`) con este código:
    ```bash
    options {
        directory "/var/cache/bind";
@@ -65,7 +65,7 @@ CMD ["named", "-g"]
    - `recursion no`: desactiva la resolución recursiva (este servidor solo responde zonas propias, no resuelve dominios externos).
    - La sección `zone` declara una zona llamada `example.com`, indicando que este servidor es el **maestro** (autoridad principal) y especifica el archivo donde se encuentran los registros DNS.
 
-2. Crea el archivo `db.example.com`:
+2. Crea el archivo `db.example.com` dentro del directorio del proyecto (`~/dns-bind-docker`) con este código:
    ```bash
    $TTL    604800
    @       IN      SOA     ns1.example.com. admin.example.com. (
