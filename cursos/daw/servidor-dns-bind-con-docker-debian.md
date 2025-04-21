@@ -162,7 +162,7 @@ CMD ["named", "-g"]
    www.example.com.  604800  IN  A  127.0.0.1
    ```
 
-   Nota: la sección `ANSWER SECTION` aparece solo si el nombre consultado existe en la zona y tiene un registro asociado.
+   La sección `ANSWER SECTION` aparece solo si el nombre consultado existe en la zona y tiene un registro asociado.
 
 2. Haz otra prueba para el servidor de nombres:
    ```bash
@@ -174,12 +174,12 @@ CMD ["named", "-g"]
    ```bash
    dig @127.0.0.1 noexiste.example.com
    ```
-   En este caso, el servidor responderá con un estado `NXDOMAIN` (nombre no existente), y **no habrá** sección `ANSWER SECTION`:
+   En este caso, el servidor responderá con un estado `NXDOMAIN` (nombre no existente), y no habrá sección `ANSWER SECTION`:
 
    ```
    ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, ...
    ```
 
-   Nota: Si el nombre no existe en la zona, la sección `ANSWER SECTION` no aparece. Esto es totalmente normal.
+   Si el nombre no existe en la zona, la sección `ANSWER SECTION` no aparece. Esto es totalmente normal.
 
 Y eso es todo. Ahora tienes un servidor DNS básico en funcionamiento dentro de un contenedor Docker. Puedes modificar los archivos de zona o añadir más zonas si quieres practicar más.
