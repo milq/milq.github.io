@@ -148,24 +148,38 @@ CMD ["named", "-g"]
 
 ## Paso 6: Probar el servidor DNS local con `dig`
 
-> Si usas Windows y no tienes `dig` instalado, puedes usarlo desde dentro del contenedor, ya que se instaló automáticamente con el paquete `dnsutils`. Para ello, abre una terminal y conéctate al contenedor en ejecución con: `docker exec -it bind-server bash`. Una vez dentro del contenedor, sigue con los pasos indicados a continuación.
+> Si usas Windows y no tienes `dig` instalado, puedes usarlo desde dentro del contenedor, ya que se instaló automáticamente con el paquete `dnsutils`. Para ello, abre una terminal y conéctate al contenedor en ejecución con `docker exec -it bind-server bash`. Una vez dentro del contenedor, sigue con los pasos indicados a continuación.
 
 1. Haz una consulta DNS con `dig`:
    ```bash
    dig @127.0.0.1 www.example.com
    ```
-   Aquí estás usando la herramienta [`dig`](https://en.wikipedia.org/wiki/Dig_(command)) para preguntarle al servidor local (127.0.0.1) cuál es la IP de `www.example.com`. Si todo funciona, deberías ver una respuesta con la IP `127.0.0.1`.
+   Aquí estás usando la herramienta [`dig`](https://en.wikipedia.org/wiki/Dig_(command)) para preguntarle al servidor local (127.0.0.1) cuál es la IP de `www.example.com`.
+   Si todo funciona, deberías ver una sección como esta:
+
+   ```
+   ;; ANSWER SECTION:
+   www.example.com.  604800  IN  A  127.0.0.1
+   ```
+
+   Nota: la sección `ANSWER SECTION` aparece solo si el nombre consultado existe en la zona y tiene un registro asociado.
 
 2. Haz otra prueba para el servidor de nombres:
    ```bash
    dig @127.0.0.1 ns1.example.com
    ```
-   Esto consulta el registro `ns1` que también definiste. Es otra forma de confirmar que la zona está bien configurada.
+   Esto consulta el registro `ns1` que también definiste. La salida también debe contener una `ANSWER SECTION` con la IP `127.0.0.1`.
 
-3. Consulta una zona inexistente para ver el fallo controlado:
+3. Consulta un nombre que no exista:
    ```bash
    dig @127.0.0.1 noexiste.example.com
    ```
-   Deberías ver una respuesta vacía, lo cual es normal si ese nombre no fue definido en la zona.
+   En este caso, el servidor responderá con un estado `NXDOMAIN` (nombre no existente), y **no habrá** sección `ANSWER SECTION`:
+
+   ```
+   ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, ...
+   ```
+
+   Nota: Si el nombre no existe en la zona, la sección `ANSWER SECTION` no aparece. Esto es totalmente normal.
 
 Y eso es todo. Ahora tienes un servidor DNS básico en funcionamiento dentro de un contenedor Docker. Puedes modificar los archivos de zona o añadir más zonas si quieres practicar más.
