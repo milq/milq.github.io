@@ -214,7 +214,7 @@ Automatiza el proceso anterior utilizando `docker-compose` para desplegar tanto 
 
 3. Copia y pega este contenido dentro del archivo:
 
-   ```yaml
+```yaml
 version: '3.8'
 
 services:
@@ -267,7 +267,7 @@ volumes:
 networks:
   sftp-net:
     driver: bridge
-   ```
+```
 
    > Explicación:
    > - Define dos servicios: `sftp-server` y `sftp-client`.
