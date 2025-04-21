@@ -110,7 +110,7 @@ CMD ["named", "-g"]
 
 ## Paso 5: Probar el servidor DNS local con `nslookup`
 
-1. Haz una consulta DNS con `nslookup` desde tu máquina (Windows o Linux):
+1. Haz una consulta DNS con [`nslookup`](https://en.wikipedia.org/wiki/Nslookup) desde tu máquina (Windows o GNU/Linux):
 
    ```bash
    nslookup www.example.com 127.0.0.1
