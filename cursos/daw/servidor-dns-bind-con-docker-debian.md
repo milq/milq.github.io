@@ -5,7 +5,7 @@ En este tutorial aprenderás a construir un servidor DNS local usando [BIND 9](h
 ## Paso 1: Prepara el entorno
 
 1. Verifica que Docker esté instalado: `docker --version`.
-2. Crea una carpeta de trabajo para el proyecto: `mkdir ~/dns-bind-docker && cd ~/dns-bind-docker`. Esto crea un directorio donde guardarás todos los archivos necesarios para el servidor DNS. Luego entras en ese directorio para trabajar desde allí.
+2. Crea una carpeta para el proyecto con `mkdir ~/dns-bind-docker` y accede a ella con `cd ~/dns-bind-docker`. Allí guardarás todos los archivos necesarios para el servidor DNS y trabajarás desde ese directorio.
 
 ## Paso 2: Crea un archivo `Dockerfile` con la configuración del servidor DNS
 
@@ -108,7 +108,45 @@ CMD ["named", "-g"]
    ```
    Esto muestra todos los contenedores en ejecución. Deberías ver `bind-server` en la lista.
 
-## Paso 5: Probar el servidor DNS local
+## Paso 5: Probar el servidor DNS local con `nslookup`
+
+1. Haz una consulta DNS con `nslookup` desde tu máquina (Windows o Linux):
+
+   ```bash
+   nslookup www.example.com 127.0.0.1
+   ```
+
+   Si todo está funcionando correctamente, deberías ver una salida parecida a esta:
+
+   ```
+   Servidor:  UnKnown
+   Address:  127.0.0.1
+
+   Nombre:    www.example.com
+   Address:  127.0.0.1
+   ```
+   Explicación:
+   - `"Servidor: UnKnown"`: esto es normal cuando el servidor DNS que consultas (en este caso tu contenedor) no tiene un *hostname* definido o accesible desde Windows. No te preocupes.
+   - `"Address: 127.0.0.1"` debajo de `"Nombre: www.example.com"` indica que tu servidor DNS ha respondido correctamente y ha devuelto la IP que configuraste en el archivo de zona (`db.example.com`).
+
+2. Haz otra prueba para el servidor de nombres:
+
+   ```bash
+   nslookup ns1.example.com 127.0.0.1
+   ```
+
+   Esto consulta el registro `ns1` que también definiste. Es otra forma de confirmar que la zona está bien configurada.
+
+3. Consulta una zona inexistente para ver el fallo controlado:
+
+   ```bash
+   nslookup noexiste.example.com 127.0.0.1
+   ```
+
+   Deberías ver un mensaje que indica que no se pudo encontrar la dirección, lo cual es normal si ese nombre no fue definido en la zona.
+
+
+## Paso 6: Probar el servidor DNS local con `dig` (opcional)
 
 1. Haz una consulta DNS con `dig`:
    ```bash
