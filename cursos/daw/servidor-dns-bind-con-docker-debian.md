@@ -146,7 +146,7 @@ CMD ["named", "-g"]
    Deberías ver un mensaje que indica que no se pudo encontrar la dirección, lo cual es normal si ese nombre no fue definido en la zona.
 
 
-## Paso 6: Probar el servidor DNS local con `dig` (opcional)
+## Paso 6: Probar el servidor DNS local con `dig`
 
 > Si usas Windows y no tienes `dig` instalado, puedes usarlo desde dentro del contenedor, ya que se instaló automáticamente con el paquete `dnsutils`. Para ello, abre una terminal y conéctate al contenedor en ejecución con: `docker exec -it bind-server bash`. Una vez dentro del contenedor, sigue con los pasos indicados a continuación.
 
