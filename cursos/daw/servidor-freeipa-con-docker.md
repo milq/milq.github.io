@@ -151,6 +151,8 @@ Esto confirma que el usuario fue creado correctamente y puede autenticarse contr
 
 ## Paso 6 (opcional): Autenticación real de login en GNU/Linux
 
+Hasta ahora hemos probado la autenticación a nivel de servicios (como LDAP), pero en este paso llevamos la integración un paso más allá: conectaremos un sistema GNU/Linux completo al dominio FreeIPA. Esto permite que los usuarios creados en FreeIPA puedan iniciar sesión en el sistema operativo como si fueran cuentas locales. Se integran mecanismos como Kerberos, PAM y NSS, lo que se traduce en una experiencia de login real, creación automática de carpetas personales (`/home`), y uso de identidades centralizadas, tal como lo haría una empresa con un dominio corporativo.
+
 1. En un cliente GNU/Linux (no el servidor), instala:
 
    ```bash
@@ -160,7 +162,8 @@ Esto confirma que el usuario fue creado correctamente y puede autenticarse contr
 2. Ejecuta el instalador:
 
    ```bash
-   sudo ipa-client-install --domain=test.local --server=ipa.test.local --principal=admin --password=admin123 --mkhomedir --force-ntpd
+   sudo ipa-client-install --domain=test.local --server=ipa.test.local \
+                           --principal=admin --password=admin123 --mkhomedir --force-ntpd
    ```
 
 3. Si todo va bien, podrás cerrar sesión e iniciar como `usuario1`.
