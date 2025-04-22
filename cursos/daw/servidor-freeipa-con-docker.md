@@ -90,6 +90,33 @@ Ahora tienes un servidor FreeIPA totalmente funcional.
 
 ## Paso 4: Probar autenticación de un usuario con Docker (`ldapwhoami`)
 
+Vamos a comprobar que el usuario creado (`usuario1`) puede autenticarse correctamente usando LDAP. Ejecutaremos el comando desde un contenedor auxiliar basado en Debian para evitar instalar herramientas en tu sistema.
+
+1. Ejecuta el siguiente contenedor temporal:
+
+```bash
+docker run --rm --network container:freeipa-server debian:latest bash -c "\
+apt update && apt install -y ldap-utils && \
+ldapwhoami -x -D 'uid=usuario1,cn=users,cn=accounts,dc=test,dc=local' -w juan1234 -H ldap://ipa.test.local"
+```
+
+Este comando:
+
+- Usa la imagen oficial de **Debian `latest`**.
+- Instala las herramientas necesarias (`ldap-utils`) dentro del contenedor.
+- Se conecta directamente al contenedor del servidor FreeIPA (`--network container:freeipa-server`).
+- Autentica al usuario `usuario1` con la contraseña `juan1234`.
+
+2. Si la autenticación es exitosa, verás algo como:
+
+```
+dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
+```
+
+Esto confirma que el usuario fue creado correctamente y puede autenticarse contra el servidor FreeIPA.
+
+## Paso 4: Probar autenticación de un usuario con Docker (`ldapwhoami`)
+
 Vamos a comprobar que el usuario creado (`usuario1`) puede autenticarse correctamente usando LDAP, ejecutando el comando directamente desde un contenedor auxiliar de Docker. Esto funciona tanto si estás en Linux como en Windows, y evita que tengas que instalar herramientas adicionales en tu sistema.
 
 1. Ejecuta el siguiente contenedor temporal:
