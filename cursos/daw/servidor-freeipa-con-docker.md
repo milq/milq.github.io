@@ -90,7 +90,7 @@ Ahora tienes un servidor FreeIPA totalmente funcional.
 
 ## Paso 4: Probar autenticación de un usuario con Docker (`ldapwhoami`)
 
-Vamos a comprobar que el usuario creado (`usuario1`) puede autenticarse correctamente usando LDAP. Ejecutaremos el comando desde un contenedor auxiliar basado en Debian para evitar instalar herramientas en tu sistema.
+Vamos a comprobar que el usuario creado (`usuario1`) puede autenticarse correctamente usando LDAP. Ejecutaremos el comando desde un contenedor auxiliar basado en Debian.
 
 1. Ejecuta el siguiente contenedor temporal:
 
@@ -100,12 +100,12 @@ apt update && apt install -y ldap-utils && \
 ldapwhoami -x -D 'uid=usuario1,cn=users,cn=accounts,dc=test,dc=local' -w juan1234 -H ldap://ipa.test.local"
 ```
 
-Este comando:
+    Este comando:
 
-- Usa la imagen oficial de **Debian `latest`**.
-- Instala las herramientas necesarias (`ldap-utils`) dentro del contenedor.
-- Se conecta directamente al contenedor del servidor FreeIPA (`--network container:freeipa-server`).
-- Autentica al usuario `usuario1` con la contraseña `juan1234`.
+    - Usa la imagen oficial de **Debian `latest`**.
+    - Instala las herramientas necesarias (`ldap-utils`) dentro del contenedor.
+    - Se conecta directamente al contenedor del servidor FreeIPA (`--network container:freeipa-server`).
+    - Autentica al usuario `usuario1` con la contraseña `juan1234`.
 
 2. Si la autenticación es exitosa, verás algo como:
 
@@ -115,68 +115,7 @@ dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
 
 Esto confirma que el usuario fue creado correctamente y puede autenticarse contra el servidor FreeIPA.
 
-## Paso 4: Probar autenticación de un usuario con Docker (`ldapwhoami`)
-
-Vamos a comprobar que el usuario creado (`usuario1`) puede autenticarse correctamente usando LDAP, ejecutando el comando directamente desde un contenedor auxiliar de Docker. Esto funciona tanto si estás en Linux como en Windows, y evita que tengas que instalar herramientas adicionales en tu sistema.
-
-1. Ejecuta el siguiente contenedor temporal:
-
-```bash
-docker run --rm --network container:freeipa-server osixia/openldap-clients \
-ldapwhoami -x -D "uid=usuario1,cn=users,cn=accounts,dc=test,dc=local" -w juan1234 -H ldap://ipa.test.local
-```
-
-Este comando:
-
-- Usa la imagen `osixia/openldap-clients`, que ya tiene `ldapwhoami`.
-- Se conecta directamente al contenedor del servidor (`--network container:freeipa-server`).
-- Autentica al usuario `usuario1` con la contraseña `juan1234`.
-
-2. Resultado esperado:
-
-Si la autenticación es exitosa, verás algo como:
-
-```
-dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
-```
-
-Esto confirma que el usuario fue creado correctamente y puede autenticarse contra el servidor FreeIPA.
-
-## Paso 5a: Probar autenticación desde GNU/Linux
-
-1. Abre una terminal (en el mismo equipo donde corre Docker, o en otro con red).
-
-2. Instala herramientas de LDAP (en Debian/Ubuntu):
-
-   ```bash
-   sudo apt install ldap-utils
-   ```
-
-3. Prueba la autenticación con:
-
-   ```bash
-   ldapwhoami -x -D "uid=usuario1,cn=users,cn=accounts,dc=test,dc=local" -w juan1234 -H ldap://localhost
-   ```
-
-   Si todo está bien, deberías ver:
-
-   ```
-   dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
-   ```
-
-## Paso 5b: Probar autenticación desde Windows
-
-1. Abre PowerShell o WSL2.
-
-2. Si estás en PowerShell y tienes `ldapsearch` (desde Cygwin o similar), puedes usar:
-
-   ```powershell
-   ldapwhoami -x -D "uid=usuario1,cn=users,cn=accounts,dc=test,dc=local" -w juan1234 -H ldap://localhost
-   ```
-
-   Si usas WSL2, simplemente sigue el mismo paso que en GNU/Linux.
-
-## Paso 6 (opcional): Autenticación real de login en GNU/Linux
+## Paso 5 (opcional): Autenticación real de login en GNU/Linux
 
 Hasta ahora hemos probado la autenticación a nivel de servicios (como LDAP), pero en este paso llevamos la integración un paso más allá: conectaremos un sistema GNU/Linux completo al dominio FreeIPA. Esto permite que los usuarios creados en FreeIPA puedan iniciar sesión en el sistema operativo como si fueran cuentas locales. Se integran mecanismos como Kerberos, PAM y NSS, lo que se traduce en una experiencia de login real, creación automática de carpetas personales (`/home`), y uso de identidades centralizadas, tal como lo haría una empresa con un dominio corporativo.
 
