@@ -102,10 +102,10 @@ ldapwhoami -x -D 'uid=usuario1,cn=users,cn=accounts,dc=test,dc=local' -w juan123
 
 Este comando:
 
-    - Usa la imagen oficial de **Debian `latest`**.
-    - Instala las herramientas necesarias (`ldap-utils`) dentro del contenedor.
-    - Se conecta directamente al contenedor del servidor FreeIPA (`--network container:freeipa-server`).
-    - Autentica al usuario `usuario1` con la contraseña `juan1234`.
+- Usa la imagen oficial de Debian `latest`.
+- Instala las herramientas necesarias (`ldap-utils`) dentro del contenedor.
+- Se conecta directamente al contenedor del servidor FreeIPA (`--network container:freeipa-server`).
+- Autentica al usuario `usuario1` con la contraseña `juan1234`.
 
 2. Si la autenticación es exitosa, verás algo como:
 
