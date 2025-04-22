@@ -1,4 +1,4 @@
-# Tutorial: Crea un servidor FreeIPA en local y prueba la autenticación
+# Tutorial: Crea y configura un servidor FreeIPA y prueba la autenticación
 
 En este tutorial aprenderás a crear un servidor FreeIPA dentro de un contenedor Docker, configurarlo de forma automática y probar que un usuario puede autenticarse correctamente desde un cliente.
 
