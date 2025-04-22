@@ -100,7 +100,7 @@ apt update && apt install -y ldap-utils && \
 ldapwhoami -x -D 'uid=usuario1,cn=users,cn=accounts,dc=test,dc=local' -w juan1234 -H ldap://ipa.test.local"
 ```
 
-    Este comando:
+Este comando:
 
     - Usa la imagen oficial de **Debian `latest`**.
     - Instala las herramientas necesarias (`ldap-utils`) dentro del contenedor.
