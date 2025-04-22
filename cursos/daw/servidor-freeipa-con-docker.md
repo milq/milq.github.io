@@ -88,7 +88,34 @@ Ahora tienes un servidor FreeIPA totalmente funcional.
 
 3. Guarda los cambios.
 
-## Paso 4: Probar autenticación desde GNU/Linux
+## Paso 4: Probar autenticación de un usuario con Docker (`ldapwhoami`)
+
+Vamos a comprobar que el usuario creado (`usuario1`) puede autenticarse correctamente usando LDAP, ejecutando el comando directamente desde un contenedor auxiliar de Docker. Esto funciona tanto si estás en Linux como en Windows, y evita que tengas que instalar herramientas adicionales en tu sistema.
+
+1. Ejecuta el siguiente contenedor temporal:
+
+```bash
+docker run --rm --network container:freeipa-server osixia/openldap-clients \
+ldapwhoami -x -D "uid=usuario1,cn=users,cn=accounts,dc=test,dc=local" -w juan1234 -H ldap://ipa.test.local
+```
+
+Este comando:
+
+- Usa la imagen `osixia/openldap-clients`, que ya tiene `ldapwhoami`.
+- Se conecta directamente al contenedor del servidor (`--network container:freeipa-server`).
+- Autentica al usuario `usuario1` con la contraseña `juan1234`.
+
+2. Resultado esperado:
+
+Si la autenticación es exitosa, verás algo como:
+
+```
+dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
+```
+
+Esto confirma que el usuario fue creado correctamente y puede autenticarse contra el servidor FreeIPA.
+
+## Paso 5a: Probar autenticación desde GNU/Linux
 
 1. Abre una terminal (en el mismo equipo donde corre Docker, o en otro con red).
 
@@ -110,7 +137,7 @@ Ahora tienes un servidor FreeIPA totalmente funcional.
    dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
    ```
 
-## Paso 5: Probar autenticación desde Windows
+## Paso 5b: Probar autenticación desde Windows
 
 1. Abre PowerShell o WSL2.
 
