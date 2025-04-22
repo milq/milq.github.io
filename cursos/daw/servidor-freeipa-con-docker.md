@@ -4,11 +4,7 @@ En este tutorial aprenderás a crear un servidor FreeIPA dentro de un contenedor
 
 ## Paso 1: Crear y ejecutar un servidor FreeIPA en Docker
 
-1. Crea una carpeta para tu proyecto, por ejemplo:
-
-   ```bash
-   mkdir freeipa-lab && cd freeipa-lab
-   ```
+1. Crea una carpeta para tu proyecto con `mkdir freeipa-lab` y accede a ella con `cd freeipa-lab`.
 
 2. Crea un archivo llamado `docker-compose.yml` con este contenido:
 
