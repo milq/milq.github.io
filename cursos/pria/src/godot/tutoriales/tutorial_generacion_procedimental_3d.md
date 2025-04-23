@@ -76,11 +76,11 @@ func _physics_process(delta: float) -> void:
 ## Paso 3: Genera un terreno 3D de forma procedimental
 
 1. Dentro de `World`, añade un nodo `MultiMeshInstance3D` y nómbralo `Terrain`.
-2. Crea un nuevo _script_ llamado `terrain_generator.gd` y asígnalo al nodo `World`.
-3. Copia este código en el script:
+2. Crea un nuevo _script_ llamado `terrain_generator.gd` y asígnalo al nodo `Terrain`.
+3. Copia este código en el _script_:
 
 ```gdscript
-extends Node3D
+extends MultiMeshInstance3D
 
 @export var size: int = 100
 @export var scale_world: float = 2.0
@@ -98,7 +98,7 @@ func _ready() -> void:
     mm.mesh = box_mesh
     mm.transform_format = MultiMesh.TRANSFORM_3D
     mm.instance_count = size * size
-    ($Terrain as MultiMeshInstance3D).multimesh = mm
+    self.multimesh = mm
 
     var noise: FastNoiseLite = FastNoiseLite.new()
     noise.seed = randi()
@@ -121,7 +121,7 @@ func _ready() -> void:
 
             collision_shape.shape = box_shape
             static_body.add_child(collision_shape)
-            add_child(static_body)
+            get_parent().add_child(static_body)
 ```
 
 4. Ejecuta el juego, deberías ver un mundo 3D generado por procedimientos con cubos verdes que forman un terreno irregular.
