@@ -1,4 +1,4 @@
-# Tutorial: Crea un terron 3D procedural con jugador en 1ª persona
+# Tutorial: Crea un terreno 3D procedural con jugador en 1ª persona
 
 En este tutorial aprenderás a generar un terreno 3D de forma procedimental usando ruido y a controlar un jugador en primera persona que puede moverse, saltar y explorar ese mundo en tiempo real.
 
