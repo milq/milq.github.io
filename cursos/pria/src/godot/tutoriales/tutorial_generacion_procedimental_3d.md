@@ -1,4 +1,4 @@
-# Tutorial: Crea un mapa 3D procedural con jugador en primera persona
+# Tutorial: Crea un mapa 3D procedural con jugador en 1ª persona
 
 En este tutorial aprenderás a generar un terreno 3D de forma procedimental usando ruido y a controlar un jugador en primera persona que puede moverse, saltar y explorar ese mundo en tiempo real.
 
