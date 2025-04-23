@@ -22,8 +22,8 @@ En este tutorial aprenderás a generar un terreno 3D de forma procedimental usan
 2. Cambia su posición en el Inspector a `x = 50`, `y = 25`, `z = 50`.
 3. Añade los siguientes nodos como hijos de `Player`:
    - `Camera3D`
-   - `CollisionShape3D` (usa una cápsula como forma)
-4. Crea un _script_ para el jugador llamado `Player.gd` y asígnalo al nodo `Player` con el siguiente contenido:
+   - `CollisionShape3D` con un `CapsuleShape3D` como forma
+4. Crea un _script_ para el jugador llamado `player.gd` y asígnalo al nodo `Player` con el siguiente contenido:
 
 ```gdscript
 extends CharacterBody3D
