@@ -33,7 +33,6 @@ extends CharacterBody3D
 @export var jump_force: float = 12.0
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var velocity: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
     Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
