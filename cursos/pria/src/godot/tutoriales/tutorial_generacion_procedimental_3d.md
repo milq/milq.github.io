@@ -19,7 +19,7 @@ En este tutorial aprenderás a generar un terreno 3D de forma procedimental usan
 ## Paso 2: Crea el jugador en primera persona
 
 1. Dentro de `World`, añade un `CharacterBody3D` y renómbralo como `Player`.
-2. Cambia su posición en el Inspector a `x = 50`, `y = 25`, `z = 50`.
+2. Cambia su posición en el Inspector a `x = 100`, `y = 25`, `z = 100`.
 3. Añade los siguientes nodos como hijos de `Player`:
    - `Camera3D`
    - `CollisionShape3D` con un `CapsuleShape3D` como forma
@@ -121,7 +121,7 @@ func _ready() -> void:
 
             collision_shape.shape = box_shape
             static_body.add_child(collision_shape)
-            get_parent().add_child(static_body)
+            get_parent().call_deferred("add_child", static_body)
 ```
 
 4. Ejecuta el juego, deberías ver un mundo 3D generado por procedimientos con cubos verdes que forman un terreno irregular.
