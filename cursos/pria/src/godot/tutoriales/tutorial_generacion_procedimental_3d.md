@@ -124,5 +124,7 @@ func _ready() -> void:
             get_parent().call_deferred("add_child", static_body)
 ```
 
-4. Ejecuta el juego, deberías ver un mundo 3D generado por procedimientos con cubos verdes que forman un terreno irregular.
-5. Puedes caminar con `WASD`, saltar con espacio, mirar alrededor con el ratón y si presionas `Esc`, el juego se cierra.
+## Paso 4: Ejecuta y explora tu mundo generado
+
+1. Ejecuta el juego, deberías ver un mundo 3D generado por procedimientos con cubos verdes que forman un terreno irregular.
+2. Puedes caminar con `WASD`, saltar con espacio, mirar alrededor con el ratón y si presionas `Esc`, el juego se cierra.
