@@ -25,6 +25,7 @@ En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimien
 
 1. Crea una escena de tipo `CharacterBody2D` como nodo raíz, renombra dicho nodo como `Player` y guarda la escena como `player.tscn`.
 1. Crea una escena `de tipo CharacterBody2D` como nodo raíz, nómbrala `Player` y guárdala como `player.tscn`.
+1. Crea una escena con un nodo raíz de tipo `CharacterBody2D`, renombra el nodo a `Player` y guarda la escena como `player.tscn`.
 1. Pon a [Niblo](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) como el `Player`:
    - Añade un `Sprite2D` como nodo hijo de `Player` para representar al personaje con esta [textura](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png).
    - Añade un `CollisionShape2D` como nodo hijo de `Player` y define su forma como `RectangleShape2D`.
