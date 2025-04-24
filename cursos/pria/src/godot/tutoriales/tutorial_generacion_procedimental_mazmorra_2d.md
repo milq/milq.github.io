@@ -19,6 +19,8 @@ En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimien
 4. Haz clic en `TileSet`, dirígete al apartado _Physics Layers_ y pulsa en `Add Element` para añadir una [capa física][T02].
 5. En la parte inferior de la pantalla, selecciona la pestaña `Tileset`, luego haz clic en el botón `+` y elige `Atlas`.
 6. Elige `tilemap.png` y pulsa `Yes` cuando salga _The atlas's texture was modified. Would you like to automatically create tiles in the atlas?_
+7. Selecciona la pestaña _Paint_ y, en la sección _Paint Properties_, elige _Physics Layer 0_.
+8. Haz clic izquierdo en el _tile_ más claro del atlas (ubicado en la parte superior), que representa el muro, para asignarle colisión física.
 
 [T01]: https://milq.github.io/cursos/pria/src/godot/tutoriales/tutorial_generacion_procedimental_mazmorra_2d.png
 [T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/tutorial_crear_tilemap_1.png
