@@ -16,10 +16,12 @@ En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimien
 1. Añade un nuevo nodo hijo al nodo `World`, de tipo `TileMapLayer` y renómbralo como `Dungeon`.
 2. Descarga este [_tileset_][T01], renómbralo como `atlas.png` y arrástralo a la carpeta de recursos del proyecto (`res://`).
 3. Selecciona el nodo `Dungeon` y, en el Inspector, haz clic en `<empty>` del campo `TileSet` y elige *New TileSet*.
-4. En la parte inferior de la pantalla, selecciona la pestaña `Tileset`, luego haz clic en el botón `+` y elige `Atlas`.
-5. Elige `tilemap.png` y pulsa `Yes` cuando salga _The atlas's texture was modified. Would you like to automatically create tiles in the atlas?_
+4. Haz clic en `TileSet`, dirígete al apartado _Physics Layers_ y pulsa en `Add Element` para añadir una [capa física][T02].
+5. En la parte inferior de la pantalla, selecciona la pestaña `Tileset`, luego haz clic en el botón `+` y elige `Atlas`.
+6. Elige `tilemap.png` y pulsa `Yes` cuando salga _The atlas's texture was modified. Would you like to automatically create tiles in the atlas?_
 
 [T01]: https://milq.github.io/cursos/pria/src/godot/tutoriales/tutorial_generacion_procedimental_mazmorra_2d.png
+[T02]: https://raw.githubusercontent.com/milq/milq.github.io/refs/heads/master/cursos/pria/src/godot/tutoriales/tutorial_crear_tilemap_1.png
 
 ## Paso 3: Configurar y mover el personaje
 
