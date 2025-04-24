@@ -37,6 +37,7 @@ extends CharacterBody2D
 func _process(delta: float) -> void:
     var horizontal: float = Input.get_axis("ui_left", "ui_right")
     var vertical: float = Input.get_axis("ui_up", "ui_down")
-    var direction: Vector2 = Vector2(horizontal, vertical).normalized()
-    position = position + direction * speed * delta
+    var direction := Vector2(horizontal, vertical).normalized()
+    velocity = direction * speed
+    move_and_slide()
 ```
