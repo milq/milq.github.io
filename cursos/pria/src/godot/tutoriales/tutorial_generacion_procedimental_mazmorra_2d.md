@@ -250,7 +250,5 @@ func spawn_player() -> void:
         player_instance.global_position = get_start_position_world()
         print("Player spawned at: ", player_instance.global_position)
     else:
-        print(
-            "Error: Dungeon node needs to be a child of the main World scene."
-        )
+        print("Error: Dungeon node must be a child of the World scene.")
 ```
