@@ -20,3 +20,23 @@ En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimien
 5. Elige `tilemap.png` y pulsa `Yes` cuando salga _The atlas's texture was modified. Would you like to automatically create tiles in the atlas?_
 
 [T01]: https://milq.github.io/cursos/pria/src/godot/tutoriales/tutorial_generacion_procedimental_mazmorra_2d.png
+
+## Paso 3: Configurar y mover el personaje
+
+1. Crea una nueva escena de tipo `CharacterBody2D` como nodo raíz, renombra dicho nodo como `Player` y guarda la escena como `player.tscn`.
+1. Pon a [Niblo](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) como el `Player`:
+   - Añade un `Sprite2D` como nodo hijo de `Player` para representar al personaje con esta [textura](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png).
+   - Añade un `CollisionShape2D` como nodo hijo de `Player` y define su forma como `RectangleShape2D`.
+2. Adjunta el siguiente _script_ a Niblo:
+
+```gdscript
+extends CharacterBody2D
+
+@export var speed: float = 150.0
+
+func _process(delta: float) -> void:
+    var horizontal: float = Input.get_axis("ui_left", "ui_right")
+    var vertical: float = Input.get_axis("ui_up", "ui_down")
+    var direction: Vector2 = Vector2(horizontal, vertical).normalized()
+    position = position + direction * speed * delta
+```
