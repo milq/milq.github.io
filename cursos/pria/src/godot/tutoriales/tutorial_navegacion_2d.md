@@ -28,7 +28,7 @@ En este tutorial aprenderás a configurar lo mínimo necesario para que un perso
 
 1. Agrega a [Niblo](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) como nodo hijo de tipo `CharacterBody2D` en la escena principal:
    - Añade un `Sprite2D` como nodo hijo para representar al personaje. Puedes descargar el _sprite_ [aquí](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png).
-   - Añade un `CollisionShape2D` como nodo hijo para definir su forma de colisión.
+   - Añade un `CollisionShape2D` como nodo hijo y define su forma como `RectangleShape2D`.
 
 2. Agrega un nodo `NavigationAgent2D` como hijo de Niblo que es un `CharacterBody2D`.
    - Este agente se encargará de calcular y seguir las rutas dentro de la región de navegación.
