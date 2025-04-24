@@ -28,7 +28,7 @@ En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimien
 ## Paso 3: Configurar y mover el personaje
 
 1. Crea una escena con un nodo raíz de tipo `CharacterBody2D`, renombra el nodo a `Player` y guarda la escena como `player.tscn`.
-1. Pon a [Niblo](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) como el `Player`:
+1. Pon a [Niblo](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) como el `Player`; para ello, añade los siguientes nodos como hijos de `Player`:
    - Añade un `Sprite2D` como nodo hijo de `Player` para representar al personaje con esta [textura](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png).
    - Añade un `CollisionShape2D` como nodo hijo de `Player` con un `RectangleShape2D` más pequeño que el _sprite_ para que pase por pasillos.
 2. Adjunta el siguiente _script_ a Niblo:
