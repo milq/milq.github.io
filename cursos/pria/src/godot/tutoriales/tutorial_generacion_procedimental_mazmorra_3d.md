@@ -1,6 +1,6 @@
-# Tutorial: Crea una mazmorra 3D procedural con jugador en 1ª persona
+# Tutorial: Crea un laberinot 3D procedural con jugador en 1ª persona
 
-En este tutorial aprenderás a generar una mazmorra 3D de forma procedimental usando ruido, y a controlar un jugador en primera persona que puede moverse, saltar y explorar el laberinto en tiempo real. La mazmorra tendrá una salida marcada con un cubo rojo en una esquina, y el jugador comenzará en la esquina opuesta.
+En este tutorial aprenderás a generar un laberinto 3D de forma procedimental usando ruido, y a controlar un jugador en primera persona que puede moverse, saltar y explorar el laberinto en tiempo real. El laberinto tendrá una salida marcada con un cubo rojo en una esquina, y el jugador comenzará en la esquina opuesta.
 
 ## Paso 1: Configura la escena principal
 
@@ -74,8 +74,8 @@ func _physics_process(delta: float) -> void:
 
 ## Paso 3: Genera un terreno 3D de forma procedimental
 
-1. Dentro de `World`, añade un nodo `Node3D` y nómbralo `DungeonGenerator`.
-2. Crea un nuevo _script_ llamado `dungeon_generator.gd` y asígnalo al nodo `DungeonGenerator`.
+1. Dentro de `World`, añade un nodo `Node3D` y nómbralo `MazeGenerator`.
+2. Crea un nuevo _script_ llamado `maze_generator.gd` y asígnalo al nodo `MazeGenerator`.
 3. Copia este código en el _script_:
 
 ```gdscript
@@ -210,5 +210,5 @@ func place_exit() -> void:
 
 ## Paso 4: Ejecuta y explora tu mundo generado
 
-1. Ejecuta el juego, deberías ver una mazmorra 3D generada por procedimientos con un cubo rojo que representa la salida.
+1. Ejecuta el juego, deberías ver un laberinto 3D generada por procedimientos con un cubo rojo que representa la salida.
 2. Puedes caminar con `WASD`, saltar con espacio, mirar alrededor con el ratón y si presionas `Esc`, el juego se cierra.
