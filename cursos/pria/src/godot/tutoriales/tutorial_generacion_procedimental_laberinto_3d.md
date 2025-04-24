@@ -1,4 +1,4 @@
-# Tutorial: Crea un laberinot 3D procedural con jugador en 1ª persona
+# Tutorial: Crea un laberinto 3D procedural con jugador en 1ª persona
 
 En este tutorial aprenderás a generar un laberinto 3D de forma procedimental usando ruido, y a controlar un jugador en primera persona que puede moverse, saltar y explorar el laberinto en tiempo real. El laberinto tendrá una salida marcada con un cubo rojo en una esquina, y el jugador comenzará en la esquina opuesta.
 
