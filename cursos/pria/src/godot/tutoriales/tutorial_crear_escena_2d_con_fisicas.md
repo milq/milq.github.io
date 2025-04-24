@@ -90,7 +90,7 @@ func _unhandled_input(event: InputEvent) -> void:
 4. A la derecha del campo _Path_ aparece un botón con un icono de una carpeta.
 5. Pulsa dicho botón, selecciona el _script_ `game_manager.gd` y comprueba que la ruta del campo _Path_ es `res://game_manager.gd`.
 6. A continuación, comprueba que en _Node Name_ aparece `GameManager` y si es así, pulsa en el botón _Add_.
-7. Esto permitirá añadir el _script_ de `GameManager` como Autoload, es decir, que el _script_ esté disponible en todas las escenas como un Singleton.
+7. Esto permitirá añadir el _script_ de `GameManager` como Autoload, es decir, que el _script_ esté en todas las escenas como un Singleton.
 
 ## Paso 4: Creación del personaje Niblo con movimiento de plataformas
 
