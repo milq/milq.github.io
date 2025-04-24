@@ -1,6 +1,6 @@
 # Tutorial: Crea una mazmorra 2D generada por procedimientos
 
-En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimientos con diferentes salas de distintos tamaños. El jugador aparecerá en una ubicación inicial y deberá encontrar la salida, mientras evita enemigos que lo perseguirán.
+En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimientos con diferentes salas de distintos tamaños. El jugador aparecerá en una ubicación inicial.
 
 ## Paso 1: Configuración del proyecto
 
@@ -252,3 +252,15 @@ func spawn_player() -> void:
     else:
         print("Error: Dungeon node must be a child of the World scene.")
 ```
+
+## Paso 5: Ejecución del proyecto
+
+1. Ejecuta el proyecto desde Godot haciendo clic en el botón de *Play* (o presionando `F5`).
+2. Verás que la mazmorra se genera de forma aleatoria cada vez que inicias el juego. Esto es parte del sistema de generación procedural.
+3. Usa las teclas de los cursores para mover a Niblo por la mazmorra o pulsa `Esc` para salir del juego.
+4. Vuelve a ejecutar el juego varias veces y observa cómo cambian la disposición de las habitaciones y los pasillos en cada generación.
+5. Experimenta modificando los valores exportados en el nodo `Dungeon`, como:
+   - `map_width` y `map_height` para cambiar el tamaño general de la mazmorra.
+   - `min_room_size` y `max_room_size` para ajustar el tamaño de las habitaciones.
+   - `min_number_of_rooms` y `max_number_of_rooms` para controlar cuántas habitaciones se generan.
+   - `bigger_corridor` para hacer los pasillos más anchos.
