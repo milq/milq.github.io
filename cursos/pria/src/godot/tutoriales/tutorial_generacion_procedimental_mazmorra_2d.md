@@ -31,7 +31,7 @@ En este tutorial aprenderás a crear una mazmorra en 2D generada por procedimien
 2.  Haz que el nodo `Player` sea [Niblo](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png) añadiendo los siguientes nodos como hijos de `Player`:
     - Añade un `Sprite2D` para representar al personaje con esta [textura](https://raw.githubusercontent.com/milq/milq.github.io/master/cursos/pria/src/godot/sprites/niblo.png).
     - Añade un `CollisionShape2D` con un `RectangleShape2D` más pequeño que el _sprite_ para que pase por pasillos estrechos.
-3. Selecciona el nodo `Player` y, en el Inspector, establece su escala a `0.25` en los ejes `x` e `y`.
+3. Selecciona el nodo `Player` y, en el Inspector, ve a la sección _Transform_ y establece su escala a `0.25` en los ejes `x` e `y`.
 4. Adjunta el siguiente _script_ a Niblo:
 
 ```gdscript
