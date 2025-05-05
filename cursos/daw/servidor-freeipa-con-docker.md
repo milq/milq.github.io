@@ -36,7 +36,7 @@ En este tutorial aprenderás a crear un servidor FreeIPA dentro de un contenedor
      freeipa-data:
    ```
 
-   ```yaml
+```yaml
 services:
   freeipa:
     image: freeipa/freeipa-server:rocky-9
@@ -63,7 +63,7 @@ services:
 
 volumes:
   freeipa-data:
-   ```
+```
 
    Este archivo `docker-compose.yml` define un contenedor que ejecuta un servidor FreeIPA usando la imagen oficial basada en Rocky Linux. Le asigna el nombre `ipa.test.local`, que será su dominio de red interno. Se configura automáticamente con la opción `--unattended`, lo que significa que se instalará sin pedir datos manualmente, usando la contraseña `admin123` para el administrador. Se utilizan volúmenes temporales (`/run` y `/tmp`) requeridos por FreeIPA, y un volumen persistente llamado `freeipa-data` para guardar toda la configuración del servidor, usuarios, y base de datos LDAP. Además, se exponen todos los puertos necesarios: HTTP (80, 443), LDAP (389, 636), y Kerberos (88, 464). Finalmente, se asegura de que IPv6 esté habilitado para compatibilidad total con las herramientas del sistema FreeIPA.
 
