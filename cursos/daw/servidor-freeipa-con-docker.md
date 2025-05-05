@@ -8,47 +8,18 @@ En este tutorial aprenderás a crear un servidor FreeIPA dentro de un contenedor
 
 2. Crea un archivo llamado `docker-compose.yml` con este contenido:
 
-   ```yaml
-   services:
-     freeipa:
-       image: freeipa/freeipa-server:rocky-9
-       container_name: freeipa-server
-       hostname: ipa.test.local
-       environment:
-         - IPA_SERVER_INSTALL_OPTS=--unattended
-         - PASSWORD=admin123
-       tmpfs:
-         - /run
-         - /tmp
-       ports:
-         - "80:80"
-         - "443:443"
-         - "389:389"
-         - "636:636"
-         - "88:88"
-         - "464:464"
-       volumes:
-         - freeipa-data:/data:Z
-       sysctls:
-         net.ipv6.conf.all.disable_ipv6: 0
-
-   volumes:
-     freeipa-data:
-   ```
-
 ```yaml
 services:
   freeipa:
     image: freeipa/freeipa-server:rocky-9
     container_name: freeipa-server
-    hostname: ipa.test.local          # FQDN obligatorio
+    hostname: ipa.test.local
     environment:
       - PASSWORD=admin123
       - IPA_SERVER_INSTALL_OPTS=-U -r TEST.LOCAL --no-ntp
-    privileged: true                  # necesario en Docker Desktop
-    cgroupns: host                    # idem
+    privileged: true
     volumes:
-      - freeipa-data:/data            # sin :Z en Windows
+      - freeipa-data:/data
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     ports:
       - "80:80"
