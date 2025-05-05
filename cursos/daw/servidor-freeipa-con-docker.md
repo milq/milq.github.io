@@ -9,8 +9,6 @@ En este tutorial aprenderás a crear un servidor FreeIPA dentro de un contenedor
 2. Crea un archivo llamado `docker-compose.yml` con este contenido:
 
    ```yaml
-   version: '3'
-
    services:
      freeipa:
        image: freeipa/freeipa-server:rocky-9
