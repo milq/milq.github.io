@@ -53,6 +53,7 @@ RESP2_BODY=$(http --print=b POST "$BASE_URL/articulos" \
 
 check_http_code "HTTP/1.1 201 Created" 201 "POST /articulos" 1
 ART_ID=$(echo "$RESP2_BODY" | jq -r '.id')
+echo "Artículo creado (ID: $ART_ID). Nota: el artículo se creó dos veces; este ID es del segundo POST para evaluación."
 divider
 
 # 3. Obtener el artículo recién creado
@@ -88,6 +89,7 @@ RESP6_BODY=$(http --print=b POST "$BASE_URL/articulos/$ART_ID/comentarios" \
 
 check_http_code "HTTP/1.1 201 Created" 201 "POST /articulos/$ART_ID/comentarios" 1
 COM_ID=$(echo "$RESP6_BODY" | jq -r '.id')
+echo "Comentario creado (ID: $COM_ID). Nota: el comentario se creó dos veces; este ID es del segundo POST para evaluación."
 divider
 
 # 7. Obtener el comentario creado
