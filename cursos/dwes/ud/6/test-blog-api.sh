@@ -1,26 +1,16 @@
 #!/bin/bash
-# test-blog-api.sh <nombre_estudiante> [api]
-# Script para probar el servicio web RESTful del blog de un estudiante usando HTTPie.
-# Uso:
-#   bash test-blog-api.sh pedro         # sin /api
-#   bash test-blog-api.sh pedro api     # con prefijo /api
+# test-blog-api.sh
+# Script para probar el servicio web RESTful de un blog usando HTTPie.
+# Uso: bash test-blog-api.sh
 #
 # Requisitos:
 #   - HTTPie CLI
 #   - jq → sudo apt-get install jq
 
-if [ -z "$1" ]; then
-  echo "Uso: $0 <nombre_estudiante> [api]"
-  exit 1
-fi
+# Aquí defines la URL base del API del blog
+# Esta es la que debes enviar al profesor en 'alwaysdata.txt'
+BASE_URL="https://estudiante.alwaysdata.net/api"
 
-USER=$1
-API_PREFIX=""
-if [ "$2" == "api" ]; then
-  API_PREFIX="/api"
-fi
-
-BASE_URL="https://$USER.alwaysdata.net$API_PREFIX"
 TOTAL=0
 
 divider() {
