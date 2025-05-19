@@ -2,8 +2,12 @@
 # test-blog-api.sh <nombre_estudiante> [api]
 # Script para probar el servicio web RESTful del blog de un estudiante usando HTTPie.
 # Uso:
-#   bash test-blog-api.sh pedro         # Usa rutas sin /api
-#   bash test-blog-api.sh pedro api     # Usa rutas con prefijo /api
+#   bash test-blog-api.sh pedro         # sin /api
+#   bash test-blog-api.sh pedro api     # con prefijo /api
+#
+# Requisitos:
+#   - HTTPie CLI
+#   - jq → sudo apt-get install jq
 
 if [ -z "$1" ]; then
   echo "Uso: $0 <nombre_estudiante> [api]"
@@ -17,59 +21,118 @@ if [ "$2" == "api" ]; then
 fi
 
 BASE_URL="https://$USER.alwaysdata.net$API_PREFIX"
+TOTAL=0
 
-echo "1. Obtener todos los artículos"
-http GET $BASE_URL/articulos
-echo -e "\n-----------------------------\n"
+divider() {
+  echo -e "\n-----------------------------\n"
+}
 
-echo "2. Obtener el artículo con ID = 4"
-http GET $BASE_URL/articulos/4
-echo -e "\n-----------------------------\n"
+check_http_code() {
+  local response="$1"
+  local expected="$2"
+  local mensaje="$3"
+  local puntos="$4"
+  local code=$(echo "$response" | grep -oE "HTTP/[0-9.]+ [0-9]{3}" | tail -1 | awk '{print $2}')
+  if [[ "$code" == "$expected" ]]; then
+    echo -e "\e[32m✅ $mensaje (HTTP $code) (+$puntos)\e[0m"
+    TOTAL=$(echo "$TOTAL + $puntos" | bc)
+  else
+    echo -e "\e[31m❌ $mensaje (esperado $expected, recibido $code)\e[0m"
+  fi
+  divider
+}
 
-echo "3. Crear un nuevo artículo"
-http POST $BASE_URL/articulos \
-    titulo='Nuevo título desde Bash' \
-    contenido='Este es un artículo de prueba creado con HTTPie y Bash' \
-    fecha_publicacion='2025-03-15T08:00:00' \
-    autor='Nacho'
-echo -e "\n-----------------------------\n"
+# 1. Obtener todos los artículos
+echo "1. Obtener todos los artículos (http GET $BASE_URL/articulos)"
+http GET "$BASE_URL/articulos"
+check_http_code "$(http --print=Hh GET "$BASE_URL/articulos")" 200 "GET /articulos" 0.5
 
-echo "4. (PATCH) Editar parcialmente el artículo con ID = 4 (solo algunos campos)"
-http PATCH $BASE_URL/articulos/4 \
-    titulo='Título editado con PATCH' \
-    contenido='Contenido parcial desde PATCH'
-echo -e "\n-----------------------------\n"
+# 2. Crear artículo temporal y evaluar HTTP 201
+echo "2. Crear un nuevo artículo temporal (http POST $BASE_URL/articulos ...)"
+http POST "$BASE_URL/articulos" \
+  titulo="Artículo temporal desde Bash" \
+  contenido="Contenido de prueba automatizada" \
+  fecha_publicacion="2025-03-15T08:00:00" \
+  autor="Script Bash"
 
-echo "5. Borrar el artículo con ID = 4"
-http DELETE $BASE_URL/articulos/4
-echo -e "\n-----------------------------\n"
+RESP2_BODY=$(http --print=b POST "$BASE_URL/articulos" \
+  titulo="Artículo temporal desde Bash" \
+  contenido="Contenido de prueba automatizada" \
+  fecha_publicacion="2025-03-15T08:00:00" \
+  autor="Script Bash")
 
-echo "6. Obtener todos los comentarios"
-http GET $BASE_URL/comentarios
-echo -e "\n-----------------------------\n"
+check_http_code "HTTP/1.1 201 Created" 201 "POST /articulos" 1
+ART_ID=$(echo "$RESP2_BODY" | jq -r '.id')
+divider
 
-echo "7. Obtener el comentario con ID = 5"
-http GET $BASE_URL/comentarios/5
-echo -e "\n-----------------------------\n"
+# 3. Obtener el artículo recién creado
+echo "3. Obtener el artículo recién creado (http GET $BASE_URL/articulos/$ART_ID)"
+http GET "$BASE_URL/articulos/$ART_ID"
+check_http_code "$(http --print=Hh GET "$BASE_URL/articulos/$ART_ID")" 200 "GET /articulos/$ART_ID" 1
 
-echo "8. Obtener todos los comentarios del artículo con ID = 6"
-http GET $BASE_URL/articulos/6/comentarios
-echo -e "\n-----------------------------\n"
+# 4. Editar parcialmente el artículo
+echo "4. Editar parcialmente el artículo (http PATCH $BASE_URL/articulos/$ART_ID ...)"
+http PATCH "$BASE_URL/articulos/$ART_ID" \
+  titulo="Título actualizado (PATCH)" \
+  contenido="Contenido actualizado parcialmente"
+check_http_code "$(http --print=Hh PATCH "$BASE_URL/articulos/$ART_ID" \
+  titulo="Título actualizado (PATCH)" \
+  contenido="Contenido actualizado parcialmente")" 200 "PATCH /articulos/$ART_ID" 1
 
-echo "9. Crear un nuevo comentario en el artículo con ID = 6"
-http POST $BASE_URL/articulos/6/comentarios \
-    contenido='Comentario desde Bash' \
-    fecha_publicacion='2025-03-16T10:00:00' \
-    autor='Usuario Nacho'
-echo -e "\n-----------------------------\n"
+# 5. Obtener todos los comentarios
+echo "5. Obtener todos los comentarios (http GET $BASE_URL/comentarios)"
+http GET "$BASE_URL/comentarios"
+check_http_code "$(http --print=Hh GET "$BASE_URL/comentarios")" 200 "GET /comentarios" 0.5
 
-echo "10. (PUT) Editar completamente el comentario con ID = 5 (todos los campos)"
-http PUT $BASE_URL/comentarios/5 \
-    contenido='Comentario totalmente editado desde PUT en Bash' \
-    fecha_publicacion='2025-03-20T14:00:00' \
-    autor='Nuevo Autor Nacho'
-echo -e "\n-----------------------------\n"
+# 6. Crear comentario en artículo y evaluar HTTP 201
+echo "6. Crear un nuevo comentario en el artículo $ART_ID (http POST $BASE_URL/articulos/$ART_ID/comentarios ...)"
+http POST "$BASE_URL/articulos/$ART_ID/comentarios" \
+  contenido="Comentario desde Bash" \
+  fecha_publicacion="2025-03-16T10:00:00" \
+  autor="Usuario Bash"
 
-echo "11. Borrar el comentario con ID = 5"
-http DELETE $BASE_URL/comentarios/5
-echo -e "\n-----------------------------\n"
+RESP6_BODY=$(http --print=b POST "$BASE_URL/articulos/$ART_ID/comentarios" \
+  contenido="Comentario desde Bash" \
+  fecha_publicacion="2025-03-16T10:00:00" \
+  autor="Usuario Bash")
+
+check_http_code "HTTP/1.1 201 Created" 201 "POST /articulos/$ART_ID/comentarios" 1
+COM_ID=$(echo "$RESP6_BODY" | jq -r '.id')
+divider
+
+# 7. Obtener el comentario creado
+echo "7. Obtener el comentario creado (http GET $BASE_URL/comentarios/$COM_ID)"
+http GET "$BASE_URL/comentarios/$COM_ID"
+check_http_code "$(http --print=Hh GET "$BASE_URL/comentarios/$COM_ID")" 200 "GET /comentarios/$COM_ID" 1
+
+# 8. Obtener comentarios del artículo
+echo "8. Obtener todos los comentarios del artículo (http GET $BASE_URL/articulos/$ART_ID/comentarios)"
+http GET "$BASE_URL/articulos/$ART_ID/comentarios"
+check_http_code "$(http --print=Hh GET "$BASE_URL/articulos/$ART_ID/comentarios")" 200 "GET /articulos/$ART_ID/comentarios" 1
+
+# 9. Editar completamente el comentario
+echo "9. Editar completamente el comentario (PUT) (http PUT $BASE_URL/comentarios/$COM_ID ...)"
+http PUT "$BASE_URL/comentarios/$COM_ID" \
+  contenido="Comentario editado completamente desde PUT" \
+  fecha_publicacion="2025-03-20T14:00:00" \
+  autor="Nuevo Autor Bash"
+check_http_code "$(http --print=Hh PUT "$BASE_URL/comentarios/$COM_ID" \
+  contenido="Comentario editado completamente desde PUT" \
+  fecha_publicacion="2025-03-20T14:00:00" \
+  autor="Nuevo Autor Bash")" 200 "PUT /comentarios/$COM_ID" 1
+
+# 10. Borrar el comentario
+echo "10. Borrar el comentario"
+echo "http DELETE $BASE_URL/comentarios/$COM_ID"
+http DELETE "$BASE_URL/comentarios/$COM_ID"
+check_http_code "$(http --print=Hh DELETE "$BASE_URL/comentarios/$COM_ID")" 404 "DELETE /comentarios/$COM_ID" 1
+
+# 11. Borrar el artículo
+echo "11. Borrar el artículo"
+echo "http DELETE $BASE_URL/articulos/$ART_ID"
+http DELETE "$BASE_URL/articulos/$ART_ID"
+check_http_code "$(http --print=Hh DELETE "$BASE_URL/articulos/$ART_ID")" 404 "DELETE /articulos/$ART_ID" 1
+
+# Resultado final
+echo -e "\n🎓 Evaluación final para $USER.alwaysdata.net"
+echo "PUNTUACIÓN TOTAL: $TOTAL / 10.0"
