@@ -122,14 +122,12 @@ check_http_code "$(http --print=Hh PUT "$BASE_URL/comentarios/$COM_ID" \
   autor="Nuevo Autor Bash")" 200 "PUT /comentarios/$COM_ID" 1
 
 # 10. Borrar el comentario
-echo "10. Borrar el comentario"
-echo "http DELETE $BASE_URL/comentarios/$COM_ID"
+echo "10. Borrar el comentario (http DELETE $BASE_URL/comentarios/$COM_ID)"
 http DELETE "$BASE_URL/comentarios/$COM_ID"
 check_http_code "$(http --print=Hh DELETE "$BASE_URL/comentarios/$COM_ID")" 404 "DELETE /comentarios/$COM_ID" 1
 
 # 11. Borrar el artículo
-echo "11. Borrar el artículo"
-echo "http DELETE $BASE_URL/articulos/$ART_ID"
+echo "11. Borrar el artículo (http DELETE $BASE_URL/articulos/$ART_ID)"
 http DELETE "$BASE_URL/articulos/$ART_ID"
 check_http_code "$(http --print=Hh DELETE "$BASE_URL/articulos/$ART_ID")" 404 "DELETE /articulos/$ART_ID" 1
 
