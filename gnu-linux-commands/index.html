@@ -205,7 +205,7 @@
       <li><code>du -hs <em>path_folder</em></code> Report disk space usage of a folder.</li>
       <li><code>sudo mount <em>device_path destination_path</em></code> Mount a filesystem.</li>
       <li><code>sudo umount <em>mounted_device_path</em></code> Unmount a filesystem.</li>
-      <li><code>sudo mkfs.vfat -I /dev/sd<em>x</em> -n <em>NAME</em> && sync</code> Format disk <em>x</em> to VFAT.</li>
+      <li><code>sudo mkfs.exfat /dev/sd<em>x</em> -n <em>NAME</em> && sync</code> Format disk <em>x</em> to <em>exFAT</em>.</li>
       <li><code>sudo mkfs.vfat -I /dev/sd<em>x</em><em>Y</em> -n <em>NAME</em> && sync</code> Format partition <em>Y</em> from disk <em>x</em> to VFAT.</li>
       <li><code>sudo dd bs=512K if=<em>input.iso</em> of=/dev/sd<em>x</em> && sync</code> Burn an ISO file to a disk.</li>
       <li><code>sudo gdisk /dev/sd<em>x</em></code> <a href='https://en.wikipedia.org/wiki/GUID_Partition_Table'>GPT</a> editor for disk <em>x</em> (install it with <code>sudo apt-get install gdisk</code>).</li>
