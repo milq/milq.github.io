@@ -28,13 +28,14 @@ echo implode(", ", $alimentos) . "\n";
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-// CONTAR ELEMENTOS EN UN ARRAY
+// CONTAR ELEMENTOS EN UN ARRAY Y CONTAR CARACTERES DE UN STRING
 //////////////////////////////////////////////////////////////////////////////////////
 
 $frutas = ["Manzana", "Plátano", "Sandía", "Melocotón", "Nectarina"];
 $numFrutas = count($frutas);
 echo "Número de frutas: $numFrutas\n";
 
+// La función 'strlen' devuelve un entero con la cantidad de caracteres de una cadena
 
 //////////////////////////////////////////////////////////////////////////////////////
 // MODIFICAR UN ELEMENTO DE UN ARRAY
@@ -168,24 +169,23 @@ echo $matriz[1][2] . "\n";  // Devuelve "f"
 // ARRAYS VACÍOS MULTIDIMENSIONALES
 //////////////////////////////////////////////////////////////////////////////////////
 
-$listaVaciaMultidimensional = [];
+$arrayVacioMul = [];
 
 // Añadir arrays vacíos al array multidimensional
-$listaVaciaMultidimensional[] = [];
-$listaVaciaMultidimensional[] = [];
+$arrayVacioMul[] = [];
 
-echo "La lista vacía multidimensional tiene " . count($listaVaciaMultidimensional) . " elementos.\n";
+echo "Array vacío multidimensional tiene " . count($arrayVacioMul) . " elementos.\n";
 
 
 //////////////////////////////////////////////////////////////////////////////////////
 // SABER SI EL ARRAY CONTIENE UN ELEMENTO
 //////////////////////////////////////////////////////////////////////////////////////
 
-if (in_array("Alba", $nombres)) {
-    echo "Alba está en la lista de nombres.\n";
-} else {
-    echo "Alba no está en la lista de nombres.\n";
-}
+$productos = ["Ratón", "Teclado", "Monitor", "CPU"];
+
+// La función 'in_array' verifica si "Teclado" está en el 'array' '$productos'
+// y devuelve un valor booleano ('true' o 'false')
+$productoDisponible = in_array("Teclado", $productos);
 
 
 //////////////////////////////////////////////////////////////////////////////////////
