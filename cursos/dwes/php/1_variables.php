@@ -30,14 +30,12 @@ $y = 2;
 $z = $x + $y;        // Suma.                                 Resultado: 7
 $z = $x - $y;        // Resta.                                Resultado: 3
 $z = $x * $y;        // Multiplicación.                       Resultado: 10
+$z = $x / $y;        // División.                             Resultado: 2.5
 $z = intdiv($x, $y); // División entera.                      Resultado: 2 (En PHP 8 puedes usar intdiv para la división entera)
 $z = $x % $y;        // Módulo (resto de la división).        Resultado: 1
 
 $z = $z + 1;         // Incrementa el valor de z en 1.        Resultado: 2
 $z = $z - 1;         // Disminuye el valor de z en 1.         Resultado: 1
-
-// Nota: En la división, si deseas obtener un resultado con decimales, uno de los números debe ser de tipo float:
-$resultadoDivision = 5.0 / 2.0;  // Resultado: 2.5
 
 
 // OPERACIONES BÁSICAS CON CADENAS DE TEXTO (strings)
