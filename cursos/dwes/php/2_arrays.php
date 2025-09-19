@@ -88,14 +88,11 @@ echo implode(", ", $colores) . "\n";
 
 $letras = ["A", "B", "A", "B", "C", "B"];
 
-// Eliminar la primera ocurrencia de "B"
+// Índice con la primera ocurrencia de "B"
 $index = array_search("B", $letras);
-if ($index !== false) {
-    unset($letras[$index]);
-    // Reindexar el array
-    $letras = array_values($letras);
-}
-echo "Después de eliminar la primera 'B': " . implode(", ", $letras) . "\n";
+
+// Imprime el índice
+echo $index;
 
 // Limpiar el array
 $letras = [];  // o $letras = array();
