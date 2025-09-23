@@ -33,6 +33,7 @@ $z = $x * $y;        // Multiplicación.                       Resultado: 10
 $z = $x / $y;        // División.                             Resultado: 2.5
 $z = intdiv($x, $y); // División entera.                      Resultado: 2 (En PHP 8 puedes usar intdiv para la división entera)
 $z = $x % $y;        // Módulo (resto de la división).        Resultado: 1
+$z = abs($x);        // Valor absoluto.                       Resultado: 1
 
 $z = $z + 1;         // Incrementa el valor de z en 1.        Resultado: 2
 $z = $z - 1;         // Disminuye el valor de z en 1.         Resultado: 1
