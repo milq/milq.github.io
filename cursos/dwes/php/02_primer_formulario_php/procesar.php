@@ -9,7 +9,6 @@
 $name = $_POST['name'];
 $age = $_POST['age'];
 $education = $_POST['education'];
-$hobbies = $_POST['hobbies'];
 
 if (isset($_POST['hobbies']) && !empty($_POST['hobbies'])) {
     $aficiones = implode(', ', $_POST['hobbies']);
