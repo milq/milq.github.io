@@ -1,18 +1,22 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue enviado usando el método POST
-    // $_POST['name'] toma el valor del campo 'name' enviado desde el formulario.
-    $name = $_POST['name'] ?? '';  // El operador ?? devuelve una cadena vacía si 'name' no está presente en $_POST.
-    $age = $_POST['age'] ?? '';
-    $education = $_POST['education'] ?? '';
-    $hobbies = $_POST['hobbies'] ?? [];  // El operador ?? devuelve un array vacío si 'hobbies' no está presente en $_POST.
+// El array $_POST recoge los datos enviados por el formulario utilizando el método POST.
+// Cada elemento del array $_POST corresponde a un campo del formulario, 
+// y la clave de cada elemento es el valor del atributo 'name' del input correspondiente.
+// Por ejemplo, $_POST['age'] obtiene el valor ingresado en el campo de texto cuyo
+// atributo 'name' es 'age' en el formulario.
 
-    // Verifica si hay aficiones seleccionadas
-    $aficiones = !empty($hobbies) ? implode(', ', $hobbies) : 'ninguna afición seleccionada';
+$name = $_POST['name'];
+$age = $_POST['age'];
+$education = $_POST['education'];
+$hobbies = $_POST['hobbies'];
+
+if (!empty($hobbies)) {
+    $aficiones = implode(', ', $hobbies);
+} else {
+    $aficiones = 'ninguna afición seleccionada';
 }
 
-// Nota: La validación y saneamiento de los datos es necesario para garantizar la seguridad, pero se explicará más adelante.
-// Por ejemplo, 'htmlspecialchars' evita problemas de seguridad como XSS.
 ?>
 
 <!DOCTYPE html>
@@ -29,10 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {  // Verifica que el formulario fue 
     <p>Datos recogidos:</p>
 
     <ul>
-      <li><strong>Nombre:</strong> <?php echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8'); ?></li>
-      <li><strong>Edad:</strong> <?php echo htmlspecialchars($age, ENT_QUOTES, 'UTF-8'); ?></li>
-      <li><strong>Nivel de estudios:</strong> <?php echo htmlspecialchars($education, ENT_QUOTES, 'UTF-8'); ?></li>
-      <li><strong>Aficiones:</strong> <?php echo htmlspecialchars($aficiones, ENT_QUOTES, 'UTF-8'); ?></li>
+      <li><strong>Nombre:</strong> <?php echo $name; ?></li>
+      <li><strong>Edad:</strong> <?php echo $age; ?></li>
+      <li><strong>Nivel de estudios:</strong> <?php echo $education; ?></li>
+      <li><strong>Aficiones:</strong> <?php echo $aficiones; ?></li>
     </ul>
 
   </body>
