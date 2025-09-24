@@ -11,8 +11,8 @@ $age = $_POST['age'];
 $education = $_POST['education'];
 $hobbies = $_POST['hobbies'];
 
-if (!empty($hobbies)) {
-    $aficiones = implode(', ', $hobbies);
+if (isset($_POST['hobbies']) && !empty($_POST['hobbies'])) {
+    $aficiones = implode(', ', $_POST['hobbies']);
 } else {
     $aficiones = 'ninguna afición seleccionada';
 }
