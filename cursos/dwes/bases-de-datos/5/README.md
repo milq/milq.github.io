@@ -6,7 +6,7 @@ La **seguridad en bases de datos** permite proteger la información sensible con
 
 Otro tipo de ataque es el Cross-Site Scripting ([XSS](https://en.wikipedia.org/wiki/Cross-site_scripting)), donde se inserta código malicioso en páginas web y es ejecutado cuando otros usuarios las visitan. La defensa contra XSS incluye la sanitización y validación de las entradas según el tipo de dato esperado, además de implementar una Content Security Policy ([CSP](https://en.wikipedia.org/wiki/Content_Security_Policy)) que restringe los recursos que el navegador puede cargar para la página web.
 
-Existen más **medidas adicionales** para asegurar una base de datos, como el uso de `PDOException` para manejar errores, variables de entorno para almacenar configuraciones sensibles, cifrado de datos sensibles y _hashing_ de contraseñas. También es importante mantener PHP y el SGBD actualizado, usar HTTPS para las comunicaciones, evitar inserciones masivas de datos realizadas por _bots_ y hacer copias de seguridad regularmente. Estas medidas, entre otras, refuerzan la protección de la base de datos contra diversas amenazas.
+Existen más **medidas adicionales** para asegurar una base de datos, como el uso de `PDOException` para manejar errores, variables de entorno para almacenar configuraciones sensibles, cifrado de datos sensibles y [_hashing_](https://en.wikipedia.org/wiki/Hash_function) de contraseñas. También es importante mantener PHP y el SGBD actualizado, usar [HTTPS](https://en.wikipedia.org/wiki/HTTPS) para las comunicaciones, evitar inserciones masivas de datos realizadas por _bots_ y hacer copias de seguridad regularmente. Estas medidas, entre otras, refuerzan la protección de la base de datos contra diversas amenazas.
 
 ## Secciones
 
