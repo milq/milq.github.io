@@ -6,7 +6,7 @@ _Contenido creado por Manuel Ignacio López Quintero_
 
 Para instalar y configurar MariaDB de manera sencilla, se puede realizar mediante [XAMPP](https://en.wikipedia.org/wiki/XAMPP), un paquete que incluye [Apache](https://en.wikipedia.org/wiki/Apache_HTTP_Server), MariaDB, [PHP](https://en.wikipedia.org/wiki/PHP) y [Perl](https://en.wikipedia.org/wiki/Perl). XAMPP facilita la instalación y configuración de un entorno de desarrollo web completo. Al instalar XAMPP, MariaDB se configura automáticamente, proporcionando una base de datos lista para usar.
 
-XAMPP incluye diversas herramientas de administración. Entre ellas se encuentra [phpMyAdmin](https://en.wikipedia.org/wiki/PhpMyAdmin), una interfaz web que permite gestionar bases de datos de manera gráfica e intuitiva. Esta herramienta facilita tareas como la creación y administración de tablas, la ejecución de consultas y la gestión de usuarios. Además, MariaDB incluye herramientas de línea de comandos como mariadb, mariadb-admin y mariadb-dump, que permiten realizar tareas avanzadas de administración y mantenimiento directamente desde la terminal.
+XAMPP incluye diversas herramientas de administración. Entre ellas se encuentra [phpMyAdmin](https://en.wikipedia.org/wiki/PhpMyAdmin), una interfaz web que permite gestionar bases de datos de manera gráfica e intuitiva. Esta herramienta facilita tareas como la creación y administración de tablas, la ejecución de consultas y la gestión de usuarios. Además, MariaDB incluye herramientas de línea de comandos como `mariadb`, `mariadb-admin` y `mariadb-dump`, que permiten realizar tareas avanzadas de administración y mantenimiento directamente desde la terminal.
 
 ## Secciones
 
