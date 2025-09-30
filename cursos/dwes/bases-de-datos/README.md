@@ -32,7 +32,7 @@ La **gestión de bases de datos** es clave para el desarrollo de aplicaciones we
 4.3. Obtención y manejo de resultados<br />
 4.4. Manejo de transacciones
 
-### 5. [Seguridad en las bases de datos](3/README.md)
+### 5. [Seguridad en las bases de datos](5/README.md)
 
 5.1. Prevención de inyección SQL<br />
 5.2. Defensa contra Cross-Site Scripting (XSS)<br />
