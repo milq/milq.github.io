@@ -2,13 +2,7 @@
 
 _Contenido creado por Manuel Ignacio López Quintero_
 
-La **gestión de bases de datos** es clave para el desarrollo de aplicaciones web interactivas, dinámicas con una sólida persistencia de la información. PHP ofrece diversas extensiones que optimizan la interacción con bases de datos, permitiendo desde simples recuperaciones de datos hasta operaciones complejas, mejorando así la comunicación entre la aplicación web y la base de datos.
-
-En esta unidad se realizará una breve introducción a la base de datos y, luego, se abordará el uso de [MariaDB](https://en.wikipedia.org/wiki/MariaDB) con PHP, incluyendo la instalación, configuración y herramientas de administración como *phpMyAdmin*.
-
-Se explorará primero la extensión [MySQLi](https://www.php.net/manual/book.mysqli.php) para realizar conexiones, preparar y ejecutar consultas, y manejar resultados. Posteriormente, se estudiará [PDO](https://www.php.net/manual/book.pdo.php) por su capacidad de trabajar con diferentes bases de datos mediante una interfaz uniforme.
-
-Además, se enfatizará en la importancia de la seguridad en la gestión de bases de datos, destacando técnicas contra la inyección SQL y XSS para proteger las aplicaciones web.
+La **gestión de bases de datos** es clave para el desarrollo de aplicaciones web interactivas, dinámicas con una sólida persistencia de la información. **PHP** ofrece diversas extensiones que optimizan la interacción con bases de datos, permitiendo desde simples recuperaciones de datos hasta operaciones complejas, mejorando así la comunicación entre la aplicación web y la base de datos.
 
 ## Índice
 
@@ -43,10 +37,6 @@ Además, se enfatizará en la importancia de la seguridad en la gestión de base
 5.1. Prevención de inyección SQL<br />
 5.2. Defensa contra Cross-Site Scripting (XSS)<br />
 5.3. Medidas de protección adicionales
-
-## Recursos
-
-Una de las cualidades más destacadas de Laravel es su [**documentación oficial**](https://laravel.com/docs). Esta fuente de información es ampliamente reconocida por su calidad y detalle, y se recomienda consultarla constantemente. 
 
 ## Citas para pensar
 
