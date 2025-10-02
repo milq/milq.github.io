@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
     if (isset($_POST['biography']) && !empty($_POST['biography'])) {
         $biography = $_POST['biography'];
-        if (strlen($biography) > 100) {
+        if (mb_strlen($biography) > 100) {
             $errors[] = 'Biografía demasiado larga: máximo 100 caracteres permitidos.';
         }
     }
