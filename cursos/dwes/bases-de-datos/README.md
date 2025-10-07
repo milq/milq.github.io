@@ -14,7 +14,7 @@ La **gestión de bases de datos** es clave para el desarrollo de aplicaciones we
 1.4. Modelos de bases de datos<br />
 1.5. Implementación de bases de datos
 
-### 2. [MariaDB](2/README.md)
+### 2. [MySQL y MariaDB](2/README.md)
 
 2.1. Instalación y configuración<br />
 2.2. Herramientas de administración
