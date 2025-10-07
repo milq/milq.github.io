@@ -1,4 +1,4 @@
-# 2. MariaDB ([↑](../README.md))
+# 2. MySQL y MariaDB ([↑](../README.md))
 
 _Contenido creado por Manuel Ignacio López Quintero_
 
