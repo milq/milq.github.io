@@ -127,6 +127,11 @@ elif unidad in ['F', 'f']:
     celsius = (valor - 32) / 1.8
     print(f"{celsius} ºC")
 
+# El operador 'in' se utiliza para comprobar si un elemento pertenece a
+# una lista, tupla, cadena, etc. Devuelve True si el elemento se
+# encuentra dentro de la colección y False en caso contrario.
+# Ejemplo: if 'a' in ['a', 'b', 'c']:  --> True
+
 
 # CONDICIONALES ESPECÍFICOS DE PYTHON
 
