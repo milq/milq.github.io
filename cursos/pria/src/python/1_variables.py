@@ -29,13 +29,15 @@ y = 2
 z = x + y          # Suma. Resultado: 7
 z = x - y          # Resta. Resultado: 3
 z = x * y          # Multiplicación. Resultado: 10
+z = x / y          # División (siempre devuelve un 'float'). Resultado: 2.5
 z = x // y         # División entera. Resultado: 2
 z = x % y          # Módulo (resto de la división). Resultado: 1
 z = z + 1          # Incrementa el valor de z en 1
 z = z - 1          # Disminuye el valor de z en 1
 
-# Nota: En Python 3, la división '/' siempre devuelve un número 'float'
-resultado_division = 5.0 / 2.0    # Resultado: 2.5
+# Puedes usar operadores abreviados (z += 1, z -= 1, z *= 2, z /= 3, etc):
+z += 5             # Equivale a z = z + 5
+z -= 2             # Equivale a z = z - 2
 
 
 # OPERACIONES BÁSICAS CON CADENAS DE TEXTO (strings)
