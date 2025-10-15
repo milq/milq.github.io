@@ -94,4 +94,4 @@ print(f"El tipo de 'altitud_str1' es {tipo_altitud1}")
 
 # MENSAJE FINAL PARA EVITAR VARIABLES NO USADAS
 
-print(f"Mi nombre es {nombre}, tengo {edad} años y estoy a {nivel_del_mar} metros sobre el nivel del mar, donde la temperatura es de {temperatura} grados Celsius. ¿Tengo Debian GNU/Linux instalado? {tiene_debian}. Y por cierto, el resultado de una división que hice antes es de {resultado_division}.")
+print(f"Mi nombre es {nombre}, tengo {edad} años y estoy a {nivel_del_mar} metros sobre el nivel del mar, donde la temperatura es de {temperatura} grados Celsius. ¿Tengo Debian GNU/Linux instalado? {tiene_debian}.")
