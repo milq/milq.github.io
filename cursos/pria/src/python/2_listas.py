@@ -150,12 +150,29 @@ print(animales)
 lista_enteros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 # Obtener una sublista que comienza en el índice 2 con 5 elementos
-sub_lista = lista_enteros[2:7]  # Desde el índice 2 hasta el 6
+sub_lista = lista_enteros[2:7] # Desde el índice 2 hasta el 6 (ambos incluidos)
 
 print("Sublista:")
 print(sub_lista)
 
 # El slicing te permite obtener una parte de la lista.
+# Su sintaxis general es: lista[inicio:fin:paso]
+
+# Si usas un paso negativo (-1), puedes recorrer la lista al revés:
+lista_invertida = lista_enteros[::-1]
+
+print("Lista invertida usando slicing [::-1]:")
+print(lista_invertida)
+
+# También puedes combinar slicing e índices para operaciones más específicas:
+resultado = lista_enteros[3:7][::-1][2]
+
+print("Resultado de lista_enteros[3:7][::-1][2]:", resultado)
+
+# Explicación paso a paso:
+# lista_enteros[3:7] -> [4, 5, 6, 7]     (del índice 3 al 6, ambos incluidos)
+# [::-1] -> [7, 6, 5, 4]                 (invierte la sublista)
+# [2] -> 5                     (toma el elemento con índice 2 de esa sublista)
 
 # /////////////////////////////////////////////////////////////////////////////
 # LISTAS VACÍAS
