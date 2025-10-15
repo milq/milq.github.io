@@ -120,10 +120,10 @@ for num in lista_enteros:
         for divisor in range(2, int(num ** 0.5) + 1):
             if num % divisor == 0:
                 es_primo = False
-                break
+                break  # Sale del bucle actual
     if es_primo:
         numero_primo = num
-        break
+        break  # Sale del bucle actual
 
 if numero_primo != -1:
     print(f"El primer número primo en la lista es {numero_primo}\n")
