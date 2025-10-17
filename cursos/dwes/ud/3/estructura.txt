@@ -1,10 +1,12 @@
 Apellido1_Apellido2_Nombre_DWES_Proyecto_3/
 ├── assets/
+│   ├── css/
+│   └── img/
 ├── src/
 ├── alwaysdata.txt
 ├── index.php
 └── modelo.sql
 
 Nota: 
-Se permite organizar libremente archivos y subcarpetas en
-`assets/` para CSS e imágenes, y en `src/` para código PHP.
+Se permite organizar libremente archivos y carpetas en
+'assets/' para estilos e imágenes, y en 'src/' para PHP
