@@ -34,7 +34,7 @@ Los **servicios web** son aplicaciones que facilitan la comunicación entre dife
 4.4. Consumo de servicios web REST en PHP<br />
 4.5. Consumo de servicios web REST en Laravel
 
-### 5. [Creación de servicios web con PHP](5/README.md)
+### 5. [Creación de servicios web](5/README.md)
 
 5.1. Implementación de un servicio web con SOAP en PHP<br />
 5.2. Implementación de un servicio web con REST en PHP<br />
