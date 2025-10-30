@@ -1,7 +1,7 @@
 extends Sprite2D
 
-# Constante que define la velocidad de este nodo
-const VELOCIDAD: float = 200.0
+# Constante que define la celeridad de este nodo
+const CELERIDAD: float = 200.0
 
 # Vector 2D que define la dirección inicial del movimiento
 var direccion: Vector2 = Vector2(100, 0)
@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
     var direccion_normalizada: Vector2 = direccion.normalized()
 
     # Vector que será el desplazamiento a aplicar en el nodo
-    var movimiento: Vector2 = direccion_normalizada * VELOCIDAD * delta
+    var movimiento: Vector2 = direccion_normalizada * CELERIDAD * delta
 
     # Actualizamos el vector de posición del nodo sumando el movimiento
     position = position + movimiento
