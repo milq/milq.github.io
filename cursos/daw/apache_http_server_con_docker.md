@@ -2543,7 +2543,7 @@ docker image prune -a
 docker system prune -a
 ```
 
-## **Paso 13: Ejercicios prácticos**
+## Ejercicios prácticos
 
 ¡Felicidades por completar el tutorial! Pero el aprendizaje no termina aquí. La mejor forma de consolidar tus conocimientos es poniendo en práctica lo aprendido. Los siguientes ejercicios están diseñados para desafiarte y ayudarte a explorar Docker por tu cuenta. Intenta resolverlos sin mirar las secciones anteriores del tutorial; usa los comandos de ayuda (`docker --help`, `docker run --help`, etc.) para descubrir opciones que quizás no cubrimos. Si te quedas atascado, vuelve a revisar la sección correspondiente del tutorial.
 
