@@ -97,19 +97,19 @@ Docker utiliza una arquitectura cliente-servidor que es importante comprender pa
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    TU COMPUTADORA (Windows)                  │
+│                    TU COMPUTADORA (Windows)                 │
 │                                                             │
-│  ┌─────────────┐         ┌────────────────────────────┐    │
-│  │   Cliente   │         │      Docker Daemon         │    │
-│  │   (CLI)     │────────►│   (proceso en segundo      │    │
-│  │             │         │    plano que ejecuta       │    │
-│  │ Tú escribes │         │    los contenedores)       │    │
-│  │ comandos    │         │                            │    │
-│  │ aquí        │         │  ┌──────┐  ┌──────┐       │    │
-│  └─────────────┘         │  │ Cont │  │ Cont │       │    │
-│                          │  │  1   │  │  2   │       │    │
-│                          │  └──────┘  └──────┘       │    │
-│                          └────────────────────────────┘    │
+│  ┌─────────────┐         ┌────────────────────────────┐     │
+│  │   Cliente   │         │      Docker Daemon         │     │
+│  │   (CLI)     │────────►│   (proceso en segundo      │     │
+│  │             │         │    plano que ejecuta       │     │
+│  │ Tú escribes │         │    los contenedores)       │     │
+│  │ comandos    │         │                            │     │
+│  │ aquí        │         │  ┌──────┐  ┌──────┐        │     │
+│  └─────────────┘         │  │ Cont │  │ Cont │        │     │
+│                          │  │  1   │  │  2   │        │     │
+│                          │  └──────┘  └──────┘        │     │
+│                          └────────────────────────────┘     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
