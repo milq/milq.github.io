@@ -1,185 +1,135 @@
-# Tutorial: Crear un servidor DNS con BIND usando Docker
+# Tutorial: Crear un servidor DNS con BIND usando Docker (Corregido)
 
-En este tutorial aprenderás a construir un servidor DNS local usando [BIND 9](https://www.isc.org/bind/) dentro de un contenedor [Docker](https://www.docker.com) basado en [Debian](https://www.debian.org). También aprenderás a probar que tu servidor responde correctamente desde tu máquina local.
+Bienvenido a este tutorial práctico. Vamos a desmitificar cómo funciona Internet construyendo una de sus piezas fundamentales: un servidor DNS. Imagina el DNS como la guía telefónica de la red; sin él, tendríamos que memorizar números IP (como 192.168.1.1) en lugar de nombres fáciles (como google.com). Usaremos [**BIND9**](https://www.isc.org/bind/), el software estándar de la industria, y lo encapsularemos en **Docker**. Docker nos permite crear una "caja" aislada con todo lo necesario preinstalado, evitando ensuciar tu sistema operativo principal. Al finalizar, tendrás tu propio servidor capaz de traducir nombres de dominio a direcciones IP en tu máquina local.
 
-## Paso 1: Prepara el entorno
+## Paso 1: Preparación del entorno de trabajo
 
-1. Verifica que Docker esté instalado: `docker --version`.
-2. Crea una carpeta para el proyecto con `mkdir ~/dns-bind-docker` y accede a ella con `cd ~/dns-bind-docker`. Allí guardarás todos los archivos necesarios para el servidor DNS y trabajarás desde ese directorio.
+Antes de construir cualquier edificio, necesitamos un terreno limpio y organizado. En el mundo de los sistemas y DevOps, el orden es crucial. Vamos a crear un espacio de trabajo dedicado donde residirán nuestros archivos de configuración y nuestra "receta" de Docker. Esto evita conflictos con otros archivos de tu ordenador y nos permite tener una visión clara de qué elementos componen nuestro servicio. Si en el futuro quieres borrar el proyecto, solo tendrás que eliminar esta carpeta.
 
-## Paso 2: Crea un archivo `Dockerfile` con la configuración del servidor DNS
+1.  **Verificación e instalación**
+    Lo primero es asegurarnos de que tenemos los cimientos listos. Docker es el motor que ejecutará nuestro servidor, por lo que verificamos su instalación. Luego, creamos un directorio específico. Al usar `mkdir` y `cd`, estamos delimitando nuestro entorno de trabajo para asegurarnos de que todos los comandos posteriores se ejecuten en el contexto correcto.
 
-1. Dentro del directorio del proyecto (`~/dns-bind-docker`), crea un archivo llamado `Dockerfile`.
-2. Pega el siguiente contenido en ese archivo:
+    ```bash
+    docker --version
+    mkdir ~/dns-bind-docker
+    cd ~/dns-bind-docker
+    ```
 
-```Dockerfile
-FROM debian:stable-slim
+## Paso 2: Configuración del cerebro del DNS (BIND)
 
-RUN apt-get update && \
-    apt-get install -y bind9 dnsutils && \
-    mkdir -p /etc/bind/zones && \
-    rm -rf /var/lib/apt/lists/*
+Un servidor sin configuración es como un cerebro en blanco. En este paso, vamos a definir las reglas del juego. BIND necesita saber dos cosas fundamentales: **cómo comportarse** (opciones globales) y **qué datos responder** (zonas). A diferencia de otros tutoriales, creamos estos archivos *antes* de configurar Docker, porque Docker necesitará copiarlos durante su construcción. Si no existen ahora, la construcción de la imagen fallará. Estamos definiendo la lógica que luego inyectaremos en el contenedor.
 
-COPY named.conf /etc/bind/named.conf
-COPY db.example.com /etc/bind/zones/db.example.com
+1.  **El archivo de configuración principal (`named.conf`)**
+    Este archivo es el panel de control. Aquí le decimos a BIND cosas vitales: en qué puertos escuchar, a quién permitirle hacer preguntas y qué dominios ("zonas") administramos. Vamos a configurar una zona llamada `example.com` y desactivar la recursión para que el servidor se centre solo en sus propios datos, actuando como una autoridad.
 
-EXPOSE 53/udp
-EXPOSE 53/tcp
+    Crea el archivo `named.conf` en tu carpeta `~/dns-bind-docker`:
 
-CMD ["named", "-g"]
-```
+    ```text
+    options {
+        directory "/var/cache/bind";
+        listen-on { any; };
+        allow-query { any; };
+        recursion no;
+    };
 
-3. A continuación se explica qué hace cada línea:
+    zone "example.com" {
+        type master;
+        file "/etc/bind/zones/db.example.com";
+    };
+    ```
 
-* `FROM debian:stable-slim`: usa como base una imagen oficial de Debian en su versión estable y ligera. Es ideal para contenedores porque ocupa poco espacio y tiene lo necesario para empezar.
-* `RUN apt-get update && \`: actualiza la lista de paquetes disponibles desde los repositorios oficiales.
-* `apt-get install -y bind9 dnsutils && \`: instala el servidor DNS (`bind9`) y herramientas como `dig` y `nslookup` (`dnsutils`).
-* `mkdir -p /etc/bind/zones && \`: crea la carpeta donde se guardarán los archivos de zona. El parámetro `-p` asegura que no haya error si la carpeta ya existe.
-* `rm -rf /var/lib/apt/lists/*`: elimina la caché de apt para reducir el tamaño final de la imagen. Esta caché ya no es necesaria una vez terminada la instalación.
-* `COPY named.conf /etc/bind/named.conf`: copia tu archivo de configuración principal de BIND desde tu máquina local al contenedor, en la ubicación donde BIND lo espera.
-* `COPY db.example.com /etc/bind/zones/db.example.com`: copia el archivo de zona DNS para `example.com` dentro del contenedor, en la carpeta `/etc/bind/zones`.
-* `EXPOSE 53/udp`: informa a Docker que el contenedor usará el puerto 53 con protocolo UDP, que es el principal para resolver consultas DNS.
-* `EXPOSE 53/tcp`: expone también el puerto 53 con protocolo TCP, que se usa para respuestas grandes o transferencias de zona.
-* `CMD ["named", "-g"]`: define el comando que se ejecutará al iniciar el contenedor. `named` es el servicio de BIND, y el parámetro `-g` hace que se ejecute en primer plano, mostrando logs por consola para poder monitorear su funcionamiento.
+2.  **El archivo de Zona (`db.example.com`)**
+    Si `named.conf` es el índice, este archivo es la página con el contenido. Aquí definimos la "verdad" sobre el dominio `example.com`. Especificamos qué IP corresponde a `www` o `ns1`. Es una base de datos de texto plano que mapea nombres humanos a direcciones técnicas.
 
-## Paso 3: Configura BIND
+    Crea el archivo `db.example.com` en la misma carpeta:
 
-1. Crea el archivo `named.conf` dentro del directorio del proyecto (`~/dns-bind-docker`) con este código:
-   ```bash
-   options {
-       directory "/var/cache/bind";
-       listen-on { any; };
-       allow-query { any; };
-       recursion no;
-   };
+    ```text
+    $TTL    604800
+    @       IN      SOA     ns1.example.com. admin.example.com. (
+                          2         ; Serial
+                     604800         ; Refresh
+                      86400         ; Retry
+                    2419200         ; Expire
+                     604800 )       ; Negative Cache TTL
 
-   zone "example.com" {
-       type master;
-       file "/etc/bind/zones/db.example.com";
-   };
-   ```
-   Explicación:
-   - `directory`: le dice a BIND dónde guardar sus archivos de trabajo.
-   - `listen-on`: le indica que escuche en todas las interfaces disponibles.
-   - `allow-query`: permite consultas desde cualquier IP.
-   - `recursion no`: desactiva la resolución recursiva (este servidor solo responde zonas propias, no resuelve dominios externos).
-   - La sección `zone` declara una zona llamada `example.com`, indicando que este servidor es el **maestro** (autoridad principal) y especifica el archivo donde se encuentran los registros DNS.
+    @       IN      NS      ns1.example.com.
+    ns1     IN      A       127.0.0.1
+    www     IN      A       127.0.0.1
+    ```
 
-2. Crea el archivo `db.example.com` dentro del directorio del proyecto (`~/dns-bind-docker`) con este código:
-   ```bash
-   $TTL    604800
-   @       IN      SOA     ns1.example.com. admin.example.com. (
-                             2         ; Serial
-                        604800         ; Refresh
-                         86400         ; Retry
-                       2419200         ; Expire
-                        604800 )       ; Negative Cache TTL
+## Paso 3: La receta de la imagen (Dockerfile)
 
-   @       IN      NS      ns1.example.com.
-   ns1     IN      A       127.0.0.1
-   www     IN      A       127.0.0.1
-   ```
-   Este archivo define los registros DNS de la zona:
-   - `$TTL`: Tiempo de vida por defecto de los registros.
-   - `SOA`: (Start of Authority) define el servidor principal y un correo de contacto (se usa `admin.example.com.` pero el punto se traduce a `admin@example.com`).
-   - `NS`: define el nombre del servidor de nombres.
-   - `A`: define direcciones IP para los hosts `ns1` y `www`.
+Ahora que tenemos los datos (la configuración), necesitamos construir el "cuerpo" del servidor. El `Dockerfile` es una receta de cocina paso a paso que Docker leerá para cocinar una imagen. En lugar de instalar Linux, actualizarlo, e instalar BIND manualmente cada vez, escribimos las instrucciones una sola vez aquí. Esto garantiza que, si compartes este archivo con un compañero en China o en Marte, obtendrá exactamente el mismo servidor que tú, bit a bit.
 
-## Paso 4: Construir y correr el contenedor
+1.  **Creación del archivo Dockerfile**
+    Este archivo le dice a Docker: "Empieza con un sistema Debian ligero, instala BIND, crea las carpetas necesarias y, lo más importante, **copia** los archivos de configuración que creamos en el paso anterior dentro de la imagen". También ajustamos permisos para que el usuario `bind` pueda leerlos sin problemas.
 
-1. Construye la imagen de Docker:
-   ```bash
-   docker build -t my-bind-server .
-   ```
-   Esto crea una imagen Docker con el nombre `my-bind-server` usando el `Dockerfile` que preparaste. Docker copiará los archivos y configurará BIND dentro de la imagen.
+    Crea un archivo llamado `Dockerfile` (sin extensión) y pega esto:
 
-2. Inicia el contenedor:
-   ```bash
-   docker run -d --name bind-server -p 53:53/udp -p 53:53/tcp my-bind-server
-   ```
-   Esto lanza el contenedor:
-   - `-d` lo ejecuta en segundo plano (modo *detached*).
-   - `--name bind-server` le pone un nombre identificador al contenedor.
-   - `-p 53:53/udp -p 53:53/tcp` hace que el puerto DNS del contenedor sea accesible desde tu máquina.
+    ```Dockerfile
+    FROM debian:stable-slim
 
-3. Verifica que el contenedor está en marcha:
-   ```bash
-   docker ps
-   ```
-   Esto muestra todos los contenedores en ejecución. Deberías ver `bind-server` en la lista.
+    # Instalamos BIND9 y herramientas DNS, y limpiamos basura para que la imagen pese poco
+    RUN apt-get update && \
+        apt-get install -y bind9 dnsutils && \
+        mkdir -p /etc/bind/zones && \
+        rm -rf /var/lib/apt/lists/*
 
-## Paso 5: Probar el servidor DNS local con `nslookup`
+    # Copiamos nuestros archivos de configuración al lugar correcto dentro del contenedor
+    COPY named.conf /etc/bind/named.conf
+    COPY db.example.com /etc/bind/zones/db.example.com
 
-1. Haz una consulta DNS con [`nslookup`](https://en.wikipedia.org/wiki/Nslookup) desde tu máquina (Windows o GNU/Linux):
+    # Exponemos el puerto DNS estándar (53)
+    EXPOSE 53/udp
+    EXPOSE 53/tcp
 
-   ```bash
-   nslookup www.example.com 127.0.0.1
-   ```
+    # Comando de arranque: ejecuta BIND en primer plano (-g)
+    CMD ["named", "-g"]
+    ```
 
-   Si todo está funcionando correctamente, deberías ver una salida parecida a esta:
+## Paso 4: Construcción y Despliegue
 
-   ```
-   Servidor:  UnKnown
-   Address:  127.0.0.1
+Ha llegado el momento de la verdad. Primero, "compilaremos" nuestra receta para crear una imagen estática. Luego, instanciaremos esa imagen en un contenedor en ejecución. Aquí haremos un truco importante: **cambiaremos el puerto**. Tu ordenador personal ya usa el puerto 53 para navegar por Internet. Si intentamos usar el mismo, habrá un conflicto. Por eso, mapearemos el puerto 5353 de tu máquina al puerto 53 del contenedor.
 
-   Nombre:    www.example.com
-   Address:  127.0.0.1
-   ```
-   Explicación:
-   - `"Servidor: UnKnown"`: esto es normal cuando el servidor DNS que consultas (en este caso tu contenedor) no tiene un *hostname* definido o accesible desde Windows. No te preocupes.
-   - `"Address: 127.0.0.1"` debajo de `"Nombre: www.example.com"` indica que tu servidor DNS ha respondido correctamente y ha devuelto la IP que configuraste en el archivo de zona (`db.example.com`).
+1.  **Construir la imagen (Build)**
+    Con este comando, Docker lee el `Dockerfile` y ejecuta cada línea. Verás cómo descarga Debian e instala los paquetes. La opción `-t my-bind-server` sirve para "etiquetar" (bautizar) la imagen, de modo que luego podamos referirnos a ella por un nombre sencillo en lugar de un código numérico complejo.
 
-2. Haz otra prueba para el servidor de nombres:
+    ```bash
+    docker build -t my-bind-server .
+    ```
 
-   ```bash
-   nslookup ns1.example.com 127.0.0.1
-   ```
+2.  **Ejecutar el contenedor (Run)**
+    Ahora lanzamos el servidor. Usamos `-d` para que corra en segundo plano y no bloquee la terminal. La parte clave es `-p 5353:53`. Esto significa: "Todo lo que llegue al puerto 5353 de mi laptop, envíalo al puerto 53 del contenedor". Así evitamos chocar con el DNS de tu Windows o Linux.
 
-   Esto consulta el registro `ns1` que también definiste. Es otra forma de confirmar que la zona está bien configurada.
+    ```bash
+    docker run -d --name bind-server -p 5353:53/udp -p 5353:53/tcp my-bind-server
+    ```
 
-3. Consulta una zona inexistente para ver el fallo controlado:
+    Verifica que corre con:
+    ```bash
+    docker ps
+    ```
 
-   ```bash
-   nslookup noexiste.example.com 127.0.0.1
-   ```
+## Paso 5: Pruebas de funcionamiento
 
-   Deberías ver un mensaje que indica que no se pudo encontrar la dirección, lo cual es normal si ese nombre no fue definido en la zona.
+Un administrador de sistemas nunca asume que algo funciona; lo comprueba. Vamos a interrogar a nuestro servidor recién nacido. Usaremos herramientas estándar como `dig` (Domain Information Groper). Recuerda que, como cambiamos el puerto al 5353, debemos especificarlo explícitamente en nuestras consultas, o de lo contrario nuestra computadora intentará preguntar al servidor DNS habitual de internet y no encontrará nuestra zona privada `example.com`.
 
+1.  **Prueba de resolución positiva**
+    Preguntemos: "¿Quién es www.example.com?". Usamos `@127.0.0.1` para forzar que la pregunta vaya a nuestra propia máquina local, y `-p 5353` para entrar por el puerto correcto del contenedor. Si responde `127.0.0.1`, ¡felicidades! Tu servidor está vivo y respondiendo.
 
-## Paso 6: Probar el servidor DNS local con `dig`
+    ```bash
+    dig @127.0.0.1 -p 5353 [www.example.com](https://www.example.com)
+    ```
+    *Busca la "ANSWER SECTION" en la respuesta.*
 
-> Si usas Windows y no tienes `dig` instalado, puedes usarlo desde dentro del contenedor, ya que se instaló automáticamente con el paquete `dnsutils`. Para ello, abre una terminal y conéctate al contenedor en ejecución con `docker exec -it bind-server bash`. Una vez dentro del contenedor, sigue con los pasos indicados a continuación.
+2.  **Prueba de resolución negativa (Fallo controlado)**
+    Es igual de importante saber que el servidor sabe decir "no lo sé". Preguntaremos por un subdominio que no existe. Esto verifica que el servidor está leyendo la zona correctamente y no inventando datos. Esperamos un estado `NXDOMAIN` (Non-Existent Domain).
 
-1. Haz una consulta DNS con `dig`:
-   ```bash
-   dig @127.0.0.1 www.example.com
-   ```
-   Aquí estás usando la herramienta [`dig`](https://en.wikipedia.org/wiki/Dig_(command)) para preguntarle al servidor local (127.0.0.1) cuál es la IP de `www.example.com`.
-   Si todo funciona, deberías ver una sección como esta:
+    ```bash
+    dig @127.0.0.1 -p 5353 noexiste.example.com
+    ```
+    *En este caso, no debe haber "ANSWER SECTION", sino un status: NXDOMAIN.*
 
-   ```
-   ;; ANSWER SECTION:
-   www.example.com.  604800  IN  A  127.0.0.1
-   ```
+### ¡Misión Cumplida!
 
-   La sección `ANSWER SECTION` aparece solo si el nombre consultado existe en la zona y tiene un registro asociado.
-
-2. Haz otra prueba para el servidor de nombres:
-   ```bash
-   dig @127.0.0.1 ns1.example.com
-   ```
-   Esto consulta el registro `ns1` que también definiste. La salida también debe contener una `ANSWER SECTION` con la IP `127.0.0.1`.
-
-3. Consulta un nombre que no exista:
-   ```bash
-   dig @127.0.0.1 noexiste.example.com
-   ```
-   En este caso, el servidor responderá con un estado `NXDOMAIN` (nombre no existente), y no habrá sección `ANSWER SECTION`:
-
-   ```
-   ;; ->>HEADER<<- opcode: QUERY, status: NXDOMAIN, ...
-   ```
-
-   Si el nombre no existe en la zona, la sección `ANSWER SECTION` no aparece. Esto es totalmente normal.
-
-Y eso es todo. Ahora tienes un servidor DNS básico en funcionamiento dentro de un contenedor Docker. Puedes modificar los archivos de zona o añadir más zonas si quieres practicar más.
+Has creado, configurado y desplegado un servidor DNS funcional encapsulado en Docker. Has aprendido a manejar archivos de zona, redirección de puertos y construcción de imágenes.
