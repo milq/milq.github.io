@@ -1185,10 +1185,10 @@ Un proxy inverso es un servidor intermediario que se sitúa entre los clientes (
                                     ┌─────────────┐
                                     │  Servicio A │
                                     │  (puerto    │
-┌──────────┐      ┌─────────┐      │   interno)  │
-│ Navegador│─────►│  Nginx  │─────►├─────────────┤
-│          │◄─────│  Proxy  │◄─────│  Servicio B │
-└──────────┘      └─────────┘      │  (puerto    │
+┌──────────┐      ┌─────────┐       │   interno)  │
+│ Navegador│─────►│  Nginx  │──────►├─────────────┤
+│          │◄─────│  Proxy  │◄──────│  Servicio B │
+└──────────┘      └─────────┘       │  (puerto    │
                                     │   interno)  │
                                     └─────────────┘
 ```
