@@ -573,11 +573,11 @@ Un volumen es el mecanismo que Docker proporciona para conectar y sincronizar un
 │   ══════════════                             ═════════════════              │
 │                                                                             │
 │   C:\nginx-proyecto\html\                    /usr/share/nginx/html/         │
-│   ├── index.html    ◄═══════════════════════► ├── index.html                │
-│   ├── styles.css    ◄═══ SINCRONIZADO ══════► ├── styles.css                │
-│   └── imagenes\     ◄═══════════════════════► └── imagenes\                 │
+│   ├── index.html    ◄═══════════════════════► ├── index.html               │
+│   ├── styles.css    ◄═══ SINCRONIZADO ══════► ├── styles.css               │
+│   └── imagenes\     ◄═══════════════════════► └── imagenes\                │
 │                                                                             │
-│   Editas con VS Code                         Nginx lee y sirve              │
+│   Editas con VS Code                         Nginx lee y sirve             │
 │                                              al navegador                   │
 │                                                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -763,7 +763,7 @@ http {
 
 ### 8.2 Crear configuración personalizada
 
-Ahora vamos a crear nuestro propio archivo de configuración que incluirá optimizaciones profesionales como compresión gzip para reducir el ancho de banda, cabeceras de caché para acelerar la carga en visitas repetidas, y páginas de error personalizadas. Esta configuración representa un punto de partida sólido para proyectos reales.
+Ahora vamos a crear nuestro propio archivo de configuración que incluirá optimizaciones profesionales como compresión gzip para reducir el ancho de banda y páginas de error personalizadas. Esta configuración representa un punto de partida sólido para proyectos reales.
 
 Crea la carpeta para la configuración:
 
@@ -786,12 +786,6 @@ server {
     gzip on;
     gzip_types text/plain text/css application/json application/javascript text/xml;
     gzip_min_length 1000;
-
-    # Caché del navegador para archivos estáticos
-    location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
-        expires 7d;
-        add_header Cache-Control "public, immutable";
-    }
 
     # Página principal
     location / {
@@ -1181,7 +1175,7 @@ Ahora tienes:
 
 ## **Paso 11: Nginx como proxy inverso**
 
-Un proxy inverso es un patrón arquitectónico extremadamente importante en sistemas web modernos donde un servidor Nginx (u otro software similar) actúa como punto de entrada único que recibe todas las peticiones de los clientes y las distribuye inteligentemente a diferentes servidores backend según diversos criterios como la URL solicitada, el dominio, cookies, o cabeceras HTTP. Esta configuración es la base de arquitecturas de microservicios y ofrece múltiples beneficios: permite balancear carga entre varios servidores, centralizar la terminación SSL/TLS en un solo punto, implementar caché a nivel de proxy, ocultar la infraestructura interna de los usuarios, y facilitar el mantenimiento sin interrumpir el servicio.
+Un proxy inverso es un patrón arquitectónico extremadamente importante en sistemas web modernos donde un servidor Nginx (u otro software similar) actúa como punto de entrada único que recibe todas las peticiones de los clientes y las distribuye inteligentemente a diferentes servidores backend según diversos criterios como la URL solicitada, el dominio, cookies, o cabeceras HTTP. Esta configuración es la base de arquitecturas de microservicios y ofrece múltiples beneficios: centralizar la terminación SSL/TLS en un solo punto, ocultar la infraestructura interna de los usuarios, y facilitar el mantenimiento sin interrumpir el servicio.
 
 ### 11.1 ¿Qué es un proxy inverso?
 
@@ -1393,7 +1387,7 @@ En este tutorial has aprendido:
 11. ✅ **Configurar proxy inverso**
 12. ✅ **Limpieza** y buenas prácticas
 
-**Siguiente paso sugerido:** Experimenta configurando HTTPS con certificados SSL usando certbot o configurando Nginx como balanceador de carga con múltiples instancias backend.
+**Siguiente paso sugerido:** Experimenta configurando HTTPS con certificados SSL usando certbot.
 
 ## **Recursos adicionales**
 
