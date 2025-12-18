@@ -1,12 +1,25 @@
-# Tutorial: Configura un servidor FreeIPA y prueba la autenticación
+# Tutorial: Despliegue de Identidad Centralizada con FreeIPA y Docker
 
-En este tutorial aprenderás a crear un servidor FreeIPA dentro de un contenedor Docker, configurarlo de forma automática y probar que un usuario puede autenticarse correctamente desde un cliente.
+En este laboratorio práctico aprenderemos a implementar una solución de gestión de identidades (IdM) empresarial utilizando **FreeIPA**. En el mundo real, gestionar usuarios máquina por máquina es insostenible; por ello, los administradores de sistemas utilizan directorios centralizados como Active Directory o FreeIPA.
 
-## Paso 1: Crear y ejecutar un servidor FreeIPA en Docker
+Para este ejercicio utilizaremos **Docker**. FreeIPA es un sistema complejo que integra múltiples servicios (LDAP, Kerberos, DNS, Apache, Certmonger). Instalarlo manualmente puede llevar horas y es propenso a errores. Docker nos permite encapsular toda esta complejidad en un contenedor preconfigurado, garantizando que el entorno de todos los alumnos sea idéntico y funcional desde el primer minuto. Aprenderemos a solucionar retos comunes, como la persistencia de datos y los permisos de `systemd` dentro de contenedores.
 
-1. Crea una carpeta para tu proyecto con `mkdir freeipa-lab` y accede a ella con `cd freeipa-lab`.
+## Paso 1: Configurar el entorno del Servidor
 
-2. Crea un archivo llamado `docker-compose.yml` con este contenido:
+**Introducción:**
+El primer paso es definir la infraestructura de nuestro servidor. FreeIPA está diseñado para ejecutarse sobre distribuciones como RHEL o Rocky Linux, las cuales dependen fuertemente del sistema de inicio **systemd** para gestionar sus servicios internos. Aquí radica el desafío: los contenedores Docker estándar no suelen ejecutar systemd. Por eso, en este paso configuraremos un contenedor especial "privilegiado" que simule un sistema operativo completo. Además, definiremos **volúmenes**, que son espacios de almacenamiento que sobreviven al ciclo de vida del contenedor, asegurando que nuestra base de datos de usuarios no se borre si reiniciamos el servidor.
+
+### 1.1 Preparación del espacio de trabajo
+
+Antes de empezar a trabajar con contenedores, es fundamental mantener un orden en nuestro sistema de archivos. Al crear un directorio específico para el proyecto, aislamos nuestros archivos de configuración (`docker-compose.yml`) y los volúmenes de datos. Esto facilita la limpieza posterior y evita conflictos con otros proyectos.
+
+> Ejecuta: `mkdir freeipa-lab` y accede con `cd freeipa-lab`.
+
+### 1.2 Definición de la infraestructura (Docker Compose)
+
+Este es el paso más crítico. Vamos a crear el archivo `docker-compose.yml`. A diferencia del tutorial original que fallaba, aquí añadiremos soporte para `tmpfs`. Systemd requiere escribir en `/run` y `/tmp` durante el arranque; si estos no están montados como sistemas de archivos temporales en memoria, el contenedor entrará en un bucle de reinicios y fallará.
+
+> Crea el archivo `docker-compose.yml` con este contenido corregido:
 
 ```yaml
 services:
@@ -14,13 +27,18 @@ services:
     image: freeipa/freeipa-server:rocky-9
     container_name: freeipa-server
     hostname: ipa.test.local
+    domainname: test.local
     environment:
       - PASSWORD=admin123
       - IPA_SERVER_INSTALL_OPTS=-U -r TEST.LOCAL --no-ntp
     privileged: true
+    # CORRECCIÓN CRÍTICA: Systemd necesita tmpfs para arrancar correctamente
+    tmpfs:
+      - /run
+      - /tmp
     volumes:
       - freeipa-data:/data
-      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     ports:
       - "80:80"
       - "443:443"
@@ -30,104 +48,155 @@ services:
       - "88:88"
       - "464:464/udp"
       - "464:464"
+    command: /usr/sbin/init
     restart: unless-stopped
 
 volumes:
   freeipa-data:
+
 ```
 
-   Este archivo `docker-compose.yml` define un contenedor que ejecuta un servidor FreeIPA usando la imagen oficial basada en Rocky Linux. Le asigna el nombre `ipa.test.local`, que será su dominio de red interno. Se configura automáticamente con la opción `--unattended`, lo que significa que se instalará sin pedir datos manualmente, usando la contraseña `admin123` para el administrador. Se utilizan volúmenes temporales (`/run` y `/tmp`) requeridos por FreeIPA, y un volumen persistente llamado `freeipa-data` para guardar toda la configuración del servidor, usuarios, y base de datos LDAP. Además, se exponen todos los puertos necesarios: HTTP (80, 443), LDAP (389, 636), y Kerberos (88, 464). Finalmente, se asegura de que IPv6 esté habilitado para compatibilidad total con las herramientas del sistema FreeIPA.
+### 1.3 Resolución de nombres local
 
-3. Agrega el nombre del _host_ al archivo `/etc/hosts` (Linux/WSL) o `C:\Windows\System32\drivers\etc\hosts` (Windows):
+FreeIPA depende estrictamente de que el nombre de dominio coincida con la IP. Como no tenemos un servidor DNS real configurado en nuestra red de laboratorio, debemos "engañar" a nuestro ordenador local. Editando el archivo `hosts`, forzamos a que nuestro sistema sepa que `ipa.test.local` es, en realidad, nuestra propia máquina (`127.0.0.1`).
 
-   ```
-   127.0.0.1 ipa.test.local
-   ```
+> Agrega esta línea a tu archivo `/etc/hosts` (Linux/Mac) o `C:\Windows\System32\drivers\etc\hosts` (Windows):
+> ```text
+> 127.0.0.1 ipa.test.local
+> 
+> ```
+> 
+> 
 
-4. Inicia el contenedor:
+### 1.4 Despliegue e inicialización
 
-   ```bash
-   docker-compose up -d
-   ```
+Ahora levantaremos la infraestructura. Al usar la opción `-d` (detached), el proceso corre en segundo plano. La instalación de FreeIPA no es instantánea; el contenedor debe configurar internamente las instancias de LDAP y Kerberos. Observar los logs nos permite entender qué ocurre "bajo el capó" y confirmar el momento exacto en que el servicio está listo.
 
-   Espera entre 1 y 2 minutos mientras se instala FreeIPA. Puedes ver el progreso con:
+> Inicia el contenedor y vigila la instalación:
+> ```bash
+> docker-compose up -d
+> docker logs -f freeipa-server
+> 
+> ```
+> 
+> 
+> *Espera hasta ver el mensaje "FreeIPA server configured".*
 
-   ```bash
-   docker logs -f freeipa-server
-   ```
+## Paso 2: Acceso a la Administración Web
 
-## Paso 2: Acceder a la interfaz web de FreeIPA
+**Introducción:**
+Aunque los administradores avanzados suelen usar la línea de comandos (CLI), FreeIPA proporciona una potente interfaz web para la gestión diaria. En este paso verificaremos que los servicios web (Apache y Tomcat funcionando dentro del contenedor) están respondiendo. Notarás una advertencia de seguridad en el navegador: esto es normal y esperado. FreeIPA ha generado sus propios certificados de seguridad (SSL/TLS) "autofirmados" para encriptar el tráfico. Como tu navegador no conoce a la autoridad que firmó esos certificados (que es el propio servidor FreeIPA), te alerta por precaución.
 
-1. Abre tu navegador y entra a:
+### 2.1 Conexión segura (HTTPS)
 
-   ```
-   https://ipa.test.local
-   ```
+Vamos a acceder al panel de control. Es vital usar el nombre de dominio `ipa.test.local` y no `localhost` o la dirección IP, ya que la configuración de seguridad de Kerberos podría rechazar la conexión si el nombre del host no coincide exactamente con el certificado del servidor.
 
-2. Acepta el certificado autofirmado.
+> Abre tu navegador, entra a `https://ipa.test.local` y acepta la advertencia de seguridad (Configuración avanzada -> Proceder/Acceder).
 
-3. Inicia sesión con:
+### 2.2 Autenticación administrativa
 
-   - Usuario: `admin`
-   - Contraseña: `admin123`
+Para entrar, usaremos la cuenta raíz del sistema FreeIPA. El usuario `admin` tiene control total sobre el dominio: puede crear usuarios, definir políticas de contraseñas, gestionar reglas de acceso (HBAC) y configurar la replicación. Es el equivalente al "Domain Admin" en Windows.
 
-Ahora tienes un servidor FreeIPA totalmente funcional.
+> Inicia sesión con:
+> * **Usuario:** `admin`
+> * **Contraseña:** `admin123`
+> 
+> 
 
-## Paso 3: Crear un usuario de prueba
+## Paso 3: Gestión de Identidades (Crear Usuario)
 
-1. Desde la interfaz web, ve a **Identity > Users > Add**.
+**Introducción:**
+Un directorio vacío no tiene utilidad. Ahora actuaremos como administradores creando una identidad digital para un empleado ficticio. En FreeIPA, un "usuario" es más que un nombre y una contraseña; es un objeto LDAP que contiene atributos (nombre, apellido, shell, carpeta home, grupos). Al crear este usuario, el sistema también genera automáticamente las claves Kerberos necesarias para que este usuario pueda autenticarse de forma segura en cualquier servicio unido al dominio sin enviar su contraseña en texto plano por la red.
 
-2. Crea un usuario como este:
+### 3.1 Navegación al área de usuarios
 
-   - **Username:** `usuario1`
-   - **First name:** `Juan`
-   - **Last name:** `Pérez`
-   - **Password:** asigna una contraseña simple como `juan1234`, y marca que debe cambiarla al iniciar sesión (o no, si es demo).
+La interfaz de FreeIPA organiza los recursos en pestañas lógicas. La sección "Identity" es el corazón del sistema, donde se gestionan no solo personas, sino también grupos de usuarios, hosts (máquinas) y grupos de hosts. Vamos a dar de alta una nueva entrada en el directorio.
 
-3. Guarda los cambios.
+> En la interfaz web, ve a la pestaña **Identity**, luego al submenú **Users** y haz clic en el botón **Add** (arriba a la derecha).
 
-## Paso 4: Probar autenticación de un usuario con Docker (`ldapwhoami`)
+### 3.2 Definición de atributos del usuario
 
-Vamos a comprobar que el usuario creado (`usuario1`) puede autenticarse correctamente usando LDAP. Ejecutaremos el comando desde un contenedor auxiliar basado en Debian.
+Vamos a rellenar los datos obligatorios. Observa cómo el sistema sugiere automáticamente el "User login" (nombre de usuario) basándose en los nombres reales. Definiremos una contraseña inicial. En un entorno real, marcaríamos la opción para forzar el cambio de contraseña en el primer inicio de sesión por seguridad.
 
-1. Ejecuta el siguiente contenedor temporal:
+> Rellena los datos y pulsa **Add**:
+> * **User login:** `usuario1`
+> * **First name:** `Juan`
+> * **Last name:** `Pérez`
+> * **Password:** `juan1234`
+> 
+> 
+
+## Paso 4: Validación Técnica vía LDAP
+
+**Introducción:**
+¿Cómo sabemos que el usuario realmente existe y es accesible para otros sistemas? Vamos a realizar una prueba técnica simulando ser un cliente externo. Utilizaremos el protocolo **LDAP** (Lightweight Directory Access Protocol), que es el lenguaje estándar que usan las aplicaciones para "preguntar" al directorio. Para hacer la prueba realista, lanzaremos un segundo contenedor Docker (un cliente Debian limpio) que no tiene nada instalado, y desde allí intentaremos "llamar" al servidor FreeIPA para verificar las credenciales de Juan Pérez.
+
+### 4.1 Preparación del cliente de prueba
+
+Usaremos un comando de Docker avanzado. Conectaremos un contenedor temporal directamente a la red del servidor (`--network container:...`). Esto simula que ambos están en el mismo cable de red. Instalaremos las `ldap-utils`, que son herramientas de diagnóstico estándar en Linux para hacer consultas a directorios.
+
+> Ejecuta este bloque de comando en tu terminal:
 
 ```bash
 docker run --rm --network container:freeipa-server debian:latest bash -c "\
 apt update && apt install -y ldap-utils && \
-ldapwhoami -x -D 'uid=usuario1,cn=users,cn=accounts,dc=test,dc=local' -w juan1234 -H ldap://ipa.test.local"
-```
-
-Este comando:
-
-- Usa la imagen oficial de Debian `latest`.
-- Instala las herramientas necesarias (`ldap-utils`) dentro del contenedor.
-- Se conecta directamente al contenedor del servidor FreeIPA (`--network container:freeipa-server`).
-- Autentica al usuario `usuario1` con la contraseña `juan1234`.
-
-2. Si la autenticación es exitosa, verás algo como:
+ldapwhoami -x -D 'uid=usuario1,cn=users,cn=accounts,dc=test,dc=local' \
+-w juan1234 -H ldap://localhost -o TLS_REQ_CERT=never"
 
 ```
-dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
-```
 
-Esto confirma que el usuario fue creado correctamente y puede autenticarse contra el servidor FreeIPA.
+### 4.2 Interpretación de resultados
 
-## Paso 5 (opcional): Autenticación real de login en GNU/Linux
+Analicemos el comando anterior: `ldapwhoami` intenta autenticarse. Hemos añadido `-o TLS_REQ_CERT=never` para evitar errores con el certificado autofirmado y usamos `localhost` porque compartimos red con el servidor. Si el servidor responde con el DN (Distinguished Name), significa que la base de datos LDAP está operativa y la contraseña es correcta.
 
-Hasta ahora hemos probado la autenticación a nivel de servicios (como LDAP), pero en este paso llevamos la integración un paso más allá: conectaremos un sistema GNU/Linux completo al dominio FreeIPA. Esto permite que los usuarios creados en FreeIPA puedan iniciar sesión en el sistema operativo como si fueran cuentas locales. Se integran mecanismos como Kerberos, PAM y NSS, lo que se traduce en una experiencia de login real, creación automática de carpetas personales (`/home`), y uso de identidades centralizadas, tal como lo haría una empresa con un dominio corporativo.
+> Si ves el siguiente resultado, la prueba ha sido un éxito:
+> ```text
+> dn:uid=usuario1,cn=users,cn=accounts,dc=test,dc=local
+> 
+> ```
+> 
+> 
 
-1. En un cliente GNU/Linux (no el servidor), instala:
+## Paso 5 (Avanzado): Integración de un Cliente Linux Real
 
-   ```bash
-   sudo apt install freeipa-client
-   ```
+**Introducción:**
+Este paso final es la prueba de fuego: unir un sistema operativo completo al dominio. A diferencia de la prueba LDAP simple anterior, esto configura **PAM** y **NSS** en el cliente. Esto significa que el sistema operativo delegará la autenticación al servidor FreeIPA. Si funciona, podrás hacer `login` en tu máquina con el usuario `usuario1` como si fuera una cuenta local. **Nota:** Este paso es sensible a la configuración de red y puede requerir ajustes adicionales si estás usando máquinas virtuales o WSL.
 
-2. Ejecuta el instalador:
+### 5.1 Instalación del cliente
 
-   ```bash
-   sudo ipa-client-install --domain=test.local --server=ipa.test.local \
-                           --principal=admin --password=admin123 --mkhomedir --force-ntpd
-   ```
+Necesitamos instalar el software cliente de FreeIPA en tu máquina (no en el servidor Docker, sino en otra máquina Linux que actúe como cliente, o en otra VM). Este software incluye los módulos necesarios para que Linux entienda usuarios de red y tickets de Kerberos.
 
-3. Si todo va bien, podrás cerrar sesión e iniciar como `usuario1`.
+> En tu máquina cliente (ej. Ubuntu/Debian), instala:
+> ```bash
+> sudo apt update && sudo apt install freeipa-client
+> 
+> ```
+> 
+> 
+
+### 5.2 Unión al dominio (Enrollment)
+
+Ejecutaremos el script de unión. Este script configura automáticamente el `/etc/krb5.conf` y `/etc/sssd/sssd.conf`. Es importante usar `--mkhomedir` para que se cree la carpeta personal del usuario al iniciar sesión por primera vez, ya que no existe físicamente en el disco del cliente.
+
+> **Importante:** Asegúrate de que el cliente pueda hacer ping a `ipa.test.local`. Luego ejecuta:
+> ```bash
+> sudo ipa-client-install --domain=test.local --server=ipa.test.local \
+> --principal=admin --password=admin123 --mkhomedir --force-ntpd --no-dns-sshfp
+> 
+> ```
+> 
+> 
+
+### 5.3 Verificación final
+
+Si la instalación termina sin errores, el sistema ya es parte del dominio. Ya no necesitas crear cuentas locales con `useradd`. Simplemente intenta cambiar de usuario en la terminal. Si el prompt cambia, el sistema ha validado la identidad contra el servidor Dockerizado correctamente.
+
+> Prueba el acceso:
+> ```bash
+> su - usuario1
+> # Introduce la contraseña juan1234
+> whoami
+> 
+> ```
+> 
+>
