@@ -6,10 +6,13 @@
 # Requisitos:
 #   - HTTPie CLI
 #   - jq → sudo apt-get install jq
-
+#
 # Aquí defines la URL base del API del blog
 # Esta es la que debes enviar al profesor en 'alwaysdata.txt'
 BASE_URL="https://estudiante.alwaysdata.net/api"
+
+command -v http >/dev/null 2>&1 || { echo >&2 -e "\e[31m❌ Error: HTTPie no está instalado. Por favor, instálalo antes de continuar.\e[0m"; exit 1; }
+command -v jq >/dev/null 2>&1 || { echo >&2 -e "\e[31m❌ Error: jq no está instalado. Por favor, instálalo ejecutando: sudo apt-get install jq\e[0m"; exit 1; }
 
 TOTAL=0
 
