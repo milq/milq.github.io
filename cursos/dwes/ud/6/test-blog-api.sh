@@ -11,8 +11,17 @@
 # Esta es la que debes enviar al profesor en 'alwaysdata.txt'
 BASE_URL="https://estudiante.alwaysdata.net/api"
 
-command -v http >/dev/null 2>&1 || { echo >&2 -e "\e[31m❌ Error: HTTPie no está instalado. Por favor, instálalo antes de continuar.\e[0m"; exit 1; }
-command -v jq >/dev/null 2>&1 || { echo >&2 -e "\e[31m❌ Error: jq no está instalado. Por favor, instálalo ejecutando: sudo apt-get install jq\e[0m"; exit 1; }
+if ! command -v http >/dev/null 2>&1; then
+  echo >&2 -e "\e[31m❌ Error: HTTPie no está instalado.\e[0m"
+  echo >&2 "Instala con: sudo apt install httpie (Debian GNU/Linux) o desde httpie.io/cli (Windows)"
+  exit 1
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+  echo >&2 -e "\e[31m❌ Error: jq no está instalado.\e[0m"
+  echo >&2 "Instala con: sudo apt install jq (Debian GNU/Linux) o winget install jq (Windows)"
+  exit 1
+fi
 
 TOTAL=0
 
