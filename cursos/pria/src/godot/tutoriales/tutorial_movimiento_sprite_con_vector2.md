@@ -1,7 +1,5 @@
 # Tutorial para realizar un movimiento de un _sprite_ con Vector2
 
-En este tutorial moverás un _sprite_ por la pantalla usando [`Vector2`][A01], el tipo con el que Godot representa posiciones y direcciones en 2D. Para ello, sigue estos pasos:
-
 En este tutorial moverás un _sprite_ con [Vector2][A01], el tipo de dato que Godot usa para posiciones y direcciones en 2D. Para ello, haz estos pasos:
 
 1. Abre Godot y crea un nuevo proyecto; luego, haz clic en _Scene_ y selecciona _New Scene_.
