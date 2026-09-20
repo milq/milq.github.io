@@ -1,4 +1,4 @@
-# Tutorial para realizar un movimiento básico de un _sprite_ con Vector2
+# Tutorial para realizar un movimiento de un _sprite_ con Vector2
 
 1. Abre Godot y crea un nuevo proyecto; luego, haz clic en _Scene_ y selecciona _New Scene_.
 1. Crea un nodo _Node2D_ (_2D Scene_) como nodo raíz de la escena (en _Create Root Node_).
