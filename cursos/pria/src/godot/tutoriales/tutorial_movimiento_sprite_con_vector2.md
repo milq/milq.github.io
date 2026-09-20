@@ -2,7 +2,7 @@
 
 En este tutorial moverás un _sprite_ por la pantalla usando [`Vector2`][A01], el tipo con el que Godot representa posiciones y direcciones en 2D. Para ello, sigue estos pasos:
 
-En este tutorial moverás un _sprite_ con [Vector2][A01], el tipo que Godot usa para posiciones y direcciones en 2D. Sigue estos pasos:
+En este tutorial moverás un _sprite_ con [Vector2][A01], el tipo de dato que Godot usa para posiciones y direcciones en 2D. Sigue estos pasos:
 
 1. Abre Godot y crea un nuevo proyecto; luego, haz clic en _Scene_ y selecciona _New Scene_.
 1. Crea un nodo _Node2D_ (_2D Scene_) como nodo raíz de la escena (en _Create Root Node_).
