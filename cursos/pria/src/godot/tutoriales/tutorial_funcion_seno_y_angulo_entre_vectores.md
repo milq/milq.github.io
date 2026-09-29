@@ -1,4 +1,4 @@
-# Tutorial para experimentar con la función seno y el ángulo entre vectores en Godot
+# Tutorial sobre la función seno y el ángulo entre vectores en Godot
 
 1. Abre Godot y crea un nuevo proyecto; luego, haz clic en _Scene_ y selecciona _New Scene_.
 2. Crea un nodo _Node2D_ (_2D Scene_) como nodo raíz de la escena (en _Create Root Node_).
