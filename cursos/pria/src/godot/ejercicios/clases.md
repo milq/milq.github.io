@@ -2,7 +2,7 @@
 
 _Página creada por [Manuel Ignacio López Quintero][MILQ]. Todos los derechos reservados._
 
-**Contenidos**
+## Contenidos
 
 1. [Clase][C01], [objeto][C02], [herencia][C03], [polimorfismo][C04], [sobrescritura][C05] de métodos y abstractos ([clases][C06] y [métodos][C07]).
 2. GDScript: clases [internas][C08], [constructor][C09], [_setters_][C10] y [_getters_][C10], [herencia][C11], [sobrescritura][C11] y [abstractos][C12].
@@ -12,7 +12,7 @@ _Página creada por [Manuel Ignacio López Quintero][MILQ]. Todos los derechos r
 6. En un _script_ de un nodo se suelen [sobrescribir][C18] funciones del motor como [`_ready()`][C19] y [`_process()`][C20].
 7. Ejemplo comentado de clases en GDScript: [código][C21].
 
-**Actividades de iniciación**
+## Actividades de iniciación
 
 Haz todas las actividades en un único archivo. Crea una escena _MainScene_ con un nodo [`Node2D`][C22], asígnale el _script_ `main.gd`, que empezará por `class_name Main extends Node2D`, y escribe cada clase como clase [interna][C08]. Prueba cada actividad en [`_ready()`][C19] con `print()` y ejecuta la escena con _F6_:
 
