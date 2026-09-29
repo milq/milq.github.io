@@ -1,5 +1,7 @@
 # Tutorial sobre la función seno y el ángulo entre vectores en Godot
 
+Este tutorial consiste en experimentar en Godot, con Niblo y Mubbit, el seno y el ángulo entre vectores:
+
 1. Abre Godot y crea un nuevo proyecto; luego, haz clic en _Scene_ y selecciona _New Scene_.
 2. Crea un nodo _Node2D_ (_2D Scene_) como nodo raíz de la escena (en _Create Root Node_).
 3. Renombra la escena como _MainScene_ y guárdala (_Scene_ → _Save Scene_) como `main_scene.tscn`.
