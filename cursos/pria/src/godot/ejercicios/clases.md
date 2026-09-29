@@ -12,9 +12,9 @@ _Página creada por [Manuel Ignacio López Quintero][MILQ]. Todos los derechos r
 6. En un _script_ de un nodo se suelen [sobrescribir][C18] funciones del motor como [`_ready()`][C19] y [`_process()`][C20].
 7. Ejemplo comentado de clases en GDScript: [código][C21].
 
-## Actividades de iniciación
+## Ejercicios
 
-Haz todas las actividades en un único archivo. Crea una escena _MainScene_ con un nodo [`Node2D`][C22], asígnale el _script_ `main.gd`, que empezará por `class_name Main extends Node2D`, y escribe cada clase como clase [interna][C08]. Prueba cada actividad en [`_ready()`][C19] con `print()` y ejecuta la escena con _F6_:
+Haz todos los ejercicios en un único archivo. Crea una escena _MainScene_ con un nodo [`Node2D`][C22], asígnale el _script_ `main.gd`, que empezará por `class_name Main extends Node2D`, y escribe cada clase como clase [interna][C08]. Prueba cada actividad en [`_ready()`][C19] con `print()` y ejecuta la escena con _F6_:
 
 1. **Clase y objeto.** Crea una clase `Arma` con las propiedades `nombre` y `daño`, un [constructor][C09] y un método `describir()` que devuelva un texto como "Espada: 8 de daño". Crea 3 objetos (una espada, un arco y una varita) y muestra su descripción.
 
