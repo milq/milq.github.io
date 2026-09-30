@@ -1,4 +1,4 @@
-## Librerías en GDScript
+# Librerías en GDScript
 
 _Página creada por [Manuel Ignacio López Quintero][MILQ]. Todos los derechos reservados._
 
