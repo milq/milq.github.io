@@ -1,4 +1,4 @@
-# Tutorial para crear una escena 3D (cámara, _world environment_, luz) y transformar un cubo
+# Tutorial para crear una escena 3D y transformar un cubo
 
 En este tutorial crearás en Godot tu primera escena 3D, con cámara, sol, entorno y un plano, y
 aprenderás a trasladar, rotar y escalar un cubo:
