@@ -195,17 +195,24 @@ func _run() -> void:
 
     # COPIAR UN ARRAY
 
+    # Con = no se copia: las dos variables son el mismo Array
     var array_original: Array[int] = [1, 2, 3]
+    var mismo_array: Array[int] = array_original
+    mismo_array[0] = 99
+    print("Array original: ", array_original)  # [99, 2, 3]
 
-    # Copia superficial
-    var array_copiado: Array[int] = array_original.duplicate()
+    # Copia superficial: un Array nuevo, independiente del original
+    var array_base: Array[int] = [1, 2, 3]
+    var array_copiado: Array[int] = array_base.duplicate()
+    array_copiado[0] = 99
+    print("Array base: ", array_base)  # [1, 2, 3]
+    print("Array copiado: ", array_copiado)  # [99, 2, 3]
 
     # Copia profunda (para Arrays anidados)
     var multi_copiado: Array[Array] = array_multidimensional.duplicate(true)
-
-    print("Array original: ", array_original)
-    print("Array copiado: ", array_copiado)
-    print("Array multidimensional copiado: ", multi_copiado)
+    multi_copiado[0][0] = "z"
+    print("Array multidimensional: ", array_multidimensional)  # Sigue con "a"
+    print("Array multidimensional copiado: ", multi_copiado)  # Empieza por "z"
 
     # CONCATENAR ARRAYS
 
