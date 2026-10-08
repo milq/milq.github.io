@@ -13,6 +13,9 @@
   a { color: #5aa9ff; text-decoration: none; }
   .sprites { display: flex; flex-wrap: wrap; gap: 16px; padding: 0; list-style: none; }
   .sprites img { display: block; width: 96px; height: 96px; object-fit: contain; image-rendering: pixelated; }
+  .sonidos { padding: 0; list-style: none; }
+  .sonidos li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-bottom: 12px; }
+  .sonidos audio { height: 36px; max-width: 100%; }
 </style>
 </head>
 <body>
@@ -21,8 +24,8 @@
   <img src="portada.jpg" alt="Cubierta del libro">
   <h1>Programación en red e inteligencia artificial con Godot</h1>
   <p>Manuel Ignacio López Quintero</p>
-  <p>Aquí tienes los archivos que te pide el libro: los <em>sprites</em> de las prácticas, todo su
-    código, las soluciones de los ejercicios de programación en GDScript y los enlaces de todos los
+  <p>Aquí tienes los archivos que te pide el libro: los <em>sprites</em> y los sonidos de las
+    prácticas, todo su código, las soluciones de los ejercicios de programación en GDScript y los enlaces de todos los
     capítulos.</p>
 </header>
 
@@ -36,6 +39,20 @@
   <li><a href="enemigo.png" download><img src="enemigo.png" alt=""><code>enemigo.png</code></a></li>
   <li><a href="bala.png" download><img src="bala.png" alt=""><code>bala.png</code></a></li>
   <li><a href="casa.png" download><img src="casa.png" alt=""><code>casa.png</code></a></li>
+</ul>
+
+<h2>Sonidos</h2>
+<p>Los efectos de las prácticas de los capítulos 6 y 7. Escúchalos aquí, descárgalos con un clic y
+  arrástralos al panel <em>FileSystem</em> de Godot. Puedes usarlos en tus juegos. Si prefieres los
+  tuyos, créalos en <a href="https://sfxr.me">sfxr.me</a> con los botones <em>Pickup/coin</em>,
+  <em>Laser/shoot</em> y <em>Explosion</em>.</p>
+<ul class="sonidos">
+  <li><audio controls preload="none" src="moneda.wav"></audio>
+    <span><a href="moneda.wav" download><code>moneda.wav</code></a>: al recoger una manzana.</span></li>
+  <li><audio controls preload="none" src="disparo.wav"></audio>
+    <span><a href="disparo.wav" download><code>disparo.wav</code></a>: al disparar la nave.</span></li>
+  <li><audio controls preload="none" src="explosion.wav"></audio>
+    <span><a href="explosion.wav" download><code>explosion.wav</code></a>: al derribar un enemigo.</span></li>
 </ul>
 
 <h2>Fuente</h2>
