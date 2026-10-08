@@ -1461,7 +1461,7 @@ func _on_choque(cuerpo: Node2D, enemigo: Enemigo) -&gt; void:
 func sumar_punto() -&gt; void:  # La llama cada bala que acierta
     puntos += 1
     actualizar()
-    $Explosion.pitch_scale = randf_range(0.8, 1.2)  # Nunca igual
+    $Explosion.pitch_scale = randf_range(0.8, 1.2)  # Varía
     $Explosion.play()
 
 func actualizar() -&gt; void:
