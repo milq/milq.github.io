@@ -1,0 +1,2722 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Código · Programación en red e inteligencia artificial con Godot</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-tomorrow.min.css"
+  integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+  :root { --fondo: #0b1026; --tinta: #e3e7f5; --suave: #9aa3c7; --enlace: #5aa9ff;
+          --bloque: #141b3d; --borde: #2a3466; }
+  html { background: var(--fondo); }
+  body { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; font: 16px/1.6 sans-serif;
+         color: var(--tinta); }
+  a { color: var(--enlace); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1 { margin: 0 0 0.4em; line-height: 1.2; }
+  h2 { margin-top: 2em; padding-bottom: 4px; border-bottom: 2px solid var(--borde); }
+  h3 { font-size: 1.05em; margin-top: 1.6em; }
+  code { font: 0.92em/1.5 ui-monospace, "Fira Mono", monospace; }
+  .arriba { font-size: 0.7em; font-weight: normal; }
+  .capitulos { color: var(--suave); }
+  h2, h3, .bloque { scroll-margin-top: 12px; }
+
+  /* Bloques: el nombre del archivo, el botón «Copiar» y el código */
+  .bloque { margin: 12px 0 16px; border-left: 3px solid var(--enlace); background: var(--bloque); }
+  .bloque:target { outline: 2px solid var(--enlace); }
+  .bloque .cabecera { display: flex; justify-content: space-between; align-items: center; gap: 8px;
+                      padding: 4px 8px 0 12px; font-size: 0.8em; color: var(--suave); }
+  .bloque .cabecera code { min-width: 0; overflow-wrap: anywhere; }
+  .bloque button { flex-shrink: 0; font: inherit; padding: 2px 10px; border: 1px solid var(--borde);
+                   border-radius: 4px; background: var(--fondo); color: var(--enlace); cursor: pointer; }
+  .bloque pre[class*="language-"], .bloque pre { margin: 0; padding: 8px 12px 12px; background: none;
+                   overflow-x: auto; font: 13.5px/1.45 ui-monospace, "Fira Mono", monospace; }
+  .bloque pre code { font: inherit; text-shadow: none; }
+
+  /* Índice: capítulos que se despliegan en sus apartados y sus archivos */
+  .indice { padding: 0; list-style: none; }
+  .indice > li { margin: 0; border-bottom: 1px solid var(--borde); }
+  .indice summary { cursor: pointer; padding: 7px 0; font-weight: 600; }
+  .indice summary .cuenta { font-weight: normal; font-size: 0.85em; color: var(--suave); }
+  .indice ul { margin: 0 0 12px; padding-left: 22px; }
+  .indice ul li { margin-bottom: 6px; }
+  .indice .archivos { display: block; font-size: 0.85em; }
+</style>
+</head>
+<body>
+
+<p><a href="./">← Programación en red e inteligencia artificial con Godot</a></p>
+<h1>Código del libro</h1>
+<p>Todo el código del libro, en el orden del texto: los ejemplos de cada apartado, las prácticas y
+  los fragmentos de las fases de los videojuegos. Escríbelo tú antes de copiarlo, y usa esta página
+  para comprobar el tuyo cuando algo no funcione. Los <em>scripts</em> completos están también en
+  <a href="codigo.zip"><code>codigo.zip</code></a>.</p>
+
+<nav id="indice">
+<h2>Índice</h2>
+<p class="capitulos">Pulsa un capítulo para ver sus apartados, sus prácticas y sus archivos.</p>
+<ul class="indice">
+  <li><details><summary>Cómo usar este libro <span class="cuenta">· 1 bloque</span></summary>
+    <ul>
+      <li><a href="#inicio-0-1"><code>protagonista.gd</code></a></li>
+    </ul>
+  </details></li>
+  <li><details><summary>1. IA y videojuegos <span class="cuenta">· 2 bloques</span></summary>
+    <ul>
+      <li><a href="#anexo1-3">Práctica: primeros pasos con Godot · Parte 3. Tu primer <em>script</em></a><span class="archivos"><a href="#anexo1-3-1"><code>hola_mundo.gd</code></a>, <a href="#anexo1-3-2"><code>hola_mundo.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>2. GDScript <span class="cuenta">· 24 bloques</span></summary>
+    <ul>
+      <li><a href="#a2-1">2.1 Variables y operadores aritméticos</a></li>
+      <li><a href="#a2-2">2.2 <em>Arrays</em></a></li>
+      <li><a href="#a2-3">2.3 Diccionarios</a></li>
+      <li><a href="#a2-4">2.4 Condicionales</a></li>
+      <li><a href="#a2-5">2.5 Bucles</a></li>
+      <li><a href="#a2-6">2.6 Funciones</a></li>
+      <li><a href="#a2-7">2.7 Clases</a><span class="archivos"><a href="#a2-7-3"><code>main.gd</code></a></span></li>
+      <li><a href="#a2-8">2.8 Librerías</a><span class="archivos"><a href="#a2-8-3"><code>azar.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>3. Vectores y transformaciones <span class="cuenta">· 12 bloques</span></summary>
+    <ul>
+      <li><a href="#a3-1">3.1 Coordenadas y distancias</a><span class="archivos"><a href="#a3-1-2"><code>vigilante.gd</code></a></span></li>
+      <li><a href="#a3-2">3.2 Vectores</a></li>
+      <li><a href="#a3-3">3.3 Mover personajes con vectores</a><span class="archivos"><a href="#a3-3-1"><code>protagonista.gd</code></a>, <a href="#a3-3-2"><code>perseguidor.gd</code></a></span></li>
+      <li><a href="#a3-5">3.5 Traslación, rotación y escalado</a><span class="archivos"><a href="#a3-5-1"><code>helice_y_torreta.gd</code></a></span></li>
+      <li><a href="#a3-6">3.6 Transformaciones en Godot</a><span class="archivos"><a href="#a3-6-1"><code>nave.gd</code></a></span></li>
+      <li><a href="#anexo3-1">Tu primer videojuego con IA: fase 1 · Parte 1. Práctica</a><span class="archivos"><a href="#anexo3-1-1"><code>niblo.gd</code></a>, <a href="#anexo3-1-2"><code>main_scene.gd</code></a></span></li>
+      <li><a href="#anexo3-2">Tu primer videojuego con IA: fase 1 · Parte 2. Empieza tu primer videojuego</a></li>
+    </ul>
+  </details></li>
+  <li><details><summary>4. Trigonometría e interpolaciones <span class="cuenta">· 13 bloques</span></summary>
+    <ul>
+      <li><a href="#a4-1">4.1 Ángulos, seno y coseno</a><span class="archivos"><a href="#a4-1-1"><code>satelite.gd</code></a>, <a href="#a4-1-2"><code>ondulante.gd</code></a></span></li>
+      <li><a href="#a4-2">4.2 Apuntar y mirar</a><span class="archivos"><a href="#a4-2-1"><code>guardia.gd</code></a>, <a href="#a4-2-2"><code>torreta.gd</code></a></span></li>
+      <li><a href="#a4-3">4.3 Interpolación lineal</a><span class="archivos"><a href="#a4-3-1"><code>trayecto.gd</code></a></span></li>
+      <li><a href="#a4-4">4.4 Seguir con suavidad</a><span class="archivos"><a href="#a4-4-1"><code>camara.gd</code></a></span></li>
+      <li><a href="#a4-5">4.5 <em>Tweens</em></a></li>
+      <li><a href="#a4-6">4.6 Curvas y caminos</a><span class="archivos"><a href="#a4-6-1"><code>patrulla.gd</code></a>, <a href="#a4-6-2"><code>torreta_predictiva.gd</code></a></span></li>
+      <li><a href="#anexo4-1">Tu primer videojuego con IA: fase 2 · Parte 1. Práctica</a><span class="archivos"><a href="#anexo4-1-1"><code>manzana.gd</code></a>, <a href="#anexo4-1-2"><code>mubbit.gd</code></a>, <a href="#anexo4-1-3"><code>main_scene.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>5. Funciones matemáticas y azar <span class="cuenta">· 14 bloques</span></summary>
+    <ul>
+      <li><a href="#a5-1">5.1 Funciones matemáticas</a></li>
+      <li><a href="#a5-2">5.2 Redondeo y límites</a><span class="archivos"><a href="#a5-2-1"><code>vida.gd</code></a>, <a href="#a5-2-2"><code>nave.gd</code></a></span></li>
+      <li><a href="#a5-3">5.3 Números pseudoaleatorios</a><span class="archivos"><a href="#a5-3-1"><code>congruencial.gd</code></a></span></li>
+      <li><a href="#a5-4">5.4 Semillas y generadores</a><span class="archivos"><a href="#a5-4-1"><code>dos_generadores.gd</code></a></span></li>
+      <li><a href="#a5-5">5.5 El azar en el diseño de juegos</a></li>
+      <li><a href="#anexo5-1">Tu primer videojuego con IA: fase 3 · Parte 1. Práctica</a><span class="archivos"><a href="#anexo5-1-1"><code>main_scene.gd</code></a></span></li>
+      <li><a href="#anexo5-2">Tu primer videojuego con IA: fase 3 · Parte 2. Continúa tu primer videojuego</a><span class="archivos"><a href="#anexo5-2-1"><code>npc.gd</code></a>, <a href="#anexo5-2-2"><code>vagabundo.gd</code></a>, <a href="#anexo5-2-3"><code>generador.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>6. Físicas <span class="cuenta">· 16 bloques</span></summary>
+    <ul>
+      <li><a href="#a6-1">6.1 Fuerza, velocidad y aceleración</a><span class="archivos"><a href="#a6-1-1"><code>nave_inercia.gd</code></a></span></li>
+      <li><a href="#a6-2">6.2 Gravedad, saltos y proyectiles</a><span class="archivos"><a href="#a6-2-1"><code>proyectil.gd</code></a>, <a href="#a6-2-2"><code>plataformas.gd</code></a></span></li>
+      <li><a href="#a6-3">6.3 Cuerpos físicos</a><span class="archivos"><a href="#a6-3-1"><code>protagonista_arriba.gd</code></a></span></li>
+      <li><a href="#a6-4">6.4 Colisiones, capas y máscaras</a><span class="archivos"><a href="#a6-4-1"><code>pelota.gd</code></a>, <a href="#a6-4-2"><code>guardia.gd</code></a></span></li>
+      <li><a href="#a6-5">6.5 Áreas y señales</a><span class="archivos"><a href="#a6-5-1"><code>moneda.gd</code></a>, <a href="#a6-5-2"><code>enemigo.gd</code></a></span></li>
+      <li><a href="#anexo6-1">Tu primer videojuego con IA: fase 4 · Parte 1. Práctica</a><span class="archivos"><a href="#anexo6-1-1"><code>niblo.gd</code></a>, <a href="#anexo6-1-2"><code>marcador.gd</code></a>, <a href="#anexo6-1-3"><code>manzana.gd</code></a>, <a href="#anexo6-1-4"><code>main_scene.gd</code></a>, <a href="#anexo6-1-5"><code>pantalla.gd</code></a></span></li>
+      <li><a href="#anexo6-2">Tu primer videojuego con IA: fase 4 · Parte 2. Termina tu primer videojuego</a><span class="archivos"><a href="#anexo6-2-1"><code>npc.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>7. Tipos de movimiento <span class="cuenta">· 16 bloques</span></summary>
+    <ul>
+      <li><a href="#a7-1">7.1 Perspectiva y desplazamiento</a><span class="archivos"><a href="#a7-1-1"><code>camara_pantallas.gd</code></a></span></li>
+      <li><a href="#a7-2">7.2 Movimiento sin orientación</a><span class="archivos"><a href="#a7-2-1"><code>pala_ia.gd</code></a></span></li>
+      <li><a href="#a7-3">7.3 Orientación sin rotación</a></li>
+      <li><a href="#a7-4">7.4 Orientación con rotación</a><span class="archivos"><a href="#a7-4-1"><code>nave.gd</code></a>, <a href="#a7-4-2"><code>perseguidor.gd</code></a></span></li>
+      <li><a href="#a7-5">7.5 Patrones de movimiento</a><span class="archivos"><a href="#a7-5-1"><code>patron.gd</code></a></span></li>
+      <li><a href="#anexo7-1">Práctica: dos clásicos con IA · Parte 1. Un <em>Breakout</em> contra la IA</a><span class="archivos"><a href="#anexo7-1-1"><code>jugador.gd</code></a>, <a href="#anexo7-1-2"><code>pelota.gd</code></a>, <a href="#anexo7-1-3"><code>main_scene.gd</code></a>, <a href="#anexo7-1-4"><code>ia.gd</code></a></span></li>
+      <li><a href="#anexo7-2">Práctica: dos clásicos con IA · Parte 2. Un <em>Asteroids</em> con enemigos</a><span class="archivos"><a href="#anexo7-2-1"><code>bala.gd</code></a>, <a href="#anexo7-2-2"><code>nave.gd</code></a>, <a href="#anexo7-2-3"><code>enemigo.gd</code></a>, <a href="#anexo7-2-4"><code>main_scene.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>8. <em>Steering behaviors</em> <span class="cuenta">· 5 bloques</span></summary>
+    <ul>
+      <li><a href="#a8-1">8.1 Fuerzas de dirección</a><span class="archivos"><a href="#a8-1-1"><code>vehiculo.gd</code></a></span></li>
+      <li><a href="#a8-5">8.5 Combinar comportamientos</a><span class="archivos"><a href="#a8-5-1"><code>zombi.gd</code></a></span></li>
+      <li><a href="#anexo8-1">Tu segundo videojuego con IA: una <em>game jam</em> · Parte 1. Práctica: <em>steering behaviors</em></a><span class="archivos"><a href="#anexo8-1-1"><code>niblo.gd</code></a>, <a href="#anexo8-1-2"><code>nave.gd</code></a>, <a href="#anexo8-1-3"><code>enemigo.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>9. <em>Tiles</em>, <em>waypoints</em> y <em>pathfinding</em> <span class="cuenta">· 8 bloques</span></summary>
+    <ul>
+      <li><a href="#a9-2">9.2 <em>Waypoints</em> y patrullas</a><span class="archivos"><a href="#a9-2-1"><code>guardia.gd</code></a></span></li>
+      <li><a href="#a9-3">9.3 Grafos</a></li>
+      <li><a href="#a9-4">9.4 Dijkstra y A*</a></li>
+      <li><a href="#a9-5">9.5 A* en Godot</a><span class="archivos"><a href="#a9-5-1"><code>mapa.gd</code></a></span></li>
+      <li><a href="#anexo9-1">Tu tercer videojuego con IA: fase 1 · Parte 1. Práctica: un laberinto en 3D</a><span class="archivos"><a href="#anexo9-1-1"><code>mundo.gd</code></a>, <a href="#anexo9-1-2"><code>caminante.gd</code></a>, <a href="#anexo9-1-3"><code>niblo.gd</code></a>, <a href="#anexo9-1-4"><code>mubbit.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>10. Navegación en Godot 2D y 3D <span class="cuenta">· 11 bloques</span></summary>
+    <ul>
+      <li><a href="#a10-1">10.1 Mallas de navegación</a></li>
+      <li><a href="#a10-2">10.2 Agentes de navegación</a><span class="archivos"><a href="#a10-2-1"><code>ir_al_clic_2d.gd</code></a></span></li>
+      <li><a href="#a10-3">10.3 Obstáculos, atajos y evitación</a></li>
+      <li><a href="#a10-4">10.4 Navegación en 3D</a><span class="archivos"><a href="#a10-4-2"><code>ir_al_clic_3d.gd</code></a></span></li>
+      <li><a href="#anexo10-1">Tu tercer videojuego con IA: fase 2 · Parte 1. Práctica: un laberinto con navegación</a><span class="archivos"><a href="#anexo10-1-2"><code>navegante.gd</code></a>, <a href="#anexo10-1-3"><code>niblo.gd</code></a>, <a href="#anexo10-1-4"><code>mubbit.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>11. Máquinas de estado <span class="cuenta">· 6 bloques</span></summary>
+    <ul>
+      <li><a href="#a11-1">11.1 Tomar decisiones</a></li>
+      <li><a href="#a11-3">11.3 Estados con <code>enum</code> y <code>match</code></a><span class="archivos"><a href="#a11-3-1"><code>guardia.gd</code></a></span></li>
+      <li><a href="#a11-4">11.4 El patrón State</a><span class="archivos"><a href="#a11-4-1"><code>estado_base.gd</code></a>, <a href="#a11-4-2"><code>maquina_estados.gd</code></a>, <a href="#a11-4-3"><code>perseguir.gd</code></a></span></li>
+      <li><a href="#anexo11-1">Tu cuarto videojuego con IA: fase 1 · Parte 1. Práctica: Mubbits con máquina de estados</a><span class="archivos"><a href="#anexo11-1-1"><code>mubbit.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>12. Mundos procedurales e IA que se adapta <span class="cuenta">· 11 bloques</span></summary>
+    <ul>
+      <li><a href="#a12-2">12.2 Ruido y mazmorras</a><span class="archivos"><a href="#a12-2-2"><code>laberinto.gd</code></a></span></li>
+      <li><a href="#a12-3">12.3 Dificultad dinámica</a><span class="archivos"><a href="#a12-3-1"><code>director.gd</code></a></span></li>
+      <li><a href="#a12-5">12.5 Q-learning en GDScript</a><span class="archivos"><a href="#a12-5-1"><code>q_learning.gd</code></a></span></li>
+      <li><a href="#anexo12-1">Tu cuarto videojuego con IA: fase 2 · Parte 1. Práctica: un laberinto que se adapta</a></li>
+    </ul>
+  </details></li>
+  <li><details><summary>13. Redes y servidores de juegos <span class="cuenta">· 3 bloques</span></summary>
+    <ul>
+      <li><a href="#a13-2">13.2 Multijugador en línea y <em>lag</em></a><span class="archivos"><a href="#a13-2-1"><code>jugador_remoto.gd</code></a></span></li>
+      <li><a href="#a13-3">13.3 Tipos de servidores</a></li>
+      <li><a href="#anexo13-2">Práctica: mensajes entre jugadores · Parte 2. Crear la sala y anunciarla</a><span class="archivos"><a href="#anexo13-2-1"><code>chat.gd</code></a></span></li>
+    </ul>
+  </details></li>
+  <li><details><summary>14. Multijugador en Godot <span class="cuenta">· 7 bloques</span></summary>
+    <ul>
+      <li><a href="#a14-1">14.1 La API multijugador de Godot</a><span class="archivos"><a href="#a14-1-1"><code>red.gd</code></a></span></li>
+      <li><a href="#a14-2">14.2 Llamadas remotas</a></li>
+      <li><a href="#a14-3">14.3 Aparecer y sincronizar nodos</a><span class="archivos"><a href="#a14-3-1"><code>jugador.gd</code></a></span></li>
+      <li><a href="#a14-4">14.4 Crear y unirse a partidas</a></li>
+      <li><a href="#a14-5">14.5 Probar en red</a></li>
+      <li><a href="#anexo14-1">Práctica: una partida en red · Parte 1. La red y el menú</a><span class="archivos"><a href="#anexo14-1-1"><code>main.gd</code></a></span></li>
+      <li><a href="#anexo14-3">Práctica: una partida en red · Parte 3. La manzana y los puntos</a><span class="archivos"><a href="#anexo14-3-1"><code>manzana.gd</code></a></span></li>
+    </ul>
+  </details></li>
+</ul>
+</nav>
+
+<h2 id="como-usar">Cómo usar este libro <a class="arriba" href="#indice">↑ Índice</a></h2>
+<div class="bloque" id="inicio-0-1"><div class="cabecera"><code>protagonista.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D
+
+@export var velocidad := 200.0  # Píxeles por segundo
+
+func _process(delta: float) -&gt; void:
+    var x := Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;)
+    var y := Input.get_axis(&quot;ui_up&quot;, &quot;ui_down&quot;)
+    position += Vector2(x, y).normalized() * velocidad * delta</code></pre></div>
+<h2 id="capitulo-1">1. IA y videojuegos <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="anexo1-3">Práctica: primeros pasos con Godot · Parte 3. Tu primer <em>script</em></h3>
+<div class="bloque" id="anexo1-3-1"><div class="cabecera"><code>hola_mundo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">@tool
+extends EditorScript
+
+func _run() -&gt; void:
+    print(&quot;¡Hola, mundo!&quot;)</code></pre></div>
+<div class="bloque" id="anexo1-3-2"><div class="cabecera"><code>hola_mundo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">@tool
+extends EditorScript  # Un script que se ejecuta en el editor
+
+# Godot llama a _run() con File → Run (Ctrl + Shift + X)
+func _run() -&gt; void:
+    print(&quot;¡Hola, mundo!&quot;)  # Escribe en el panel Output
+    print(&quot;Vidas: &quot;, 3)     # Une el texto y el número
+    print(2 + 3 * 4)        # 14: primero se multiplica</code></pre></div>
+<h2 id="capitulo-2">2. GDScript <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a2-1">2.1 Variables y operadores aritméticos</h3>
+<div class="bloque" id="a2-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var nivel_del_mar: int = 25      # Estático explícito
+var nombre: String = &quot;Nacho&quot;
+var tiene_debian: bool = true
+var altura := 182                # Estático implícito: int
+var peso := 87.5                 # Estático implícito: float
+var variable_dinamica = &quot;Texto&quot;  # Dinámico: sin tipo
+const EULER: float = 2.71828     # Constante</code></pre></div>
+<div class="bloque" id="a2-1-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var c: String = &quot;GNU/&quot; + &quot;Linux&quot;  # Concatenación: &quot;GNU/Linux&quot;
+print(c.length())                  # 9
+print(c.substr(4, 5))              # Linux
+print(c.find(&quot;Linux&quot;))             # 4
+print(&quot;Línea 1\nLínea 2&quot;)          # Dos líneas</code></pre></div>
+<div class="bloque" id="a2-1-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var x: int = 5
+var y: int = 2
+print(&quot;He comprado &quot;, x, &quot; naranjas y &quot;, y, &quot; limones.&quot;)
+print(&quot;He comprado &quot; + str(x) + &quot; naranjas y &quot; + str(y)
+        + &quot; limones.&quot;)
+print(&quot;He comprado %d naranjas y %d limones.&quot; % [x, y])</code></pre></div>
+<div class="bloque" id="a2-1-4"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var kcal: float = float(&quot;95.4&quot;)       # 95.4
+print(int(kcal), &quot; &quot;, str(85) + &quot;0&quot;)  # 95 850
+prints(type_string(typeof(kcal)), kcal is float)  # float true</code></pre></div>
+<h3 id="a2-2">2.2 <em>Arrays</em></h3>
+<div class="bloque" id="a2-2-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var mezcla: Array = [&quot;texto&quot;, 123, 45.67]  # Heterogéneo
+var edades: Array[int] = [43, 72, 32, 22, 65]
+edades[3] = 57   # Modifica el elemento de índice 3
+edades[-1] = 12  # Y el último
+print(edades)    # [43, 72, 32, 57, 12]</code></pre></div>
+<div class="bloque" id="a2-2-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var nombres: Array[String] = [&quot;Nacho&quot;, &quot;David&quot;, &quot;Lola&quot;]
+nombres.insert(2, &quot;Alba&quot;)  # En la posición 2
+nombres.push_front(&quot;Bea&quot;)  # Al principio
+var ultimo: String = nombres.pop_back()  # &quot;Lola&quot;
+nombres.sort()
+print(nombres)              # [&quot;Alba&quot;, &quot;Bea&quot;, &quot;David&quot;, &quot;Nacho&quot;]
+print(nombres.slice(1, 3))  # [&quot;Bea&quot;, &quot;David&quot;]
+prints(&quot;Lola&quot; in nombres, nombres.find(&quot;David&quot;))  # false 2</code></pre></div>
+<div class="bloque" id="a2-2-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var tablero: Array[Array] = [[&quot;a&quot;, &quot;b&quot;], [&quot;c&quot;, &quot;d&quot;]]
+print(tablero[1][0])               # Fila 1, columna 0: &quot;c&quot;
+var original: Array[int] = [1, 2, 3]
+var misma := original              # Misma referencia
+var copia := original.duplicate()  # Copia independiente
+misma.append(4)
+prints(original, copia)            # [1, 2, 3, 4] [1, 2, 3]</code></pre></div>
+<h3 id="a2-3">2.3 Diccionarios</h3>
+<div class="bloque" id="a2-3-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var persona: Dictionary = {&quot;nombre&quot;: &quot;Ana&quot;, &quot;edad&quot;: 25}
+var edad: int = persona.get(&quot;edad&quot;, 0)      # 25
+var peso: float = persona.get(&quot;peso&quot;, 0.0)  # 0.0: no existe
+persona[&quot;edad&quot;] = 35          # Modifica un valor
+persona[&quot;ciudad&quot;] = &quot;Madrid&quot;  # Añade un par nuevo
+persona.erase(&quot;nombre&quot;)       # Elimina un par
+var stock: Dictionary[String, int] = {&quot;poción&quot;: 3}
+stock[&quot;poción&quot;] += 2          # 5</code></pre></div>
+<div class="bloque" id="a2-3-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var enemigos: Array[Dictionary] = [
+    {&quot;nombre&quot;: &quot;Slime&quot;, &quot;vida&quot;: 10},
+    {&quot;nombre&quot;: &quot;Esqueleto&quot;, &quot;vida&quot;: 30},
+]
+print(enemigos[1][&quot;nombre&quot;])  # &quot;Esqueleto&quot;
+print(enemigos[0].keys())     # [&quot;nombre&quot;, &quot;vida&quot;]</code></pre></div>
+<h3 id="a2-4">2.4 Condicionales</h3>
+<div class="bloque" id="a2-4-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var a: int = 5
+var b: int = 3
+var z: bool = a &gt;= b and a != b          # true
+z = a &lt; b or b == 3                      # true
+z = not (a == b) or (a &gt;= b and a != b)  # true</code></pre></div>
+<div class="bloque" id="a2-4-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var calificacion: float = 9.5
+if calificacion &lt; 5.0:
+    print(&quot;Suspenso.&quot;)
+elif calificacion &lt; 7.0:
+    print(&quot;Aprobado.&quot;)
+elif calificacion &lt; 9.0:
+    print(&quot;Notable.&quot;)
+else:
+    print(&quot;Excelente.&quot;)</code></pre></div>
+<div class="bloque" id="a2-4-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var daño: int = 120
+match daño:
+    0:
+        print(&quot;Fallo&quot;)
+    var d when d &gt;= 100:
+        print(&quot;¡Golpe crítico de &quot;, d, &quot;!&quot;)
+    _:
+        print(&quot;Golpe normal&quot;)
+
+var paridad: String = &quot;par&quot; if daño % 2 == 0 else &quot;impar&quot;</code></pre></div>
+<h3 id="a2-5">2.5 Bucles</h3>
+<div class="bloque" id="a2-5-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">for i: int in range(5, -1, -1):
+    print(i)  # 5, 4, 3, 2, 1 y 0
+
+var inventario: Dictionary = {&quot;espada&quot;: 1, &quot;poción&quot;: 3}
+for objeto: String in inventario:
+    print(objeto, &quot;: &quot;, inventario[objeto])
+
+var anidado: Array[Array] = [[1, 2], [3, 4], [5, 6]]
+for fila: Array in anidado:
+    for elemento: int in fila:
+        print(elemento)  # 1, 2, 3, 4, 5 y 6</code></pre></div>
+<div class="bloque" id="a2-5-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var lista: Array[int] = [4, 8, 15, 16, 23, 42]
+var suma: int = 0          # Acumulador
+var primer_impar: int = -1
+var dobles: Array[int] = []
+for n: int in lista:
+    suma += n
+    dobles.append(n * 2)   # Construcción
+for n: int in lista:
+    if n % 2 == 0:
+        continue           # Salta los pares
+    primer_impar = n
+    break                  # Búsqueda: encontrado
+prints(suma, primer_impar, dobles[0])  # 108 15 8</code></pre></div>
+<h3 id="a2-6">2.6 Funciones</h3>
+<div class="bloque" id="a2-6-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func cuadrado(entero: int) -&gt; int:
+    return entero * entero
+
+func suma(a: int, b: int = 0) -&gt; int:  # b vale 0 por defecto
+    return a + b
+
+func _run() -&gt; void:
+    print(cuadrado(2))           # 4
+    print(suma(5))               # 5
+    print(suma(cuadrado(2), 3))  # 7: primero, cuadrado(2)</code></pre></div>
+<div class="bloque" id="a2-6-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func curar(vida: int) -&gt; void:
+    vida += 50       # Cambia solo la copia local
+
+func vaciar(mochila: Array) -&gt; void:
+    mochila.clear()  # Vacía el array original</code></pre></div>
+<div class="bloque" id="a2-6-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func factorial(numero: int) -&gt; int:
+    if numero &lt;= 1:
+        return 1  # Caso base
+    return numero * factorial(numero - 1)</code></pre></div>
+<div class="bloque" id="a2-6-4"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var numeros: Array[int] = [1, 2, 3, 4, 5, 6]
+print(numeros.filter(func(n): return n % 2 == 0))  # [2, 4, 6]</code></pre></div>
+<h3 id="a2-7">2.7 Clases</h3>
+<div class="bloque" id="a2-7-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">class Punto:
+    var _x: int  # Privadas, por convención
+    var _y: int
+    var x: int:  # Pública, con getter y setter
+        get:
+            return _x
+        set(valor):
+            _x = valor
+
+    func _init(coordenada_x: int, coordenada_y: int) -&gt; void:
+        _x = coordenada_x  # El constructor inicializa
+        _y = coordenada_y</code></pre></div>
+<div class="bloque" id="a2-7-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">class Animal:
+    var _energia: int
+    func _init(energia: int) -&gt; void:
+        _energia = energia
+
+    func mover() -&gt; void:
+        _energia -= 5
+
+class Perro extends Animal:
+    func _init(energia: int) -&gt; void:
+        super(energia)  # Constructor del padre
+
+    func mover() -&gt; void:  # Sobrescribe el del padre
+        _energia -= 10</code></pre></div>
+<div class="bloque" id="a2-7-3"><div class="cabecera"><code>main.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # main.gd: una clase que hereda de Node2D
+
+func _ready() -&gt; void:
+    print(&quot;MainScene está lista&quot;)  # Una vez, al empezar
+
+func _process(delta: float) -&gt; void:
+    $Icono.rotation += TAU * delta  # Una vuelta por segundo</code></pre></div>
+<h3 id="a2-8">2.8 Librerías</h3>
+<div class="bloque" id="a2-8-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var rng := RandomNumberGenerator.new()
+rng.seed = 42                     # Semilla fija: siempre igual
+print(rng.randi_range(1, 6))      # Un entero del 1 al 6
+rng.randomize()                   # Semilla nueva, al azar
+print(rng.randf_range(-3.0, 10.0))  # Un real entre -3 y 10</code></pre></div>
+<div class="bloque" id="a2-8-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var ruta: String = &quot;user://partida.json&quot;
+var archivo := FileAccess.open(ruta, FileAccess.WRITE)
+archivo.store_string(JSON.stringify({&quot;nivel&quot;: 3, &quot;vidas&quot;: 2}))
+archivo.close()  # Cierra el archivo y guarda los cambios
+archivo = FileAccess.open(ruta, FileAccess.READ)
+var leida: Dictionary = JSON.parse_string(archivo.get_as_text())
+print(leida[&quot;nivel&quot;])  # 3.0: vuelve como float</code></pre></div>
+<div class="bloque" id="a2-8-3"><div class="cabecera"><code>azar.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Azar  # azar.gd: una librería propia
+# Azar.probabilidad(25) es true una de cada cuatro veces
+static func probabilidad(porcentaje: float) -&gt; bool:
+    return randf() * 100.0 &lt; porcentaje</code></pre></div>
+<h2 id="capitulo-3">3. Vectores y transformaciones <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a3-1">3.1 Coordenadas y distancias</h3>
+<div class="bloque" id="a3-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">const TAM_CELDA := 100  # Píxeles de cada casilla
+
+# Centro en píxeles de la casilla (columna, fila)
+func celda_a_pixel(celda: Vector2i) -&gt; Vector2:
+    var esquina := Vector2(celda * TAM_CELDA)
+    return esquina + Vector2.ONE * TAM_CELDA / 2.0
+
+# Casilla en la que cae un punto de la pantalla
+func pixel_a_celda(punto: Vector2) -&gt; Vector2i:
+    return Vector2i((punto / TAM_CELDA).floor())</code></pre></div>
+<div class="bloque" id="a3-1-2"><div class="cabecera"><code>vigilante.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Un enemigo que vigila su zona
+
+@export var jugador: Node2D
+@export var radio := 200.0  # Píxeles
+
+func _process(_delta: float) -&gt; void:
+    var d := position.distance_to(jugador.position)
+    # Rojo si el jugador ha entrado en su zona
+    modulate = Color.RED if d &lt; radio else Color.WHITE</code></pre></div>
+<h3 id="a3-2">3.2 Vectores</h3>
+<div class="bloque" id="a3-2-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var p := position   # p es una copia de la posición
+p.x += 10.0         # Cambia la copia: el nodo no se mueve
+position.x += 10.0  # Así sí se mueve el nodo</code></pre></div>
+<h3 id="a3-3">3.3 Mover personajes con vectores</h3>
+<div class="bloque" id="a3-3-1"><div class="cabecera"><code>protagonista.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Un protagonista que se mueve con las flechas
+
+const RAPIDEZ := 150.0  # Píxeles por segundo
+
+func _process(delta: float) -&gt; void:
+    # −1, 0 o 1 según las flechas pulsadas
+    var x := Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;)
+    var y := Input.get_axis(&quot;ui_up&quot;, &quot;ui_down&quot;)
+    # Módulo 1: así no va más rápido en diagonal
+    var direccion := Vector2(x, y).normalized()
+    position += direccion * RAPIDEZ * delta</code></pre></div>
+<div class="bloque" id="a3-3-2"><div class="cabecera"><code>perseguidor.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Un enemigo que persigue
+
+@export var objetivo: Node2D
+@export var rapidez := 100.0  # Píxeles por segundo
+
+func _process(delta: float) -&gt; void:
+    var hacia := objetivo.position - position
+    # Si ya está encima, no se mueve: así no tiembla
+    if hacia.length() &lt; 4.0:
+        return
+    position += hacia.normalized() * rapidez * delta</code></pre></div>
+<div class="bloque" id="a3-3-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var paso := rapidez * delta  # Lo que avanza este fotograma
+position = position.move_toward(objetivo.position, paso)</code></pre></div>
+<h3 id="a3-5">3.5 Traslación, rotación y escalado</h3>
+<div class="bloque" id="a3-5-1"><div class="cabecera"><code>helice_y_torreta.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D
+
+@export var giro := 180.0  # Grados por segundo
+
+func _process(delta: float) -&gt; void:
+    # La hélice gira un poco en cada fotograma
+    $Helice.rotation_degrees += giro * delta
+    # La torreta calcula su giro para mirar al ratón
+    $Torreta.look_at(get_global_mouse_position())</code></pre></div>
+<h3 id="a3-6">3.6 Transformaciones en Godot</h3>
+<div class="bloque" id="a3-6-1"><div class="cabecera"><code>nave.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Una nave vista desde arriba
+
+@export var velocidad := 250.0
+@export var giro := 3.0  # Radianes por segundo
+
+func _process(delta: float) -&gt; void:
+    # Las flechas izquierda y derecha giran la nave
+    var g := Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;)
+    rotation += g * giro * delta
+    # Avanza siempre hacia su eje X: hacia donde mira
+    position += transform.x * velocidad * delta</code></pre></div>
+<h3 id="anexo3-1">Tu primer videojuego con IA: fase 1 · Parte 1. Práctica</h3>
+<div class="bloque" id="anexo3-1-1"><div class="cabecera"><code>niblo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Niblo: se mueve con las flechas
+
+const RAPIDEZ := 200.0  # Píxeles por segundo
+
+func _process(delta: float) -&gt; void:
+    # −1, 0 o 1 según las flechas pulsadas
+    var x := Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;)
+    var y := Input.get_axis(&quot;ui_up&quot;, &quot;ui_down&quot;)
+    # Módulo 1: así no va más rápido en diagonal
+    var direccion := Vector2(x, y).normalized()
+    position += direccion * RAPIDEZ * delta</code></pre></div>
+<div class="bloque" id="anexo3-1-2"><div class="cabecera"><code>main_scene.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # MainScene: Mubbit persigue a Niblo
+
+const RAPIDEZ := 100.0  # Mubbit es más lento que Niblo
+
+@onready var niblo: Sprite2D = $Niblo
+@onready var mubbit: Sprite2D = $Mubbit
+
+var tiempo := 0.0  # Segundos desde el último mensaje
+
+func _process(delta: float) -&gt; void:
+    # Vector que va de Mubbit a Niblo: extremo menos origen
+    var hacia_niblo := niblo.position - mubbit.position
+    var direccion := hacia_niblo.normalized()
+    mubbit.position += direccion * RAPIDEZ * delta
+    # Una vez por segundo, la distancia y el punto medio
+    tiempo += delta
+    if tiempo &gt;= 1.0:
+        tiempo = 0.0
+        var d := niblo.position.distance_to(mubbit.position)
+        var medio := (niblo.position + mubbit.position) / 2.0
+        var texto := &quot;Distancia: %d px, punto medio: %s&quot;
+        print(texto % [d, medio.round()])</code></pre></div>
+<h3 id="anexo3-2">Tu primer videojuego con IA: fase 1 · Parte 2. Empieza tu primer videojuego</h3>
+<div class="bloque" id="anexo3-2-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var pantalla := get_viewport_rect().size
+position = position.clamp(Vector2.ZERO, pantalla)</code></pre></div>
+<div class="bloque" id="anexo3-2-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Un NPC que persigue al protagonista
+
+@export var objetivo: Node2D
+@export var rapidez := 120.0  # Píxeles por segundo
+@export var radio := 300.0    # A qué distancia lo detecta
+
+func _process(delta: float) -&gt; void:
+    var d := position.distance_to(objetivo.position)
+    if d &lt; radio:  # Percibe: ¿está cerca?
+        var paso := rapidez * delta
+        var destino := objetivo.position
+        position = position.move_toward(destino, paso)</code></pre></div>
+<h2 id="capitulo-4">4. Trigonometría e interpolaciones <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a4-1">4.1 Ángulos, seno y coseno</h3>
+<div class="bloque" id="a4-1-1"><div class="cabecera"><code>satelite.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Un satélite que orbita
+
+@export var centro := Vector2(400, 300)
+@export var radio := 120.0
+@export var vueltas_por_segundo := 0.5
+
+var angulo := 0.0
+
+func _process(delta: float) -&gt; void:
+    angulo += TAU * vueltas_por_segundo * delta
+    # cos da la x y sin da la y del punto de la circunferencia
+    var punto := Vector2(cos(angulo), sin(angulo)) * radio
+    position = centro + punto</code></pre></div>
+<div class="bloque" id="a4-1-2"><div class="cabecera"><code>ondulante.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Avanza ondulando
+
+const MARGEN := 32.0
+
+@export var velocidad := 200.0  # Píxeles por segundo
+@export var y_centro := 300.0
+@export var amplitud := 50.0    # Píxeles arriba y abajo
+@export var frecuencia := 4.0   # Rapidez de la onda
+
+var tiempo := 0.0
+
+func _process(delta: float) -&gt; void:
+    tiempo += delta
+    position.x += velocidad * delta
+    position.y = y_centro + amplitud * sin(tiempo * frecuencia)
+    # Al salir por la derecha, vuelve a entrar por la izquierda
+    if position.x &gt; get_viewport_rect().size.x + MARGEN:
+        position.x = -MARGEN</code></pre></div>
+<h3 id="a4-2">4.2 Apuntar y mirar</h3>
+<div class="bloque" id="a4-2-1"><div class="cabecera"><code>guardia.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Un guardia dibujado mirando a la derecha
+
+@export var jugador: Node2D
+@export var campo_de_vision := 90.0  # Grados en total
+@export var alcance := 300.0         # Píxeles
+
+func ve_al_jugador() -&gt; bool:
+    var hacia := jugador.global_position - global_position
+    if hacia.length() &gt; alcance:
+        return false
+    # Hacia dónde mira el guardia, según su rotación
+    var mirada := Vector2.from_angle(rotation)
+    var angulo := absf(rad_to_deg(mirada.angle_to(hacia)))
+    return angulo &lt;= campo_de_vision / 2.0
+
+func _process(_delta: float) -&gt; void:
+    modulate = Color.RED if ve_al_jugador() else Color.WHITE</code></pre></div>
+<div class="bloque" id="a4-2-2"><div class="cabecera"><code>torreta.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Una torreta dibujada mirando a la derecha
+
+@export var jugador: Node2D
+@export var giro := 90.0  # Grados por segundo
+
+func _process(delta: float) -&gt; void:
+    var hacia := jugador.global_position - global_position
+    var paso := deg_to_rad(giro) * delta
+    # Gira por el camino más corto, como mucho «paso» radianes
+    rotation = rotate_toward(rotation, hacia.angle(), paso)</code></pre></div>
+<h3 id="a4-3">4.3 Interpolación lineal</h3>
+<div class="bloque" id="a4-3-1"><div class="cabecera"><code>trayecto.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D
+
+@export var destino := Vector2(600, 300)
+@export var duracion := 2.0  # Segundos que tarda
+
+var origen: Vector2
+var tiempo := 0.0
+
+func _ready() -&gt; void:
+    origen = position
+
+func _process(delta: float) -&gt; void:
+    tiempo += delta
+    # t pasa de 0 a 1 en «duracion» segundos
+    var t := minf(tiempo / duracion, 1.0)
+    position = origen.lerp(destino, t)</code></pre></div>
+<h3 id="a4-4">4.4 Seguir con suavidad</h3>
+<div class="bloque" id="a4-4-1"><div class="cabecera"><code>camara.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Camera2D
+
+@export var objetivo: Node2D
+@export var suavidad := 5.0  # Cuanto mayor, antes llega
+
+func _process(delta: float) -&gt; void:
+    var meta := objetivo.global_position
+    var peso := suavidad * delta
+    # Cada fotograma recorre una parte de lo que falta
+    global_position = global_position.lerp(meta, peso)</code></pre></div>
+<h3 id="a4-5">4.5 <em>Tweens</em></h3>
+<div class="bloque" id="a4-5-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Llámala cuando el personaje toque el suelo
+func aplastar() -&gt; void:
+    var aplastado := Vector2(1.4, 0.6)
+    var tween := create_tween()
+    tween.tween_property(self, &quot;scale&quot;, aplastado, 0.08)
+    tween.tween_property(self, &quot;scale&quot;, Vector2.ONE, 0.2)</code></pre></div>
+<div class="bloque" id="a4-5-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func recoger() -&gt; void:
+    var tween := create_tween()
+    tween.tween_property(self, &quot;scale&quot;, Vector2(1.3, 1.3), 0.3)
+    tween.tween_property(self, &quot;scale&quot;, Vector2.ONE, 0.3)
+    # A partir de aquí, los pasos van a la vez
+    tween.set_parallel(true)
+    var arriba := position.y - 40
+    tween.tween_property(self, &quot;modulate:a&quot;, 0.0, 0.4)
+    tween.tween_property(self, &quot;position:y&quot;, arriba, 0.4)
+    # Cuando terminen los dos, se borra la moneda
+    tween.chain().tween_callback(queue_free)</code></pre></div>
+<h3 id="a4-6">4.6 Curvas y caminos</h3>
+<div class="bloque" id="a4-6-1"><div class="cabecera"><code>patrulla.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends PathFollow2D  # Hijo de un Path2D con la ruta
+
+@export var duracion := 4.0  # Segundos de un extremo a otro
+
+func _ready() -&gt; void:
+    var tween := create_tween().set_loops()
+    tween.set_trans(Tween.TRANS_SINE)
+    tween.set_ease(Tween.EASE_IN_OUT)
+    # Ida y vuelta por la ruta, sin parar
+    tween.tween_property(self, &quot;progress_ratio&quot;, 1.0, duracion)
+    tween.tween_property(self, &quot;progress_ratio&quot;, 0.0, duracion)</code></pre></div>
+<div class="bloque" id="a4-6-2"><div class="cabecera"><code>torreta_predictiva.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # Una torreta
+
+@export var objetivo: CharacterBody2D
+@export var velocidad_bala := 400.0  # Píxeles por segundo
+
+func punto_de_mira() -&gt; Vector2:
+    var donde_esta := objetivo.global_position
+    # Tiempo que tardaría la bala en llegar hasta allí
+    var distancia := global_position.distance_to(donde_esta)
+    var vuelo := distancia / velocidad_bala
+    # Extrapolación: donde estará al terminar el vuelo
+    return donde_esta + objetivo.velocity * vuelo
+
+func _process(_delta: float) -&gt; void:
+    look_at(punto_de_mira())</code></pre></div>
+<h3 id="anexo4-1">Tu primer videojuego con IA: fase 2 · Parte 1. Práctica</h3>
+<div class="bloque" id="anexo4-1-1"><div class="cabecera"><code>manzana.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # La manzana: flota y sigue a quien la coge
+
+@export var niblo: Node2D
+@export var suavidad := 5.0  # Cuanto mayor, más pegada va
+
+var cogida := false
+var tiempo := 0.0
+@onready var origen := position  # Su sitio, para volver
+
+func _process(delta: float) -&gt; void:
+    tiempo += delta
+    offset.y = 8.0 * sin(tiempo * 3.0)  # Flota: solo el dibujo
+    var meta := origen
+    if cogida:
+        meta = niblo.position + Vector2(0, -48)  # Sobre Niblo
+    elif position.distance_to(niblo.position) &lt; 48.0:
+        cogida = true  # Niblo la ha alcanzado
+    position = position.lerp(meta, suavidad * delta)</code></pre></div>
+<div class="bloque" id="anexo4-1-2"><div class="cabecera"><code>mubbit.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Mubbit: vigila la manzana como un faro
+
+@export var manzana: Node2D
+@export var niblo: Node2D
+@export var radio := 160.0
+@export var vueltas_por_segundo := 0.2
+@export var campo_de_vision := 60.0  # Grados en total
+@export var alcance := 300.0         # Píxeles
+
+var angulo := 0.0  # Dónde está y hacia dónde mira
+@onready var centro := manzana.position  # Su sitio de siempre
+@onready var vista: Polygon2D = $Vista
+
+func _ready() -&gt; void:
+    # El cono: el vértice y nueve puntos del arco
+    var puntos := PackedVector2Array([Vector2.ZERO])
+    for i in 9:
+        var a := deg_to_rad(campo_de_vision * (i / 8.0 - 0.5))
+        puntos.append(Vector2.from_angle(a) * alcance)
+    vista.polygon = puntos
+    vista.color = Color(1, 1, 1, 0.3)  # Blanco translúcido
+
+func _process(delta: float) -&gt; void:
+    angulo += TAU * vueltas_por_segundo * delta
+    # Da vueltas a la manzana y mira hacia fuera
+    position = centro + Vector2.from_angle(angulo) * radio
+    vista.rotation = angulo
+
+# El guardia de la sección 4.2, con la mirada de la vista
+func ve_a_niblo() -&gt; bool:
+    var hacia := niblo.position - position
+    if hacia.length() &gt; alcance:
+        return false
+    var mirada := Vector2.from_angle(angulo)
+    var diferencia := absf(rad_to_deg(mirada.angle_to(hacia)))
+    return diferencia &lt;= campo_de_vision / 2.0</code></pre></div>
+<div class="bloque" id="anexo4-1-3"><div class="cabecera"><code>main_scene.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # MainScene: las reglas del juego
+
+@onready var niblo: Sprite2D = $Niblo
+@onready var mubbit: Sprite2D = $Mubbit
+@onready var manzana: Sprite2D = $Manzana
+@onready var casa: TextureRect = $Casa
+
+func _process(_delta: float) -&gt; void:
+    var en_casa := casa.get_rect().has_point(niblo.position)
+    if mubbit.ve_a_niblo():
+        atrapado()
+    elif manzana.cogida and en_casa:
+        ganar()
+
+func atrapado() -&gt; void:
+    manzana.cogida = false  # Vuelve flotando a su sitio
+    niblo.position = casa.get_rect().get_center()
+    niblo.scale = Vector2.ZERO  # Reaparece en casa
+    var tween := create_tween().set_trans(Tween.TRANS_BACK)
+    tween.tween_property(niblo, &quot;scale&quot;, Vector2.ONE, 0.4)
+
+func ganar() -&gt; void:
+    set_process(false)  # Ya no se comprueban las reglas
+    manzana.set_process(false)  # Deja de seguir a Niblo
+    var tween := create_tween().set_trans(Tween.TRANS_BACK)
+    tween.tween_property(manzana, &quot;scale&quot;, Vector2(2, 2), 0.4)
+    tween.tween_property(manzana, &quot;modulate:a&quot;, 0.0, 0.3)
+    tween.tween_callback(get_tree().reload_current_scene)</code></pre></div>
+<h2 id="capitulo-5">5. Funciones matemáticas y azar <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a5-1">5.1 Funciones matemáticas</h3>
+<div class="bloque" id="a5-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Experiencia que hace falta para pasar del nivel n al n + 1
+func experiencia_necesaria(nivel: int) -&gt; int:
+    var base := 100.0       # Lo que cuesta el primer nivel
+    var crecimiento := 1.5  # Cuánto se endurece cada nivel
+    return roundi(base * pow(nivel, crecimiento))</code></pre></div>
+<h3 id="a5-2">5.2 Redondeo y límites</h3>
+<div class="bloque" id="a5-2-1"><div class="cabecera"><code>vida.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # La vida de un personaje
+
+@export var vida_maxima := 100
+
+var vida := 100
+
+func cambiar_vida(cantidad: int) -&gt; void:
+    # Negativa para el daño y positiva para la cura
+    vida = clampi(vida + cantidad, 0, vida_maxima)
+    if vida == 0:
+        print(&quot;Sin vida&quot;)</code></pre></div>
+<div class="bloque" id="a5-2-2"><div class="cabecera"><code>nave.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Una nave que atraviesa los bordes
+
+@export var velocidad := Vector2(180, 60)  # Píxeles por segundo
+
+func _process(delta: float) -&gt; void:
+    position += velocidad * delta
+    var ventana := get_viewport_rect().size
+    # wrapf: al pasar de un extremo, vuelve por el otro
+    position.x = wrapf(position.x, 0.0, ventana.x)
+    position.y = wrapf(position.y, 0.0, ventana.y)</code></pre></div>
+<h3 id="a5-3">5.3 Números pseudoaleatorios</h3>
+<div class="bloque" id="a5-3-1"><div class="cabecera"><code>congruencial.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # Un generador congruencial lineal
+
+var estado := 7  # La semilla: el primer estado
+
+func siguiente() -&gt; int:
+    # Multiplica, suma y se queda con el resto: de 0 a 99
+    estado = (21 * estado + 17) % 100
+    return estado
+
+func _ready() -&gt; void:
+    for i in 8:
+        printraw(siguiente(), &quot; &quot;)  # 64 61 98 75 92 49 46 83</code></pre></div>
+<h3 id="a5-4">5.4 Semillas y generadores</h3>
+<div class="bloque" id="a5-4-1"><div class="cabecera"><code>dos_generadores.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # Un generador para el mapa y otro para combatir
+
+var rng_mundo := RandomNumberGenerator.new()
+var rng_combate := RandomNumberGenerator.new()
+
+func _ready() -&gt; void:
+    rng_mundo.seed = 2026     # El mismo mapa en cada partida
+    rng_combate.randomize()   # Combates distintos cada vez
+    var ancho := rng_mundo.randi_range(20, 40)
+    var critico := rng_combate.randf() &lt; 0.1  # 10 %
+    print(ancho, &quot; &quot;, critico)</code></pre></div>
+<h3 id="a5-5">5.5 El azar en el diseño de juegos</h3>
+<div class="bloque" id="a5-5-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Punto al azar de la ventana, a más de «minima» del jugador
+func punto_seguro(jugador: Vector2, minima: float) -&gt; Vector2:
+    var ventana := get_viewport_rect().size
+    var punto := Vector2.ZERO
+    for intento in 100:  # Como mucho, 100 intentos
+        punto = Vector2(randf_range(32, ventana.x - 32),
+                randf_range(32, ventana.y - 32))
+        if punto.distance_to(jugador) &gt;= minima:
+            return punto
+    return punto  # Si no hay suerte, el último</code></pre></div>
+<div class="bloque" id="a5-5-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">const OBJETOS: Array[String] = [&quot;común&quot;, &quot;raro&quot;, &quot;legendario&quot;]
+const PESOS: Array[float] = [70.0, 25.0, 5.0]  # Suman 100
+
+# Elige un objeto: cuanto más peso, más probable
+func elegir_objeto() -&gt; String:
+    var tirada := randf() * 100.0  # De 0 a la suma de pesos
+    var acumulado := 0.0
+    for i in PESOS.size():
+        acumulado += PESOS[i]  # El final del tramo i
+        if tirada &lt; acumulado:
+            return OBJETOS[i]
+    return OBJETOS[-1]</code></pre></div>
+<div class="bloque" id="a5-5-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var bolsa: Array[String] = []
+
+# Saca la siguiente pieza: todas salen antes de repetir
+func siguiente_pieza() -&gt; String:
+    if bolsa.is_empty():
+        bolsa = [&quot;I&quot;, &quot;O&quot;, &quot;T&quot;, &quot;S&quot;, &quot;Z&quot;, &quot;J&quot;, &quot;L&quot;]
+        bolsa.shuffle()  # Baraja las siete
+    return bolsa.pop_back()</code></pre></div>
+<h3 id="anexo5-1">Tu primer videojuego con IA: fase 3 · Parte 1. Práctica</h3>
+<div class="bloque" id="anexo5-1-1"><div class="cabecera"><code>main_scene.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # MainScene: Mubbit salta al azar con un Timer
+
+const MARGEN := 48.0  # Que no quede pegado al borde
+
+@onready var mubbit: Sprite2D = $Mubbit
+@onready var temporizador: Timer = $Timer
+
+func _ready() -&gt; void:
+    temporizador.timeout.connect(saltar)
+
+func saltar() -&gt; void:
+    mubbit.position = punto_al_azar()
+    # La próxima espera, entre 1 y 3 segundos
+    temporizador.start(randf_range(1.0, 3.0))
+
+# Un punto al azar de la ventana, sin tocar los bordes
+func punto_al_azar() -&gt; Vector2:
+    var ventana := get_viewport_rect().size
+    var x := randf_range(MARGEN, ventana.x - MARGEN)
+    var y := randf_range(MARGEN, ventana.y - MARGEN)
+    return Vector2(x, y)</code></pre></div>
+<div class="bloque" id="anexo5-1-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Un punto al azar a DISTANCIA o más de otro punto
+func punto_lejos_de(otro: Vector2) -&gt; Vector2:
+    var punto := punto_al_azar()
+    for intento in 100:
+        if punto.distance_to(otro) &gt;= DISTANCIA:
+            break  # Ya está lo bastante lejos
+        punto = punto_al_azar()
+    return punto</code></pre></div>
+<div class="bloque" id="anexo5-1-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var puntos := 0
+
+func _process(_delta: float) -&gt; void:
+    # Si Niblo toca a Mubbit antes de que salte, un punto
+    if niblo.position.distance_to(mubbit.position) &lt; 48.0:
+        puntos += 1
+        print(&quot;¡Atrapado! Puntos: %d&quot; % puntos)
+        saltar()  # Salta ya, y el Timer vuelve a contar</code></pre></div>
+<h3 id="anexo5-2">Tu primer videojuego con IA: fase 3 · Parte 2. Continúa tu primer videojuego</h3>
+<div class="bloque" id="anexo5-2-1"><div class="cabecera"><code>npc.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name NPC extends Sprite2D
+
+@export var velocidad := 120.0
+
+func _process(delta: float) -&gt; void:
+    mover(delta)
+
+func mover(_delta: float) -&gt; void:
+    pass  # Cada tipo de NPC lo sobrescribe</code></pre></div>
+<div class="bloque" id="anexo5-2-2"><div class="cabecera"><code>vagabundo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Vagabundo extends NPC  # Vaga cambiando de rumbo
+
+@export var cambio_min := 1.0  # Segundos con el mismo rumbo
+@export var cambio_max := 3.0
+
+var direccion := Vector2.RIGHT
+var cambio := 0.0  # Segundos hasta el próximo cambio
+
+func mover(delta: float) -&gt; void:
+    cambio -= delta
+    if cambio &lt;= 0.0:
+        # Un rumbo nuevo al azar, en cualquier dirección
+        direccion = Vector2.from_angle(randf() * TAU)
+        cambio = randf_range(cambio_min, cambio_max)
+    position += direccion * velocidad * delta
+    var ventana := get_viewport_rect().size
+    position = position.clamp(Vector2.ZERO, ventana)</code></pre></div>
+<div class="bloque" id="anexo5-2-3"><div class="cabecera"><code>generador.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # Generador: objetos al azar, lejos del jugador
+
+@export var escena: PackedScene  # El objeto que aparece
+@export var protagonista: Node2D
+@export var distancia := 250.0   # Mínima al protagonista
+
+@onready var temporizador: Timer = $Timer
+
+func _ready() -&gt; void:
+    temporizador.timeout.connect(_on_timeout)
+    temporizador.start(randf_range(2.0, 5.0))
+
+func _on_timeout() -&gt; void:
+    var objeto := escena.instantiate() as Node2D  # Una copia
+    var zona := get_viewport_rect().grow(-32)  # Sin bordes
+    var lejos_de := protagonista.position
+    var punto := Vector2.ZERO
+    for intento in 100:  # Muestreo por rechazo
+        var azar := Vector2(randf(), randf())  # De 0 a 1
+        punto = zona.position + zona.size * azar
+        if punto.distance_to(lejos_de) &gt;= distancia:
+            break
+    objeto.position = punto
+    add_child(objeto)
+    temporizador.start(randf_range(2.0, 5.0))</code></pre></div>
+<h2 id="capitulo-6">6. Físicas <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a6-1">6.1 Fuerza, velocidad y aceleración</h3>
+<div class="bloque" id="a6-1-1"><div class="cabecera"><code>nave_inercia.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Una nave con inercia
+
+@export var empuje := 600.0   # Aceleración en px/s²
+@export var frenado := 300.0  # Desaceleración sin teclas
+@export var maxima := 350.0   # Rapidez máxima en px/s
+
+var velocidad := Vector2.ZERO
+
+func _process(delta: float) -&gt; void:
+    var x := Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;)
+    var y := Input.get_axis(&quot;ui_up&quot;, &quot;ui_down&quot;)
+    var direccion := Vector2(x, y).normalized()
+    if direccion != Vector2.ZERO:
+        # La aceleración cambia la velocidad
+        velocidad += direccion * empuje * delta
+    else:
+        var paso := frenado * delta  # Frena poco a poco
+        velocidad = velocidad.move_toward(Vector2.ZERO, paso)
+    velocidad = velocidad.limit_length(maxima)
+    position += velocidad * delta  # Y la velocidad, la posición</code></pre></div>
+<h3 id="a6-2">6.2 Gravedad, saltos y proyectiles</h3>
+<div class="bloque" id="a6-2-1"><div class="cabecera"><code>proyectil.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Sprite2D  # Un proyectil con gravedad
+
+var velocidad := Vector2(300, -500)  # Hacia arriba a la derecha
+var gravedad := Vector2(0, 980)      # px/s², hacia abajo
+
+func _process(delta: float) -&gt; void:
+    velocidad += gravedad * delta  # La gravedad, a la velocidad
+    position += velocidad * delta  # La velocidad, a la posición</code></pre></div>
+<div class="bloque" id="a6-2-2"><div class="cabecera"><code>plataformas.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Un personaje de plataformas
+
+@export var rapidez := 300.0       # px/s
+@export var altura_salto := 128.0  # Píxeles
+
+func _physics_process(delta: float) -&gt; void:
+    if not is_on_floor():  # En el aire, la gravedad actúa
+        velocity += get_gravity() * delta
+    var saltar := Input.is_action_just_pressed(&quot;ui_accept&quot;)
+    if saltar and is_on_floor():
+        velocity.y = -sqrt(2.0 * get_gravity().y * altura_salto)
+    velocity.x = Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;) * rapidez
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="a6-2-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Velocidad inicial para ir de «desde» a «hasta» en «tiempo»
+func velocidad_de_tiro(desde: Vector2, hasta: Vector2,
+        tiempo: float, gravedad: Vector2) -&gt; Vector2:
+    var recto := (hasta - desde) / tiempo  # Sin gravedad
+    return recto - gravedad * tiempo / 2.0  # Compensa la caída</code></pre></div>
+<h3 id="a6-3">6.3 Cuerpos físicos</h3>
+<div class="bloque" id="a6-3-1"><div class="cabecera"><code>protagonista_arriba.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Un protagonista visto desde arriba
+
+@export var rapidez := 200.0  # px/s
+
+func _physics_process(_delta: float) -&gt; void:
+    # Sin gravedad: las cuatro flechas dan la dirección
+    var direccion := Input.get_vector(&quot;ui_left&quot;, &quot;ui_right&quot;,
+            &quot;ui_up&quot;, &quot;ui_down&quot;)
+    velocity = direccion * rapidez
+    move_and_slide()  # Choca y se desliza por las paredes</code></pre></div>
+<h3 id="a6-4">6.4 Colisiones, capas y máscaras</h3>
+<div class="bloque" id="a6-4-1"><div class="cabecera"><code>pelota.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Una pelota que rebota en todo
+
+@export var rapidez := 400.0  # px/s
+
+func _ready() -&gt; void:
+    velocity = Vector2(1, -1).normalized() * rapidez
+
+func _physics_process(delta: float) -&gt; void:
+    # move_and_collide() se detiene al chocar y lo cuenta
+    var choque := move_and_collide(velocity * delta)
+    if choque:
+        velocity = velocity.bounce(choque.get_normal())</code></pre></div>
+<div class="bloque" id="a6-4-2"><div class="cabecera"><code>guardia.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # Un guardia que no ve a través de las paredes
+
+@export var jugador: Node2D
+
+@onready var rayo: RayCast2D = $RayCast2D
+
+func hay_linea_de_vision() -&gt; bool:
+    # El destino del rayo se mide desde el propio guardia
+    rayo.target_position = to_local(jugador.global_position)
+    rayo.force_raycast_update()  # Recalcula el rayo ya
+    if not rayo.is_colliding():
+        return true  # No hay nada en medio
+    return rayo.get_collider() == jugador  # Lo primero es él</code></pre></div>
+<h3 id="a6-5">6.5 Áreas y señales</h3>
+<div class="bloque" id="a6-5-1"><div class="cabecera"><code>moneda.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Area2D  # Una moneda que se recoge al tocarla
+
+signal recogida(valor: int)  # Su propia señal
+
+@export var valor := 10
+
+func _ready() -&gt; void:
+    body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node2D) -&gt; void:
+    if body.is_in_group(&quot;jugador&quot;):  # Solo el jugador
+        recogida.emit(valor)  # Avisa a quien le interese
+        queue_free()          # Y desaparece</code></pre></div>
+<div class="bloque" id="a6-5-2"><div class="cabecera"><code>enemigo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Un enemigo que persigue al ver
+
+@export var rapidez := 140.0  # px/s
+
+@onready var vision: Area2D = $Vision
+
+var objetivo: Node2D = null  # A quién persigue, si a alguien
+
+func _ready() -&gt; void:
+    vision.body_entered.connect(_on_entra)
+    vision.body_exited.connect(_on_sale)
+
+func _on_entra(body: Node2D) -&gt; void:
+    if body.is_in_group(&quot;jugador&quot;):
+        objetivo = body
+
+func _on_sale(body: Node2D) -&gt; void:
+    if body == objetivo:
+        objetivo = null
+
+func _physics_process(_delta: float) -&gt; void:
+    velocity = Vector2.ZERO
+    if objetivo:
+        var donde := objetivo.global_position
+        velocity = global_position.direction_to(donde) * rapidez
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="a6-5-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">const INVULNERABLE := 1000  # Milisegundos tras un golpe
+
+var vidas := 3
+var ultimo_golpe := -INVULNERABLE  # Aún no ha habido ninguno
+
+func recibir_golpe() -&gt; void:
+    var ahora := Time.get_ticks_msec()
+    if ahora - ultimo_golpe &lt; INVULNERABLE:
+        return  # Todavía es invulnerable
+    ultimo_golpe = ahora
+    vidas -= 1
+
+func _process(_delta: float) -&gt; void:
+    var tiempo := Time.get_ticks_msec() - ultimo_golpe
+    # Mientras es invulnerable, visible 50 ms de cada 100
+    visible = tiempo &gt;= INVULNERABLE or tiempo % 100 &lt; 50</code></pre></div>
+<h3 id="anexo6-1">Tu primer videojuego con IA: fase 4 · Parte 1. Práctica</h3>
+<div class="bloque" id="anexo6-1-1"><div class="cabecera"><code>niblo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Niblo: camina, cae y salta
+
+@export var rapidez := 300.0       # px/s
+@export var altura_salto := 160.0  # Píxeles
+
+func _ready() -&gt; void:
+    add_to_group(&quot;jugador&quot;)  # Así lo reconocen las manzanas
+
+func _physics_process(delta: float) -&gt; void:
+    if not is_on_floor():  # En el aire, la gravedad actúa
+        velocity += get_gravity() * delta
+    var saltar := Input.is_action_just_pressed(&quot;ui_accept&quot;)
+    if saltar and is_on_floor():
+        velocity.y = -sqrt(2.0 * get_gravity().y * altura_salto)
+    velocity.x = Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;) * rapidez
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="anexo6-1-2"><div class="cabecera"><code>marcador.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # Marcador: los puntos de toda la partida
+
+signal cambiado(puntos: int)  # Avisa cuando cambian
+
+var puntos := 0
+
+func sumar(cantidad: int) -&gt; void:
+    puntos += cantidad
+    cambiado.emit(puntos)
+
+func reiniciar() -&gt; void:
+    puntos = 0
+    cambiado.emit(puntos)</code></pre></div>
+<div class="bloque" id="anexo6-1-3"><div class="cabecera"><code>manzana.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends RigidBody2D  # Una manzana que cae, rebota y se recoge
+
+func _ready() -&gt; void:
+    $Recoger.body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body: Node) -&gt; void:
+    if body.is_in_group(&quot;jugador&quot;):
+        Marcador.sumar(1)  # El autoload, desde cualquier sitio
+        queue_free()       # La manzana desaparece</code></pre></div>
+<div class="bloque" id="anexo6-1-4"><div class="cabecera"><code>main_scene.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # MainScene: puntos, sonido y final
+
+const TOTAL := 5  # Manzanas que hay en la escena
+
+@onready var etiqueta: Label = $Puntos
+@onready var sonido: AudioStreamPlayer = $Sonido
+
+func _ready() -&gt; void:
+    Marcador.cambiado.connect(_on_cambiado)
+
+func _on_cambiado(puntos: int) -&gt; void:
+    etiqueta.text = &quot;Puntos: %d&quot; % puntos
+    sonido.pitch_scale = randf_range(0.8, 1.2)  # Nunca igual
+    sonido.play()
+    if puntos == TOTAL:  # Ya no queda ninguna
+        await get_tree().create_timer(0.5).timeout
+        get_tree().change_scene_to_file(&quot;res://fin.tscn&quot;)</code></pre></div>
+<div class="bloque" id="anexo6-1-5"><div class="cabecera"><code>pantalla.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Control  # Inicio y fin: un texto e Intro para jugar
+
+func _ready() -&gt; void:
+    var datos := {&quot;puntos&quot;: Marcador.puntos}  # Para {puntos}
+    $Texto.text = $Texto.text.format(datos)
+
+func _unhandled_input(event: InputEvent) -&gt; void:
+    if event.is_action_pressed(&quot;ui_accept&quot;):  # Intro
+        Marcador.reiniciar()
+        get_tree().change_scene_to_file(&quot;res://main_scene.tscn&quot;)</code></pre></div>
+<h3 id="anexo6-2">Tu primer videojuego con IA: fase 4 · Parte 2. Termina tu primer videojuego</h3>
+<div class="bloque" id="anexo6-2-1"><div class="cabecera"><code>npc.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name NPC extends CharacterBody2D
+
+@export var velocidad := 120.0
+
+func _physics_process(delta: float) -&gt; void:
+    mover(delta)     # Cada NPC fija su velocity
+    move_and_slide()  # Y se mueve chocando con todo
+
+func mover(_delta: float) -&gt; void:
+    pass  # Cada tipo de NPC lo sobrescribe</code></pre></div>
+<h2 id="capitulo-7">7. Tipos de movimiento <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a7-1">7.1 Perspectiva y desplazamiento</h3>
+<div class="bloque" id="a7-1-1"><div class="cabecera"><code>camara_pantallas.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Camera2D  # Una cámara que cambia de pantalla
+
+@export var jugador: Node2D
+
+func _process(_delta: float) -&gt; void:
+    var ventana := get_viewport_rect().size
+    # La pantalla del jugador, como una casilla: (1, 0)…
+    var pantalla := (jugador.global_position / ventana).floor()
+    # Su centro: esquina más media ventana
+    global_position = pantalla * ventana + ventana / 2.0</code></pre></div>
+<h3 id="a7-2">7.2 Movimiento sin orientación</h3>
+<div class="bloque" id="a7-2-1"><div class="cabecera"><code>pala_ia.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # La pala de la IA en un Pong vertical
+
+@export var pelota: Node2D
+@export var rapidez := 300.0  # px/s: si es poca, puede fallar
+@export var margen := 10.0    # Por menos de esto, no se mueve
+
+func _physics_process(_delta: float) -&gt; void:
+    var diferencia := pelota.position.y - position.y
+    velocity = Vector2.ZERO
+    if absf(diferencia) &gt; margen:
+        velocity.y = signf(diferencia) * rapidez
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="a7-2-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Altura a la que la pelota llegará a la x de la pala
+func prediccion(pelota: Vector2, velocidad: Vector2,
+        x_pala: float, alto: float) -&gt; float:
+    if velocidad.x == 0.0:
+        return pelota.y  # No avanza hacia la pala
+    var t := (x_pala - pelota.x) / velocidad.x  # Segundos
+    var y := pelota.y + velocidad.y * t  # Sin rebotes
+    # Se «dobla» en la pantalla: los rebotes como espejos
+    y = fposmod(y, 2.0 * alto)
+    return 2.0 * alto - y if y &gt; alto else y</code></pre></div>
+<h3 id="a7-3">7.3 Orientación sin rotación</h3>
+<div class="bloque" id="a7-3-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">const DIRECCIONES: Array[String] = [&quot;derecha&quot;,
+        &quot;abajo_derecha&quot;, &quot;abajo&quot;, &quot;abajo_izquierda&quot;,
+        &quot;izquierda&quot;, &quot;arriba_izquierda&quot;, &quot;arriba&quot;,
+        &quot;arriba_derecha&quot;]
+
+# Dirección de la velocidad, una de las ocho
+func direccion8(velocidad: Vector2) -&gt; String:
+    # El ángulo entre 45°, redondeado: el sector, de 0 a 7
+    var sector := roundi(velocidad.angle() / (PI / 4))
+    return DIRECCIONES[posmod(sector, 8)]
+
+@export var objetivo: Node2D
+@export var rapidez := 120.0  # px/s
+
+func _physics_process(_delta: float) -&gt; void:
+    var hacia := objetivo.global_position - global_position
+    # Cada eje por separado: -1, 0 o 1, con un margen de 8 px
+    var x := 0.0 if absf(hacia.x) &lt; 8.0 else signf(hacia.x)
+    var y := 0.0 if absf(hacia.y) &lt; 8.0 else signf(hacia.y)
+    var direccion := Vector2(x, y).normalized()
+    velocity = direccion * rapidez
+    move_and_slide()
+    if direccion != Vector2.ZERO:  # Parado, conserva la última
+        $AnimatedSprite2D.play(&quot;andar_&quot; + direccion8(direccion))</code></pre></div>
+<h3 id="a7-4">7.4 Orientación con rotación</h3>
+<div class="bloque" id="a7-4-1"><div class="cabecera"><code>nave.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Una nave como la de Asteroids
+
+@export var giro := 4.0      # Velocidad angular en rad/s
+@export var empuje := 500.0  # Aceleración en px/s²
+
+func _physics_process(delta: float) -&gt; void:
+    # La rotación cambia la orientación: giro por tiempo
+    var mando := Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;)
+    rotation += mando * giro * delta
+    var delante := Vector2.UP.rotated(rotation)  # Mira arriba
+    if Input.is_action_pressed(&quot;ui_up&quot;):
+        velocity += delante * empuje * delta
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="a7-4-2"><div class="cabecera"><code>perseguidor.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Area2D  # Un enemigo que persigue girando
+
+@export var objetivo: Node2D
+@export var rapidez := 180.0  # px/s
+@export var giro := 2.0       # rad/s: menos, curva más abierta
+
+func _physics_process(delta: float) -&gt; void:
+    var delante := Vector2.UP.rotated(rotation)
+    var hacia := objetivo.position - position
+    # Producto vectorial: positivo a la derecha (capítulo 3)
+    var lado := signf(delante.cross(hacia))
+    rotation += lado * giro * delta  # Gira hacia el objetivo
+    position += delante * rapidez * delta  # Y siempre avanza</code></pre></div>
+<h3 id="a7-5">7.5 Patrones de movimiento</h3>
+<div class="bloque" id="a7-5-1"><div class="cabecera"><code>patron.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # Un enemigo con un patrón de pasos
+
+const PASOS := [  # Dirección y segundos de cada paso
+    [Vector2.RIGHT, 2.0], [Vector2.DOWN, 0.5],
+    [Vector2.LEFT, 2.0], [Vector2.DOWN, 0.5]]
+
+@export var rapidez := 100.0  # px/s
+
+var paso := 0      # Paso actual
+var tiempo := 0.0  # Segundos en el paso actual
+
+func _process(delta: float) -&gt; void:
+    var direccion: Vector2 = PASOS[paso][0]
+    position += direccion * rapidez * delta
+    tiempo += delta
+    if tiempo &gt;= PASOS[paso][1]:  # Se acabó este paso
+        tiempo = 0.0
+        paso = (paso + 1) % PASOS.size()  # Al siguiente</code></pre></div>
+<div class="bloque" id="a7-5-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func objetivo(fantasma: String, pacman: Vector2i,
+        mira: Vector2i, blinky: Vector2i,
+        yo: Vector2i) -&gt; Vector2i:
+    match fantasma:
+        &quot;Blinky&quot;:
+            return pacman  # Directo a por él
+        &quot;Pinky&quot;:
+            return pacman + mira * 4  # Le corta el paso
+        &quot;Inky&quot;:
+            var delante := pacman + mira * 2
+            return delante + (delante - blinky)  # El doble
+        _:  # Clyde: lejos, persigue; cerca, a su esquina
+            var lejos := (pacman - yo).length() &gt; 8
+            return pacman if lejos else Vector2i(0, 30)</code></pre></div>
+<h3 id="anexo7-1">Práctica: dos clásicos con IA · Parte 1. Un <em>Breakout</em> contra la IA</h3>
+<div class="bloque" id="anexo7-1-1"><div class="cabecera"><code>jugador.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # La pala del jugador: solo en x
+
+@export var rapidez := 600.0  # px/s
+
+func _physics_process(_delta: float) -&gt; void:
+    velocity.x = Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;) * rapidez
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="anexo7-1-2"><div class="cabecera"><code>pelota.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # La pelota: rebota y rompe ladrillos
+
+signal punto(para: String)  # Quién gana el punto
+
+@export var rapidez := 420.0  # px/s
+
+func _ready() -&gt; void:
+    sacar()
+
+func sacar() -&gt; void:
+    position = get_viewport_rect().size / 2.0
+    var x := randf_range(-0.6, 0.6)
+    var y := 1.0 if randf() &lt; 0.5 else -1.0  # Hacia una pala
+    velocity = Vector2(x, y).normalized() * rapidez
+
+func _physics_process(delta: float) -&gt; void:
+    var choque := move_and_collide(velocity * delta)
+    if choque:
+        rebotar(choque)
+    if position.y &gt; get_viewport_rect().size.y:
+        punto.emit(&quot;ia&quot;)  # Se ha colado por abajo
+        sacar()
+    elif position.y &lt; 0.0:
+        punto.emit(&quot;jugador&quot;)  # Se ha colado por arriba
+        sacar()
+
+func rebotar(choque: KinematicCollision2D) -&gt; void:
+    var otro := choque.get_collider() as Node2D
+    if otro.is_in_group(&quot;palas&quot;):
+        # Cuanto más lejos del centro de la pala, más se inclina
+        var desvio := (position.x - otro.position.x) / 60.0
+        var hacia := signf(position.y - otro.position.y)
+        var direccion := Vector2(clampf(desvio, -1, 1), hacia)
+        velocity = direccion.normalized() * rapidez
+    else:
+        velocity = velocity.bounce(choque.get_normal())
+        if otro.is_in_group(&quot;ladrillos&quot;):
+            otro.queue_free()</code></pre></div>
+<div class="bloque" id="anexo7-1-3"><div class="cabecera"><code>main_scene.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # MainScene: los ladrillos y los puntos
+
+@export var escena_ladrillo: PackedScene
+
+var puntos := {&quot;jugador&quot;: 0, &quot;ia&quot;: 0}
+
+func _ready() -&gt; void:
+    $Pelota.punto.connect(_on_punto)
+    for fila in 6:
+        var color := Color.from_hsv(fila / 6.0, 0.6, 0.9)
+        for columna in 12:
+            var ladrillo: Node2D = escena_ladrillo.instantiate()
+            # Paso de 92 × 28: el ladrillo más 4 px de hueco
+            var x := 134.0 + 92.0 * columna
+            ladrillo.position = Vector2(x, 122.0 + 28.0 * fila)
+            ladrillo.modulate = color
+            add_child(ladrillo)
+
+func _on_punto(para: String) -&gt; void:
+    puntos[para] += 1
+    $PuntosJugador.text = &quot;Jugador: %d&quot; % puntos[&quot;jugador&quot;]
+    $PuntosIA.text = &quot;IA: %d&quot; % puntos[&quot;ia&quot;]</code></pre></div>
+<div class="bloque" id="anexo7-1-4"><div class="cabecera"><code>ia.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # La pala de la IA: sigue a la pelota
+
+@export var pelota: CharacterBody2D
+@export var rapidez := 300.0  # px/s: menos que el jugador
+@export var margen := 12.0    # Por menos de esto, no se mueve
+
+@onready var centro_x := position.x  # Adonde vuelve si espera
+
+func _physics_process(_delta: float) -&gt; void:
+    # Percibe: ¿la pelota viene hacia arriba, hacia ella?
+    var viene := pelota.velocity.y &lt; 0.0
+    # Decide: si viene, va a por ella; si no, vuelve al centro
+    var destino := pelota.position.x if viene else centro_x
+    var diferencia := destino - position.x
+    # Se mueve: solo en x y como mucho a su rapidez
+    velocity.x = 0.0
+    if absf(diferencia) &gt; margen:
+        velocity.x = signf(diferencia) * rapidez
+    move_and_slide()</code></pre></div>
+<h3 id="anexo7-2">Práctica: dos clásicos con IA · Parte 2. Un <em>Asteroids</em> con enemigos</h3>
+<div class="bloque" id="anexo7-2-1"><div class="cabecera"><code>bala.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Area2D  # Una bala que avanza y destruye enemigos
+
+@export var rapidez := 700.0  # px/s
+
+func _ready() -&gt; void:
+    area_entered.connect(_on_area_entered)
+    get_tree().create_timer(1.2).timeout.connect(queue_free)
+
+func _physics_process(delta: float) -&gt; void:
+    position += Vector2.UP.rotated(rotation) * rapidez * delta
+
+func _on_area_entered(otra: Area2D) -&gt; void:
+    if otra is Enemigo:  # La clase del paso 9
+        otra.queue_free()
+        queue_free()
+        get_parent().sumar_punto()  # MainScene, en el paso 10</code></pre></div>
+<div class="bloque" id="anexo7-2-2"><div class="cabecera"><code>nave.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # La nave: gira, acelera y dispara
+
+@export var giro := 4.0        # Velocidad angular en rad/s
+@export var empuje := 500.0    # Aceleración en px/s²
+@export var rozamiento := 0.8  # Cuánto frena sola
+@export var escena_bala: PackedScene
+
+func _physics_process(delta: float) -&gt; void:
+    # Con rotación: la orientación cambia girando
+    var mando := Input.get_axis(&quot;ui_left&quot;, &quot;ui_right&quot;)
+    rotation += mando * giro * delta
+    var delante := Vector2.UP.rotated(rotation)  # Mira arriba
+    if Input.is_action_pressed(&quot;ui_up&quot;):
+        velocity += delante * empuje * delta  # Acelera
+    velocity *= exp(-rozamiento * delta)  # Frena
+    move_and_slide()
+    var ventana := get_viewport_rect().size
+    position.x = wrapf(position.x, 0.0, ventana.x)
+    position.y = wrapf(position.y, 0.0, ventana.y)
+    if Input.is_action_just_pressed(&quot;ui_accept&quot;):  # Dispara
+        var bala := escena_bala.instantiate() as Area2D
+        bala.position = position + delante * 36.0  # El morro
+        bala.rotation = rotation
+        get_parent().add_child(bala)
+        $Disparo.play()</code></pre></div>
+<div class="bloque" id="anexo7-2-3"><div class="cabecera"><code>enemigo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Enemigo
+extends Area2D  # Un enemigo con uno de tres patrones
+
+enum Patron { PERSEGUIR, ORBITAR, ZIGZAG }
+
+@export var patron := Patron.PERSEGUIR
+@export var rapidez := 140.0  # px/s
+@export var giro := 2.0       # Velocidad angular en rad/s
+@export var objetivo: Node2D  # La nave
+
+var tiempo := 0.0
+
+func _physics_process(delta: float) -&gt; void:
+    tiempo += delta
+    match patron:
+        Patron.PERSEGUIR: perseguir(delta)
+        Patron.ORBITAR: orbitar(delta)
+        Patron.ZIGZAG: zigzag(delta)
+
+# Con rotación: gira poco a poco hacia la nave y avanza
+func perseguir(delta: float) -&gt; void:
+    var hacia := objetivo.position - position
+    var meta := Vector2.UP.angle_to(hacia)  # Mira arriba
+    rotation = rotate_toward(rotation, meta, giro * delta)
+    position += Vector2.UP.rotated(rotation) * rapidez * delta
+
+# Sin rotación: da vueltas a la nave y mira hacia donde va
+func orbitar(delta: float) -&gt; void:
+    var angulo := tiempo * 1.2  # Radianes recorridos
+    var radio := Vector2.from_angle(angulo) * 200.0  # 200 px
+    mover_hacia(objetivo.position + radio, delta)
+
+# Sin rotación: va hacia la nave haciendo eses
+func zigzag(delta: float) -&gt; void:
+    var hacia := (objetivo.position - position).normalized()
+    var lado := hacia.orthogonal() * sin(tiempo * 5.0)
+    mover_hacia(position + hacia + lado, delta)
+
+# Avanza hacia un punto y se orienta de golpe hacia allí
+func mover_hacia(punto: Vector2, delta: float) -&gt; void:
+    var paso := position.direction_to(punto) * rapidez * delta
+    position += paso
+    if paso != Vector2.ZERO:
+        rotation = Vector2.UP.angle_to(paso)</code></pre></div>
+<div class="bloque" id="anexo7-2-4"><div class="cabecera"><code>main_scene.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # MainScene: enemigos, puntos y vidas
+
+@export var escena_enemigo: PackedScene
+
+var puntos := 0
+var vidas := 3
+
+func _ready() -&gt; void:
+    $Timer.timeout.connect(aparecer)
+    actualizar()
+
+func aparecer() -&gt; void:
+    var enemigo := escena_enemigo.instantiate() as Enemigo
+    var ancho := get_viewport_rect().size.x
+    enemigo.position = Vector2(randf() * ancho, 0.0)  # Arriba
+    enemigo.rotation = randf() * TAU
+    enemigo.patron = Enemigo.Patron.values().pick_random()
+    enemigo.objetivo = $Nave
+    enemigo.body_entered.connect(_on_choque.bind(enemigo))
+    add_child(enemigo)
+
+func _on_choque(cuerpo: Node2D, enemigo: Enemigo) -&gt; void:
+    if cuerpo != $Nave:
+        return
+    enemigo.queue_free()  # El que te toca desaparece
+    vidas -= 1
+    actualizar()
+    if vidas == 0:  # Fin: la partida vuelve a empezar
+        get_tree().reload_current_scene.call_deferred()
+
+func sumar_punto() -&gt; void:  # La llama cada bala que acierta
+    puntos += 1
+    actualizar()
+    $Explosion.pitch_scale = randf_range(0.8, 1.2)  # Nunca igual
+    $Explosion.play()
+
+func actualizar() -&gt; void:
+    $Marcador.text = &quot;PUNTOS %d   VIDAS %d&quot; % [puntos, vidas]</code></pre></div>
+<h2 id="capitulo-8">8. <em>Steering behaviors</em> <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a8-1">8.1 Fuerzas de dirección</h3>
+<div class="bloque" id="a8-1-1"><div class="cabecera"><code>vehiculo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Vehiculo
+extends CharacterBody2D  # Un personaje que se mueve con fuerzas
+
+@export var rapidez_maxima := 250.0  # px/s
+@export var fuerza_maxima := 600.0   # Su aceleración es F / m
+@export var masa := 1.0              # Más masa, menos agilidad
+@export var gira := true             # Si mira hacia donde va
+
+# Corrige la velocidad con la fuerza de dirección y se mueve
+func mover(fuerza: Vector2, delta: float) -&gt; void:
+    var aceleracion := fuerza_maxima / masa  # a = F / m
+    # Corrige lo que le falta, pero como mucho lo que da de sí
+    velocity += fuerza.limit_length(aceleracion * delta)
+    velocity = velocity.limit_length(rapidez_maxima)
+    move_and_slide()
+    if gira and velocity.length() &gt; 10.0:
+        rotation = Vector2.UP.angle_to(velocity)
+
+# Buscar: ir hacia un punto a toda velocidad
+func buscar(punto: Vector2) -&gt; Vector2:
+    var deseada := position.direction_to(punto) * rapidez_maxima
+    return deseada - velocity
+
+# Huir: alejarse de un punto, si está a menos de «panico» px
+func huir(punto: Vector2, panico := 250.0) -&gt; Vector2:
+    if position.distance_to(punto) &gt; panico:
+        return -velocity  # Ya está a salvo: frena
+    var deseada := punto.direction_to(position) * rapidez_maxima
+    return deseada - velocity
+
+# Llegar: buscar, pero frenando dentro del radio de frenado
+func llegar(punto: Vector2, frenado := 150.0) -&gt; Vector2:
+    var hacia := punto - position
+    var factor := minf(hacia.length() / frenado, 1.0)
+    var deseada := hacia.normalized() * rapidez_maxima * factor
+    return deseada - velocity
+
+# Perseguir: buscar el punto donde estará el otro
+func perseguir(otro: CharacterBody2D) -&gt; Vector2:
+    var distancia := position.distance_to(otro.position)
+    var t := distancia / rapidez_maxima  # Segundos
+    return buscar(otro.position + otro.velocity * t)
+
+# Evadir: huir del punto donde estará el perseguidor
+func evadir(otro: CharacterBody2D, panico := 250.0) -&gt; Vector2:
+    var distancia := position.distance_to(otro.position)
+    var t := distancia / rapidez_maxima
+    return huir(otro.position + otro.velocity * t, panico)
+
+var angulo_vagar := randf() * TAU  # Dónde está el punto
+
+# Vagar: buscar un punto de un círculo que va por delante
+func vagar(delta: float) -&gt; Vector2:
+    angulo_vagar += randf_range(-3.0, 3.0) * delta
+    var centro := position + velocity.normalized() * 100.0
+    var punto := centro + Vector2.from_angle(angulo_vagar) * 60
+    return buscar(punto)
+
+# Evitar obstáculos: un rayo hacia delante
+func evitar(rayo: RayCast2D) -&gt; Vector2:
+    var delante := velocity.normalized()
+    var largo := 40.0 + velocity.length() * 0.5  # Más si corre
+    var punta := global_position + delante * largo
+    rayo.target_position = rayo.to_local(punta)
+    rayo.force_raycast_update()
+    if not rayo.is_colliding():
+        return Vector2.ZERO
+    # Gira hacia el lado al que apunta la normal del obstáculo
+    var lado := delante.orthogonal()
+    if lado.dot(rayo.get_collision_normal()) &lt; 0.0:
+        lado = -lado
+    return lado * fuerza_maxima
+
+var punto_actual := 0  # Índice del punto del camino al que va
+
+# Seguir un camino: buscar cada punto y pasar al siguiente
+func seguir_camino(camino: PackedVector2Array) -&gt; Vector2:
+    if position.distance_to(camino[punto_actual]) &lt; 30.0:
+        punto_actual = (punto_actual + 1) % camino.size()
+    return buscar(camino[punto_actual])
+
+func separar(vecinos: Array[Node], radio := 60.0) -&gt; Vector2:
+    var lejos := Vector2.ZERO
+    for nodo in vecinos:
+        var otro := nodo as Node2D
+        var desde := position - otro.position
+        if otro != self and desde.length() &lt; radio:
+            # Cuanto más cerca está el vecino, más pesa
+            var cerca := radio - desde.length()
+            lejos += desde.normalized() * cerca
+    if lejos == Vector2.ZERO:
+        return Vector2.ZERO
+    return lejos.normalized() * rapidez_maxima - velocity
+
+func alinear(vecinos: Array[Node], radio := 120.0) -&gt; Vector2:
+    var suma := Vector2.ZERO
+    for nodo in vecinos:
+        var otro := nodo as CharacterBody2D
+        var distancia := position.distance_to(otro.position)
+        if otro != self and distancia &lt; radio:
+            suma += otro.velocity
+    if suma == Vector2.ZERO:
+        return Vector2.ZERO
+    return suma.normalized() * rapidez_maxima - velocity
+
+func cohesion(vecinos: Array[Node], radio := 120.0) -&gt; Vector2:
+    var centro := Vector2.ZERO
+    var cuantos := 0
+    for nodo in vecinos:
+        var otro := nodo as Node2D
+        var distancia := position.distance_to(otro.position)
+        if otro != self and distancia &lt; radio:
+            centro += otro.position
+            cuantos += 1
+    if cuantos == 0:
+        return Vector2.ZERO
+    return buscar(centro / cuantos)  # Su centro (capítulo 3)</code></pre></div>
+<h3 id="a8-5">8.5 Combinar comportamientos</h3>
+<div class="bloque" id="a8-5-1"><div class="cabecera"><code>zombi.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Vehiculo  # Un zombi que combina tres comportamientos
+
+@export var jugador: CharacterBody2D
+
+func _physics_process(delta: float) -&gt; void:
+    var zombis := get_tree().get_nodes_in_group(&quot;zombis&quot;)
+    var fuerza := perseguir(jugador) * 1.0
+    fuerza += separar(zombis) * 1.5
+    fuerza += evitar($RayCast2D) * 3.0
+    mover(fuerza, delta)</code></pre></div>
+<h3 id="anexo8-1">Tu segundo videojuego con IA: una <em>game jam</em> · Parte 1. Práctica: <em>steering behaviors</em></h3>
+<div class="bloque" id="anexo8-1-1"><div class="cabecera"><code>niblo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Vehiculo  # Niblo sigue al ratón y se para encima
+
+func _physics_process(delta: float) -&gt; void:
+    var raton := get_global_mouse_position()
+    mover(llegar(raton, 150.0), delta)</code></pre></div>
+<div class="bloque" id="anexo8-1-2"><div class="cabecera"><code>nave.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Vehiculo  # La nave: va adonde haces clic derecho
+
+var destino := Vector2.ZERO
+
+func _ready() -&gt; void:
+    destino = position  # Al empezar, se queda donde está
+
+func _physics_process(delta: float) -&gt; void:
+    mover(llegar(destino, 120.0), delta)
+
+func _unhandled_input(event: InputEvent) -&gt; void:
+    var clic := event as InputEventMouseButton
+    if clic and clic.pressed:
+        if clic.button_index == MOUSE_BUTTON_RIGHT:
+            destino = get_global_mouse_position()</code></pre></div>
+<div class="bloque" id="anexo8-1-3"><div class="cabecera"><code>enemigo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Vehiculo  # Un enemigo que busca la nave o huye de ella
+
+@export var objetivo: Node2D  # La nave del jugador
+@export var huye := false     # Si huye en lugar de buscar
+
+func _ready() -&gt; void:
+    add_to_group(&quot;enemigos&quot;)  # Así se encuentran unos a otros
+
+func _physics_process(delta: float) -&gt; void:
+    var fuerza := buscar(objetivo.position)
+    if huye:
+        fuerza = huir(objetivo.position, 250.0)
+    var vecinos := get_tree().get_nodes_in_group(&quot;enemigos&quot;)
+    fuerza += separar(vecinos) * 1.5  # Sin amontonarse
+    mover(fuerza, delta)
+    var ventana := get_viewport_rect().size
+    position = position.clamp(Vector2.ZERO, ventana)  # Dentro
+
+# Si toca la nave, la caza o es cazado
+func comprobar_choque() -&gt; void:
+    if position.distance_to(objetivo.position) &gt; 52.0:
+        return  # Dos círculos de 24 px: no se tocan
+    if not huye:  # Te ha cazado: la partida vuelve a empezar
+        get_tree().reload_current_scene.call_deferred()
+        return
+    remove_from_group(&quot;enemigos&quot;)  # La nave lo ha cazado
+    queue_free()
+    for otro in get_tree().get_nodes_in_group(&quot;enemigos&quot;):
+        if otro.huye:
+            return  # Aún queda alguna presa
+    print(&quot;¡Has cazado a todas las presas!&quot;)
+    get_tree().reload_current_scene.call_deferred()</code></pre></div>
+<h2 id="capitulo-9">9. <em>Tiles</em>, <em>waypoints</em> y <em>pathfinding</em> <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a9-2">9.2 <em>Waypoints</em> y patrullas</h3>
+<div class="bloque" id="a9-2-1"><div class="cabecera"><code>guardia.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Un guardia que patrulla
+
+@export var ruta: Node2D           # Sus hijos son los Marker2D
+@export var rapidez := 120.0       # px/s
+@export var ida_y_vuelta := false  # Si no, va en bucle
+
+var puntos: Array[Vector2] = []
+var actual := 0   # Índice del punto al que va
+var sentido := 1  # 1 hacia delante; -1 hacia atrás
+
+func _ready() -&gt; void:
+    for marca in ruta.get_children():
+        puntos.append((marca as Marker2D).global_position)
+
+func _physics_process(_delta: float) -&gt; void:
+    var meta := puntos[actual]
+    if global_position.distance_to(meta) &lt; 4.0:
+        var siguiente := actual + sentido
+        var fuera := siguiente &lt; 0 or siguiente &gt;= puntos.size()
+        if ida_y_vuelta and fuera:
+            sentido = -sentido  # En un extremo, da la vuelta
+        actual = posmod(actual + sentido, puntos.size())
+    velocity = global_position.direction_to(meta) * rapidez
+    move_and_slide()</code></pre></div>
+<h3 id="a9-3">9.3 Grafos</h3>
+<div class="bloque" id="a9-3-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">const MAPA: Array[String] = [
+    &quot;##########&quot;,
+    &quot;#...~~...#&quot;,
+    &quot;#.#.~~.#.#&quot;,
+    &quot;#...~~...#&quot;,
+    &quot;##########&quot;,
+]
+const COSTES := {&quot;.&quot;: 1.0, &quot;~&quot;: 5.0}  # El barro cuesta 5
+const LADOS: Array[Vector2i] = [Vector2i.RIGHT, Vector2i.DOWN,
+    Vector2i.LEFT, Vector2i.UP]
+
+# Cada casilla transitable → {vecina: coste de entrar en ella}
+func crear_grafo() -&gt; Dictionary:
+    var grafo := {}
+    for y in MAPA.size():
+        for x in MAPA[y].length():
+            if MAPA[y][x] == &quot;#&quot;:
+                continue  # Las paredes no son nodos
+            var vecinas := {}
+            for lado in LADOS:
+                var v := Vector2i(x, y) + lado
+                var letra := MAPA[v.y][v.x]
+                if COSTES.has(letra):
+                    vecinas[v] = COSTES[letra]
+            grafo[Vector2i(x, y)] = vecinas
+    return grafo</code></pre></div>
+<h3 id="a9-4">9.4 Dijkstra y A*</h3>
+<div class="bloque" id="a9-4-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># A*: el camino más barato de inicio a meta
+func a_estrella(grafo: Dictionary, inicio: Vector2i,
+        meta: Vector2i) -&gt; Array[Vector2i]:
+    var frontera := {inicio: 0.0}  # Casilla → f, por explorar
+    var coste := {inicio: 0.0}     # Casilla → g, el mejor
+    var viene_de := {inicio: inicio}
+    while not frontera.is_empty():
+        # La casilla de la frontera con menor f
+        var actual: Vector2i = frontera.keys()[0]
+        for casilla in frontera:
+            if frontera[casilla] &lt; frontera[actual]:
+                actual = casilla
+        frontera.erase(actual)
+        if actual == meta:
+            break
+        for vecina in grafo[actual]:
+            var g: float = coste[actual] + grafo[actual][vecina]
+            if not coste.has(vecina) or g &lt; coste[vecina]:
+                coste[vecina] = g  # Un camino mejor hasta ella
+                viene_de[vecina] = actual
+                frontera[vecina] = g + estimar(vecina, meta)
+    return reconstruir(viene_de, inicio, meta)
+
+# Heurística: la distancia Manhattan hasta la meta
+func estimar(casilla: Vector2i, meta: Vector2i) -&gt; float:
+    return absi(casilla.x - meta.x) + absi(casilla.y - meta.y)
+
+# Sigue viene_de desde la meta hasta el inicio
+func reconstruir(viene_de: Dictionary, inicio: Vector2i,
+        meta: Vector2i) -&gt; Array[Vector2i]:
+    var camino: Array[Vector2i] = []
+    if not viene_de.has(meta):
+        return camino  # No hay camino: vacío
+    var casilla := meta
+    while casilla != inicio:
+        camino.push_front(casilla)
+        casilla = viene_de[casilla]
+    camino.push_front(inicio)
+    return camino</code></pre></div>
+<h3 id="a9-5">9.5 A* en Godot</h3>
+<div class="bloque" id="a9-5-1"><div class="cabecera"><code>mapa.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Mapa
+extends TileMapLayer  # Datos: «transitable» y «coste»
+
+var rejilla := AStarGrid2D.new()
+
+func _ready() -&gt; void:
+    rejilla.region = get_used_rect()  # Las casillas pintadas
+    rejilla.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+    rejilla.update()  # Crea las casillas: antes que nada
+    for casilla in get_used_cells():
+        var datos := get_cell_tile_data(casilla)
+        if not datos.get_custom_data(&quot;transitable&quot;):
+            rejilla.set_point_solid(casilla)
+        var coste: float = datos.get_custom_data(&quot;coste&quot;)
+        rejilla.set_point_weight_scale(casilla, coste)
+
+# Camino de un punto a otro, por el centro de las casillas
+func camino(desde: Vector2, hasta: Vector2) -&gt; Array[Vector2]:
+    var a := local_to_map(to_local(desde))
+    var b := local_to_map(to_local(hasta))
+    var puntos: Array[Vector2] = []
+    for casilla in rejilla.get_id_path(a, b):
+        puntos.append(to_global(map_to_local(casilla)))
+    return puntos</code></pre></div>
+<h3 id="anexo9-1">Tu tercer videojuego con IA: fase 1 · Parte 1. Práctica: un laberinto en 3D</h3>
+<div class="bloque" id="anexo9-1-1"><div class="cabecera"><code>mundo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Mundo
+extends Node3D  # Construye el laberinto con un mapa de texto
+
+const MURO := preload(&quot;res://muro.tscn&quot;)
+const SUELO := preload(&quot;res://suelo.tscn&quot;)
+const LADO := 2.0  # Metros que mide cada casilla
+const MAPA: Array[String] = [
+    &quot;############&quot;,
+    &quot;#A........B#&quot;,
+    &quot;#.##.####..#&quot;,
+    &quot;#.#......#.#&quot;,
+    &quot;#.#.##.#.#.#&quot;,
+    &quot;#...#..#...#&quot;,
+    &quot;#.###.####.#&quot;,
+    &quot;#D........C#&quot;,
+    &quot;############&quot;,
+]
+
+var rejilla := AStarGrid2D.new()  # Para buscar caminos
+
+func _ready() -&gt; void:
+    rejilla.region = Rect2i(0, 0, MAPA[0].length(), MAPA.size())
+    rejilla.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+    rejilla.update()
+    for fila in MAPA.size():
+        for columna in MAPA[fila].length():
+            var casilla := Vector2i(columna, fila)
+            var tile := SUELO
+            if MAPA[fila][columna] == &quot;#&quot;:
+                tile = MURO
+                rejilla.set_point_solid(casilla)
+            var nodo: Node3D = tile.instantiate()
+            nodo.position = a_mundo(casilla)
+            add_child(nodo)
+
+# Centro de una casilla, en el suelo del mundo 3D
+func a_mundo(casilla: Vector2i) -&gt; Vector3:
+    return Vector3(casilla.x + 0.5, 0.0, casilla.y + 0.5) * LADO
+
+# Casilla en la que está un punto del mundo 3D
+func a_casilla(punto: Vector3) -&gt; Vector2i:
+    var columna := floori(punto.x / LADO)
+    var fila := floori(punto.z / LADO)
+    return Vector2i(columna, fila)
+
+func buscar(letra: String) -&gt; Vector3:
+    for fila in MAPA.size():
+        var columna := MAPA[fila].find(letra)
+        if columna &gt;= 0:  # find() da −1 si no está
+            return a_mundo(Vector2i(columna, fila))
+    return Vector3.ZERO
+
+# Camino con A* entre dos puntos, por el centro de las casillas
+func camino(desde: Vector3, hasta: Vector3) -&gt; Array[Vector3]:
+    var a := a_casilla(desde)
+    var b := a_casilla(hasta)
+    var puntos: Array[Vector3] = []
+    if not rejilla.is_in_boundsv(b):
+        return puntos  # Fuera del mapa: no hay camino
+    for casilla in rejilla.get_id_path(a, b):
+        puntos.append(a_mundo(casilla))
+    return puntos</code></pre></div>
+<div class="bloque" id="anexo9-1-2"><div class="cabecera"><code>caminante.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Caminante
+extends Sprite3D  # Un personaje que recorre caminos del mapa
+
+@export var mundo: Mundo     # MainScene, con mundo.gd
+@export var rapidez := 4.0   # Metros por segundo
+
+var camino: Array[Vector3] = []
+
+# Pide al mundo el camino más corto hasta un punto
+func ir_a(punto: Vector3) -&gt; void:
+    camino = mundo.camino(position, punto)
+    # Si ya va hacia el segundo punto, no vuelve al primero
+    if camino.size() &gt; 1:
+        var aqui := Vector3(position.x, 0.0, position.z)
+        if aqui.distance_to(camino[1]) &lt; Mundo.LADO:
+            camino.pop_front()
+
+func _process(delta: float) -&gt; void:
+    if camino.is_empty():
+        return
+    # El siguiente punto, a la altura del personaje
+    var meta := Vector3(camino[0].x, position.y, camino[0].z)
+    position = position.move_toward(meta, rapidez * delta)
+    if position == meta:  # move_toward() llega justo
+        camino.pop_front()</code></pre></div>
+<div class="bloque" id="anexo9-1-3"><div class="cabecera"><code>niblo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Caminante  # Niblo va adonde hagas clic
+
+func _unhandled_input(event: InputEvent) -&gt; void:
+    var clic := event as InputEventMouseButton
+    if clic and clic.pressed:
+        var camara := get_viewport().get_camera_3d()
+        var desde := camara.project_ray_origin(clic.position)
+        var hacia := camara.project_ray_normal(clic.position)
+        var suelo := Plane(Vector3.UP, 0.0)  # El plano y = 0
+        var punto = suelo.intersects_ray(desde, hacia)
+        if punto != null:  # null si el rayo no toca el suelo
+            ir_a(punto)</code></pre></div>
+<div class="bloque" id="anexo9-1-4"><div class="cabecera"><code>mubbit.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Caminante  # Mubbit patrulla por las letras del mapa
+
+const RUTA: Array[String] = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]
+var siguiente := 0  # Índice de la letra a la que va
+
+func _process(delta: float) -&gt; void:
+    if camino.is_empty():  # Ha llegado: a por la siguiente
+        ir_a(mundo.buscar(RUTA[siguiente]))
+        siguiente = (siguiente + 1) % RUTA.size()
+    super(delta)  # El _process() de Caminante lo mueve</code></pre></div>
+<h2 id="capitulo-10">10. Navegación en Godot 2D y 3D <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a10-1">10.1 Mallas de navegación</h3>
+<div class="bloque" id="a10-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Camino por la malla de navegación entre dos puntos
+func camino(desde: Vector2,
+        hasta: Vector2) -&gt; PackedVector2Array:
+    var mapa := get_world_2d().navigation_map
+    var servidor := NavigationServer2D
+    return servidor.map_get_path(mapa, desde, hasta, true)</code></pre></div>
+<h3 id="a10-2">10.2 Agentes de navegación</h3>
+<div class="bloque" id="a10-2-1"><div class="cabecera"><code>ir_al_clic_2d.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Va adonde hagas clic, por la malla
+
+@export var rapidez := 200.0  # px/s
+@onready var agente: NavigationAgent2D = $NavigationAgent2D
+
+func _unhandled_input(event: InputEvent) -&gt; void:
+    var clic := event as InputEventMouseButton
+    if clic and clic.pressed:
+        agente.target_position = get_global_mouse_position()
+
+func _physics_process(_delta: float) -&gt; void:
+    if agente.is_navigation_finished():
+        return  # Ha llegado, o no tiene adónde ir
+    var siguiente := agente.get_next_path_position()
+    velocity = global_position.direction_to(siguiente) * rapidez
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="a10-2-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func _physics_process(_delta: float) -&gt; void:
+    var meta := jugador.global_position
+    if agente.target_position.distance_to(meta) &gt; 32.0:
+        agente.target_position = meta  # Se ha movido
+    if agente.is_navigation_finished():
+        return
+    var siguiente := agente.get_next_path_position()
+    velocity = global_position.direction_to(siguiente) * rapidez
+    move_and_slide()</code></pre></div>
+<h3 id="a10-3">10.3 Obstáculos, atajos y evitación</h3>
+<div class="bloque" id="a10-3-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func _ready() -&gt; void:
+    agente.link_reached.connect(_al_llegar_a_enlace)
+
+# El agente ha llegado a un enlace: lo cruza de golpe
+func _al_llegar_a_enlace(detalles: Dictionary) -&gt; void:
+    global_position = detalles[&quot;link_exit_position&quot;]</code></pre></div>
+<div class="bloque" id="a10-3-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func _ready() -&gt; void:
+    agente.avoidance_enabled = true
+    agente.velocity_computed.connect(_al_calcular_velocidad)
+
+func _physics_process(_delta: float) -&gt; void:
+    if agente.is_navigation_finished():
+        return
+    var siguiente := agente.get_next_path_position()
+    var deseada := global_position.direction_to(siguiente)
+    agente.velocity = deseada * rapidez  # La que quiere llevar
+
+# El servidor devuelve una velocidad que no choca con nadie
+func _al_calcular_velocidad(segura: Vector2) -&gt; void:
+    velocity = segura
+    move_and_slide()</code></pre></div>
+<h3 id="a10-4">10.4 Navegación en 3D</h3>
+<div class="bloque" id="a10-4-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">@onready var region: NavigationRegion3D = $NavigationRegion3D
+
+func _ready() -&gt; void:
+    construir_nivel()  # Añade los muros y suelos a la región
+    region.bake_navigation_mesh()  # Hornea en otro hilo
+    await region.bake_finished
+    $Jugador.show()  # Con la malla lista, empieza la partida</code></pre></div>
+<div class="bloque" id="a10-4-2"><div class="cabecera"><code>ir_al_clic_3d.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody3D  # Va adonde hagas clic, en 3D
+
+@export var rapidez := 5.0  # m/s
+@onready var agente: NavigationAgent3D = $NavigationAgent3D
+
+func _unhandled_input(event: InputEvent) -&gt; void:
+    var clic := event as InputEventMouseButton
+    if clic and clic.pressed:
+        var camara := get_viewport().get_camera_3d()
+        var desde := camara.project_ray_origin(clic.position)
+        var hacia := camara.project_ray_normal(clic.position)
+        var hasta := desde + hacia * 1000.0  # Un rayo largo
+        var mapa := get_world_3d().navigation_map
+        var servidor := NavigationServer3D
+        var punto := servidor.map_get_closest_point_to_segment(
+            mapa, desde, hasta)
+        agente.target_position = punto
+
+func _physics_process(_delta: float) -&gt; void:
+    if agente.is_navigation_finished():
+        return
+    var siguiente := agente.get_next_path_position()
+    velocity = global_position.direction_to(siguiente) * rapidez
+    move_and_slide()</code></pre></div>
+<h3 id="anexo10-1">Tu tercer videojuego con IA: fase 2 · Parte 1. Práctica: un laberinto con navegación</h3>
+<div class="bloque" id="anexo10-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">@onready var region: NavigationRegion3D = $NavigationRegion3D</code></pre></div>
+<div class="bloque" id="anexo10-1-2"><div class="cabecera"><code>navegante.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Navegante
+extends CharacterBody3D  # Un cuerpo que se mueve con su agente
+
+@export var mundo: Mundo     # MainScene, con mundo.gd
+@export var rapidez := 4.0   # Metros por segundo
+@onready var agente: NavigationAgent3D = $NavigationAgent3D
+
+func _ready() -&gt; void:
+    agente.velocity_computed.connect(_al_calcular_velocidad)
+
+func _physics_process(_delta: float) -&gt; void:
+    if agente.is_navigation_finished():
+        agente.velocity = Vector3.ZERO  # Quieto, pero esquiva
+        return
+    var siguiente := agente.get_next_path_position()
+    var hacia := global_position.direction_to(siguiente)
+    agente.velocity = Vector3(hacia.x, 0.0, hacia.z) * rapidez
+
+# La velocidad segura, que no choca con los demás agentes
+func _al_calcular_velocidad(segura: Vector3) -&gt; void:
+    velocity = segura
+    move_and_slide()</code></pre></div>
+<div class="bloque" id="anexo10-1-3"><div class="cabecera"><code>niblo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Navegante  # Niblo va adonde hagas clic
+
+func _unhandled_input(event: InputEvent) -&gt; void:
+    var clic := event as InputEventMouseButton
+    if clic and clic.pressed:
+        var camara := get_viewport().get_camera_3d()
+        var desde := camara.project_ray_origin(clic.position)
+        var hacia := camara.project_ray_normal(clic.position)
+        var suelo := Plane(Vector3.UP, 0.0)  # El plano y = 0
+        var punto = suelo.intersects_ray(desde, hacia)
+        if punto != null:
+            agente.target_position = punto</code></pre></div>
+<div class="bloque" id="anexo10-1-4"><div class="cabecera"><code>mubbit.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Navegante  # Mubbit patrulla y persigue a Niblo
+
+const RUTA: Array[String] = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]
+@export var niblo: Node3D
+@export var vista := 6.0  # Metros a los que ve a Niblo
+var siguiente := 0
+
+func _physics_process(delta: float) -&gt; void:
+    var donde := niblo.global_position
+    if global_position.distance_to(donde) &lt; vista:
+        # Lo persigue: meta nueva si Niblo se ha movido
+        if agente.target_position.distance_to(donde) &gt; 1.0:
+            agente.target_position = donde
+    elif agente.is_navigation_finished():
+        # Patrulla: a la siguiente letra de la ruta
+        agente.target_position = mundo.buscar(RUTA[siguiente])
+        siguiente = (siguiente + 1) % RUTA.size()
+    super(delta)  # Navegante lo mueve</code></pre></div>
+<h2 id="capitulo-11">11. Máquinas de estado <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a11-1">11.1 Tomar decisiones</h3>
+<div class="bloque" id="a11-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var persiguiendo := false  # Una variable para cada cosa
+var buscando := false      # que puede estar haciendo
+var espera := 0.0
+
+func _physics_process(delta: float) -&gt; void:
+    if ve_al_jugador():
+        persiguiendo = true
+        buscando = false
+        perseguir()
+    elif persiguiendo:  # Acaba de perderlo
+        persiguiendo = false
+        buscando = true
+        espera = 0.0
+    elif buscando and espera &lt; 3.0:
+        espera += delta
+    else:
+        buscando = false
+        patrullar()</code></pre></div>
+<h3 id="a11-3">11.3 Estados con <code>enum</code> y <code>match</code></h3>
+<div class="bloque" id="a11-3-1"><div class="cabecera"><code>guardia.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Un guardia con una máquina de estados
+
+enum Estado { PATRULLAR, PERSEGUIR, BUSCAR }
+
+@export var jugador: Node2D
+@export var ruta: Array[Marker2D] = []  # Puntos de patrulla
+@export var rapidez := 120.0  # px/s
+@export var vista := 250.0    # px a los que ve al jugador
+var estado := Estado.PATRULLAR
+var siguiente := 0              # Punto de la ruta al que va
+var ultima_vez := Vector2.ZERO  # Donde vio al jugador
+var espera := 0.0               # Segundos que lleva buscando
+
+func _physics_process(delta: float) -&gt; void:
+    match estado:
+        Estado.PATRULLAR:
+            patrullar()
+        Estado.PERSEGUIR:
+            perseguir()
+        Estado.BUSCAR:
+            buscar(delta)
+    move_and_slide()
+
+func patrullar() -&gt; void:
+    var meta := ruta[siguiente].global_position
+    ir_hacia(meta)
+    if global_position.distance_to(meta) &lt; 4.0:
+        siguiente = (siguiente + 1) % ruta.size()
+    if ve_al_jugador():
+        estado = Estado.PERSEGUIR
+
+func perseguir() -&gt; void:
+    ultima_vez = jugador.global_position
+    ir_hacia(ultima_vez)
+    if not ve_al_jugador():
+        estado = Estado.BUSCAR
+        espera = 0.0
+
+func buscar(delta: float) -&gt; void:
+    if global_position.distance_to(ultima_vez) &gt; 4.0:
+        ir_hacia(ultima_vez)  # Va adonde lo vio
+    else:
+        velocity = Vector2.ZERO  # Ya está allí: espera
+        espera += delta
+    if ve_al_jugador():
+        estado = Estado.PERSEGUIR
+    elif espera &gt; 3.0:
+        estado = Estado.PATRULLAR
+
+func ir_hacia(punto: Vector2) -&gt; void:
+    velocity = global_position.direction_to(punto) * rapidez
+
+func ve_al_jugador() -&gt; bool:
+    var donde := jugador.global_position
+    return global_position.distance_to(donde) &lt; vista
+
+# Cambia de estado y hace las acciones de entrada del nuevo
+func cambiar_a(nuevo: Estado) -&gt; void:
+    estado = nuevo
+    match nuevo:
+        Estado.PERSEGUIR:
+            $Alerta.show()  # Un «!» sobre la cabeza
+        Estado.BUSCAR:
+            $Alerta.hide()
+            espera = 0.0
+
+# Estado siguiente para cada estado y cada evento
+const TRANSICIONES := {
+    Estado.PATRULLAR: {&quot;ve&quot;: Estado.PERSEGUIR},
+    Estado.PERSEGUIR: {&quot;pierde&quot;: Estado.BUSCAR},
+    Estado.BUSCAR: {&quot;ve&quot;: Estado.PERSEGUIR,
+        &quot;se_cansa&quot;: Estado.PATRULLAR},
+}
+
+func recibir(evento: String) -&gt; void:
+    var salidas: Dictionary = TRANSICIONES[estado]
+    if salidas.has(evento):  # Si no está, no cambia nada
+        cambiar_a(salidas[evento])</code></pre></div>
+<h3 id="a11-4">11.4 El patrón State</h3>
+<div class="bloque" id="a11-4-1"><div class="cabecera"><code>estado_base.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name EstadoBase
+extends Node  # Un estado: un nodo hijo de la máquina
+
+var personaje: CharacterBody2D  # Lo asigna la máquina
+
+func entrar() -&gt; void:  # Al entrar en el estado
+    pass
+
+func salir() -&gt; void:  # Al salir de él
+    pass
+
+# Hace su trabajo en cada paso y devuelve el nombre del
+# estado siguiente, o una cadena vacía para seguir en este
+func actualizar(_delta: float) -&gt; String:
+    return &quot;&quot;</code></pre></div>
+<div class="bloque" id="a11-4-2"><div class="cabecera"><code>maquina_estados.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name MaquinaEstados
+extends Node  # Pasa el trabajo al estado actual
+
+@export var inicial: EstadoBase
+var actual: EstadoBase
+@onready var personaje: CharacterBody2D = get_parent()
+
+func _ready() -&gt; void:
+    for estado: EstadoBase in get_children():
+        estado.personaje = personaje
+    actual = inicial
+    actual.entrar()
+
+func _physics_process(delta: float) -&gt; void:
+    var siguiente := actual.actualizar(delta)
+    if siguiente != &quot;&quot;:
+        actual.salir()
+        actual = get_node(siguiente)  # El nodo con ese nombre
+        actual.entrar()
+    personaje.move_and_slide()</code></pre></div>
+<div class="bloque" id="a11-4-3"><div class="cabecera"><code>perseguir.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends EstadoBase  # Perseguir: va hacia el jugador si lo ve
+
+@export var jugador: Node2D
+@export var rapidez := 120.0  # px/s
+@export var vista := 250.0    # px
+
+func entrar() -&gt; void:
+    personaje.get_node(&quot;Alerta&quot;).show()  # Un «!»
+
+func salir() -&gt; void:
+    personaje.get_node(&quot;Alerta&quot;).hide()
+
+func actualizar(_delta: float) -&gt; String:
+    var donde := jugador.global_position
+    var desde := personaje.global_position
+    personaje.velocity = desde.direction_to(donde) * rapidez
+    if desde.distance_to(donde) &gt; vista:
+        return &quot;Buscar&quot;  # Lo ha perdido
+    return &quot;&quot;</code></pre></div>
+<h3 id="anexo11-1">Tu cuarto videojuego con IA: fase 1 · Parte 1. Práctica: Mubbits con máquina de estados</h3>
+<div class="bloque" id="anexo11-1-1"><div class="cabecera"><code>mubbit.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Navegante  # Mubbit decide con una máquina de estados
+
+enum Estado { PATRULLAR, PERSEGUIR, BUSCAR }
+
+const RUTA: Array[String] = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]
+@export var niblo: CharacterBody3D
+@export var vista := 7.0  # Metros a los que puede ver a Niblo
+var estado := Estado.PATRULLAR
+var siguiente := 0  # Letra de la ruta a la que va
+var espera := 0.0   # Segundos que lleva buscando
+@onready var etiqueta: Label3D = $Label3D
+
+func _physics_process(delta: float) -&gt; void:
+    match estado:
+        Estado.PATRULLAR:
+            patrullar()
+        Estado.PERSEGUIR:
+            perseguir()
+        Estado.BUSCAR:
+            buscar(delta)
+    super(delta)  # Navegante lo lleva hasta su meta
+
+func patrullar() -&gt; void:
+    if agente.is_navigation_finished():  # A la siguiente letra
+        agente.target_position = mundo.buscar(RUTA[siguiente])
+        siguiente = (siguiente + 1) % RUTA.size()
+    if ve_a_niblo():
+        cambiar_a(Estado.PERSEGUIR)
+
+func perseguir() -&gt; void:
+    var donde := niblo.global_position
+    if agente.target_position.distance_to(donde) &gt; 1.0:
+        agente.target_position = donde  # Niblo se ha movido
+    if not ve_a_niblo():
+        agente.target_position += niblo.velocity  # Adonde iba
+        cambiar_a(Estado.BUSCAR)
+
+func buscar(delta: float) -&gt; void:
+    espera += delta  # Segundos desde que lo perdió
+    if ve_a_niblo():
+        cambiar_a(Estado.PERSEGUIR)
+    elif espera &gt; 6.0:
+        cambiar_a(Estado.PATRULLAR)
+
+func cambiar_a(nuevo: Estado) -&gt; void:
+    estado = nuevo
+    espera = 0.0
+    etiqueta.text = Estado.keys()[nuevo]  # Su nombre, encima
+
+# Lo ve si está cerca y no hay nada en medio
+func ve_a_niblo() -&gt; bool:
+    var ojos := global_position + Vector3.UP  # A 1 m del suelo
+    var donde := niblo.global_position + Vector3.UP
+    if ojos.distance_to(donde) &gt; vista:
+        return false
+    var rayo := PhysicsRayQueryParameters3D.create(ojos, donde)
+    rayo.exclude = [get_rid()]  # Que no choque consigo mismo
+    var espacio := get_world_3d().direct_space_state
+    var choque := espacio.intersect_ray(rayo)
+    return choque.get(&quot;collider&quot;) == niblo</code></pre></div>
+<h2 id="capitulo-12">12. Mundos procedurales e IA que se adapta <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a12-2">12.2 Ruido y mazmorras</h3>
+<div class="bloque" id="a12-2-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Mapa de texto con agua, hierba y montañas, según el ruido
+func isla(columnas: int, filas: int,
+        semilla: int) -&gt; Array[String]:
+    var ruido := FastNoiseLite.new()
+    ruido.seed = semilla
+    ruido.frequency = 0.04  # Menor: manchas más grandes
+    var mapa: Array[String] = []
+    for fila in filas:
+        var linea := &quot;&quot;
+        for columna in columnas:
+            var altura := ruido.get_noise_2d(columna, fila)
+            if altura &lt; -0.15:
+                linea += &quot;~&quot;  # Agua
+            elif altura &lt; 0.3:
+                linea += &quot;.&quot;  # Hierba
+            else:
+                linea += &quot;^&quot;  # Montaña
+        mapa.append(linea)
+    return mapa</code></pre></div>
+<div class="bloque" id="a12-2-2"><div class="cabecera"><code>laberinto.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">class_name Laberinto
+extends RefCounted  # Genera laberintos como mapas de texto
+
+const SALTOS: Array[Vector2i] = [Vector2i(2, 0),  # A dos pasos
+    Vector2i(-2, 0), Vector2i(0, 2), Vector2i(0, -2)]
+
+# Columnas y filas impares; «S» es la casilla más lejana
+static func generar(columnas: int, filas: int,
+        desde: Vector2i) -&gt; Array[String]:
+    var mapa: Array[String] = []
+    for fila in filas:
+        mapa.append(&quot;#&quot;.repeat(columnas))  # Todo es muro
+    var zona := Rect2i(1, 1, columnas - 2, filas - 2)
+    var pila: Array[Vector2i] = [desde]
+    var salida := desde
+    var profundidad := 1
+    mapa[desde.y][desde.x] = &quot;.&quot;
+    while not pila.is_empty():
+        var actual: Vector2i = pila.back()
+        var cerradas: Array[Vector2i] = []
+        for salto in SALTOS:  # Casillas a dos pasos, sin abrir
+            var c := actual + salto
+            if zona.has_point(c) and mapa[c.y][c.x] == &quot;#&quot;:
+                cerradas.append(c)
+        if cerradas.is_empty():
+            pila.pop_back()  # Callejón sin salida: vuelve atrás
+            continue
+        var nueva: Vector2i = cerradas.pick_random()
+        var muro := (actual + nueva) / 2
+        mapa[muro.y][muro.x] = &quot;.&quot;  # Abre el muro de en medio
+        mapa[nueva.y][nueva.x] = &quot;.&quot;
+        pila.push_back(nueva)
+        if pila.size() &gt; profundidad:  # La más lejana
+            profundidad = pila.size()
+            salida = nueva
+    mapa[salida.y][salida.x] = &quot;S&quot;
+    return mapa</code></pre></div>
+<h3 id="a12-3">12.3 Dificultad dinámica</h3>
+<div class="bloque" id="a12-3-1"><div class="cabecera"><code>director.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # Director: ajusta la dificultad a cómo juegas
+
+var nivel := 0.3  # De 0, muy fácil, a 1, muy difícil
+
+# El jugador ha superado el reto: un poco más difícil
+func gana() -&gt; void:
+    nivel = minf(nivel + 0.1, 1.0)
+
+# El jugador ha perdido: más fácil, y más deprisa
+func pierde() -&gt; void:
+    nivel = maxf(nivel - 0.2, 0.0)
+
+# Un valor entre el de fácil y el de difícil, según el nivel
+func ajustar(facil: float, dificil: float) -&gt; float:
+    return lerpf(facil, dificil, nivel)</code></pre></div>
+<h3 id="a12-5">12.5 Q-learning en GDScript</h3>
+<div class="bloque" id="a12-5-1"><div class="cabecera"><code>q_learning.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # Niblo aprende con Q-learning a llegar al queso
+
+const MAPA: Array[String] = [&quot;...Q&quot;, &quot;.#.T&quot;, &quot;N...&quot;]
+const ACCIONES: Array[Vector2i] = [
+    Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
+const ALFA := 0.5     # Tasa de aprendizaje
+const GAMMA := 0.9    # Factor de descuento
+const EPSILON := 0.2  # Probabilidad de explorar
+
+var q: Dictionary[Vector2i, Array] = {}  # Casilla → 4 valores
+
+func _ready() -&gt; void:
+    seed(7)  # El mismo azar en cada ejecución
+    for fila in MAPA.size():
+        for columna in MAPA[fila].length():
+            q[Vector2i(columna, fila)] = [0.0, 0.0, 0.0, 0.0]
+    for episodio in 300:
+        var total := episodio_desde(Vector2i(0, 2))
+        print(&quot;Episodio &quot;, episodio, &quot;: &quot;, total)
+    mostrar()
+
+# Un episodio, desde una casilla hasta el queso o la trampa
+func episodio_desde(s: Vector2i) -&gt; float:
+    var total := 0.0  # Recompensa acumulada
+    while letra(s) != &quot;Q&quot; and letra(s) != &quot;T&quot;:
+        var a := elegir(s)
+        var s2 := mover(s, a)
+        var r := recompensa(s2)
+        var mejor: float = q[s2].max()  # Lo que espera allí
+        q[s][a] += ALFA * (r + GAMMA * mejor - q[s][a])
+        total += r
+        s = s2
+    return total
+
+func elegir(s: Vector2i) -&gt; int:
+    if randf() &lt; EPSILON:
+        return randi() % ACCIONES.size()  # Explora
+    var valores: Array = q[s]
+    return valores.find(valores.max())  # Explota
+
+func mover(s: Vector2i, a: int) -&gt; Vector2i:
+    var destino := s + ACCIONES[a]
+    if not q.has(destino) or letra(destino) == &quot;#&quot;:
+        return s  # Fuera del mapa o contra el muro: no se mueve
+    return destino
+
+func recompensa(s: Vector2i) -&gt; float:
+    match letra(s):
+        &quot;Q&quot;:
+            return 10.0   # El queso
+        &quot;T&quot;:
+            return -10.0  # La trampa
+    return -1.0  # Cada paso cuesta
+
+func letra(s: Vector2i) -&gt; String:
+    return MAPA[s.y][s.x]
+
+func mostrar() -&gt; void:
+    const FLECHAS := [&quot;↑&quot;, &quot;→&quot;, &quot;↓&quot;, &quot;←&quot;]
+    for fila in MAPA.size():
+        var linea := &quot;&quot;
+        for columna in MAPA[fila].length():
+            var v: Array = q[Vector2i(columna, fila)]
+            var i: int = v.find(v.max())  # La mejor acción
+            linea += &quot;%s %5.2f   &quot; % [FLECHAS[i], v[i]]
+        print(linea)</code></pre></div>
+<h3 id="anexo12-1">Tu cuarto videojuego con IA: fase 2 · Parte 1. Práctica: un laberinto que se adapta</h3>
+<div class="bloque" id="anexo12-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Derriba al azar muros entre dos pasillos, para que haya rodeos
+static func abrir_atajos(mapa: Array[String],
+        cuantos: int) -&gt; void:
+    var columnas := mapa[0].length()
+    var filas := mapa.size()
+    while cuantos &gt; 0:
+        var x := randi_range(1, columnas - 2)
+        var y := randi_range(1, filas - 2)
+        if (x + y) % 2 == 1 and mapa[y][x] == &quot;#&quot;:  # Entre dos
+            mapa[y][x] = &quot;.&quot;
+            cuantos -= 1</code></pre></div>
+<div class="bloque" id="anexo12-1-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var mapa := Laberinto.generar(13, 9, Vector2i(5, 3))</code></pre></div>
+<div class="bloque" id="anexo12-1-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">elif mapa[fila][columna] == &quot;S&quot;:
+    tile = SALIDA  # La casilla de la salida</code></pre></div>
+<div class="bloque" id="anexo12-1-4"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Centro de una casilla de suelo al azar
+func al_azar() -&gt; Vector3:
+    var casilla := Vector2i.ZERO  # Un muro, para empezar
+    while mapa[casilla.y][casilla.x] == &quot;#&quot;:
+        casilla.x = randi() % mapa[0].length()
+        casilla.y = randi() % mapa.size()
+    return a_mundo(casilla)</code></pre></div>
+<div class="bloque" id="anexo12-1-5"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func _ready() -&gt; void:
+    super()  # El _ready() de Navegante, que conecta su señal
+    rapidez = Director.ajustar(2.0, 4.0)
+    vista = Director.ajustar(4.0, 10.0)</code></pre></div>
+<div class="bloque" id="anexo12-1-6"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func patrullar() -&gt; void:
+    if agente.is_navigation_finished():
+        agente.target_position = mundo.al_azar()
+    if ve_a_niblo():
+        cambiar_a(Estado.PERSEGUIR)
+
+func perseguir() -&gt; void:
+    var donde := niblo.global_position
+    if global_position.distance_to(donde) &lt; 1.5:
+        Director.pierde()  # Lo ha atrapado: más fácil
+        get_tree().reload_current_scene.call_deferred()
+        return</code></pre></div>
+<div class="bloque" id="anexo12-1-7"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func _physics_process(delta: float) -&gt; void:
+    if global_position.distance_to(mundo.buscar(&quot;S&quot;)) &lt; 1.5:
+        Director.gana()  # Ha salido: otro, más difícil
+        get_tree().reload_current_scene.call_deferred()
+    super(delta)  # Navegante lo mueve</code></pre></div>
+<h2 id="capitulo-13">13. Redes y servidores de juegos <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a13-2">13.2 Multijugador en línea y <em>lag</em></h3>
+<div class="bloque" id="a13-2-1"><div class="cabecera"><code>jugador_remoto.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # El personaje de otro jugador, visto por la red
+
+var recibida := Vector2.ZERO   # Última posición que llegó
+var velocidad := Vector2.ZERO  # Y su velocidad en ese momento
+
+# La llama el código de red al recibir un paquete
+func al_recibir(posicion: Vector2, nueva: Vector2) -&gt; void:
+    recibida = posicion
+    velocidad = nueva
+
+func _process(delta: float) -&gt; void:
+    recibida += velocidad * delta  # Supone que sigue igual
+    position = position.lerp(recibida, 10.0 * delta)</code></pre></div>
+<h3 id="a13-3">13.3 Tipos de servidores</h3>
+<div class="bloque" id="a13-3-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">const RAPIDEZ_MAXIMA := 300.0  # px/s, la del juego
+const TICK := 1.0 / 30.0       # Segundos entre dos pasos
+
+# El cliente dice dónde está su jugador: ¿es posible?
+func mover(jugador: Node2D, nueva: Vector2) -&gt; void:
+    var maximo := RAPIDEZ_MAXIMA * TICK * 1.1  # Con margen
+    if jugador.position.distance_to(nueva) &lt;= maximo:
+        jugador.position = nueva
+    # Si no, lo ignora: el cliente recibirá la posición buena</code></pre></div>
+<h3 id="anexo13-2">Práctica: mensajes entre jugadores · Parte 2. Crear la sala y anunciarla</h3>
+<div class="bloque" id="anexo13-2-1"><div class="cabecera"><code>chat.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Control  # Un chat para la red local, con salas
+
+const PUERTO := 4242           # Por él viajan los mensajes
+const PUERTO_ANUNCIOS := 4243  # Por él se anuncian las salas
+var servidor := UDPServer.new()          # Si creas una sala
+var clientes: Array[PacketPeerUDP] = []  # Los que se han unido
+var conexion := PacketPeerUDP.new()      # Si te unes a una sala
+var anuncios := PacketPeerUDP.new()      # Anunciar o buscar
+@onready var nombre: LineEdit = %Nombre
+@onready var salas: ItemList = %Salas
+@onready var mensajes: RichTextLabel = %Mensajes
+@onready var texto: LineEdit = %Texto
+
+func _ready() -&gt; void:
+    %Crear.pressed.connect(crear_sala)
+    %Buscar.pressed.connect(buscar_salas)
+    salas.item_activated.connect(unirse)  # Doble clic
+    %Enviar.pressed.connect(enviar_texto)
+    texto.text_submitted.connect(enviar_texto.unbind(1))
+    $Anunciar.timeout.connect(anunciar)
+
+# «Crear sala»: espera jugadores y se anuncia en la red local
+func crear_sala() -&gt; void:
+    servidor.listen(PUERTO)
+    anuncios.set_broadcast_enabled(true)
+    var todos := &quot;255.255.255.255&quot;  # Difusión: toda la red
+    anuncios.set_dest_address(todos, PUERTO_ANUNCIOS)
+    $Anunciar.start()  # Un anuncio por segundo
+    mostrar({&quot;nombre&quot;: nombre.text,
+        &quot;texto&quot;: &quot;ha creado la sala&quot;})
+
+func anunciar() -&gt; void:
+    var sala := &quot;Sala de &quot; + nombre.text
+    anuncios.put_packet(sala.to_utf8_buffer())
+
+# «Buscar salas»: escucha los anuncios de la red local
+func buscar_salas() -&gt; void:
+    anuncios.bind(PUERTO_ANUNCIOS)
+
+# Cada sala nueva se añade a la lista, con su dirección IP
+func recibir_anuncios() -&gt; void:
+    while anuncios.get_available_packet_count() &gt; 0:
+        var sala := anuncios.get_packet().get_string_from_utf8()
+        var ip := anuncios.get_packet_ip()
+        var fila := &quot;%s (%s)&quot; % [sala, ip]
+        if not ya_esta(fila):
+            var i := salas.add_item(fila)
+            salas.set_item_metadata(i, ip)  # La IP, escondida
+
+func ya_esta(fila: String) -&gt; bool:
+    for i in salas.item_count:
+        if salas.get_item_text(i) == fila:
+            return true
+    return false
+
+# Doble clic en una sala: se une a ella y saluda
+func unirse(indice: int) -&gt; void:
+    var ip: String = salas.get_item_metadata(indice)
+    conexion.connect_to_host(ip, PUERTO)
+    enviar({&quot;nombre&quot;: nombre.text, &quot;texto&quot;: &quot;se ha unido&quot;})
+
+# «Enviar»: el servidor reparte; un cliente envía al servidor
+func enviar_texto() -&gt; void:
+    var mensaje := {&quot;nombre&quot;: nombre.text, &quot;texto&quot;: texto.text}
+    if servidor.is_listening():
+        repartir(mensaje)
+    else:
+        enviar(mensaje)
+    texto.clear()
+
+func enviar(mensaje: Dictionary) -&gt; void:
+    var texto_json := JSON.stringify(mensaje)
+    conexion.put_packet(texto_json.to_utf8_buffer())
+
+func leer(paquete: PackedByteArray) -&gt; Dictionary:
+    var texto_json := paquete.get_string_from_utf8()
+    var mensaje = JSON.parse_string(texto_json)
+    return mensaje if mensaje is Dictionary else {}
+
+func mostrar(mensaje: Dictionary) -&gt; void:
+    if mensaje.has(&quot;nombre&quot;) and mensaje.has(&quot;texto&quot;):
+        mensajes.append_text(&quot;[b]%s:[/b] %s\n&quot; % [
+            mensaje[&quot;nombre&quot;], mensaje[&quot;texto&quot;]])
+
+func _process(_delta: float) -&gt; void:
+    recibir_anuncios()
+    if servidor.is_listening():
+        servidor.poll()  # Atiende a los que llegan
+        while servidor.is_connection_available():
+            clientes.append(servidor.take_connection())
+        for cliente in clientes:
+            while cliente.get_available_packet_count() &gt; 0:
+                repartir(leer(cliente.get_packet()))
+    while conexion.get_available_packet_count() &gt; 0:
+        mostrar(leer(conexion.get_packet()))
+
+# El servidor enruta: muestra el mensaje y se lo manda a todos
+func repartir(mensaje: Dictionary) -&gt; void:
+    mostrar(mensaje)
+    var paquete := JSON.stringify(mensaje).to_utf8_buffer()
+    for cliente in clientes:
+        cliente.put_packet(paquete)</code></pre></div>
+<h2 id="capitulo-14">14. Multijugador en Godot <a class="arriba" href="#indice">↑ Índice</a></h2>
+<h3 id="a14-1">14.1 La API multijugador de Godot</h3>
+<div class="bloque" id="a14-1-1"><div class="cabecera"><code>red.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # Red: crea partidas, se une a ellas y avisa
+
+signal jugador_llega(id: int)
+signal jugador_se_va(id: int)
+
+const PUERTO := 4242
+const MAXIMO := 4  # Jugadores, contando el anfitrión
+
+func _ready() -&gt; void:
+    multiplayer.peer_connected.connect(jugador_llega.emit)
+    multiplayer.peer_disconnected.connect(jugador_se_va.emit)
+    multiplayer.server_disconnected.connect(salir)
+
+# Crea una partida en este ordenador: el anfitrión también juega
+func crear() -&gt; Error:
+    var par := ENetMultiplayerPeer.new()
+    var error := par.create_server(PUERTO, MAXIMO - 1)
+    if error == OK:
+        multiplayer.multiplayer_peer = par
+    return error
+
+# Se une a la partida del ordenador con esa dirección IP
+func unirse(ip: String) -&gt; Error:
+    var par := ENetMultiplayerPeer.new()
+    var error := par.create_client(ip, PUERTO)
+    if error == OK:
+        multiplayer.multiplayer_peer = par
+    return error
+
+# Cierra la conexión y vuelve a empezar
+func salir() -&gt; void:
+    multiplayer.multiplayer_peer.close()
+    multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+    get_tree().reload_current_scene()</code></pre></div>
+<h3 id="a14-2">14.2 Llamadas remotas</h3>
+<div class="bloque" id="a14-2-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Un jugador escribe: se lo pide al servidor, que es el 1
+func enviar_mensaje(texto: String) -&gt; void:
+    pedir_mensaje.rpc_id(1, texto)
+
+# Comando: cualquiera lo envía, pero solo el servidor lo atiende
+@rpc(&quot;any_peer&quot;, &quot;call_local&quot;, &quot;reliable&quot;)
+func pedir_mensaje(texto: String) -&gt; void:
+    if not multiplayer.is_server():
+        return
+    var autor := multiplayer.get_remote_sender_id()
+    mostrar_mensaje.rpc(autor, texto.left(200))  # Valida
+
+# Evento: solo el servidor lo envía, y llega a todos
+@rpc(&quot;authority&quot;, &quot;call_local&quot;, &quot;reliable&quot;)
+func mostrar_mensaje(autor: int, texto: String) -&gt; void:
+    $Mensajes.append_text(&quot;%d: %s\n&quot; % [autor, texto])</code></pre></div>
+<h3 id="a14-3">14.3 Aparecer y sincronizar nodos</h3>
+<div class="bloque" id="a14-3-1"><div class="cabecera"><code>jugador.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Cada jugador lo mueve su dueño
+
+@export var rapidez := 300.0  # px/s
+
+func _enter_tree() -&gt; void:
+    set_multiplayer_authority(name.to_int())  # Su dueño
+
+func _ready() -&gt; void:
+    if name != &quot;1&quot;:  # El anfitrión es Niblo; los demás, Mubbit
+        $Sprite2D.texture = load(&quot;res://mubbit.png&quot;)
+    if is_multiplayer_authority():  # Elige dónde empieza
+        position = Vector2(randf_range(100, 540), 240)
+
+func _physics_process(_delta: float) -&gt; void:
+    if not is_multiplayer_authority():
+        return  # Lo mueve otro ordenador; aquí solo se copia
+    var direccion := Input.get_vector(&quot;ui_left&quot;, &quot;ui_right&quot;,
+        &quot;ui_up&quot;, &quot;ui_down&quot;)
+    velocity = direccion * rapidez
+    move_and_slide()</code></pre></div>
+<h3 id="a14-4">14.4 Crear y unirse a partidas</h3>
+<div class="bloque" id="a14-4-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func abrir_puerto() -&gt; void:
+    var upnp := UPNP.new()
+    if upnp.discover() != UPNP.UPNP_RESULT_SUCCESS:
+        return  # No hay router con UPnP: hará falta otra vía
+    upnp.add_port_mapping(Red.PUERTO, 0, &quot;Mi juego&quot;)  # UDP
+    print(&quot;Comparte esta IP: &quot;, upnp.query_external_address())</code></pre></div>
+<h3 id="a14-5">14.5 Probar en red</h3>
+<div class="bloque" id="a14-5-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Ping de un jugador, en milisegundos (en el servidor)
+func ping(id: int) -&gt; float:
+    var enet: ENetMultiplayerPeer = multiplayer.multiplayer_peer
+    var par := enet.get_peer(id)
+    var ida_y_vuelta := ENetPacketPeer.PEER_ROUND_TRIP_TIME
+    return par.get_statistic(ida_y_vuelta)</code></pre></div>
+<h3 id="anexo14-1">Práctica: una partida en red · Parte 1. La red y el menú</h3>
+<div class="bloque" id="anexo14-1-1"><div class="cabecera"><code>main.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # La partida: un jugador por cada conexión
+
+const JUGADOR := preload(&quot;res://jugador.tscn&quot;)
+var puntos := {}  # Identificador de red → manzanas
+
+func _ready() -&gt; void:
+    $Menu/Crear.pressed.connect(crear)
+    $Menu/Unirse.pressed.connect(unirse)
+    var argumentos := OS.get_cmdline_args()  # Para probar
+    if &quot;--servidor&quot; in argumentos:
+        crear()
+    elif &quot;--cliente&quot; in argumentos:
+        unirse()
+
+func crear() -&gt; void:
+    if Red.crear() != OK:
+        return
+    $Menu.hide()
+    Red.jugador_llega.connect(anadir)
+    Red.jugador_se_va.connect(quitar)
+    anadir(1)  # El anfitrión es siempre el 1
+
+func unirse() -&gt; void:
+    if Red.unirse($Menu/IP.text) == OK:
+        $Menu.hide()
+
+# Solo en el servidor: el spawner lo copia en los clientes
+func anadir(id: int) -&gt; void:
+    var jugador := JUGADOR.instantiate()
+    jugador.name = str(id)  # Su nombre es su identificador
+    $Jugadores.add_child(jugador)
+
+func quitar(id: int) -&gt; void:
+    $Jugadores.get_node(str(id)).queue_free()
+
+# El servidor avisa a todos de que alguien ha cogido una manzana
+@rpc(&quot;authority&quot;, &quot;call_local&quot;, &quot;reliable&quot;)
+func sumar_punto(id: int) -&gt; void:
+    puntos[id] = puntos.get(id, 0) + 1
+    var texto := &quot;&quot;
+    for jugador in puntos:
+        texto += &quot;Jugador %d: %d\n&quot; % [jugador, puntos[jugador]]
+    $Marcador.text = texto</code></pre></div>
+<h3 id="anexo14-3">Práctica: una partida en red · Parte 3. La manzana y los puntos</h3>
+<div class="bloque" id="anexo14-3-1"><div class="cabecera"><code>manzana.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Area2D  # Solo el servidor decide quién coge la manzana
+
+func _ready() -&gt; void:
+    body_entered.connect(_al_tocar)
+
+func _al_tocar(jugador: Node2D) -&gt; void:
+    if not multiplayer.is_server():
+        return  # En los clientes, la manzana solo se ve
+    get_parent().sumar_punto.rpc(jugador.name.to_int())
+    position.x = randf_range(60, 580)  # Otro sitio al azar
+    position.y = randf_range(60, 300)</code></pre></div>
+
+<script>
+  // Botón «Copiar» de cada bloque
+  for (const boton of document.querySelectorAll(".bloque button")) {
+    boton.addEventListener("click", () => {
+      const codigo = boton.closest(".bloque").querySelector("pre").innerText;
+      navigator.clipboard.writeText(codigo).then(() => {
+        boton.textContent = "Copiado";
+        setTimeout(() => boton.textContent = "Copiar", 1500);
+      });
+    });
+  }
+  window.Prism = { manual: true };  // Se colorea al final, con la gramática ya completada
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js" integrity="sha512-HiD3V4nv8fcjtouznjT9TqDNDm1EXngV331YGbfVGeKUoH+OLkRTCMzA34ecjlgSQZpdHZupdSrqHY+Hz3l6uQ==" crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-gdscript.min.js" integrity="sha512-WeTwgMW7jACiwYqE1AEbk2zYK59qTFV5Ul1uLPSqMvvFZ0eCzvaK1R6zsAjl8+aUzfNrgdpwLpR/GmQNWUMBDw==" crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script>
+  // La gramática de Prism es de Godot 3: se le añaden las palabras clave y las anotaciones de Godot 4
+  if (window.Prism && Prism.languages.gdscript) {
+    Prism.languages.gdscript.keyword = new RegExp("\\b(?:and|as|assert|await|break|breakpoint|"
+      + "class|class_name|const|continue|elif|else|enum|extends|for|func|if|in|is|match|not|null|"
+      + "or|pass|preload|return|self|signal|static|super|var|when|while)\\b");
+    Prism.languages.insertBefore("gdscript", "keyword",
+      { annotation: { pattern: /@\w+/, alias: "builtin" } });
+    Prism.highlightAll();
+  }
+</script>
+</body>
+</html>
