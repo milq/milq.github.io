@@ -67,7 +67,7 @@
       <li><a href="#anexo1-3">Práctica: primeros pasos con Godot · Parte 3. Tu primer <em>script</em></a><span class="archivos"><a href="#anexo1-3-1"><code>hola_mundo.gd</code></a>, <a href="#anexo1-3-2"><code>hola_mundo.gd</code></a></span></li>
     </ul>
   </details></li>
-  <li><details><summary>2. GDScript <span class="cuenta">· 24 bloques</span></summary>
+  <li><details><summary>2. GDScript <span class="cuenta">· 25 bloques</span></summary>
     <ul>
       <li><a href="#a2-1">2.1 Variables y operadores aritméticos</a></li>
       <li><a href="#a2-2">2.2 <em>Arrays</em></a></li>
@@ -234,10 +234,9 @@ print(c.length())                  # 9
 print(c.substr(4, 5))              # Linux
 print(c.find(&quot;Linux&quot;))             # 4
 print(&quot;Línea 1\nLínea 2&quot;)          # Dos líneas</code></pre></div>
-<div class="bloque" id="a2-1-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var x: int = 5
-var y: int = 2
+<div class="bloque" id="a2-1-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var x: int = 3
+var y: int = 4
 print(&quot;He comprado &quot;, x, &quot; naranjas y &quot;, y, &quot; limones.&quot;)
-
 print(&quot;He comprado &quot; + str(x) + &quot; naranjas y &quot; + str(y)
         + &quot; limones.&quot;)
 print(&quot;He comprado %d naranjas y %d limones.&quot; % [x, y])</code></pre></div>
@@ -249,11 +248,11 @@ prints(type_string(typeof(kcal)), kcal is float)  # float true</code></pre></div
 var edades: Array[int] = [43, 72, 32, 22, 65]
 edades[3] = 57   # Modifica el elemento de índice 3
 edades[-1] = 12  # Y el último
-print(edades)    # [43, 72, 32, 57, 12]</code></pre></div>
+prints(mezcla[0], edades)  # texto [43, 72, 32, 57, 12]</code></pre></div>
 <div class="bloque" id="a2-2-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var nombres: Array[String] = [&quot;Nacho&quot;, &quot;David&quot;, &quot;Lola&quot;]
 nombres.insert(2, &quot;Alba&quot;)  # En la posición 2
 nombres.push_front(&quot;Bea&quot;)  # Al principio
-var ultimo: String = nombres.pop_back()  # &quot;Lola&quot;
+print(nombres.pop_back())  # Quita el último y lo devuelve: Lola
 nombres.sort()
 print(nombres)              # [&quot;Alba&quot;, &quot;Bea&quot;, &quot;David&quot;, &quot;Nacho&quot;]
 print(nombres.slice(1, 3))  # [&quot;Bea&quot;, &quot;David&quot;]
@@ -267,8 +266,8 @@ misma.append(4)
 prints(original, copia)            # [1, 2, 3, 4] [1, 2, 3]</code></pre></div>
 <h3 id="a2-3">2.3 Diccionarios</h3>
 <div class="bloque" id="a2-3-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var persona: Dictionary = {&quot;nombre&quot;: &quot;Ana&quot;, &quot;edad&quot;: 25}
-var edad: int = persona.get(&quot;edad&quot;, 0)      # 25
-var peso: float = persona.get(&quot;peso&quot;, 0.0)  # 0.0: no existe
+print(persona.get(&quot;edad&quot;, 0))    # 25
+print(persona.get(&quot;peso&quot;, 0.0))  # 0.0: no existe
 persona[&quot;edad&quot;] = 35          # Modifica un valor
 persona[&quot;ciudad&quot;] = &quot;Madrid&quot;  # Añade un par nuevo
 persona.erase(&quot;nombre&quot;)       # Elimina un par
@@ -283,9 +282,9 @@ print(enemigos[0].keys())     # [&quot;nombre&quot;, &quot;vida&quot;]</code></p
 <h3 id="a2-4">2.4 Condicionales</h3>
 <div class="bloque" id="a2-4-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var a: int = 5
 var b: int = 3
-var z: bool = a &gt;= b and a != b          # true
-z = a &lt; b or b == 3                      # true
-z = not (a == b) or (a &gt;= b and a != b)  # true</code></pre></div>
+print(a &gt;= b and a != b)                    # true
+print(a &lt; b or b == 3)                      # true
+print(not (a == b) or (a &gt;= b and a != b))  # true</code></pre></div>
 <div class="bloque" id="a2-4-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var calificacion: float = 9.5
 if calificacion &lt; 5.0:
     print(&quot;Suspenso.&quot;)
@@ -304,7 +303,7 @@ match daño:
     _:
         print(&quot;Golpe normal&quot;)
 
-var paridad: String = &quot;par&quot; if daño % 2 == 0 else &quot;impar&quot;</code></pre></div>
+print(&quot;par&quot; if daño % 2 == 0 else &quot;impar&quot;)  # par</code></pre></div>
 <h3 id="a2-5">2.5 Bucles</h3>
 <div class="bloque" id="a2-5-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">for i: int in range(5, -1, -1):
     print(i)  # 5, 4, 3, 2, 1 y 0
@@ -318,18 +317,20 @@ for fila: Array in anidado:
     for elemento: int in fila:
         print(elemento)  # 1, 2, 3, 4, 5 y 6</code></pre></div>
 <div class="bloque" id="a2-5-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var lista: Array[int] = [4, 8, 15, 16, 23, 42]
-var suma: int = 0          # Acumulador
-var primer_impar: int = -1
-var dobles: Array[int] = []
+var suma: int = 0            # Acumulador
+var dobles: Array[int] = []  # Construcción
 for n: int in lista:
     suma += n
-    dobles.append(n * 2)   # Construcción
+    dobles.append(n * 2)
+prints(suma, dobles)  # 108 [8, 16, 30, 32, 46, 84]</code></pre></div>
+<div class="bloque" id="a2-5-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var lista: Array[int] = [4, 8, 15, 16, 23, 42]
+var primer_impar: int = -1  # -1: todavía no hay ninguno
 for n: int in lista:
     if n % 2 == 0:
-        continue           # Salta los pares
+        continue            # Salta los pares
     primer_impar = n
-    break                  # Búsqueda: encontrado
-prints(suma, primer_impar, dobles[0])  # 108 15 8</code></pre></div>
+    break                   # Encontrado: termina
+print(primer_impar)         # 15</code></pre></div>
 <h3 id="a2-6">2.6 Funciones</h3>
 <div class="bloque" id="a2-6-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func cuadrado(entero: int) -&gt; int:
     return entero * entero
@@ -342,14 +343,25 @@ func _run() -&gt; void:
     print(suma(5))               # 5
     print(suma(cuadrado(2), 3))  # 7: primero, cuadrado(2)</code></pre></div>
 <div class="bloque" id="a2-6-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func curar(vida: int) -&gt; void:
-    vida += 50       # Cambia solo la copia local
+    vida += 50
+    print(vida)      # 70: cambia solo la copia local
 
 func vaciar(mochila: Array) -&gt; void:
-    mochila.clear()  # Vacía el array original</code></pre></div>
+    mochila.clear()  # Vacía el array original
+
+func _run() -&gt; void:
+    var vida: int = 20
+    var mochila: Array = [&quot;espada&quot;, &quot;poción&quot;]
+    curar(vida)
+    vaciar(mochila)
+    prints(vida, mochila)  # 20 []</code></pre></div>
 <div class="bloque" id="a2-6-3"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">func factorial(numero: int) -&gt; int:
     if numero &lt;= 1:
         return 1  # Caso base
-    return numero * factorial(numero - 1)</code></pre></div>
+    return numero * factorial(numero - 1)
+
+func _run() -&gt; void:
+    print(factorial(4))  # 24</code></pre></div>
 <div class="bloque" id="a2-6-4"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">var numeros: Array[int] = [1, 2, 3, 4, 5, 6]
 print(numeros.filter(func(n): return n % 2 == 0))  # [2, 4, 6]</code></pre></div>
 <h3 id="a2-7">2.7 Clases</h3>
@@ -364,7 +376,15 @@ print(numeros.filter(func(n): return n % 2 == 0))  # [2, 4, 6]</code></pre></div
 
     func _init(coordenada_x: int, coordenada_y: int) -&gt; void:
         _x = coordenada_x  # El constructor inicializa
-        _y = coordenada_y</code></pre></div>
+        _y = coordenada_y
+
+    func _to_string() -&gt; String:  # Lo que escribe print()
+        return &quot;(%d, %d)&quot; % [_x, _y]
+
+func _run() -&gt; void:
+    var punto := Punto.new(2, 3)  # Llama a _init()
+    punto.x = 5                   # Pasa por el setter
+    print(punto)                  # (5, 3)</code></pre></div>
 <div class="bloque" id="a2-7-2"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">class Animal:
     var _energia: int
     func _init(energia: int) -&gt; void:
@@ -378,7 +398,12 @@ class Perro extends Animal:
         super(energia)  # Constructor del padre
 
     func mover() -&gt; void:  # Sobrescribe el del padre
-        _energia -= 10</code></pre></div>
+        _energia -= 10
+
+func _run() -&gt; void:
+    var mascota: Animal = Perro.new(100)
+    mascota.mover()          # El de Perro
+    print(mascota._energia)  # 90</code></pre></div>
 <div class="bloque" id="a2-7-3"><div class="cabecera"><code>main.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node2D  # main.gd: una clase que hereda de Node2D
 
 func _ready() -&gt; void:
