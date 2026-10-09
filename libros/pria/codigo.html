@@ -67,7 +67,7 @@
       <li><a href="#anexo1-3">Práctica: primeros pasos con Godot · Parte 3. Tu primer <em>script</em></a><span class="archivos"><a href="#anexo1-3-1"><code>hola_mundo.gd</code></a>, <a href="#anexo1-3-2"><code>hola_mundo.gd</code></a></span></li>
     </ul>
   </details></li>
-  <li><details><summary>2. GDScript <span class="cuenta">· 25 bloques</span></summary>
+  <li><details><summary>2. GDScript <span class="cuenta">· 26 bloques</span></summary>
     <ul>
       <li><a href="#a2-1">2.1 Variables y operadores aritméticos</a></li>
       <li><a href="#a2-2">2.2 <em>Arrays</em></a></li>
@@ -76,7 +76,7 @@
       <li><a href="#a2-5">2.5 Bucles</a></li>
       <li><a href="#a2-6">2.6 Funciones</a></li>
       <li><a href="#a2-7">2.7 Clases</a><span class="archivos"><a href="#a2-7-3"><code>main.gd</code></a></span></li>
-      <li><a href="#a2-8">2.8 Librerías</a><span class="archivos"><a href="#a2-8-3"><code>azar.gd</code></a></span></li>
+      <li><a href="#a2-8">2.8 Librerías</a><span class="archivos"><a href="#a2-8-3"><code>azar.gd</code></a>, <a href="#a2-8-4"><code>global.gd</code></a></span></li>
     </ul>
   </details></li>
   <li><details><summary>3. Vectores y transformaciones <span class="cuenta">· 12 bloques</span></summary>
@@ -112,13 +112,13 @@
       <li><a href="#anexo5-2">Tu primer videojuego con IA: fase 3 · Parte 2. Continúa tu primer videojuego</a><span class="archivos"><a href="#anexo5-2-1"><code>npc.gd</code></a>, <a href="#anexo5-2-2"><code>vagabundo.gd</code></a>, <a href="#anexo5-2-3"><code>generador.gd</code></a></span></li>
     </ul>
   </details></li>
-  <li><details><summary>6. Físicas <span class="cuenta">· 16 bloques</span></summary>
+  <li><details><summary>6. Físicas <span class="cuenta">· 17 bloques</span></summary>
     <ul>
       <li><a href="#a6-1">6.1 Fuerza, velocidad y aceleración</a><span class="archivos"><a href="#a6-1-1"><code>nave_inercia.gd</code></a></span></li>
       <li><a href="#a6-2">6.2 Gravedad, saltos y proyectiles</a><span class="archivos"><a href="#a6-2-1"><code>proyectil.gd</code></a>, <a href="#a6-2-2"><code>plataformas.gd</code></a></span></li>
       <li><a href="#a6-3">6.3 Cuerpos físicos</a><span class="archivos"><a href="#a6-3-1"><code>protagonista_arriba.gd</code></a></span></li>
       <li><a href="#a6-4">6.4 Colisiones, capas y máscaras</a><span class="archivos"><a href="#a6-4-1"><code>pelota.gd</code></a>, <a href="#a6-4-2"><code>guardia.gd</code></a></span></li>
-      <li><a href="#a6-5">6.5 Áreas y señales</a><span class="archivos"><a href="#a6-5-1"><code>moneda.gd</code></a>, <a href="#a6-5-2"><code>enemigo.gd</code></a></span></li>
+      <li><a href="#a6-5">6.5 Áreas y señales</a><span class="archivos"><a href="#a6-5-1"><code>moneda.gd</code></a>, <a href="#a6-5-2"><code>enemigo.gd</code></a>, <a href="#a6-5-4"><code>hitbox.gd</code></a></span></li>
       <li><a href="#anexo6-1">Tu primer videojuego con IA: fase 4 · Parte 1. Práctica</a><span class="archivos"><a href="#anexo6-1-1"><code>niblo.gd</code></a>, <a href="#anexo6-1-2"><code>marcador.gd</code></a>, <a href="#anexo6-1-3"><code>manzana.gd</code></a>, <a href="#anexo6-1-4"><code>main_scene.gd</code></a>, <a href="#anexo6-1-5"><code>pantalla.gd</code></a></span></li>
       <li><a href="#anexo6-2">Tu primer videojuego con IA: fase 4 · Parte 2. Termina tu primer videojuego</a><span class="archivos"><a href="#anexo6-2-1"><code>npc.gd</code></a></span></li>
     </ul>
@@ -175,10 +175,11 @@
       <li><a href="#anexo12-1">Tu cuarto videojuego con IA: fase 2 · Parte 1. Práctica: un laberinto que se adapta</a></li>
     </ul>
   </details></li>
-  <li><details><summary>13. Redes y servidores de juegos <span class="cuenta">· 3 bloques</span></summary>
+  <li><details><summary>13. Redes y servidores de juegos <span class="cuenta">· 4 bloques</span></summary>
     <ul>
       <li><a href="#a13-2">13.2 Multijugador en línea y <em>lag</em></a><span class="archivos"><a href="#a13-2-1"><code>jugador_remoto.gd</code></a></span></li>
       <li><a href="#a13-3">13.3 Tipos de servidores</a></li>
+      <li><a href="#a13-4">13.4 Partidas, listas y retransmisión</a></li>
       <li><a href="#anexo13-2">Práctica: mensajes entre jugadores · Parte 2. Crear la sala y anunciarla</a><span class="archivos"><a href="#anexo13-2-1"><code>chat.gd</code></a></span></li>
     </ul>
   </details></li>
@@ -428,6 +429,16 @@ print(leida[&quot;nivel&quot;])  # 3.0: vuelve como float</code></pre></div>
 # Azar.probabilidad(25) es true una de cada cuatro veces
 static func probabilidad(porcentaje: float) -&gt; bool:
     return randf() * 100.0 &lt; porcentaje</code></pre></div>
+<div class="bloque" id="a2-8-4"><div class="cabecera"><code>global.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Node  # Global: registrado como autoload en Globals
+
+var nivel: int = 1
+var vidas: int = 3
+
+func perder_vida() -&gt; void:
+    vidas -= 1
+    if vidas == 0:  # Fin de la partida: vuelve a empezar
+        nivel = 1
+        vidas = 3</code></pre></div>
 <h2 id="capitulo-3">3. Vectores y transformaciones <a class="arriba" href="#indice">↑ Índice</a></h2>
 <h3 id="a3-1">3.1 Coordenadas y distancias</h3>
 <div class="bloque" id="a3-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript">const TAM_CELDA := 100  # Píxeles de cada casilla
@@ -1083,6 +1094,16 @@ func _process(_delta: float) -&gt; void:
     var tiempo := Time.get_ticks_msec() - ultimo_golpe
     # Mientras es invulnerable, visible 50 ms de cada 100
     visible = tiempo &gt;= INVULNERABLE or tiempo % 100 &lt; 50</code></pre></div>
+<div class="bloque" id="a6-5-4"><div class="cabecera"><code>hitbox.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Area2D  # Hitbox: el área de un ataque, como una espada
+
+func _ready() -&gt; void:
+    area_entered.connect(_on_area_entered)
+
+# Ha entrado otra área: la hurtbox de un personaje
+func _on_area_entered(area: Area2D) -&gt; void:
+    var victima := area.get_parent()  # El personaje
+    if victima.has_method(&quot;recibir_golpe&quot;):
+        victima.recibir_golpe()</code></pre></div>
 <h3 id="anexo6-1">Tu primer videojuego con IA: fase 4 · Parte 1. Práctica</h3>
 <div class="bloque" id="anexo6-1-1"><div class="cabecera"><code>niblo.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends CharacterBody2D  # Niblo: camina, cae y salta
 
@@ -1609,7 +1630,14 @@ func cohesion(vecinos: Array[Node], radio := 120.0) -&gt; Vector2:
             cuantos += 1
     if cuantos == 0:
         return Vector2.ZERO
-    return buscar(centro / cuantos)  # Su centro (capítulo 3)</code></pre></div>
+    return buscar(centro / cuantos)  # Su centro (capítulo 3)
+
+# Seguir al líder: llegar a un punto que está detrás de él
+func seguir(lider: CharacterBody2D, hueco := 60.0) -&gt; Vector2:
+    if lider.velocity.length() &lt; 10.0:
+        return llegar(position)  # Quiere estar quieto: frena
+    var detras := -lider.velocity.normalized() * hueco
+    return llegar(lider.position + detras)</code></pre></div>
 <h3 id="a8-5">8.5 Combinar comportamientos</h3>
 <div class="bloque" id="a8-5-1"><div class="cabecera"><code>zombi.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Vehiculo  # Un zombi que combina tres comportamientos
 
@@ -2399,7 +2427,18 @@ func mostrar() -&gt; void:
             var v: Array = q[Vector2i(columna, fila)]
             var i: int = v.find(v.max())  # La mejor acción
             linea += &quot;%s %5.2f   &quot; % [FLECHAS[i], v[i]]
-        print(linea)</code></pre></div>
+        print(linea)
+
+# El camino de Niblo con lo aprendido, sin explorar
+func camino_aprendido(s: Vector2i) -&gt; Array[Vector2i]:
+    var camino: Array[Vector2i] = [s]
+    for _paso in 20:  # Como mucho 20 pasos, por si no aprendió
+        if letra(s) == &quot;Q&quot; or letra(s) == &quot;T&quot;:
+            break
+        var v: Array = q[s]
+        s = mover(s, v.find(v.max()))  # Siempre la mejor acción
+        camino.append(s)
+    return camino</code></pre></div>
 <h3 id="anexo12-1">Tu cuarto videojuego con IA: fase 2 · Parte 1. Práctica: un laberinto que se adapta</h3>
 <div class="bloque" id="anexo12-1-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Derriba al azar muros entre dos pasillos, para que haya rodeos
 static func abrir_atajos(mapa: Array[String],
@@ -2468,6 +2507,12 @@ func mover(jugador: Node2D, nueva: Vector2) -&gt; void:
     if jugador.position.distance_to(nueva) &lt;= maximo:
         jugador.position = nueva
     # Si no, lo ignora: el cliente recibirá la posición buena</code></pre></div>
+<h3 id="a13-4">13.4 Partidas, listas y retransmisión</h3>
+<div class="bloque" id="a13-4-1"><div class="cabecera">GDScript<button type="button">Copiar</button></div><pre><code class="language-gdscript"># Nueva puntuación Elo de A tras jugar contra B. Resultado, r:
+# 1 si gana A, 0.5 si empatan y 0 si pierde
+func elo(a: float, b: float, r: float, k := 32.0) -&gt; float:
+    var esperado := 1.0 / (1.0 + pow(10.0, (b - a) / 400.0))
+    return a + k * (r - esperado)</code></pre></div>
 <h3 id="anexo13-2">Práctica: mensajes entre jugadores · Parte 2. Crear la sala y anunciarla</h3>
 <div class="bloque" id="anexo13-2-1"><div class="cabecera"><code>chat.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends Control  # Un chat para la red local, con salas
 
