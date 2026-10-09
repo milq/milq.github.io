@@ -77,15 +77,17 @@ func _run() -> void:
     @warning_ignore("integer_division")
     z = x / y             # División entera. Resultado: 2
     z = x % y             # Módulo (resto de la división entera). Resultado: 1
+    z = x ** y            # Potencia: x elevado a y. Resultado: 25
     z += 1                # Incrementa el valor de z en 1
     z -= 1                # Disminuye el valor de z en 1
 
     var division_reales: float = 5.0 / 2.0  # División con decimales. Res.: 2.5
 
-    # Precedencia: *, / y % se calculan antes que + y -. Los paréntesis
-    # cambian el orden.
+    # Precedencia: ** se calcula antes que *, / y %, y estos, antes que + y -.
+    # Los paréntesis cambian el orden.
     print("2 + 3 * 4 = ", 2 + 3 * 4)          # 14
     print("(2 + 3) * 4 = ", (2 + 3) * 4)      # 20
+    print("2 * 3 ** 2 = ", 2 * 3 ** 2)        # 18
 
     # Longitud de una circunferencia de radio 3 con la constante PI
     var circunferencia: float = 2 * PI * 3.0  # Resultado: 18.849...
