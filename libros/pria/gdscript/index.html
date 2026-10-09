@@ -1,0 +1,1614 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GDScript · Programación en red e inteligencia artificial con Godot</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-tomorrow.min.css"
+  integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<style>
+  :root { --fondo: #0b1026; --tinta: #e3e7f5; --suave: #9aa3c7; --enlace: #5aa9ff;
+          --bloque: #141b3d; --borde: #2a3466; }
+  html { background: var(--fondo); }
+  body { max-width: 860px; margin: 0 auto; padding: 24px 16px 48px; font: 16px/1.6 sans-serif;
+         color: var(--tinta); }
+  a { color: var(--enlace); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  h1 { margin: 0 0 0.4em; line-height: 1.2; }
+  h2 { margin-top: 2em; padding-bottom: 4px; border-bottom: 2px solid var(--borde); }
+  h3 { font-size: 1.05em; margin-top: 1.6em; }
+  code { font: 0.92em/1.5 ui-monospace, "Fira Mono", monospace; }
+  .arriba { font-size: 0.7em; font-weight: normal; }
+  .capitulos { color: var(--suave); }
+  h2, h3, .bloque { scroll-margin-top: 12px; }
+
+  /* Bloques: el nombre del archivo, el botón «Copiar» y el código */
+  .bloque { margin: 12px 0 16px; border-left: 3px solid var(--enlace); background: var(--bloque); }
+  .bloque:target { outline: 2px solid var(--enlace); }
+  .bloque .cabecera { display: flex; justify-content: space-between; align-items: center; gap: 8px;
+                      padding: 4px 8px 0 12px; font-size: 0.8em; color: var(--suave); }
+  .bloque .cabecera code { min-width: 0; overflow-wrap: anywhere; }
+  .bloque button { flex-shrink: 0; font: inherit; padding: 2px 10px; border: 1px solid var(--borde);
+                   border-radius: 4px; background: var(--fondo); color: var(--enlace); cursor: pointer; }
+  .bloque pre[class*="language-"], .bloque pre { margin: 0; padding: 8px 12px 12px; background: none;
+                   overflow-x: auto; font: 13.5px/1.45 ui-monospace, "Fira Mono", monospace; }
+  .bloque pre code { font: inherit; text-shadow: none; }
+
+  /* Índice: capítulos que se despliegan en sus apartados y sus archivos */
+  .indice { padding: 0; list-style: none; }
+  .indice > li { margin: 0; border-bottom: 1px solid var(--borde); }
+  .indice summary { cursor: pointer; padding: 7px 0; font-weight: 600; }
+  .indice summary .cuenta { font-weight: normal; font-size: 0.85em; color: var(--suave); }
+  .indice ul { margin: 0 0 12px; padding-left: 22px; }
+  .indice ul li { margin-bottom: 6px; }
+  .indice .archivos { display: block; font-size: 0.85em; }
+
+  details { border-bottom: 1px solid var(--borde); }
+  details summary { cursor: pointer; padding: 8px 0; font-weight: 600; }
+  details summary .cuenta { font-weight: normal; font-size: 0.85em; color: var(--suave); }
+  details summary .descripcion { display: block; margin-left: 1.2em; font-weight: normal; }
+  .bloque .cabecera span { display: flex; align-items: center; gap: 12px; }
+</style>
+</head>
+<body>
+
+<p><a href="../">← Programación en red e inteligencia artificial con Godot</a></p>
+<h1>GDScript, de las variables a las bibliotecas</h1>
+<p>Un <em>script</em> por cada tema del capítulo 2, con todos sus ejemplos y comentarios que los
+  explican. Cada uno se ejecuta entero: ejecútalo y léelo de arriba abajo, comparando cada línea con
+  lo que escribe en el panel <em>Output</em>. Entre todos tienen lo necesario para resolver los
+  ejercicios de programación de la sección 2.10, y cada tema solo usa lo de los anteriores.</p>
+<p>Para ejecutar uno, descárgalo, arrástralo al panel <em>FileSystem</em> de tu proyecto de Godot y
+  ábrelo con doble clic. En el editor de <em>scripts</em>, pulsa <em>File → Run</em> (Ctrl + Shift +
+  X). <code>6_clases.gd</code> usa <code>icon.svg</code>, el icono que trae todo proyecto nuevo, y
+  <code>7_bibliotecas.gd</code> guarda dos archivos en <code>user://</code>, la carpeta que abre
+  <em>Project → Open User Data Folder</em>.</p>
+<p>Pulsa un <em>script</em> para ver su código. Las soluciones de los ejercicios están en
+  <a href="../soluciones.zip"><code>soluciones.zip</code></a>.</p>
+
+<details id="0_hola_mundo"><summary><code>0_hola_mundo.gd</code> <span class="cuenta">· práctica del capítulo 1, parte 3</span><span class="descripcion">El <em>script</em> de editor más corto: <code>@tool</code>, <code>extends EditorScript</code> y <code>_run()</code>, que se ejecuta con <em>File → Run</em>.</span></summary>
+<div class="bloque"><div class="cabecera"><code>0_hola_mundo.gd</code><span><a href="0_hola_mundo.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># -----------------------
+# HOLA, MUNDO EN GDSCRIPT
+# -----------------------
+# Ejecútalo en el editor de &#x27;scripts&#x27; de Godot con File → Run
+# (Ctrl + Shift + X). El resultado sale en el panel Output.
+
+@tool
+extends EditorScript
+
+func _run() -&gt; void:
+    print(&quot;¡Hola, mundo!&quot;)
+
+# EXPLICACIÓN
+
+# @tool                   Indica que este &#x27;script&#x27; se ejecuta dentro del
+#                         editor de Godot.
+
+# extends EditorScript    Especifica que este &#x27;script&#x27; hereda de EditorScript,
+#                         la clase de los &#x27;scripts&#x27; que se ejecutan con
+#                         File → Run.
+
+# func _run() -&gt; void:    Define la función &#x27;_run&#x27;, que es el punto de entrada
+#                         cuando el &#x27;script&#x27; se ejecuta en el editor.
+#                         &#x27;-&gt; void&#x27; indica que no devuelve ningún valor.
+
+# print(&quot;¡Hola, mundo!&quot;)  Imprime el mensaje &quot;¡Hola, mundo!&quot; en el panel
+#                         Output del editor.</code></pre></div>
+</details>
+
+<details id="1_variables"><summary><code>1_variables.gd</code> <span class="cuenta">· sección 2.1</span><span class="descripcion">Variables, tipos de datos y constantes, operadores aritméticos y su precedencia, texto con formato (<code>%d</code>, <code>%.2f</code>, <code>%s</code>) y conversión de tipos.</span></summary>
+<div class="bloque"><div class="cabecera"><code>1_variables.gd</code><span><a href="1_variables.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ---------------------
+# VARIABLES EN GDSCRIPT
+# ---------------------
+
+@tool
+extends EditorScript
+
+# Esto es un comentario de una línea
+
+&quot;&quot;&quot;
+Esto es un comentario
+de múltiples líneas
+&quot;&quot;&quot;
+
+# VARIABLES
+# Una variable es un nombre asociado a un valor que se guarda en memoria y que
+# puede cambiar durante la ejecución. Se declara con &#x27;var&#x27; y, si se desea, se
+# especifica su tipo de dato:
+# var nombre_variable: Tipo = valor
+# &#x27;=&#x27; es el operador de asignación: guarda en la variable el valor de su
+# derecha.
+
+var edad: int = 25  # La edad es un número entero
+
+# TIPOS DE DATOS BÁSICOS
+
+# Tipado estático explícito:
+# - Especificamos el tipo de dato al declarar la variable
+# Ventajas del tipado estático:
+# - GDScript puede detectar más errores sin ejecutar el código.
+# - Las anotaciones de tipo brindan más información al trabajar, mostrando los
+#   tipos de argumentos al llamar a un método.
+# - Mejora la autocompletación del editor y la documentación de tus scripts.
+
+var nivel_del_mar: int = 25               # Entero (int)
+var temperatura: float = -3.82            # Número real (float)
+var nombre: String = &quot;Nacho López&quot;        # Cadena de texto (String)
+var tiene_debian: bool = true             # Booleano (bool)
+
+# Tipado estático implícito:
+# - El tipo de dato se infiere automáticamente usando &#x27;:=&#x27;
+var altura := 182                    # &#x27;altura&#x27; es inferido como int
+var peso := 87.5                     # &#x27;peso&#x27; es inferido como float
+var saludo := &quot;Hola&quot;                 # &#x27;saludo&#x27; es inferido como String
+var es_mayor_de_edad := edad &gt;= 18   # &#x27;es_mayor_de_edad&#x27; es inferido como bool
+
+# Tipado dinámico:
+# - No definimos el tipo de dato y podemos cambiar el tipo durante la ejecución
+# Ventajas y desventajas del tipado dinámico:
+# - Ventajas:
+#   - Mayor flexibilidad al permitir que las variables cambien de tipo.
+#   - Menor cantidad de código al no tener que declarar tipos.
+# - Desventajas:
+#   - Puede llevar a errores difíciles de detectar en tiempo de ejecución.
+#   - Menor eficiencia en la detección de errores por parte del editor.
+var variable_dinamica = &quot;Texto inicial&quot;
+
+# Constantes: Valores que no cambian durante la ejecución
+const EULER: float = 2.71828
+# Godot ya trae algunas constantes matemáticas, como PI (π, 3.14159...)
+
+
+func _run() -&gt; void:
+    # Cambio de tipo durante la ejecución de la variable con tipado dinámico
+    variable_dinamica = 42                 # Ahora &#x27;variable_dinamica&#x27; es int
+    variable_dinamica = false              # Ahora &#x27;variable_dinamica&#x27; es bool
+
+    # OPERACIONES ARITMÉTICAS CON NÚMEROS
+    var x: int = 5
+    var y: int = 2
+
+    var z: int = x + y    # Suma. Resultado: 7
+    z = x - y             # Resta. Resultado: 3
+    z = x * y             # Multiplicación. Resultado: 10
+    # Entre dos enteros, / descarta los decimales y Godot avisa con un
+    # &#x27;warning&#x27;. Si es justo lo que buscas, @warning_ignore quita el aviso:
+    @warning_ignore(&quot;integer_division&quot;)
+    z = x / y             # División entera. Resultado: 2
+    z = x % y             # Módulo (resto de la división entera). Resultado: 1
+    z += 1                # Incrementa el valor de z en 1
+    z -= 1                # Disminuye el valor de z en 1
+
+    var division_reales: float = 5.0 / 2.0  # División con decimales. Res.: 2.5
+
+    # Precedencia: *, / y % se calculan antes que + y -. Los paréntesis
+    # cambian el orden.
+    print(&quot;2 + 3 * 4 = &quot;, 2 + 3 * 4)          # 14
+    print(&quot;(2 + 3) * 4 = &quot;, (2 + 3) * 4)      # 20
+
+    # Longitud de una circunferencia de radio 3 con la constante PI
+    var circunferencia: float = 2 * PI * 3.0  # Resultado: 18.849...
+
+    # OPERACIONES BÁSICAS CON CADENAS DE TEXTO (strings)
+
+    var a: String = &quot;GNU/&quot;
+    var b: String = &quot;Linux&quot;
+    var c: String = a + b        # Concatenación. Resultado: &quot;GNU/Linux&quot;
+
+    # IMPRIMIR VARIABLES EN LA PANTALLA
+
+    print(&quot;¡Hola, mundo!&quot;)              # Imprime en la pantalla: ¡Hola, mundo!
+    print(&quot;El valor de x es &quot;, x)       # Imprime el valor de x
+
+    # Imprime en la pantalla cadenas de texto y variables usando comas
+    print(&quot;He comprado &quot;, x, &quot; naranjas y &quot;, y, &quot; limones.&quot;)
+    # Imprime en la pantalla cadenas de texto y variables usando el signo %:
+    # %d para enteros, %f para reales y %s para textos y booleanos. Los
+    # valores van entre corchetes, en un &#x27;array&#x27; (lo verás en 2a_arrays.gd)
+    print(&quot;He comprado %d naranjas y %d limones.&quot; % [x, y])
+    # %.2f muestra un real con dos decimales, redondeado
+    print(&quot;La circunferencia mide %.2f metros.&quot; % circunferencia)  # 18.85
+    # Imprime en la pantalla cadenas de texto y variables concatenando cadenas
+    print(&quot;He comprado &quot; + str(x) + &quot; naranjas y &quot; + str(y) + &quot; limones.&quot;)
+    # Imprime en la pantalla cadenas de texto y variables usando &#x27;format&#x27;
+    print(&quot;Tengo {0} naranjas y {1} limones. Sí, {0} naranjas.&quot;.format([x, y]))
+
+    # CONVERSIÓN DE TIPOS DE DATOS
+
+    var posicion: String = &quot;5&quot;       # Una cadena que representa un entero
+    var calorias: String = &quot;95.4&quot;    # Una cadena que representa un número real
+    var peso_actual: int = 85                 # Un número entero
+    var altitud_actual: float = -544.432      # Un número real
+
+    # Convertir de cadena a entero
+    var posicion_int: int = int(posicion)
+    print(&quot;Convertir &#x27;posicion&#x27; de cadena a entero: &quot;, posicion_int)
+
+    # Convertir de cadena a número real (float)
+    var calorias_flt: float = float(calorias)
+    print(&quot;Convertir &#x27;calorias&#x27; de cadena a float: &quot;, calorias_flt)
+
+    # Convertir de entero a cadena de caracteres
+    var peso_str: String = str(peso_actual)
+    print(&quot;Convertir &#x27;peso&#x27; de entero a cadena: &#x27;&quot;, peso_str, &quot;&#x27;&quot;)
+
+    # Convertir de float a cadena de caracteres
+    var altitud_str: String = str(altitud_actual)
+    print(&quot;Convertir &#x27;altitud&#x27; de float a cadena: &#x27;&quot;, altitud_str, &quot;&#x27;&quot;)
+
+    # Obtener el tipo de dato de las variables usando &#x27;typeof&#x27;
+    var tipo_posicion: int = typeof(posicion_int)   # Tipo: int
+    var tipo_calorias: int = typeof(calorias_flt)   # Tipo: float
+    var tipo_peso: int = typeof(peso_str)           # Tipo: String
+    var tipo_altitud: int = typeof(altitud_str)     # Tipo: String
+
+    print(&quot;El tipo de &#x27;posicion_int&#x27; es &quot;, type_string(tipo_posicion))
+    print(&quot;El tipo de &#x27;calorias_flt&#x27; es &quot;, type_string(tipo_calorias))
+    print(&quot;El tipo de &#x27;peso_str&#x27; es &quot;, type_string(tipo_peso))
+    print(&quot;El tipo de &#x27;altitud_str&#x27; es &quot;, type_string(tipo_altitud))
+
+    # MENSAJE FINAL PARA EVITAR VARIABLES NO USADAS
+
+    var mensaje: String = &quot;¡{0}! Mi nombre es {1}, tengo {2} años,&quot; + \
+    &quot; mido {3} cm y peso {4} kg.&quot; + \
+    &quot; Estoy a {5} metros sobre el nivel del mar, donde &quot; + \
+    &quot;la temperatura es de {6} grados Celsius.&quot; + \
+    &quot; ¿Tengo Debian GNU/Linux instalado? {7}. &quot; + \
+    &quot;¿Soy mayor de edad? {8}.&quot; + \
+    &quot; El resultado de una división que hice antes es {9}. &quot; + \
+    &quot;Además, el valor final de z es {10} y la cadena concatenada c es &#x27;{11}&#x27;.&quot;
+
+    print(mensaje.format([
+        saludo, nombre, edad, altura, peso, nivel_del_mar, temperatura,
+        tiene_debian, es_mayor_de_edad, division_reales, z, c])
+    )</code></pre></div>
+</details>
+
+<details id="2a_arrays"><summary><code>2a_arrays.gd</code> <span class="cuenta">· sección 2.2</span><span class="descripcion"><em>Arrays</em>: crearlos, leerlos con índices, cambiarlos, añadir y quitar elementos, ordenarlos, trocearlos, buscar en ellos y copiarlos.</span></summary>
+<div class="bloque"><div class="cabecera"><code>2a_arrays.gd</code><span><a href="2a_arrays.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------
+# ARRAYS EN GDSCRIPT
+# ------------------
+
+@tool
+extends EditorScript
+
+func _run() -&gt; void:
+    # CREAR UN ARRAY
+
+    # En GDScript, un Array es una colección ordenada de elementos
+
+    # Array sin tipo explícito: puede contener múltiples tipos de datos
+    # y la variable &#x27;mi_array_1&#x27; puede reasignarse a otro tipo en el futuro.
+    var mi_array_1 = [&quot;texto&quot;, 123, 45.67]
+
+    # Array con tipo explícito &#x27;Array&#x27;: también acepta varios tipos de datos,
+    # pero la variable &#x27;mi_array_2&#x27; será un Array y no podrá cambiar de tipo.
+    var mi_array_2: Array = [&quot;texto&quot;, 123, 45.67]
+
+    # Array con tipo explícito &#x27;Array&#x27; de &#x27;String&#x27;: solo acepta un tipo de dato
+    var alimentos: Array[String] = [&quot;naranjas&quot;, &quot;fresas&quot;, &quot;limones&quot;]
+
+    # ACCEDER A SUS ELEMENTOS E IMPRIMIR UN ARRAY
+
+    # Acceder a elementos del Array mediante su índice
+    # Nota: El índice en GDScript comienza desde 0 (primer elemento)
+    var a: String = alimentos[0]
+    var b: String = alimentos[1]
+    var c: String = alimentos[2]
+
+    print(&quot;Me gustan las %s, las %s y los %s.&quot; % [a, b, c])
+
+    # También puedes acceder a los elementos desde el final usando índices
+    # negativos. Por ejemplo, alimentos[-1] devuelve el último elemento
+    print(&quot;Sí, me gustan los %s.&quot; % alimentos[-1])
+
+    # Imprimir el Array completo directamente
+    print(alimentos)
+
+    # Imprimir varios Arrays seguidos
+    print(mi_array_1, mi_array_2)
+
+    # CONTAR ELEMENTOS EN UN ARRAY
+
+    var frutas: Array[String] = [&quot;Manzana&quot;, &quot;Plátano&quot;, &quot;Kiwi&quot;, &quot;Pera&quot;, &quot;Lima&quot;]
+    var num_frutas: int = frutas.size()    # Devuelve el número de elementos
+    print(&quot;Número de frutas: %d&quot; % num_frutas)
+
+    # MODIFICAR UN ELEMENTO DE UN ARRAY
+
+    var edades: Array[int] = [43, 72, 32, 22, 65]
+
+    edades[3] = 57
+    edades[0] = 6
+    edades[-1] = 12  # Usando índice negativo para acceder al último elemento
+
+    print(edades)
+
+    # AÑADIR UN ELEMENTO A UN ARRAY
+
+    var nombres: Array[String] = [&quot;Nacho&quot;, &quot;David&quot;, &quot;Lola&quot;]
+
+    # Insertar &quot;Alba&quot; en la posición 2
+    nombres.insert(2, &quot;Alba&quot;)
+
+    # Insertar &quot;Álvaro&quot; al inicio del Array
+    nombres.push_front(&quot;Álvaro&quot;)    # También vale nombres.insert(0, &quot;Álvaro&quot;)
+
+    # Añadir &quot;Marta&quot; al final del Array
+    nombres.append(&quot;Marta&quot;)      # También vale nombres.push_back(&quot;Marta&quot;)
+
+    print(nombres)
+
+    # ELIMINAR ELEMENTOS DE UN ARRAY
+
+    var colores: Array[String] = [&quot;Azul&quot;, &quot;Naranja&quot;, &quot;Verde&quot;, &quot;Lila&quot;, &quot;Blanco&quot;]
+
+    print(&quot;Array de colores antes de eliminar elementos: &quot;, colores)
+
+    # Eliminar sin devolver el elemento con índice 2
+    colores.remove_at(2)
+    print(&quot;Se ha eliminado el elemento con índice 2&quot;)
+
+    # Eliminar y devolver el elemento con índice 2
+    var tercer_elemento: String = colores.pop_at(2)
+    print(&quot;El tercer elemento eliminado es el color: &quot;, tercer_elemento)
+
+    # Eliminar y devolver el primer elemento
+    var primer_elemento: String = colores.pop_front()
+    print(&quot;El primer elemento eliminado es el color: &quot;, primer_elemento)
+
+    # Eliminar y devolver el último elemento
+    var ultimo_elemento: String = colores.pop_back()
+    print(&quot;El último elemento eliminado es el color: &quot;, ultimo_elemento)
+
+    print(&quot;Array de colores después de eliminar elementos: &quot;, colores)
+
+    var abecedario: Array[String] = [&quot;A&quot;, &quot;C&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;]
+
+    # Eliminar la primera ocurrencia de &quot;C&quot;
+    abecedario.erase(&quot;C&quot;)
+
+    print(&quot;Después de eliminar la primera &#x27;C&#x27;: &quot; + str(abecedario))
+
+    # Limpiar el array
+    abecedario.clear()
+
+    print(&quot;Después de limpiar el Array del abecedario: &quot; + str(abecedario))
+
+    # ORDENAR UN ARRAY
+
+    var enteros: Array[int] = [43, 72, 32, 22, 65]
+    print(&quot;Array de enteros antes de ordenar:&quot;)
+    print(enteros)
+
+    # Ordenar el array en orden ascendente
+    enteros.sort()
+
+    print(&quot;Array de números después de ordenar:&quot;)
+    print(enteros)
+
+    # INVERTIR UN ARRAY
+
+    var animales: Array[String] = [&quot;Perro&quot;, &quot;Gato&quot;, &quot;Pájaro&quot;, &quot;Pez&quot;]
+    print(&quot;Array de animales antes de invertir:&quot;)
+    print(animales)
+
+    # Invertir el orden de los elementos
+    animales.reverse()
+
+    print(&quot;Array de animales después de invertir:&quot;)
+    print(animales)
+
+    # SUBARRAYS (SLICING)
+
+    var letras: Array[String] = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;]
+
+    # Slice devuelve un nuevo Array que contiene los elementos de este array,
+    # desde el índice inicio (incluido) hasta el índice fin (excluido).
+    var subletras: Array[String] = letras.slice(1, 3)
+
+    print(subletras)  # Imprime [&quot;B&quot;, &quot;C&quot;]
+
+    # Ejemplos de uso de &#x27;slice&#x27;:
+    print(letras.slice(2, -2))       # Imprime [&quot;C&quot;, &quot;D&quot;]
+    print(letras.slice(-2, 6))       # Imprime [&quot;E&quot;, &quot;F&quot;]
+    print(letras.slice(0, 6, 2))     # Imprime [&quot;A&quot;, &quot;C&quot;, &quot;E&quot;] (cada dos pasos)
+    print(letras.slice(4, 1, -1))    # Imprime [&quot;E&quot;, &quot;D&quot;, &quot;C&quot;] (pasos al revés)
+
+    # ARRAYS VACÍOS
+
+    var array_vacio: Array = []
+    print(&quot;El array vacío tiene %d elementos.&quot; % array_vacio.size())
+
+    # ARRAYS MULTIDIMENSIONALES
+
+    var array_multidimensional: Array[Array] = [
+        [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;],
+        [&quot;d&quot;, &quot;e&quot;, &quot;f&quot;],
+        [&quot;g&quot;, &quot;h&quot;, &quot;i&quot;]
+    ]
+
+    print(&quot;Elemento en la posición (2, 1) del Array multidimensional:&quot;)
+    print(array_multidimensional[2][1])  # Devuelve &quot;h&quot;
+
+    # Los Arrays anidados con tipos no son compatibles en GDScript por ahora.
+    # Por lo tanto, no es posible usar Array[Array[String]].
+
+    # ARRAYS VACÍOS MULTIDIMENSIONALES
+
+    var array_vacio_multi: Array[Array] = []
+
+    # Añadir arrays vacíos al array multidimensional
+    array_vacio_multi.append([])
+    array_vacio_multi.append([])
+
+    print(&quot;El array vacío multidimensional tiene %d elementos.&quot; %
+          array_vacio_multi.size())
+
+    # SABER SI EL ARRAY CONTIENE UN ELEMENTO ESPECÍFICO
+
+    var contiene_alba: bool = nombres.has(&quot;Alba&quot;)
+
+    print(&quot;¿El valor &#x27;Alba&#x27; está en el Array &#x27;nombres&#x27;? &quot; + str(contiene_alba))
+
+    # OBTENER EL MÍNIMO Y MÁXIMO DE UN ARRAY
+
+    var numeros: Array[int] = [5, 3, 8, 2, 6]
+    var minimo: int = numeros.min()
+    var maximo: int = numeros.max()
+
+    print(&quot;El número mínimo es: %d.&quot; % minimo)
+    print(&quot;El número máximo es: %d.&quot; % maximo)
+
+    # COPIAR UN ARRAY
+
+    # Con = no se copia: las dos variables son el mismo Array
+    var array_original: Array[int] = [1, 2, 3]
+    var mismo_array: Array[int] = array_original
+    mismo_array[0] = 99
+    print(&quot;Array original: &quot;, array_original)  # [99, 2, 3]
+
+    # Copia superficial: un Array nuevo, independiente del original
+    var array_base: Array[int] = [1, 2, 3]
+    var array_copiado: Array[int] = array_base.duplicate()
+    array_copiado[0] = 99
+    print(&quot;Array base: &quot;, array_base)  # [1, 2, 3]
+    print(&quot;Array copiado: &quot;, array_copiado)  # [99, 2, 3]
+
+    # Copia profunda (para Arrays anidados)
+    var multi_copiado: Array[Array] = array_multidimensional.duplicate(true)
+    multi_copiado[0][0] = &quot;z&quot;
+    print(&quot;Array multidimensional: &quot;, array_multidimensional)  # Sigue con &quot;a&quot;
+    print(&quot;Array multidimensional copiado: &quot;, multi_copiado)  # Empieza por &quot;z&quot;
+
+    # CONCATENAR ARRAYS
+
+    var array1: Array[int] = [1, 2, 3]
+    var array2: Array[int] = [4, 5, 6]
+    var concatenado: Array[int] = array1 + array2
+    print(&quot;Array concatenado: &quot;, concatenado)
+
+    # COMPROBAR SI DOS ARRAYS SON IGUALES
+
+    var array_a: Array[int] = [1, 2, 3]
+    var array_b: Array[int] = [1, 2, 3]
+    print(&quot;Los Arrays son iguales: %s&quot; % str(array_a == array_b))
+
+    # MÁS FUNCIONALIDADES DE ARRAY EN GDSCRIPT
+
+    var array_ejemplo: Array[int] = [3, 1, 4, 1, 4, 9, 2]
+    print(&quot;Array de ejemplo para ver más funcionalidades: &quot;, array_ejemplo)
+
+    # CONTAR EL NÚMERO DE VECES QUE UN ELEMENTO ESTÁ EN EL ARRAY
+
+    var contador_unos: int = array_ejemplo.count(1)
+    print(&quot;El entero 1 aparece %d veces&quot; % contador_unos)
+
+    # BUSCAR UN ELEMENTO Y DEVOLVER EL ÍNDICE CON SU POSICIÓN
+
+    # Devuelve el índice de la primera aparición de un elemento en un Array
+    var indice_cuatro: int = array_ejemplo.find(4)
+    print(&quot;El primer entero 4 está en el índice %d&quot; % indice_cuatro)
+    # Si el elemento no se encuentra en la búsqueda, devuelve -1.
+
+    # CAMBIAR EL TAMAÑO DEL ARRAY
+
+    # Si el nuevo tamaño es menor que el actual, se truncan los elementos al
+    # final. Si es mayor, se añaden elementos nulos (o valores por defecto).
+    array_ejemplo.resize(5)
+    print(&quot;Después de redimensionar: &quot;, array_ejemplo)
+
+    # MEZCLAR TODOS LOS ELEMENTOS DEL ARRAY EN UN ORDEN ALEATORIO
+
+    array_ejemplo.shuffle()
+    print(&quot;Después de mezclar aleatoriamente: &quot;, array_ejemplo)</code></pre></div>
+</details>
+
+<details id="2b_diccionarios"><summary><code>2b_diccionarios.gd</code> <span class="cuenta">· sección 2.3</span><span class="descripcion">Diccionarios: pares de clave y valor, con tipo o sin él, <code>get()</code> con valor por defecto, claves y valores, copias y diccionarios anidados.</span></summary>
+<div class="bloque"><div class="cabecera"><code>2b_diccionarios.gd</code><span><a href="2b_diccionarios.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------------
+# DICCIONARIOS EN GDSCRIPT
+# ------------------------
+
+@tool
+extends EditorScript
+
+func _run() -&gt; void:
+    # CREAR UN DICCIONARIO
+
+    # En GDScript, un Dictionary es una colección de pares clave-valor.
+
+    var mi_diccionario: Dictionary = {
+        &quot;nombre&quot;: &quot;Juan&quot;,
+        &quot;edad&quot;: 30,
+        &quot;altura&quot;: 1.75
+    }
+
+    # Dictionary con tipos explícitos: claves String y valores int. Solo
+    # acepta pares de esos tipos
+    var puntos: Dictionary[String, int] = {&quot;Niblo&quot;: 30, &quot;Mubbit&quot;: 25}
+    print(&quot;Puntos de Niblo: &quot;, puntos[&quot;Niblo&quot;])
+
+    # ACCEDER A LOS VALORES E IMPRIMIR UN DICCIONARIO
+
+    # Acceder a valores mediante sus claves.
+    var nombre: String = mi_diccionario[&quot;nombre&quot;]
+    var edad: int = mi_diccionario[&quot;edad&quot;]
+
+    print(&quot;El nombre es %s y tiene %d años.&quot; % [nombre, edad])
+
+    # Imprimir el diccionario completo.
+    print(&quot;Datos del diccionario: &quot;, mi_diccionario)
+
+    # MODIFICAR VALORES EN UN DICCIONARIO
+
+    mi_diccionario[&quot;edad&quot;] = 35
+    mi_diccionario[&quot;altura&quot;] = 1.85
+    mi_diccionario[&quot;edad&quot;] += 1   # Suma 1 al valor de la clave. Resultado: 36
+
+    print(&quot;Datos actualizados: &quot;, mi_diccionario)
+
+    # AÑADIR NUEVOS PARES CLAVE-VALOR
+
+    mi_diccionario[&quot;peso&quot;] = 82.5
+    mi_diccionario[&quot;ciudad&quot;] = &quot;Madrid&quot;
+
+    print(&quot;Después de añadir nuevos datos: &quot;, mi_diccionario)
+
+    # ELIMINAR PARES CLAVE-VALOR DADA UNA CLAVE ESPECÍFICA
+
+    mi_diccionario.erase(&quot;altura&quot;)
+
+    print(&quot;Después de eliminar &#x27;altura&#x27;: &quot;, mi_diccionario)
+
+    # VACIAR UN DICCIONARIO
+
+    mi_diccionario.clear()
+
+    print(&quot;Diccionario después de &#x27;clear&#x27;: &quot;, mi_diccionario)
+
+    # COMPROBAR SI UNA CLAVE EXISTE EN EL DICCIONARIO
+
+    var persona: Dictionary = {
+        &quot;nombre&quot;: &quot;Ana&quot;,
+        &quot;edad&quot;: 25,
+        &quot;altura&quot;: 1.65
+    }
+
+    var existe_nombre: bool = &quot;nombre&quot; in persona
+    print(&quot;¿Existe la clave &#x27;nombre&#x27;? &quot; + str(existe_nombre))
+
+    # Otra alternativa es usar &#x27;has&#x27; para comprobar si una clave existe
+    var tiene_edad: bool = persona.has(&quot;edad&quot;)
+    print(&quot;¿Tiene la clave &#x27;edad&#x27;? &quot; + str(tiene_edad))
+
+    # Comprobar si contiene todas las claves dadas.
+    var claves_a_verificar: Array[String] = [&quot;nombre&quot;, &quot;edad&quot;]
+    var tiene_todas: bool = persona.has_all(claves_a_verificar)
+    print(&quot;¿Tiene todas las claves? &quot; + str(tiene_todas))
+
+    # LEER UN VALOR CON UN VALOR POR DEFECTO
+
+    # get() devuelve el valor de la clave o, si no existe, su segundo argumento
+    var ciudad: String = persona.get(&quot;ciudad&quot;, &quot;desconocida&quot;)
+    print(&quot;Ciudad: &quot;, ciudad)  # desconocida: &#x27;persona&#x27; no tiene esa clave
+
+    # OBTENER LAS CLAVES Y VALORES
+
+    var claves: Array = persona.keys()
+    var valores: Array = persona.values()
+
+    print(&quot;Claves del diccionario: &quot;, claves)
+    print(&quot;Valores del diccionario: &quot;, valores)
+
+    # OBTENER EL TAMAÑO DEL DICCIONARIO
+
+    var tamaño: int = persona.size()
+    print(&quot;El diccionario tiene %d elementos.&quot; % tamaño)
+
+    # COMBINAR DOS DICCIONARIOS
+
+    var diccionario_a: Dictionary = {&quot;a&quot;: 1, &quot;b&quot;: 2}
+    var diccionario_b: Dictionary = {&quot;b&quot;: 3, &quot;c&quot;: 4}
+    var combinado: Dictionary = diccionario_a.duplicate()
+    # Con &#x27;true&#x27;, si una clave está en ambos, gana el valor de &#x27;diccionario_b&#x27;
+    combinado.merge(diccionario_b, true)
+
+    print(&quot;Diccionario combinado: &quot;, combinado)
+
+    # COPIAR UN DICCIONARIO
+
+    # Copia superficial.
+    var diccionario_copia: Dictionary = persona.duplicate()
+    print(&quot;Copia del diccionario: &quot;, diccionario_copia)
+
+    # Copia profunda (para diccionarios anidados).
+    var diccionario_anidado: Dictionary = {
+        &quot;animal&quot;: {&quot;especie&quot;: &quot;Perro&quot;, &quot;raza&quot;: &quot;Labrador&quot;}
+    }
+
+    var copia_profunda: Dictionary = diccionario_anidado.duplicate(true)
+    print(&quot;Copia profunda: &quot;, copia_profunda)
+
+    # COMPROBAR SI EL DICCIONARIO ESTÁ VACÍO
+
+    var esta_vacio: bool = mi_diccionario.is_empty()
+    print(&quot;¿El diccionario está vacío? &quot; + str(esta_vacio))
+
+    # USO DE &#x27;hash&#x27;
+
+    var hash_diccionario: int = persona.hash()
+    print(&quot;Hash del diccionario: &quot;, hash_diccionario)
+
+    # COMPARAR DICCIONARIOS CON ==
+
+    var diccionario_x: Dictionary = {&quot;x&quot;: 10, &quot;y&quot;: 20}
+    var diccionario_y: Dictionary = {&quot;x&quot;: 10, &quot;y&quot;: 20}
+    var son_iguales: bool = diccionario_x == diccionario_y
+    print(&quot;¿Los diccionarios son iguales? &quot; + str(son_iguales))
+
+    # COMPARAR DICCIONARIOS CON !=
+
+    diccionario_y[&quot;y&quot;] = 30
+    var son_diferentes: bool = diccionario_x != diccionario_y
+    print(&quot;¿Los diccionarios son diferentes? &quot; + str(son_diferentes))
+
+    # DICCIONARIOS ANIDADOS
+
+    var anidado = {
+        &quot;cadena&quot;: 5,
+        4: [1, 2, 3],
+        7: &quot;Hola&quot;,
+        &quot;subdiccionario&quot;: {&quot;subclave&quot;: &quot;Valor anidado&quot;},
+    }
+
+    print(&quot;Valor de subdiccionario: &quot;, anidado[&quot;subdiccionario&quot;][&quot;subclave&quot;])
+
+    # DICCIONARIOS DE ARRAYS
+
+    var diccionario_de_arrays: Dictionary = {
+        &quot;pares&quot;: [2, 4, 6, 8],
+        &quot;impares&quot;: [1, 3, 5, 7]
+    }
+
+    print(&quot;Números pares: &quot;, diccionario_de_arrays[&quot;pares&quot;])
+    print(&quot;Números impares: &quot;, diccionario_de_arrays[&quot;impares&quot;])
+
+    # Añadir un nuevo array al diccionario.
+    diccionario_de_arrays[&quot;primos&quot;] = [2, 3, 5, 7]
+    print(&quot;Números primos: &quot;, diccionario_de_arrays[&quot;primos&quot;])
+
+    # ARRAYS DE DICCIONARIOS
+
+    var array_de_diccionarios: Array[Dictionary] = [
+        {&quot;nombre&quot;: &quot;Mario&quot;, &quot;edad&quot;: 30},
+        {&quot;nombre&quot;: &quot;Laura&quot;, &quot;edad&quot;: 25},
+        {&quot;nombre&quot;: &quot;Pablo&quot;, &quot;edad&quot;: 35}
+    ]
+
+    var nombre_primera_persona: String = array_de_diccionarios[0][&quot;nombre&quot;]
+    print(&quot;El primer nombre es: &quot;, nombre_primera_persona)</code></pre></div>
+</details>
+
+<details id="3_condicionales"><summary><code>3_condicionales.gd</code> <span class="cuenta">· sección 2.4</span><span class="descripcion">Operadores de comparación y lógicos, <code>if</code>, <code>elif</code>, <code>else</code>, <code>match</code> y el operador ternario.</span></summary>
+<div class="bloque"><div class="cabecera"><code>3_condicionales.gd</code><span><a href="3_condicionales.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># -------------------------
+# CONDICIONALES EN GDSCRIPT
+# -------------------------
+
+@tool
+extends EditorScript
+
+func _run() -&gt; void:
+
+    # OPERADORES DE COMPARACIÓN
+
+    var a: int = 5
+    var b: int = 3
+
+    print(&quot;a == b: &quot;, a == b)   # Igual a                 Resultado: false
+    print(&quot;a != b: &quot;, a != b)   # Distinto de             Resultado: true
+    print(&quot;a &gt; b: &quot;, a &gt; b)     # Mayor que               Resultado: true
+    print(&quot;a &gt;= b: &quot;, a &gt;= b)   # Mayor o igual que       Resultado: true
+    print(&quot;a &lt; b: &quot;, a &lt; b)     # Menor que               Resultado: false
+    print(&quot;a &lt;= b: &quot;, a &lt;= b)   # Menor o igual que       Resultado: false
+
+    # Comparación de cadenas
+    print(&quot;Patricia == Patricia: &quot;, &quot;Patricia&quot; == &quot;Patricia&quot;)  # true
+
+    # OPERADORES LÓGICOS
+
+    var f: bool = false
+    var t: bool = true
+
+    # Operador AND: true solo si los dos son true
+    print(&quot;f and f: &quot;, f and f)    # Resultado: false
+    print(&quot;f and t: &quot;, f and t)    # Resultado: false
+    print(&quot;t and f: &quot;, t and f)    # Resultado: false
+    print(&quot;t and t: &quot;, t and t)    # Resultado: true
+
+    # Operador OR: true si al menos uno es true
+    print(&quot;f or f: &quot;, f or f)      # Resultado: false
+    print(&quot;f or t: &quot;, f or t)      # Resultado: true
+    print(&quot;t or f: &quot;, t or f)      # Resultado: true
+    print(&quot;t or t: &quot;, t or t)      # Resultado: true
+
+    # Operador NOT: invierte el valor
+    print(&quot;not f: &quot;, not f)        # Resultado: true
+    print(&quot;not t: &quot;, not t)        # Resultado: false
+
+    # &#x27;and&#x27; y &#x27;or&#x27; van en cortocircuito: si el primer operando ya decide el
+    # resultado, el segundo no se evalúa. En &#x27;f and t&#x27;, &#x27;t&#x27; ni se mira.
+
+    # COMBINACIÓN DE OPERADORES
+    var z: bool = not (a == b) or (a &gt;= b and a != b)
+    print(&quot;Combinación: &quot;, z)      # Resultado: true
+
+    # CONDICIONALES
+
+    var entero: int = 7
+    var edad: int = 30
+    var calificacion: float = 9.5
+
+    var mayor_que_cero: bool = entero &gt; 0
+
+    if mayor_que_cero:
+        print(&quot;El número es positivo.&quot;)
+
+    if edad &gt;= 18:
+        print(&quot;Eres mayor de edad.&quot;)
+    else:
+        print(&quot;No eres mayor de edad.&quot;)
+
+    if edad &gt;= 18 and edad &lt; 65:
+        print(&quot;Adulto en edad laboral.&quot;)
+
+    # Las condiciones se comprueban en orden y solo se ejecuta la primera que
+    # se cumple: en el primer &#x27;elif&#x27; ya se sabe que no es menor que 5.0
+    if calificacion &lt; 5.0:
+        print(&quot;Suspenso.&quot;)
+    elif calificacion &lt; 7.0:
+        print(&quot;Aprobado.&quot;)
+    elif calificacion &lt; 9.0:
+        print(&quot;Notable.&quot;)
+    else:
+        print(&quot;Excelente.&quot;)
+
+    # MATCH
+
+    var opcion: int = 3
+
+    match opcion:
+        1:
+            print(&quot;El número es 1.&quot;)
+        2:
+            print(&quot;El número es 2.&quot;)
+        3:
+            print(&quot;El número es 3.&quot;)
+        _:
+            print(&quot;Otro valor diferente a 1, 2 y 3.&quot;)
+
+    var fruta: String = &quot;Manzana&quot;
+
+    match fruta:
+        &quot;Manzana&quot;:
+            print(&quot;Es una manzana.&quot;)
+        &quot;Plátano&quot;:
+            print(&quot;Es un plátano.&quot;)
+        &quot;Naranja&quot;:
+            print(&quot;Es una naranja.&quot;)
+        _:
+            print(&quot;Otro valor diferente a &#x27;Manzana&#x27;, &#x27;Plátano&#x27; y &#x27;Naranja&#x27;.&quot;)
+
+    var letra: String = &quot;a&quot;
+
+    match letra:
+        &quot;a&quot;, &quot;e&quot;, &quot;i&quot;, &quot;o&quot;, &quot;u&quot;:
+            print(&quot;Es una vocal.&quot;)
+        _:
+            print(&quot;No es una vocal.&quot;)
+
+    # OPERADOR TERNARIO
+
+    var num_entero: int = 7
+    var resultado: String = &quot;Es par.&quot; if num_entero % 2 == 0 else &quot;Es impar.&quot;
+    print(resultado)
+
+    # EJEMPLO 1: Verificar si el año es bisiesto
+
+    var año: int = 2000
+
+    if año % 4 == 0:
+        if año % 100 == 0:
+            if año % 400 == 0:
+                print(str(año) + &quot; es bisiesto.&quot;)
+            else:
+                print(str(año) + &quot; no es bisiesto.&quot;)
+        else:
+            print(str(año) + &quot; es bisiesto.&quot;)
+    else:
+        print(str(año) + &quot; no es bisiesto.&quot;)
+
+    # EJEMPLO 2: Convertidor de Fahrenheit a Celsius
+
+    var temperatura: String = &quot;113.0F&quot;
+    var unidad: String = temperatura[-1]   # El último carácter: &quot;F&quot;
+    # substr(inicio, longitud) devuelve un trozo del texto: aquí, sin la unidad
+    var valor: float = float(temperatura.substr(0, temperatura.length() - 1))
+
+    if unidad == &quot;C&quot; or unidad == &quot;c&quot;:
+        var fahrenheit: float = valor * 1.8 + 32
+        print(str(fahrenheit) + &quot; °F.&quot;)
+    elif unidad == &quot;F&quot; or unidad == &quot;f&quot;:
+        var celsius: float = (valor - 32) / 1.8
+        print(str(celsius) + &quot; °C.&quot;)</code></pre></div>
+</details>
+
+<details id="4_bucles"><summary><code>4_bucles.gd</code> <span class="cuenta">· sección 2.5</span><span class="descripcion"><code>for</code> con <code>range()</code>, <em>arrays</em> y diccionarios, bucles anidados, <code>while</code> y <code>break</code>.</span></summary>
+<div class="bloque"><div class="cabecera"><code>4_bucles.gd</code><span><a href="4_bucles.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------
+# BUCLES EN GDSCRIPT
+# ------------------
+
+@tool
+extends EditorScript
+
+func _run() -&gt; void:
+
+    # BUCLE CLÁSICO
+    # range(10) da los enteros del 0 al 9: el final no se incluye. Con dos
+    # argumentos, range(1, 11), del 1 al 10, y con tres, el tercero es el paso
+    print(&quot;BUCLE CLÁSICO&quot;)
+    var output: String = &quot;&quot;
+    for i: int in range(10):
+        output += &quot;i:%d\t&quot; % i
+    print(output + &quot;\n&quot;)
+
+    # BUCLE CLÁSICO CON ARRAYS
+    print(&quot;BUCLE CLÁSICO CON ARRAYS&quot;)
+    var numeros: Array[float] = [-3.2, 5.3, 3.0, 1.0]
+    output = &quot;&quot;
+    for i: int in range(numeros.size()):
+        output += &quot;%f\t&quot; % numeros[i]
+    print(output + &quot;\n&quot;)
+
+    # BUCLE INVERSO
+    print(&quot;BUCLE INVERSO&quot;)
+    output = &quot;&quot;
+    for i: int in range(5, -1, -1):
+        output += &quot;i:%d\t&quot; % i
+    print(output + &quot;\n&quot;)
+
+    # BUCLE ANIDADO
+    print(&quot;BUCLE ANIDADO&quot;)
+    output = &quot;&quot;
+    for i: int in range(3):
+        output += &quot;i:%d\t&quot; % i
+        for j: int in range(2, 0, -1):
+            output += &quot;j:%d\t&quot; % j
+            for k: int in range(2):
+                output += &quot;k:%d\t&quot; % k
+    print(output + &quot;\n&quot;)
+
+    # BUCLE ITERADOR CON NÚMEROS (MUY UTILIZADO)
+    print(&quot;BUCLE ITERANDO SOBRE ELEMENTOS DEL ARRAY&quot;)
+    output = &quot;&quot;
+    for numero: float in numeros:
+        output += &quot;%f\t&quot; % numero
+    print(output + &quot;\n&quot;)
+
+    # BUCLE ITERADOR CON STRINGS (MUY UTILIZADO)
+    print(&quot;BUCLE ITERADOR&quot;)
+    var colores: Array[String] = [&quot;rojo&quot;, &quot;verde&quot;, &quot;azul&quot;, &quot;amarillo&quot;]
+    output = &quot;&quot;
+    for color: String in colores:
+        output += &quot;%s\t&quot; % color
+    print(output + &quot;\n&quot;)
+
+    # RECORRER UN ARRAY ANIDADO
+    print(&quot;RECORRER UN ARRAY ANIDADO&quot;)
+    var array_anidado: Array[Array] = [[1, 2], [3, 4], [5, 6]]
+    output = &quot;&quot;
+    for subarray: Array[int] in array_anidado:
+        for elemento: int in subarray:
+            output += &quot;%d\t&quot; % elemento
+    print(output + &quot;\n&quot;)
+
+    # RECORRER UN DICCIONARIO
+    print(&quot;RECORRER UN DICCIONARIO&quot;)
+    var mi_diccionario: Dictionary = {
+        &quot;clave1&quot;: &quot;valor1&quot;,
+        &quot;clave2&quot;: &quot;valor2&quot;,
+        &quot;clave3&quot;: &quot;valor3&quot;
+    }
+    output = &quot;&quot;
+    # &#x27;for clave in mi_diccionario:&#x27; también recorre sus claves
+    for clave in mi_diccionario.keys():
+        var valor = mi_diccionario[clave]
+        output += &quot;%s: %s\t&quot; % [clave, valor]
+    print(output + &quot;\n&quot;)
+
+    # RECORRER UN DICCIONARIO ANIDADO
+    print(&quot;RECORRER UN DICCIONARIO ANIDADO&quot;)
+    var diccionario_anidado: Dictionary = {
+        &quot;usuario1&quot;: {&quot;nombre&quot;: &quot;Ana&quot;, &quot;edad&quot;: 30},
+        &quot;usuario2&quot;: {&quot;nombre&quot;: &quot;Luis&quot;, &quot;edad&quot;: 25}
+    }
+    output = &quot;&quot;
+    for usuario_id in diccionario_anidado.keys():
+        var datos_usuario = diccionario_anidado[usuario_id]
+        output += &quot;%s:\n&quot; % usuario_id
+        for clave in datos_usuario.keys():
+            var valor = datos_usuario[clave]
+            output += &quot;  %s: %s\n&quot; % [clave, valor]
+    print(output)
+
+    # BUCLE WHILE: repite mientras se cumpla la condición
+    print(&quot;BUCLE WHILE&quot;)
+    var contador: int = 0
+    output = &quot;&quot;
+    while contador &lt;= 3:
+        contador += 1
+        output += &quot;Hola %d\t&quot; % contador
+    print(output + &quot;\n&quot;)
+
+    # EJEMPLO 1 (SUMATORIA)
+    print(&quot;EJEMPLO 1 (SUMATORIA)&quot;)
+    var mi_lista: Array[float] = [-4.3, 2.0, -0.7, 1.5, 3.5]
+    var suma: float = 0.0
+    for num: float in mi_lista:
+        suma += num
+    print(&quot;La suma de todos los elementos es %f\n&quot; % suma)
+
+    # EJEMPLO 2 (PRODUCTO)
+    print(&quot;EJEMPLO 2 (PRODUCTO)&quot;)
+    var lista_producto: Array[float] = [3.0, 2.0, -1.0, 1.0, 4.0]
+    var producto: float = 1.0
+    for num: float in lista_producto:
+        producto *= num
+    print(&quot;El producto de todos los elementos es %f\n&quot; % producto)
+
+    # EJEMPLO 3 (PRIMO)
+    print(&quot;EJEMPLO 3 (PRIMO)&quot;)
+    var lista_enteros: Array[int] = [4, 8, 15, 16, 23, 42]
+    var numero_primo: int = -1
+
+    for num: int in lista_enteros:
+        var es_primo: bool = true
+        if num &lt;= 1:
+            es_primo = false
+        else:
+            # sqrt() es la raíz cuadrada (la verás en 7_bibliotecas.gd)
+            for divisor: int in range(2, int(sqrt(num)) + 1):
+                if num % divisor == 0:
+                    es_primo = false
+                    break   # Termina el bucle: ya se sabe que no es primo
+        if es_primo:
+            numero_primo = num
+            break
+
+    if numero_primo != -1:
+        print(&quot;El primer número primo del Array dado es %d\n&quot; % numero_primo)
+    else:
+        print(&quot;No hay números primos en el Array dado.\n&quot;)
+
+    # EJEMPLO 4 (FACTORIAL)
+    print(&quot;EJEMPLO 4 (FACTORIAL)&quot;)
+    var numero: int = 5
+    var factorial: int = 1
+    for i: int in range(1, numero + 1):
+        factorial *= i
+    print(&quot;El factorial de %d es %d.\n&quot; % [numero, factorial])
+
+    # Alternativamente, podríamos usar una función recursiva.
+
+    # EJEMPLO 5 (CREAR ARRAYS CON BUCLES)
+    print(&quot;EJEMPLO 5 (CREAR ARRAYS CON BUCLES)&quot;)
+    var cuadrados: Array[int] = []
+    for x: int in range(10):
+        cuadrados.append(x * x)
+    print(cuadrados)</code></pre></div>
+</details>
+
+<details id="5_funciones"><summary><code>5_funciones.gd</code> <span class="cuenta">· sección 2.6</span><span class="descripcion">Funciones con parámetros, valores por defecto y tipo de retorno, recursividad, <em>lambdas</em> y funciones privadas.</span></summary>
+<div class="bloque"><div class="cabecera"><code>5_funciones.gd</code><span><a href="5_funciones.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ---------------------
+# FUNCIONES EN GDSCRIPT
+# ---------------------
+
+@tool
+extends EditorScript
+
+# Función que imprime un saludo en pantalla.
+func saludar() -&gt; void:
+    print(&quot;¡Hola, mundo!&quot;)
+
+# Función que devuelve el cuadrado de un entero.
+func cuadrado(entero: int) -&gt; int:
+    return entero * entero
+
+# Función que suma dos enteros con un valor por defecto.
+func suma(a: int, b: int = 0) -&gt; int:
+    return a + b
+
+# Función que calcula el producto de tres enteros.
+func producto(a: int, b: int, c: int) -&gt; int:
+    var resultado: int = a * b * c
+    return resultado
+
+# Función que calcula la media, el cuadrado y ordena cadenas.
+func media_cuadrado_orden(
+        reales: Array[float],
+        n: int,
+        cadenas: Array[String]
+    ) -&gt; Dictionary:
+    # reduce() recorre el array acumulando un resultado. Recibe una &#x27;lambda&#x27;,
+    # una función sin nombre: aquí, suma cada elemento al total
+    var media: float = reales.reduce(func(a, b): return a + b) / reales.size()
+    var cuadrado_n: int = cuadrado(n)
+    var cadenas_ordenadas: Array[String] = cadenas.duplicate()
+    cadenas_ordenadas.sort()
+    return {
+        &quot;media&quot;: media,
+        &quot;cuadrado&quot;: cuadrado_n,
+        &quot;cadenas&quot;: cadenas_ordenadas
+    }
+
+# Función recursiva que calcula el factorial de un número.
+func factorial(numero: int) -&gt; int:
+    if numero &lt;= 1:
+        return 1
+    else:
+        return numero * factorial(numero - 1)
+
+func _run() -&gt; void:
+
+    # Saludar al usuario.
+    saludar()
+
+    # Calcular el cuadrado de un número.
+    var x: int = 2
+    var cuadrado_x: int = cuadrado(x)
+    print(&quot;El cuadrado de %d es %d.&quot; % [x, cuadrado_x])
+
+    # Sumar el cuadrado de 2 y 3.
+    var suma_total: int = suma(cuadrado(2), 3)
+    print(&quot;La suma de %d y 3 es %d.&quot; % [cuadrado(2), suma_total])
+
+    # Calcular el producto de varios números.
+    var producto_total: int = producto(4, suma(2, cuadrado(1)), 2)
+    print(&quot;El resultado del producto es %d.&quot; % producto_total)
+
+    # Listas de latitudes y climas.
+    var latitudes: Array[float] = [-2.4, 7.4, 3.0, 4.6, -5.0]
+    var numero: int = suma(1, 1)
+    var clima: Array[String] = [&quot;soleado&quot;, &quot;nublado&quot;, &quot;ventoso&quot;, &quot;lluvioso&quot;]
+
+    # Obtener media, cuadrado y cadenas ordenadas.
+    var resultado: Dictionary = media_cuadrado_orden(latitudes, numero, clima)
+
+    # Mostrar los resultados.
+    print(&quot;Resultado de &#x27;media_cuadrado_orden&#x27;:&quot;)
+    print(&quot;\tMedia de las latitudes: %f&quot; % resultado[&quot;media&quot;])
+    print(&quot;\tCuadrado del número: %d&quot; % resultado[&quot;cuadrado&quot;])
+    print(&quot;\tClimas ordenados: %s&quot; % &quot;, &quot;.join(resultado[&quot;cadenas&quot;]))
+
+    # Calcular el factorial del cuadrado del número. La variable no se llama
+    # &#x27;cuadrado&#x27;, porque taparía la función cuadrado() y Godot avisaría.
+    var al_cuadrado: int = resultado[&quot;cuadrado&quot;]
+    print(&quot;El factorial de %d es %d.&quot; % [al_cuadrado, factorial(al_cuadrado)])
+
+    # Llamar a una función privada.
+    _funcion_privada()
+
+# Función privada que comienza con &#x27;_&#x27;, usada internamente.
+func _funcion_privada() -&gt; void:
+    print(&quot;Esta es una función privada.&quot;)</code></pre></div>
+</details>
+
+<details id="6_clases"><summary><code>6_clases.gd</code> <span class="cuenta">· sección 2.7</span><span class="descripcion">Clases, constructores, <em>getters</em> y <em>setters</em>, enumeraciones, herencia, <code>super</code>, <code>is</code>, polimorfismo, los nodos de Godot y, comentado al final, el <em>script</em> de una escena.</span></summary>
+<div class="bloque"><div class="cabecera"><code>6_clases.gd</code><span><a href="6_clases.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------
+# CLASES EN GDSCRIPT
+# ------------------
+
+@tool
+extends EditorScript
+
+# Este &#x27;script&#x27; también es una clase: hereda de EditorScript, y Godot crea
+# una instancia suya y llama a su método _run() al ejecutarlo.
+
+# CLASE Punto que representa un punto en 2D
+class Punto:
+    # PROPIEDADES PRIVADAS (por convención, empiezan por guion bajo)
+    var _x: int
+    var _y: int
+
+    # PROPIEDADES PÚBLICAS CON GETTERS Y SETTERS
+    var x: int:
+        get:
+            return _x
+        set(valor):
+            _x = valor
+
+    var y: int:
+        get:
+            return _y
+        set(valor):
+            _y = valor
+
+    # MÉTODO CONSTRUCTOR (PÚBLICO): new() lo llama al crear cada instancia
+    func _init(coordenada_x: int, coordenada_y: int) -&gt; void:
+        # Inicializa las propiedades &#x27;_x&#x27; e &#x27;_y&#x27;
+        _x = coordenada_x
+        _y = coordenada_y
+
+    # MÉTODO PARA CALCULAR LA DISTANCIA A OTRO PUNTO (PÚBLICO)
+    func distancia_a(otro: Punto) -&gt; float:
+        var dx: int = x - otro.x
+        var dy: int = y - otro.y
+        return sqrt(float(dx * dx + dy * dy))
+
+# Clase Personaje
+class Personaje:
+    # Enumeración de estados posibles: constantes con nombre (0, 1 y 2)
+    enum Estado { NORMAL, HERIDO, MUERTO }
+
+    var _nombre: String
+    var _x: int
+    var _salud_maxima: int
+    var _velocidad: int
+    var _ataque: int
+    var _defensa: int
+    var _estado: Estado = Estado.NORMAL
+
+    # Propiedad con un &#x27;setter&#x27; que limita su valor entre 0 y la salud
+    # máxima con clampi(). Dentro de su propio &#x27;setter&#x27;, &#x27;salud = ...&#x27; guarda
+    # el valor sin volver a llamarlo
+    var salud: int:
+        set(valor):
+            salud = clampi(valor, 0, _salud_maxima)
+
+    # Propiedad calculada: no guarda nada; su &#x27;getter&#x27; la calcula al leerla
+    var esta_vivo: bool:
+        get:
+            return _estado != Estado.MUERTO
+
+    func _init(nombre: String, salud_maxima: int) -&gt; void:
+        # Inicializa las propiedades del personaje
+        _nombre = nombre
+        _x = 50
+        _salud_maxima = salud_maxima
+        salud = salud_maxima
+        _velocidad = 10
+        _ataque = 8
+        _defensa = 4
+
+    # Métodos de la clase
+    func mover_derecha() -&gt; void:
+        # Incrementa la posición en X del personaje
+        _x += _velocidad
+
+    func recibir_daño(daño: int) -&gt; void:
+        # Reduce la salud, pasando por su &#x27;setter&#x27;, y actualiza el estado
+        salud -= daño
+        if salud == 0:
+            _estado = Estado.MUERTO
+        elif salud * 2 &lt; _salud_maxima:  # Menos de la mitad
+            _estado = Estado.HERIDO
+        else:
+            _estado = Estado.NORMAL
+
+# Clase Animal (clase base o clase padre)
+class Animal:
+    var _nombre: String
+    var _energia: int
+
+    func _init(nombre: String, energia: int) -&gt; void:
+        # Inicializa &#x27;_nombre&#x27; y &#x27;_energia&#x27;
+        _nombre = nombre
+        _energia = energia
+
+    func set_energia(valor: int) -&gt; void:
+        # Establece la energía
+        _energia = valor
+
+    func comer() -&gt; void:
+        # Incrementa la energía del animal
+        set_energia(_energia + 5)
+
+    func mover() -&gt; void:
+        # Decrementa la energía del animal
+        set_energia(_energia - 5)
+
+# Clase Perro (hereda de Animal: es una clase hija)
+class Perro extends Animal:
+    var _sonido: String
+    var _raza: String
+
+    func _init(nombre: String, energia: int, sonido: String,
+               raza: String) -&gt; void:
+        # Llama al constructor de la clase padre &#x27;Animal&#x27;
+        super(nombre, energia)
+        _sonido = sonido
+        _raza = raza
+
+    # Sobrescribe el método &#x27;mover&#x27;
+    func mover() -&gt; void:
+        # El perro gasta más energía al moverse
+        set_energia(_energia - 10)
+
+    # Amplía el método &#x27;comer&#x27;: super.comer() ejecuta la versión del padre
+    func comer() -&gt; void:
+        super.comer()  # Suma 5 de energía, como cualquier Animal
+        print(&quot;%s mueve la cola.&quot; % _nombre)
+
+# Clase Gato (hereda de Animal)
+class Gato extends Animal:
+    var _sonido: String
+
+    func _init(nombre: String, energia: int) -&gt; void:
+        # Llama al constructor de la clase padre &#x27;Animal&#x27;
+        super(nombre, energia)
+        _sonido = &quot;¡Miau!&quot;
+
+    func ronronear() -&gt; void:
+        # Cambia el sonido del gato a &#x27;Prrrr...&#x27;
+        _sonido = &quot;Prrrr...&quot;
+
+func _run() -&gt; void:
+    # Ejemplo con la clase Punto
+    var punto := Punto.new(2, 3)
+    var a: int = punto.x  # Pasa por el &#x27;getter&#x27; de x
+    var b: int = punto.y
+    print(&quot;Punto X: %d, Punto Y: %d&quot; % [a, b])
+
+    punto.x = 5  # Pasa por el &#x27;setter&#x27; de x
+    punto.y = -4
+    print(&quot;Nuevo Punto X: %d, Punto Y: %d&quot; % [punto.x, punto.y])
+
+    # Calcula la distancia entre dos puntos
+    var otro_punto := Punto.new(10, 10)
+    var distancia: float = punto.distancia_a(otro_punto)
+    print(&quot;Distancia entre puntos: %f&quot; % distancia)
+
+    # Ejemplo con la clase Personaje
+    var heroe := Personaje.new(&quot;Reinwald&quot;, 50)
+    var villano := Personaje.new(&quot;Zarosh&quot;, 40)
+
+    heroe.mover_derecha()
+    print(&quot;Posición en X de %s: %d&quot; % [heroe._nombre, heroe._x])
+
+    villano.recibir_daño(heroe._ataque)
+    print(&quot;Vida de %s: %d&quot; % [villano._nombre, villano.salud])
+
+    villano.recibir_daño(100)  # El &#x27;setter&#x27; no deja que la salud baje de 0
+    print(&quot;Vida de %s: %d. ¿Está vivo? %s&quot; %
+          [villano._nombre, villano.salud, villano.esta_vivo])
+
+    # Ejemplo con la clase Animal y sus subclases
+    var ruperta := Gato.new(&quot;Ruperta&quot;, 100)
+    var chloe := Gato.new(&quot;Chloe&quot;, 75)
+
+    print(&quot;Energía de %s: %d, sonido: %s&quot; %
+          [ruperta._nombre, ruperta._energia, ruperta._sonido])
+    print(&quot;Energía de %s: %d, sonido: %s&quot; %
+          [chloe._nombre, chloe._energia, chloe._sonido])
+
+    chloe.mover()
+    chloe.comer()
+    chloe.mover()
+
+    ruperta.ronronear()
+
+    print(&quot;Ahora, energía de %s es %d&quot; % [chloe._nombre, chloe._energia])
+    print(&quot;Ahora, sonido de %s es %s&quot; % [ruperta._nombre, ruperta._sonido])
+
+    var toby := Perro.new(&quot;Toby&quot;, 50, &quot;¡Woof!&quot;, &quot;Golden Retriever&quot;)
+    var akira := Perro.new(&quot;Akira&quot;, 125, &quot;¡Woof, woof!&quot;, &quot;Siberian Husky&quot;)
+
+    print(&quot;%s es un %s y su sonido es %s&quot; %
+          [toby._nombre, toby._raza, toby._sonido])
+    print(&quot;%s es un %s y su sonido es %s&quot; %
+          [akira._nombre, akira._raza, akira._sonido])
+
+    toby.comer()
+    print(&quot;Ahora, energía de %s es %d&quot; % [toby._nombre, toby._energia])
+
+    # Una variable de tipo Animal puede guardar un Perro, porque un Perro es
+    # un Animal. &#x27;is&#x27; comprueba si un objeto es de una clase o de una hija suya
+    var mascota: Animal = toby
+    print(&quot;¿La mascota es un Perro? &quot;, mascota is Perro)  # true
+    print(&quot;¿La mascota es un Gato? &quot;, mascota is Gato)  # false
+    print(&quot;¿La mascota es un Animal? &quot;, mascota is Animal)  # true
+
+    # POLIMORFISMO: el &#x27;array&#x27; es de Animal, pero cada elemento ejecuta la
+    # versión de mover() de su clase real: los perros gastan más energía
+    var animales: Array[Animal] = [ruperta, chloe, toby, akira]
+    for animal: Animal in animales:
+        animal.mover()
+        print(&quot;%s se mueve y le queda %d de energía.&quot; %
+              [animal._nombre, animal._energia])
+
+    # LAS CLASES DE GODOT
+    # Los nodos de Godot también son clases: new() crea una instancia de
+    # cualquiera de ellos. Sprite2D, un nodo que muestra una imagen, hereda
+    # de Node2D
+    var escena := Node2D.new()
+    var icono := Sprite2D.new()
+    icono.texture = load(&quot;res://icon.svg&quot;)  # Carga una imagen del proyecto
+    # Vector2 guarda un par de números (x, y): lo verás en el capítulo 3
+    icono.position = Vector2(640, 360)
+    escena.add_child(icono)  # &#x27;icono&#x27; pasa a ser hijo de &#x27;escena&#x27;
+    print(&quot;Hijos de la escena: &quot;, escena.get_child_count())  # 1
+    print(&quot;¿El icono es un Node2D? &quot;, icono is Node2D)  # true
+    print(&quot;El icono está en x = &quot;, icono.position.x)  # 640.0
+    print(&quot;Distancia del icono a (0, 0): &quot;,
+          icono.position.distance_to(Vector2(0, 0)))  # 734.3...
+    escena.free()  # Libera la escena y sus hijos: un nodo no se libera solo
+
+# EL SCRIPT DE UNA ESCENA
+# Un &#x27;script&#x27; de editor no tiene escena, así que esto no se puede ejecutar
+# aquí. El &#x27;script&#x27; de una escena, como main.gd, también es una clase: hereda
+# de un nodo, y Godot llama por su cuenta a sus métodos _ready(), una vez, al
+# empezar, y _process(delta), en cada fotograma. Pruébalo en una escena con
+# un Node2D como raíz y un Sprite2D hijo llamado Icono: pon este &#x27;script&#x27; en
+# la raíz, sin los &#x27;#&#x27; del principio, y pulsa F6.
+#
+# class_name Main extends Node2D  # class_name le da un nombre global
+#
+# @export var velocidad: float = 300.0  # Se puede cambiar en el Inspector
+#
+# func _ready() -&gt; void:
+#     $Icono.position = get_viewport_rect().size / 2  # Centro de la ventana
+#
+# func _process(delta: float) -&gt; void:
+#     # Las flechas dan una dirección: un Vector2 entre (-1, -1) y (1, 1)
+#     var direccion: Vector2 = Input.get_vector(
+#             &quot;ui_left&quot;, &quot;ui_right&quot;, &quot;ui_up&quot;, &quot;ui_down&quot;)
+#     $Icono.position += direccion * velocidad * delta
+#
+# func _unhandled_input(event: InputEvent) -&gt; void:  # Al pulsar una tecla
+#     if event is InputEventKey and event.pressed and event.keycode == KEY_R:
+#         get_tree().reload_current_scene()  # La R reinicia la escena</code></pre></div>
+</details>
+
+<details id="7_bibliotecas"><summary><code>7_bibliotecas.gd</code> <span class="cuenta">· sección 2.8</span><span class="descripcion">Matemáticas, números aleatorios y semillas, archivos de texto, JSON, bibliotecas propias con funciones estáticas y <em>autoloads</em>.</span></summary>
+<div class="bloque"><div class="cabecera"><code>7_bibliotecas.gd</code><span><a href="7_bibliotecas.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># -----------------------
+# BIBLIOTECAS EN GDSCRIPT
+# -----------------------
+# Una biblioteca o librería es un conjunto de funciones y clases ya escritas
+# que tu programa usa sin saber cómo están hechas por dentro.
+
+@tool
+extends EditorScript
+
+# TU PROPIA BIBLIOTECA
+# Una clase con funciones estáticas (&#x27;static func&#x27;) se usa sin crear objetos,
+# con el nombre de la clase: Azar.probabilidad(25.0). En su propio archivo,
+# como azar.gd, empezaría por &#x27;class_name Azar&#x27; y se podría usar desde
+# cualquier &#x27;script&#x27; del proyecto.
+class Azar:
+    # Con 25, devuelve true una de cada cuatro veces
+    static func probabilidad(porcentaje: float) -&gt; bool:
+        return randf() * 100.0 &lt; porcentaje
+
+    static func tirar_dado(caras: int) -&gt; int:
+        return randi_range(1, caras)
+
+# A continuación se muestra el uso de algunas bibliotecas internas de GDScript
+func _run() -&gt; void:
+    # MATEMÁTICAS
+    print(&quot;MATEMÁTICAS:\n&quot;)
+
+    # Variables de punto flotante
+    var x: float = 5.0
+    var y: float = 2.0
+    var z: float = 7.5
+
+    # Constantes matemáticas
+    print(&quot;Constante π: &quot;, PI)
+    print(&quot;Constante τ: &quot;, TAU)
+
+    # Operaciones matemáticas
+    var potencia: float = pow(x, y)      # x elevado a y
+    var raiz: float = sqrt(x)            # Raíz cuadrada de x
+    var exponencial: float = exp(x)      # e elevado a x
+    var logaritmo: float = log(x)        # Logaritmo natural de x
+
+    print(&quot;%f elevado a %f es %f&quot; % [x, y, potencia])
+    print(&quot;La raíz cuadrada de %f es %f&quot; % [x, raiz])
+    print(&quot;e elevado a %f es %f&quot; % [x, exponencial])
+    print(&quot;Logaritmo natural de %f es %f&quot; % [x, logaritmo])
+
+    # Valor absoluto
+    var valor_absoluto: float = abs(-x)
+    print(&quot;Valor absoluto de %f es %f&quot; % [-x, valor_absoluto])
+
+    # Redondeo
+    var redondeo_al_entero_mas_cercano: float = round(z)
+    var redondeo_hacia_abajo: float = floor(z)
+    var redondeo_hacia_arriba: float = ceil(z)
+
+    print(&quot;%f redondeado es %f&quot; % [z, redondeo_al_entero_mas_cercano])
+    print(&quot;El redondeo hacia abajo de %f es %f&quot; % [z, redondeo_hacia_abajo])
+    print(&quot;El redondeo hacia arriba de %f es %f&quot; % [z, redondeo_hacia_arriba])
+
+    # Funciones trigonométricas (ángulos en radianes)
+    var seno: float = sin(x)
+    var coseno: float = cos(x)
+    var tangente: float = tan(x)
+    var arco_tangente: float = atan(x)
+    var arco_tangente2: float = atan2(y, x)
+
+    print(&quot;Seno de %f es %f&quot; % [x, seno])
+    print(&quot;Coseno de %f es %f&quot; % [x, coseno])
+    print(&quot;Tangente de %f es %f&quot; % [x, tangente])
+    print(&quot;Arcotangente de %f es %f&quot; % [x, arco_tangente])
+    print(&quot;Arcotangente2 de (%f, %f) es %f&quot; % [y, x, arco_tangente2])
+
+    # Máximo y mínimo
+    var maximo: float = max(x, y)
+    var minimo: float = min(x, y)
+
+    print(&quot;El máximo entre %f y %f es %f&quot; % [x, y, maximo])
+    print(&quot;El mínimo entre %f y %f es %f&quot; % [x, y, minimo])
+    print(&quot;El máximo de 3, 9 y 4 es &quot;, max(3, 9, 4))  # Admiten varios valores
+
+    # Limitar un valor entre un mínimo y un máximo
+    print(&quot;12 limitado entre 0 y 10 es &quot;, clamp(12, 0, 10))  # 10
+
+    # Versiones con tipo, mejores con tipado estático: terminan en &#x27;f&#x27; para
+    # los reales y en &#x27;i&#x27; para los enteros
+    var absoluto_real: float = absf(-7.5)       # 7.5
+    var absoluto_entero: int = absi(-7)         # 7
+    var limitado: int = clampi(15, 0, 10)       # 10
+    var redondeado: int = roundi(2.6)           # 3
+    print(absoluto_real, &quot; &quot;, absoluto_entero, &quot; &quot;, limitado, &quot; &quot;, redondeado)
+
+    # ALEATORIEDAD
+    print(&quot;\nALEATORIEDAD:&quot;)
+
+    # Crea una nueva instancia del generador de números aleatorios
+    var random := RandomNumberGenerator.new()
+
+    # Con una semilla fija, el generador repite siempre la misma secuencia:
+    # así se puede repetir una partida o encontrar un error que depende del azar
+    random.seed = 42
+    var dado_1: int = random.randi_range(1, 6)
+    var dado_2: int = random.randi_range(1, 6)
+    print(&quot;\nCon la semilla 42, siempre salen %d y %d&quot; % [dado_1, dado_2])
+
+    # Inicializa el generador con una semilla al azar
+    random.randomize()
+
+    # Número flotante aleatorio entre 0 y 1
+    var numero_aleatorio: float = random.randf()
+    print(&quot;Número aleatorio entre 0 y 1 → %f&quot; % numero_aleatorio)
+
+    # Número entero aleatorio entre dos valores, ambos incluidos
+    var min_val: int = -3
+    var max_val: int = 10
+    var entero_aleatorio: int = random.randi_range(min_val, max_val)
+    print(&quot;Número entero aleatorio entre %d y %d → %d&quot;
+            % [min_val, max_val, entero_aleatorio])
+
+    # Número flotante aleatorio entre dos valores, ambos incluidos
+    var numero_aleatorio_flotante: float = random.randf_range(
+            float(min_val), float(max_val))
+    print(&quot;Número flotante aleatorio entre %f y %f → %f&quot;
+            % [min_val, max_val, numero_aleatorio_flotante])
+
+    # Para el azar sencillo hay funciones globales, sin crear un generador
+    print(&quot;randf() → %f&quot; % randf())
+    print(&quot;randi_range(1, 6) → %d&quot; % randi_range(1, 6))
+    print(&quot;randf_range(0.0, 100.0) → %f&quot; % randf_range(0.0, 100.0))
+
+    # Las funciones estáticas de Azar, la biblioteca propia del principio,
+    # se llaman con el nombre de la clase
+    print(&quot;¿Sale con un 25 por ciento? &quot;, Azar.probabilidad(25.0))
+    print(&quot;Dado de 20 caras → &quot;, Azar.tirar_dado(20))
+
+    # ESCRIBIR, LEER Y MOSTRAR ARCHIVOS DE TEXTO
+    print(&quot;\nESCRIBIR, LEER Y MOSTRAR ARCHIVOS DE TEXTO:&quot;)
+
+    # Las rutas empiezan por &#x27;res://&#x27;, la carpeta del proyecto, o por
+    # &#x27;user://&#x27;, una carpeta propia de cada jugador (se abre con Project →
+    # Open User Data Folder). Lo que cambia al jugar se guarda en &#x27;user://&#x27;
+    var nombre_archivo: String = &quot;user://texto.txt&quot;
+    var texto: String = &quot;¡Hola, mundo!\n¡Esta es otra línea de texto!&quot;
+
+    # Escribir texto en un archivo nuevo o sobrescribir si existe
+    var archivo := FileAccess.open(nombre_archivo, FileAccess.WRITE)
+    archivo.store_string(texto)
+    archivo.close()
+
+    var contenido: String = &quot;&quot;
+
+    # Verificar si el archivo existe antes de leer
+    if FileAccess.file_exists(nombre_archivo):
+        archivo = FileAccess.open(nombre_archivo, FileAccess.READ)
+        contenido = archivo.get_as_text()
+        archivo.close()
+    else:
+        print(&quot;El archivo %s no existe.&quot; % nombre_archivo)
+
+    print(&quot;\nContenido del archivo de texto:\n%s&quot; % contenido)
+
+    # Atajo: get_file_as_string() abre, lee y cierra el archivo de una vez
+    print(&quot;\nOtra vez:\n&quot;, FileAccess.get_file_as_string(nombre_archivo))
+
+    # GUARDAR Y LEER DATOS EN JSON
+    print(&quot;\nGUARDAR Y LEER DATOS EN JSON:&quot;)
+
+    # JSON es un formato de texto estándar. JSON.stringify() convierte un
+    # diccionario en texto, y JSON.parse_string(), el texto en datos
+    var partida: Dictionary = {
+        &quot;nombre&quot;: &quot;Niblo&quot;,
+        &quot;nivel&quot;: 3,
+        &quot;inventario&quot;: [&quot;espada&quot;, &quot;poción&quot;]
+    }
+    var ruta_partida: String = &quot;user://partida.json&quot;
+    archivo = FileAccess.open(ruta_partida, FileAccess.WRITE)
+    archivo.store_string(JSON.stringify(partida))
+    archivo.close()
+
+    var texto_leido: String = FileAccess.get_file_as_string(ruta_partida)
+    var partida_leida: Dictionary = JSON.parse_string(texto_leido)
+    print(&quot;Partida leída: &quot;, partida_leida)
+    # JSON no distingue enteros de reales: los números vuelven como float
+    print(&quot;Nivel: &quot;, partida_leida[&quot;nivel&quot;])  # 3.0
+
+# AUTOLOADS
+# Un &#x27;autoload&#x27; es un &#x27;script&#x27; que hereda de Node y que Godot crea al arrancar
+# el juego, antes que la escena principal, y mantiene aunque cambies de
+# escena. Se registra en Project → Project Settings → Globals con un nombre,
+# como Global, y cualquier &#x27;script&#x27; lo usa por ese nombre: Global.puntos += 1.
+# Sirve para los datos de toda la partida, como la puntuación o el récord.</code></pre></div>
+</details>
+
+<script>
+  // Botón «Copiar» de cada bloque
+  for (const boton of document.querySelectorAll(".bloque button")) {
+    boton.addEventListener("click", () => {
+      const codigo = boton.closest(".bloque").querySelector("pre").innerText;
+      navigator.clipboard.writeText(codigo).then(() => {
+        boton.textContent = "Copiado";
+        setTimeout(() => boton.textContent = "Copiar", 1500);
+      });
+    });
+  }
+  window.Prism = { manual: true };  // Se colorea al final, con la gramática ya completada
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js" integrity="sha512-HiD3V4nv8fcjtouznjT9TqDNDm1EXngV331YGbfVGeKUoH+OLkRTCMzA34ecjlgSQZpdHZupdSrqHY+Hz3l6uQ==" crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-gdscript.min.js" integrity="sha512-WeTwgMW7jACiwYqE1AEbk2zYK59qTFV5Ul1uLPSqMvvFZ0eCzvaK1R6zsAjl8+aUzfNrgdpwLpR/GmQNWUMBDw==" crossorigin="anonymous"
+  referrerpolicy="no-referrer"></script>
+<script>
+  // La gramática de Prism es de Godot 3: se le añaden las palabras clave y las anotaciones de Godot 4
+  if (window.Prism && Prism.languages.gdscript) {
+    Prism.languages.gdscript.keyword = new RegExp("\\b(?:and|as|assert|await|break|breakpoint|"
+      + "class|class_name|const|continue|elif|else|enum|extends|for|func|if|in|is|match|not|null|"
+      + "or|pass|preload|return|self|signal|static|super|var|when|while)\\b");
+    Prism.languages.insertBefore("gdscript", "keyword",
+      { annotation: { pattern: /@\w+/, alias: "builtin" } });
+    Prism.highlightAll();
+  }
+</script>
+</body>
+</html>
