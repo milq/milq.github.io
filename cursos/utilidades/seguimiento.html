@@ -1,0 +1,1323 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d1f37">
+<title>Seguimiento</title>
+<style>
+  :root {
+    --fondo: #051320;
+    --fila: #0d1f37;
+    --menu: #16294a;
+    --amarillo: #f1e172;
+    --cabecera: #282117;
+    --naranja: #efc690;
+    --azul: #4b9cd1;
+    --verde: #4cc38a;
+    --rojo: #e5534b;
+    --texto: #f3f5f8;
+    --texto-suave: #9fb0c6;
+    --tinta: #0d1f37;
+    --linea: rgba(255, 255, 255, .12);
+    --col: clamp(60px, 18vw, 104px);
+    --nota: 50px;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html, body { margin: 0; }
+  body {
+    background: var(--fondo);
+    color: var(--texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 100vh;
+  }
+  button, select, input, textarea { font: inherit; color: inherit; }
+  button { cursor: pointer; touch-action: manipulation; }
+  .ancho { max-width: 720px; margin: 0 auto; }
+
+  /* Barra superior */
+  .arriba { position: sticky; top: 0; z-index: 5; background: var(--fondo); }
+  .barra { background: var(--fila); padding: calc(10px + env(safe-area-inset-top)) 8px 14px 16px; }
+  .barra .ancho { position: relative; }
+  .barra-fila { display: flex; align-items: center; gap: 8px; }
+  .titulo { flex: 1; min-width: 0; }
+  .titulo h1 { margin: 0; font-size: 1.35rem; font-weight: 700; }
+  #subtitulo {
+    margin: 2px 0 0; color: var(--texto-suave); font-size: .88rem;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .icono-btn {
+    width: 44px; height: 44px; flex: none; border: 0; border-radius: 50%;
+    background: transparent; display: grid; place-items: center;
+  }
+  .icono-btn:active { background: rgba(255, 255, 255, .1); }
+
+  /* Desplegables: si no caben, la fila se desliza en horizontal, como en iSéneca */
+  .filtros {
+    display: flex; gap: 6px; margin: 12px -8px 0 0; padding: 2px 8px 2px 0;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .filtros::-webkit-scrollbar { display: none; }
+  .pill {
+    position: relative; flex: none; display: flex; align-items: center; height: 44px;
+    border: 0; border-radius: 999px; background: var(--amarillo); color: var(--tinta);
+    font-weight: 700; font-size: .9rem; white-space: nowrap;
+  }
+  button.pill { padding: 0 28px 0 12px; }
+  .pill select {
+    appearance: none; -webkit-appearance: none; height: 100%; border: 0; border-radius: 999px;
+    background: transparent; color: var(--tinta); font-weight: 700; padding: 0 28px 0 12px;
+  }
+  .flecha { position: absolute; right: 9px; width: 16px; height: 16px; pointer-events: none; }
+  .pill:focus-visible, .pill:focus-within { outline: 2px solid var(--azul); outline-offset: -2px; }
+
+  /* Objetivo del seguimiento */
+  .objetivo {
+    display: flex; align-items: center; gap: 8px; width: calc(100% - 8px); min-height: 40px; margin-top: 10px;
+    padding: 6px 12px; border: 0; border-radius: 10px; background: rgba(255, 255, 255, .06);
+    text-align: left; font-size: .9rem;
+  }
+  .objetivo:active { background: rgba(255, 255, 255, .1); }
+  .objetivo svg { width: 18px; height: 18px; flex: none; color: var(--amarillo); }
+  #objetivoTexto { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #objetivoTexto.apagado { color: var(--texto-suave); }
+
+  /* Menú de opciones */
+  .menu {
+    position: absolute; right: 0; top: 48px; z-index: 20; min-width: 240px; padding: 6px 0;
+    background: var(--menu); border-radius: 12px; box-shadow: 0 10px 28px rgba(0, 0, 0, .5);
+  }
+  .menu button {
+    display: block; width: 100%; border: 0; background: transparent; text-align: left;
+    padding: 13px 18px; font-size: .95rem;
+  }
+  .menu button:active { background: rgba(255, 255, 255, .08); }
+  .menu .peligro { margin-top: 6px; border-top: 1px solid var(--linea); color: var(--rojo); }
+
+  .sin-almacen {
+    margin: 0; padding: 10px 16px; background: #3b3306; color: var(--amarillo);
+    font-size: .88rem; text-align: center;
+  }
+
+  /* Tabla de alumnos */
+  .columnas, .fila {
+    display: grid; grid-template-columns: minmax(0, 1fr) var(--col) var(--col) var(--nota); column-gap: 6px;
+  }
+  .columnas { padding: 10px 8px 0; }
+  .tab {
+    background: var(--cabecera); border-bottom: 3px solid var(--naranja); border-radius: 14px 14px 0 0;
+    display: flex; align-items: center; justify-content: center; min-height: 46px; padding: 6px 4px 5px;
+    text-align: center; font-size: .78rem; font-weight: 700; line-height: 1.15; hyphens: manual;
+  }
+  #lista { list-style: none; margin: 0; padding: 6px 8px calc(104px + env(safe-area-inset-bottom)); }
+  .fila { height: 72px; user-select: none; -webkit-user-select: none; }
+  .fila > * { min-width: 0; }
+  .fila:nth-child(odd) :is(.alumno, .marca, .falta, .nota-dia) { background: var(--fila); }
+  .alumno {
+    display: flex; flex-direction: column; justify-content: center; border: 0; background: transparent;
+    padding: 0 10px 0 18px; border-radius: 999px 0 0 999px; text-align: left;
+  }
+  .apellidos {
+    font-weight: 700; line-height: 1.2; overflow: hidden; overflow-wrap: anywhere;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+  .nombre {
+    margin-top: 2px; font-size: .82rem; color: var(--texto-suave);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .marca {
+    border: 0; padding: 0; background: transparent; display: grid; place-items: center;
+    -webkit-touch-callout: none;
+  }
+  .marca svg { width: 46px; height: 46px; }
+  .falta {
+    grid-column: span 2; display: flex; align-items: center; justify-content: center; gap: 8px;
+    border: 0; background: transparent; color: var(--texto-suave); font-size: .9rem; font-weight: 600;
+    text-align: center; line-height: 1.2;
+  }
+  .falta svg { width: 22px; height: 22px; flex: none; }
+  .alumno:focus-visible, .marca:focus-visible, .falta:focus-visible { outline: 2px solid var(--azul); outline-offset: -4px; }
+  .nota-dia {
+    display: grid; place-items: center; padding-right: 4px; border-radius: 0 999px 999px 0;
+    font-size: 1.3rem; font-weight: 800; font-variant-numeric: tabular-nums;
+  }
+  .nota-dia span { display: inline-block; }
+
+  .vacio { padding: 48px 24px; text-align: center; color: var(--texto-suave); }
+  .vacio strong { color: var(--texto); }
+
+  /* Selector de nivel, junto a la marca o el nombre tocados */
+  .selector {
+    position: fixed; z-index: 25; min-width: 210px; padding: 6px 0;
+    background: var(--menu); border-radius: 12px; box-shadow: 0 10px 28px rgba(0, 0, 0, .5);
+  }
+  .selector button {
+    display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 4px 18px 4px 10px;
+    border: 0; background: transparent; text-align: left; font-size: .95rem;
+  }
+  .selector button:active, .selector [aria-checked="true"] { background: rgba(255, 255, 255, .1); }
+  .selector [aria-checked="true"] { font-weight: 700; }
+  .selector svg { width: 34px; height: 34px; flex: none; }
+  .selector svg.icono { width: 24px; height: 24px; margin: 0 5px; }
+  .selector .texto { flex: 1; }
+  .selector .valor { font-weight: 800; font-variant-numeric: tabular-nums; }
+  .selector .quitar { margin-top: 6px; border-top: 1px solid var(--linea); color: var(--texto-suave); padding-left: 56px; }
+
+  /* Botones */
+  .boton {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px;
+    padding: 0 20px; border: 0; border-radius: 999px; background: var(--azul); color: #04121f; font-weight: 700;
+  }
+  .boton.secundario { background: transparent; color: var(--texto); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .35); }
+  .boton.peligro { background: var(--rojo); color: #2a0806; }
+  .fab {
+    position: fixed; z-index: 6; right: max(16px, calc(50% - 344px));
+    bottom: calc(18px + env(safe-area-inset-bottom)); height: 56px; padding: 0 22px 0 18px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .45);
+  }
+
+  /* Avisos */
+  .aviso {
+    position: fixed; z-index: 30; left: 50%; bottom: calc(92px + env(safe-area-inset-bottom));
+    transform: translate(-50%, 10px); width: max-content; max-width: calc(100vw - 32px);
+    padding: 10px 16px; border-radius: 10px; background: #e8eef6; color: var(--fondo);
+    font-weight: 600; font-size: .92rem; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+  }
+  .aviso.visible { opacity: 1; transform: translate(-50%, 0); }
+
+  /* Hojas (diálogos) */
+  dialog.hoja {
+    width: 100%; max-width: 560px; max-height: 90vh; margin: auto auto 0; padding: 0; border: 0;
+    border-radius: 20px 20px 0 0; background: var(--fila); color: var(--texto);
+  }
+  @media (min-width: 600px) { dialog.hoja { margin: auto; border-radius: 20px; } }
+  dialog.hoja::backdrop { background: rgba(0, 0, 0, .6); }
+  .hoja-cuerpo { padding: 18px 16px calc(20px + env(safe-area-inset-bottom)); }
+  .hoja-cab { display: flex; align-items: center; gap: 8px; margin: -6px -6px 4px 0; }
+  .hoja-cab h2 { flex: 1; margin: 0; font-size: 1.15rem; }
+  .ayuda { margin: 6px 0 0; color: var(--texto-suave); font-size: .9rem; line-height: 1.45; }
+  .acciones { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; margin-top: 18px; }
+  .confirmar h2 { margin: 0; font-size: 1.15rem; }
+  .acciones.mitades { display: grid; grid-template-columns: 1fr 1fr; }
+  textarea {
+    display: block; width: 100%; margin-top: 12px; padding: 12px; resize: vertical;
+    border: 0; border-radius: 12px; background: var(--fondo); font-size: .95rem; line-height: 1.5;
+  }
+
+  /* Calendario */
+  .cal-cab { display: flex; align-items: center; gap: 4px; margin: -6px -6px 0; }
+  .cal-cab h2 { flex: 1; margin: 0; text-align: center; font-size: 1.1rem; }
+  .cal-semana, .cal-dias { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; }
+  .cal-semana { margin-top: 8px; color: var(--texto-suave); font-size: .75rem; font-weight: 600; }
+  .cal-semana span { padding: 6px 0; }
+  .dia {
+    height: 50px; padding: 0; border: 0; border-radius: 12px; background: transparent;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  }
+  .dia .num {
+    width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%;
+    font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  .dia.fuera { opacity: .35; }
+  .dia.hoy .num { box-shadow: inset 0 0 0 2px var(--amarillo); }
+  .dia.elegido .num { background: var(--amarillo); color: var(--tinta); }
+  .puntos { display: flex; gap: 3px; height: 6px; }
+  .puntos i, .cal-leyenda i { width: 6px; height: 6px; border-radius: 50%; }
+  .cal-leyenda {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; margin-top: 12px;
+    color: var(--texto-suave); font-size: .8rem;
+  }
+  .cal-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+  .cal-leyenda i { width: 8px; height: 8px; }
+
+  /* Notas */
+  .notas { width: 100%; margin-top: 14px; border-collapse: collapse; }
+  .notas th {
+    padding: 6px 4px; border-bottom: 1px solid var(--linea); text-align: left;
+    color: var(--texto-suave); font-size: .75rem; font-weight: 600;
+  }
+  .notas td { padding: 10px 4px; border-bottom: 1px solid var(--linea); vertical-align: middle; }
+  .notas .n-alumno { display: flex; flex-direction: column; max-width: 34vw; }
+  .notas th:last-child, .notas td.nota { text-align: right; }
+  .notas td.nota { font-size: 1.15rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip {
+    display: inline-flex; flex-direction: column; align-items: center; min-width: 40px; padding: 3px 6px;
+    border-radius: 8px; background: rgba(255, 255, 255, .07); font-variant-numeric: tabular-nums;
+  }
+  .chip b { font-size: .9rem; }
+  .chip small { font-size: .65rem; color: var(--texto-suave); }
+  .chip.quitado, .chip.justificada { opacity: .45; }
+  .chip.quitado b { text-decoration: line-through; }
+  .chip.vacia { color: var(--texto-suave); font-size: .8rem; }
+  .aprobado { color: var(--verde); }
+  .suspenso { color: var(--rojo); }
+
+  .calculo { margin: 16px auto 0; border-collapse: collapse; }
+  .calculo th, .calculo td { padding: 5px 4px; text-align: center; }
+  .calculo td { font-size: 1.1rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+  .calculo svg { width: 28px; height: 28px; display: block; margin: auto; }
+  .calculo small {
+    display: block; margin-top: 2px; color: var(--texto-suave); font-size: .62rem; font-weight: 600;
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="arriba">
+  <header class="barra">
+    <div class="ancho">
+      <div class="barra-fila">
+        <div class="titulo">
+          <h1>Seguimiento</h1>
+          <p id="subtitulo"></p>
+        </div>
+        <button type="button" class="icono-btn" id="btnMenu" aria-label="Más opciones" aria-haspopup="true">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <circle cx="12" cy="5" r="2" fill="currentColor"/>
+            <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            <circle cx="12" cy="19" r="2" fill="currentColor"/>
+          </svg>
+        </button>
+      </div>
+      <div class="filtros">
+        <button type="button" class="pill" id="btnFecha" aria-haspopup="dialog">
+          <span id="fechaTexto"></span>
+          <svg class="flecha" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <label class="pill">
+          <select id="modulo" aria-label="Módulo"></select>
+          <svg class="flecha" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+        <label class="pill">
+          <select id="proyecto" aria-label="Proyecto o videojuego"></select>
+          <svg class="flecha" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </label>
+      </div>
+      <button type="button" class="objetivo" id="btnObjetivo" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>
+        </svg>
+        <span id="objetivoTexto"></span>
+      </button>
+      <div class="menu" id="menuOpciones" hidden>
+        <button type="button" id="mAlumnos">Alumnos</button>
+        <button type="button" id="mCalculo">Cómo se calcula la nota</button>
+        <button type="button" id="mCopia">Copia de seguridad</button>
+        <button type="button" id="mBorrar" class="peligro">Borrar todos los datos</button>
+      </div>
+    </div>
+  </header>
+  <p class="sin-almacen" id="sinAlmacen" hidden>
+    Este navegador no deja guardar datos: lo que marques se perderá al cerrar la página.
+  </p>
+  <div class="ancho columnas">
+    <span></span>
+    <span class="tab">Avance</span>
+    <span class="tab">Explica&shy;ción</span>
+    <span class="tab">Nota</span>
+  </div>
+</div>
+
+<main class="ancho">
+  <ul id="lista"></ul>
+  <section class="vacio" id="vacio" hidden>
+    <p>Aún no hay alumnos en <strong id="vacioModulo"></strong>.</p>
+    <button type="button" class="boton" id="btnAnadir">Añadir alumnos</button>
+  </section>
+</main>
+
+<button type="button" class="boton fab" id="fab">
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+    <path d="M4 6h10M4 12h10M4 18h6M16 16l2.5 2.5L23 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  Notas
+</button>
+
+<div class="selector" id="selector" role="menu" hidden></div>
+
+<div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+<dialog class="hoja" id="dlgCalendario">
+  <div class="hoja-cuerpo">
+    <div class="cal-cab">
+      <button type="button" class="icono-btn" id="calAnterior" aria-label="Mes anterior">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <h2 id="calTitulo"></h2>
+      <button type="button" class="icono-btn" id="calSiguiente" aria-label="Mes siguiente">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="cal-semana" aria-hidden="true">
+      <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+    </div>
+    <div class="cal-dias" id="calDias"></div>
+    <div class="cal-leyenda" id="calLeyenda"></div>
+    <div class="acciones">
+      <button type="button" class="boton secundario" data-cerrar>Cerrar</button>
+      <button type="button" class="boton" id="calHoy">Hoy</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="hoja" id="dlgObjetivo">
+  <div class="hoja-cuerpo">
+    <div class="hoja-cab">
+      <h2 id="objetivoTitulo"></h2>
+      <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
+    </div>
+    <p class="ayuda">
+      Lo que deberían llevar hecho y funcionando a esta fecha, contando lo de seguimientos anteriores.
+      Con él se mide el avance y aparece en las notas que envías.
+    </p>
+    <textarea id="txtObjetivo" rows="3" placeholder="Por ejemplo: calculadora terminada y parte de la encuesta"></textarea>
+    <div class="acciones">
+      <button type="button" class="boton secundario" data-cerrar>Cancelar</button>
+      <button type="button" class="boton" id="btnGuardarObjetivo">Guardar</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="hoja" id="dlgNotas">
+  <div class="hoja-cuerpo">
+    <div class="hoja-cab">
+      <h2 id="notasTitulo"></h2>
+      <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
+    </div>
+    <p class="ayuda">
+      Cada seguimiento se califica según el avance y la explicación (ver «Cómo se calcula la nota»).
+      Una falta injustificada es un 0 y una justificada (J) no cuenta. La nota es la media de los
+      seguimientos; si hay 5 o más, se quita el peor.
+    </p>
+    <table class="notas">
+      <thead><tr><th>Alumno</th><th>Seguimientos</th><th>Nota</th></tr></thead>
+      <tbody id="notasCuerpo"></tbody>
+    </table>
+    <div class="acciones">
+      <button type="button" class="boton" id="btnEnviarNotas">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 11.5L21 3l-6.5 18-3.5-7.5L3 11.5z M11 13.5L21 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        Enviar notas
+      </button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="hoja" id="dlgAlumnos">
+  <div class="hoja-cuerpo">
+    <div class="hoja-cab">
+      <h2 id="alumnosTitulo"></h2>
+      <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
+    </div>
+    <p class="ayuda">
+      Pega aquí la lista, un alumno por línea, como «Apellidos, Nombre». Lo que va tras dos espacios
+      seguidos no cuenta y la lista termina en la primera línea que empieza por un guion. Se ordenan
+      solos por apellidos. Si cambias un nombre, sus marcas anteriores dejan de contar.
+    </p>
+    <textarea id="txtAlumnos" rows="12" spellcheck="false" autocomplete="off"></textarea>
+    <div class="acciones">
+      <button type="button" class="boton secundario" data-cerrar>Cancelar</button>
+      <button type="button" class="boton" id="btnGuardarAlumnos">Guardar</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="hoja" id="dlgCalculo">
+  <div class="hoja-cuerpo">
+    <div class="hoja-cab">
+      <h2>Cómo se calcula la nota</h2>
+      <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
+    </div>
+    <p class="ayuda">
+      Cada toque en una marca la pasa al nivel siguiente, del mejor al peor, y tras «nada» la deja sin
+      marcar; si te pasas, mantenla pulsada y elige el nivel en la lista. Si un alumno no ha venido,
+      toca su nombre y elige si la falta es justificada o no. La nota de cada seguimiento sale de esta
+      tabla, con el avance en las filas y la explicación en las columnas; una falta injustificada es
+      un 0 y una justificada no cuenta. La nota del proyecto es la media de los seguimientos y, si hay
+      5 o más, se quita el peor.
+    </p>
+    <table class="calculo" id="tablaCalculo"></table>
+  </div>
+</dialog>
+
+<dialog class="hoja" id="dlgCopia">
+  <div class="hoja-cuerpo">
+    <div class="hoja-cab">
+      <h2>Copia de seguridad</h2>
+      <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
+    </div>
+    <p class="ayuda">
+      Los alumnos, las marcas y los objetivos se guardan solo en este navegador. Descarga una copia de
+      vez en cuando por si se borran los datos del navegador o cambias de móvil. Restaurar una copia
+      sustituye todo lo que hay ahora.
+    </p>
+    <p class="ayuda" id="ultimaCopia"></p>
+    <div class="acciones">
+      <label class="boton secundario">
+        Restaurar copia
+        <input type="file" id="archivoCopia" accept=".json,application/json" hidden>
+      </label>
+      <button type="button" class="boton" id="btnDescargar">Descargar copia</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- El botón rojo cambia de lado entre las dos confirmaciones para que dos toques seguidos no borren. -->
+<dialog class="hoja" id="dlgBorrar">
+  <div class="hoja-cuerpo confirmar" id="borrarPaso1">
+    <h2>Borrar todos los datos</h2>
+    <p class="ayuda">
+      Se borrarán los alumnos, las marcas y los objetivos de todos los módulos y proyectos. Si quieres
+      conservarlos, descarga antes una copia de seguridad.
+    </p>
+    <div class="acciones mitades">
+      <button type="button" class="boton secundario" data-cerrar>Cancelar</button>
+      <button type="button" class="boton peligro" id="btnBorrar1">Borrar</button>
+    </div>
+  </div>
+  <div class="hoja-cuerpo confirmar" id="borrarPaso2" hidden>
+    <h2>¿Seguro?</h2>
+    <p class="ayuda">
+      No se puede deshacer: desaparecerán todos los alumnos, las marcas y los objetivos de este navegador.
+    </p>
+    <div class="acciones mitades">
+      <button type="button" class="boton peligro" id="btnBorrar2">Sí, borrar todo</button>
+      <button type="button" class="boton secundario" data-cerrar>Cancelar</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(() => {
+  'use strict';
+
+  const MODULOS = ['DWES', 'PRIA', 'DG23', 'PIDAW', 'DAW'];
+  const COLOR_MODULO = { DWES: '#4b9cd1', PRIA: '#c39bd3', DG23: '#f0a35e', PIDAW: '#5fc9c0', DAW: '#ef8fb0' };
+  // DWES tiene seis proyectos y PRIA, cinco videojuegos; el resto de módulos, doce.
+  const NUM_PROYECTOS = { DWES: 6, PRIA: 5 };
+  const proyectosDe = mod =>
+    Array.from({ length: NUM_PROYECTOS[mod] ?? 12 }, (_, i) => 'P' + String(i + 1).padStart(2, '0'));
+  const MESES = ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sept.', 'oct.', 'nov.', 'dic.'];
+  const MESES_LARGOS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
+    'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  const COLUMNAS = ['Avance', 'Explicación'];
+  // Niveles de cada columna, del mejor al peor. En las marcas, 0 es sin marcar y del 1 al 5, estos niveles.
+  const NIVELES = [
+    ['todo', 'casi todo', 'a medias', 'poco', 'nada'],
+    ['muy bien', 'bien', 'regular', 'mal', 'nada'],
+  ];
+  // Nota de un seguimiento según el avance (filas) y la explicación (columnas). Es simétrica: los dos pesan igual.
+  const NOTAS = [
+    [10, 9, 7, 4, 0],
+    [9, 8, 6, 3, 0],
+    [7, 6, 5, 2, 0],
+    [4, 3, 2, 1, 0],
+    [0, 0, 0, 0, 0],
+  ];
+  // Un alumno que no ha venido tiene una de estas marcas en lugar de [avance, explicación]: con la falta
+  // injustificada saca un 0 y la justificada no cuenta para la nota.
+  const FALTA = 'falta';
+  const JUSTIFICADA = 'justificada';
+  const ausente = m => m === FALTA || m === JUSTIFICADA;
+  // Si un proyecto lleva al menos estos seguimientos, a cada alumno se le quita el peor.
+  const QUITAR_PEOR_DESDE = 5;
+  const CLAVE = 'seguimiento';
+
+  // Avance: un quesito más o menos lleno. Explicación: una cara de color con su boca.
+  const AZUL = '#4b9cd1';
+  const PORCION = [0, 1, .75, .5, .25, 0];
+  const CARAS = [null,
+    ['#4cc38a', '#06281b', 'M14.5 27.5h19q-1.5 10-9.5 10t-9.5-10z'],
+    ['#a6d96a', '#1d3008', 'M15.5 28.5q8.5 8.5 17 0'],
+    ['#f1e172', '#3b3306', 'M16.5 31.5h15'],
+    ['#f0a35e', '#3a1e04', 'M16.5 33.5q7.5-5 15 0'],
+    ['#e5534b', '#3d0c09', 'M15.5 34.5q8.5-8 17 0'],
+  ];
+  const ICONO_PERSONA = '<svg class="icono" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
+    'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/>' +
+    '<path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5';
+  const ICONO_FALTA = ICONO_PERSONA + 'M16.5 8.5l5 5M21.5 8.5l-5 5"/></svg>';
+  const ICONO_JUSTIFICADA = ICONO_PERSONA + 'M16 5h4l2.5 2.5V15H16zM18.5 11h1.5"/></svg>';
+  const ICONO_VINO = ICONO_PERSONA + 'M16 11l2.5 2.5L23 9"/></svg>';
+
+  const $ = s => document.querySelector(s);
+  const lista = $('#lista');
+
+  function svgCara(e) {
+    if (!e) {
+      return '<svg viewBox="0 0 48 48" aria-hidden="true"><g opacity=".42">' +
+        '<circle cx="24" cy="24" r="19.5" fill="none" stroke="#fff" stroke-width="2.5"/>' +
+        '<circle cx="17.5" cy="20" r="2.4" fill="#fff"/><circle cx="30.5" cy="20" r="2.4" fill="#fff"/></g></svg>';
+    }
+    const [fondo, tinta, boca] = CARAS[e];
+    return `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="${fondo}"/>` +
+      `<circle cx="17.5" cy="20" r="2.7" fill="${tinta}"/><circle cx="30.5" cy="20" r="2.7" fill="${tinta}"/>` +
+      `<path d="${boca}" fill="${e === 1 ? tinta : 'none'}" stroke="${tinta}" stroke-width="3" ` +
+      'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
+  function svgQuesito(n) {
+    if (!n) {
+      return '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19.5" fill="none" ' +
+        'stroke="#fff" stroke-width="2.5" stroke-dasharray="4.1 4.1" opacity=".42"/></svg>';
+    }
+    const p = PORCION[n];
+    let queso = '';
+    if (p === 1) queso = `<circle cx="24" cy="24" r="15" fill="${AZUL}"/>`;
+    else if (p) {
+      const x = 24 + 15 * Math.sin(2 * Math.PI * p);
+      const y = 24 - 15 * Math.cos(2 * Math.PI * p);
+      queso = `<path d="M24 24V9A15 15 0 ${p > .5 ? 1 : 0} 1 ${x.toFixed(2)} ${y.toFixed(2)}z" fill="${AZUL}"/>`;
+    }
+    return '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" ' +
+      `stroke="${AZUL}" stroke-width="2.5"/>${queso}</svg>`;
+  }
+
+  const svgMarca = (c, n) => (c ? svgCara(n) : svgQuesito(n));
+
+  function el(etiqueta, clase, texto) {
+    const n = document.createElement(etiqueta);
+    if (clase) n.className = clase;
+    if (texto != null) n.textContent = texto;
+    return n;
+  }
+
+  const mayus = s => s[0].toUpperCase() + s.slice(1);
+
+  const isoDe = d =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const hoyISO = () => isoDe(new Date());
+
+  function fechaCorta(iso, conAnio = true) {
+    const [a, m, d] = iso.split('-').map(Number);
+    return `${d} ${MESES[m - 1]}` + (conAnio ? ` ${a}` : '');
+  }
+
+  const etiquetaProyecto = (mod, p) => `${mod === 'PRIA' ? 'Videojuego' : 'Proyecto'} ${Number(p.slice(1))}`;
+
+  function partir(alumno) {
+    const i = alumno.indexOf(',');
+    if (i < 0) return { apellidos: alumno, nombre: '' };
+    return { apellidos: alumno.slice(0, i).trim(), nombre: alumno.slice(i + 1).trim() };
+  }
+
+  function cajaAlumno(alumno, clase, etiqueta = 'div') {
+    const { apellidos, nombre } = partir(alumno);
+    const caja = el(etiqueta, clase);
+    caja.append(el('span', 'apellidos', apellidos), el('span', 'nombre', nombre));
+    return caja;
+  }
+
+  const numero = n => n.toLocaleString('es-ES', { maximumFractionDigits: 2 });
+  const dosDecimales = n => n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  // Nota de un seguimiento, o null si la falta es justificada o falta marcar el avance o la explicación.
+  const notaDe = m => (m === FALTA ? 0 : Array.isArray(m) && m[0] && m[1] ? NOTAS[m[0] - 1][m[1] - 1] : null);
+
+  // Datos guardados en el navegador
+
+  let almacenOk = true;
+  try {
+    localStorage.setItem('__prueba', '1');
+    localStorage.removeItem('__prueba');
+  } catch {
+    almacenOk = false;
+  }
+
+  function valido(d) {
+    return d?.v === 1 && ['alumnos', 'marcas', 'objetivos', 'ui'].every(k => d[k] && typeof d[k] === 'object');
+  }
+
+  function cargar() {
+    try {
+      const d = JSON.parse(localStorage.getItem(CLAVE));
+      if (valido(d)) return d;
+    } catch {}
+    return { v: 1, alumnos: {}, marcas: {}, objetivos: {}, ui: {} };
+  }
+
+  function guardar() {
+    if (!almacenOk) return;
+    try {
+      localStorage.setItem(CLAVE, JSON.stringify(datos));
+    } catch {
+      avisar('No se ha podido guardar');
+    }
+  }
+
+  // Pone un valor en el árbol (o lo quita si es undefined), borra las ramas que quedan vacías y guarda.
+  function poner(raiz, ruta, valor) {
+    const nodos = [raiz];
+    for (const k of ruta.slice(0, -1)) nodos.push(nodos.at(-1)[k] ??= {});
+    if (valor === undefined) delete nodos.at(-1)[ruta.at(-1)];
+    else nodos.at(-1)[ruta.at(-1)] = valor;
+    for (let i = nodos.length - 1; i > 0 && !Object.keys(nodos[i]).length; i--) delete nodos[i - 1][ruta[i - 1]];
+    guardar();
+  }
+
+  let datos = cargar();
+  navigator.storage?.persist?.().catch(() => {});
+
+  const modInicial = MODULOS.includes(datos.ui.mod) ? datos.ui.mod : MODULOS[0];
+  const estado = {
+    mod: modInicial,
+    proy: proyectosDe(modInicial).includes(datos.ui.proy) ? datos.ui.proy : 'P01',
+    fecha: hoyISO(),
+    fechaAutomatica: true,
+  };
+
+  const ordenar = alumnos => [...alumnos].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+  const alumnosDe = mod => ordenar(datos.alumnos[mod] || []);
+  const marcasDelDia = () => datos.marcas[estado.mod]?.[estado.proy]?.[estado.fecha] || {};
+  const objetivoDelDia = () => datos.objetivos[estado.mod]?.[estado.proy]?.[estado.fecha] || '';
+
+  // Pantalla principal
+
+  function pintar() {
+    cerrarSelector();
+    $('#fechaTexto').textContent = fechaCorta(estado.fecha);
+    $('#modulo').value = estado.mod;
+    $('#proyecto').replaceChildren(...proyectosDe(estado.mod).map(p => new Option(etiquetaProyecto(estado.mod, p), p)));
+    $('#proyecto').value = estado.proy;
+    $('#mAlumnos').textContent = `Alumnos de ${estado.mod}`;
+    $('#vacioModulo').textContent = estado.mod;
+
+    const objetivo = objetivoDelDia();
+    const texto = $('#objetivoTexto');
+    if (objetivo) texto.replaceChildren(el('b', null, 'Objetivo: '), objetivo);
+    else texto.textContent = 'Añade el objetivo de este seguimiento';
+    texto.classList.toggle('apagado', !objetivo);
+
+    const alumnos = alumnosDe(estado.mod);
+    const frag = document.createDocumentFragment();
+    for (const a of alumnos) {
+      const li = el('li', 'fila');
+      li.dataset.alumno = a;
+      const nombre = cajaAlumno(a, 'alumno', 'button');
+      nombre.type = 'button';
+      nombre.setAttribute('aria-haspopup', 'menu');
+      li.append(nombre);
+      pintarFila(li);
+      frag.append(li);
+    }
+    lista.replaceChildren(frag);
+
+    $('#vacio').hidden = alumnos.length > 0;
+    $('.columnas').hidden = alumnos.length === 0;
+    $('#btnObjetivo').hidden = alumnos.length === 0;
+    $('#fab').hidden = alumnos.length === 0;
+    resumen();
+  }
+
+  // Rehace las marcas y la nota de una fila; el nombre, que va primero, se queda.
+  function pintarFila(li) {
+    const alumno = li.dataset.alumno;
+    const m = marcasDelDia()[alumno];
+    const celdas = [];
+    if (ausente(m)) {
+      const b = el('button', 'falta');
+      b.type = 'button';
+      b.innerHTML = m === FALTA ? ICONO_FALTA : ICONO_JUSTIFICADA;
+      b.append(m === FALTA ? 'Falta injustificada' : 'Falta justificada');
+      b.setAttribute('aria-haspopup', 'menu');
+      celdas.push(b);
+    } else {
+      for (let c = 0; c < 2; c++) {
+        const n = m?.[c] || 0;
+        const b = el('button', 'marca');
+        b.type = 'button';
+        b.dataset.c = c;
+        b.innerHTML = svgMarca(c, n);
+        b.setAttribute('aria-label', `${COLUMNAS[c]} de ${alumno}: ${n ? NIVELES[c][n - 1] : 'sin marcar'}`);
+        celdas.push(b);
+      }
+    }
+    const nota = notaDe(m);
+    const celdaNota = el('span', 'nota-dia');
+    if (nota !== null) {
+      celdaNota.classList.add(nota >= 5 ? 'aprobado' : 'suspenso');
+      celdaNota.append(el('span', null, String(nota)));
+    }
+    li.replaceChildren(li.firstElementChild, ...celdas, celdaNota);
+  }
+
+  function resumen() {
+    const alumnos = alumnosDe(estado.mod);
+    const dia = marcasDelDia();
+    // Los que tienen la falta justificada no necesitan nota ese día.
+    const conNota = alumnos.filter(a => notaDe(dia[a]) !== null).length;
+    const necesitan = alumnos.filter(a => dia[a] !== JUSTIFICADA).length;
+    $('#subtitulo').textContent = alumnos.length ? `${conNota} de ${necesitan} alumnos con nota` : 'Sin alumnos';
+  }
+
+  function fijarMarca(li, m) {
+    const notaAntes = notaDe(marcasDelDia()[li.dataset.alumno]);
+    poner(datos.marcas, [estado.mod, estado.proy, estado.fecha, li.dataset.alumno], m);
+    pintarFila(li);
+    if (notaDe(m) !== null && notaDe(m) !== notaAntes) {
+      li.querySelector('.nota-dia span').animate?.(
+        [{ transform: 'scale(1.4)' }, { transform: 'scale(1)' }], { duration: 220, easing: 'ease-out' });
+    }
+    try { navigator.vibrate?.(12); } catch {}
+    resumen();
+  }
+
+  function cambiarNivel(li, c, n) {
+    const conFoco = li.contains(document.activeElement);
+    const antes = marcasDelDia()[li.dataset.alumno];
+    const m = Array.isArray(antes) ? [...antes] : [0, 0];
+    m[c] = n;
+    fijarMarca(li, m[0] || m[1] ? m : undefined);
+    const marca = li.querySelector(`.marca[data-c="${c}"]`);
+    if (conFoco) marca.focus({ preventScroll: true });
+    marca.firstChild.animate?.(
+      [{ transform: 'scale(.8)' }, { transform: 'scale(1)' }], { duration: 140, easing: 'ease-out' });
+  }
+
+  // Cada toque pasa al nivel siguiente, del mejor al peor, y tras «nada» la marca queda sin marcar.
+  function siguienteNivel(li, c) {
+    const m = marcasDelDia()[li.dataset.alumno];
+    cambiarNivel(li, c, ((Array.isArray(m) ? m[c] : 0) + 1) % (NIVELES[c].length + 1));
+  }
+
+  // Selector que se abre al mantener pulsada una marca o al tocar el nombre
+
+  const selector = $('#selector');
+  let origenSelector = null;
+
+  function opcion(texto, accion, { icono = '', marcada, nota = null, clase = null } = {}) {
+    const b = el('button', clase);
+    b.type = 'button';
+    b.setAttribute('role', marcada === undefined ? 'menuitem' : 'menuitemradio');
+    if (marcada !== undefined) b.setAttribute('aria-checked', marcada);
+    b.innerHTML = icono;
+    b.append(el('span', 'texto', texto));
+    if (nota !== null) b.append(el('span', `valor ${nota >= 5 ? 'aprobado' : 'suspenso'}`, String(nota)));
+    b.addEventListener('click', () => {
+      cerrarSelector();
+      accion();
+    });
+    return b;
+  }
+
+  function mostrarSelector(origen, botones) {
+    menu.hidden = true;
+    selector.replaceChildren(...botones);
+    selector.hidden = false;
+    origenSelector = origen;
+    const r = origen.getBoundingClientRect();
+    const { offsetWidth: w, offsetHeight: h } = selector;
+    const x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), innerWidth - w - 8);
+    const y = r.bottom + 4 + h <= innerHeight - 8 ? r.bottom + 4 : Math.max(8, r.top - h - 4);
+    selector.style.left = `${x}px`;
+    selector.style.top = `${y}px`;
+  }
+
+  function cerrarSelector() {
+    selector.hidden = true;
+    origenSelector = null;
+  }
+
+  // Cada nivel muestra la nota que saldría con lo que ya está marcado en la otra columna.
+  function elegirNivel(li, c, origen) {
+    const m = marcasDelDia()[li.dataset.alumno];
+    const actual = Array.isArray(m) ? m[c] : 0;
+    const otra = Array.isArray(m) ? m[1 - c] : 0;
+    const botones = NIVELES[c].map((nivel, i) => opcion(mayus(nivel), () => cambiarNivel(li, c, i + 1), {
+      icono: svgMarca(c, i + 1),
+      marcada: actual === i + 1,
+      nota: otra ? (c ? NOTAS[otra - 1][i] : NOTAS[i][otra - 1]) : null,
+    }));
+    if (actual) botones.push(opcion('Quitar', () => cambiarNivel(li, c, 0), { clase: 'quitar' }));
+    mostrarSelector(origen, botones);
+  }
+
+  function elegirAsistencia(li, origen) {
+    const m = marcasDelDia()[li.dataset.alumno];
+    // «Ha venido» solo quita la falta: si ya tiene marcas de avance o explicación, se quedan.
+    const botones = [
+      opcion('Ha venido', () => { if (ausente(m)) fijarMarca(li, undefined); },
+        { icono: ICONO_VINO, marcada: !ausente(m) }),
+      opcion('Falta injustificada', () => fijarMarca(li, FALTA),
+        { icono: ICONO_FALTA, marcada: m === FALTA, nota: 0 }),
+      opcion('Falta justificada', () => fijarMarca(li, JUSTIFICADA),
+        { icono: ICONO_JUSTIFICADA, marcada: m === JUSTIFICADA }),
+    ];
+    if (Array.isArray(m)) botones.push(opcion('Quitar las marcas', () => fijarMarca(li, undefined), { clase: 'quitar' }));
+    mostrarSelector(origen, botones);
+  }
+
+  // Si te pasas de nivel, mantén pulsada la marca (o haz clic derecho) para elegirlo de la lista.
+  // El toque que acaba esa pulsación no debe cambiar de nivel.
+  let trasPulsarLargo = false;
+
+  lista.addEventListener('click', ev => {
+    const b = ev.target.closest('button');
+    if (!b) return;
+    ev.stopPropagation();
+    if (trasPulsarLargo) {
+      trasPulsarLargo = false;
+      return;
+    }
+    if (b === origenSelector) return cerrarSelector();
+    cerrarSelector();
+    const li = b.closest('.fila');
+    if (b.classList.contains('marca')) siguienteNivel(li, Number(b.dataset.c));
+    else elegirAsistencia(li, b);
+  });
+
+  lista.addEventListener('contextmenu', ev => {
+    const b = ev.target.closest('.marca');
+    if (!b) return;
+    ev.preventDefault();
+    trasPulsarLargo = true;
+    elegirNivel(b.closest('.fila'), Number(b.dataset.c), b);
+  });
+
+  document.addEventListener('pointerdown', () => { trasPulsarLargo = false; }, true);
+  document.addEventListener('keydown', ev => {
+    trasPulsarLargo = false;
+    if (ev.key === 'Escape') cerrarSelector();
+  });
+  addEventListener('scroll', cerrarSelector, { passive: true });
+
+  // Desplegables
+
+  $('#modulo').replaceChildren(...MODULOS.map(m => new Option(m, m)));
+
+  $('#modulo').addEventListener('change', ev => {
+    estado.mod = datos.ui.mod = ev.target.value;
+    if (!proyectosDe(estado.mod).includes(estado.proy)) estado.proy = datos.ui.proy = 'P01';
+    guardar();
+    pintar();
+  });
+
+  $('#proyecto').addEventListener('change', ev => {
+    estado.proy = datos.ui.proy = ev.target.value;
+    guardar();
+    pintar();
+  });
+
+  function elegirFecha(iso) {
+    estado.fecha = iso;
+    estado.fechaAutomatica = iso === hoyISO();
+    pintar();
+  }
+
+  // Si la pestaña se queda abierta de un día para otro, vuelve a la fecha de hoy.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && estado.fechaAutomatica && estado.fecha !== hoyISO()) {
+      elegirFecha(hoyISO());
+    }
+  });
+
+  // Objetivo del seguimiento
+
+  $('#btnObjetivo').addEventListener('click', () => {
+    $('#objetivoTitulo').textContent = `Objetivo del ${fechaCorta(estado.fecha)}`;
+    $('#txtObjetivo').value = objetivoDelDia();
+    $('#dlgObjetivo').showModal();
+    $('#txtObjetivo').focus();
+  });
+
+  $('#btnGuardarObjetivo').addEventListener('click', () => {
+    const texto = $('#txtObjetivo').value.replace(/\s+/g, ' ').trim();
+    poner(datos.objetivos, [estado.mod, estado.proy, estado.fecha], texto || undefined);
+    $('#dlgObjetivo').close();
+    pintar();
+  });
+
+  // Calendario con un punto de color por cada módulo con marcas ese día
+
+  const calMes = { a: 0, m: 0 };
+
+  function diasConDatos() {
+    const mapa = {};
+    for (const [mod, porProyecto] of Object.entries(datos.marcas)) {
+      for (const porFecha of Object.values(porProyecto)) {
+        for (const f of Object.keys(porFecha)) (mapa[f] ??= new Set()).add(mod);
+      }
+    }
+    return mapa;
+  }
+
+  function pintarCalendario() {
+    const { a, m } = calMes;
+    $('#calTitulo').textContent = `${mayus(MESES_LARGOS[m])} de ${a}`;
+    const desfase = (new Date(a, m, 1).getDay() + 6) % 7;
+    const mapa = diasConDatos();
+    const hoy = hoyISO();
+    const frag = document.createDocumentFragment();
+    for (let i = 0; i < 42; i++) {
+      const d = new Date(a, m, 1 - desfase + i);
+      const iso = isoDe(d);
+      const b = el('button', 'dia');
+      b.type = 'button';
+      b.dataset.fecha = iso;
+      b.classList.toggle('fuera', d.getMonth() !== m);
+      b.classList.toggle('hoy', iso === hoy);
+      b.classList.toggle('elegido', iso === estado.fecha);
+      const puntos = el('span', 'puntos');
+      const conDatos = MODULOS.filter(mod => mapa[iso]?.has(mod));
+      for (const mod of conDatos) {
+        const p = el('i');
+        p.style.background = COLOR_MODULO[mod];
+        puntos.append(p);
+      }
+      b.append(el('span', 'num', String(d.getDate())), puntos);
+      b.setAttribute('aria-label', fechaCorta(iso) + (conDatos.length ? `, con marcas de ${conDatos.join(', ')}` : ''));
+      frag.append(b);
+    }
+    $('#calDias').replaceChildren(frag);
+  }
+
+  function moverMes(paso) {
+    const d = new Date(calMes.a, calMes.m + paso, 1);
+    calMes.a = d.getFullYear();
+    calMes.m = d.getMonth();
+    pintarCalendario();
+  }
+
+  $('#calLeyenda').replaceChildren(...MODULOS.map(mod => {
+    const s = el('span');
+    const p = el('i');
+    p.style.background = COLOR_MODULO[mod];
+    s.append(p, mod);
+    return s;
+  }));
+
+  $('#btnFecha').addEventListener('click', () => {
+    const [a, m] = estado.fecha.split('-').map(Number);
+    calMes.a = a;
+    calMes.m = m - 1;
+    pintarCalendario();
+    $('#dlgCalendario').showModal();
+  });
+  $('#calAnterior').addEventListener('click', () => moverMes(-1));
+  $('#calSiguiente').addEventListener('click', () => moverMes(1));
+  $('#calDias').addEventListener('click', ev => {
+    const b = ev.target.closest('.dia');
+    if (!b) return;
+    $('#dlgCalendario').close();
+    elegirFecha(b.dataset.fecha);
+  });
+  $('#calHoy').addEventListener('click', () => {
+    $('#dlgCalendario').close();
+    elegirFecha(hoyISO());
+  });
+
+  // Menú de opciones
+
+  const menu = $('#menuOpciones');
+  $('#btnMenu').addEventListener('click', ev => {
+    ev.stopPropagation();
+    cerrarSelector();
+    menu.hidden = !menu.hidden;
+  });
+  document.addEventListener('click', ev => {
+    if (!menu.hidden && !menu.contains(ev.target)) menu.hidden = true;
+    if (!selector.hidden && !selector.contains(ev.target)) cerrarSelector();
+  });
+  menu.addEventListener('click', ev => {
+    const b = ev.target.closest('button');
+    if (!b) return;
+    menu.hidden = true;
+    if (b.id === 'mAlumnos') abrirAlumnos();
+    if (b.id === 'mCalculo') $('#dlgCalculo').showModal();
+    if (b.id === 'mCopia') abrirCopia();
+    if (b.id === 'mBorrar') abrirBorrar();
+  });
+
+  document.querySelectorAll('[data-cerrar]').forEach(b => {
+    b.addEventListener('click', () => b.closest('dialog').close());
+  });
+  document.querySelectorAll('dialog').forEach(d => {
+    d.addEventListener('click', ev => { if (ev.target === d) d.close(); });
+  });
+
+  // Notas
+
+  function calcular() {
+    const porFecha = datos.marcas[estado.mod]?.[estado.proy] || {};
+    const fechas = Object.keys(porFecha).sort();
+    const quitarPeor = fechas.length >= QUITAR_PEOR_DESDE;
+    return alumnosDe(estado.mod).map(alumno => {
+      const segs = fechas.filter(f => porFecha[f][alumno]).map(f => {
+        const m = porFecha[f][alumno];
+        return { fecha: f, m, valor: notaDe(m) };
+      });
+      const completos = segs.filter(s => s.valor !== null);
+      if (quitarPeor && completos.length > 1) {
+        completos.reduce((peor, s) => (s.valor < peor.valor ? s : peor)).quitado = true;
+      }
+      const cuentan = completos.filter(s => !s.quitado);
+      const nota = cuentan.length ? cuentan.reduce((t, s) => t + s.valor, 0) / cuentan.length : null;
+      return { alumno, segs, nota };
+    });
+  }
+
+  const tituloNotas = () => `Notas de ${estado.mod} · ${etiquetaProyecto(estado.mod, estado.proy)}`;
+
+  function abrirNotas() {
+    $('#notasTitulo').textContent = tituloNotas().replace(/ (\d+)$/, ' $1');
+    const frag = document.createDocumentFragment();
+    for (const f of calcular()) {
+      const tr = el('tr');
+      const celdaAlumno = el('td');
+      celdaAlumno.append(cajaAlumno(f.alumno, 'n-alumno'));
+
+      const chips = el('div', 'chips');
+      if (!f.segs.length) chips.append(el('span', 'chip vacia', 'Ninguno'));
+      for (const s of f.segs) {
+        const chip = el('span', 'chip');
+        const valor = el('b');
+        // Como en Séneca, la falta justificada es una J; la injustificada sale con su 0.
+        if (s.m === JUSTIFICADA) {
+          chip.classList.add('justificada');
+          valor.textContent = 'J';
+          valor.title = 'Falta justificada';
+        } else if (s.valor === null) {
+          valor.textContent = '?';
+          valor.title = 'Falta una marca';
+        } else {
+          valor.textContent = numero(s.valor);
+          valor.className = s.valor >= 5 ? 'aprobado' : 'suspenso';
+          if (s.m === FALTA) valor.title = 'Falta injustificada';
+        }
+        if (s.quitado) chip.classList.add('quitado');
+        chip.append(valor, el('small', null, fechaCorta(s.fecha, false)));
+        chips.append(chip);
+      }
+      const celdaSegs = el('td');
+      celdaSegs.append(chips);
+
+      const celdaNota = el('td', 'nota', f.nota === null ? '—' : numero(f.nota));
+      if (f.nota !== null) celdaNota.classList.add(f.nota >= 5 ? 'aprobado' : 'suspenso');
+
+      tr.append(celdaAlumno, celdaSegs, celdaNota);
+      frag.append(tr);
+    }
+    $('#notasCuerpo').replaceChildren(frag);
+    $('#dlgNotas').showModal();
+  }
+
+  $('#fab').addEventListener('click', abrirNotas);
+
+  // Una línea por seguimiento, para copiarla y pegarla como comentario de la nota.
+  function describir(segs) {
+    const cerrados = segs.filter(s => s.valor !== null || s.m === JUSTIFICADA);
+    if (!cerrados.length) return segs.length ? 'Sin seguimientos completos.' : 'Sin seguimientos.';
+    const conAnio = new Set(cerrados.map(s => s.fecha.slice(0, 4))).size > 1;
+    return cerrados.map(s => {
+      const fecha = fechaCorta(s.fecha, conAnio);
+      if (s.m === JUSTIFICADA) return `${fecha}: falta justificada, no cuenta.`;
+      const que = s.m === FALTA
+        ? 'falta injustificada'
+        : `avance ${NIVELES[0][s.m[0] - 1]}, explicación ${NIVELES[1][s.m[1] - 1]}`;
+      return `${fecha}: ${que}, nota ${numero(s.valor)}${s.quitado ? ' (se quita)' : ''}.`;
+    }).join(' ');
+  }
+
+  // La tabla de notas en texto, con las columnas alineadas a la derecha.
+  function tablaTexto() {
+    const ancho = Math.max(...NIVELES[0].map(n => n.length)) + 2;
+    const cab = NIVELES[1].map(n => '  ' + mayus(n));
+    return [
+      ' '.repeat(ancho) + cab.join(''),
+      ...NOTAS.map((fila, i) =>
+        mayus(NIVELES[0][i]).padEnd(ancho) + fila.map((v, j) => String(v).padStart(cab[j].length)).join('')),
+    ];
+  }
+
+  function informe() {
+    const objetivos = datos.objetivos[estado.mod]?.[estado.proy] || {};
+    const fechas = Object.keys(objetivos).sort();
+    const conAnio = new Set(fechas.map(f => f.slice(0, 4))).size > 1;
+    const lineas = [
+      tituloNotas(),
+      `Enviadas el ${fechaCorta(hoyISO())}`,
+      '',
+      'Cada seguimiento se califica con esta tabla según el avance (filas: lo que tienes hecho',
+      'y funcionando del objetivo de ese día) y la explicación (columnas: si entiendes tu código,',
+      'lo explicas y sabes cambiarlo). Una falta injustificada es un 0 y una justificada no cuenta.',
+      '',
+      ...tablaTexto(),
+      '',
+      'La calificación es la media de los seguimientos.',
+      `Si hay ${QUITAR_PEOR_DESDE} seguimientos o más, se quita el peor.`,
+    ];
+    if (fechas.length) {
+      lineas.push('', 'Objetivos:', ...fechas.map(f => `- ${fechaCorta(f, conAnio)}: ${objetivos[f]}`));
+    }
+    for (const f of calcular()) {
+      lineas.push('', `${f.alumno} (Calificación: ${f.nota === null ? 'pendiente' : dosDecimales(f.nota)})`);
+      lineas.push(describir(f.segs));
+    }
+    return lineas.join('\n') + '\n';
+  }
+
+  // Comparte un .txt (en Android abre el menú para elegir Gmail u otro correo). Si el navegador
+  // no sabe compartir archivos, abre un correo nuevo con las notas en el cuerpo.
+  $('#btnEnviarNotas').addEventListener('click', async () => {
+    const titulo = tituloNotas();
+    const texto = informe();
+    const archivo = new File([texto], `${titulo.replace(' · ', ' - ')}.txt`, { type: 'text/plain' });
+    if (navigator.canShare?.({ files: [archivo] })) {
+      try {
+        const mensaje = `Adjunto las ${titulo.charAt(0).toLowerCase()}${titulo.slice(1)}.`;
+        await navigator.share({ title: titulo, text: mensaje, files: [archivo] });
+        return;
+      } catch (e) {
+        if (e.name === 'AbortError') return;
+      }
+    }
+    location.href = `mailto:?subject=${encodeURIComponent(titulo)}&body=${encodeURIComponent(texto)}`;
+  });
+
+  // Alumnos
+
+  function abrirAlumnos() {
+    $('#alumnosTitulo').textContent = `Alumnos de ${estado.mod}`;
+    $('#txtAlumnos').value = alumnosDe(estado.mod).join('\n');
+    $('#dlgAlumnos').showModal();
+  }
+
+  // Un alumno por línea hasta la primera que empiece por un guion; tras dos espacios empieza otra columna.
+  function leerLista(texto) {
+    const alumnos = [];
+    for (const linea of texto.split('\n')) {
+      if (linea.startsWith('-')) break;
+      const alumno = linea.split('  ')[0].trim();
+      if (alumno) alumnos.push(alumno);
+    }
+    return ordenar(new Set(alumnos));
+  }
+
+  $('#btnAnadir').addEventListener('click', abrirAlumnos);
+
+  $('#btnGuardarAlumnos').addEventListener('click', () => {
+    const nuevos = leerLista($('#txtAlumnos').value);
+    if (nuevos.length) datos.alumnos[estado.mod] = nuevos;
+    else delete datos.alumnos[estado.mod];
+    guardar();
+    $('#dlgAlumnos').close();
+    pintar();
+    avisar(`${nuevos.length} alumnos en ${estado.mod}`);
+  });
+
+  // Cómo se calcula
+
+  (function tablaCalculo() {
+    const conIcono = (svg, texto) => {
+      const th = el('th');
+      th.innerHTML = svg;
+      th.append(el('small', null, mayus(texto)));
+      return th;
+    };
+    const cab = el('tr');
+    cab.append(el('th'), ...NIVELES[1].map((nivel, i) => conIcono(svgCara(i + 1), nivel)));
+    const thead = el('thead');
+    thead.append(cab);
+    const tbody = el('tbody');
+    NOTAS.forEach((fila, i) => {
+      const tr = el('tr');
+      tr.append(conIcono(svgQuesito(i + 1), NIVELES[0][i]));
+      for (const v of fila) tr.append(el('td', v >= 5 ? 'aprobado' : 'suspenso', String(v)));
+      tbody.append(tr);
+    });
+    $('#tablaCalculo').append(thead, tbody);
+  })();
+
+  // Copia de seguridad
+
+  function textoUltimaCopia() {
+    $('#ultimaCopia').textContent = datos.ui.ultimaCopia
+      ? `La última copia que descargaste es del ${fechaCorta(datos.ui.ultimaCopia)}.`
+      : 'Todavía no has descargado ninguna copia.';
+  }
+
+  function abrirCopia() {
+    textoUltimaCopia();
+    $('#dlgCopia').showModal();
+  }
+
+  $('#btnDescargar').addEventListener('click', () => {
+    datos.ui.ultimaCopia = hoyISO();
+    guardar();
+    const url = URL.createObjectURL(new Blob([JSON.stringify(datos)], { type: 'application/json' }));
+    const a = el('a');
+    a.href = url;
+    a.download = `seguimiento-${hoyISO()}.json`;
+    $('#dlgCopia').append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    textoUltimaCopia();
+  });
+
+  $('#archivoCopia').addEventListener('change', async ev => {
+    const archivo = ev.target.files[0];
+    ev.target.value = '';
+    if (!archivo) return;
+    try {
+      const d = JSON.parse(await archivo.text());
+      if (!valido(d)) throw new Error('copia no válida');
+      datos = d;
+      guardar();
+      $('#dlgCopia').close();
+      pintar();
+      avisar('Copia restaurada');
+    } catch {
+      avisar('Ese archivo no es una copia válida');
+    }
+  });
+
+  // Borrar todos los datos
+
+  // Cada paso deja el foco en Cancelar, que en el segundo está donde estaba el botón rojo del primero.
+  function pasoBorrar(n) {
+    $('#borrarPaso1').hidden = n !== 1;
+    $('#borrarPaso2').hidden = n !== 2;
+    $(`#borrarPaso${n} [data-cerrar]`).focus();
+  }
+
+  function abrirBorrar() {
+    $('#dlgBorrar').showModal();
+    pasoBorrar(1);
+  }
+
+  $('#btnBorrar1').addEventListener('click', () => pasoBorrar(2));
+
+  $('#btnBorrar2').addEventListener('click', () => {
+    datos.alumnos = {};
+    datos.marcas = {};
+    datos.objetivos = {};
+    guardar();
+    $('#dlgBorrar').close();
+    pintar();
+    avisar('Datos borrados');
+  });
+
+  // Avisos breves
+
+  let temporizador;
+  function avisar(texto) {
+    const aviso = $('#aviso');
+    (document.querySelector('dialog[open]') || document.body).append(aviso);
+    aviso.textContent = texto;
+    aviso.classList.add('visible');
+    clearTimeout(temporizador);
+    temporizador = setTimeout(() => aviso.classList.remove('visible'), 2200);
+  }
+
+  $('#sinAlmacen').hidden = almacenOk;
+  pintar();
+})();
+</script>
+</body>
+</html>
