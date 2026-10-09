@@ -629,7 +629,7 @@ func aplastar() -&gt; void:
     var arriba := position.y - 40
     tween.tween_property(self, &quot;modulate:a&quot;, 0.0, 0.4)
     tween.tween_property(self, &quot;position:y&quot;, arriba, 0.4)
-    # Cuando terminen los dos, se borra la moneda
+        # Al terminar los dos, queue_free() borra la moneda
     tween.chain().tween_callback(queue_free)</code></pre></div>
 <h3 id="a4-6">4.6 Curvas y caminos</h3>
 <div class="bloque" id="a4-6-1"><div class="cabecera"><code>patrulla.gd</code><button type="button">Copiar</button></div><pre><code class="language-gdscript">extends PathFollow2D  # Hijo de un Path2D con la ruta

@@ -5,17 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Programación en red e inteligencia artificial con Godot</title>
 <style>
+  @font-face { font-family: "Press Start 2P"; src: url("PressStart2P-Regular.ttf"); }
   html { background: #0b1026; }
   body { max-width: 760px; margin: 0 auto; padding: 24px 16px; font: 16px/1.6 sans-serif; color: #e3e7f5; }
   header img { float: left; width: 160px; margin: 0 24px 16px 0; }
   header { overflow: hidden; }
   h1 { margin-top: 0; line-height: 1.2; }
   a { color: #5aa9ff; text-decoration: none; }
-  .sprites { display: flex; flex-wrap: wrap; gap: 16px; padding: 0; list-style: none; }
-  .sprites img { display: block; width: 96px; height: 96px; object-fit: contain; image-rendering: pixelated; }
-  .sonidos { padding: 0; list-style: none; }
-  .sonidos li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; margin-bottom: 12px; }
-  .sonidos audio { height: 36px; max-width: 100%; }
+  .assets { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 16px 12px;
+    padding: 0; list-style: none; }
+  .assets li { text-align: center; font-size: 14px; line-height: 1.3; }
+  .assets a { display: block; }
+  .assets img, .assets .icono { display: block; width: 80px; height: 80px; margin: 0 auto 4px; }
+  .assets img { object-fit: contain; image-rendering: pixelated; }
+  .assets .icono { display: flex; align-items: center; justify-content: center; border-radius: 12px;
+    background: #18214a; color: #e3e7f5; font-size: 36px; }
+  .assets .fuente { font: 22px "Press Start 2P", monospace; }
+  .assets small { color: #9aa3c4; }
 </style>
 </head>
 <body>
@@ -24,42 +30,10 @@
   <img src="portada.jpg" alt="Cubierta del libro">
   <h1>Programación en red e inteligencia artificial con Godot</h1>
   <p>Manuel Ignacio López Quintero</p>
-  <p>Aquí tienes los archivos que te pide el libro: los <em>sprites</em> y los sonidos de las
-    prácticas, todo su código, las soluciones de los ejercicios de programación en GDScript y los enlaces de todos los
-    capítulos.</p>
+  <p>Aquí tienes los archivos que te pide el libro: todo su código, los <em>sprites</em>, los sonidos
+    y la fuente de las prácticas, las soluciones de los ejercicios de programación en GDScript y los
+    enlaces de todos los capítulos.</p>
 </header>
-
-<h2><em>Sprites</em></h2>
-<p>Haz clic en uno para descargarlo y arrástralo al panel <em>FileSystem</em> de Godot.</p>
-<ul class="sprites">
-  <li><a href="niblo.png" download><img src="niblo.png" alt=""><code>niblo.png</code></a></li>
-  <li><a href="mubbit.png" download><img src="mubbit.png" alt=""><code>mubbit.png</code></a></li>
-  <li><a href="manzana.png" download><img src="manzana.png" alt=""><code>manzana.png</code></a></li>
-  <li><a href="jugador.png" download><img src="jugador.png" alt=""><code>jugador.png</code></a></li>
-  <li><a href="enemigo.png" download><img src="enemigo.png" alt=""><code>enemigo.png</code></a></li>
-  <li><a href="bala.png" download><img src="bala.png" alt=""><code>bala.png</code></a></li>
-  <li><a href="casa.png" download><img src="casa.png" alt=""><code>casa.png</code></a></li>
-</ul>
-
-<h2>Sonidos</h2>
-<p>Los efectos de las prácticas de los capítulos 6 y 7. Escúchalos aquí, descárgalos con un clic y
-  arrástralos al panel <em>FileSystem</em> de Godot. Puedes usarlos en tus juegos. Si prefieres los
-  tuyos, créalos en <a href="https://sfxr.me">sfxr.me</a> con los botones <em>Pickup/coin</em>,
-  <em>Laser/shoot</em> y <em>Explosion</em>.</p>
-<ul class="sonidos">
-  <li><audio controls preload="none" src="moneda.wav"></audio>
-    <span><a href="moneda.wav" download><code>moneda.wav</code></a>: al recoger una manzana.</span></li>
-  <li><audio controls preload="none" src="disparo.wav"></audio>
-    <span><a href="disparo.wav" download><code>disparo.wav</code></a>: al disparar la nave.</span></li>
-  <li><audio controls preload="none" src="explosion.wav"></audio>
-    <span><a href="explosion.wav" download><code>explosion.wav</code></a>: al derribar un enemigo.</span></li>
-</ul>
-
-<h2>Fuente</h2>
-<p><a href="PressStart2P-Regular.ttf" download><code>PressStart2P-Regular.ttf</code></a>: la fuente
-  de <em>pixel art</em> Press Start 2P, de CodeMan38, para los textos de las prácticas. Su licencia,
-  la <a href="PressStart2P-OFL.txt">SIL Open Font License</a>, permite usarla en tus juegos, también
-  en los comerciales, siempre que no la vendas por separado.</p>
 
 <h2>Código</h2>
 <p><a href="codigo.html">Todo el código del libro</a>, capítulo a capítulo y en el orden del texto,
@@ -67,6 +41,30 @@
   cuando algo no funcione.</p>
 <p><a href="codigo.zip" download><code>codigo.zip</code></a>: los <em>scripts</em> completos, en una
   carpeta por capítulo y otra por práctica, con un <code>LEEME.txt</code>.</p>
+
+<h2><em>Assets</em></h2>
+<p>Los <em>sprites</em>, los sonidos y la fuente de las prácticas. Haz clic en un <em>sprite</em> para
+  descargarlo o en un sonido para escucharlo, y arrástralos al panel <em>FileSystem</em> de Godot.
+  Puedes usarlos en tus juegos.</p>
+<ul class="assets">
+  <li><a href="niblo.png" download><img src="niblo.png" alt=""><code>niblo.png</code></a></li>
+  <li><a href="mubbit.png" download><img src="mubbit.png" alt=""><code>mubbit.png</code></a></li>
+  <li><a href="manzana.png" download><img src="manzana.png" alt=""><code>manzana.png</code></a></li>
+  <li><a href="casa.png" download><img src="casa.png" alt=""><code>casa.png</code></a></li>
+  <li><a href="jugador.png" download><img src="jugador.png" alt=""><code>jugador.png</code></a></li>
+  <li><a href="enemigo.png" download><img src="enemigo.png" alt=""><code>enemigo.png</code></a></li>
+  <li><a href="bala.png" download><img src="bala.png" alt=""><code>bala.png</code></a></li>
+  <li><a href="moneda.wav"><span class="icono" aria-hidden="true">🔊</span><code>moneda.wav</code></a>
+    <small>al recoger</small></li>
+  <li><a href="disparo.wav"><span class="icono" aria-hidden="true">🔊</span><code>disparo.wav</code></a>
+    <small>al disparar</small></li>
+  <li><a href="explosion.wav"><span class="icono" aria-hidden="true">🔊</span><code>explosion.wav</code></a>
+    <small>al derribar</small></li>
+  <li><a href="https://fonts.google.com/specimen/Press+Start+2P"><span class="icono fuente"
+    aria-hidden="true">Aa</span>Press Start 2P</a>
+    <small><a href="PressStart2P-Regular.ttf" download style="display: inline">.ttf</a> ·
+    <a href="PressStart2P-OFL.txt" style="display: inline">licencia OFL</a></small></li>
+</ul>
 
 <h2>Soluciones</h2>
 <p><a href="soluciones.zip" download><code>soluciones.zip</code></a>: las de los ejercicios de programación en
