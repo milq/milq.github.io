@@ -171,19 +171,14 @@ func _run() -&gt; void:
     var z: int = x + y    # Suma. Resultado: 7
     z = x - y             # Resta. Resultado: 3
     z = x * y             # Multiplicación. Resultado: 10
-    # Entre dos enteros, / descarta los decimales y Godot avisa con un
-    # &#x27;warning&#x27;. Si es justo lo que buscas, @warning_ignore quita el aviso:
-    @warning_ignore(&quot;integer_division&quot;)
-    z = x / y             # División entera. Resultado: 2
+    # z = x / y           # Al ser dos enteros, división entera. Resultado: 2
+    var division_reales: float = 5.0 / 2.0  # División con decimales. Res.: 2.5
     z = x % y             # Módulo (resto de la división entera). Resultado: 1
     z = x ** y            # Potencia: x elevado a y. Resultado: 25
     z += 1                # Incrementa el valor de z en 1
     z -= 1                # Disminuye el valor de z en 1
 
-    var division_reales: float = 5.0 / 2.0  # División con decimales. Res.: 2.5
-
-    # Precedencia: ** se calcula antes que *, / y %, y estos, antes que + y -.
-    # Los paréntesis cambian el orden.
+    # Precedencia: **, luego *, / y %, y después + y -. Los paréntesis mandan.
     print(&quot;2 + 3 * 4 = &quot;, 2 + 3 * 4)          # 14
     print(&quot;(2 + 3) * 4 = &quot;, (2 + 3) * 4)      # 20
     print(&quot;2 * 3 ** 2 = &quot;, 2 * 3 ** 2)        # 18
