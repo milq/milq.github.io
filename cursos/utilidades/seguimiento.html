@@ -174,10 +174,15 @@
   }
   .boton.secundario { background: transparent; color: var(--texto); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .35); }
   .boton.peligro { background: var(--rojo); color: #2a0806; }
-  .fab {
+  .fabs {
     position: fixed; z-index: 6; right: max(16px, calc(50% - 344px));
-    bottom: calc(18px + env(safe-area-inset-bottom)); height: 56px; padding: 0 22px 0 18px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, .45);
+    bottom: calc(18px + env(safe-area-inset-bottom)); display: flex; gap: 12px;
+  }
+  .fab { position: relative; width: 56px; height: 56px; padding: 0; box-shadow: 0 6px 18px rgba(0, 0, 0, .45); }
+  .fab.guardar { background: var(--menu); color: var(--texto); }
+  .fab.guardar.pendiente::after {
+    content: ''; position: absolute; top: 5px; right: 5px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--rojo); box-shadow: 0 0 0 2px var(--menu);
   }
 
   /* Avisos */
@@ -332,12 +337,18 @@
   </section>
 </main>
 
-<button type="button" class="boton fab" id="fab">
-  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-    <path d="M4 6h10M4 12h10M4 18h6M16 16l2.5 2.5L23 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  Notas
-</button>
+<div class="fabs" id="fabs">
+  <button type="button" class="boton fab guardar" id="fabGuardar" aria-label="Descargar copia de seguridad">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 3h11.5L21 7.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7.5 3v5h8V3M13 5v1M7 21v-7h10v7"/>
+    </svg>
+  </button>
+  <button type="button" class="boton fab" id="fab" aria-label="Notas">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+      <path d="M4 6h10M4 12h10M4 18h6M16 16l2.5 2.5L23 13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
 
 <div class="selector" id="selector" role="menu" hidden></div>
 
@@ -453,7 +464,8 @@
     </div>
     <p class="ayuda">
       Los alumnos, las marcas y los objetivos se guardan solo en este navegador. Descarga una copia de
-      vez en cuando por si se borran los datos del navegador o cambias de móvil. Restaurar una copia
+      vez en cuando por si se borran los datos del navegador o cambias de móvil. El disquete de abajo
+      también la descarga y se marca en rojo si llevas más de 14 días sin hacerlo. Restaurar una copia
       sustituye todo lo que hay ahora.
     </p>
     <p class="ayuda" id="ultimaCopia"></p>
@@ -527,6 +539,8 @@
   const ausente = m => m === FALTA || m === JUSTIFICADA;
   // Si un proyecto lleva al menos estos seguimientos, a cada alumno se le quita el peor.
   const QUITAR_PEOR_DESDE = 5;
+  // Si pasan más de estos días sin descargar una copia, el disquete se marca en rojo.
+  const DIAS_SIN_COPIA = 14;
   const CLAVE = 'seguimiento';
 
   // Avance: un quesito más o menos lleno. Explicación: una cara de color con su boca.
@@ -711,7 +725,8 @@
     $('#vacio').hidden = alumnos.length > 0;
     $('.columnas').hidden = alumnos.length === 0;
     $('#btnObjetivo').hidden = alumnos.length === 0;
-    $('#fab').hidden = alumnos.length === 0;
+    $('#fabs').hidden = alumnos.length === 0;
+    marcarDisquete();
     resumen();
   }
 
@@ -1263,18 +1278,39 @@
     $('#dlgCopia').showModal();
   }
 
-  $('#btnDescargar').addEventListener('click', () => {
-    datos.ui.ultimaCopia = hoyISO();
+  function marcarDisquete() {
+    const u = datos.ui.ultimaCopia;
+    const pendiente = !u || (Date.parse(hoyISO()) - Date.parse(u)) / 864e5 > DIAS_SIN_COPIA;
+    $('#fabGuardar').classList.toggle('pendiente', pendiente);
+    $('#fabGuardar').setAttribute('aria-label', 'Descargar copia de seguridad' +
+      (pendiente ? `: llevas más de ${DIAS_SIN_COPIA} días sin hacerlo` : ''));
+  }
+
+  // El nombre lleva la fecha y la hora para que cada copia sea distinta y salgan ordenadas.
+  function descargarCopia() {
+    const ahora = new Date();
+    const hora = [ahora.getHours(), ahora.getMinutes(), ahora.getSeconds()]
+      .map(n => String(n).padStart(2, '0')).join('-');
+    datos.ui.ultimaCopia = isoDe(ahora);
     guardar();
     const url = URL.createObjectURL(new Blob([JSON.stringify(datos)], { type: 'application/json' }));
     const a = el('a');
     a.href = url;
-    a.download = `seguimiento-${hoyISO()}.json`;
-    $('#dlgCopia').append(a);
+    a.download = `seguimiento-${isoDe(ahora)}_${hora}.json`;
+    (document.querySelector('dialog[open]') || document.body).append(a);
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 5000);
     textoUltimaCopia();
+    marcarDisquete();
+  }
+
+  $('#btnDescargar').addEventListener('click', descargarCopia);
+
+  // El disquete descarga la copia sin pasar por el menú.
+  $('#fabGuardar').addEventListener('click', () => {
+    descargarCopia();
+    avisar('Copia descargada');
   });
 
   $('#archivoCopia').addEventListener('change', async ev => {
