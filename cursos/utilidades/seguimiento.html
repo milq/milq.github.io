@@ -457,6 +457,7 @@
       sustituye todo lo que hay ahora.
     </p>
     <p class="ayuda" id="ultimaCopia"></p>
+    <p class="ayuda" id="persistencia" hidden></p>
     <div class="acciones">
       <label class="boton secundario">
         Restaurar copia
@@ -1241,8 +1242,24 @@
       : 'Todavía no has descargado ninguna copia.';
   }
 
+  // Dice si el navegador ha concedido el almacenamiento persistente, que impide que borre los datos
+  // cuando le falta espacio. Si el navegador no sabe responder, no se muestra nada.
+  async function textoPersistencia() {
+    const p = $('#persistencia');
+    try {
+      p.textContent = (await navigator.storage.persisted())
+        ? 'El navegador no borrará estos datos aunque le falte espacio.'
+        : 'Si le falta espacio, el navegador podría borrar estos datos. Tener esta página en la pantalla ' +
+          'de inicio ayuda a que los conserve.';
+      p.hidden = false;
+    } catch {
+      p.hidden = true;
+    }
+  }
+
   function abrirCopia() {
     textoUltimaCopia();
+    textoPersistencia();
     $('#dlgCopia').showModal();
   }
 
