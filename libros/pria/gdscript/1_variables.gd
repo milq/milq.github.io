@@ -73,6 +73,7 @@ func _run() -> void:
     z = x - y             # Resta. Resultado: 3
     z = x * y             # Multiplicación. Resultado: 10
     # z = x / y           # Al ser dos enteros, división entera. Resultado: 2
+    # Godot lo avisa, salvo con @warning_ignore("integer_division") delante.
     var division_reales: float = 5.0 / 2.0  # División con decimales. Res.: 2.5
     z = x % y             # Módulo (resto de la división entera). Resultado: 1
     z = x ** y            # Potencia: x elevado a y. Resultado: 25
