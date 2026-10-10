@@ -2336,7 +2336,7 @@ static func generar(columnas: int, filas: int,
             pila.pop_back()  # Callejón sin salida: vuelve atrás
             continue
         var nueva: Vector2i = cerradas.pick_random()
-        var muro := (actual + nueva) / 2
+        var muro := actual + (nueva - actual).sign()  # A un paso
         mapa[muro.y][muro.x] = &quot;.&quot;  # Abre el muro de en medio
         mapa[nueva.y][nueva.x] = &quot;.&quot;
         pila.push_back(nueva)
