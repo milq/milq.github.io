@@ -12,6 +12,13 @@ Esto es un comentario
 de múltiples líneas
 """
 
+# CONSTANTES
+# Una constante es un nombre asociado a un valor que no cambia durante la
+# ejecución. Se declara con 'const' y, como pide la guía de estilo de Godot, va
+# antes que las variables.
+const EULER: float = 2.71828
+# Godot ya trae algunas constantes matemáticas, como PI (π, 3.14159...)
+
 # VARIABLES
 # Una variable es un nombre asociado a un valor que se guarda en memoria y que
 # puede cambiar durante la ejecución. Se declara con 'var' y, si se desea, se
@@ -55,109 +62,108 @@ var es_mayor_de_edad := edad >= 18   # 'es_mayor_de_edad' es inferido como bool
 #   - Menor eficiencia en la detección de errores por parte del editor.
 var variable_dinamica = "Texto inicial"
 
-# Constantes: Valores que no cambian durante la ejecución
-const EULER: float = 2.71828
-# Godot ya trae algunas constantes matemáticas, como PI (π, 3.14159...)
-
 
 func _run() -> void:
-    # Cambio de tipo durante la ejecución de la variable con tipado dinámico
-    variable_dinamica = 42                 # Ahora 'variable_dinamica' es int
-    variable_dinamica = false              # Ahora 'variable_dinamica' es bool
+	# Cambio de tipo durante la ejecución de la variable con tipado dinámico
+	variable_dinamica = 42                 # Ahora 'variable_dinamica' es int
+	variable_dinamica = false              # Ahora 'variable_dinamica' es bool
 
-    # OPERACIONES ARITMÉTICAS CON NÚMEROS
-    var x: int = 5
-    var y: int = 2
+	# OPERACIONES ARITMÉTICAS CON NÚMEROS
+	var x: int = 5
+	var y: int = 2
 
-    var z: int = x + y    # Suma. Resultado: 7
-    z = x - y             # Resta. Resultado: 3
-    z = x * y             # Multiplicación. Resultado: 10
-    # z = x / y           # Al ser dos enteros, división entera. Resultado: 2
-    # Godot lo avisa, salvo con @warning_ignore("integer_division") delante.
-    var division_reales: float = 5.0 / 2.0  # División con decimales. Res.: 2.5
-    z = x % y             # Módulo (resto de la división entera). Resultado: 1
-    z = x ** y            # Potencia: x elevado a y. Resultado: 25
-    z += 1                # Incrementa el valor de z en 1
-    z -= 1                # Disminuye el valor de z en 1
+	var z: int = x + y    # Suma. Resultado: 7
+	z = x - y             # Resta. Resultado: 3
+	z = x * y             # Multiplicación. Resultado: 10
+	# z = x / y           # Al ser dos enteros, división entera. Resultado: 2
+	# Godot lo avisa, salvo con @warning_ignore("integer_division") delante.
+	var division_reales: float = 5.0 / 2.0  # División con decimales. Res.: 2.5
+	z = x % y             # Módulo (resto de la división entera). Resultado: 1
+	z = x ** y            # Potencia: x elevado a y. Resultado: 25
+	z += 1                # Incrementa el valor de z en 1
+	z -= 1                # Disminuye el valor de z en 1
 
-    # Precedencia: **, luego *, / y %, y después + y -. Los paréntesis mandan.
-    print("2 + 3 * 4 = ", 2 + 3 * 4)          # 14
-    print("(2 + 3) * 4 = ", (2 + 3) * 4)      # 20
-    print("2 * 3 ** 2 = ", 2 * 3 ** 2)        # 18
+	# Precedencia: **, luego *, / y %, y después + y -. Los paréntesis mandan.
+	z = 2 + 3 * 4         # Resultado: 14
+	z = (2 + 3) * 4       # Resultado: 20
+	z = 2 * 3 ** 2        # Resultado: 18
 
-    # Longitud de una circunferencia de radio 3 con la constante PI
-    var circunferencia: float = 2 * PI * 3.0  # Resultado: 18.849...
+	# Longitud de una circunferencia de radio 3 con la constante PI
+	var circunferencia: float = 2 * PI * 3.0  # Resultado: 18.849...
 
-    # OPERACIONES BÁSICAS CON CADENAS DE TEXTO (strings)
+	# OPERACIONES BÁSICAS CON CADENAS DE TEXTO (strings)
 
-    var a: String = "GNU/"
-    var b: String = "Linux"
-    var c: String = a + b        # Concatenación. Resultado: "GNU/Linux"
+	var a: String = "GNU/"
+	var b: String = "Linux"
+	var c: String = a + b        # Concatenación. Resultado: "GNU/Linux"
 
-    # IMPRIMIR VARIABLES EN LA PANTALLA
+	# IMPRIMIR VARIABLES EN LA PANTALLA
 
-    print("¡Hola, mundo!")              # Imprime en la pantalla: ¡Hola, mundo!
-    print("El valor de x es ", x)       # Imprime el valor de x
+	print("¡Hola, mundo!")              # Imprime en la pantalla: ¡Hola, mundo!
+	print("El valor de x es ", x)       # Imprime el valor de x
 
-    # Imprime en la pantalla cadenas de texto y variables usando comas
-    print("He comprado ", x, " naranjas y ", y, " limones.")
-    # Imprime en la pantalla cadenas de texto y variables usando el signo %:
-    # %d para enteros, %f para reales y %s para textos y booleanos. Los
-    # valores van entre corchetes, en un 'array' (lo verás en 2a_arrays.gd)
-    print("He comprado %d naranjas y %d limones." % [x, y])
-    # %.2f muestra un real con dos decimales, redondeado
-    print("La circunferencia mide %.2f metros." % circunferencia)  # 18.85
-    # Imprime en la pantalla cadenas de texto y variables concatenando cadenas
-    print("He comprado " + str(x) + " naranjas y " + str(y) + " limones.")
-    # Imprime en la pantalla cadenas de texto y variables usando 'format'
-    print("Tengo {0} naranjas y {1} limones. Sí, {0} naranjas.".format([x, y]))
+	# Imprime en la pantalla cadenas de texto y variables usando comas
+	print("He comprado ", x, " naranjas y ", y, " limones.")
+	# Imprime en la pantalla cadenas de texto y variables usando el signo %:
+	# %d para enteros, %f para reales y %s para textos y booleanos. Los
+	# valores van entre corchetes, en un 'array' (lo verás en 2a_arrays.gd)
+	print("He comprado %d naranjas y %d limones." % [x, y])
+	# %.2f muestra un real con dos decimales, redondeado
+	print("La circunferencia mide %.2f metros." % circunferencia)  # 18.85
+	# Imprime en la pantalla cadenas de texto y variables concatenando cadenas
+	print("He comprado " + str(x) + " naranjas y " + str(y) + " limones.")
+	# Imprime en la pantalla cadenas de texto y variables usando 'format'
+	print("Tengo {0} naranjas y {1} limones. Sí, {0} naranjas.".format([x, y]))
 
-    # CONVERSIÓN DE TIPOS DE DATOS
+	# CONVERSIÓN DE TIPOS DE DATOS
 
-    var posicion: String = "5"       # Una cadena que representa un entero
-    var calorias: String = "95.4"    # Una cadena que representa un número real
-    var peso_actual: int = 85                 # Un número entero
-    var altitud_actual: float = -544.432      # Un número real
+	var posicion: String = "5"       # Una cadena que representa un entero
+	var calorias: String = "95.4"    # Una cadena que representa un número real
+	var peso_actual: int = 85                 # Un número entero
+	var altitud_actual: float = -544.432      # Un número real
 
-    # Convertir de cadena a entero
-    var posicion_int: int = int(posicion)
-    print("Convertir 'posicion' de cadena a entero: ", posicion_int)
+	# Convertir de cadena a entero
+	var posicion_int := int(posicion)
+	print("Convertir 'posicion' de cadena a entero: ", posicion_int)
 
-    # Convertir de cadena a número real (float)
-    var calorias_flt: float = float(calorias)
-    print("Convertir 'calorias' de cadena a float: ", calorias_flt)
+	# Convertir de cadena a número real (float)
+	var calorias_flt := float(calorias)
+	print("Convertir 'calorias' de cadena a float: ", calorias_flt)
 
-    # Convertir de entero a cadena de caracteres
-    var peso_str: String = str(peso_actual)
-    print("Convertir 'peso' de entero a cadena: '", peso_str, "'")
+	# Convertir de entero a cadena de caracteres
+	var peso_str: String = str(peso_actual)
+	print("Convertir 'peso' de entero a cadena: '", peso_str, "'")
 
-    # Convertir de float a cadena de caracteres
-    var altitud_str: String = str(altitud_actual)
-    print("Convertir 'altitud' de float a cadena: '", altitud_str, "'")
+	# Convertir de float a cadena de caracteres
+	var altitud_str: String = str(altitud_actual)
+	print("Convertir 'altitud' de float a cadena: '", altitud_str, "'")
 
-    # Obtener el tipo de dato de las variables usando 'typeof'
-    var tipo_posicion: int = typeof(posicion_int)   # Tipo: int
-    var tipo_calorias: int = typeof(calorias_flt)   # Tipo: float
-    var tipo_peso: int = typeof(peso_str)           # Tipo: String
-    var tipo_altitud: int = typeof(altitud_str)     # Tipo: String
+	# Obtener el tipo de dato de las variables usando 'typeof'
+	var tipo_posicion: int = typeof(posicion_int)   # Tipo: int
+	var tipo_calorias: int = typeof(calorias_flt)   # Tipo: float
+	var tipo_peso: int = typeof(peso_str)           # Tipo: String
+	var tipo_altitud: int = typeof(altitud_str)     # Tipo: String
 
-    print("El tipo de 'posicion_int' es ", type_string(tipo_posicion))
-    print("El tipo de 'calorias_flt' es ", type_string(tipo_calorias))
-    print("El tipo de 'peso_str' es ", type_string(tipo_peso))
-    print("El tipo de 'altitud_str' es ", type_string(tipo_altitud))
+	print("El tipo de 'posicion_int' es ", type_string(tipo_posicion))
+	print("El tipo de 'calorias_flt' es ", type_string(tipo_calorias))
+	print("El tipo de 'peso_str' es ", type_string(tipo_peso))
+	print("El tipo de 'altitud_str' es ", type_string(tipo_altitud))
 
-    # MENSAJE FINAL PARA EVITAR VARIABLES NO USADAS
+	# MENSAJE FINAL PARA EVITAR VARIABLES NO USADAS
 
-    var mensaje: String = "¡{0}! Mi nombre es {1}, tengo {2} años," + \
-    " mido {3} cm y peso {4} kg." + \
-    " Estoy a {5} metros sobre el nivel del mar, donde " + \
-    "la temperatura es de {6} grados Celsius." + \
-    " ¿Tengo Debian GNU/Linux instalado? {7}. " + \
-    "¿Soy mayor de edad? {8}." + \
-    " El resultado de una división que hice antes es {9}. " + \
-    "Además, el valor final de z es {10} y la cadena concatenada c es '{11}'."
+	# Una línea larga se parte dentro de paréntesis, con dos niveles de
+	# sangría en las líneas que siguen
+	var mensaje: String = ("¡{0}! Mi nombre es {1}, tengo {2} años,"
+			+ " mido {3} cm y peso {4} kg."
+			+ " Estoy a {5} metros sobre el nivel del mar, donde "
+			+ "la temperatura es de {6} grados Celsius."
+			+ " ¿Tengo Debian GNU/Linux instalado? {7}. "
+			+ "¿Soy mayor de edad? {8}."
+			+ " El resultado de una división que hice antes es {9}. "
+			+ "Además, el valor final de z es {10} y la cadena concatenada "
+			+ "c es '{11}'.")
 
-    print(mensaje.format([
-        saludo, nombre, edad, altura, peso, nivel_del_mar, temperatura,
-        tiene_debian, es_mayor_de_edad, division_reales, z, c])
-    )
+	print(mensaje.format([
+		saludo, nombre, edad, altura, peso, nivel_del_mar, temperatura,
+		tiene_debian, es_mayor_de_edad, division_reales, z, c,
+	]))
