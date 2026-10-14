@@ -404,7 +404,7 @@
     <p class="ayuda">
       Cada seguimiento se califica según el avance y la explicación (ver «Cómo se calcula la nota»).
       Una falta injustificada es un 0 y una justificada (J) no cuenta. La nota es la media de los
-      seguimientos; si hay 5 o más, se quita el peor.
+      seguimientos; al alumno que tenga 5 o más se le quita el peor.
     </p>
     <table class="notas">
       <thead><tr><th>Alumno</th><th>Seguimientos</th><th>Nota</th></tr></thead>
@@ -449,8 +449,8 @@
       marcar; si te pasas, mantenla pulsada y elige el nivel en la lista. Si un alumno no ha venido,
       toca su nombre y elige si la falta es justificada o no. La nota de cada seguimiento sale de esta
       tabla, con el avance en las filas y la explicación en las columnas; una falta injustificada es
-      un 0 y una justificada no cuenta. La nota del proyecto es la media de los seguimientos y, si hay
-      5 o más, se quita el peor.
+      un 0 y una justificada no cuenta. La nota del proyecto es la media de los seguimientos y, al
+      alumno que tenga 5 o más, se le quita el peor.
     </p>
     <table class="calculo" id="tablaCalculo"></table>
   </div>
@@ -537,7 +537,8 @@
   const FALTA = 'falta';
   const JUSTIFICADA = 'justificada';
   const ausente = m => m === FALTA || m === JUSTIFICADA;
-  // Si un proyecto lleva al menos estos seguimientos, a cada alumno se le quita el peor.
+  // A un alumno con al menos estos seguimientos con nota en un proyecto se le quita el peor. Cada uno
+  // cuenta los suyos, porque quien se incorpora tarde lleva menos, y las faltas justificadas no suman.
   const QUITAR_PEOR_DESDE = 5;
   // Si pasan más de estos días sin descargar una copia, el disquete se marca en rojo.
   const DIAS_SIN_COPIA = 14;
@@ -1061,14 +1062,13 @@
   function calcular() {
     const porFecha = datos.marcas[estado.mod]?.[estado.proy] || {};
     const fechas = Object.keys(porFecha).sort();
-    const quitarPeor = fechas.length >= QUITAR_PEOR_DESDE;
     return alumnosDe(estado.mod).map(alumno => {
       const segs = fechas.filter(f => porFecha[f][alumno]).map(f => {
         const m = porFecha[f][alumno];
         return { fecha: f, m, valor: notaDe(m) };
       });
       const completos = segs.filter(s => s.valor !== null);
-      if (quitarPeor && completos.length > 1) {
+      if (completos.length >= QUITAR_PEOR_DESDE) {
         completos.reduce((peor, s) => (s.valor < peor.valor ? s : peor)).quitado = true;
       }
       const cuentan = completos.filter(s => !s.quitado);
@@ -1165,7 +1165,7 @@
       ...tablaTexto(),
       '',
       'La calificación es la media de los seguimientos.',
-      `Si hay ${QUITAR_PEOR_DESDE} seguimientos o más, se quita el peor.`,
+      `Si tienes ${QUITAR_PEOR_DESDE} seguimientos o más, se quita el peor.`,
     ];
     if (fechas.length) {
       lineas.push('', 'Objetivos:', ...fechas.map(f => `- ${fechaCorta(f, conAnio)}: ${objetivos[f]}`));
