@@ -319,7 +319,7 @@
       <div class="menu" id="menuOpciones" hidden>
         <button type="button" id="mAlumnos">Alumnos</button>
         <button type="button" id="mCalculo">Cómo se calcula la nota</button>
-        <button type="button" id="mCopia">Copia de seguridad</button>
+        <button type="button" id="mRestaurar">Restaurar copia</button>
         <button type="button" id="mBorrar" class="peligro">Borrar todos los datos</button>
       </div>
     </div>
@@ -342,12 +342,7 @@
 </main>
 
 <div class="fabs" id="fabs">
-  <button type="button" class="boton fab guardar" id="fabCompartir" aria-label="Compartir copia de seguridad (prueba)">
-    <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>
-    </svg>
-  </button>
-  <button type="button" class="boton fab guardar" id="fabGuardar" aria-label="Descargar copia de seguridad">
+  <button type="button" class="boton fab guardar" id="fabGuardar" aria-label="Guardar copia de seguridad">
     <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M5 3h11.5L21 7.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7.5 3v5h8V3M13 5v1M7 21v-7h10v7"/>
     </svg>
@@ -465,29 +460,7 @@
   </div>
 </dialog>
 
-<dialog class="hoja" id="dlgCopia">
-  <div class="hoja-cuerpo">
-    <div class="hoja-cab">
-      <h2>Copia de seguridad</h2>
-      <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
-    </div>
-    <p class="ayuda">
-      Los alumnos, las marcas y los objetivos se guardan solo en este navegador. Descarga una copia de
-      vez en cuando por si se borran los datos del navegador o cambias de móvil. El disquete de abajo
-      también la descarga y se marca en rojo si llevas más de 14 días sin hacerlo. Restaurar una copia
-      sustituye todo lo que hay ahora.
-    </p>
-    <p class="ayuda" id="ultimaCopia"></p>
-    <p class="ayuda" id="persistencia" hidden></p>
-    <div class="acciones">
-      <label class="boton secundario">
-        Restaurar copia
-        <input type="file" id="archivoCopia" accept=".json,.txt,application/json,text/plain" hidden>
-      </label>
-      <button type="button" class="boton" id="btnDescargar">Descargar copia</button>
-    </div>
-  </div>
-</dialog>
+<input type="file" id="archivoCopia" accept=".txt,text/plain" hidden>
 
 <!-- El botón rojo cambia de lado entre las dos confirmaciones para que dos toques seguidos no borren. -->
 <dialog class="hoja" id="dlgBorrar">
@@ -495,7 +468,7 @@
     <h2>Borrar todos los datos</h2>
     <p class="ayuda">
       Se borrarán los alumnos, las marcas y los objetivos de todos los módulos y proyectos. Si quieres
-      conservarlos, descarga antes una copia de seguridad.
+      conservarlos, guarda antes una copia con el disquete.
     </p>
     <div class="acciones mitades">
       <button type="button" class="boton secundario" data-cerrar>Cancelar</button>
@@ -1115,7 +1088,7 @@
     menu.hidden = true;
     if (b.id === 'mAlumnos') abrirAlumnos();
     if (b.id === 'mCalculo') abrirCalculo();
-    if (b.id === 'mCopia') abrirCopia();
+    if (b.id === 'mRestaurar') $('#archivoCopia').click();
     if (b.id === 'mBorrar') abrirBorrar();
   });
 
@@ -1358,55 +1331,82 @@
 
   // Copia de seguridad
 
-  function textoUltimaCopia() {
-    $('#ultimaCopia').textContent = datos.ui.ultimaCopia
-      ? `La última copia que descargaste es del ${fechaCorta(datos.ui.ultimaCopia)}.`
-      : 'Todavía no has descargado ninguna copia.';
-  }
-
-  // Dice si el navegador ha concedido el almacenamiento persistente, que impide que borre los datos
-  // cuando le falta espacio. Si el navegador no sabe responder, no se muestra nada.
-  async function textoPersistencia() {
-    const p = $('#persistencia');
-    try {
-      p.textContent = (await navigator.storage.persisted())
-        ? 'El navegador no borrará estos datos aunque le falte espacio.'
-        : 'Si le falta espacio, el navegador podría borrar estos datos. Tener esta página en la pantalla ' +
-          'de inicio ayuda a que los conserve.';
-      p.hidden = false;
-    } catch {
-      p.hidden = true;
-    }
-  }
-
-  function abrirCopia() {
-    textoUltimaCopia();
-    textoPersistencia();
-    $('#dlgCopia').showModal();
-  }
-
   function marcarDisquete() {
     const u = datos.ui.ultimaCopia;
     const pendiente = !u || (Date.parse(hoyISO()) - Date.parse(u)) / 864e5 > DIAS_SIN_COPIA;
     $('#fabGuardar').classList.toggle('pendiente', pendiente);
-    $('#fabGuardar').setAttribute('aria-label', 'Descargar copia de seguridad' +
+    $('#fabGuardar').setAttribute('aria-label', 'Guardar copia de seguridad' +
       (pendiente ? `: llevas más de ${DIAS_SIN_COPIA} días sin hacerlo` : ''));
   }
 
-  // El nombre lleva la fecha y la hora para que cada copia sea distinta y salgan ordenadas. Para
-  // compartirla va en .txt, porque Android no deja compartir archivos .json; dentro es lo mismo.
-  function archivoCopia(txt = false) {
-    const ahora = new Date();
-    const hora = [ahora.getHours(), ahora.getMinutes(), ahora.getSeconds()]
-      .map(n => String(n).padStart(2, '0')).join('-');
-    datos.ui.ultimaCopia = isoDe(ahora);
-    guardar();
-    return new File([JSON.stringify(datos)], `seguimiento-${isoDe(ahora)}_${hora}.${txt ? 'txt' : 'json'}`,
-      { type: txt ? 'text/plain' : 'application/json' });
+  // Lo que va detrás de esta línea en la copia son los datos para restaurarla.
+  const MARCA_DATOS = '--- Datos para restaurar la copia: no los cambies ---';
+
+  // Calcula con otro módulo y proyecto como si estuvieran elegidos y luego deja los de antes.
+  function conProyecto(mod, proy, fn) {
+    const antes = [estado.mod, estado.proy];
+    [estado.mod, estado.proy] = [mod, proy];
+    try {
+      return fn();
+    } finally {
+      [estado.mod, estado.proy] = antes;
+    }
   }
 
-  function descargarCopia() {
-    const archivo = archivoCopia();
+  // La copia empieza con la nota y el comentario de cada alumno en cada proyecto con marcas, para
+  // pegarlos en Moodle, y acaba con todos los datos.
+  function textoCopia(copia, ahora) {
+    const lineas = [
+      `Copia del seguimiento del ${fechaCorta(isoDe(ahora))}`,
+      '',
+      'Para pasar las notas a Moodle, copia la calificación y el comentario de cada alumno.',
+      'Para restaurar la copia, elige este archivo en «Restaurar copia», en el menú.',
+    ];
+    for (const mod of MODULOS) {
+      for (const proy of proyectosDe(mod)) {
+        if (!datos.marcas[mod]?.[proy]) continue;
+        const titulo = `${mod} · ${etiquetaProyecto(mod, proy)}`;
+        lineas.push('', '', titulo, '='.repeat(titulo.length));
+        for (const f of conProyecto(mod, proy, calcular)) {
+          lineas.push('', f.alumno, `Calificación: ${f.nota === null ? 'pendiente' : dosDecimales(f.nota)}`,
+            conProyecto(mod, proy, () => describir(f.segs)));
+        }
+      }
+    }
+    lineas.push('', '', MARCA_DATOS, JSON.stringify(copia));
+    return lineas.join('\n') + '\n';
+  }
+
+  // El nombre lleva la fecha y la hora para que cada copia sea distinta y salgan ordenadas. Va en
+  // .txt porque Android no deja compartir archivos .json.
+  function archivoCopia(ahora) {
+    const hora = [ahora.getHours(), ahora.getMinutes(), ahora.getSeconds()]
+      .map(n => String(n).padStart(2, '0')).join('-');
+    const copia = { ...datos, ui: { ...datos.ui, ultimaCopia: isoDe(ahora) } };
+    return new File([textoCopia(copia, ahora)], `seguimiento-${isoDe(ahora)}_${hora}.txt`, { type: 'text/plain' });
+  }
+
+  function copiaHecha(ahora) {
+    datos.ui.ultimaCopia = isoDe(ahora);
+    guardar();
+    marcarDisquete();
+  }
+
+  // En el móvil abre el menú de compartir para guardarla en Dropbox u otro sitio. Si el navegador no
+  // sabe compartir archivos, como el del ordenador, la descarga.
+  async function guardarCopia() {
+    const ahora = new Date();
+    const archivo = archivoCopia(ahora);
+    if (navigator.canShare?.({ files: [archivo] })) {
+      try {
+        await navigator.share({ title: 'Copia de seguridad', files: [archivo] });
+        copiaHecha(ahora);
+        avisar('Copia guardada');
+        return;
+      } catch (e) {
+        if (e.name === 'AbortError') return;
+      }
+    }
     const url = URL.createObjectURL(archivo);
     const a = el('a');
     a.href = url;
@@ -1415,45 +1415,23 @@
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 5000);
-    textoUltimaCopia();
-    marcarDisquete();
+    copiaHecha(ahora);
+    avisar('Copia descargada');
   }
 
-  $('#btnDescargar').addEventListener('click', descargarCopia);
-
-  // El disquete descarga la copia sin pasar por el menú.
-  $('#fabGuardar').addEventListener('click', () => {
-    descargarCopia();
-    avisar('Copia descargada');
-  });
-
-  // Prueba: comparte la copia para guardarla en Dropbox desde el menú de Android. Si el navegador
-  // no sabe compartir archivos, la descarga como el disquete.
-  $('#fabCompartir').addEventListener('click', async () => {
-    const archivo = archivoCopia(true);
-    marcarDisquete();
-    if (navigator.canShare?.({ files: [archivo] })) {
-      try {
-        await navigator.share({ title: 'Copia de seguridad', files: [archivo] });
-        return;
-      } catch (e) {
-        if (e.name === 'AbortError') return;
-      }
-    }
-    descargarCopia();
-    avisar('Copia descargada');
-  });
+  $('#fabGuardar').addEventListener('click', guardarCopia);
 
   $('#archivoCopia').addEventListener('change', async ev => {
     const archivo = ev.target.files[0];
     ev.target.value = '';
     if (!archivo) return;
     try {
-      const d = JSON.parse(await archivo.text());
+      const texto = await archivo.text();
+      const i = texto.lastIndexOf(MARCA_DATOS);
+      const d = JSON.parse(i < 0 ? texto : texto.slice(i + MARCA_DATOS.length));
       if (!valido(d)) throw new Error('copia no válida');
       datos = d;
       guardar();
-      $('#dlgCopia').close();
       pintar();
       avisar('Copia restaurada');
     } catch {
