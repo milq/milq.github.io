@@ -482,7 +482,7 @@
     <div class="acciones">
       <label class="boton secundario">
         Restaurar copia
-        <input type="file" id="archivoCopia" accept=".json,application/json" hidden>
+        <input type="file" id="archivoCopia" accept=".json,.txt,application/json,text/plain" hidden>
       </label>
       <button type="button" class="boton" id="btnDescargar">Descargar copia</button>
     </div>
@@ -1393,15 +1393,16 @@
       (pendiente ? `: llevas más de ${DIAS_SIN_COPIA} días sin hacerlo` : ''));
   }
 
-  // El nombre lleva la fecha y la hora para que cada copia sea distinta y salgan ordenadas.
-  function archivoCopia() {
+  // El nombre lleva la fecha y la hora para que cada copia sea distinta y salgan ordenadas. Para
+  // compartirla va en .txt, porque Android no deja compartir archivos .json; dentro es lo mismo.
+  function archivoCopia(txt = false) {
     const ahora = new Date();
     const hora = [ahora.getHours(), ahora.getMinutes(), ahora.getSeconds()]
       .map(n => String(n).padStart(2, '0')).join('-');
     datos.ui.ultimaCopia = isoDe(ahora);
     guardar();
-    return new File([JSON.stringify(datos)], `seguimiento-${isoDe(ahora)}_${hora}.json`,
-      { type: 'application/json' });
+    return new File([JSON.stringify(datos)], `seguimiento-${isoDe(ahora)}_${hora}.${txt ? 'txt' : 'json'}`,
+      { type: txt ? 'text/plain' : 'application/json' });
   }
 
   function descargarCopia() {
@@ -1429,7 +1430,7 @@
   // Prueba: comparte la copia para guardarla en Dropbox desde el menú de Android. Si el navegador
   // no sabe compartir archivos, la descarga como el disquete.
   $('#fabCompartir').addEventListener('click', async () => {
-    const archivo = archivoCopia();
+    const archivo = archivoCopia(true);
     marcarDisquete();
     if (navigator.canShare?.({ files: [archivo] })) {
       try {
