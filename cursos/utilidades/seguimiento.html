@@ -22,8 +22,12 @@
     --linea: rgba(255, 255, 255, .12);
     --col: clamp(60px, 18vw, 104px);
     --nota: 50px;
+    --n: 2;
     color-scheme: dark;
   }
+  /* Con más de dos criterios, las columnas se estrechan para que quepa el nombre. */
+  :root.estrecho { --col: clamp(50px, 14vw, 84px); }
+  .estrecho .marca svg { width: 40px; height: 40px; }
 
   * { box-sizing: border-box; }
   [hidden] { display: none !important; }
@@ -105,7 +109,7 @@
 
   /* Tabla de alumnos */
   .columnas, .fila {
-    display: grid; grid-template-columns: minmax(0, 1fr) var(--col) var(--col) var(--nota); column-gap: 6px;
+    display: grid; grid-template-columns: minmax(0, 1fr) repeat(var(--n), var(--col)) var(--nota); column-gap: 6px;
   }
   .columnas { padding: 10px 8px 0; }
   .tab {
@@ -135,7 +139,7 @@
   }
   .marca svg { width: 46px; height: 46px; }
   .falta {
-    grid-column: span 2; display: flex; align-items: center; justify-content: center; gap: 8px;
+    grid-column: span var(--n); display: flex; align-items: center; justify-content: center; gap: 8px;
     border: 0; background: transparent; color: var(--texto-suave); font-size: .9rem; font-weight: 600;
     text-align: center; line-height: 1.2;
   }
@@ -270,6 +274,8 @@
     display: block; margin-top: 2px; color: var(--texto-suave); font-size: .62rem; font-weight: 600;
     white-space: nowrap;
   }
+  .calculo.criterios th { padding-right: 12px; text-align: left; font-weight: 400; font-size: .9rem; }
+  .calculo.criterios tr:last-child > * { border-top: 1px solid var(--linea); font-weight: 800; }
 </style>
 </head>
 <body>
@@ -323,8 +329,6 @@
   </p>
   <div class="ancho columnas">
     <span></span>
-    <span class="tab">Avance</span>
-    <span class="tab">Explica&shy;ción</span>
     <span class="tab">Nota</span>
   </div>
 </div>
@@ -444,7 +448,7 @@
       <h2>Cómo se calcula la nota</h2>
       <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
     </div>
-    <p class="ayuda">
+    <p class="ayuda" id="ayudaCalculo">
       Cada toque en una marca la pasa al nivel siguiente, del mejor al peor, y tras «nada» la deja sin
       marcar; si te pasas, mantenla pulsada y elige el nivel en la lista. Si un alumno no ha venido,
       toca su nombre y elige si la falta es justificada o no. La nota de cada seguimiento sale de esta
@@ -519,6 +523,7 @@
   const MESES_LARGOS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto',
     'septiembre', 'octubre', 'noviembre', 'diciembre'];
   const COLUMNAS = ['Avance', 'Explicación'];
+  const PESTANAS = ['Avance', 'Explica\u00ADción'];
   // Niveles de cada columna, del mejor al peor. En las marcas, 0 es sin marcar y del 1 al 5, estos niveles.
   const NIVELES = [
     ['todo', 'casi todo', 'a medias', 'poco', 'nada'],
@@ -537,6 +542,20 @@
   const FALTA = 'falta';
   const JUSTIFICADA = 'justificada';
   const ausente = m => m === FALTA || m === JUSTIFICADA;
+  // Algunos proyectos no se siguen por avance y explicación, sino con los criterios de su enunciado:
+  // cada uno da de 0 a sus puntos y la nota es la suma. En las marcas, el nivel 1 es el máximo de puntos.
+  const CRITERIOS = {
+    PIDAW: {
+      P01: [
+        { nombre: 'Competencia, empresa tipo y necesidades del sector; marco legal, ayudas y guion de trabajo',
+          corto: 'sector', pestana: 'Sector', max: 2 },
+        { nombre: 'Oportunidad y definición del proyecto',
+          corto: 'oportunidad', pestana: 'Opor\u00ADtuni\u00ADdad', max: 4 },
+        { nombre: 'Diseño del informe y exposición en clase',
+          corto: 'exposición', pestana: 'Expo\u00ADsi\u00ADción', max: 4 },
+      ],
+    },
+  };
   // A un alumno con al menos estos seguimientos con nota en un proyecto se le quita el peor. Cada uno
   // cuenta los suyos, porque quien se incorpora tarde lleva menos, y las faltas justificadas no suman.
   const QUITAR_PEOR_DESDE = 5;
@@ -596,6 +615,14 @@
 
   const svgMarca = (c, n) => (c ? svgCara(n) : svgQuesito(n));
 
+  // Puntos de un criterio: un círculo con la cifra, del verde (todos) al rojo (ninguno).
+  function svgPuntos(p, max) {
+    const [fondo, tinta] = CARAS[1 + Math.round((1 - p / max) * 4)];
+    return `<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="${fondo}"/>` +
+      `<text x="24" y="24" dy=".36em" text-anchor="middle" font-size="22" font-weight="800" fill="${tinta}">` +
+      `${p}</text></svg>`;
+  }
+
   function el(etiqueta, clase, texto) {
     const n = document.createElement(etiqueta);
     if (clase) n.className = clase;
@@ -632,8 +659,33 @@
   const numero = n => n.toLocaleString('es-ES', { maximumFractionDigits: 2 });
   const dosDecimales = n => n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  // Nota de un seguimiento, o null si la falta es justificada o falta marcar el avance o la explicación.
-  const notaDe = m => (m === FALTA ? 0 : Array.isArray(m) && m[0] && m[1] ? NOTAS[m[0] - 1][m[1] - 1] : null);
+  // Columnas del proyecto elegido: los criterios de su enunciado o, si no tiene, avance y explicación.
+  const criteriosDe = () => CRITERIOS[estado.mod]?.[estado.proy] ?? null;
+  const numColumnas = () => criteriosDe()?.length ?? 2;
+  const nombreColumna = c => criteriosDe()?.[c].nombre ?? COLUMNAS[c];
+  const puntosDe = (c, n) => criteriosDe()[c].max - n + 1;
+  const plural = (n, s) => `${n} ${s}${n === 1 ? '' : 's'}`;
+
+  function nivelesDe(c) {
+    const cr = criteriosDe();
+    if (!cr) return NIVELES[c];
+    return Array.from({ length: cr[c].max + 1 }, (_, i) => plural(cr[c].max - i, 'punto'));
+  }
+
+  function svgColumna(c, n) {
+    const cr = criteriosDe();
+    if (!cr) return svgMarca(c, n);
+    return n ? svgPuntos(puntosDe(c, n), cr[c].max) : svgQuesito(0);
+  }
+
+  // Nota de un seguimiento, o null si la falta es justificada o falta alguna marca.
+  function notaDe(m) {
+    if (m === FALTA) return 0;
+    if (!Array.isArray(m)) return null;
+    const cr = criteriosDe();
+    if (!cr) return m[0] && m[1] ? NOTAS[m[0] - 1][m[1] - 1] : null;
+    return cr.every((_, c) => m[c]) ? cr.reduce((t, _, c) => t + puntosDe(c, m[c]), 0) : null;
+  }
 
   // Datos guardados en el navegador
 
@@ -703,6 +755,18 @@
     $('#mAlumnos').textContent = `Alumnos de ${estado.mod}`;
     $('#vacioModulo').textContent = estado.mod;
 
+    const n = numColumnas();
+    document.documentElement.style.setProperty('--n', n);
+    document.documentElement.classList.toggle('estrecho', n > 2);
+    const cr = criteriosDe();
+    const pestanas = Array.from({ length: n }, (_, c) => {
+      const tab = el('span', 'tab', cr ? cr[c].pestana : PESTANAS[c]);
+      tab.title = nombreColumna(c);
+      return tab;
+    });
+    const columnas = $('.columnas');
+    columnas.replaceChildren(columnas.firstElementChild, ...pestanas, columnas.lastElementChild);
+
     const objetivo = objetivoDelDia();
     const texto = $('#objetivoTexto');
     if (objetivo) texto.replaceChildren(el('b', null, 'Objetivo: '), objetivo);
@@ -744,13 +808,13 @@
       b.setAttribute('aria-haspopup', 'menu');
       celdas.push(b);
     } else {
-      for (let c = 0; c < 2; c++) {
+      for (let c = 0; c < numColumnas(); c++) {
         const n = m?.[c] || 0;
         const b = el('button', 'marca');
         b.type = 'button';
         b.dataset.c = c;
-        b.innerHTML = svgMarca(c, n);
-        b.setAttribute('aria-label', `${COLUMNAS[c]} de ${alumno}: ${n ? NIVELES[c][n - 1] : 'sin marcar'}`);
+        b.innerHTML = svgColumna(c, n);
+        b.setAttribute('aria-label', `${nombreColumna(c)} de ${alumno}: ${n ? nivelesDe(c)[n - 1] : 'sin marcar'}`);
         celdas.push(b);
       }
     }
@@ -787,19 +851,19 @@
   function cambiarNivel(li, c, n) {
     const conFoco = li.contains(document.activeElement);
     const antes = marcasDelDia()[li.dataset.alumno];
-    const m = Array.isArray(antes) ? [...antes] : [0, 0];
+    const m = Array.isArray(antes) ? [...antes] : Array(numColumnas()).fill(0);
     m[c] = n;
-    fijarMarca(li, m[0] || m[1] ? m : undefined);
+    fijarMarca(li, m.some(Boolean) ? m : undefined);
     const marca = li.querySelector(`.marca[data-c="${c}"]`);
     if (conFoco) marca.focus({ preventScroll: true });
     marca.firstChild.animate?.(
       [{ transform: 'scale(.8)' }, { transform: 'scale(1)' }], { duration: 140, easing: 'ease-out' });
   }
 
-  // Cada toque pasa al nivel siguiente, del mejor al peor, y tras «nada» la marca queda sin marcar.
+  // Cada toque pasa al nivel siguiente, del mejor al peor, y tras el último la marca queda sin marcar.
   function siguienteNivel(li, c) {
     const m = marcasDelDia()[li.dataset.alumno];
-    cambiarNivel(li, c, ((Array.isArray(m) ? m[c] : 0) + 1) % (NIVELES[c].length + 1));
+    cambiarNivel(li, c, ((Array.isArray(m) ? m[c] : 0) + 1) % (nivelesDe(c).length + 1));
   }
 
   // Selector que se abre al mantener pulsada una marca o al tocar el nombre
@@ -840,15 +904,15 @@
     origenSelector = null;
   }
 
-  // Cada nivel muestra la nota que saldría con lo que ya está marcado en la otra columna.
+  // Cada nivel muestra la nota que saldría con lo que ya está marcado en las otras columnas.
   function elegirNivel(li, c, origen) {
     const m = marcasDelDia()[li.dataset.alumno];
-    const actual = Array.isArray(m) ? m[c] : 0;
-    const otra = Array.isArray(m) ? m[1 - c] : 0;
-    const botones = NIVELES[c].map((nivel, i) => opcion(mayus(nivel), () => cambiarNivel(li, c, i + 1), {
-      icono: svgMarca(c, i + 1),
+    const marcas = Array.isArray(m) ? m : Array(numColumnas()).fill(0);
+    const actual = marcas[c] || 0;
+    const botones = nivelesDe(c).map((nivel, i) => opcion(mayus(nivel), () => cambiarNivel(li, c, i + 1), {
+      icono: svgColumna(c, i + 1),
       marcada: actual === i + 1,
-      nota: otra ? (c ? NOTAS[otra - 1][i] : NOTAS[i][otra - 1]) : null,
+      nota: notaDe(marcas.map((v, j) => (j === c ? i + 1 : v))),
     }));
     if (actual) botones.push(opcion('Quitar', () => cambiarNivel(li, c, 0), { clase: 'quitar' }));
     mostrarSelector(origen, botones);
@@ -1045,7 +1109,7 @@
     if (!b) return;
     menu.hidden = true;
     if (b.id === 'mAlumnos') abrirAlumnos();
-    if (b.id === 'mCalculo') $('#dlgCalculo').showModal();
+    if (b.id === 'mCalculo') abrirCalculo();
     if (b.id === 'mCopia') abrirCopia();
     if (b.id === 'mBorrar') abrirBorrar();
   });
@@ -1132,9 +1196,12 @@
     return cerrados.map(s => {
       const fecha = fechaCorta(s.fecha, conAnio);
       if (s.m === JUSTIFICADA) return `${fecha}: falta justificada, no cuenta.`;
+      const cr = criteriosDe();
       const que = s.m === FALTA
         ? 'falta injustificada'
-        : `avance ${NIVELES[0][s.m[0] - 1]}, explicación ${NIVELES[1][s.m[1] - 1]}`;
+        : cr
+          ? cr.map((k, c) => `${k.corto} ${puntosDe(c, s.m[c])} de ${k.max}`).join(', ')
+          : `avance ${NIVELES[0][s.m[0] - 1]}, explicación ${NIVELES[1][s.m[1] - 1]}`;
       return `${fecha}: ${que}, nota ${numero(s.valor)}${s.quitado ? ' (se quita)' : ''}.`;
     }).join(' ');
   }
@@ -1154,15 +1221,24 @@
     const objetivos = datos.objetivos[estado.mod]?.[estado.proy] || {};
     const fechas = Object.keys(objetivos).sort();
     const conAnio = new Set(fechas.map(f => f.slice(0, 4))).size > 1;
+    const cr = criteriosDe();
     const lineas = [
       tituloNotas(),
       `Enviadas el ${fechaCorta(hoyISO())}`,
       '',
-      'Cada seguimiento se califica con esta tabla según el avance (filas: lo que tienes hecho',
-      'y funcionando del objetivo de ese día) y la explicación (columnas: si entiendes tu código,',
-      'lo explicas y sabes cambiarlo). Una falta injustificada es un 0 y una justificada no cuenta.',
-      '',
-      ...tablaTexto(),
+      ...(cr
+        ? [
+          'Cada seguimiento se califica con los criterios del enunciado, que suman diez puntos:',
+          ...cr.map(k => `- ${mayus(k.corto)}: ${k.nombre} (de 0 a ${plural(k.max, 'punto')}).`),
+          'Una falta injustificada es un 0 y una justificada no cuenta.',
+        ]
+        : [
+          'Cada seguimiento se califica con esta tabla según el avance (filas: lo que tienes hecho',
+          'y funcionando del objetivo de ese día) y la explicación (columnas: si entiendes tu código,',
+          'lo explicas y sabes cambiarlo). Una falta injustificada es un 0 y una justificada no cuenta.',
+          '',
+          ...tablaTexto(),
+        ]),
       '',
       'La calificación es la media de los seguimientos.',
       `Si tienes ${QUITAR_PEOR_DESDE} seguimientos o más, se quita el peor.`,
@@ -1228,7 +1304,15 @@
 
   // Cómo se calcula
 
-  (function tablaCalculo() {
+  const ayudaMatriz = $('#ayudaCalculo').textContent;
+  const ayudaCriterios = 'Cada toque en una marca le quita un punto, desde el máximo hasta 0, y tras el 0 la ' +
+    'deja sin marcar; si te pasas, mantenla pulsada y elige los puntos en la lista. Si un alumno no ha ' +
+    'venido, toca su nombre y elige si la falta es justificada o no. En este proyecto, la nota de cada ' +
+    'seguimiento es la suma de los puntos de los criterios de su enunciado; una falta injustificada es un 0 ' +
+    `y una justificada no cuenta. La nota del proyecto es la media de los seguimientos y, al alumno que ` +
+    `tenga ${QUITAR_PEOR_DESDE} o más, se le quita el peor.`;
+
+  function tablaMatriz() {
     const conIcono = (svg, texto) => {
       const th = el('th');
       th.innerHTML = svg;
@@ -1246,8 +1330,26 @@
       for (const v of fila) tr.append(el('td', v >= 5 ? 'aprobado' : 'suspenso', String(v)));
       tbody.append(tr);
     });
-    $('#tablaCalculo').append(thead, tbody);
-  })();
+    return [thead, tbody];
+  }
+
+  function tablaCriterios(cr) {
+    const tbody = el('tbody');
+    for (const k of [...cr, { nombre: 'Total', max: cr.reduce((t, x) => t + x.max, 0) }]) {
+      const tr = el('tr');
+      tr.append(el('th', null, k.nombre), el('td', null, String(k.max)));
+      tbody.append(tr);
+    }
+    return [tbody];
+  }
+
+  function abrirCalculo() {
+    const cr = criteriosDe();
+    $('#ayudaCalculo').textContent = cr ? ayudaCriterios : ayudaMatriz;
+    $('#tablaCalculo').classList.toggle('criterios', !!cr);
+    $('#tablaCalculo').replaceChildren(...(cr ? tablaCriterios(cr) : tablaMatriz()));
+    $('#dlgCalculo').showModal();
+  }
 
   // Copia de seguridad
 
