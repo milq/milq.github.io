@@ -158,7 +158,7 @@ func _run() -> void:
 	var partida: Dictionary = {
 		"nombre": "Niblo",
 		"nivel": 3,
-		"inventario": ["espada", "poción"],
+		"inventario": ["varita", "poción"],
 	}
 	var ruta_partida: String = "user://partida.json"
 	archivo = FileAccess.open(ruta_partida, FileAccess.WRITE)
