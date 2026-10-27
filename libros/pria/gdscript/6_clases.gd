@@ -28,17 +28,17 @@ func _run() -> void:
 
 	# Ejemplo con la clase Personaje
 	var heroe := Personaje.new("Reinwald", 50)
-	var villano := Personaje.new("Zarosh", 40)
+	var rival := Personaje.new("Zarosh", 40)
 
 	heroe.mover_derecha()
 	print("Posición en X de %s: %d" % [heroe._nombre, heroe._x])
 
-	villano.recibir_daño(heroe._ataque)
-	print("Vida de %s: %d" % [villano._nombre, villano.salud])
+	rival.gastar_energia(heroe._ritmo)
+	print("Energía de %s: %d" % [rival._nombre, rival.energia])
 
-	villano.recibir_daño(100)  # El 'setter' no deja que la salud baje de 0
-	print("Vida de %s: %d. ¿Está vivo? %s" %
-			[villano._nombre, villano.salud, villano.esta_vivo])
+	rival.gastar_energia(100)  # El 'setter' no deja que la energía baje de 0
+	print("Energía de %s: %d. ¿Está despierto? %s" %
+			[rival._nombre, rival.energia, rival.esta_despierto])
 
 	# Ejemplo con la clase Animal y sus subclases
 	var ruperta := Gato.new("Ruperta", 100)
@@ -141,52 +141,52 @@ class Personaje:
 	# por línea
 	enum Estado {
 		NORMAL,
-		HERIDO,
-		MUERTO,
+		CANSADO,
+		AGOTADO,
 	}
 
-	# Propiedad con un 'setter' que limita su valor entre 0 y la salud
-	# máxima con clampi(). Dentro de su propio 'setter', 'salud = ...' guarda
+	# Propiedad con un 'setter' que limita su valor entre 0 y la energía
+	# máxima con clampi(). Dentro de su propio 'setter', 'energia = ...' guarda
 	# el valor sin volver a llamarlo
-	var salud: int:
+	var energia: int:
 		set(valor):
-			salud = clampi(valor, 0, _salud_maxima)
+			energia = clampi(valor, 0, _energia_maxima)
 
 	# Propiedad calculada: no guarda nada; su 'getter' la calcula al leerla
-	var esta_vivo: bool:
+	var esta_despierto: bool:
 		get:
-			return _estado != Estado.MUERTO
+			return _estado != Estado.AGOTADO
 
 	var _nombre: String
 	var _x: int
-	var _salud_maxima: int
+	var _energia_maxima: int
 	var _velocidad: int
-	var _ataque: int
-	var _defensa: int
+	var _ritmo: int
+	var _resistencia: int
 	var _estado: Estado = Estado.NORMAL
 
-	func _init(nombre: String, salud_maxima: int) -> void:
+	func _init(nombre: String, energia_maxima: int) -> void:
 		# Inicializa las propiedades del personaje
 		_nombre = nombre
 		_x = 50
-		_salud_maxima = salud_maxima
-		salud = salud_maxima
+		_energia_maxima = energia_maxima
+		energia = energia_maxima
 		_velocidad = 10
-		_ataque = 8
-		_defensa = 4
+		_ritmo = 8
+		_resistencia = 4
 
 	# Métodos de la clase
 	func mover_derecha() -> void:
 		# Incrementa la posición en X del personaje
 		_x += _velocidad
 
-	func recibir_daño(daño: int) -> void:
-		# Reduce la salud, pasando por su 'setter', y actualiza el estado
-		salud -= daño
-		if salud == 0:
-			_estado = Estado.MUERTO
-		elif salud * 2 < _salud_maxima:  # Menos de la mitad
-			_estado = Estado.HERIDO
+	func gastar_energia(cantidad: int) -> void:
+		# Reduce la energía, pasando por su 'setter', y actualiza el estado
+		energia -= cantidad
+		if energia == 0:
+			_estado = Estado.AGOTADO
+		elif energia * 2 < _energia_maxima:  # Menos de la mitad
+			_estado = Estado.CANSADO
 		else:
 			_estado = Estado.NORMAL
 
