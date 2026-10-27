@@ -55,10 +55,10 @@
 
 <p><a href="../">← Programación en red e inteligencia artificial con Godot</a></p>
 <h1>GDScript, de las variables a las bibliotecas</h1>
-<p>Un <em>script</em> por cada tema del capítulo 2, con todos sus ejemplos y comentarios que los
+<p>Un <em>script</em> por cada tema del apéndice A, con todos sus ejemplos y comentarios que los
   explican. Cada uno se ejecuta entero: ejecútalo y léelo de arriba abajo, comparando cada línea con
   lo que escribe en el panel <em>Output</em>. Entre todos tienen lo necesario para resolver los
-  ejercicios de programación de la sección 2.10, y cada tema solo usa lo de los anteriores.</p>
+  ejercicios de GDScript del apéndice A, y cada tema solo usa lo de los anteriores.</p>
 <p>Para ejecutar uno, descárgalo, arrástralo al panel <em>FileSystem</em> de tu proyecto de Godot y
   ábrelo con doble clic. En el editor de <em>scripts</em>, pulsa <em>File → Run</em> (Ctrl + Shift +
   X). <code>6_clases.gd</code> usa <code>icon.svg</code>, el icono que trae todo proyecto nuevo, y
@@ -67,7 +67,7 @@
 <p>Pulsa un <em>script</em> para ver su código. Las soluciones de los ejercicios están en
   <a href="../soluciones.zip"><code>soluciones.zip</code></a>.</p>
 
-<details id="0_hola_mundo"><summary><code>0_hola_mundo.gd</code> <span class="cuenta">· práctica del capítulo 1, parte 3</span><span class="descripcion">El <em>script</em> de editor más corto: <code>@tool</code>, <code>extends EditorScript</code> y <code>_run()</code>, que se ejecuta con <em>File → Run</em>.</span></summary>
+<details id="0_hola_mundo"><summary><code>0_hola_mundo.gd</code> <span class="cuenta">· práctica 1</span><span class="descripcion">El <em>script</em> de editor más corto: <code>@tool</code>, <code>extends EditorScript</code> y <code>_run()</code>, que se ejecuta con <em>File → Run</em>.</span></summary>
 <div class="bloque"><div class="cabecera"><code>0_hola_mundo.gd</code><span><a href="0_hola_mundo.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># -----------------------
 # HOLA, MUNDO EN GDSCRIPT
 # -----------------------
@@ -99,7 +99,7 @@ func _run() -&gt; void:
 #                         Output del editor.</code></pre></div>
 </details>
 
-<details id="1_variables"><summary><code>1_variables.gd</code> <span class="cuenta">· sección 2.1</span><span class="descripcion">Variables, tipos de datos y constantes, operadores aritméticos y su precedencia, texto con formato (<code>%d</code>, <code>%.2f</code>, <code>%s</code>) y conversión de tipos.</span></summary>
+<details id="1_variables"><summary><code>1_variables.gd</code> <span class="cuenta">· «Variables y operadores»</span><span class="descripcion">Variables, tipos de datos y constantes, operadores aritméticos y su precedencia, texto con formato (<code>%d</code>, <code>%.2f</code>, <code>%s</code>) y conversión de tipos.</span></summary>
 <div class="bloque"><div class="cabecera"><code>1_variables.gd</code><span><a href="1_variables.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ---------------------
 # VARIABLES EN GDSCRIPT
 # ---------------------
@@ -271,7 +271,7 @@ func _run() -&gt; void:
 	]))</code></pre></div>
 </details>
 
-<details id="2a_arrays"><summary><code>2a_arrays.gd</code> <span class="cuenta">· sección 2.2</span><span class="descripcion"><em>Arrays</em>: crearlos, leerlos con índices, cambiarlos, añadir y quitar elementos, ordenarlos, trocearlos, buscar en ellos y copiarlos.</span></summary>
+<details id="2a_arrays"><summary><code>2a_arrays.gd</code> <span class="cuenta">· «<em>Arrays</em>»</span><span class="descripcion"><em>Arrays</em>: crearlos, leerlos con índices, cambiarlos, añadir y quitar elementos, ordenarlos, trocearlos, buscar en ellos y copiarlos.</span></summary>
 <div class="bloque"><div class="cabecera"><code>2a_arrays.gd</code><span><a href="2a_arrays.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------
 # ARRAYS EN GDSCRIPT
 # ------------------
@@ -532,7 +532,7 @@ func _run() -&gt; void:
 	print(&quot;Después de mezclar aleatoriamente: &quot;, array_ejemplo)</code></pre></div>
 </details>
 
-<details id="2b_diccionarios"><summary><code>2b_diccionarios.gd</code> <span class="cuenta">· sección 2.3</span><span class="descripcion">Diccionarios: pares de clave y valor, con tipo o sin él, <code>get()</code> con valor por defecto, claves y valores, copias y diccionarios anidados.</span></summary>
+<details id="2b_diccionarios"><summary><code>2b_diccionarios.gd</code> <span class="cuenta">· «Diccionarios»</span><span class="descripcion">Diccionarios: pares de clave y valor, con tipo o sin él, <code>get()</code> con valor por defecto, claves y valores, copias y diccionarios anidados.</span></summary>
 <div class="bloque"><div class="cabecera"><code>2b_diccionarios.gd</code><span><a href="2b_diccionarios.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------------
 # DICCIONARIOS EN GDSCRIPT
 # ------------------------
@@ -718,7 +718,7 @@ func _run() -&gt; void:
 	print(&quot;El primer nombre es: &quot;, nombre_primera_persona)</code></pre></div>
 </details>
 
-<details id="3_condicionales"><summary><code>3_condicionales.gd</code> <span class="cuenta">· sección 2.4</span><span class="descripcion">Operadores de comparación y lógicos, <code>if</code>, <code>elif</code>, <code>else</code>, <code>match</code> y el operador ternario.</span></summary>
+<details id="3_condicionales"><summary><code>3_condicionales.gd</code> <span class="cuenta">· «Condicionales»</span><span class="descripcion">Operadores de comparación y lógicos, <code>if</code>, <code>elif</code>, <code>else</code>, <code>match</code> y el operador ternario.</span></summary>
 <div class="bloque"><div class="cabecera"><code>3_condicionales.gd</code><span><a href="3_condicionales.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># -------------------------
 # CONDICIONALES EN GDSCRIPT
 # -------------------------
@@ -876,7 +876,7 @@ func _run() -&gt; void:
 		print(str(celsius) + &quot; °C.&quot;)</code></pre></div>
 </details>
 
-<details id="4_bucles"><summary><code>4_bucles.gd</code> <span class="cuenta">· sección 2.5</span><span class="descripcion"><code>for</code> con <code>range()</code>, <em>arrays</em> y diccionarios, bucles anidados, <code>while</code> y <code>break</code>.</span></summary>
+<details id="4_bucles"><summary><code>4_bucles.gd</code> <span class="cuenta">· «Bucles»</span><span class="descripcion"><code>for</code> con <code>range()</code>, <em>arrays</em> y diccionarios, bucles anidados, <code>while</code> y <code>break</code>.</span></summary>
 <div class="bloque"><div class="cabecera"><code>4_bucles.gd</code><span><a href="4_bucles.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------
 # BUCLES EN GDSCRIPT
 # ------------------
@@ -1043,7 +1043,7 @@ func _run() -&gt; void:
 	print(cuadrados)</code></pre></div>
 </details>
 
-<details id="5_funciones"><summary><code>5_funciones.gd</code> <span class="cuenta">· sección 2.6</span><span class="descripcion">Funciones con parámetros, valores por defecto y tipo de retorno, recursividad, <em>lambdas</em> y funciones privadas.</span></summary>
+<details id="5_funciones"><summary><code>5_funciones.gd</code> <span class="cuenta">· «Funciones»</span><span class="descripcion">Funciones con parámetros, valores por defecto y tipo de retorno, recursividad, <em>lambdas</em> y funciones privadas.</span></summary>
 <div class="bloque"><div class="cabecera"><code>5_funciones.gd</code><span><a href="5_funciones.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ---------------------
 # FUNCIONES EN GDSCRIPT
 # ---------------------
@@ -1149,7 +1149,7 @@ func _funcion_privada() -&gt; void:
 	print(&quot;Esta es una función privada.&quot;)</code></pre></div>
 </details>
 
-<details id="6_clases"><summary><code>6_clases.gd</code> <span class="cuenta">· sección 2.7</span><span class="descripcion">Clases, constructores, <em>getters</em> y <em>setters</em>, enumeraciones, herencia, <code>super</code>, <code>is</code>, polimorfismo, los nodos de Godot y, comentado al final, el <em>script</em> de una escena.</span></summary>
+<details id="6_clases"><summary><code>6_clases.gd</code> <span class="cuenta">· «Clases y escenas»</span><span class="descripcion">Clases, constructores, <em>getters</em> y <em>setters</em>, enumeraciones, herencia, <code>super</code>, <code>is</code>, polimorfismo, los nodos de Godot y, comentado al final, el <em>script</em> de una escena.</span></summary>
 <div class="bloque"><div class="cabecera"><code>6_clases.gd</code><span><a href="6_clases.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># ------------------
 # CLASES EN GDSCRIPT
 # ------------------
@@ -1243,7 +1243,7 @@ func _run() -&gt; void:
 	var escena := Node2D.new()
 	var icono := Sprite2D.new()
 	icono.texture = load(&quot;res://icon.svg&quot;)  # Carga una imagen del proyecto
-	# Vector2 guarda un par de números (x, y): lo verás en el capítulo 3
+	# Vector2 guarda un par de números (x, y): lo verás en el capítulo 2
 	icono.position = Vector2(640, 360)
 	escena.add_child(icono)  # &#x27;icono&#x27; pasa a ser hijo de &#x27;escena&#x27;
 	print(&quot;Hijos de la escena: &quot;, escena.get_child_count())  # 1
@@ -1434,7 +1434,7 @@ class Gato extends Animal:
 #		get_tree().reload_current_scene()  # La R reinicia la escena</code></pre></div>
 </details>
 
-<details id="7_bibliotecas"><summary><code>7_bibliotecas.gd</code> <span class="cuenta">· sección 2.8</span><span class="descripcion">Matemáticas, números aleatorios y semillas, archivos de texto, JSON, bibliotecas propias con funciones estáticas y <em>autoloads</em>.</span></summary>
+<details id="7_bibliotecas"><summary><code>7_bibliotecas.gd</code> <span class="cuenta">· «Bibliotecas»</span><span class="descripcion">Matemáticas, números aleatorios y semillas, archivos de texto, JSON, bibliotecas propias con funciones estáticas y <em>autoloads</em>.</span></summary>
 <div class="bloque"><div class="cabecera"><code>7_bibliotecas.gd</code><span><a href="7_bibliotecas.gd" download>Descargar</a> <button type="button">Copiar</button></span></div><pre><code class="language-gdscript"># -----------------------
 # BIBLIOTECAS EN GDSCRIPT
 # -----------------------

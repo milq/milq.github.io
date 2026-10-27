@@ -91,7 +91,7 @@ func _run() -> void:
 	var escena := Node2D.new()
 	var icono := Sprite2D.new()
 	icono.texture = load("res://icon.svg")  # Carga una imagen del proyecto
-	# Vector2 guarda un par de números (x, y): lo verás en el capítulo 3
+	# Vector2 guarda un par de números (x, y): lo verás en el capítulo 2
 	icono.position = Vector2(640, 360)
 	escena.add_child(icono)  # 'icono' pasa a ser hijo de 'escena'
 	print("Hijos de la escena: ", escena.get_child_count())  # 1
