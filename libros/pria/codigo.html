@@ -110,16 +110,16 @@ func _ready() -&gt; void:
     print(normal)  # (0.0, 0.0, 1.0)</code></pre></div>
 <h2 id="capitulo-3-transformaciones">Capítulo 3. Transformaciones</h2>
 <h3>Nodos padre e hijo</h3>
-<p>Para comprobarlo, crea una escena con un <code>Sprite2D</code>, <code>Jugador</code>, y otro hijo suyo, <code>Espada</code>, los dos con el icono de Godot como textura. Pon este script en <code>Jugador</code> y pulsa F6:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El jugador, con la espada de hija
+<p>Para comprobarlo, crea una escena con un <code>Sprite2D</code>, <code>Jugador</code>, y otro hijo suyo, <code>Varita</code>, los dos con el icono de Godot como textura. Pon este script en <code>Jugador</code> y pulsa F6:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El jugador, con la varita de hija
 
 func _ready() -&gt; void:
     position = Vector2(600, 400)
-    $Espada.position = Vector2(50, 0)
-    print($Espada.global_position)  # (650.0, 400.0)
+    $Varita.position = Vector2(50, 0)
+    print($Varita.global_position)  # (650.0, 400.0)
     rotation_degrees = 90.0         # Gira el jugador
-    print($Espada.position)         # (50.0, 0.0)
-    print($Espada.global_position)  # (600.0, 450.0)</code></pre></div>
+    print($Varita.position)         # (50.0, 0.0)
+    print($Varita.global_position)  # (600.0, 450.0)</code></pre></div>
 <h3>De unas coordenadas a otras</h3>
 <p>En un <code>Sprite2D</code>, este script responde a las dos preguntas sobre el monstruo:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El jugador, mirando a la izquierda
@@ -156,8 +156,8 @@ func _ready() -&gt; void:
     print(-global_basis.z)          # (-1.0, 0.0, 0.0)</code></pre></div>
 <h2 id="capitulo-4-trigonometria-e-interpolacion">Capítulo 4. Trigonometría e interpolaciones</h2>
 <h3>Radianes, seno y coseno</h3>
-<p>En un <code>Sprite2D</code> con el icono de Godot, este script dispara la bala desde la torreta:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # Una bala que sale hacia el jugador
+<p>En un <code>Sprite2D</code> con el icono de Godot, este script dispara el láser desde la torreta:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # Un láser que sale hacia el jugador
 
 const RAPIDEZ := 500.0  # Píxeles por segundo
 var velocidad := Vector2.ZERO
@@ -219,10 +219,10 @@ func _ready() -&gt; void:
 <p>Este script sortea diez premios de las dos maneras:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node  # El premio del cofre, de dos maneras
 
-const PREMIOS := [&quot;monedas&quot;, &quot;poción&quot;, &quot;espada&quot;]
+const PREMIOS := [&quot;monedas&quot;, &quot;poción&quot;, &quot;varita&quot;]
 const LLENA := [&quot;monedas&quot;, &quot;monedas&quot;, &quot;monedas&quot;,
     &quot;monedas&quot;, &quot;monedas&quot;, &quot;monedas&quot;, &quot;poción&quot;,
-    &quot;poción&quot;, &quot;poción&quot;, &quot;espada&quot;]
+    &quot;poción&quot;, &quot;poción&quot;, &quot;varita&quot;]
 
 var azar := RandomNumberGenerator.new()
 var bolsa: Array = []
@@ -987,9 +987,9 @@ func _unhandled_input(event: InputEvent) -&gt; void:
         Marcador.reiniciar()
         get_tree().change_scene_to_file(JUEGO)</code></pre></div>
 <h2 id="practica-7-asteroids-con-ia">Práctica 7. Asteroids con IA</h2>
-<h3>Paso 1. Crea el proyecto y la bala</h3>
+<h3>Paso 1. Crea el proyecto y el láser</h3>
 <p>este script:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Area2D  # La bala: avanza y destruye enemigos
+<div class="codigo"><button>Copiar</button><pre><code>extends Area2D  # El láser: avanza y destruye enemigos
 
 @export var rapidez := 700.0  # px/s
 
@@ -1008,13 +1008,13 @@ func _on_area_entered(otra: Area2D) -&gt; void:
         queue_free()
         get_parent().sumar_punto()  # MainScene, paso 4</code></pre></div>
 <h3>Paso 2. Crea la nave</h3>
-<p><code>bala.tscn</code> a su campo Escena Bala:</p>
+<p><code>laser.tscn</code> a su campo Escena Laser:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends CharacterBody2D  # Gira, acelera y dispara
 
 @export var giro := 4.0        # rad/s
 @export var empuje := 500.0    # px/s²
 @export var rozamiento := 0.8  # Cuánto frena sola
-@export var escena_bala: PackedScene
+@export var escena_laser: PackedScene
 
 func _physics_process(delta: float) -&gt; void:
     # Con rotación: la orientación cambia girando
@@ -1029,10 +1029,10 @@ func _physics_process(delta: float) -&gt; void:
     position.x = wrapf(position.x, 0.0, ventana.x)
     position.y = wrapf(position.y, 0.0, ventana.y)
     if Input.is_action_just_pressed(&quot;ui_accept&quot;):
-        var bala := escena_bala.instantiate() as Area2D
-        bala.position = position + delante * 36.0
-        bala.rotation = rotation
-        get_parent().add_child(bala)</code></pre></div>
+        var laser: Area2D = escena_laser.instantiate()
+        laser.position = position + delante * 36.0
+        laser.rotation = rotation
+        get_parent().add_child(laser)</code></pre></div>
 <h3>Paso 3. Crea el enemigo, que persigue o hace eses</h3>
 <p>colisión de radio 24. Guárdala como <code>enemigo.tscn</code> y adjúntale este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class_name Enemigo
@@ -1100,7 +1100,7 @@ func aparecer() -&gt; void:
     enemigo.body_entered.connect(al_chocar)
     add_child(enemigo)
 
-func sumar_punto() -&gt; void:  # La llama la bala
+func sumar_punto() -&gt; void:  # La llama el láser
     puntos += 1
     actualizar()
 
