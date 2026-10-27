@@ -46,7 +46,7 @@
 <li><a href="#practica-5-un-mubbit-imprevisible">Práctica 5. Un Mubbit imprevisible</a> <small>(4)</small></li>
 <li><a href="#practica-6-niblo-y-las-manzanas">Práctica 6. Niblo y las manzanas</a> <small>(5)</small></li>
 <li><a href="#practica-7-asteroids-con-ia">Práctica 7. Asteroids con IA</a> <small>(4)</small></li>
-<li><a href="#practica-8-cazar-y-huir-con-fuerzas">Práctica 8. Cazar y huir con fuerzas</a> <small>(4)</small></li>
+<li><a href="#practica-8-perseguir-y-huir-con-fuerzas">Práctica 8. Perseguir y huir con fuerzas</a> <small>(4)</small></li>
 <li><a href="#practica-9-un-laberinto-en-3d">Práctica 9. Un laberinto en 3D</a> <small>(4)</small></li>
 <li><a href="#practica-10-un-laberinto-con-navegacion">Práctica 10. Un laberinto con navegación</a> <small>(3)</small></li>
 <li><a href="#practica-11-mubbits-con-maquina-de-estad">Práctica 11. Mubbits con máquina de estados</a> <small>(3)</small></li>
@@ -132,9 +132,9 @@ func _ready() -&gt; void:
     print(local)          # (400.0, 300.0)
     print(local.x &gt; 0.0)  # true: lo tiene delante
     print(local.y &gt; 0.0)  # true: a su derecha</code></pre></div>
-<h3>Una torreta sobre un vehículo</h3>
-<p>Este script va en <code>Vehiculo</code>, un <code>Sprite2D</code> con su hijo <code>Torreta</code>, los dos con el icono de Godot, y el ratón hace de jugador:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El vehículo, con la torreta de hija
+<h3>Un lanzapelotas sobre un vehículo</h3>
+<p>Este script va en <code>Vehiculo</code>, un <code>Sprite2D</code> con su hijo <code>Lanzapelotas</code>, los dos con el icono, y el ratón hace de jugador:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El vehículo, con su lanzapelotas
 
 func _ready() -&gt; void:
     position = Vector2(200, 100)
@@ -144,7 +144,7 @@ func _process(delta: float) -&gt; void:
     position += transform.x * 100.0 * delta  # Avanza
     var jugador := get_global_mouse_position()
     if to_local(jugador).x &gt; 0.0:  # Lo tiene delante
-        $Torreta.look_at(jugador)</code></pre></div>
+        $Lanzapelotas.look_at(jugador)</code></pre></div>
 <h3>En 3D</h3>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node3D  # El cuerpo, con la cabeza de hija
 
@@ -156,8 +156,8 @@ func _ready() -&gt; void:
     print(-global_basis.z)          # (-1.0, 0.0, 0.0)</code></pre></div>
 <h2 id="capitulo-4-trigonometria-e-interpolacion">Capítulo 4. Trigonometría e interpolaciones</h2>
 <h3>Radianes, seno y coseno</h3>
-<p>En un <code>Sprite2D</code> con el icono de Godot, este script dispara el láser desde la torreta:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # Un láser que sale hacia el jugador
+<p>En un <code>Sprite2D</code> con el icono de Godot, este script lanza la pelota desde el lanzapelotas:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # Una pelota que va hacia el jugador
 
 const RAPIDEZ := 500.0  # Píxeles por segundo
 var velocidad := Vector2.ZERO
@@ -170,15 +170,15 @@ func _ready() -&gt; void:
 
 func _process(delta: float) -&gt; void:
     position += velocidad * delta  # En 1 s, (600, 400)</code></pre></div>
-<h3>Una torreta con vida</h3>
-<p>En un <code>Sprite2D</code> con el icono, en <code>(200, 100)</code>, y el ratón como jugador, este script es la torreta:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # La torreta que vigila y dispara
+<h3>Un lanzapelotas con vida</h3>
+<p>En un <code>Sprite2D</code> con el icono, en <code>(200, 100)</code>, y el ratón como jugador, este script es el lanzapelotas:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El lanzapelotas que vigila y lanza
 
 const GIRO := deg_to_rad(90.0)  # Velocidad angular
 const CONO := deg_to_rad(20.0)  # A cada lado
 const APLASTADA := Vector2(0.7, 1.3)
 var tiempo := 0.0
-var tw: Tween  # El tween del último disparo
+var tw: Tween  # El tween del último lanzamiento
 
 func _process(delta: float) -&gt; void:
     var hacia := get_global_mouse_position() - position
@@ -189,11 +189,11 @@ func _process(delta: float) -&gt; void:
     var paso := GIRO * delta  # Lo que gira, como mucho
     rotation = rotate_toward(rotation, meta, paso)
     if tw and tw.is_running():
-        return  # Aún está disparando
+        return  # Aún está lanzando
     if is_zero_approx(transform.x.angle_to(hacia)):
-        disparar()
+        lanzar()
 
-func disparar() -&gt; void:
+func lanzar() -&gt; void:
     tw = create_tween()
     tw.tween_property(self, &quot;scale&quot;, APLASTADA, 0.05)
     tw.set_trans(Tween.TRANS_BACK)  # Se pasa y vuelve
@@ -202,7 +202,7 @@ func disparar() -&gt; void:
 <h2 id="capitulo-5-funciones-matematicas-y-azar">Capítulo 5. Funciones matemáticas y azar</h2>
 <h3>Redondeo y límites</h3>
 <p>En un script de un <code>Node</code>, estas líneas hacen las cuentas de este apartado y del anterior:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Node  # Nivel, vida y armas del jugador
+<div class="codigo"><button>Copiar</button><pre><code>extends Node  # Nivel, energía y hechizos del jugador
 
 func nivel_con(puntos: int) -&gt; int:
     var n := floori(log(puntos / 50.0) / log(2))
@@ -315,9 +315,9 @@ func _process(delta: float) -&gt; void:
     var paso := GIRO * delta
     rotation = rotate_toward(rotation, meta, paso)
     position += transform.x * RAPIDEZ * delta</code></pre></div>
-<h3>Un platillo que patrulla y dispara</h3>
+<h3>Un platillo que patrulla y lanza pelotas</h3>
 <p>En un <code>Sprite2D</code> con el icono de Godot y el ratón como jugador, este script junta el patrón y la puntería:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El platillo: patrulla y dispara
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El platillo: patrulla y lanza
 
 const PASOS := [  # Cada paso: velocidad y segundos
     [Vector2(200, 0), 2.0],   # Derecha
@@ -328,7 +328,7 @@ const PASOS := [  # Cada paso: velocidad y segundos
 
 var paso: int = 0
 var tiempo := 0.0  # Segundos en el paso actual
-var espera := 1.0  # Segundos hasta el próximo disparo
+var espera := 1.0  # Segundos hasta la próxima pelota
 
 func _ready() -&gt; void:
     position = Vector2(200, 100)
@@ -340,7 +340,7 @@ func _process(delta: float) -&gt; void:
         tiempo -= PASOS[paso][1]
         paso = (paso + 1) % PASOS.size()
     espera -= delta
-    if espera &lt;= 0.0:  # Dispara al ratón, con error
+    if espera &lt;= 0.0:  # Lanza al ratón, con error
         espera = 1.0
         var raton := get_global_mouse_position()
         var angulo := (raton - position).angle()
@@ -384,7 +384,7 @@ func vagar(delta: float) -&gt; Vector2:
 
 func _physics_process(delta: float) -&gt; void:
     var d := position.distance_to(jugador.position)
-    if d &lt; 300.0:  # 1.º: cazar al jugador
+    if d &lt; 300.0:  # 1.º: ir a por el jugador
         mover(perseguir(jugador), delta)
     else:          # 2.º: ir con el grupo
         mover(bandada() + vagar(delta) * 0.3, delta)</code></pre></div>
@@ -471,7 +471,7 @@ func _al_esquivar(segura: Vector2) -&gt; void:
 <p>En Godot, en 2D, un <code>Sprite2D</code> con el icono de Godot y este script tiene el esqueleto de la máquina:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El monstruo, con su máquina
 
-enum Estado { PATRULLAR, PERSEGUIR, ATACAR, BUSCAR }
+enum Estado { PATRULLAR, PERSEGUIR, ATRAPAR, BUSCAR }
 
 @export var jugador: Node2D
 var estado := Estado.PATRULLAR
@@ -483,8 +483,8 @@ func _physics_process(delta: float) -&gt; void:
             patrullar(d, delta)
         Estado.PERSEGUIR:
             perseguir(d, delta)
-        Estado.ATACAR:
-            atacar(d)
+        Estado.ATRAPAR:
+            atrapar(d)
         Estado.BUSCAR:
             buscar(d, delta)
         _:
@@ -498,7 +498,7 @@ func _physics_process(delta: float) -&gt; void:
 <h3>Un monstruo que vigila</h3>
 <p>El resto del script son las constantes y las variables, que van arriba, junto a <code>estado</code>, y las funciones de los cuatro estados, con sus transiciones al final:</p>
 <div class="codigo"><button>Copiar</button><pre><code>const VISTA := 200.0   # Píxeles a los que lo ve
-const ALCANCE := 40.0  # Píxeles a los que ataca
+const ALCANCE := 40.0  # Píxeles a los que atrapa
 const RUTA: Array[Vector2] = [
         Vector2(200, 100), Vector2(1000, 100)]
 var siguiente: int = 1     # Punto al que va
@@ -517,11 +517,11 @@ func perseguir(d: float, delta: float) -&gt; void:
     visto = jugador.position
     position = position.move_toward(visto, 160 * delta)
     if d &lt;= ALCANCE:
-        cambiar_a(Estado.ATACAR)
+        cambiar_a(Estado.ATRAPAR)
     elif d &gt; VISTA:
         cambiar_a(Estado.BUSCAR)
 
-func atacar(d: float) -&gt; void:
+func atrapar(d: float) -&gt; void:
     if d &gt; ALCANCE:
         cambiar_a(Estado.PERSEGUIR)
 
@@ -989,7 +989,7 @@ func _unhandled_input(event: InputEvent) -&gt; void:
 <h2 id="practica-7-asteroids-con-ia">Práctica 7. Asteroids con IA</h2>
 <h3>Paso 1. Crea el proyecto y el láser</h3>
 <p>este script:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Area2D  # El láser: avanza y destruye enemigos
+<div class="codigo"><button>Copiar</button><pre><code>extends Area2D  # El láser: avanza y rompe asteroides
 
 @export var rapidez := 700.0  # px/s
 
@@ -1003,13 +1003,13 @@ func _physics_process(delta: float) -&gt; void:
     position += delante * rapidez * delta
 
 func _on_area_entered(otra: Area2D) -&gt; void:
-    if otra is Enemigo:  # La clase del paso 3
+    if otra is Asteroide:  # La clase del paso 3
         otra.queue_free()
         queue_free()
         get_parent().sumar_punto()  # MainScene, paso 4</code></pre></div>
 <h3>Paso 2. Crea la nave</h3>
 <p><code>laser.tscn</code> a su campo Escena Laser:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends CharacterBody2D  # Gira, acelera y dispara
+<div class="codigo"><button>Copiar</button><pre><code>extends CharacterBody2D  # Gira, acelera y lanza
 
 @export var giro := 4.0        # rad/s
 @export var empuje := 500.0    # px/s²
@@ -1033,10 +1033,10 @@ func _physics_process(delta: float) -&gt; void:
         laser.position = position + delante * 36.0
         laser.rotation = rotation
         get_parent().add_child(laser)</code></pre></div>
-<h3>Paso 3. Crea el enemigo, que persigue o hace eses</h3>
-<p>colisión de radio 24. Guárdala como <code>enemigo.tscn</code> y adjúntale este script:</p>
-<div class="codigo"><button>Copiar</button><pre><code>class_name Enemigo
-extends Area2D  # Un enemigo que persigue o hace eses
+<h3>Paso 3. Crea el asteroide, que persigue o hace eses</h3>
+<p>de colisión de radio 24. Guárdala como <code>asteroide.tscn</code> y adjúntale este script:</p>
+<div class="codigo"><button>Copiar</button><pre><code>class_name Asteroide
+extends Area2D  # Un asteroide que persigue o hace eses
 
 enum Modo { PERSEGUIR, ZIGZAG }
 
@@ -1075,11 +1075,11 @@ func mover_hacia(punto: Vector2, delta: float) -&gt; void:
     position += direccion * rapidez * delta
     if direccion != Vector2.ZERO:
         rotation = Vector2.UP.angle_to(direccion)</code></pre></div>
-<h3>Paso 4. Haz aparecer a los enemigos y juega</h3>
-<p>Adjunta a <code>MainScene</code> este script y arrastra <code>enemigo.tscn</code> a Escena Enemigo:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Node2D  # MainScene: enemigos, puntos y vidas
+<h3>Paso 4. Haz aparecer los asteroides y juega</h3>
+<p>Adjunta a <code>MainScene</code> este script y arrastra <code>asteroide.tscn</code> a Escena Roca, porque los asteroides son rocas:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Node2D  # MainScene: asteroides, puntos y vidas
 
-@export var escena_enemigo: PackedScene
+@export var escena_roca: PackedScene
 
 var puntos: int = 0
 var vidas: int = 3
@@ -1089,16 +1089,16 @@ func _ready() -&gt; void:
     actualizar()
 
 func aparecer() -&gt; void:
-    var enemigo: Enemigo = escena_enemigo.instantiate()
+    var roca: Asteroide = escena_roca.instantiate()
     var ancho := get_viewport_rect().size.x
-    enemigo.position = Vector2(randf() * ancho, 0.0)
-    enemigo.rotation = randf() * TAU
-    var modos := Enemigo.Modo.values()
-    enemigo.modo = modos.pick_random()
-    enemigo.objetivo = $Nave
-    var al_chocar := _on_choque.bind(enemigo)
-    enemigo.body_entered.connect(al_chocar)
-    add_child(enemigo)
+    roca.position = Vector2(randf() * ancho, 0.0)
+    roca.rotation = randf() * TAU
+    var modos := Asteroide.Modo.values()
+    roca.modo = modos.pick_random()
+    roca.objetivo = $Nave
+    var al_chocar := _on_choque.bind(roca)
+    roca.body_entered.connect(al_chocar)
+    add_child(roca)
 
 func sumar_punto() -&gt; void:  # La llama el láser
     puntos += 1
@@ -1108,15 +1108,15 @@ func actualizar() -&gt; void:
     $Marcador.text = &quot;PUNTOS %d   VIDAS %d&quot; % [
         puntos, vidas]
 
-func _on_choque(cuerpo: Node2D, enemigo: Node) -&gt; void:
+func _on_choque(cuerpo: Node2D, roca: Node) -&gt; void:
     if cuerpo != $Nave:
         return
-    enemigo.queue_free()  # El que te toca desaparece
+    roca.queue_free()  # La que te toca desaparece
     vidas -= 1
     actualizar()
     if vidas == 0:  # Fin: la partida vuelve a empezar
         get_tree().reload_current_scene.call_deferred()</code></pre></div>
-<h2 id="practica-8-cazar-y-huir-con-fuerzas">Práctica 8. Cazar y huir con fuerzas</h2>
+<h2 id="practica-8-perseguir-y-huir-con-fuerzas">Práctica 8. Perseguir y huir con fuerzas</h2>
 <h3>Paso 2. Crea la clase <code>Vehiculo</code></h3>
 <p>capítulo con cuatro comportamientos:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class_name Vehiculo
@@ -1168,22 +1168,22 @@ func separar(vecinos: Array[Node]) -&gt; Vector2:
 func _physics_process(delta: float) -&gt; void:
     var raton := get_global_mouse_position()
     mover(llegar(raton, 150.0), delta)</code></pre></div>
-<h3>Paso 4. Crea los enemigos</h3>
-<p><code>enemigo.tscn</code> y adjúntale este script:</p>
+<h3>Paso 4. Crea los asteroides</h3>
+<p><code>asteroide.tscn</code> y adjúntale este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Vehiculo  # Busca a Niblo o huye de él
 
 @export var objetivo: CharacterBody2D  # Niblo
 @export var huye := false  # Si huye en vez de buscar
 
 func _ready() -&gt; void:
-    add_to_group(&quot;enemigos&quot;)  # Así se encuentran
+    add_to_group(&quot;asteroides&quot;)  # Así se encuentran
 
 func _physics_process(delta: float) -&gt; void:
     var fuerza := buscar(objetivo.position)
     if huye:
         fuerza = huir(objetivo.position, 250.0)
     var vecinos := get_tree().get_nodes_in_group(
-            &quot;enemigos&quot;)
+            &quot;asteroides&quot;)
     fuerza += separar(vecinos) * 1.5  # Sin amontonarse
     mover(fuerza, delta)
     var ventana := get_viewport_rect().size
@@ -1470,7 +1470,7 @@ static func generar(columnas: int, filas: int,
     mapa[salida.y][salida.x] = &quot;S&quot;
     return mapa
 
-# Derriba muros al azar para que haya rodeos
+# Abre muros al azar para que haya rodeos
 static func abrir_atajos(mapa: Array[String],
         cuantos: int) -&gt; void:
     var columnas := mapa[0].length()
@@ -2014,16 +2014,16 @@ var ocho: int = doble.call(4)   # 8</code></pre></div>
 <div class="codigo"><button>Copiar</button><pre><code>var p := Punto.new(2, 3)
 var q := Punto.new(10, 10)
 var d := p.distancia_a(q)   # 10.63...</code></pre></div>
-<p>leerla. Un `enum` es un conjunto de constantes con nombre, que se usan como `Estado.HERIDO`.</p>
+<p>leerla. Un `enum` es un conjunto de constantes con nombre, que se usan como `Estado.CANSADO`.</p>
 <div class="codigo"><button>Copiar</button><pre><code>class Personaje:
-    enum Estado { NORMAL, HERIDO, MUERTO }
+    enum Estado { NORMAL, CANSADO, AGOTADO }
 
-    var salud: int:
+    var energia: int:
         set(valor):
-            salud = clampi(valor, 0, 100)
-    var esta_vivo: bool:
+            energia = clampi(valor, 0, 100)
+    var esta_despierto: bool:
         get:
-            return salud &gt; 0</code></pre></div>
+            return energia &gt; 0</code></pre></div>
 <p>`Animal` puede guardar un `Perro`, y cada uno ejecuta su versión de `mover()`, y eso es el *polimorfismo*. El operador `is` comprueba la clase de un objeto.</p>
 <div class="codigo"><button>Copiar</button><pre><code>class Animal:
     var energia: int

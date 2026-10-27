@@ -45,7 +45,7 @@
   <li><a href="#boletin-5">Boletín 5: Reglas y dados</a> <span class="capitulo">· capítulo 5</span></li>
   <li><a href="#boletin-6">Boletín 6: Saltar, caer y chocar</a> <span class="capitulo">· capítulo 6</span></li>
   <li><a href="#boletin-7">Boletín 7: Naves, platillos y ciempiés</a> <span class="capitulo">· capítulo 7</span></li>
-  <li><a href="#boletin-8">Boletín 8: Cazadores, presas y bandadas</a> <span class="capitulo">· capítulo 8</span></li>
+  <li><a href="#boletin-8">Boletín 8: Perseguidores, perseguidos y bandadas</a> <span class="capitulo">· capítulo 8</span></li>
   <li><a href="#boletin-9">Boletín 9: Casillas, grafos y caminos</a> <span class="capitulo">· capítulo 9</span></li>
   <li><a href="#boletin-10">Boletín 10: Mallas, embudos y agentes</a> <span class="capitulo">· capítulo 10</span></li>
   <li><a href="#boletin-11">Boletín 11: Estados, flechas y eventos</a> <span class="capitulo">· capítulo 11</span></li>
@@ -59,12 +59,12 @@
 <p class="capitulo">Del capítulo 1, «IA y videojuegos».</p>
 <h3>Para pensar</h3>
 <ol start="1">
-  <li>Describe como agente un enemigo de un juego que conozcas: sus sensores, sus actuadores y su medida de rendimiento. ¿De cuál de los cinco tipos de agente es? ¿Sabe algo que no ha percibido?</li>
-  <li>¿Son parcialmente observables, estocásticos, dinámicos, continuos o multiagente un sudoku, el parchís, un juego de carreras y uno de estrategia con niebla de guerra?</li>
+  <li>Describe como agente un rival de un juego que conozcas: sus sensores, sus actuadores y su medida de rendimiento. ¿De cuál de los cinco tipos de agente es? ¿Sabe algo que no ha percibido?</li>
+  <li>¿Son parcialmente observables, estocásticos, dinámicos, continuos o multiagente un sudoku, el parchís, un juego de carreras y uno de estrategia con el mapa oculto por la niebla?</li>
   <li>¿Qué aprendizaje usarías para detectar tramposos con miles de partidas ya revisadas, para hallar grupos de jugadores que juegan parecido y para que un coche aprenda a correr en un circuito?</li>
   <li>El perceptrón del monstruo pesa 0,8 que te vea, 0,4 que sospeche y 0,6 que oiga pasos, con umbral 0,5. ¿Va a mirar si solo te ve? ¿Y si solo sospecha del todo? ¿Qué peso debería tener la sospecha para bastar sola?</li>
   <li>Un monstruo aprende por refuerzo a atraparte. Pon un estado, una acción y una recompensa. ¿Y si solo explota?</li>
-  <li>Un guardia se atasca en las columnas, otro te ataca a través de las paredes y una patrulla va a por ti en fila. ¿Qué pieza del modelo de Millington falla en cada uno?</li>
+  <li>Un guardia se atasca en las columnas, otro te pilla a través de las paredes y una patrulla va a por ti en fila. ¿Qué pieza del modelo de Millington falla en cada uno?</li>
 </ol>
 <h3>Para programar</h3>
 <ol start="7">
@@ -86,7 +86,7 @@
 </ol>
 <h3>Para programar</h3>
 <ol start="6">
-  <li>El icono de Godot, en <code>(640, 360)</code>, hace de enemigo, y el ratón, de jugador. Haz que espere quieto hasta que el ratón esté a menos de 250 píxeles, que lo persiga con <code>move_toward()</code> y que vuelva a su sitio cuando se aleje.</li>
+  <li>El icono de Godot, en <code>(640, 360)</code>, hace de rival, y el ratón, de jugador. Haz que espere quieto hasta que el ratón esté a menos de 250 píxeles, que lo persiga con <code>move_toward()</code> y que vuelva a su sitio cuando se aleje.</li>
   <li>Mueve el icono con las flechas y haz que frene poco a poco al soltarlas. Guarda su velocidad y, en <code>_process()</code>, súmale el empuje de las flechas y multiplícala por <code>0.9</code>.</li>
   <li>Un icono avanza hacia la derecha y otro va siempre al punto medio entre él y el ratón. Escribe con <code>cross()</code> si el ratón queda a la izquierda o a la derecha del primero.</li>
 </ol>
@@ -101,7 +101,7 @@
   <li>Una varita de 64 píxeles, centrada en su origen, gira 90°. ¿Dónde acaba su punta, que estaba en <code>(32, 0)</code>? ¿Y con <code>offset = Vector2(24, 0)</code>? ¿Cuál de los dos giros es un pase mágico?</li>
   <li>Un personaje en <code>(300, 200)</code> lleva un escudo hijo en <code>(0, 40)</code>. ¿Dónde está el escudo en la escena? ¿Y si el personaje va a <code>(500, 200)</code>, si gira 90° o si se refleja con <code>scale.x = -1</code>?</li>
   <li>El jugador, en <code>(600, 400)</code>, mira hacia abajo. ¿Qué coordenadas locales tienen un monstruo en <code>(600, 700)</code> y otro en <code>(300, 400)</code>? ¿Dónde le queda cada uno?</li>
-  <li>Esta torreta debería girar 45°, pero gira muchísimo más: <code>rotation = 45</code>. ¿Qué está pasando? ¿Cuántas vueltas da, más o menos? Escribe dos formas de arreglarlo.</li>
+  <li>Este lanzapelotas debería girar 45°, pero gira muchísimo más: <code>rotation = 45</code>. ¿Qué está pasando? ¿Cuántas vueltas da, más o menos? Escribe dos formas de arreglarlo.</li>
   <li>Un robot en 3D mira hacia −Z. ¿Hacia dónde mira con <code>rotation_degrees.y</code> a 90, a −90 y a 180? ¿Qué le pasa a su cámara si el cabeceo llega a 90°?</li>
 </ol>
 <h3>Para programar</h3>
@@ -120,7 +120,7 @@
   <li>Un láser sale a 300 píxeles por segundo con un ángulo de 30°. ¿Cuál es su velocidad? ¿Y con 120°? ¿Hacia dónde va cada uno en la pantalla de Godot, con la <code>y</code> hacia abajo?</li>
   <li>Calcula con <code>atan2()</code> el ángulo de <code>(4, −3)</code> y el de <code>(−4, 3)</code>. ¿Qué daría <code>atan(y / x)</code> con cada uno? ¿Hacia dónde apunta cada vector en la pantalla?</li>
   <li>Un orbe gira a 100 píxeles de <code>(600, 400)</code>, a 45° por segundo, y empieza en 0°. ¿Dónde está a los 2 y a los 3 segundos? ¿Cuánto tarda en dar una vuelta? Una moneda flota con <code>10 * sin(TAU * 2 * t)</code>: ¿cuáles son su amplitud, su periodo y su frecuencia?</li>
-  <li>Una torreta mira a 350° y el jugador está a 10°. ¿Cuánto y hacia qué lado la gira <code>rotate_toward()</code>? ¿Cuánto tarda a 90° por segundo?</li>
+  <li>Un lanzapelotas mira a 350° y el jugador está a 10°. ¿Cuánto y hacia qué lado la gira <code>rotate_toward()</code>? ¿Cuánto tarda a 90° por segundo?</li>
   <li>El monstruo va de <code>(200, 100)</code> a <code>(600, 400)</code> en 4 segundos. Calcula el peso y su posición a los 1, 3 y 5 segundos. ¿Qué ocurre a los 5 y cómo se evita?</li>
 </ol>
 <h3>Para programar</h3>
@@ -159,7 +159,7 @@
   <li>Un personaje sube 200 píxeles con 980 px/s² de gravedad. ¿A qué velocidad sale y cuánto tarda? ¿Y con el doble de gravedad? ¿Cómo harías un salto más alto que no dure más?</li>
   <li>El jugador sale de un borde a 300 px/s. ¿Cuánto avanza y cuánto cae en 0,1 s de tiempo de coyote? ¿Y en 0,2 s? ¿Por qué no conviene tanto margen?</li>
   <li>El jugador choca con un rectángulo de <code>x</code> = 580 a 620 e <code>y</code> = 370 a 430, y su <em>hurtbox</em> va de 584 a 616 y de 370 a 420. ¿Cuál de los dos solapa unos pinchos de 610 a 650 y de 422 a 430?</li>
-  <li>Un juego tiene jugador, enemigos, láseres de los dos, paredes y monedas. Reparte capas y máscaras para que nadie se dispare a sí mismo ni los enemigos se bloqueen.</li>
+  <li>Un juego tiene jugador, rivales, láseres de los dos, paredes y monedas. Reparte capas y máscaras para que a nadie le dé su propio láser ni los rivales se bloqueen.</li>
 </ol>
 <h3>Para programar</h3>
 <ol start="7">
@@ -177,24 +177,24 @@
   <li>Una nave gira 3/256 de vuelta en cada uno de sus 60 fotogramas por segundo. ¿Cuántos grados y radianes gira por segundo? ¿Cuánto tarda en dar media vuelta?</li>
   <li>Un perseguidor va a 240 px/s y gira a 3 rad/s. ¿Cuál es su radio de giro? ¿Alcanza a un jugador quieto 100 píxeles a su izquierda? ¿Qué cambiarías?</li>
   <li>En una ventana de 1280&nbsp;×&nbsp;720, ¿qué <code>drag_left_margin</code> deja al jugador libre entre 160 y 1120?</li>
-  <li>Un platillo dispara con hasta 30° de error a un jugador a 400 píxeles. ¿A qué distancia puede pasarle? ¿Y con 15°? ¿Qué otros dos mandos tiene su dificultad?</li>
+  <li>Un platillo lanza pelotas con hasta 30° de error a un jugador a 400 píxeles. ¿A qué distancia puede pasarle? ¿Y con 15°? ¿Qué otros dos mandos tiene su dificultad?</li>
   <li>Un ciempiés sale de la casilla (0, 0) de un campo de 8&nbsp;×&nbsp;6 hacia la derecha. Cada paso avanza una casilla o, si choca con una seta o el borde, baja una fila y vuelve. Con setas en (5, 0), (1, 1) y (6, 2), ¿dónde está tras 20 pasos?</li>
 </ol>
 <h3>Para programar</h3>
 <ol start="7">
   <li>Mueve el icono con las flechas en ocho direcciones. Que escriba su sector, de 0 a 7, al cambiar, que lo conserve al pararse y que se voltee con <code>flip_h</code> hacia la izquierda.</li>
-  <li>Haz con el icono un platillo que cruce la ventana a 125 px/s, cambie de rumbo al azar cada 2&nbsp;s y escriba cada segundo el ángulo de un disparo al ratón con hasta 15° de error.</li>
+  <li>Haz con el icono un platillo que cruce la ventana a 125 px/s, cambie de rumbo al azar cada 2&nbsp;s y escriba cada segundo el ángulo de una pelota lanzada al ratón con hasta 15° de error.</li>
 </ol>
 </section>
 
 <section id="boletin-8">
-<h2>Boletín 8: Cazadores, presas y bandadas <a class="arriba" href="#indice" aria-label="Volver al índice">↑</a></h2>
+<h2>Boletín 8: Perseguidores, perseguidos y bandadas <a class="arriba" href="#indice" aria-label="Volver al índice">↑</a></h2>
 <p class="capitulo">Del capítulo 8, «<em>Steering behaviors</em>».</p>
 <h3>Para pensar</h3>
 <ol start="1">
   <li>Un personaje va a <code>(200, 0)</code> px/s y quiere ir a <code>(0, 200)</code> px/s. ¿Cuánto mide la fuerza de dirección? Con 600 px/s², ¿en cuántos pasos de 1/60&nbsp;s llega a la deseada, como mínimo?</li>
   <li>Con un radio de frenado de 200 px y una rapidez máxima de 300 px/s, ¿a qué rapidez quiere ir un personaje a 400, 200, 100 y 20 px del objetivo? Dibuja la gráfica.</li>
-  <li>Una presa en <code>(500, 300)</code> va a <code>(0, −100)</code> px/s, y su perseguidor, en <code>(100, 300)</code>, corre a 200 px/s. ¿Qué punto busca al perseguirla? ¿Y si la presa va el doble de rápido?</li>
+  <li>Un fugitivo en <code>(500, 300)</code> va a <code>(0, −100)</code> px/s, y su perseguidor, en <code>(100, 300)</code>, corre a 200 px/s. ¿Qué punto busca al perseguirlo? ¿Y si el fugitivo va el doble de rápido?</li>
   <li>Al vagar, el círculo mide 60 px y su centro está 85 por delante. ¿Por qué el punto no se aparta más de 45° del rumbo? ¿Cuánto se aparta con el centro a 60? ¿Y a 120?</li>
   <li>Un monstruo suma la separación, <code>(−1, 0)</code>, por 12, y la alineación, <code>(0, −1)</code>, y la cohesión, <code>(0.6, 0.8)</code>, por 8. ¿Qué fuerza sale? ¿Cuál de las tres pesa más?</li>
   <li>Un monstruo busca al jugador con la fuerza <code>(200, 0)</code> y huye de una hoguera con <code>(−200, 0)</code>, con el mismo peso. ¿Qué hace? ¿Y si huir tiene prioridad?</li>
@@ -233,7 +233,7 @@
   <li>¿Es convexa una sala en L de vértices (0, 0), (200, 0), (200, 100), (100, 100), (100, 200) y (0, 200)? Compruébalo con el producto vectorial en cada esquina.</li>
   <li>¿Cuántas celdas de 0,25&nbsp;m miden la altura y el radio de un personaje de 1,8&nbsp;m y 0,4&nbsp;m de radio? ¿Puede ir por un pasillo de 1&nbsp;m con una viga a 1,6&nbsp;m?</li>
   <li>En la sala del capítulo, con un radio de 20 píxeles, el jugador pasa a B(500, 60). ¿Qué pasillo sigue desde A(100, 100)? ¿Queda <code>B</code> en el embudo? ¿Cuánto mide el camino?</li>
-  <li>Si 25 enemigos cambian de meta en cada paso, a 60 por segundo, ¿cuántos caminos piden por segundo? ¿Y si solo la cambian cuando el jugador, a 160&nbsp;px/s, se aleja 40&nbsp;px?</li>
+  <li>Si 25 personajes cambian de meta en cada paso, a 60 por segundo, ¿cuántos caminos piden por segundo? ¿Y si solo la cambian cuando el jugador, a 160&nbsp;px/s, se aleja 40&nbsp;px?</li>
   <li>Dos agentes de 15&nbsp;px de radio, a 150&nbsp;px, van de frente a 90&nbsp;px/s. ¿Qué semiángulo tiene su obstáculo de velocidad y cuándo chocan? ¿Cuánto giran si esquiva uno y si esquivan los dos?</li>
 </ol>
 <h3>Para programar</h3>
@@ -250,10 +250,10 @@
 <h3>Para pensar</h3>
 <ol start="1">
   <li>Dibuja el diagrama y la tabla de transiciones de una puerta de garaje que se abre y se cierra con un mando y se para si hay un obstáculo.</li>
-  <li>El monstruo guarda lo que hace en cuatro variables de sí o no: <code>persigue</code>, <code>ataca</code>, <code>busca</code> y <code>huye</code>. ¿Cuántas combinaciones hay? ¿Cuántas tienen sentido? ¿Cuántos valores tendría su <code>estado</code>?</li>
+  <li>El monstruo guarda lo que hace en cuatro variables de sí o no: <code>persigue</code>, <code>atrapa</code>, <code>busca</code> y <code>huye</code>. ¿Cuántas combinaciones hay? ¿Cuántas tienen sentido? ¿Cuántos valores tendría su <code>estado</code>?</li>
   <li>El monstruo del capítulo sale de <code>(200, 100)</code> y el jugador lo espera en <code>(800, 260)</code>. ¿Cuándo lo ve y lo alcanza? Si el jugador huye entonces a 240 px/s, ¿cuándo lo pierde y vuelve a patrullar?</li>
   <li>¿Usarías un <code>if</code> en cada paso o una señal? La vida baja de 20, un cuerpo entra en el <code>Area2D</code> de oído, el jugador se aleja a más de 200 píxeles, un <code>Timer</code> termina.</li>
-  <li>Un monstruo tiene seis estados, y a Morir, Aturdido y Pausa se llega desde todos. ¿Cuántas flechas necesita la máquina plana? ¿Y la jerárquica, con un superestado?</li>
+  <li>Un monstruo tiene seis estados, y a Dormir, Mareado y Pausa se llega desde todos. ¿Cuántas flechas necesita la máquina plana? ¿Y la jerárquica, con un superestado?</li>
   <li>¿Qué acciones de entrada le darías a Perseguir y a Buscar? ¿Qué le pasaría al monstruo si <code>espera = 0.0</code> estuviera dentro de <code>buscar()</code> en lugar de en <code>cambiar_a()</code>?</li>
 </ol>
 <h3>Para programar</h3>
@@ -272,13 +272,13 @@
   <li>Un ruido de Perlin en 1D tiene pendiente +1 en x = 0 y −1 en x = 1. ¿Cuánto vale en x = 0,75? ¿Y en x = 1?</li>
   <li>Un <code>FastNoiseLite</code> de serie tiene <code>frequency</code> 0,01 y cinco octavas. ¿Qué frecuencia y amplitud tiene cada una? Si cada una va de −1 a 1, ¿cuánto puede sumar como mucho?</li>
   <li>Un generador da un mapa válido 3 veces de cada 10. ¿Con qué probabilidad fallan 10 intentos seguidos? ¿Y 20?</li>
-  <li>¿Cuántos muros derriba la búsqueda en profundidad aleatoria en un laberinto de 13 × 9? ¿Y en uno de 21 × 15? ¿Por qué no deja bucles?</li>
+  <li>¿Cuántos muros abre la búsqueda en profundidad aleatoria en un laberinto de 13 × 9? ¿Y en uno de 21 × 15? ¿Por qué no deja bucles?</li>
   <li>El director empieza en 0,3. El jugador gana tres veces, pierde dos y gana otra. ¿Qué nivel tiene y cuánto corre el monstruo, con <code>lerpf(2.0, 4.0, nivel)</code>, tras cada partida?</li>
 </ol>
 <h3>Para programar</h3>
 <ol start="7">
   <li>Cambia el <em>script</em> de la isla del capítulo para que escriba una de 40 × 20 casillas. Prueba <code>frequency</code> 0,1 y 0,4, y después quita <code>FRACTAL_NONE</code> y prueba 1 y 5 <code>fractal_octaves</code>.</li>
-  <li>Cambia el <em>script</em> del laberinto para que escriba una «S» donde la pila fue más alta y derribe después 6 muros al azar entre dos pasillos. ¿Hay ya bucles?</li>
+  <li>Cambia el <em>script</em> del laberinto para que escriba una «S» donde la pila fue más alta y abra después 6 muros al azar entre dos pasillos. ¿Hay ya bucles?</li>
   <li>Haz que el icono de Godot persiga al ratón a <code>lerpf(100.0, 300.0, nivel)</code> píxeles por segundo. Si lo alcanza, que vuelva a <code>(640, 360)</code> y baje el nivel 0,2; cada 5 s sin alcanzarlo, que suba 0,1.</li>
 </ol>
 </section>
@@ -290,7 +290,7 @@
 <ol start="1">
   <li>Elige tres juegos en línea. ¿Son entre iguales o cliente-servidor? ¿Con servidor dedicado o de escucha?</li>
   <li>Con 6 jugadores, ¿cuántos paquetes viajan en cada paso entre iguales y cuántos con un servidor? ¿Y con 10? ¿Por qué entre iguales la partida va al ritmo del más lento?</li>
-  <li>¿TCP, UDP o UDP con fiabilidad? Decídelo para la posición, un disparo, el chat, el final de la partida y la lista de jugadores.</li>
+  <li>¿TCP, UDP o UDP con fiabilidad? Decídelo para la posición, un lanzamiento, el chat, el final de la partida y la lista de jugadores.</li>
   <li>¿Qué <em>ping</em> mínimo tiene un jugador de Madrid en un servidor de Tokio, a 10&nbsp;800&nbsp;km, si la luz recorre 200&nbsp;000&nbsp;km/s en la fibra? ¿Por qué el real es mayor?</li>
   <li>Un servidor de 20 <em>ticks</em> por segundo envía en cada uno 150 bytes a cada cliente. ¿Cuántos bytes por segundo son con 8 clientes? ¿Basta una subida de 1&nbsp;Mbit/s? ¿Y con 64?</li>
   <li>Con 150&nbsp;ms de <em>ping</em> y órdenes de 10 píxeles cada 50&nbsp;ms, ¿cuántas repite el cliente al reconciliar? ¿Dónde acaba si el servidor confirma <code>x = 400</code>? ¿Y <code>x = 395</code>?</li>
