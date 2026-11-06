@@ -26,10 +26,10 @@
   para comprobar el tuyo cuando algo no funcione. Los <em>scripts</em> completos de cada capítulo y de cada
   práctica están en <a href="codigo.zip" download><code>codigo.zip</code></a>.</p>
 <ul class="indice">
-<li><a href="#capitulo-2-coordenadas-y-vectores">Capítulo 2. Coordenadas y vectores</a> <small>(5)</small></li>
-<li><a href="#capitulo-3-transformaciones">Capítulo 3. Transformaciones</a> <small>(4)</small></li>
-<li><a href="#capitulo-4-trigonometria-e-interpolacion">Capítulo 4. Trigonometría e interpolación</a> <small>(2)</small></li>
-<li><a href="#capitulo-5-funciones-matematicas-y-azar">Capítulo 5. Funciones matemáticas y azar</a> <small>(2)</small></li>
+<li><a href="#capitulo-2-coordenadas-y-vectores">Capítulo 2. Coordenadas y vectores</a> <small>(3)</small></li>
+<li><a href="#capitulo-3-transformaciones">Capítulo 3. Transformaciones</a> <small>(3)</small></li>
+<li><a href="#capitulo-4-trigonometria-e-interpolacion">Capítulo 4. Trigonometría e interpolación</a> <small>(1)</small></li>
+<li><a href="#capitulo-5-funciones-matematicas-y-azar">Capítulo 5. Funciones matemáticas y azar</a> <small>(1)</small></li>
 <li><a href="#capitulo-6-fisicas">Capítulo 6. Físicas</a> <small>(3)</small></li>
 <li><a href="#capitulo-7-tipos-de-movimiento">Capítulo 7. Tipos de movimiento</a> <small>(2)</small></li>
 <li><a href="#capitulo-8-steering-behaviors">Capítulo 8. Steering behaviors</a> <small>(4)</small></li>
@@ -41,34 +41,22 @@
 <li><a href="#capitulo-14-multijugador-en-godot">Capítulo 14. Multijugador en Godot</a> <small>(3)</small></li>
 <li><a href="#practica-1-primeros-pasos-con-godot">Práctica 1. Primeros pasos con Godot</a> <small>(2)</small></li>
 <li><a href="#practica-2-una-persecucion-con-vectores">Práctica 2. Una persecución con vectores</a> <small>(2)</small></li>
-<li><a href="#practica-3-niblo-y-su-varita">Práctica 3. Niblo y su varita</a> <small>(5)</small></li>
+<li><a href="#practica-3-niblo-y-su-varita">Práctica 3. Niblo y su varita</a> <small>(6)</small></li>
 <li><a href="#practica-4-el-guardian-de-la-manzana">Práctica 4. El guardián de la manzana</a> <small>(5)</small></li>
-<li><a href="#practica-5-un-mubbit-imprevisible">Práctica 5. Un Mubbit imprevisible</a> <small>(4)</small></li>
+<li><a href="#practica-5-un-mubbit-imprevisible">Práctica 5. Un Mubbit imprevisible</a> <small>(5)</small></li>
 <li><a href="#practica-6-niblo-y-las-manzanas">Práctica 6. Niblo y las manzanas</a> <small>(5)</small></li>
 <li><a href="#practica-7-asteroids-con-ia">Práctica 7. Asteroids con IA</a> <small>(4)</small></li>
-<li><a href="#practica-8-perseguir-y-huir-con-fuerzas">Práctica 8. Perseguir y huir con fuerzas</a> <small>(4)</small></li>
+<li><a href="#practica-8-perseguir-y-huir-con-fuerzas">Práctica 8. Perseguir y huir con fuerzas</a> <small>(5)</small></li>
 <li><a href="#practica-9-un-laberinto-en-3d">Práctica 9. Un laberinto en 3D</a> <small>(4)</small></li>
 <li><a href="#practica-10-un-laberinto-con-navegacion">Práctica 10. Un laberinto con navegación</a> <small>(3)</small></li>
-<li><a href="#practica-11-mubbits-que-cambian-de-estad">Práctica 11. Mubbits que cambian de estado</a> <small>(3)</small></li>
-<li><a href="#practica-12-un-laberinto-que-se-adapta">Práctica 12. Un laberinto que se adapta</a> <small>(7)</small></li>
+<li><a href="#practica-11-mubbits-que-cambian-de-estad">Práctica 11. Mubbits que cambian de estado</a> <small>(4)</small></li>
+<li><a href="#practica-12-un-laberinto-que-se-adapta">Práctica 12. Un laberinto que se adapta</a> <small>(8)</small></li>
 <li><a href="#practica-13-mensajes-entre-jugadores">Práctica 13. Mensajes entre jugadores</a> <small>(4)</small></li>
 <li><a href="#practica-14-una-partida-en-red">Práctica 14. Una partida en red</a> <small>(3)</small></li>
-<li><a href="#apendice-a-gdscript">Apéndice A. GDScript</a> <small>(28)</small></li>
+<li><a href="#apendice-a-gdscript">Apéndice A. GDScript</a> <small>(30)</small></li>
 <li><a href="#ejercicios-de-gdscript">Ejercicios de GDScript</a> <small>(1)</small></li>
 </ul>
 <h2 id="capitulo-2-coordenadas-y-vectores">Capítulo 2. Coordenadas y vectores</h2>
-<h3>Distancias</h3>
-<p>Para probarlo, crea una escena con un <code>Node2D</code>, añádele este script y pulsa F6. Las cuentas salen en el panel Output:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Node2D
-
-func _ready() -&gt; void:
-    var monstruo := Vector2(200, 100)
-    var jugador := Vector2(600, 400)
-    var radio := 200.0
-    print(monstruo.distance_to(jugador))
-    var d2 := monstruo.distance_squared_to(
-            jugador)
-    print(d2 &lt; radio * radio)  # false: fuera</code></pre></div>
 <h3>Mover personajes con vectores</h3>
 <p>Este script, en un <code>Sprite2D</code> con el icono <code>icon.svg</code> como textura, lo mueve con las flechas a 300 píxeles por segundo:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D
@@ -78,7 +66,7 @@ func _process(delta: float) -&gt; void:
             &quot;ui_left&quot;, &quot;ui_right&quot;,
             &quot;ui_up&quot;, &quot;ui_down&quot;)
     position += direccion * 300.0 * delta</code></pre></div>
-<p>En el mismo <code>Sprite2D</code>, este script persigue al ratón:</p>
+<p>En el mismo <code>Sprite2D</code>, este script persigue al ratón a 120 píxeles por segundo. El método <code>get_global_mouse_position()</code> da su posición:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D
 
 func _process(delta: float) -&gt; void:
@@ -86,7 +74,7 @@ func _process(delta: float) -&gt; void:
     var paso := 120.0 * delta
     position = position.move_toward(raton, paso)</code></pre></div>
 <h3>Un guardia que vigila</h3>
-<p>En el mismo <code>Sprite2D</code>, este script hace de guardia, con el ratón como jugador y <code>mirada</code> como la dirección en la que mira:</p>
+<p>En el mismo <code>Sprite2D</code>, este script hace de guardia, con el ratón como jugador:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D
 
 const RADIO: float = 200.0
@@ -100,47 +88,36 @@ func _process(delta: float) -&gt; void:
     var delante := mirada.dot(hacia) &gt; 0.71
     if cerca and delante:
         position += hacia * 120.0 * delta</code></pre></div>
-<h3>En 3D</h3>
-<p>En un <code>Node3D</code>, este script hace las cuentas del apartado:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Node3D
-
-func _ready() -&gt; void:
-    var monstruo := Vector3(2, 0, 1)
-    var jugador := Vector3(6, 12, 4)
-    print(monstruo.distance_to(jugador))  # 13.0
-    var normal := Vector3.RIGHT.cross(
-            Vector3.UP)
-    print(normal)  # (0.0, 0.0, 1.0)</code></pre></div>
 <h2 id="capitulo-3-transformaciones">Capítulo 3. Transformaciones</h2>
 <h3>Nodos padre e hijo</h3>
 <p>Para comprobarlo, crea una escena con un <code>Sprite2D</code>, <code>Jugador</code>, y otro hijo suyo, <code>Varita</code>, los dos con el icono de Godot como textura. Pon este script en <code>Jugador</code> y pulsa F6:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El jugador, con su varita
 
 func _ready() -&gt; void:
-    position = Vector2(600, 400)
+    position = Vector2(600, 600)
     $Varita.position = Vector2(50, 0)
     print($Varita.global_position)
     rotation_degrees = 90.0  # Gira el jugador
     print($Varita.position)
     print($Varita.global_position)</code></pre></div>
 <h3>De unas coordenadas a otras</h3>
-<p>En un <code>Sprite2D</code>, este script responde a las dos preguntas sobre el monstruo:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El jugador, girado 180°
+<p>En el vehículo, un <code>Sprite2D</code>, este script sitúa al jugador:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El vehículo, girado 90°
 
 func _ready() -&gt; void:
-    position = Vector2(600, 400)
-    rotation_degrees = 180.0
-    var monstruo := Vector2(200, 100)
-    var local := to_local(monstruo).round()
-    print(local)          # (400.0, 300.0)
+    position = Vector2(300, 200)
+    rotation_degrees = 90.0
+    var jugador := Vector2(600, 600)
+    var local := to_local(jugador)
+    print(local)          # (400.0, -300.0)
     print(local.x &gt; 0.0)  # true: delante
-    print(local.y &gt; 0.0)  # true: a su derecha</code></pre></div>
+    print(local.y &gt; 0.0)  # false: izquierda</code></pre></div>
 <h3>Un lanzapelotas sobre un vehículo</h3>
-<p>Este script va en <code>Vehiculo</code>, un <code>Sprite2D</code> con su hijo <code>Lanzapelotas</code>, los dos con el icono, y el ratón hace de jugador:</p>
+<p>Con el ratón como jugador, este script va en <code>Vehiculo</code>, un <code>Sprite2D</code> con su hijo <code>Lanzapelotas</code>, los dos con el icono:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El vehículo
 
 func _ready() -&gt; void:
-    position = Vector2(200, 100)
+    position = Vector2(300, 200)
 
 func _process(delta: float) -&gt; void:
     rotation_degrees += 30.0 * delta
@@ -148,38 +125,13 @@ func _process(delta: float) -&gt; void:
     var jugador := get_global_mouse_position()
     if to_local(jugador).x &gt; 0.0:
         $Lanzapelotas.look_at(jugador)</code></pre></div>
-<h3>En 3D</h3>
-<div class="codigo"><button>Copiar</button><pre><code>extends Node3D  # El cuerpo, con su cabeza
-
-func _ready() -&gt; void:
-    position = Vector3(6, 0, 4)
-    $Cabeza.position = Vector3(0, 1.6, -0.2)
-    rotation_degrees.y = 90.0  # Guiñada
-    print($Cabeza.global_position)
-    print(-global_basis.z)</code></pre></div>
 <h2 id="capitulo-4-trigonometria-e-interpolacion">Capítulo 4. Trigonometría e interpolación</h2>
-<h3>Radianes, seno y coseno</h3>
-<p>En un <code>Sprite2D</code> con el icono de Godot, este script lanza la pelota desde el lanzapelotas:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # La pelota, hacia el jugador
-
-const RAPIDEZ := 500.0  # Píxeles por segundo
-var velocidad := Vector2.ZERO
-
-func _ready() -&gt; void:
-    position = Vector2(200, 100)
-    rotation = deg_to_rad(36.87)  # ≈ 0.6435 rad
-    velocidad = Vector2.from_angle(rotation)
-    velocidad *= RAPIDEZ
-    print(velocidad.round())  # (400.0, 300.0)
-
-func _process(delta: float) -&gt; void:
-    position += velocidad * delta</code></pre></div>
 <h3>Un lanzapelotas con vida</h3>
-<p>En un <code>Sprite2D</code> con el icono, en <code>(200, 100)</code>, y el ratón como jugador, este script es el lanzapelotas:</p>
+<p>Con el ratón como jugador, el lanzapelotas es este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El lanzapelotas
 
 const GIRO := deg_to_rad(90.0)  # Por segundo
-const CONO := deg_to_rad(20.0)  # A cada lado
+const CONO := deg_to_rad(45.0)  # A cada lado
 const APLASTADA := Vector2(0.7, 1.3)
 var tiempo := 0.0
 var tw: Tween  # El tween del último lanzamiento
@@ -191,16 +143,15 @@ func _process(delta: float) -&gt; void:
     if absf(transform.x.angle_to(hacia)) &gt; CONO:
         tiempo += delta  # ...o barre ±45°
         meta = PI / 4 * sin(TAU * tiempo / 4.0)
-    var paso := GIRO * delta  # Giro máximo
     rotation = rotate_toward(
-            rotation, meta, paso)
+            rotation, meta, GIRO * delta)
     if tw and tw.is_running():
         return  # Aún está lanzando
     var desvio := transform.x.angle_to(hacia)
     if is_zero_approx(desvio):
         lanzar()
 
-func lanzar() -&gt; void:
+func lanzar() -&gt; void:  # Anima el disparo
     tw = create_tween()
     tw.tween_property(
             self, &quot;scale&quot;, APLASTADA, 0.05)
@@ -209,47 +160,31 @@ func lanzar() -&gt; void:
             self, &quot;scale&quot;, Vector2.ONE, 0.3)
     tw.tween_interval(0.5)          # Recarga</code></pre></div>
 <h2 id="capitulo-5-funciones-matematicas-y-azar">Capítulo 5. Funciones matemáticas y azar</h2>
-<h3>Redondeo y límites</h3>
-<p>En un script de un <code>Node</code>, estas líneas hacen las cuentas de este apartado y del anterior:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Node  # Nivel, energía y hechizos
-
-func nivel_con(puntos: int) -&gt; int:
-    var n := floori(log(puntos / 50.0) / log(2))
-    return maxi(n, 0)  # Con menos de 100, el 0
-
-func _ready() -&gt; void:
-    print(nivel_con(1000))          # 4
-    print(clampi(20 - 30, 0, 100))  # 0
-    print(wrapi(2 + 1, 0, 3))       # 0
-    print(posmod(0 - 1, 3))         # 2
-    print(roundi(7.5))              # 8
-    print(int(-7.5))                # -7</code></pre></div>
 <h3>Un cofre lejos del jugador</h3>
-<p>Este script sortea diez premios de las dos maneras:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Node  # El premio del cofre
+<p>Este script elige el sitio del cofre y su premio:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Node  # El cofre del monstruo
 
-const PREMIOS := [&quot;monedas&quot;, &quot;poción&quot;, &quot;varita&quot;]
 const LLENA := [&quot;monedas&quot;, &quot;monedas&quot;, &quot;monedas&quot;,
     &quot;monedas&quot;, &quot;monedas&quot;, &quot;monedas&quot;, &quot;poción&quot;,
     &quot;poción&quot;, &quot;poción&quot;, &quot;varita&quot;]
 
-var azar := RandomNumberGenerator.new()
 var bolsa: Array = []
 
-func con_pesos() -&gt; String:  # 60, 30 y 10
-    var pesos: PackedFloat32Array = [60, 30, 10]
-    return PREMIOS[azar.rand_weighted(pesos)]
+# Un punto a 300 píxeles o más de otro
+func punto_lejos_de(otro: Vector2) -&gt; Vector2:
+    var punto := Vector2.ZERO
+    for intento: int in range(100):
+        punto = Vector2(randf_range(0, 1280),
+                randf_range(0, 720))
+        if punto.distance_to(otro) &gt;= 300:
+            break  # Ya está lo bastante lejos
+    return punto
 
-func de_la_bolsa() -&gt; String:
-    if bolsa.is_empty():  # Se rellena
+func premio() -&gt; String:
+    if bolsa.is_empty():  # Se llena y se baraja
         bolsa = LLENA.duplicate()
         bolsa.shuffle()
-    return bolsa.pop_back()
-
-func _ready() -&gt; void:
-    azar.seed = 2026  # Mientras pruebas
-    for i: int in range(10):
-        print(con_pesos(), &quot; / &quot;, de_la_bolsa())</code></pre></div>
+    return bolsa.pop_back()</code></pre></div>
 <h2 id="capitulo-6-fisicas">Capítulo 6. Físicas</h2>
 <h3>Saltos</h3>
 <p>En un <code>CharacterBody2D</code> con un <code>CollisionShape2D</code> y dos <code>Timer</code> hijos, <code>Coyote</code> y <code>Bufer</code>, con One Shot, este script junta el arranque y los saltos:</p>
@@ -262,7 +197,7 @@ const SALTO := 490.0         # px/s hacia arriba
 func _physics_process(delta: float) -&gt; void:
     var eje := Input.get_axis(
             &quot;ui_left&quot;, &quot;ui_right&quot;)
-    var meta := eje * RAPIDEZ  # −300, 0 o 300
+    var meta := eje * RAPIDEZ        # ±300 o 0
     var paso := ACELERACION * delta  # 25 px/s
     velocity.x = move_toward(
             velocity.x, meta, paso)
@@ -313,14 +248,11 @@ func _on_area_entered(_hitbox: Area2D) -&gt; void:
         jugador.velocity.y = -245.0  # El bote</code></pre></div>
 <h2 id="capitulo-7-tipos-de-movimiento">Capítulo 7. Tipos de movimiento</h2>
 <h3>Orientación con rotación</h3>
-<p>En un <code>Sprite2D</code> con el icono de Godot, este script hace que el monstruo persiga al ratón girando:</p>
+<p>En un <code>Sprite2D</code> en <code>(240, 160)</code>, con el icono de Godot, este script hace que el monstruo persiga al ratón girando:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El monstruo, con rotación
 
-const RAPIDEZ := 200.0  # Píxeles por segundo
+const RAPIDEZ := 170.0  # Píxeles por segundo
 const GIRO := 2.0       # Radianes por segundo
-
-func _ready() -&gt; void:
-    position = Vector2(200, 100)
 
 func _process(delta: float) -&gt; void:
     var jugador := get_global_mouse_position()
@@ -330,22 +262,19 @@ func _process(delta: float) -&gt; void:
             rotation, meta, paso)
     position += transform.x * RAPIDEZ * delta</code></pre></div>
 <h3>Un platillo que patrulla y lanza pelotas</h3>
-<p>En un <code>Sprite2D</code> con el icono de Godot y el ratón como jugador, este script junta el patrón y la puntería:</p>
+<p>En otro <code>Sprite2D</code> en <code>(240, 160)</code>, con el ratón como jugador, este script junta el patrón y la puntería:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # El platillo
 
 const PASOS := [  # Velocidad y segundos
-    [Vector2(200, 0), 2.0],   # Derecha
-    [Vector2(0, 200), 1.5],   # Abajo
-    [Vector2(-200, 0), 2.0],  # Izquierda
-    [Vector2(0, -200), 1.5],  # Arriba
+    [Vector2(150, 0), 3.0],   # Derecha
+    [Vector2(0, 150), 1.6],   # Abajo
+    [Vector2(-150, 0), 3.0],  # Izquierda
+    [Vector2(0, -150), 1.6],  # Arriba
 ]
 
 var paso: int = 0
 var tiempo := 0.0  # Segundos en el paso actual
 var espera := 1.0  # Segundos hasta lanzar
-
-func _ready() -&gt; void:
-    position = Vector2(200, 100)
 
 func _process(delta: float) -&gt; void:
     position += PASOS[paso][0] * delta
@@ -362,7 +291,7 @@ func _process(delta: float) -&gt; void:
         print(rad_to_deg(angulo) + error)</code></pre></div>
 <h2 id="capitulo-8-steering-behaviors">Capítulo 8. Steering behaviors</h2>
 <h3>El vehículo</h3>
-<p>Con ese nodo en <code>(200, 100)</code> y un <code>Sprite2D</code> hijo con el icono de Godot, este script lleva el monstruo hacia el ratón:</p>
+<p>En Godot, en 2D, el vehículo es un <code>CharacterBody2D</code> con el Motion Mode en Floating, y el método <code>limit_length()</code> acorta un vector si mide más que el número que recibe. Con un <code>Sprite2D</code> hijo, este script lleva el monstruo hacia el ratón:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends CharacterBody2D  # Un vehículo
 
 @export var rapidez_maxima := 250.0  # px/s
@@ -418,7 +347,7 @@ func vagar(delta: float) -&gt; Vector2:
     var juntar := buscar(centro / n)
     return lejos * 2.0 + alinear + juntar * 0.5</code></pre></div>
 <h3>Un grupo con prioridades</h3>
-<p>El grupo debe perseguir al jugador a menos de 300 píxeles, pero si se suma perseguir a lo demás, la cohesión frena. Combinar por prioridad es ordenar los comportamientos de más a menos urgente y usar el primero que tenga algo que pedir. Así lo decide el script:</p>
+<p>Los seis deben pasear juntos y salir a por el jugador a menos de 300 píxeles, pero si se suman las fuerzas, la cohesión los frena. La prioridad es una forma de combinar comportamientos que usa solo el más urgente de los que piden algo:</p>
 <div class="codigo"><button>Copiar</button><pre><code>@export var jugador: CharacterBody2D
 
 func _physics_process(delta: float) -&gt; void:
@@ -444,12 +373,14 @@ func _ready() -&gt; void:
     red.offset = Vector2(50, 50)       # Centro
     var modo := AStarGrid2D.DIAGONAL_MODE_NEVER
     red.diagonal_mode = modo
+    var h := AStarGrid2D.HEURISTIC_MANHATTAN
+    red.default_estimate_heuristic = h
     red.update()
     for y in range(4):
         red.set_point_solid(Vector2i(4, y))
     var barro := Vector2i(4, 4)
     red.set_point_weight_scale(barro, 5.0)
-    position = Vector2(250, 150)
+    position = Vector2(150, 250)
     $Timer.timeout.connect(buscar)
 
 func buscar() -&gt; void:
@@ -470,7 +401,7 @@ func _process(delta: float) -&gt; void:
         camino.remove_at(0)</code></pre></div>
 <h2 id="capitulo-10-navegacion-en-2d-y-3d">Capítulo 10. Navegación en 2D y 3D</h2>
 <h3>Hornear la malla</h3>
-<p>En una escena con un <code>NavigationRegion2D</code> y, como hijo suyo, un <code>StaticBody2D</code> en <code>(300, 200)</code> con una forma de colisión de 100 × 100 píxeles, este script en la región hornea la sala:</p>
+<p>En una escena con un <code>NavigationRegion2D</code> y, de hijo, un <code>StaticBody2D</code> en <code>(300, 200)</code> con una forma de colisión de 100 × 100, este script en la región hornea la sala:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends NavigationRegion2D  # La sala
 
 func _ready() -&gt; void:
@@ -484,7 +415,7 @@ func _ready() -&gt; void:
     bake_navigation_polygon(false)
     print(malla.get_polygon_count())  # 4</code></pre></div>
 <h3>Agentes de navegación</h3>
-<p>En un <code>CharacterBody2D</code> con Motion Mode en Floating, como los del capítulo 7, con un <code>CollisionShape2D</code> circular de 20 píxeles de radio y un <code>NavigationAgent2D</code> llamado <code>Agente</code>, este script persigue al jugador:</p>
+<p>En un <code>CharacterBody2D</code> con Motion Mode en Floating, para la vista desde arriba, con un <code>CollisionShape2D</code> circular de 20 píxeles de radio y un <code>NavigationAgent2D</code> llamado <code>Agente</code>, este script persigue al jugador:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends CharacterBody2D  # El monstruo
 
 const RAPIDEZ := 200.0  # Píxeles por segundo
@@ -545,11 +476,11 @@ func _physics_process(delta: float) -&gt; void:
     espera = 0.0  # Entrada
     $Etiqueta.text = Estado.keys()[nuevo]</code></pre></div>
 <h3>Un monstruo que vigila</h3>
-<p>El resto del script son las constantes y variables, que van arriba, junto a <code>estado</code>, y las funciones de los cuatro estados:</p>
+<p>El resto del script son las constantes y variables, que van junto a <code>estado</code>, y las funciones de los cuatro estados:</p>
 <div class="codigo"><button>Copiar</button><pre><code>const VISTA := 200.0   # Píxeles a los que lo ve
 const ALCANCE := 40.0  # Píxeles para atraparlo
 const RUTA: Array[Vector2] = [
-        Vector2(200, 100), Vector2(1000, 100)]
+        Vector2(100, 200), Vector2(900, 200)]
 var siguiente: int = 1     # Punto al que va
 var visto := Vector2.ZERO  # Dónde lo vio
 var espera := 0.0          # Segundos buscando
@@ -587,7 +518,7 @@ func buscar(d: float, delta: float) -&gt; void:
         cambiar_a(Estado.PATRULLAR)</code></pre></div>
 <h2 id="capitulo-12-mapas-generados-y-adaptativo">Capítulo 12. Mapas generados y adaptativos</h2>
 <h3>Ruido</h3>
-<p>En un <code>Node</code>, este script escribe en Output la isla de la derecha de la @fig-c12-ruidosfigura:</p>
+<p>En un <code>Node</code>, este script escribe en Output la isla de Perlin:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node  # Una isla de 13 × 9 con ruido
 
 func _ready() -&gt; void:
@@ -681,7 +612,7 @@ func _process(_delta: float) -&gt; void:
         print(servidor.get_packet_port())</code></pre></div>
 <h2 id="capitulo-14-multijugador-en-godot">Capítulo 14. Multijugador en Godot</h2>
 <h3>Crear una partida y unirse</h3>
-<p>En el nodo raíz de una escena vacía, este script crea la partida si el juego arranca con el argumento <code>--servidor</code> y, si no, se une a ella:</p>
+<p>En la raíz de una escena vacía, este script crea la partida si el juego arranca con <code>--servidor</code> y, si no, se une a ella:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node  # Crea una partida o se une a ella
 
 const PUERTO: int = 4242
@@ -715,22 +646,24 @@ func _physics_process(_delta: float) -&gt; void:
     velocity = direccion * 300.0
     move_and_slide()</code></pre></div>
 <h3>Quién se lleva la manzana</h3>
-<p>La manzana es un <code>Area2D</code> con un sincronizador de su <code>position</code>, y este script deja la decisión al servidor:</p>
+<p>La manzana es un <code>Area2D</code> con un sincronizador de su posición y de <code>puntos</code>, y este script deja la decisión al servidor:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Area2D  # La manzana: decide el servidor
 
 var puntos := {}  # Identificador → manzanas
+var paso := -1  # Fotograma del último toque
 
 func _ready() -&gt; void:
     body_entered.connect(_al_tocar)
 
 func _al_tocar(jugador: Node2D) -&gt; void:
-    if not multiplayer.is_server():
-        return  # En los clientes, solo se ve
+    var f := Engine.get_physics_frames()
+    if not multiplayer.is_server() or f == paso:
+        return  # Un cliente, o un segundo toque
+    paso = f  # Si tocan dos a la vez, uno solo
     sumar_punto.rpc(jugador.name.to_int())
     position.x = randf_range(100.0, 1000.0)
     position.y = randf_range(100.0, 500.0)
 
-# El servidor avisa a todos, también a sí mismo
 @rpc(&quot;authority&quot;, &quot;call_local&quot;, &quot;reliable&quot;)
 func sumar_punto(id: int) -&gt; void:
     puntos[id] = puntos.get(id, 0) + 1
@@ -746,7 +679,6 @@ func _run() -&gt; void:
 <h3>Paso 5. Lee los errores y comenta el código</h3>
 <p>código. Añade comentarios y dos <code>print()</code> más, como estos:</p>
 <div class="codigo"><button>Copiar</button><pre><code>@tool
-# Un script que se ejecuta en el editor
 extends EditorScript
 
 # File → Run (Ctrl + Shift + X) llama a _run()
@@ -756,7 +688,7 @@ func _run() -&gt; void:
     print(2 + 3 * 4)        # 14: primero, 3 * 4</code></pre></div>
 <h2 id="practica-2-una-persecucion-con-vectores">Práctica 2. Una persecución con vectores</h2>
 <h3>Paso 7. Mueve a Niblo con las flechas</h3>
-<p><code>niblo.gd</code> por este código:</p>
+<p>trae <code>niblo.gd</code> por este código:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # Niblo: lo mueven las flechas
 
 const RAPIDEZ := 200.0  # Píxeles por segundo
@@ -835,6 +767,20 @@ func _process(delta: float) -&gt; void:
         scale.x = -1.0
     elif x &gt; 0.0:
         scale.x = 1.0</code></pre></div>
+<h3>Paso 9. Haz que Mubbit se acerque por la espalda</h3>
+<p>Adjunta a <code>Mubbit</code> un script, <code>mubbit.gd</code>, con este código:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # Mubbit: se acerca por detrás
+
+const RAPIDEZ := 100.0  # Píxeles por segundo
+
+@onready var niblo: Node2D = $&quot;../Niblo&quot;
+
+func _process(delta: float) -&gt; void:
+    # Mubbit, en el sistema local de Niblo
+    var visto := niblo.to_local(global_position)
+    if visto.x &lt; 0.0:  # A su espalda: avanza
+        position = position.move_toward(
+                niblo.position, RAPIDEZ * delta)</code></pre></div>
 <h2 id="practica-4-el-guardian-de-la-manzana">Práctica 4. El guardián de la manzana</h2>
 <h3>Paso 3. Haz que la manzana flote</h3>
 <p>Adjunta a <code>Manzana</code> un script, <code>manzana.gd</code>, con este código:</p>
@@ -860,7 +806,7 @@ var cogida := false
     var peso := 1.0 - exp(-suavidad * delta)
     position = position.lerp(meta, peso)</code></pre></div>
 <h3>Paso 5. Haz que Mubbit vigile la manzana</h3>
-<p>Adjunta a <code>Mubbit</code> un script, <code>mubbit.gd</code>, y arrastra <code>Manzana</code> hasta su campo Manzana:</p>
+<p>Adjunta a <code>Mubbit</code> un script, <code>mubbit.gd</code>, con este código:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Sprite2D  # Mubbit: vigila como un faro
 
 @export var manzana: Node2D
@@ -875,7 +821,7 @@ var angulo := 0.0  # Dónde está y adónde mira
 func _ready() -&gt; void:
     var puntos := PackedVector2Array(
             [Vector2.ZERO])
-    for i in 9:
+    for i in range(9):
         var a := deg_to_rad(campo_de_vision
                 * (i / 8.0 - 0.5))
         puntos.append(
@@ -905,20 +851,18 @@ func _process(delta: float) -&gt; void:
 @onready var niblo: Sprite2D = $Niblo
 @onready var mubbit: Sprite2D = $Mubbit
 @onready var manzana: Sprite2D = $Manzana
-@onready var casa: TextureRect = $Casa
+@onready var casa: Rect2 = $Casa.get_rect()
 
 func _process(_delta: float) -&gt; void:
-    var en_casa := casa.get_rect().has_point(
-            niblo.position)
+    var dentro := casa.has_point(niblo.position)
     if mubbit.ve_a_niblo():
         atrapado()
-    elif manzana.cogida and en_casa:
+    elif manzana.cogida and dentro:
         ganar()
 
 func atrapado() -&gt; void:
     manzana.cogida = false  # Vuelve a su sitio
-    var medio := casa.get_rect().get_center()
-    niblo.position = medio
+    niblo.position = casa.get_center()
     niblo.scale = Vector2.ZERO  # Reaparece
     var tw := create_tween()
     tw.set_trans(Tween.TRANS_BACK)  # Un muelle
@@ -934,9 +878,8 @@ func ganar() -&gt; void:
             Vector2(2, 2), 0.4)
     tw.tween_property(manzana, &quot;modulate:a&quot;,
             0.0, 0.3)
-    var arbol := get_tree()
-    var reiniciar := arbol.reload_current_scene
-    tw.tween_callback(reiniciar)  # Otra partida</code></pre></div>
+    tw.tween_callback(  # Otra partida
+            get_tree().reload_current_scene)</code></pre></div>
 <h2 id="practica-5-un-mubbit-imprevisible">Práctica 5. Un Mubbit imprevisible</h2>
 <h3>Paso 3. Haz que Mubbit salte al azar</h3>
 <p>Haz clic derecho sobre <code>MainScene</code>, elige Attach Script…, pulsa Create y escribe este código:</p>
@@ -955,7 +898,6 @@ func saltar() -&gt; void:
     # La próxima espera, entre 1 y 3 segundos
     temporizador.start(randf_range(1.0, 3.0))
 
-# Un punto al azar, sin tocar los bordes
 func punto_al_azar() -&gt; Vector2:
     var ventana := get_viewport_rect().size
     var x := randf_range(
@@ -964,17 +906,17 @@ func punto_al_azar() -&gt; Vector2:
             MARGEN, ventana.y - MARGEN)
     return Vector2(x, y)</code></pre></div>
 <h3>Paso 4. Haz que Mubbit aparezca lejos de Niblo</h3>
-<p>script esta función:</p>
+<p>y añade al final del script esta función:</p>
 <div class="codigo"><button>Copiar</button><pre><code># Un punto a DISTANCIA o más de otro punto
 func punto_lejos_de(otro: Vector2) -&gt; Vector2:
-    var punto := punto_al_azar()
+    var punto := Vector2.ZERO
     for intento: int in range(100):
+        punto = punto_al_azar()
         if punto.distance_to(otro) &gt;= DISTANCIA:
             break  # Ya está lo bastante lejos
-        punto = punto_al_azar()
     return punto</code></pre></div>
 <h3>Paso 5. Atrápalo</h3>
-<p>si Niblo toca a Mubbit:</p>
+<p>comprueba en cada fotograma si Niblo toca a Mubbit:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var puntos: int = 0
 
 func _process(_delta: float) -&gt; void:
@@ -984,7 +926,11 @@ func _process(_delta: float) -&gt; void:
         puntos += 1
         print(&quot;¡Atrapado! Puntos: %d&quot; % puntos)
         saltar()  # Salta ya y reinicia el Timer</code></pre></div>
-<h3>Paso 6. Repite la partida con una semilla</h3>
+<h3>Paso 6. Que Niblo no se escape</h3>
+<div class="codigo"><button>Copiar</button><pre><code>    # Que se vea entero: 32 es medio Niblo
+    position = position.clamp(Vector2(32, 32),
+            Vector2(1248, 688))</code></pre></div>
+<h3>Paso 7. Repite la partida con una semilla</h3>
 <p>escribe dónde cae Mubbit:</p>
 <div class="codigo"><button>Copiar</button><pre><code>    print(&quot;Mubbit: &quot;, mubbit.position.round())</code></pre></div>
 <h2 id="practica-6-niblo-y-las-manzanas">Práctica 6. Niblo y las manzanas</h2>
@@ -1006,11 +952,11 @@ func _physics_process(delta: float) -&gt; void:
             velocity.y = -sqrt(2.0 * g * altura)
     else:  # En el aire, la gravedad
         velocity += get_gravity() * delta
-    var eje := Input.get_axis(
-            &quot;ui_left&quot;, &quot;ui_right&quot;)
-    velocity.x = eje * rapidez
+    velocity.x = Input.get_axis(
+            &quot;ui_left&quot;, &quot;ui_right&quot;) * rapidez
     move_and_slide()</code></pre></div>
 <h3>Paso 6. Crea el marcador, con su señal</h3>
+<p>Ábrelo con doble clic en FileSystem y escribe este código:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node  # Los puntos de toda la partida
 
 signal cambiado(puntos: int)  # Avisa al cambiar
@@ -1019,12 +965,8 @@ var puntos: int = 0
 
 func sumar(cantidad: int) -&gt; void:
     puntos += cantidad
-    cambiado.emit(puntos)
-
-func reiniciar() -&gt; void:
-    puntos = 0
     cambiado.emit(puntos)</code></pre></div>
-<p>script:</p>
+<p>conecte. Adjunta a <code>Manzana</code> este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends RigidBody2D  # Rebota y se recoge
 
 func _ready() -&gt; void:
@@ -1036,7 +978,7 @@ func _on_body_entered(body: Node2D) -&gt; void:
         Marcador.sumar(1)  # El autoload
         queue_free()       # Desaparece</code></pre></div>
 <h3>Paso 7. Muestra los puntos y acaba la partida</h3>
-<p>En <code>MainScene</code>, añade un <code>Label</code> llamado <code>Puntos</code>, arriba a la izquierda, con Text <code>Puntos: 0</code>. Adjunta a <code>MainScene</code> este script:</p>
+<p>Adjunta a <code>MainScene</code> este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node2D  # Los puntos y el final
 
 const TOTAL: int = 5  # Manzanas de la escena
@@ -1052,7 +994,7 @@ func _on_cambiado(puntos: int) -&gt; void:
         await arbol.create_timer(0.5).timeout
         arbol.change_scene_to_file(FIN)</code></pre></div>
 <h3>Paso 8. Crea la pantalla de fin</h3>
-<p>adjunta a <code>Fin</code> este script:</p>
+<p>espera a Intro:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Control  # Los puntos e Intro para jugar
 
 const JUEGO := &quot;res://main_scene.tscn&quot;
@@ -1064,11 +1006,11 @@ func _ready() -&gt; void:
 func _unhandled_input(
         event: InputEvent) -&gt; void:
     if event.is_action_pressed(&quot;ui_accept&quot;):
-        Marcador.reiniciar()
+        Marcador.puntos = 0  # Otra partida
         get_tree().change_scene_to_file(JUEGO)</code></pre></div>
 <h2 id="practica-7-asteroids-con-ia">Práctica 7. Asteroids con IA</h2>
 <h3>Paso 1. Crea el proyecto y el láser</h3>
-<p>este script:</p>
+<p><code>CollisionShape2D</code> con un rectángulo de 8 × 16. Adjunta a <code>Laser</code> este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Area2D  # Avanza y rompe asteroides
 
 @export var rapidez := 700.0  # px/s
@@ -1118,7 +1060,7 @@ func _physics_process(delta: float) -&gt; void:
         laser.rotation = rotation
         get_parent().add_child(laser)</code></pre></div>
 <h3>Paso 3. Crea el asteroide, que persigue o hace eses</h3>
-<p>de colisión de radio 24. Guárdala como <code>asteroide.tscn</code> y adjúntale este script:</p>
+<p>colisión de radio 24. Guárdala como <code>asteroide.tscn</code> y adjúntale este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class_name Asteroide
 extends Area2D  # Persigue o hace eses
 
@@ -1162,7 +1104,7 @@ func mover_hacia(
     if hacia != Vector2.ZERO:
         rotation = Vector2.UP.angle_to(hacia)</code></pre></div>
 <h3>Paso 4. Haz aparecer los asteroides y juega</h3>
-<p>Adjunta a <code>MainScene</code> este script y arrastra <code>asteroide.tscn</code> a Escena Roca, porque los asteroides son rocas:</p>
+<p>asteroides son rocas:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node2D  # Asteroides, puntos y vidas
 
 @export var escena_roca: PackedScene
@@ -1208,7 +1150,7 @@ func _on_choque(
         fin.call_deferred()  # Vuelve a empezar</code></pre></div>
 <h2 id="practica-8-perseguir-y-huir-con-fuerzas">Práctica 8. Perseguir y huir con fuerzas</h2>
 <h3>Paso 2. Crea la clase <code>Vehiculo</code></h3>
-<p>capítulo con cuatro comportamientos:</p>
+<p>capítulo con tres comportamientos, buscar, huir y llegar:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class_name Vehiculo
 extends CharacterBody2D  # Se mueve con fuerzas
 
@@ -1244,9 +1186,16 @@ func llegar(punto: Vector2,
     var factor := minf(distancia / frenado, 1.0)
     var hacia := position.direction_to(punto)
     var deseada := hacia * rapidez_maxima
-    return deseada * factor - velocity
+    return deseada * factor - velocity</code></pre></div>
+<h3>Paso 3. Haz que Niblo llegue al ratón</h3>
+<p><code>CollisionShape2D</code> con un círculo de radio 28, y adjúntale este script:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Vehiculo  # Llega al ratón y se para
 
-func separar(vecinos: Array[Node]) -&gt; Vector2:
+func _physics_process(delta: float) -&gt; void:
+    var raton := get_global_mouse_position()
+    mover(llegar(raton, 150.0), delta)</code></pre></div>
+<h3>Paso 4. Crea los asteroides</h3>
+<div class="codigo"><button>Copiar</button><pre><code>func separar(vecinos: Array[Node]) -&gt; Vector2:
     var lejos := Vector2.ZERO
     for otro in vecinos:
         var punto: Vector2 = otro.position
@@ -1256,16 +1205,8 @@ func separar(vecinos: Array[Node]) -&gt; Vector2:
             var falta := 60.0 - d
             lejos += desde.normalized() * falta
     if lejos == Vector2.ZERO:
-        return Vector2.ZERO
+        return Vector2.ZERO  # Nadie cerca
     return buscar(position + lejos)</code></pre></div>
-<h3>Paso 3. Haz que Niblo llegue al ratón</h3>
-<p><code>CollisionShape2D</code> con un círculo de radio 28. Adjúntale este script:</p>
-<div class="codigo"><button>Copiar</button><pre><code>extends Vehiculo  # Llega al ratón y se para
-
-func _physics_process(delta: float) -&gt; void:
-    var raton := get_global_mouse_position()
-    mover(llegar(raton, 150.0), delta)</code></pre></div>
-<h3>Paso 4. Crea los asteroides</h3>
 <p><code>asteroide.tscn</code> y adjúntale este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Vehiculo  # Busca a Niblo o huye de él
 
@@ -1296,8 +1237,7 @@ func perseguir(
     return buscar(
             otro.position + otro.velocity * t)</code></pre></div>
 <h2 id="practica-9-un-laberinto-en-3d">Práctica 9. Un laberinto en 3D</h2>
-<h3>Paso 4. Construye el laberinto y su red</h3>
-<p>Vuelve a <code>main_scene.tscn</code> y adjunta a <code>MainScene</code> un script, <code>mundo.gd</code>, con este código:</p>
+<h3>Paso 3. Construye el laberinto y su red</h3>
 <div class="codigo"><button>Copiar</button><pre><code>class_name Mundo
 extends Node3D  # Construye el laberinto
 
@@ -1357,8 +1297,7 @@ func camino(desde: Vector3,
     for casilla in red.get_id_path(inicio, fin):
         puntos.append(a_mundo(casilla))
     return puntos</code></pre></div>
-<h3>Paso 5. Crea la clase <code>Caminante</code></h3>
-<p>en Path, y escribe esta clase:</p>
+<h3>Paso 4. Crea la clase <code>Caminante</code></h3>
 <div class="codigo"><button>Copiar</button><pre><code>class_name Caminante
 extends Sprite3D  # Recorre caminos del mapa
 
@@ -1379,8 +1318,8 @@ func _process(delta: float) -&gt; void:
     position = position.move_toward(meta, paso)
     if position == meta:  # Llega justo
         camino.pop_front()</code></pre></div>
-<h3>Paso 6. Niblo va adonde haces clic</h3>
-<p>la casilla <code>(5, 3)</code>. Adjúntale este script y, al guardarlo, arrastra <code>MainScene</code> a su nuevo campo Mundo:</p>
+<h3>Paso 5. Niblo va adonde haces clic</h3>
+<p>casilla <code>(5, 3)</code>, adjúntale este script y, al guardarlo, arrastra <code>MainScene</code> a su Mundo:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Caminante  # Niblo va adonde hagas clic
 
 func _unhandled_input(
@@ -1396,8 +1335,8 @@ func _unhandled_input(
     var punto = suelo.intersects_ray(ojo, hacia)
     if punto != null:  # null: no toca el suelo
         ir_a(punto)</code></pre></div>
-<h3>Paso 7. Mubbit patrulla</h3>
-<p>casilla <code>(1, 1)</code>, con <code>MainScene</code> en su Mundo y este script:</p>
+<h3>Paso 6. Mubbit patrulla</h3>
+<p><code>(3, 0.8, 3)</code>, y con este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Caminante  # Mubbit patrulla en bucle
 
 const RUTA: Array[Vector2i] = [  # Las esquinas
@@ -1487,7 +1426,7 @@ const RUTA: Array[Vector2i] = [  # Las esquinas
 var siguiente: int = 0    # Esquina a la que va
 var estado := Estado.PATRULLAR
 var espera := 0.0         # Segundos buscando
-@onready var etiqueta: Label3D = $Estado
+@onready var etiqueta: Label3D = $Etiqueta
 
 func _physics_process(delta: float) -&gt; void:
     match estado:
@@ -1538,9 +1477,20 @@ func ve_a_niblo() -&gt; bool:
     var donde := niblo.global_position
     var aqui := global_position
     return aqui.distance_to(donde) &lt; vista</code></pre></div>
+<h3>Paso 6. Haz que Mubbit oiga a Niblo</h3>
+<p>final de <code>mubbit.gd</code> una función vacía. Cámbiala por esta:</p>
+<div class="codigo"><button>Copiar</button><pre><code># Evento: un cuerpo entra en su oído
+func _on_oido_body_entered(
+        body: Node3D) -&gt; void:
+    if body != niblo:
+        return  # Otro Mubbit, o él mismo
+    if estado == Estado.PATRULLAR:
+        var donde := niblo.global_position
+        agente.target_position = donde
+        cambiar_a(Estado.BUSCAR)</code></pre></div>
 <h2 id="practica-12-un-laberinto-que-se-adapta">Práctica 12. Un laberinto que se adapta</h2>
 <h3>Paso 1. Copia el proyecto y crea el generador</h3>
-<p>generador del capítulo 12, de la página , con dos funciones:</p>
+<p>convertido en una función:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class_name Laberinto
 extends RefCounted  # No es un nodo
 
@@ -1581,9 +1531,9 @@ static func generar(columnas: int, filas: int,
             profundidad = pila.size()
             salida = nueva
     mapa[salida.y][salida.x] = &quot;S&quot;
-    return mapa
-
-# Abre muros al azar para que haya rodeos
+    return mapa</code></pre></div>
+<p>Debajo, añade esta función, que abre muros al azar:</p>
+<div class="codigo"><button>Copiar</button><pre><code># Abre muros al azar para que haya rodeos
 static func abrir_atajos(mapa: Array[String],
         cuantos: int) -&gt; void:
     var columnas := mapa[0].length()
@@ -1604,7 +1554,7 @@ static func abrir_atajos(mapa: Array[String],
 <div class="codigo"><button>Copiar</button><pre><code>            elif mapa[y][x] == &quot;S&quot;:
                 tile = SALIDA  # La salida
                 salida = a_mundo(casilla)</code></pre></div>
-<p>casillas al azar hasta dar con una de suelo, como en generar y probar:</p>
+<p>sortea casillas hasta dar con una de suelo:</p>
 <div class="codigo"><button>Copiar</button><pre><code># Centro de una casilla de suelo al azar
 func al_azar() -&gt; Vector3:
     var casilla := Vector2i.ZERO  # Un muro
@@ -1619,7 +1569,7 @@ func al_azar() -&gt; Vector3:
     rapidez = Director.ajustar(2.0, 4.0)
     vista = Director.ajustar(4.0, 10.0)</code></pre></div>
 <h3>Paso 5. Escapa o déjate atrapar</h3>
-<p>a la salida o lo atrapan:</p>
+<p>acaban la partida cuando Niblo llega a la salida o lo atrapan:</p>
 <div class="codigo"><button>Copiar</button><pre><code># Ajusta el reto y trae otro laberinto
 func acabar(ha_salido: bool) -&gt; void:
     if acabada:
@@ -1629,6 +1579,7 @@ func acabar(ha_salido: bool) -&gt; void:
         Director.gana()
     else:
         Director.pierde()
+    print(&quot;Nivel: &quot;, Director.nivel)
     var arbol := get_tree()
     arbol.reload_current_scene.call_deferred()
 
@@ -1636,7 +1587,7 @@ func _physics_process(_delta: float) -&gt; void:
     var donde: Vector3 = $Niblo.position
     if donde.distance_to(salida) &lt; 1.5:
         acabar(true)  # Ha llegado a la salida</code></pre></div>
-<p>de <code>perseguir()</code> por este código:</p>
+<p>principio de <code>perseguir()</code> por este código:</p>
 <div class="codigo"><button>Copiar</button><pre><code>func patrullar() -&gt; void:
     if agente.is_navigation_finished():
         agente.target_position = mundo.al_azar()
@@ -1650,44 +1601,42 @@ func perseguir() -&gt; void:
         return</code></pre></div>
 <h2 id="practica-13-mensajes-entre-jugadores">Práctica 13. Mensajes entre jugadores</h2>
 <h3>Paso 2. Declara la red</h3>
-<p>Adjunta a <code>Chat</code> un script con las variables y las conexiones de los botones:</p>
+<p>Adjunta a <code>Chat</code> un script con las variables y las conexiones de las señales:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Control  # Un chat para la red local
 
 const PUERTO: int = 4242             # Mensajes
 const PUERTO_ANUNCIOS: int = 4243    # Anuncios
 var servidor := UDPServer.new()      # Tu sala
+var clientes: Array[PacketPeerUDP] = []
 var conexion := PacketPeerUDP.new()  # A la sala
 var anuncios := PacketPeerUDP.new()  # Difusión
-var clientes: Array[PacketPeerUDP] = []
+var ips: Array[String] = []          # Las salas
 @onready var nombre: LineEdit = %Nombre
 @onready var mensajes: RichTextLabel = %Mensajes
 @onready var texto: LineEdit = %Texto
 
 func _ready() -&gt; void:
     %Crear.pressed.connect(crear_sala)
-    %Buscar.pressed.connect(buscar_sala)
-    %Enviar.pressed.connect(escribir)
-    texto.text_submitted.connect(
-            escribir.unbind(1))
+    %Buscar.pressed.connect(buscar_salas)
+    %Salas.item_activated.connect(unirse)
+    texto.text_submitted.connect(escribir)
     $Anunciar.timeout.connect(anunciar)</code></pre></div>
 <h3>Paso 3. Crea la sala y anúnciala</h3>
 <p>Añade la función del botón Crear sala y la que el <code>Timer</code> llama cada segundo:</p>
-<div class="codigo"><button>Copiar</button><pre><code># «Crear sala»: escucha, se anuncia y se une
-func crear_sala() -&gt; void:
+<div class="codigo"><button>Copiar</button><pre><code>func crear_sala() -&gt; void:
     servidor.listen(PUERTO)
     anuncios.set_broadcast_enabled(true)
-    var todos := &quot;255.255.255.255&quot;
     anuncios.set_dest_address(
-            todos, PUERTO_ANUNCIOS)
+            &quot;255.255.255.255&quot;, PUERTO_ANUNCIOS)
     $Anunciar.start()  # Un anuncio por segundo
     conectar(&quot;127.0.0.1&quot;)  # Tu propio ordenador
 
 func anunciar() -&gt; void:
     var sala := &quot;Sala de &quot; + nombre.text
     anuncios.put_packet(sala.to_utf8_buffer())</code></pre></div>
-<h3>Paso 4. Busca la sala, únete y escribe</h3>
-<p>línea de texto con el nombre delante:</p>
-<div class="codigo"><button>Copiar</button><pre><code>func buscar_sala() -&gt; void:
+<h3>Paso 4. Busca las salas y únete</h3>
+<p>delante:</p>
+<div class="codigo"><button>Copiar</button><pre><code>func buscar_salas() -&gt; void:
     anuncios.bind(PUERTO_ANUNCIOS)
 
 func recibir_anuncios() -&gt; void:
@@ -1696,25 +1645,26 @@ func recibir_anuncios() -&gt; void:
         var datos := anuncios.get_packet()
         var sala := datos.get_string_from_utf8()
         var ip := anuncios.get_packet_ip()
-        if conexion.is_socket_connected():
-            return  # Ya está en una sala
-        mensajes.append_text(
-                sala + &quot; &quot; + ip + &quot;\n&quot;)
-        conectar(ip)
+        if not ips.has(ip):  # Solo las nuevas
+            ips.append(ip)
+            %Salas.add_item(sala + &quot; &quot; + ip)
+
+func unirse(fila: int) -&gt; void:
+    conectar(ips[fila])
 
 func conectar(ip: String) -&gt; void:
     conexion.connect_to_host(ip, PUERTO)
     enviar(&quot;se ha unido&quot;)
 
-func escribir() -&gt; void:
-    enviar(texto.text)
+func escribir(frase: String) -&gt; void:
+    enviar(frase)
     texto.clear()
 
 func enviar(frase: String) -&gt; void:
     var linea := nombre.text + &quot;: &quot; + frase
     conexion.put_packet(linea.to_utf8_buffer())</code></pre></div>
 <h3>Paso 5. Recibe y reparte</h3>
-<p>Añade las funciones que recogen lo que llega y reparten los mensajes:</p>
+<p>Añade las funciones que reciben y reparten los mensajes:</p>
 <div class="codigo"><button>Copiar</button><pre><code>func _process(_delta: float) -&gt; void:
     recibir_anuncios()
     if servidor.is_listening():
@@ -1724,9 +1674,8 @@ func enviar(frase: String) -&gt; void:
         var datos := conexion.get_packet()
         var linea := (
                 datos.get_string_from_utf8())
-        mensajes.append_text(linea + &quot;\n&quot;)
+        mensajes.add_text(linea + &quot;\n&quot;)
 
-# Acepta a los nuevos y lee a todos
 func atender() -&gt; void:
     servidor.poll()
     while servidor.is_connection_available():
@@ -1748,14 +1697,11 @@ func repartir(paquete: PackedByteArray) -&gt; void:
 <p>Guárdala como <code>jugador.tscn</code> y adjúntale este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends CharacterBody2D  # Lo mueve su dueño
 
-@export var rapidez := 300.0  # px/s
-
 func _enter_tree() -&gt; void:
     set_multiplayer_authority(name.to_int())
 
 func _ready() -&gt; void:
-    # El anfitrión es Niblo; los demás, Mubbit
-    if name != &quot;1&quot;:
+    if name != &quot;1&quot;:  # Los clientes, Mubbit
         $Sprite2D.texture = load(
                 &quot;res://mubbit.png&quot;)
     if is_multiplayer_authority():
@@ -1764,12 +1710,11 @@ func _ready() -&gt; void:
 
 func _physics_process(_delta: float) -&gt; void:
     if not is_multiplayer_authority():
-        # Lo mueve otro; aquí solo se copia
-        return
+        return  # Lo mueve otro: solo se copia
     var direccion := Input.get_vector(
             &quot;ui_left&quot;, &quot;ui_right&quot;,
             &quot;ui_up&quot;, &quot;ui_down&quot;)
-    velocity = direccion * rapidez
+    velocity = direccion * 300.0
     move_and_slide()</code></pre></div>
 <h3>Paso 4. Crea la partida</h3>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node2D  # La partida, con sus jugadores
@@ -1783,7 +1728,6 @@ func _ready() -&gt; void:
     if &quot;--cliente&quot; in OS.get_cmdline_args():
         peer.create_client(DIRECCION, PUERTO)
         multiplayer.multiplayer_peer = peer
-        # Si el servidor se va, la partida acaba
         multiplayer.server_disconnected.connect(
                 get_tree().quit)
         return  # Los trae el spawner
@@ -1794,7 +1738,6 @@ func _ready() -&gt; void:
             quitar)
     anadir(1)  # El anfitrión es siempre el 1
 
-# En el servidor; el spawner lo copia al resto
 func anadir(id: int) -&gt; void:
     var jugador := JUGADOR.instantiate()
     jugador.name = str(id)  # Su identificador
@@ -1803,7 +1746,7 @@ func anadir(id: int) -&gt; void:
 func quitar(id: int) -&gt; void:
     $Jugadores.get_node(str(id)).queue_free()</code></pre></div>
 <h3>Paso 5. Pon la manzana</h3>
-<p><code>position</code>, como en el paso 3. Adjúntale este script:</p>
+<p><code>CollisionShape2D</code> (un círculo de radio 20), un <code>MultiplayerSynchronizer</code> y este script:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Area2D  # La manzana: decide el servidor
 
 var puntos := {}  # Identificador → manzanas
@@ -1811,25 +1754,38 @@ var puntos := {}  # Identificador → manzanas
 func _ready() -&gt; void:
     body_entered.connect(_al_tocar)
 
-func _al_tocar(jugador: Node2D) -&gt; void:
-    if not multiplayer.is_server():
-        return  # En los clientes solo se ve
-    sumar_punto.rpc(jugador.name.to_int())
-    position.x = randf_range(60, 580)
-    position.y = randf_range(60, 300)
-
-# El servidor avisa a todos, también a sí mismo
-@rpc(&quot;authority&quot;, &quot;call_local&quot;, &quot;reliable&quot;)
-func sumar_punto(id: int) -&gt; void:
-    puntos[id] = puntos.get(id, 0) + 1
+func _process(_delta: float) -&gt; void:
     var texto := &quot;&quot;
     for quien in puntos:
         var n: int = puntos[quien]
         texto += &quot;Jugador %d: %d\n&quot; % [quien, n]
-    get_node(&quot;../Marcador&quot;).text = texto</code></pre></div>
+    %Marcador.text = texto
+
+func _al_tocar(jugador: Node2D) -&gt; void:
+    if jugador.is_multiplayer_authority():
+        coger.rpc_id(1)  # Comando al servidor
+
+@rpc(&quot;any_peer&quot;, &quot;call_local&quot;, &quot;reliable&quot;)
+func coger() -&gt; void:
+    var id := multiplayer.get_remote_sender_id()
+    var jugador := %Jugadores.get_node(str(id))
+    if (position.distance_to(jugador.position)
+            &gt; 60):
+        return  # Llegó otro antes, o es trampa
+    puntos[id] = puntos.get(id, 0) + 1
+    position.x = randf_range(60, 580)
+    position.y = randf_range(60, 300)
+    celebrar.rpc(id)  # Evento: a todos
+
+@rpc(&quot;call_local&quot;)
+func celebrar(id: int) -&gt; void:
+    var jugador := %Jugadores.get_node(str(id))
+    jugador.modulate = Color.GOLD
+    create_tween().tween_property(jugador,
+            &quot;modulate&quot;, Color.WHITE, 0.5)</code></pre></div>
 <h2 id="apendice-a-gdscript">Apéndice A. GDScript</h2>
 <h3>Cómo probar el código &lt;como-probar&gt;</h3>
-<p>Borra el código que trae y escribe esta plantilla:</p>
+<p>#presenta[Borra el código que trae y escribe esta plantilla.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>@tool
 extends EditorScript
 
@@ -1837,7 +1793,7 @@ func _run() -&gt; void:
     print(&quot;¡Hola, mundo!&quot;)
     # Tu código va aquí debajo</code></pre></div>
 <h3>Variables, constantes y tipos</h3>
-<p>los errores solo salen al ejecutar.</p>
+<p>escribirlo. Sin tipo, la variable puede cambiar de tipo, y los errores solo salen al ejecutar.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code># Un comentario de una línea
 &quot;&quot;&quot;
 Un comentario
@@ -1852,7 +1808,7 @@ var altura := 182              # Deduce int
 var peso := 87.5               # Deduce float
 var libre = &quot;texto&quot;            # Sin tipo
 libre = 42                     # Ahora es un int</code></pre></div>
-<p>entera, y Godot avisa de que pierde los decimales.</p>
+<p>entera, y Godot avisa de que pierde los decimales.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var x: int = 5
 var y: int = 2
 var suma := x + y         # 7
@@ -1868,7 +1824,7 @@ var orden := (2 + 3) * 4  # 20
 var otro := 2 * 3 ** 2    # 18: ** va primero
 var longitud := 2 * PI * 3.0  # Perímetro: 18.85</code></pre></div>
 <h3>Texto y conversión de tipos</h3>
-<p>corchetes, en un _array_. Con `%.2f`, salen dos decimales.</p>
+<p>corchetes, en un _array_. Con `%.2f`, salen dos decimales. Dentro de una cadena, `\n` es un salto de línea, `\t` un tabulador y `\"` unas comillas.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var c := &quot;GNU/&quot; + &quot;Linux&quot;            # Concatena
 print(&quot;x vale &quot;, x)                  # Con comas
 print(&quot;x es %d e y es %d&quot; % [x, y])  # Huecos
@@ -1884,7 +1840,7 @@ var s := str(-544.432)               # A texto
 var tipo := type_string(typeof(n))   # &quot;int&quot;
 var tipo_r := type_string(typeof(r))  # &quot;float&quot;</code></pre></div>
 <h3>Arrays</h3>
-<p>solo acepta textos.</p>
+<p>es el último. Con `Array[String]`, solo acepta textos.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var mixto = [&quot;texto&quot;, 123, 45.67]  # Tres tipos
 var libre: Array = [&quot;texto&quot;, 123]  # Sin tipo
 var vacio: Array = []              # Vacío
@@ -1893,7 +1849,7 @@ var frutas: Array[String] = [
 var primera := frutas[0]   # kiwi
 var ultima := frutas[-1]   # lima
 var cuantas := frutas.size()   # 3</code></pre></div>
-<p>Para cambiar un _array_ se usan estos métodos. Dos de ellos, `append` y `push_back`, hacen lo mismo. Los `pop` quitan y devuelven el elemento, y su variable lleva el tipo escrito porque Godot no sabe de antemano cuál es.</p>
+<p>por eso su variable lo lleva escrito.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>frutas[1] = &quot;uva&quot;          # Cambia un elemento
 frutas.append(&quot;fresa&quot;)     # Añade al final
 frutas.push_front(&quot;mora&quot;)  # Añade al principio
@@ -1917,7 +1873,7 @@ nums.shuffle()                # Orden al azar
 nums.resize(5)                # Trunca o rellena
 var junto := nums + [7, 8]    # Concatena
 var iguales := nums == [1, 2] # Compara: false</code></pre></div>
-<p>El método `slice(inicio, fin)` da un _array_ nuevo desde el índice de inicio, incluido, hasta el de fin, que no entra. Admite índices negativos y un tercer argumento, el paso. El método `join()` de una cadena une con ella los textos de un _array_.</p>
+<p>#presenta(sangrar: false)[El método `slice(inicio, fin)` da un trozo de un _array_.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var l: Array[String] = [
         &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;, &quot;E&quot;, &quot;F&quot;]
 var a := l.slice(1, 3)      # [&quot;B&quot;, &quot;C&quot;]
@@ -1925,7 +1881,7 @@ var b := l.slice(2, -2)     # [&quot;C&quot;, &quot;D&quot;]
 var c := l.slice(0, 6, 2)   # [&quot;A&quot;, &quot;C&quot;, &quot;E&quot;]
 var d := l.slice(4, 1, -1)  # [&quot;E&quot;, &quot;D&quot;, &quot;C&quot;]
 var e := &quot;, &quot;.join(a)       # &quot;B, C&quot;</code></pre></div>
-<p>anidados como `Array[Array[String]]`.</p>
+<p>tipo `Array[Array]`, porque GDScript no admite tipos anidados como `Array[Array[String]]`.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var a: Array[int] = [1, 2, 3]
 var b := a                    # El mismo array
 var c: Array[int] = a.duplicate()  # Una copia
@@ -1935,7 +1891,7 @@ var tres: int = m[1][0]       # 3
 var vacia: Array[Array] = []  # Matriz vacía
 vacia.append([])              # Una fila vacía</code></pre></div>
 <h3>Diccionarios</h3>
-<p>Las claves no se repiten. El tipo `Variant` admite cualquier valor.</p>
+<p>Las claves no se repiten. El tipo `Variant` admite cualquier valor.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var persona: Dictionary = {
     &quot;nombre&quot;: &quot;Ana&quot;,
     &quot;edad&quot;: 25,
@@ -1966,7 +1922,7 @@ var distinto := p != copia  # true
 var d1 := {&quot;a&quot;: 1, &quot;b&quot;: 2}
 var d2 := {&quot;b&quot;: 3, &quot;c&quot;: 4}
 d1.merge(d2, true)          # Gana d2: b vale 3</code></pre></div>
-<p>El método `merge()` junta dos, y `duplicate(true)` hace una copia profunda.</p>
+<p>diccionarios. Con `duplicate(true)`, se copia también lo que hay dentro.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var datos := {&quot;ana&quot;: {&quot;edad&quot;: 30},
         &quot;notas&quot;: [7, 9]}
 var edad = datos[&quot;ana&quot;][&quot;edad&quot;]   # 30
@@ -1979,7 +1935,7 @@ var gente: Array[Dictionary] = [
 ]
 var quien: String = gente[0][&quot;nombre&quot;]  # Mario</code></pre></div>
 <h3>Condicionales</h3>
-<p>saben el resultado.</p>
+<p>saben el resultado.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var a: int = 5
 var b: int = 3
 var igual := a == b             # false
@@ -1988,7 +1944,7 @@ var mayor_o_igual := a &gt;= b     # true
 var las_dos := a &gt; 0 and b &gt; 0  # true
 var alguna := a &gt; 9 or b &gt; 0    # true
 var invertida := not (a &gt; b)    # false</code></pre></div>
-<p>valores, y `_` es «cualquier otro». El operador ternario elige entre dos valores en una línea.</p>
+<p>línea.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var nota: float = 9.5
 var texto: String
 if nota &lt; 5.0:
@@ -2018,7 +1974,7 @@ match fruta:
 
 var es := &quot;par&quot; if opcion % 2 == 0 else &quot;impar&quot;
 var mismo := &quot;Patricia&quot; == &quot;Patricia&quot;   # true</code></pre></div>
-<p>Dos ejemplos que juntan condicionales son un año bisiesto y una conversión de grados Fahrenheit a Celsius, donde `substr(inicio, longitud)` devuelve un trozo del texto.</p>
+<p>#presenta(sangrar: false)[Dos ejemplos que juntan condicionales son un año bisiesto y una conversión de grados Fahrenheit a Celsius, donde `substr(inicio, longitud)` devuelve un trozo del texto.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var año: int = 2000
 var div_4: bool = año % 4 == 0
 var div_100: bool = año % 100 == 0
@@ -2036,7 +1992,7 @@ if unidad == &quot;C&quot; or unidad == &quot;c&quot;:
 elif unidad == &quot;F&quot; or unidad == &quot;f&quot;:
     resultado = (valor - 32) / 1.8  # Celsius</code></pre></div>
 <h3>Bucles</h3>
-<p>bucle `while` repite mientras se cumpla una condición, y `break` sale del bucle.</p>
+<p>vuelta siguiente.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var total: int = 0
 var texto: String = &quot;&quot;
 for i: int in range(5):          # 0, 1, 2, 3, 4
@@ -2052,7 +2008,7 @@ for clave in persona:            # Cada clave
 var n: int = 0
 while n &lt; 3:                     # Tres veces
     n += 1
-# Dos usos típicos: acumular y buscar
+# Usos típicos: acumular, buscar y filtrar
 var suma: float = 0.0
 for num: float in [-4.3, 2.0, 1.5]:
     suma += num              # Sumatoria: -0.8
@@ -2066,8 +2022,12 @@ for k: int in range(5):
     cuadrados.append(k * k)  # [0, 1, 4, 9, 16]
 var producto: float = 1.0
 for num: float in [3.0, 2.0, -1.0, 4.0]:
-    producto *= num          # Producto: -24</code></pre></div>
-<p>Los bucles se pueden anidar, y sirven para recorrer _arrays_ de _arrays_ y diccionarios de diccionarios. Con `range(frutas.size())` se tiene el índice de cada elemento.</p>
+    producto *= num          # Producto: -24
+for k: int in range(6):
+    if k % 2 == 1:
+        continue             # Salta los impares
+    total += k               # Suma 0, 2 y 4</code></pre></div>
+<p>#presenta(sangrar: false)[Los bucles se pueden anidar, y sirven para recorrer _arrays_ de _arrays_ y diccionarios de diccionarios. Con `range(frutas.size())` se tiene el índice de cada elemento.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>for i: int in range(frutas.size()):
     texto += frutas[i]
 for i: int in range(3):
@@ -2084,7 +2044,7 @@ var usuarios := {
 for id: String in usuarios.keys():
     for clave: String in usuarios[id].keys():
         texto += str(usuarios[id][clave])</code></pre></div>
-<p>Para buscar el primer primo de una lista, <code>sqrt</code> da la raíz cuadrada, y <code>break</code> termina el bucle en cuanto se encuentra:</p>
+<p>#presenta(sangrar: false)[Para buscar el primer primo de una lista, `sqrt` da la raíz cuadrada, y `break` termina el bucle en cuanto se encuentra.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var primo: int = -1
 for num: int in [4, 8, 15, 16, 23, 42]:
     var es_primo: bool = num &gt; 1
@@ -2096,7 +2056,7 @@ for num: int in [4, 8, 15, 16, 23, 42]:
         primo = num              # 23
         break</code></pre></div>
 <h3>Funciones</h3>
-<p>convención. Para devolver varios valores, se devuelve un diccionario.</p>
+<p>valores, se devuelve un diccionario.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var nivel: int = 1          # Fuera de _run()
 
 func subir_nivel() -&gt; void:
@@ -2121,9 +2081,10 @@ var a := cuadrado(4)    # 16
 var b := suma(2)        # 2: el parámetro b es 0
 var c := suma(2, 3)     # 5
 var d := factorial(5)   # 120</code></pre></div>
+<p>una variable, y se llama con `call()`.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var doble := func(n: int) -&gt; int: return n * 2
 var ocho: int = doble.call(4)   # 8</code></pre></div>
-<p>El método `reduce()` recorre un _array_ y acumula un resultado con una lambda. Una línea larga se parte dentro de un paréntesis, con dos niveles de sangría. Una variable con el nombre de una función, como `cuadrado()`, la tapa, y Godot avisa.</p>
+<p>#presenta(sangrar: false)[El método `reduce()` resume un _array_ con una función.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>func media_y_orden(
         reales: Array[float],
         cadenas: Array[String]
@@ -2139,7 +2100,7 @@ var ocho: int = doble.call(4)   # 8</code></pre></div>
         &quot;cadenas&quot;: ordenadas,
     }</code></pre></div>
 <h3>Clases y escenas</h3>
-<p>El método `_init` es el constructor. Por convención, las propiedades privadas empiezan por `_`.</p>
+<p>convención, las propiedades privadas empiezan por `_`.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class Punto:
     var x: int
     var y: int
@@ -2156,7 +2117,7 @@ var ocho: int = doble.call(4)   # 8</code></pre></div>
 var p := Punto.new(2, 3)
 var q := Punto.new(10, 10)
 var d := p.distancia_a(q)   # 10.63...</code></pre></div>
-<p>leerla. Un `enum` es un conjunto de constantes con nombre, que se usan como `Estado.CANSADO`.</p>
+<p>`Estado.CANSADO`.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class Personaje:
     enum Estado { NORMAL, CANSADO, AGOTADO }
 
@@ -2166,7 +2127,7 @@ var d := p.distancia_a(q)   # 10.63...</code></pre></div>
     var esta_despierto: bool:
         get:
             return energia &gt; 0</code></pre></div>
-<p>`Animal` puede guardar un `Perro`, y cada uno ejecuta su `mover()`: eso es el *polimorfismo*. El operador `is` comprueba la clase de un objeto.</p>
+<p>comprueba la clase de un objeto, y una clase solo puede heredar de otra.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class Animal:
     var energia: int
 
@@ -2195,7 +2156,7 @@ var lista: Array[Animal] = [
 for animal: Animal in lista:
     animal.mover()             # Su versión
 var es_perro := lista[1] is Perro   # true</code></pre></div>
-<p>_Inspector_.</p>
+<p>#presenta(sangrar: false)[Los nodos de Godot son clases, y se crean con `new()`.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var escena := Node2D.new()
 var icono := Sprite2D.new()
 icono.texture = load(&quot;res://icon.svg&quot;)  # Imagen
@@ -2206,6 +2167,7 @@ var es_nodo := icono is Node2D          # true
 var lejos := icono.position.distance_to(
         Vector2.ZERO)
 escena.free()                  # Liberar a mano</code></pre></div>
+<p>edita en el _Inspector_, y el valor que pongas allí manda sobre el del código.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>extends Node2D
 
 @export var velocidad := 300.0   # Editable
@@ -2227,8 +2189,30 @@ func _unhandled_input(
     if event is InputEventKey and event.pressed:
         if event.keycode == KEY_R:
             get_tree().reload_current_scene()</code></pre></div>
+<p>existen, y con `@export` también puede guardar un nodo o una escena, que se eligen en el _Inspector_.]:</p>
+<div class="codigo"><button>Copiar</button><pre><code>@export var velocidad: float = 300.0
+@export var objetivo: Node2D       # Un nodo
+@export var escena: PackedScene    # Un .tscn
+@onready var icono: Sprite2D = $Icono</code></pre></div>
+<h3>Señales</h3>
+<p>función sin paréntesis, como valor.]:</p>
+<div class="codigo"><button>Copiar</button><pre><code>extends Node2D
+
+signal tic(veces: int)              # Propia
+var veces: int = 0
+
+func _ready() -&gt; void:
+    $Timer.timeout.connect(contar)  # Sin ()
+    tic.connect(girar.bind(45.0))
+
+func contar() -&gt; void:
+    veces += 1
+    tic.emit(veces)                 # Avisa
+
+func girar(n: int, grados: float) -&gt; void:
+    $Icono.rotation_degrees = n * grados</code></pre></div>
 <h3>Bibliotecas</h3>
-<p>Los ángulos van en radianes, y `deg_to_rad()` convierte los grados.</p>
+<p>van mejor con tipos. Los ángulos van en radianes, y `deg_to_rad()` convierte los grados.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var pi := PI                      # 3.14159...
 var tau := TAU                    # 6.28318...
 var potencia := pow(5.0, 2.0)     # 25
@@ -2250,7 +2234,7 @@ var mayor: int = max(3, 9, 4)     # 9, de varios
 var menor: int = min(3, 9, 4)     # 3
 var tope: int = clamp(12, 0, 10)  # 10
 var entero := clampi(15, 0, 10)   # 10, entero</code></pre></div>
-<p>misma secuencia, y así se puede repetir una partida.</p>
+<p>misma secuencia, y así se puede repetir una partida.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var real := randf()            # Real de 0 a 1
 var dado := randi_range(1, 6)  # Entero de 1 a 6
 var por_cien := randf_range(0.0, 100.0)
@@ -2258,10 +2242,8 @@ var azar := RandomNumberGenerator.new()
 azar.seed = 42                 # Misma secuencia
 var dado_1 := azar.randi_range(1, 6)
 var dado_2 := azar.randi_range(1, 6)
-azar.randomize()               # Otra semilla
-var libre := azar.randf()      # Real de 0 a 1
-var entre := azar.randf_range(-3.0, 10.0)</code></pre></div>
-<p>a datos.</p>
+azar.randomize()               # Otra semilla</code></pre></div>
+<p>diccionario a texto, y `JSON.parse_string()`, el texto a datos.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>var ruta: String = &quot;user://texto.txt&quot;
 var f := FileAccess.open(ruta, FileAccess.WRITE)
 f.store_string(&quot;¡Hola, mundo!\nOtra línea&quot;)
@@ -2277,7 +2259,7 @@ var partida := {&quot;nivel&quot;: 3, &quot;vidas&quot;: 2}
 var texto: String = JSON.stringify(partida)
 var leida: Dictionary = JSON.parse_string(texto)
 var nivel = leida[&quot;nivel&quot;]  # 3.0: JSON da float</code></pre></div>
-<p>archivo, como `azar.gd`, empezaría por `class_name Azar`, y la usaría cualquier _script_.</p>
+<p>archivo, como `azar.gd`, empezaría por `class_name Azar`, y la usaría cualquier _script_.]:</p>
 <div class="codigo"><button>Copiar</button><pre><code>class Azar:
     static func probabilidad(
             pct: float) -&gt; bool:
@@ -2289,7 +2271,7 @@ var nivel = leida[&quot;nivel&quot;]  # 3.0: JSON da float</code></pre></div>
 var sale := Azar.probabilidad(25.0)  # Al 25 %
 var d20 := Azar.tirar_dado(20)       # De 1 a 20</code></pre></div>
 <h2 id="ejercicios-de-gdscript">Ejercicios de GDScript</h2>
-<p><code>res://ejercicios.gd</code> en Path y pulsa Create. Ábrelo con doble clic y pon esta plantilla:</p>
+<p>, con esta plantilla:</p>
 <div class="codigo"><button>Copiar</button><pre><code>@tool
 extends EditorScript
 
