@@ -78,11 +78,6 @@
   }
   .flecha { position: absolute; right: 9px; width: 16px; height: 16px; pointer-events: none; }
   .pill:focus-visible, .pill:focus-within { outline: 2px solid var(--azul); outline-offset: -2px; }
-  /* Botón que cambia entre los seguimientos y la nota del videojuego entregado */
-  .pill.conmutador {
-    padding: 0 14px; background: transparent; color: var(--texto); box-shadow: inset 0 0 0 1.5px var(--amarillo);
-  }
-  .pill.conmutador[aria-pressed="true"] { background: var(--azul); color: #04121f; box-shadow: none; }
 
   /* Objetivo del seguimiento */
   .objetivo {
@@ -116,6 +111,15 @@
   .columnas, .fila {
     display: grid; grid-template-columns: minmax(0, 1fr) repeat(var(--n), var(--col)) var(--nota); column-gap: 6px;
   }
+  /* En los módulos con entrega (PRIA), una columna más, siempre a la vista y la misma en todos los
+     seguimientos: la nota de lo entregado. Va detrás de la nota del día y cierra la fila. */
+  .con-entrega :is(.columnas, .fila) {
+    grid-template-columns: minmax(0, 1fr) repeat(var(--n), var(--col)) var(--nota) var(--col);
+  }
+  .tab.tab-entrega { border-bottom-color: var(--azul); }
+  .con-entrega .nota-dia { border-radius: 0; padding-right: 0; }
+  .marca.juego { border-radius: 0 999px 999px 0; padding-right: 4px; }
+  .marca.juego.vacia svg { opacity: .45; }
   .columnas { padding: 10px 8px 0; }
   .tab {
     background: var(--cabecera); border-bottom: 3px solid var(--naranja); border-radius: 14px 14px 0 0;
@@ -156,7 +160,6 @@
     font-size: 1.3rem; font-weight: 800; font-variant-numeric: tabular-nums;
   }
   .nota-dia span { display: inline-block; }
-  .nota-dia.final { font-size: 1.05rem; }
   .provisional { opacity: .55; }
 
   .vacio { padding: 48px 24px; text-align: center; color: var(--texto-suave); }
@@ -320,7 +323,6 @@
           <select id="proyecto" aria-label="Proyecto o videojuego"></select>
           <svg class="flecha" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </label>
-        <button type="button" class="pill conmutador" id="btnEntrega" aria-pressed="false" hidden></button>
       </div>
       <button type="button" class="objetivo" id="btnObjetivo" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
@@ -467,6 +469,8 @@
       aritmética de los seguimientos.
     </p>
     <table class="calculo" id="tablaCalculo"></table>
+    <p class="ayuda" id="ayudaEntrega" hidden></p>
+    <table class="calculo niveles" id="tablaEntrega" hidden></table>
   </div>
 </dialog>
 
@@ -893,12 +897,10 @@
     proy: proyectosDe(modInicial).includes(datos.ui.proy) ? datos.ui.proy : 'P01',
     fecha: hoyISO(),
     fechaAutomatica: true,
-    entrega: false,
   };
 
-  // En la vista de la entrega se pone la nota de lo entregado en vez de las marcas de un seguimiento.
+  // En los módulos con entrega hay una columna más con la nota de lo entregado, que no depende del día.
   const tieneEntrega = (mod = estado.mod) => mod in ENTREGA;
-  const enEntrega = () => estado.entrega && tieneEntrega();
   const entregasDe = (mod = estado.mod, proy = estado.proy) => datos.entregas[mod]?.[proy] || {};
 
   const ordenar = alumnos => [...alumnos].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
@@ -917,24 +919,27 @@
     $('#mAlumnos').textContent = `Alumnos de ${estado.mod}`;
     $('#vacioModulo').textContent = estado.mod;
 
-    const entrega = enEntrega();
-    const conmutador = $('#btnEntrega');
-    conmutador.hidden = !tieneEntrega();
-    conmutador.textContent = ENTREGA[estado.mod]?.nombre ?? '';
-    conmutador.setAttribute('aria-pressed', entrega);
-    $('#btnFecha').hidden = entrega;
-
-    const n = entrega ? 1 : numColumnas();
+    const entrega = tieneEntrega();
+    const n = numColumnas();
     document.documentElement.style.setProperty('--n', n);
-    document.documentElement.classList.toggle('estrecho', n > 2);
+    document.documentElement.classList.toggle('con-entrega', entrega);
+    document.documentElement.classList.toggle('estrecho', n + entrega > 2);
     const cr = criteriosDe();
     const pestanas = Array.from({ length: n }, (_, c) => {
-      const tab = el('span', 'tab', entrega ? ENTREGA[estado.mod].pestana : cr ? cr[c].pestana : PESTANAS[c]);
-      tab.title = entrega ? `Nota del ${ENTREGA[estado.mod].nombre.toLowerCase()} entregado` : nombreColumna(c);
+      const tab = el('span', 'tab', cr ? cr[c].pestana : PESTANAS[c]);
+      tab.title = nombreColumna(c);
       return tab;
     });
+    const tabNota = el('span', 'tab', 'Nota');
+    tabNota.title = 'Nota de este seguimiento';
+    const finales = [tabNota];
+    if (entrega) {
+      const tab = el('span', 'tab tab-entrega', ENTREGA[estado.mod].pestana);
+      tab.title = `Nota del ${ENTREGA[estado.mod].nombre.toLowerCase()} entregado, la misma en todos los seguimientos`;
+      finales.push(tab);
+    }
     const columnas = $('.columnas');
-    columnas.replaceChildren(columnas.firstElementChild, ...pestanas, columnas.lastElementChild);
+    columnas.replaceChildren(columnas.firstElementChild, ...pestanas, ...finales);
 
     const objetivo = objetivoDelDia();
     const texto = $('#objetivoTexto');
@@ -958,7 +963,7 @@
 
     $('#vacio').hidden = alumnos.length > 0;
     $('.columnas').hidden = alumnos.length === 0;
-    $('#btnObjetivo').hidden = alumnos.length === 0 || entrega;
+    $('#btnObjetivo').hidden = alumnos.length === 0;
     $('#fabs').hidden = alumnos.length === 0;
     marcarDisquete();
     resumen();
@@ -966,7 +971,6 @@
 
   // Rehace las marcas y la nota de una fila; el nombre, que va primero, se queda.
   function pintarFila(li) {
-    if (enEntrega()) return pintarFilaEntrega(li);
     const alumno = li.dataset.alumno;
     const m = marcasDelDia()[alumno];
     const celdas = [];
@@ -1015,44 +1019,33 @@
       celdaNota.classList.add(nota >= 5 ? 'aprobado' : 'suspenso');
       celdaNota.append(el('span', null, String(nota)));
     }
-    li.replaceChildren(li.firstElementChild, ...celdas, celdaNota);
+    li.replaceChildren(li.firstElementChild, ...celdas, celdaNota, ...(tieneEntrega() ? [celdaEntrega(alumno)] : []));
   }
 
-  // Vista de la entrega: en cada fila, la nota de lo entregado y, a la derecha, la calificación del
-  // alumno, más apagada mientras es provisional.
-  function pintarFilaEntrega(li) {
-    const alumno = li.dataset.alumno;
-    const f = calcular().find(x => x.alumno === alumno);
-    const b = el('button', 'marca');
+  // La nota de lo entregado, que es la misma en todos los seguimientos: al tocarla se elige de la lista.
+  function celdaEntrega(alumno) {
+    const juego = entregasDe()[alumno];
+    const b = el('button', 'marca juego');
     b.type = 'button';
-    b.dataset.c = 0;
-    b.innerHTML = f.juego === undefined ? svgQuesito(0) : svgPuntos(f.juego, 10);
+    b.dataset.c = 'juego';
+    b.classList.toggle('vacia', juego === undefined);
+    b.innerHTML = juego === undefined ? svgQuesito(0) : svgPuntos(juego, 10);
     b.setAttribute('aria-haspopup', 'menu');
     b.setAttribute('aria-label', `${ENTREGA[estado.mod].nombre} de ${alumno}: ` +
-      (f.juego === undefined ? 'sin nota' : `${f.juego}, ${VIDEOJUEGO[f.juego][0]}`));
-    const celdaNota = el('span', 'nota-dia final');
-    if (f.nota !== null) {
-      celdaNota.classList.add(f.nota >= 5 ? 'aprobado' : 'suspenso');
-      celdaNota.classList.toggle('provisional', f.juego === undefined);
-      celdaNota.title = f.juego === undefined ? 'Calificación provisional' : 'Calificación';
-      celdaNota.append(el('span', null, numero(f.nota)));
-    }
-    li.replaceChildren(li.firstElementChild, b, celdaNota);
+      (juego === undefined ? 'sin nota' : `${juego}, ${VIDEOJUEGO[juego][0]}`));
+    return b;
   }
 
   function resumen() {
     const alumnos = alumnosDe(estado.mod);
-    if (enEntrega()) {
-      const con = alumnos.filter(a => entregasDe()[a] !== undefined).length;
-      $('#subtitulo').textContent = alumnos.length
-        ? `${con} de ${alumnos.length} ${ENTREGA[estado.mod].nombre.toLowerCase()}s con nota` : 'Sin alumnos';
-      return;
-    }
     const dia = marcasDelDia();
     // Los que tienen la falta justificada no necesitan nota ese día.
     const conNota = alumnos.filter(a => notaDe(dia[a]) !== null).length;
     const necesitan = alumnos.filter(a => dia[a] !== JUSTIFICADA).length;
-    $('#subtitulo').textContent = alumnos.length ? `${conNota} de ${necesitan} alumnos con nota` : 'Sin alumnos';
+    // Los videojuegos con nota solo se cuentan cuando ya hay alguno
+    const juegos = tieneEntrega() ? alumnos.filter(a => entregasDe()[a] !== undefined).length : 0;
+    $('#subtitulo').textContent = !alumnos.length ? 'Sin alumnos' : `${conNota} de ${necesitan} alumnos con nota` +
+      (juegos ? ` · ${juegos} ${ENTREGA[estado.mod].nombre.toLowerCase()}${juegos === 1 ? '' : 's'}` : '');
   }
 
   function fijarMarca(li, m) {
@@ -1209,7 +1202,7 @@
     anotarCambio();
     poner(datos.entregas, [estado.mod, estado.proy, li.dataset.alumno], n);
     pintarFila(li);
-    resaltar(li, 0, conFoco);
+    resaltar(li, 'juego', conFoco);
     try { navigator.vibrate?.(12); } catch {}
     resumen();
     marcarDisquete();
@@ -1248,11 +1241,8 @@
     if (b === origenSelector) return cerrarSelector();
     cerrarSelector();
     const li = b.closest('.fila');
-    if (enEntrega()) {
-      if (b.classList.contains('marca')) elegirEntrega(li, b);
-      return;
-    }
-    if (!b.classList.contains('marca')) elegirAsistencia(li, b);
+    if (b.classList.contains('juego')) elegirEntrega(li, b);
+    else if (!b.classList.contains('marca')) elegirAsistencia(li, b);
     else if (esExplicacion(b)) elegirGrado(li, b);
     else siguienteNivel(li, Number(b.dataset.c));
   });
@@ -1263,7 +1253,7 @@
     ev.preventDefault();
     trasPulsarLargo = true;
     const li = b.closest('.fila');
-    if (enEntrega()) return elegirEntrega(li, b);
+    if (b.classList.contains('juego')) return elegirEntrega(li, b);
     if (esExplicacion(b)) elegirGrado(li, b);
     else elegirNivel(li, Number(b.dataset.c), b);
   });
@@ -1281,14 +1271,8 @@
 
   $('#modulo').addEventListener('change', ev => {
     estado.mod = datos.ui.mod = ev.target.value;
-    estado.entrega = false;
     if (!proyectosDe(estado.mod).includes(estado.proy)) estado.proy = datos.ui.proy = 'P01';
     guardar();
-    pintar();
-  });
-
-  $('#btnEntrega').addEventListener('click', () => {
-    estado.entrega = !estado.entrega;
     pintar();
   });
 
@@ -1718,19 +1702,20 @@
 
   function abrirCalculo() {
     const cr = criteriosDe();
-    const entrega = enEntrega();
-    const nombre = ENTREGA[estado.mod]?.nombre.toLowerCase();
-    const mitades = `la calificación es la media entre la de los seguimientos y la del ${nombre} entregado y, ` +
-      'mientras este no tenga nota, es provisional: la media aritmética de los seguimientos.';
-    let ayuda = cr ? ayudaCriterios : ayudaRubrica;
+    const entrega = tieneEntrega();
+    $('#ayudaCalculo').textContent = cr ? ayudaCriterios : ayudaRubrica;
+    $('#tablaCalculo').classList.toggle('criterios', !!cr);
+    $('#tablaCalculo').replaceChildren(...(cr ? tablaCriterios(cr) : tablaRubrica()));
+    $('#ayudaEntrega').hidden = $('#tablaEntrega').hidden = !entrega;
     if (entrega) {
-      ayuda = `Toca la marca de un alumno y elige la nota de su ${nombre} entregado, de 0 a 10, por la ` +
-        `funcionalidad de su IA y su jugabilidad con la IA. A la derecha sale su calificación: ${mitades}`;
-    } else if (tieneEntrega()) ayuda = `${ayuda.trim()} En ${estado.mod}, ${mitades}`;
-    $('#ayudaCalculo').textContent = ayuda;
-    $('#tablaCalculo').classList.toggle('criterios', !!cr && !entrega);
-    $('#tablaCalculo').classList.toggle('niveles', entrega);
-    $('#tablaCalculo').replaceChildren(...(entrega ? tablaEntrega() : cr ? tablaCriterios(cr) : tablaRubrica()));
+      const nombre = ENTREGA[estado.mod].nombre.toLowerCase();
+      $('#ayudaEntrega').textContent = `En ${estado.mod}, la columna «${ENTREGA[estado.mod].nombre}» es la nota del ` +
+        `${nombre} entregado, de 0 a 10, por la funcionalidad de su IA y su jugabilidad con la IA. Es la misma en ` +
+        'todos los seguimientos y se puede poner cualquier día: toca la marca de un alumno y elígela en la lista. ' +
+        `La calificación es la media entre la de los seguimientos y la del ${nombre} y, mientras este no tenga ` +
+        'nota, es provisional, la media aritmética de los seguimientos.';
+      $('#tablaEntrega').replaceChildren(...tablaEntrega());
+    }
     $('#dlgCalculo').showModal();
   }
 
