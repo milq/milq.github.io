@@ -78,6 +78,11 @@
   }
   .flecha { position: absolute; right: 9px; width: 16px; height: 16px; pointer-events: none; }
   .pill:focus-visible, .pill:focus-within { outline: 2px solid var(--azul); outline-offset: -2px; }
+  /* Botón que cambia entre los seguimientos y la nota del videojuego entregado */
+  .pill.conmutador {
+    padding: 0 14px; background: transparent; color: var(--texto); box-shadow: inset 0 0 0 1.5px var(--amarillo);
+  }
+  .pill.conmutador[aria-pressed="true"] { background: var(--azul); color: #04121f; box-shadow: none; }
 
   /* Objetivo del seguimiento */
   .objetivo {
@@ -144,20 +149,23 @@
     text-align: center; line-height: 1.2;
   }
   .falta svg { width: 22px; height: 22px; flex: none; }
+  .sin-explicacion { color: var(--texto-suave); font-size: 1.4rem; }
   .alumno:focus-visible, .marca:focus-visible, .falta:focus-visible { outline: 2px solid var(--azul); outline-offset: -4px; }
   .nota-dia {
     display: grid; place-items: center; padding-right: 4px; border-radius: 0 999px 999px 0;
     font-size: 1.3rem; font-weight: 800; font-variant-numeric: tabular-nums;
   }
   .nota-dia span { display: inline-block; }
+  .nota-dia.final { font-size: 1.05rem; }
+  .provisional { opacity: .55; }
 
   .vacio { padding: 48px 24px; text-align: center; color: var(--texto-suave); }
   .vacio strong { color: var(--texto); }
 
   /* Selector de nivel, junto a la marca o el nombre tocados */
   .selector {
-    position: fixed; z-index: 25; min-width: 210px; padding: 6px 0;
-    background: var(--menu); border-radius: 12px; box-shadow: 0 10px 28px rgba(0, 0, 0, .5);
+    position: fixed; z-index: 25; min-width: 210px; max-height: calc(100vh - 16px); padding: 6px 0;
+    overflow-y: auto; background: var(--menu); border-radius: 12px; box-shadow: 0 10px 28px rgba(0, 0, 0, .5);
   }
   .selector button {
     display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 4px 18px 4px 10px;
@@ -260,8 +268,7 @@
   }
   .chip b { font-size: .9rem; }
   .chip small { font-size: .65rem; color: var(--texto-suave); }
-  .chip.quitado, .chip.justificada { opacity: .45; }
-  .chip.quitado b { text-decoration: line-through; }
+  .chip.justificada { opacity: .45; }
   .chip.vacia { color: var(--texto-suave); font-size: .8rem; }
   .aprobado { color: var(--verde); }
   .suspenso { color: var(--rojo); }
@@ -271,11 +278,15 @@
   .calculo td { font-size: 1.1rem; font-weight: 800; font-variant-numeric: tabular-nums; }
   .calculo svg { width: 28px; height: 28px; display: block; margin: auto; }
   .calculo small {
-    display: block; margin-top: 2px; color: var(--texto-suave); font-size: .62rem; font-weight: 600;
-    white-space: nowrap;
+    display: block; max-width: 64px; margin: 2px auto 0; color: var(--texto-suave); font-size: .62rem;
+    font-weight: 600; line-height: 1.15;
   }
+  .calculo td.no-usa { color: var(--texto-suave); font-weight: 400; }
   .calculo.criterios th { padding-right: 12px; text-align: left; font-weight: 400; font-size: .9rem; }
   .calculo.criterios tr:last-child > * { border-top: 1px solid var(--linea); font-weight: 800; }
+  .calculo.niveles td { vertical-align: top; }
+  .calculo.niveles th { padding-left: 10px; text-align: left; font-weight: 400; font-size: .88rem; line-height: 1.35; }
+  .calculo.niveles b { font-weight: 800; }
 </style>
 </head>
 <body>
@@ -309,6 +320,7 @@
           <select id="proyecto" aria-label="Proyecto o videojuego"></select>
           <svg class="flecha" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </label>
+        <button type="button" class="pill conmutador" id="btnEntrega" aria-pressed="false" hidden></button>
       </div>
       <button type="button" class="objetivo" id="btnObjetivo" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
@@ -342,7 +354,7 @@
 </main>
 
 <div class="fabs" id="fabs">
-  <button type="button" class="boton fab guardar" id="fabGuardar" aria-label="Guardar copia de seguridad">
+  <button type="button" class="boton fab guardar" id="fabGuardar" aria-label="Guardar las notas del proyecto">
     <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M5 3h11.5L21 7.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM7.5 3v5h8V3M13 5v1M7 21v-7h10v7"/>
     </svg>
@@ -389,7 +401,7 @@
     </div>
     <p class="ayuda">
       Lo que deberían llevar hecho y funcionando a esta fecha, contando lo de seguimientos anteriores.
-      Con él se mide el avance y aparece en las notas que envías.
+      Con él se mide el avance. No aparece en las notas.
     </p>
     <textarea id="txtObjetivo" rows="3" placeholder="Por ejemplo: calculadora terminada y parte de la encuesta"></textarea>
     <div class="acciones">
@@ -405,11 +417,7 @@
       <h2 id="notasTitulo"></h2>
       <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
     </div>
-    <p class="ayuda">
-      Cada seguimiento se califica según el avance y la explicación (ver «Cómo se calcula la nota»).
-      Una falta injustificada es un 0 y una justificada (J) no cuenta. La nota es la media de los
-      seguimientos; al alumno que tenga 5 o más se le quita el peor.
-    </p>
+    <p class="ayuda" id="ayudaNotas"></p>
     <table class="notas">
       <thead><tr><th>Alumno</th><th>Seguimientos</th><th>Nota</th></tr></thead>
       <tbody id="notasCuerpo"></tbody>
@@ -449,12 +457,14 @@
       <button type="button" class="icono-btn" data-cerrar aria-label="Cerrar">✕</button>
     </div>
     <p class="ayuda" id="ayudaCalculo">
-      Cada toque en una marca la pasa al nivel siguiente, del mejor al peor, y tras «nada» la deja sin
-      marcar; si te pasas, mantenla pulsada y elige el nivel en la lista. Si un alumno no ha venido,
-      toca su nombre y elige si la falta es justificada o no. La nota de cada seguimiento sale de esta
-      tabla, con el avance en las filas y la explicación en las columnas; una falta injustificada es
-      un 0 y una justificada no cuenta. La nota del proyecto es la media de los seguimientos y, al
-      alumno que tenga 5 o más, se le quita el peor.
+      El avance marca la nota máxima y la mínima, y la explicación técnica fija la nota dentro de ese
+      margen. Cada toque en el avance lo pasa al nivel siguiente, de «todo» a «nada», y tras «nada» lo
+      deja sin marcar; si te pasas, mantenlo pulsado y elige el nivel en la lista. Al tocar la
+      explicación se abre la lista de grados que se usan con ese avance, cada uno con su nota. Si un
+      alumno no ha venido, toca su nombre y elige si la falta es justificada o no. La nota de cada
+      seguimiento sale de esta tabla, con la explicación en las filas y el avance en las columnas; una
+      falta injustificada es un 0 y una justificada no cuenta. La nota del proyecto es la media
+      aritmética de los seguimientos.
     </p>
     <table class="calculo" id="tablaCalculo"></table>
   </div>
@@ -468,7 +478,7 @@
     <h2>Borrar todos los datos</h2>
     <p class="ayuda">
       Se borrarán los alumnos, las marcas y los objetivos de todos los módulos y proyectos. Si quieres
-      conservarlos, guarda antes una copia con el disquete.
+      conservarlos, guarda antes una copia de cada proyecto con el disquete.
     </p>
     <div class="acciones mitades">
       <button type="button" class="boton secundario" data-cerrar>Cancelar</button>
@@ -493,8 +503,9 @@
 
   const MODULOS = ['DWES', 'PRIA', 'DG23', 'PIDAW', 'DAW'];
   const COLOR_MODULO = { DWES: '#4b9cd1', PRIA: '#c39bd3', DG23: '#f0a35e', PIDAW: '#5fc9c0', DAW: '#ef8fb0' };
-  // DWES tiene seis proyectos y PRIA, cinco videojuegos; el resto de módulos, doce.
-  const NUM_PROYECTOS = { DWES: 6, PRIA: 5 };
+  // DWES tiene seis proyectos y un séptimo que sustituye a la FFEOE para quien no va a la empresa (los
+  // repetidores); PRIA, cuatro videojuegos, y el resto de módulos, doce.
+  const NUM_PROYECTOS = { DWES: 7, PRIA: 4 };
   const proyectosDe = mod =>
     Array.from({ length: NUM_PROYECTOS[mod] ?? 12 }, (_, i) => 'P' + String(i + 1).padStart(2, '0'));
   const MESES = ['ene.', 'feb.', 'mar.', 'abr.', 'may.', 'jun.', 'jul.', 'ago.', 'sept.', 'oct.', 'nov.', 'dic.'];
@@ -502,19 +513,114 @@
     'septiembre', 'octubre', 'noviembre', 'diciembre'];
   const COLUMNAS = ['Avance', 'Explicación'];
   const PESTANAS = ['Avance', 'Explica\u00ADción'];
-  // Niveles de cada columna, del mejor al peor. En las marcas, 0 es sin marcar y del 1 al 5, estos niveles.
-  const NIVELES = [
-    ['todo', 'casi todo', 'a medias', 'poco', 'nada'],
-    ['muy bien', 'bien', 'regular', 'mal', 'nada'],
+
+  // Rúbrica de seguimiento (Rúbrica de seguimiento.md, junto a este archivo, 11-nov-2026). El avance
+  // marca la nota máxima y la mínima, y la explicación fija la nota dentro de ese margen. Las marcas
+  // son { a: avance, e: grado }: a del 1 (todo) al 5 (nada) y e del 0 (excelente) al 8 (nula).
+  const AVANCES = ['todo', 'casi todo', 'la mitad', 'menos de la mitad', 'nada'];
+  const NADA = 5;
+  const GRADOS = ['excelente', 'muy buena', 'buena', 'correcta', 'con huecos', 'con bastantes huecos',
+    'floja', 'débil', 'nula'];
+  // Nota de cada grado con cada avance, de todo a menos de la mitad (con nada, siempre 0). null: ese
+  // grado no se usa con ese avance, porque su margen es más estrecho.
+  const NOTAS_RUBRICA = [
+    [10, 9, 8, 7, 6, 5, 4, 3, 2],
+    [8, 7, 6, 5, 4, 3, 2, 1, 0],
+    [6, null, 5, 4, 3, 2, null, 1, 0],
+    [4, null, 3, null, 2, null, null, 1, 0],
   ];
-  // Nota de un seguimiento según el avance (filas) y la explicación (columnas). Es simétrica: los dos pesan igual.
-  const NOTAS = [
-    [10, 9, 7, 4, 0],
-    [9, 8, 6, 3, 0],
-    [7, 6, 5, 2, 0],
-    [4, 3, 2, 1, 0],
-    [0, 0, 0, 0, 0],
+  // Cara de cada grado, de la verde (1) a la roja (5)
+  const CARA_GRADO = [1, 1, 2, 2, 3, 3, 4, 4, 5];
+  // Retroalimentación de cada caso, en el mismo orden que NOTAS_RUBRICA, para el comentario de Moodle
+  const RETRO = [
+    [
+      'Avance completo y explicación técnica excelente. Funciona todo lo que pedía el seguimiento y se explica con orden, precisión y vocabulario técnico.',
+      'Avance completo y explicación técnica muy buena. Funciona todo y se explica con orden y precisión, salvo algún matiz.',
+      'Avance completo y explicación técnica buena. Funciona todo, aunque algún paso se explica con poco detalle o con algún término impreciso.',
+      'Avance completo y explicación técnica correcta. Funciona todo, pero se omiten algunos pasos o el porqué de algunas partes.',
+      'Avance completo y explicación técnica con huecos. Funciona todo, pero la explicación tiene varios huecos o vocabulario impreciso.',
+      'Avance completo y explicación técnica con bastantes huecos. Funciona todo, pero solo se explica parte del código y hace falta ayuda para responder.',
+      'Avance completo y explicación técnica floja. Funciona todo, pero se explica poco del código y casi siempre con ayuda.',
+      'Avance completo y explicación técnica débil. Funciona todo, pero se describe lo que se ve al ejecutar o se lee el código sin entenderlo.',
+      'Avance completo y explicación técnica nula. Funciona todo, pero no se sabe explicar qué hace el código.',
+    ],
+    [
+      'Avance casi completo y explicación técnica excelente. Se explica todo con orden y precisión, pero falta un detalle o falla algún caso.',
+      'Avance casi completo y explicación técnica muy buena. Falta un detalle o falla algún caso, y la explicación es precisa salvo algún matiz.',
+      'Avance casi completo y explicación técnica buena. Falta un detalle o falla algún caso, y algún paso se explica con poco detalle.',
+      'Avance casi completo y explicación técnica correcta. Falta un detalle o falla algún caso, y se omiten algunos pasos o el porqué de algunas partes.',
+      'Avance casi completo y explicación técnica con huecos. Falta un detalle o falla algún caso, y la explicación tiene varios huecos.',
+      'Avance casi completo y explicación técnica con bastantes huecos. Falta un detalle o falla algún caso, y solo se explica parte del código con ayuda.',
+      'Avance casi completo y explicación técnica floja. Funciona lo principal, pero se explica poco del código y casi siempre con ayuda.',
+      'Avance casi completo y explicación técnica débil. Funciona lo principal, pero se describe lo que se ve al ejecutar o se lee el código sin entenderlo.',
+      'Avance casi completo y explicación técnica nula. Funciona lo principal, pero no se sabe explicar qué hace el código.',
+    ],
+    [
+      'Avance a medias y explicación técnica excelente. Lo hecho se explica con orden y precisión, pero solo funciona la mitad de lo que pedía el seguimiento.',
+      null,
+      'Avance a medias y explicación técnica buena. Funciona la mitad y se explica bien, salvo algún paso poco detallado.',
+      'Avance a medias y explicación técnica correcta. Funciona la mitad y se explica lo esencial, pero se omiten algunos pasos.',
+      'Avance a medias y explicación técnica con huecos. Funciona la mitad y la explicación tiene varios huecos.',
+      'Avance a medias y explicación técnica con bastantes huecos. Funciona la mitad y solo se explica parte de ella con ayuda.',
+      null,
+      'Avance a medias y explicación técnica débil. Funciona la mitad, pero se describe lo que se ve al ejecutar o se lee el código sin entenderlo.',
+      'Avance a medias y explicación técnica nula. Funciona la mitad, pero no se sabe explicar qué hace el código.',
+    ],
+    [
+      'Avance insuficiente y explicación técnica excelente. Lo hecho se explica muy bien, pero falta lo principal de lo que pedía el seguimiento.',
+      null,
+      'Avance insuficiente y explicación técnica buena. Lo hecho se explica bien, pero falta lo principal.',
+      null,
+      'Avance insuficiente y explicación técnica con huecos. Falta lo principal y lo hecho se explica con huecos.',
+      null,
+      null,
+      'Avance insuficiente y explicación técnica débil. Falta lo principal y lo hecho se describe sin entender el código.',
+      'Avance insuficiente y explicación técnica nula. Falta lo principal y no se sabe explicar lo hecho.',
+    ],
   ];
+  const RETRO_NADA = 'Sin avance. No se ha avanzado nada de lo que indica el seguimiento.';
+  const RETRO_FALTA = 'Falta injustificada. Este seguimiento cuenta como un 0.';
+  const RETRO_JUSTIFICADA = 'Falta justificada. Se procurará realizar este seguimiento otro día y, ' +
+    'mientras tanto, no cuenta en la nota.';
+
+  // Módulos en los que, además de los seguimientos, se califica lo entregado, de 0 a 10: la
+  // calificación es la media entre la de los seguimientos y esa nota y, mientras no la haya, es
+  // provisional, la media aritmética de los seguimientos.
+  const ENTREGA = { PRIA: { nombre: 'Videojuego', pestana: 'Video\u00ADjuego' } };
+  // Rúbrica de videojuego (Rúbrica de videojuego.md, junto a este archivo, 11-nov-2026): del 5 en
+  // adelante, la IA funciona y la nota la decide la jugabilidad con ella. De cada nota, del 0 al 10: su
+  // valoración y su descripción, que es también su retroalimentación.
+  const VIDEOJUEGO = [
+    ['nulo', 'No se ha entregado el videojuego o no se puede abrir.'],
+    ['muy débil', 'El juego se abre, pero no tiene IA o no se puede jugar.'],
+    ['débil', 'La IA apenas funciona y el juego casi no se puede jugar.'],
+    ['flojo', 'La IA falla a menudo y el juego se puede jugar poco.'],
+    ['insuficiente', 'La IA funciona a medias y eso estropea la partida.'],
+    ['justo', 'La IA funciona, pero apenas plantea jugabilidad.'],
+    ['aceptable', 'La IA funciona, pero plantea una jugabilidad demasiado fácil o demasiado difícil.'],
+    ['correcto', 'La IA funciona, pero plantea una jugabilidad repetitiva y poco equilibrada.'],
+    ['bueno', 'La IA funciona y plantea una jugabilidad equilibrada, aunque algo repetitiva.'],
+    ['muy bueno', 'La IA funciona y plantea una jugabilidad equilibrada y variada, salvo algún detalle.'],
+    ['excelente', 'La IA funciona y plantea una jugabilidad equilibrada y variada de principio a fin.'],
+  ];
+  const retroVideojuego = n => VIDEOJUEGO[n][1];
+
+  // Rúbrica anterior (hasta el 11-nov-2026): sus marcas eran [avance, explicación], del 1 al 5
+  // (todo, casi todo, a medias, poco o nada, y muy bien, bien, regular, mal o nada). Al abrir la página
+  // o restaurar una copia se convierten a la nueva, con el mismo avance y el grado que da la misma
+  // nota, para que ninguna nota ya puesta cambie. Grado nuevo de cada explicación con cada avance:
+  const GRADO_ANTIGUA = [
+    [0, 1, 3, 6, 8],
+    [0, 0, 2, 5, 8],
+    [0, 0, 2, 5, 8],
+    [0, 2, 4, 7, 8],
+  ];
+  // Tres casillas no tienen su nota con su avance en la rúbrica nueva. Para conservarla pasan al avance
+  // de al lado que sí la da: todo y nada (0) a casi todo y nula; casi todo y muy bien (9) a todo y muy
+  // buena; a medias y muy bien (7) a casi todo y muy buena. Clave: «avance,explicación» antiguos.
+  const CASILLA_ANTIGUA = { '1,5': { a: 2, e: 8 }, '2,1': { a: 1, e: 1 }, '3,1': { a: 2, e: 1 } };
+  // Sin avance marcado solo queda el nombre de la explicación.
+  const GRADO_SUELTO = [0, 2, 3, 7, 8];
   // Un alumno que no ha venido tiene una de estas marcas en lugar de [avance, explicación]: con la falta
   // injustificada saca un 0 y la justificada no cuenta para la nota.
   const FALTA = 'falta';
@@ -534,11 +640,6 @@
       ],
     },
   };
-  // A un alumno con al menos estos seguimientos con nota en un proyecto se le quita el peor. Cada uno
-  // cuenta los suyos, porque quien se incorpora tarde lleva menos, y las faltas justificadas no suman.
-  const QUITAR_PEOR_DESDE = 5;
-  // Si pasan más de estos días sin descargar una copia, el disquete se marca en rojo.
-  const DIAS_SIN_COPIA = 14;
   const CLAVE = 'seguimiento';
 
   // Avance: un quesito más o menos lleno. Explicación: una cara de color con su boca.
@@ -591,8 +692,6 @@
       `stroke="${AZUL}" stroke-width="2.5"/>${queso}</svg>`;
   }
 
-  const svgMarca = (c, n) => (c ? svgCara(n) : svgQuesito(n));
-
   // Puntos de un criterio: un círculo con la cifra, del verde (todos) al rojo (ninguno).
   function svgPuntos(p, max) {
     const [fondo, tinta] = CARAS[1 + Math.round((1 - p / max) * 4)];
@@ -619,7 +718,8 @@
     return `${d} ${MESES[m - 1]}` + (conAnio ? ` ${a}` : '');
   }
 
-  const etiquetaProyecto = (mod, p) => `${mod === 'PRIA' ? 'Videojuego' : 'Proyecto'} ${Number(p.slice(1))}`;
+  const tipoProyecto = mod => (mod === 'PRIA' ? 'Videojuego' : 'Proyecto');
+  const etiquetaProyecto = (mod, p) => `${tipoProyecto(mod)} ${Number(p.slice(1))}`;
 
   function partir(alumno) {
     const i = alumno.indexOf(',');
@@ -635,7 +735,13 @@
   }
 
   const numero = n => n.toLocaleString('es-ES', { maximumFractionDigits: 2 });
-  const dosDecimales = n => n.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  // En las notas que se guardan y se suben, con punto decimal: 8.50
+  const dosDecimales = n => (Math.round(n * 100) / 100).toFixed(2);
+
+  function fechaLarga(iso) {
+    const [a, m, d] = iso.split('-').map(Number);
+    return `${d} de ${MESES_LARGOS[m - 1]} de ${a}`;
+  }
 
   // Columnas del proyecto elegido: los criterios de su enunciado o, si no tiene, avance y explicación.
   const criteriosDe = () => CRITERIOS[estado.mod]?.[estado.proy] ?? null;
@@ -644,24 +750,88 @@
   const puntosDe = (c, n) => criteriosDe()[c].max - n + 1;
   const plural = (n, s) => `${n} ${s}${n === 1 ? '' : 's'}`;
 
+  // Niveles de una columna de criterios (de más a menos puntos) o, con la rúbrica, del avance.
   function nivelesDe(c) {
     const cr = criteriosDe();
-    if (!cr) return NIVELES[c];
+    if (!cr) return AVANCES;
     return Array.from({ length: cr[c].max + 1 }, (_, i) => plural(cr[c].max - i, 'punto'));
   }
 
   function svgColumna(c, n) {
     const cr = criteriosDe();
-    if (!cr) return svgMarca(c, n);
+    if (!cr) return svgQuesito(n);
     return n ? svgPuntos(puntosDe(c, n), cr[c].max) : svgQuesito(0);
+  }
+
+  // Marcas de la rúbrica: { a, e }. Las de criterios son arrays.
+  const esRubrica = m => m !== null && typeof m === 'object' && !Array.isArray(m);
+  const gradoUsable = (a, e) => a === NADA || NOTAS_RUBRICA[a - 1][e] !== null;
+
+  // Una marca de la rúbrica anterior, convertida a la nueva.
+  function convertirAntigua([a, e]) {
+    const casilla = CASILLA_ANTIGUA[`${a},${e}`];
+    if (casilla) return { ...casilla };
+    const m = {};
+    if (a >= 1 && a <= 5) m.a = a;
+    if (m.a !== NADA && e >= 1 && e <= 5) m.e = m.a ? GRADO_ANTIGUA[m.a - 1][e - 1] : GRADO_SUELTO[e - 1];
+    return m.a || m.e !== undefined ? m : undefined;
+  }
+
+  // Convierte las marcas de la rúbrica anterior de un proyecto (fecha → alumno → marca) y dice
+  // cuántas eran. Los proyectos con criterios no tienen: sus marcas siempre son arrays.
+  function convertirProyecto(mod, proy, porFecha) {
+    if (CRITERIOS[mod]?.[proy]) return 0;
+    let n = 0;
+    for (const dia of Object.values(porFecha)) {
+      if (dia === null || typeof dia !== 'object') continue;
+      for (const [alumno, m] of Object.entries(dia)) {
+        if (!Array.isArray(m)) continue;
+        const nueva = convertirAntigua(m);
+        if (nueva) dia[alumno] = nueva;
+        else delete dia[alumno];
+        n++;
+      }
+    }
+    return n;
+  }
+
+  // Convierte todo lo guardado y deja pendiente la copia de los proyectos que cambian.
+  function convertirTodo(d) {
+    let total = 0;
+    for (const [mod, porProyecto] of Object.entries(d.marcas)) {
+      for (const [proy, porFecha] of Object.entries(porProyecto)) {
+        const n = convertirProyecto(mod, proy, porFecha);
+        if (n) (d.ui.cambiado ??= {})[`${mod}/${proy}`] = Date.now();
+        total += n;
+      }
+    }
+    return total;
+  }
+
+  // Al cambiar el avance, un grado que no se usa con el nuevo pasa al más cercano que sí; si hay dos a
+  // la misma distancia, al peor.
+  function ajustarGrado(a, e) {
+    if (!a || e === undefined || gradoUsable(a, e)) return e;
+    for (let d = 1; d < GRADOS.length; d++) {
+      if (e + d < GRADOS.length && gradoUsable(a, e + d)) return e + d;
+      if (e - d >= 0 && gradoUsable(a, e - d)) return e - d;
+    }
+    return e;
+  }
+
+  function notaRubrica(m) {
+    if (m.a === NADA) return 0;
+    if (!m.a || m.e === undefined) return null;
+    return NOTAS_RUBRICA[m.a - 1][m.e];
   }
 
   // Nota de un seguimiento, o null si la falta es justificada o falta alguna marca.
   function notaDe(m) {
     if (m === FALTA) return 0;
+    if (esRubrica(m)) return notaRubrica(m);
     if (!Array.isArray(m)) return null;
     const cr = criteriosDe();
-    if (!cr) return m[0] && m[1] ? NOTAS[m[0] - 1][m[1] - 1] : null;
+    if (!cr) return null;
     return cr.every((_, c) => m[c]) ? cr.reduce((t, _, c) => t + puntosDe(c, m[c]), 0) : null;
   }
 
@@ -679,12 +849,18 @@
     return d?.v === 1 && ['alumnos', 'marcas', 'objetivos', 'ui'].every(k => d[k] && typeof d[k] === 'object');
   }
 
+  // Las notas de lo entregado (módulo → proyecto → alumno) no las llevan los datos de antes.
+  function completar(d) {
+    if (d.entregas === null || typeof d.entregas !== 'object' || Array.isArray(d.entregas)) d.entregas = {};
+    return d;
+  }
+
   function cargar() {
     try {
       const d = JSON.parse(localStorage.getItem(CLAVE));
-      if (valido(d)) return d;
+      if (valido(d)) return completar(d);
     } catch {}
-    return { v: 1, alumnos: {}, marcas: {}, objetivos: {}, ui: {} };
+    return { v: 1, alumnos: {}, marcas: {}, objetivos: {}, entregas: {}, ui: {} };
   }
 
   function guardar() {
@@ -707,6 +883,8 @@
   }
 
   let datos = cargar();
+  const convertidas = convertirTodo(datos);
+  if (convertidas) guardar();
   navigator.storage?.persist?.().catch(() => {});
 
   const modInicial = MODULOS.includes(datos.ui.mod) ? datos.ui.mod : MODULOS[0];
@@ -715,7 +893,13 @@
     proy: proyectosDe(modInicial).includes(datos.ui.proy) ? datos.ui.proy : 'P01',
     fecha: hoyISO(),
     fechaAutomatica: true,
+    entrega: false,
   };
+
+  // En la vista de la entrega se pone la nota de lo entregado en vez de las marcas de un seguimiento.
+  const tieneEntrega = (mod = estado.mod) => mod in ENTREGA;
+  const enEntrega = () => estado.entrega && tieneEntrega();
+  const entregasDe = (mod = estado.mod, proy = estado.proy) => datos.entregas[mod]?.[proy] || {};
 
   const ordenar = alumnos => [...alumnos].sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
   const alumnosDe = mod => ordenar(datos.alumnos[mod] || []);
@@ -733,13 +917,20 @@
     $('#mAlumnos').textContent = `Alumnos de ${estado.mod}`;
     $('#vacioModulo').textContent = estado.mod;
 
-    const n = numColumnas();
+    const entrega = enEntrega();
+    const conmutador = $('#btnEntrega');
+    conmutador.hidden = !tieneEntrega();
+    conmutador.textContent = ENTREGA[estado.mod]?.nombre ?? '';
+    conmutador.setAttribute('aria-pressed', entrega);
+    $('#btnFecha').hidden = entrega;
+
+    const n = entrega ? 1 : numColumnas();
     document.documentElement.style.setProperty('--n', n);
     document.documentElement.classList.toggle('estrecho', n > 2);
     const cr = criteriosDe();
     const pestanas = Array.from({ length: n }, (_, c) => {
-      const tab = el('span', 'tab', cr ? cr[c].pestana : PESTANAS[c]);
-      tab.title = nombreColumna(c);
+      const tab = el('span', 'tab', entrega ? ENTREGA[estado.mod].pestana : cr ? cr[c].pestana : PESTANAS[c]);
+      tab.title = entrega ? `Nota del ${ENTREGA[estado.mod].nombre.toLowerCase()} entregado` : nombreColumna(c);
       return tab;
     });
     const columnas = $('.columnas');
@@ -767,7 +958,7 @@
 
     $('#vacio').hidden = alumnos.length > 0;
     $('.columnas').hidden = alumnos.length === 0;
-    $('#btnObjetivo').hidden = alumnos.length === 0;
+    $('#btnObjetivo').hidden = alumnos.length === 0 || entrega;
     $('#fabs').hidden = alumnos.length === 0;
     marcarDisquete();
     resumen();
@@ -775,9 +966,11 @@
 
   // Rehace las marcas y la nota de una fila; el nombre, que va primero, se queda.
   function pintarFila(li) {
+    if (enEntrega()) return pintarFilaEntrega(li);
     const alumno = li.dataset.alumno;
     const m = marcasDelDia()[alumno];
     const celdas = [];
+    const cr = criteriosDe();
     if (ausente(m)) {
       const b = el('button', 'falta');
       b.type = 'button';
@@ -785,6 +978,26 @@
       b.append(m === FALTA ? 'Falta injustificada' : 'Falta justificada');
       b.setAttribute('aria-haspopup', 'menu');
       celdas.push(b);
+    } else if (!cr) {
+      const r = esRubrica(m) ? m : {};
+      const bA = el('button', 'marca');
+      bA.type = 'button';
+      bA.dataset.c = 0;
+      bA.innerHTML = svgQuesito(r.a || 0);
+      bA.setAttribute('aria-label', `Avance de ${alumno}: ${r.a ? AVANCES[r.a - 1] : 'sin marcar'}`);
+      celdas.push(bA);
+      if (r.a === NADA) {
+        // Sin avance, la explicación no cambia la nota
+        celdas.push(el('span', 'marca sin-explicacion', '—'));
+      } else {
+        const bE = el('button', 'marca');
+        bE.type = 'button';
+        bE.dataset.c = 1;
+        bE.innerHTML = svgCara(r.e === undefined ? 0 : CARA_GRADO[r.e]);
+        bE.setAttribute('aria-haspopup', 'menu');
+        bE.setAttribute('aria-label', `Explicación de ${alumno}: ${r.e === undefined ? 'sin marcar' : GRADOS[r.e]}`);
+        celdas.push(bE);
+      }
     } else {
       for (let c = 0; c < numColumnas(); c++) {
         const n = m?.[c] || 0;
@@ -805,8 +1018,36 @@
     li.replaceChildren(li.firstElementChild, ...celdas, celdaNota);
   }
 
+  // Vista de la entrega: en cada fila, la nota de lo entregado y, a la derecha, la calificación del
+  // alumno, más apagada mientras es provisional.
+  function pintarFilaEntrega(li) {
+    const alumno = li.dataset.alumno;
+    const f = calcular().find(x => x.alumno === alumno);
+    const b = el('button', 'marca');
+    b.type = 'button';
+    b.dataset.c = 0;
+    b.innerHTML = f.juego === undefined ? svgQuesito(0) : svgPuntos(f.juego, 10);
+    b.setAttribute('aria-haspopup', 'menu');
+    b.setAttribute('aria-label', `${ENTREGA[estado.mod].nombre} de ${alumno}: ` +
+      (f.juego === undefined ? 'sin nota' : `${f.juego}, ${VIDEOJUEGO[f.juego][0]}`));
+    const celdaNota = el('span', 'nota-dia final');
+    if (f.nota !== null) {
+      celdaNota.classList.add(f.nota >= 5 ? 'aprobado' : 'suspenso');
+      celdaNota.classList.toggle('provisional', f.juego === undefined);
+      celdaNota.title = f.juego === undefined ? 'Calificación provisional' : 'Calificación';
+      celdaNota.append(el('span', null, numero(f.nota)));
+    }
+    li.replaceChildren(li.firstElementChild, b, celdaNota);
+  }
+
   function resumen() {
     const alumnos = alumnosDe(estado.mod);
+    if (enEntrega()) {
+      const con = alumnos.filter(a => entregasDe()[a] !== undefined).length;
+      $('#subtitulo').textContent = alumnos.length
+        ? `${con} de ${alumnos.length} ${ENTREGA[estado.mod].nombre.toLowerCase()}s con nota` : 'Sin alumnos';
+      return;
+    }
     const dia = marcasDelDia();
     // Los que tienen la falta justificada no necesitan nota ese día.
     const conNota = alumnos.filter(a => notaDe(dia[a]) !== null).length;
@@ -816,6 +1057,7 @@
 
   function fijarMarca(li, m) {
     const notaAntes = notaDe(marcasDelDia()[li.dataset.alumno]);
+    anotarCambio();
     poner(datos.marcas, [estado.mod, estado.proy, estado.fecha, li.dataset.alumno], m);
     pintarFila(li);
     if (notaDe(m) !== null && notaDe(m) !== notaAntes) {
@@ -824,27 +1066,55 @@
     }
     try { navigator.vibrate?.(12); } catch {}
     resumen();
+    marcarDisquete();
   }
 
+  // Tras cambiar una marca, deja el foco en ella (si lo tenía la fila) y la anima.
+  function resaltar(li, c, conFoco) {
+    const marca = li.querySelector(`button.marca[data-c="${c}"]`);
+    if (!marca) return;
+    if (conFoco) marca.focus({ preventScroll: true });
+    marca.firstChild.animate?.(
+      [{ transform: 'scale(.8)' }, { transform: 'scale(1)' }], { duration: 140, easing: 'ease-out' });
+  }
+
+  // Columnas de criterios: cada marca es el nivel de su criterio.
   function cambiarNivel(li, c, n) {
     const conFoco = li.contains(document.activeElement);
     const antes = marcasDelDia()[li.dataset.alumno];
     const m = Array.isArray(antes) ? [...antes] : Array(numColumnas()).fill(0);
     m[c] = n;
     fijarMarca(li, m.some(Boolean) ? m : undefined);
-    const marca = li.querySelector(`.marca[data-c="${c}"]`);
-    if (conFoco) marca.focus({ preventScroll: true });
-    marca.firstChild.animate?.(
-      [{ transform: 'scale(.8)' }, { transform: 'scale(1)' }], { duration: 140, easing: 'ease-out' });
+    resaltar(li, c, conFoco);
   }
 
-  // Cada toque pasa al nivel siguiente, del mejor al peor, y tras el último la marca queda sin marcar.
+  // Rúbrica: { a, e }. Con a = 0 o e = undefined, esa parte queda sin marcar.
+  function marcaRubrica(li) {
+    const m = marcasDelDia()[li.dataset.alumno];
+    return esRubrica(m) ? m : {};
+  }
+
+  function fijarRubrica(li, a, e, c) {
+    const conFoco = li.contains(document.activeElement);
+    const m = {};
+    if (a) m.a = a;
+    if (e !== undefined) m.e = ajustarGrado(a, e);
+    fijarMarca(li, m.a || m.e !== undefined ? m : undefined);
+    resaltar(li, c, conFoco);
+  }
+
+  const fijarAvance = (li, a) => fijarRubrica(li, a, marcaRubrica(li).e, 0);
+  const fijarGrado = (li, e) => fijarRubrica(li, marcaRubrica(li).a, e, 1);
+
+  // Cada toque en el avance pasa al nivel siguiente, de todo a nada, y tras nada queda sin marcar.
+  // En los criterios, igual, de más a menos puntos.
   function siguienteNivel(li, c) {
+    if (!criteriosDe()) return fijarAvance(li, ((marcaRubrica(li).a || 0) + 1) % (AVANCES.length + 1));
     const m = marcasDelDia()[li.dataset.alumno];
     cambiarNivel(li, c, ((Array.isArray(m) ? m[c] : 0) + 1) % (nivelesDe(c).length + 1));
   }
 
-  // Selector que se abre al mantener pulsada una marca o al tocar el nombre
+  // Selector que se abre al tocar la explicación, al mantener pulsada una marca o al tocar el nombre
 
   const selector = $('#selector');
   let origenSelector = null;
@@ -884,6 +1154,7 @@
 
   // Cada nivel muestra la nota que saldría con lo que ya está marcado en las otras columnas.
   function elegirNivel(li, c, origen) {
+    if (!criteriosDe()) return elegirAvance(li, origen);
     const m = marcasDelDia()[li.dataset.alumno];
     const marcas = Array.isArray(m) ? m : Array(numColumnas()).fill(0);
     const actual = marcas[c] || 0;
@@ -894,6 +1165,54 @@
     }));
     if (actual) botones.push(opcion('Quitar', () => cambiarNivel(li, c, 0), { clase: 'quitar' }));
     mostrarSelector(origen, botones);
+  }
+
+  function elegirAvance(li, origen) {
+    const { a, e } = marcaRubrica(li);
+    const botones = AVANCES.map((nivel, i) => opcion(mayus(nivel), () => fijarAvance(li, i + 1), {
+      icono: svgQuesito(i + 1),
+      marcada: a === i + 1,
+      nota: notaRubrica({ a: i + 1, e: ajustarGrado(i + 1, e) }),
+    }));
+    if (a) botones.push(opcion('Quitar', () => fijarAvance(li, 0), { clase: 'quitar' }));
+    mostrarSelector(origen, botones);
+  }
+
+  // Solo los grados que se usan con el avance marcado, cada uno con la nota que da.
+  function elegirGrado(li, origen) {
+    const { a, e } = marcaRubrica(li);
+    const botones = GRADOS.flatMap((grado, i) => (a && !gradoUsable(a, i) ? [] : [
+      opcion(mayus(grado), () => fijarGrado(li, i), {
+        icono: svgCara(CARA_GRADO[i]),
+        marcada: e === i,
+        nota: a ? notaRubrica({ a, e: i }) : null,
+      }),
+    ]));
+    if (e !== undefined) botones.push(opcion('Quitar', () => fijarGrado(li, undefined), { clase: 'quitar' }));
+    mostrarSelector(origen, botones);
+  }
+
+  // Nota de lo entregado: la lista de la rúbrica de videojuego, del 10 al 0.
+  function elegirEntrega(li, origen) {
+    const actual = entregasDe()[li.dataset.alumno];
+    const botones = [];
+    for (let n = 10; n >= 0; n--) {
+      botones.push(opcion(mayus(VIDEOJUEGO[n][0]), () => fijarEntrega(li, n),
+        { icono: svgPuntos(n, 10), marcada: actual === n }));
+    }
+    if (actual !== undefined) botones.push(opcion('Quitar', () => fijarEntrega(li, undefined), { clase: 'quitar' }));
+    mostrarSelector(origen, botones);
+  }
+
+  function fijarEntrega(li, n) {
+    const conFoco = li.contains(document.activeElement);
+    anotarCambio();
+    poner(datos.entregas, [estado.mod, estado.proy, li.dataset.alumno], n);
+    pintarFila(li);
+    resaltar(li, 0, conFoco);
+    try { navigator.vibrate?.(12); } catch {}
+    resumen();
+    marcarDisquete();
   }
 
   function elegirAsistencia(li, origen) {
@@ -907,13 +1226,16 @@
       opcion('Falta justificada', () => fijarMarca(li, JUSTIFICADA),
         { icono: ICONO_JUSTIFICADA, marcada: m === JUSTIFICADA }),
     ];
-    if (Array.isArray(m)) botones.push(opcion('Quitar las marcas', () => fijarMarca(li, undefined), { clase: 'quitar' }));
+    if (m !== undefined && !ausente(m)) {
+      botones.push(opcion('Quitar las marcas', () => fijarMarca(li, undefined), { clase: 'quitar' }));
+    }
     mostrarSelector(origen, botones);
   }
 
   // Si te pasas de nivel, mantén pulsada la marca (o haz clic derecho) para elegirlo de la lista.
-  // El toque que acaba esa pulsación no debe cambiar de nivel.
+  // El toque que acaba esa pulsación no debe cambiar de nivel. La explicación siempre abre la lista.
   let trasPulsarLargo = false;
+  const esExplicacion = b => !criteriosDe() && b.dataset.c === '1';
 
   lista.addEventListener('click', ev => {
     const b = ev.target.closest('button');
@@ -926,16 +1248,24 @@
     if (b === origenSelector) return cerrarSelector();
     cerrarSelector();
     const li = b.closest('.fila');
-    if (b.classList.contains('marca')) siguienteNivel(li, Number(b.dataset.c));
-    else elegirAsistencia(li, b);
+    if (enEntrega()) {
+      if (b.classList.contains('marca')) elegirEntrega(li, b);
+      return;
+    }
+    if (!b.classList.contains('marca')) elegirAsistencia(li, b);
+    else if (esExplicacion(b)) elegirGrado(li, b);
+    else siguienteNivel(li, Number(b.dataset.c));
   });
 
   lista.addEventListener('contextmenu', ev => {
-    const b = ev.target.closest('.marca');
+    const b = ev.target.closest('button.marca');
     if (!b) return;
     ev.preventDefault();
     trasPulsarLargo = true;
-    elegirNivel(b.closest('.fila'), Number(b.dataset.c), b);
+    const li = b.closest('.fila');
+    if (enEntrega()) return elegirEntrega(li, b);
+    if (esExplicacion(b)) elegirGrado(li, b);
+    else elegirNivel(li, Number(b.dataset.c), b);
   });
 
   document.addEventListener('pointerdown', () => { trasPulsarLargo = false; }, true);
@@ -951,8 +1281,14 @@
 
   $('#modulo').addEventListener('change', ev => {
     estado.mod = datos.ui.mod = ev.target.value;
+    estado.entrega = false;
     if (!proyectosDe(estado.mod).includes(estado.proy)) estado.proy = datos.ui.proy = 'P01';
     guardar();
+    pintar();
+  });
+
+  $('#btnEntrega').addEventListener('click', () => {
+    estado.entrega = !estado.entrega;
     pintar();
   });
 
@@ -986,6 +1322,7 @@
 
   $('#btnGuardarObjetivo').addEventListener('click', () => {
     const texto = $('#txtObjetivo').value.replace(/\s+/g, ' ').trim();
+    if (texto !== objetivoDelDia()) anotarCambio();
     poner(datos.objetivos, [estado.mod, estado.proy, estado.fecha], texto || undefined);
     $('#dlgObjetivo').close();
     pintar();
@@ -1101,28 +1438,40 @@
 
   // Notas
 
+  // Seguimientos de cada alumno en el proyecto elegido y su media: la aritmética de los que tienen
+  // nota. Una falta injustificada es un 0 y una justificada no cuenta. La nota es esa media o, en los
+  // módulos con entrega, su media con la nota de lo entregado (juego) en cuanto la hay; hasta
+  // entonces es provisional. Sin seguimientos con nota, es la de lo entregado.
   function calcular() {
     const porFecha = datos.marcas[estado.mod]?.[estado.proy] || {};
     const fechas = Object.keys(porFecha).sort();
+    const entregas = tieneEntrega() ? entregasDe() : {};
     return alumnosDe(estado.mod).map(alumno => {
       const segs = fechas.filter(f => porFecha[f][alumno]).map(f => {
         const m = porFecha[f][alumno];
         return { fecha: f, m, valor: notaDe(m) };
       });
-      const completos = segs.filter(s => s.valor !== null);
-      if (completos.length >= QUITAR_PEOR_DESDE) {
-        completos.reduce((peor, s) => (s.valor < peor.valor ? s : peor)).quitado = true;
-      }
-      const cuentan = completos.filter(s => !s.quitado);
-      const nota = cuentan.length ? cuentan.reduce((t, s) => t + s.valor, 0) / cuentan.length : null;
-      return { alumno, segs, nota };
+      const cuentan = segs.filter(s => s.valor !== null);
+      const media = cuentan.length ? cuentan.reduce((t, s) => t + s.valor, 0) / cuentan.length : null;
+      const juego = entregas[alumno];
+      const nota = juego === undefined ? media : media === null ? juego : (media + juego) / 2;
+      const provisional = tieneEntrega() && juego === undefined && nota !== null;
+      return { alumno, segs, media, juego, nota, provisional, cuentan: cuentan.length };
     });
   }
 
   const tituloNotas = () => `Notas de ${estado.mod} · ${etiquetaProyecto(estado.mod, estado.proy)}`;
 
   function abrirNotas() {
-    $('#notasTitulo').textContent = tituloNotas().replace(/ (\d+)$/, ' $1');
+    $('#notasTitulo').textContent = tituloNotas().replace(/ (\d+)$/, ' $1');
+    $('#ayudaNotas').textContent = 'Cada seguimiento se califica con la rúbrica (ver «Cómo se calcula la ' +
+      'nota»). Una falta injustificada es un 0 y una justificada (J) no cuenta. ' +
+      (tieneEntrega()
+        ? `La nota es la media entre la de los seguimientos y la del ${ENTREGA[estado.mod].nombre.toLowerCase()} ` +
+          'entregado; mientras este no tenga nota, es provisional (más apagada): la media aritmética de los ' +
+          'seguimientos. '
+        : 'La nota es la media aritmética de los seguimientos. ') +
+      'Con el disquete se guardan estas notas, con la retroalimentación para Moodle.';
     const frag = document.createDocumentFragment();
     for (const f of calcular()) {
       const tr = el('tr');
@@ -1130,7 +1479,7 @@
       celdaAlumno.append(cajaAlumno(f.alumno, 'n-alumno'));
 
       const chips = el('div', 'chips');
-      if (!f.segs.length) chips.append(el('span', 'chip vacia', 'Ninguno'));
+      if (!f.segs.length && f.juego === undefined) chips.append(el('span', 'chip vacia', 'Ninguno'));
       for (const s of f.segs) {
         const chip = el('span', 'chip');
         const valor = el('b');
@@ -1146,9 +1495,18 @@
           valor.textContent = numero(s.valor);
           valor.className = s.valor >= 5 ? 'aprobado' : 'suspenso';
           if (s.m === FALTA) valor.title = 'Falta injustificada';
+          else if (esRubrica(s.m)) {
+            valor.title = s.m.a === NADA ? 'Avance nada' : `Avance ${AVANCES[s.m.a - 1]}, explicación ${GRADOS[s.m.e]}`;
+          }
         }
-        if (s.quitado) chip.classList.add('quitado');
         chip.append(valor, el('small', null, fechaCorta(s.fecha, false)));
+        chips.append(chip);
+      }
+      if (f.juego !== undefined) {
+        const chip = el('span', 'chip');
+        const valor = el('b', f.juego >= 5 ? 'aprobado' : 'suspenso', String(f.juego));
+        valor.title = `${ENTREGA[estado.mod].nombre} ${VIDEOJUEGO[f.juego][0]}`;
+        chip.append(valor, el('small', null, ENTREGA[estado.mod].nombre.toLowerCase()));
         chips.append(chip);
       }
       const celdaSegs = el('td');
@@ -1156,6 +1514,10 @@
 
       const celdaNota = el('td', 'nota', f.nota === null ? '—' : numero(f.nota));
       if (f.nota !== null) celdaNota.classList.add(f.nota >= 5 ? 'aprobado' : 'suspenso');
+      if (f.provisional) {
+        celdaNota.classList.add('provisional');
+        celdaNota.title = 'Calificación provisional';
+      }
 
       tr.append(celdaAlumno, celdaSegs, celdaNota);
       frag.append(tr);
@@ -1166,67 +1528,83 @@
 
   $('#fab').addEventListener('click', abrirNotas);
 
-  // Una línea por seguimiento, para copiarla y pegarla como comentario de la nota.
-  function describir(segs) {
-    const cerrados = segs.filter(s => s.valor !== null || s.m === JUSTIFICADA);
-    if (!cerrados.length) return segs.length ? 'Sin seguimientos completos.' : 'Sin seguimientos.';
-    const conAnio = new Set(cerrados.map(s => s.fecha.slice(0, 4))).size > 1;
-    return cerrados.map(s => {
-      const fecha = fechaCorta(s.fecha, conAnio);
-      if (s.m === JUSTIFICADA) return `${fecha}: falta justificada, no cuenta.`;
-      const cr = criteriosDe();
-      const que = s.m === FALTA
-        ? 'falta injustificada'
-        : cr
-          ? cr.map((k, c) => `${k.corto} ${puntosDe(c, s.m[c])} de ${k.max}`).join(', ')
-          : `avance ${NIVELES[0][s.m[0] - 1]}, explicación ${NIVELES[1][s.m[1] - 1]}`;
-      return `${fecha}: ${que}, nota ${numero(s.valor)}${s.quitado ? ' (se quita)' : ''}.`;
-    }).join(' ');
+  // Retroalimentación para el comentario de Moodle
+
+  // Lo que se dice de una marca, sin la fecha, o null si le falta alguna parte.
+  function textoMarca(m) {
+    if (m === FALTA) return RETRO_FALTA;
+    if (m === JUSTIFICADA) return RETRO_JUSTIFICADA;
+    if (notaDe(m) === null) return null;
+    if (esRubrica(m)) return m.a === NADA ? RETRO_NADA : RETRO[m.a - 1][m.e];
+    const cr = criteriosDe();
+    return cr ? mayus(cr.map((k, c) => `${k.corto} ${puntosDe(c, m[c])} de ${k.max}`).join(', ')) + '.' : null;
   }
 
-  // La tabla de notas en texto, con las columnas alineadas a la derecha.
-  function tablaTexto() {
-    const ancho = Math.max(...NIVELES[0].map(n => n.length)) + 2;
-    const cab = NIVELES[1].map(n => '  ' + mayus(n));
-    return [
-      ' '.repeat(ancho) + cab.join(''),
-      ...NOTAS.map((fila, i) =>
-        mayus(NIVELES[0][i]).padEnd(ancho) + fila.map((v, j) => String(v).padStart(cab[j].length)).join('')),
-    ];
+  // Un párrafo por alumno, que es el comentario de Moodle: su calificación y, por orden, cada
+  // seguimiento con su fecha, su nota (o «sin nota», si la falta es justificada) y su
+  // retroalimentación. No lleva la fecha de hoy, para que solo cambie cuando cambian sus marcas (así
+  // el script de Moodle solo actualiza a quien tiene novedades). Sin nota, vacío.
+  // En los módulos con entrega empieza por la calificación provisional mientras lo entregado no tiene
+  // nota y, cuando la tiene, acaba con ella y con el texto de su rúbrica.
+  function retroalimentacion(f) {
+    if (f.nota === null) return '';
+    const calificacion = `${dosDecimales(f.nota)} sobre 10`;
+    const seguimientos = `media aritmética de ${plural(f.cuentan, 'seguimiento')}`;
+    const entrega = ENTREGA[estado.mod]?.nombre.toLowerCase();
+    let inicio;
+    if (f.provisional) inicio = `Calificación provisional de ${calificacion}, ${seguimientos}, a falta de entregar el ${entrega}.`;
+    else if (f.juego === undefined) inicio = `Calificación de ${calificacion}, ${seguimientos}.`;
+    else if (f.media === null) inicio = `Calificación de ${calificacion}, nota del ${entrega}, sin seguimientos con nota.`;
+    else {
+      inicio = `Calificación de ${calificacion}, media de los seguimientos (${dosDecimales(f.media)}) ` +
+        `y del ${entrega} (${f.juego}).`;
+    }
+    const partes = [inicio];
+    for (const s of f.segs) {
+      const texto = textoMarca(s.m);
+      if (!texto) continue;
+      const nota = s.valor === null ? 'sin nota' : `nota ${s.valor}`;
+      partes.push(`Seguimiento del ${fechaLarga(s.fecha)}, ${nota}. ${texto}`);
+    }
+    if (f.juego !== undefined) partes.push(`${mayus(entrega)}, nota ${f.juego}. ${retroVideojuego(f.juego)}`);
+    return partes.join(' ');
   }
 
-  function informe() {
-    const objetivos = datos.objetivos[estado.mod]?.[estado.proy] || {};
-    const fechas = Object.keys(objetivos).sort();
-    const conAnio = new Set(fechas.map(f => f.slice(0, 4))).size > 1;
+  // Nota (redondeada a dos decimales, o null si está pendiente), si es provisional y retroalimentación
+  // de cada alumno.
+  const notasProyecto = () => calcular().map(f => ({
+    alumno: f.alumno,
+    nota: f.nota === null ? null : Math.round(f.nota * 100) / 100,
+    provisional: f.provisional,
+    retro: retroalimentacion(f),
+  }));
+
+  const horaDe = (d, sep) => [d.getHours(), d.getMinutes(), d.getSeconds()]
+    .map(n => String(n).padStart(2, '0')).join(sep);
+
+  // Las notas en texto: para leerlas, para enviarlas y al principio de la copia.
+  function textoNotas(ahora, notas) {
     const cr = criteriosDe();
     const lineas = [
       tituloNotas(),
-      `Enviadas el ${fechaCorta(hoyISO())}`,
+      `Guardadas el ${fechaCorta(isoDe(ahora))} a las ${horaDe(ahora, ':')}`,
       '',
       ...(cr
-        ? [
-          'Cada seguimiento se califica con los criterios del enunciado, que suman diez puntos:',
-          ...cr.map(k => `- ${mayus(k.corto)}: ${k.nombre} (de 0 a ${plural(k.max, 'punto')}).`),
-          'Una falta injustificada es un 0 y una justificada no cuenta.',
-        ]
-        : [
-          'Cada seguimiento se califica con esta tabla según el avance (filas: lo que tienes hecho',
-          'y funcionando del objetivo de ese día) y la explicación (columnas: si entiendes tu código,',
-          'lo explicas y sabes cambiarlo). Una falta injustificada es un 0 y una justificada no cuenta.',
-          '',
-          ...tablaTexto(),
-        ]),
-      '',
-      'La calificación es la media de los seguimientos.',
-      `Si tienes ${QUITAR_PEOR_DESDE} seguimientos o más, se quita el peor.`,
+        ? ['Cada seguimiento se califica con los criterios del enunciado, que suman diez puntos:',
+          ...cr.map(k => `- ${mayus(k.corto)}: ${k.nombre} (de 0 a ${plural(k.max, 'punto')}).`)]
+        : ['Cada seguimiento se califica con la rúbrica de seguimiento: el avance marca la nota máxima',
+          'y la mínima, y la explicación técnica fija la nota dentro de ese margen.']),
+      'Una falta injustificada cuenta como un 0 y una justificada no cuenta.',
+      ...(tieneEntrega()
+        ? [`La calificación es la media entre la de los seguimientos y la del ${ENTREGA[estado.mod].nombre.toLowerCase()} entregado,`,
+          'que se califica de 0 a 10 con su rúbrica. Mientras este no tenga nota, es provisional: la media',
+          'aritmética de los seguimientos.']
+        : ['La calificación es la media aritmética de los seguimientos.']),
     ];
-    if (fechas.length) {
-      lineas.push('', 'Objetivos:', ...fechas.map(f => `- ${fechaCorta(f, conAnio)}: ${objetivos[f]}`));
-    }
-    for (const f of calcular()) {
-      lineas.push('', `${f.alumno} (Calificación: ${f.nota === null ? 'pendiente' : dosDecimales(f.nota)})`);
-      lineas.push(describir(f.segs));
+    for (const n of notas) {
+      lineas.push('', n.alumno,
+        `Calificación: ${n.nota === null ? 'pendiente' : dosDecimales(n.nota)}${n.provisional ? ' (provisional)' : ''}`,
+        n.retro || (tieneEntrega() ? 'Sin seguimientos con nota ni nota de lo entregado.' : 'Sin seguimientos con nota.'));
     }
     return lineas.join('\n') + '\n';
   }
@@ -1235,7 +1613,7 @@
   // no sabe compartir archivos, abre un correo nuevo con las notas en el cuerpo.
   $('#btnEnviarNotas').addEventListener('click', async () => {
     const titulo = tituloNotas();
-    const texto = informe();
+    const texto = textoNotas(new Date(), notasProyecto());
     const archivo = new File([texto], `${titulo.replace(' · ', ' - ')}.txt`, { type: 'text/plain' });
     if (navigator.canShare?.({ files: [archivo] })) {
       try {
@@ -1282,30 +1660,34 @@
 
   // Cómo se calcula
 
-  const ayudaMatriz = $('#ayudaCalculo').textContent;
+  const ayudaRubrica = $('#ayudaCalculo').textContent;
   const ayudaCriterios = 'Cada toque en una marca le quita un punto, desde el máximo hasta 0, y tras el 0 la ' +
     'deja sin marcar; si te pasas, mantenla pulsada y elige los puntos en la lista. Si un alumno no ha ' +
     'venido, toca su nombre y elige si la falta es justificada o no. En este proyecto, la nota de cada ' +
     'seguimiento es la suma de los puntos de los criterios de su enunciado; una falta injustificada es un 0 ' +
-    `y una justificada no cuenta. La nota del proyecto es la media de los seguimientos y, al alumno que ` +
-    `tenga ${QUITAR_PEOR_DESDE} o más, se le quita el peor.`;
+    'y una justificada no cuenta. La nota del proyecto es la media aritmética de los seguimientos.';
 
-  function tablaMatriz() {
-    const conIcono = (svg, texto) => {
-      const th = el('th');
-      th.innerHTML = svg;
-      th.append(el('small', null, mayus(texto)));
-      return th;
-    };
+  const conIcono = (svg, texto) => {
+    const th = el('th');
+    th.innerHTML = svg;
+    th.append(el('small', null, mayus(texto)));
+    return th;
+  };
+
+  // La nota de cada grado de explicación (filas) con cada avance (columnas)
+  function tablaRubrica() {
     const cab = el('tr');
-    cab.append(el('th'), ...NIVELES[1].map((nivel, i) => conIcono(svgCara(i + 1), nivel)));
+    cab.append(el('th'), ...AVANCES.map((a, i) => conIcono(svgQuesito(i + 1), a)));
     const thead = el('thead');
     thead.append(cab);
     const tbody = el('tbody');
-    NOTAS.forEach((fila, i) => {
+    GRADOS.forEach((grado, e) => {
       const tr = el('tr');
-      tr.append(conIcono(svgQuesito(i + 1), NIVELES[0][i]));
-      for (const v of fila) tr.append(el('td', v >= 5 ? 'aprobado' : 'suspenso', String(v)));
+      tr.append(conIcono(svgCara(CARA_GRADO[e]), grado));
+      AVANCES.forEach((_, i) => {
+        const v = notaRubrica({ a: i + 1, e });
+        tr.append(v === null ? el('td', 'no-usa', '—') : el('td', v >= 5 ? 'aprobado' : 'suspenso', String(v)));
+      });
       tbody.append(tr);
     });
     return [thead, tbody];
@@ -1321,73 +1703,97 @@
     return [tbody];
   }
 
+  // La rúbrica de lo entregado: cada nota, del 10 al 0, con su valoración y su descripción
+  function tablaEntrega() {
+    const tbody = el('tbody');
+    for (let n = 10; n >= 0; n--) {
+      const tr = el('tr');
+      const th = el('th');
+      th.append(el('b', null, `${mayus(VIDEOJUEGO[n][0])}. `), VIDEOJUEGO[n][1]);
+      tr.append(el('td', n >= 5 ? 'aprobado' : 'suspenso', String(n)), th);
+      tbody.append(tr);
+    }
+    return [tbody];
+  }
+
   function abrirCalculo() {
     const cr = criteriosDe();
-    $('#ayudaCalculo').textContent = cr ? ayudaCriterios : ayudaMatriz;
-    $('#tablaCalculo').classList.toggle('criterios', !!cr);
-    $('#tablaCalculo').replaceChildren(...(cr ? tablaCriterios(cr) : tablaMatriz()));
+    const entrega = enEntrega();
+    const nombre = ENTREGA[estado.mod]?.nombre.toLowerCase();
+    const mitades = `la calificación es la media entre la de los seguimientos y la del ${nombre} entregado y, ` +
+      'mientras este no tenga nota, es provisional: la media aritmética de los seguimientos.';
+    let ayuda = cr ? ayudaCriterios : ayudaRubrica;
+    if (entrega) {
+      ayuda = `Toca la marca de un alumno y elige la nota de su ${nombre} entregado, de 0 a 10, por la ` +
+        `funcionalidad de su IA y su jugabilidad con la IA. A la derecha sale su calificación: ${mitades}`;
+    } else if (tieneEntrega()) ayuda = `${ayuda.trim()} En ${estado.mod}, ${mitades}`;
+    $('#ayudaCalculo').textContent = ayuda;
+    $('#tablaCalculo').classList.toggle('criterios', !!cr && !entrega);
+    $('#tablaCalculo').classList.toggle('niveles', entrega);
+    $('#tablaCalculo').replaceChildren(...(entrega ? tablaEntrega() : cr ? tablaCriterios(cr) : tablaRubrica()));
     $('#dlgCalculo').showModal();
   }
 
-  // Copia de seguridad
+  // Copia de seguridad: cada copia es de un proyecto, con las notas y la retroalimentación de cada
+  // alumno para Moodle (las sube notas_seguimiento.py, junto a este archivo) y, al final, sus datos
+  // para restaurarla.
+
+  const claveProyecto = (mod = estado.mod, proy = estado.proy) => `${mod}/${proy}`;
+
+  // Cada cambio en las marcas o los objetivos de un proyecto deja su copia pendiente.
+  function anotarCambio() {
+    (datos.ui.cambiado ??= {})[claveProyecto()] = Date.now();
+  }
+
+  // Con marcas y sin copia de lo último que se ha cambiado, el disquete se marca en rojo.
+  function copiaPendiente() {
+    if (!datos.marcas[estado.mod]?.[estado.proy] && !datos.entregas[estado.mod]?.[estado.proy]) return false;
+    const guardada = datos.ui.guardado?.[claveProyecto()];
+    return !guardada || (datos.ui.cambiado?.[claveProyecto()] ?? 0) > guardada;
+  }
 
   function marcarDisquete() {
-    const u = datos.ui.ultimaCopia;
-    const pendiente = !u || (Date.parse(hoyISO()) - Date.parse(u)) / 864e5 > DIAS_SIN_COPIA;
+    const pendiente = copiaPendiente();
     $('#fabGuardar').classList.toggle('pendiente', pendiente);
-    $('#fabGuardar').setAttribute('aria-label', 'Guardar copia de seguridad' +
-      (pendiente ? `: llevas más de ${DIAS_SIN_COPIA} días sin hacerlo` : ''));
+    $('#fabGuardar').setAttribute('aria-label', `Guardar las notas de ${estado.mod} · ` +
+      `${etiquetaProyecto(estado.mod, estado.proy)}` + (pendiente ? ': hay cambios sin guardar' : ''));
   }
 
   // Lo que va detrás de esta línea en la copia son los datos para restaurarla.
   const MARCA_DATOS = '--- Datos para restaurar la copia: no los cambies ---';
 
-  // Calcula con otro módulo y proyecto como si estuvieran elegidos y luego deja los de antes.
-  function conProyecto(mod, proy, fn) {
-    const antes = [estado.mod, estado.proy];
-    [estado.mod, estado.proy] = [mod, proy];
-    try {
-      return fn();
-    } finally {
-      [estado.mod, estado.proy] = antes;
-    }
-  }
-
-  // La copia empieza con la nota y el comentario de cada alumno en cada proyecto con marcas, para
-  // pegarlos en Moodle, y acaba con todos los datos.
-  function textoCopia(copia, ahora) {
-    const lineas = [
-      `Copia del seguimiento del ${fechaCorta(isoDe(ahora))}`,
-      '',
-      'Para pasar las notas a Moodle, copia la calificación y el comentario de cada alumno.',
-      'Para restaurar la copia, elige este archivo en «Restaurar copia», en el menú.',
-    ];
-    for (const mod of MODULOS) {
-      for (const proy of proyectosDe(mod)) {
-        if (!datos.marcas[mod]?.[proy]) continue;
-        const titulo = `${mod} · ${etiquetaProyecto(mod, proy)}`;
-        lineas.push('', '', titulo, '='.repeat(titulo.length));
-        for (const f of conProyecto(mod, proy, calcular)) {
-          lineas.push('', f.alumno, `Calificación: ${f.nota === null ? 'pendiente' : dosDecimales(f.nota)}`,
-            conProyecto(mod, proy, () => describir(f.segs)));
-        }
-      }
-    }
-    lineas.push('', '', MARCA_DATOS, JSON.stringify(copia));
-    return lineas.join('\n') + '\n';
-  }
-
-  // El nombre lleva la fecha y la hora para que cada copia sea distinta y salgan ordenadas. Va en
-  // .txt porque Android no deja compartir archivos .json.
+  // El nombre es MÓDULO_Proyecto_N_AAAA-MM-DD_HH-MM-SS.txt (Videojuego en PRIA), para que cada copia
+  // sea distinta y salgan ordenadas. Va en .txt porque Android no deja compartir archivos .json.
   function archivoCopia(ahora) {
-    const hora = [ahora.getHours(), ahora.getMinutes(), ahora.getSeconds()]
-      .map(n => String(n).padStart(2, '0')).join('-');
-    const copia = { ...datos, ui: { ...datos.ui, ultimaCopia: isoDe(ahora) } };
-    return new File([textoCopia(copia, ahora)], `seguimiento-${isoDe(ahora)}_${hora}.txt`, { type: 'text/plain' });
+    const { mod, proy } = estado;
+    const notas = notasProyecto();
+    const copia = {
+      v: 1,
+      tipo: 'proyecto',
+      mod,
+      proy,
+      nombre: etiquetaProyecto(mod, proy),
+      guardado: `${isoDe(ahora)}T${horaDe(ahora, ':')}`,
+      alumnos: alumnosDe(mod),
+      marcas: datos.marcas[mod]?.[proy] || {},
+      objetivos: datos.objetivos[mod]?.[proy] || {},
+      entregas: entregasDe(mod, proy),
+      notas,
+    };
+    const texto = [
+      textoNotas(ahora, notas),
+      'Para subir las notas a Moodle: python3 notas_seguimiento.py <este archivo>',
+      'Para restaurar la copia, elige este archivo en «Restaurar copia», en el menú.',
+      '',
+      MARCA_DATOS,
+      JSON.stringify(copia),
+    ].join('\n') + '\n';
+    const nombre = `${mod}_${tipoProyecto(mod)}_${Number(proy.slice(1))}_${isoDe(ahora)}_${horaDe(ahora, '-')}.txt`;
+    return new File([texto], nombre, { type: 'text/plain' });
   }
 
-  function copiaHecha(ahora) {
-    datos.ui.ultimaCopia = isoDe(ahora);
+  function copiaHecha(clave, cuando) {
+    (datos.ui.guardado ??= {})[clave] = cuando;
     guardar();
     marcarDisquete();
   }
@@ -1396,11 +1802,12 @@
   // sabe compartir archivos, como el del ordenador, la descarga.
   async function guardarCopia() {
     const ahora = new Date();
+    const clave = claveProyecto();
     const archivo = archivoCopia(ahora);
     if (navigator.canShare?.({ files: [archivo] })) {
       try {
-        await navigator.share({ title: 'Copia de seguridad', files: [archivo] });
-        copiaHecha(ahora);
+        await navigator.share({ title: tituloNotas(), files: [archivo] });
+        copiaHecha(clave, ahora.getTime());
         avisar('Copia guardada');
         return;
       } catch (e) {
@@ -1415,12 +1822,51 @@
     a.click();
     a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 5000);
-    copiaHecha(ahora);
+    copiaHecha(clave, ahora.getTime());
     avisar('Copia descargada');
   }
 
   $('#fabGuardar').addEventListener('click', guardarCopia);
 
+  const esObjeto = x => x !== null && typeof x === 'object' && !Array.isArray(x);
+
+  // La copia de un proyecto solo cambia ese proyecto: sus marcas y objetivos pasan a ser los de la
+  // copia, y sus alumnos se añaden a los del módulo. Deja elegido ese proyecto.
+  function restaurarProyecto(d) {
+    if (!MODULOS.includes(d.mod) || !proyectosDe(d.mod).includes(d.proy) || !Array.isArray(d.alumnos) ||
+      !esObjeto(d.marcas) || !esObjeto(d.objetivos)) throw new Error('copia no válida');
+    const antiguas = convertirProyecto(d.mod, d.proy, d.marcas);
+    const alumnos = ordenar(new Set([...(datos.alumnos[d.mod] || []),
+      ...d.alumnos.filter(a => typeof a === 'string' && a.trim())]));
+    if (alumnos.length) datos.alumnos[d.mod] = alumnos;
+    const entregas = {};
+    if (d.mod in ENTREGA && esObjeto(d.entregas)) {
+      for (const [alumno, n] of Object.entries(d.entregas)) {
+        if (Number.isInteger(n) && n >= 0 && n <= 10) entregas[alumno] = n;
+      }
+    }
+    for (const [rama, valor] of [[datos.marcas, d.marcas], [datos.objetivos, d.objetivos], [datos.entregas, entregas]]) {
+      if (Object.keys(valor).length) (rama[d.mod] ??= {})[d.proy] = valor;
+      else if (rama[d.mod]) {
+        delete rama[d.mod][d.proy];
+        if (!Object.keys(rama[d.mod]).length) delete rama[d.mod];
+      }
+    }
+    estado.mod = datos.ui.mod = d.mod;
+    estado.proy = datos.ui.proy = d.proy;
+    // Lo que hay ahora es lo de la copia, así que no queda nada pendiente de guardar, salvo que
+    // llevara marcas de la rúbrica anterior: convertidas, ya no son las de la copia.
+    const ahora = Date.now();
+    (datos.ui.guardado ??= {})[claveProyecto()] = ahora;
+    if (antiguas) (datos.ui.cambiado ??= {})[claveProyecto()] = ahora + 1;
+    else delete datos.ui.cambiado?.[claveProyecto()];
+    guardar();
+    pintar();
+    avisar(`${d.mod} · ${etiquetaProyecto(d.mod, d.proy)} restaurado` +
+      (antiguas ? `, con ${plural(antiguas, 'marca')} de la rúbrica anterior a la nueva` : ''));
+  }
+
+  // Acepta las copias de un proyecto y las copias completas de antes, que lo sustituyen todo.
   $('#archivoCopia').addEventListener('change', async ev => {
     const archivo = ev.target.files[0];
     ev.target.value = '';
@@ -1429,11 +1875,13 @@
       const texto = await archivo.text();
       const i = texto.lastIndexOf(MARCA_DATOS);
       const d = JSON.parse(i < 0 ? texto : texto.slice(i + MARCA_DATOS.length));
+      if (d?.tipo === 'proyecto') return restaurarProyecto(d);
       if (!valido(d)) throw new Error('copia no válida');
-      datos = d;
+      datos = completar(d);
+      convertirTodo(datos);
       guardar();
       pintar();
-      avisar('Copia restaurada');
+      avisar('Copia completa restaurada');
     } catch {
       avisar('Ese archivo no es una copia válida');
     }
@@ -1459,6 +1907,9 @@
     datos.alumnos = {};
     datos.marcas = {};
     datos.objetivos = {};
+    datos.entregas = {};
+    delete datos.ui.cambiado;
+    delete datos.ui.guardado;
     guardar();
     $('#dlgBorrar').close();
     pintar();
@@ -1479,6 +1930,7 @@
 
   $('#sinAlmacen').hidden = almacenOk;
   pintar();
+  if (convertidas) avisar(`${plural(convertidas, 'marca')} de la rúbrica anterior, a la nueva`);
 })();
 </script>
 </body>
